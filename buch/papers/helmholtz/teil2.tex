@@ -10,23 +10,58 @@
 \label{helmholtz:section:teil2}}
 \kopfrechts{Teil 2}
 
-Die Grundidee der Helmholtz-Zerlegung besteht darin, dass ein glattes (differenziebares) Vektorfeld $\mathbf{A}$, welches unendlich schnell genug abfällt,eindeutig in ein wirbelfreien (irrotationalen) Teil und einen quellenfreien (solenoidalen) Teil zerlegt werden kann.
+Die Grundidee der Helmholtz-Zerlegung besteht darin, dass ein glattes (differenziebares) Vektorfeld $\mathbf{F}$, welches unendlich schnell genug abfällt,eindeutig in ein wirbelfreien (irrotationalen) Teil und einen quellenfreien (solenoidalen) Teil zerlegt werden kann.
 
 \begin{equation}
-\mathbf{A} =  \underbrace{-\nabla \Phi}_{Skalarpotential} + \underbrace{\nabla \times \mathbf{\Psi}}_{Vektorpotential}
+\mathbf{F} =  \underbrace{-\nabla \Phi}_{Skalarpotential} + \underbrace{\nabla \times \mathbf{\Psi}}_{Vektorpotential}
 \label{helmholtz:equationAllgemein}
 \end{equation}
 
+Der erste Term $ \nabla \Phi $ hat keine Rotation ($\nabla \times (-\nabla \Phi) = 0$) und wird auch irrotational (wirbelfrei) bezeichnet. Der zweite Term $\nabla \times \mathbf{\Psi}$ hat gemäss der Definition immer Divergenz null ($\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$) und wird auch solenoidal (quellenfrei) genannt. \newline
 
 \begin{tabular}[h]{l|l|l|l}
 \hline
-zu zerlegende Vektorfeld & $\mathbf{A}$ & & \\
+zu zerlegende Vektorfeld & $\mathbf{F}$ & & \\
 \hline 
 skalares Potential & $\Phi $ & $\nabla \times (-\nabla \Phi) = 0$ & wirbelfrei\\
 \hline
 Vektorpotential & $\mathbf{\Psi}$ & $\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$ & quellenfrei\\
 \hline
-\end{tabular}
+\end{tabular}\newline
+
+Hierzu müssen jedoch die Potentiale $\Phi $ und $\mathbf{\Psi}$ berechnet werden. Dies kann auf verschiedene Methoden gemacht werden abhängig von den Ranbedingungen.
+
+\subsection{Helmholtz-Zerlegung und Komplexe Schallintensität}
+
+Bei näherer Betrachtung ist zu erkennen, dass die Gleichung \eqref{helmholtz:equationAllgemein} dieselbe Struktur wie die Komplexe Schallintensität \eqref{helmholtz:equationIntensitaetKomplex} hat. Somit kann die Zerlegung wie folgt vorgenommen werden
+
+\begin{itemize}
+\item $\nabla \cdot \mathbf{I} = 0$ aktive Intensität ist quellenfrei
+\item $\nabla \times \mathbf{I} = \frac{k}{c} \frac{\mathbf{I} \times \mathbf{Q}}{V}$ aktive Intensität kann wirbel enthalten
+\item $\nabla \times \mathbf{Q} = 0$ reaktive Intensität ist wirbelfrei
+\item $\nabla \cdot \mathbf{Q} = 2 \omega (T-V)$ reaktive Intensität hat Quellen oder Senken
+\end{itemize}
+
+
+\subsection{Greenscher Ansatz wird vielleicht wegfallen}
+Hierzu müssen jedoch die Potentiale $\Phi $ und $\mathbf{\Psi}$ berechnet werden. Um die Berechnung vornehmen zu können wird die Greenschen Funktion des Laplace -Peratos zur Hilfe genommen. 
+
+\begin{equation}
+\mathbf{F}(\mathbf{r}) = -\frac{1}{4\pi} \int_V \mathbf{F}(\mathbf{r}') \nabla^2 \left( \frac{1}{|\mathbf{r} - \mathbf{r}'|} \right) dV'
+\end{equation}
+
+Die Identität
+
+\begin{equation}
+\nabla^2 \mathbf{\Psi}=\nabla \Big( \nabla \cdot \mathbf{\Psi} \Big)-\nabla \times \Big(\nabla \times \mathbf{\Psi} \Big)
+\end{equation}
+
+Das Vektorfeld $\mathbf{F}$ kann nun geschrieben werden als:
+
+\begin{equation}
+\mathbf{F}(\mathbf{r}) = - \frac{1}{4 \pi} \nabla \bigg( \nabla \cdot \int_V \frac{\mathbf{F}(\mathbf{x}^{\prime})}{|\mathbf{r} - \mathbf{r}^{\prime}|} d\mathbf{x}^{\prime} \bigg) + \frac{1}{4 \pi} \nabla \times \bigg( \nabla \times \int_V \frac{\mathbf{F}(\mathbf{x}^{\prime})}{|\mathbf{r} - \mathbf{r}^{\prime}|} d\mathbf{x}^{\prime} \bigg)
+\end{equation}
+
 
 \subsection{Bedingungen
 \label{helmholtz:subsection:Bedingung}}
