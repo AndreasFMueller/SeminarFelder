@@ -8,17 +8,17 @@ y
 x^2
 \,dy
 \]
-entlang eines Parabelbogens $\gamma_1$, der durch die Punkte
-$(-1,0)$, $(0,1)$ und $(0,a)$ geht.
+entlang eines Parabelbogens $\gamma_a$, der durch die Punkte
+$(-1,0)$, $(1,0)$ und $(0,a)$ geht.
 \begin{teilaufgaben}
-\item Berechnen Sie die 2-Form $d\omega$
+\item Berechnen Sie die 2-Form $d\omega$.
 \item Berechnen Sie das Integral der Zweiform über die Fläche zwischen
 den Kurven $\gamma_{-1}$ und $\gamma_1$.
 \item Verifizieren Sie den Satz von Green für die Situation in Teilaufgabe b).
 \item Ist die 1-Form ein Potentialfeld?
 \end{teilaufgaben}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \begin{tikzpicture}[>=latex,thick]
 \xdef\a{3}
@@ -38,12 +38,30 @@ den Kurven $\gamma_{-1}$ und $\gamma_1$.
 \draw[->] (0,-3.1) -- (0,3.6) coordinate[label={right:$y$}];
 \draw (-3,-0.1) -- (-3,0.1);
 \draw (3,-0.1) -- (3,0.1);
+\draw (-0.1,3) -- (0.1,3);
+\node at (0,3) [above left] {$1$};
 \node at (-3,0) [below right] {$-1$};
 \node at (3,0) [below left] {$1$};
 \end{tikzpicture}
 \caption{Weg für das Wegintegral in Aufgabe~\ref{401}
 \label{buch:401:fig}}
 \end{figure}
+
+\begin{hinweis}
+Zur Parametrisierung der Randkurven kann die Funktion
+\[
+\gamma_a
+\colon
+[-1,1] \to \mathbb{R}^2
+:
+t
+\mapsto
+(t, a(1-t)(1+t))
+\]
+verwendet werden.
+Für die Berechnung das Kurvenintegrals muss über $\gamma_1$ und über
+$\gamma_{-1}$ (in umgekehrter Richtung) integriert werden.
+\end{hinweis}
 
 \begin{loesung}
 Der Parabelbogen wird durch die Funktion
@@ -52,29 +70,41 @@ Der Parabelbogen wird durch die Funktion
 \colon
 [-1,1]\to\mathbb{R}^2
 :
-x\mapsto (x,a(1-x)(1+x))
+t\mapsto (t,a(1-x)(1+t))
 \]
 parametrisiert.
 Für das Wegintegral wird der Tangentialvektor benötigt, der
-\[
-\frac{d\gamma_a}{dx}(x)
+\begin{equation}
+\frac{d\gamma_a}{dt}(t)
 =
-(1,-2ax)
-\]
+(1,-2at)
+\label{buch:401:ableitung}
+\end{equation}
 ist.
 Das Wegintegral wird damit zu
 \begin{align*}
 \int_{\gamma_a} \omega
 &=
-\int_{-1}^1 a(1-x)(1+x) + x^2 (-2ax) \,dx
+\int_{\gamma_a} y\,dx + x^2\,dy
+=
+\int_{-1}^1
+y(t)\dot{x}(t) + x(t)^2 \dot{y}(t)
+\,dt
+\intertext{Aus
+\eqref{buch:401:ableitung}
+folgt $\dot{x}(t)=1$ und $\dot{y}(t) = -2at$, womit das Integral
+zu
+}
+&=
+\int_{-1}^1 a(1-t)(1+t) + t^2 (-2at) \,dt
 \\
 &=
-a\int_{-1}^1 1-x^2-2x^3\,dx
+a\int_{-1}^1 1-t^2-2t^3\,dt
 \\
 &=
 a
 \biggl[
-x-\frac{x^3}{3}-\frac{x^4}{2}
+t-\frac{t^3}{3}-\frac{t^4}{2}
 \biggr]_{-1}^1
 \\
 &=
@@ -82,8 +112,9 @@ a\biggl(
 2-\frac23
 \biggr)
 =
-\frac{4a}{3}.
+\frac{4a}{3}
 \end{align*}
+wird.
 \begin{teilaufgaben}
 \item
 Die äussere Ableitung von $\omega$ ist
@@ -150,11 +181,12 @@ Damit wir das Wegintegral
 =
 -\frac{8}3,
 \end{align*}
-was mit dem Resultate von Teilaufgabe b) übereinstimmt.
+was mit dem Resultat von Teilaufgabe b) übereinstimmt.
 \item
 Wäre $\omega$ ein Potentialfeld, dann müsste das Wegintegral vom Parameter
 $a$ unabhängig sein, was es aber ganz offensichtlich nicht ist.
-Somit kann $\omega$ ein Potentialfeld sein.
+Somit kann $\omega$ kein Potentialfeld sein.
+\qedhere
 \end{teilaufgaben}
 \end{loesung}
 

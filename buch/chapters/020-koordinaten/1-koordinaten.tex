@@ -220,13 +220,14 @@ beide konvergent oder beide nicht konvergent sind.
 Dies trifft genau dann zu, wenn die Koordinatenwechselabbildungen
 $\psi\circ\varphi^{-1}$ in jedem Punkt stetig sind.
 
-Konvergenz einer Folge in $\mathbb{R}^n$ wird die Entfernung von Punkten 
+Die Konvergenz einer Folge in $\mathbb{R}^n$ wird durch das Verhalten
+der Entfernung
 \[
 d(P,Q)
 =
 |x(P)-x(Q)|
 \]
-bestimmt.
+von Punkten bestimmt.
 Die Funktion $d$ heisst auch die vom Koordinatensystem induzierte 
 {\em Metrik}.
 \index{Metrik}%
@@ -254,7 +255,7 @@ Dies ist aber die Definition einer stetigen Abbildung.
 Eine Menge $U\subset X$ heisst eine {\em offene Menge}, wenn es für jeden Punkt
 \index{offene Menge}%
 \index{Menge!offen}%
-$P\in X$ und für jedes Koordinatensystem $\varphi:\colon X\to V$
+$P\in X$ und für jedes Koordinatensystem $\varphi\colon X\to V$
 ein $\varepsilon >0$ gibt derart, dass die Menge
 \[
 U_{P,\varphi}
@@ -338,7 +339,7 @@ Eine Funktion $f$ heisst stetig, wenn die in $x$-Koordinaten geschriebene
 Funktion $f(x^1,\dots,x^n)$ eine stetige Funktion ist.
 Wählt man ein anderes Koordinatensystem $\psi\colon X\to W$ einer
 stetigen Struktur auf $X$, dann ist der Koordinatenwechsel
-$\varphi\circ\psi^{-1}$ in Homöomorphismus, insbesondere ist 
+$\varphi\circ\psi^{-1}$ ein Homöomorphismus, insbesondere ist 
 \[
 f_\psi
 =
@@ -360,8 +361,8 @@ auf $X$ zu sprechen.
 % Differenzierbarkeit
 %
 \subsubsection{Differenzierbarkeit}
-Für eine beliebige Punktmente $X$ ist es im Allgemeinen nicht sinnvoll,
-von differrenzierbaren Funktionen zu sprechen.
+Für eine beliebige Punktmenge $X$ ist es im Allgemeinen nicht sinnvoll,
+von differenzierbaren Funktionen zu sprechen.
 Die Existenz der Ableitung $f'(x_0)$ einer Funktion im Punkt $x_0$
 basiert darauf, dass es eine lineare Ersatzfunktion
 \begin{equation}
@@ -369,6 +370,11 @@ f(x) = f(x_0) + f'(x_0)\cdot (x-x_0)+o(x-x_0)
 \label{buch:koordinaten:koordinaten:eqn:linersatz}
 \end{equation}
 gibt.
+Die Notation $o(t)$ bezeichnet eine Funktion mit der Eigenschaft
+\[
+\lim_{t\to 0} \frac{o(t)}{t}=0
+\]
+(Lambert-$o$-Notation).
 Die Darstellung~\eqref{buch:koordinaten:koordinaten:eqn:linersatz}
 ist nur sinnvoll, wenn der Definitions- wie auch der Wertebereich
 Teilmengen von $\mathbb{R}$ sind.

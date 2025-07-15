@@ -6,38 +6,128 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 2 
+\section{Helmholtz-Zerlegung für $\mathbb{R}^3$
 \label{helmholtz:section:teil2}}
 \kopfrechts{Teil 2}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
 
-\subsection{De finibus bonorum et malorum
-\label{helmholtz:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+Die Grundidee der Helmholtz-Zerlegung besteht darin, dass ein glattes (differenziebares) Vektorfeld $\mathbf{F}$, welches unendlich schnell genug abfällt,eindeutig in ein wirbelfreien (irrotationalen) Teil und einen quellenfreien (solenoidalen) Teil zerlegt werden kann.
 
+\begin{equation}
+\mathbf{F} =  \underbrace{-\nabla \Phi}_{Skalarpotential} + \underbrace{\nabla \times \mathbf{\Psi}}_{Vektorpotential}
+\label{helmholtz:equationAllgemein}
+\end{equation}
+
+Der erste Term $ \nabla \Phi $ hat keine Rotation ($\nabla \times (-\nabla \Phi) = 0$) und wird auch irrotational (wirbelfrei) bezeichnet. Der zweite Term $\nabla \times \mathbf{\Psi}$ hat gemäss der Definition immer Divergenz null ($\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$) und wird auch solenoidal (quellenfrei) genannt. \newline
+
+\begin{tabular}[h]{l|l|l|l}
+\hline
+zu zerlegende Vektorfeld & $\mathbf{F}$ & & \\
+\hline 
+skalares Potential & $\Phi $ & $\nabla \times (-\nabla \Phi) = 0$ & wirbelfrei\\
+\hline
+Vektorpotential & $\mathbf{\Psi}$ & $\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$ & quellenfrei\\
+\hline
+\end{tabular}\newline
+
+Hierzu müssen jedoch die Potentiale $\Phi $ und $\mathbf{\Psi}$ berechnet werden. Dies kann auf verschiedene Methoden gemacht werden abhängig von den Ranbedingungen.
+
+\subsection{Helmholtz-Zerlegung und Komplexe Schallintensität}
+
+Bei näherer Betrachtung ist zu erkennen, dass die Gleichung \eqref{helmholtz:equationAllgemein} dieselbe Struktur wie die Komplexe Schallintensität \eqref{helmholtz:equationIntensitaetKomplex} hat. Somit kann die Zerlegung wie folgt vorgenommen werden
+
+\begin{equation}
+\mathbf{I}_c ~(\mathbf{r}) = \underbrace{\mathbf{I}~(\mathbf{r})}_{\nabla \cdot I = 0} + \underbrace{j\,\mathbf{Q}~(\mathbf{r})}_{\nabla \times Q = 0}
+\label{helmholtz:KomplexeIntensitaet_Zerlegung}
+\end{equation}
+
+\begin{itemize}
+\item $\nabla \cdot \mathbf{I} = 0$ aktive Intensität ist quellenfrei
+\item $\nabla \times \mathbf{I} = \frac{k}{c} \frac{\mathbf{I} \times \mathbf{Q}}{V}$ aktive Intensität kann wirbel enthalten
+\item $\nabla \times \mathbf{Q} = 0$ reaktive Intensität ist wirbelfrei
+\item $\nabla \cdot \mathbf{Q} = 2 \omega (T-V)$ reaktive Intensität hat Quellen oder Senken
+\end{itemize}
+
+
+\subsection{Greenscher Ansatz wird vielleicht wegfallen}
+Hierzu müssen jedoch die Potentiale $\Phi $ und $\mathbf{\Psi}$ berechnet werden. Um die Berechnung vornehmen zu können wird die Greenschen Funktion des Laplace -Peratos zur Hilfe genommen. 
+
+\begin{equation}
+\mathbf{F}(\mathbf{r}) = -\frac{1}{4\pi} \int_V \mathbf{F}(\mathbf{r}') \nabla^2 \left( \frac{1}{|\mathbf{r} - \mathbf{r}'|} \right) dV'
+\end{equation}
+
+Die Identität
+
+\begin{equation}
+\nabla^2 \mathbf{\Psi}=\nabla \Big( \nabla \cdot \mathbf{\Psi} \Big)-\nabla \times \Big(\nabla \times \mathbf{\Psi} \Big)
+\end{equation}
+
+Das Vektorfeld $\mathbf{F}$ kann nun geschrieben werden als:
+
+\begin{equation}
+\mathbf{F}(\mathbf{r}) = - \frac{1}{4 \pi} \nabla \bigg( \nabla \cdot \int_V \frac{\mathbf{F}(\mathbf{x}^{\prime})}{|\mathbf{r} - \mathbf{r}^{\prime}|} d\mathbf{x}^{\prime} \bigg) + \frac{1}{4 \pi} \nabla \times \bigg( \nabla \times \int_V \frac{\mathbf{F}(\mathbf{x}^{\prime})}{|\mathbf{r} - \mathbf{r}^{\prime}|} d\mathbf{x}^{\prime} \bigg)
+\end{equation}
+
+
+\subsection{Bedingungen
+\label{helmholtz:subsection:Bedingung}}
+
+Damit die Zerlegung vorgenommen werden kann bzw. darf, muss das Vektorfeld $\mathbf{A}$ 
+
+\begin{itemize}
+\item \textbf{Glatt sein:} $\mathbf{A}$ stetig/kontinuirlich differenziebar sein (in $\mathbb{R}^3$ 2 mal differenziebar) in dem Gebiet
+\item \textbf{Abfallverhalten:} $\mathbf{A}$ schnell abfallen  $\mathbf{A}$ schneller als $1/r$. 
+\end{itemize}
+(Unsicher bei dieser Aussage. Formel?)
+
+%https://www.youtube.com/watch?v=RVlUe5gsAX4
+%https://icmp.lviv.ua/journal/zbirnyk.89/13002/art13002.pdf
+
+\subsection{Berechnung der Potentiale unbeschränkte Gebiete
+\label{helmholtz:subsection:Berechnung}}
+
+%https://people.iith.ac.in/ashok/Maths_Lectures/TutorialB/Topic_03_(Helmholtz%27%2520Theorem).pdf
+
+Berechnung der Potentiale $\Phi $ und $\mathbf{\Psi}$ lassen sich mit Hilfe der Greenschen Funktion herleiten. Wer Wie Wo Was?
+
+
+\begin{itemize}
+\item \textbf{skalares Potential}
+\begin{equation}
+\phi = \frac{1}{4 \pi} \int_{V} \frac{\nabla \cdot \mathbf{A}}{\mu}, dV
+\end{equation}
+\item \textbf{Vektorpotential}
+\begin{equation}
+\mathbf{\Psi} = \frac{1}{4 \pi} \int_{V} \frac{\nabla \times \mathbf{A}}{\mu}, dV
+\end{equation}
+\item $\vec{\mu} = \mid \vec{r} - \vec{r}^{\prime} \mid$ was ist das genau?
+\end{itemize}
+
+\subsection{Berechnung der Potentiale beschränktem Gebiet
+\label{helmholtz:subsection:BerechnungBeschr}}
+
+endliches (beschränktes) Volumen $V$ Oberflächenintegrale ?
+
+\begin{itemize}
+\item \textbf{skalares Potential}
+\begin{equation}
+\Phi (\mathbf{r}) = \frac{1}{4\pi} \int_V \frac{\nabla' \cdot \mathbf{F}(\mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|} dV' + \frac{1}{4\pi} \oint_S \frac{\mathbf{F}(\mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|} dxXx'
+\end{equation}
+\item \textbf{Vektorpotential}
+\begin{equation}
+\mathbf{\Psi}(\mathbf{r}) = \frac{1}{4\pi} \int_V \frac{\nabla' \times \mathbf{F}(\mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|} dV' + \frac{1}{4\pi} \oint_S \frac{\mathbf{F}(\mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|} dxXx'
+\end{equation}
+\end{itemize}
+
+
+\subsection{Eindeutigkeit der Zerlegung 
+\label{helmholtz:subsection:EindeutigkeitS}}
+
+\begin{itemize}
+\item \textbf{Für unbeschränkte Gebiete}
+\item \textbf{Für beschränkte Gebiete}
+\end{itemize}
+
+
+\subsection{Orthogonalität
+\label{helmholtz:subsection:Orthogonalitaet}}
 

@@ -4,7 +4,7 @@ durch die Gleichungen
 \renewcommand\arraycolsep{2pt}
 \begin{array}{rcrcr}
 y^1 &=&  x^1 &+& 2x^2 \\
-y^2 &=& 2x^1 &-& 1x^2
+y^2 &=& 2x^1 &-&  x^2
 \end{array}
 \label{buch:201:transformation}
 \end{equation}
@@ -50,10 +50,10 @@ J
 \end{pmatrix}
 \egroup
 =
-\begin{pmatrix}
+\begin{pmatrix*}[r]
 1 &  2 \\
 2 & -1 
-\end{pmatrix}.
+\end{pmatrix*}.
 \]
 \item
 Die Koordinatenlinien mit konstanter $y^1$- bzw.~$y^2$-Koordinate
@@ -68,7 +68,7 @@ Die Normalen dieser Geraden sind
 \[
 \vec{n}_1 = \begin{pmatrix} 1 \\  2 \end{pmatrix}
 \qquad\text{und}\qquad
-\vec{n}_2 = \begin{pmatrix} 2 \\ -1 \end{pmatrix}.
+\vec{n}_2 = \begin{pmatrix*}[r] 2 \\ -1 \end{pmatrix*}.
 \]
 \begin{figure}
 \centering
@@ -104,7 +104,7 @@ Die Normalen dieser Geraden sind
 \caption{Koordinatenlinien $y^1\in\mathbb{Z}$ in rot und 
 $y^2\in\mathbb{Z}$ in blau
 \label{buch:201:fig}}
-\end{figure}
+\end{figure}%
 Da Division durch die Länge der Normalenvektoren die Hessesche
 Normalform ergibt, kann man schliessen, dass die Geraden mit
 konstantem $y^1$ in einem Abstand am Nullpunkt vorbeigehen, 
@@ -114,43 +114,76 @@ der ein Vielfaches von $1/|\vec{n}_2|=1/\sqrt{5}$.
 Die Geraden sind in Abbildung~\ref{buch:201:fig} dargestellt.
 \item
 Die Ableitung der Kurvenkoordinaten ist
-\[
+\begin{equation}
 \dot{x}^1(t) = -\sin t
 \qquad\text{und}\qquad
 \dot{x}^2(t) = \cos t.
-\]
+\label{201:eqn:x}
+\end{equation}
 \item
 In den $(y^1,y^2)$-Koordinaten hat die Kurve die Koordinaten
-\[
+\begin{equation}
 (y^1(t), y^2(t))
 =
-(4\cos t+3\sin t, 5\cos t + 4\sin t).
-\]
+(\cos t+2\sin t, 2\cos t - \sin t).
+\label{201:eqn:y}
+\end{equation}
 \item
-Der Tangentialvektor im $(x^1,x^2)$-Koordinatensystem hat die
-Komponenten
+Der Tangentialvektor in $(x^1,x^2)$-Koordinaten wird durch
+Ableiten von \eqref{201:eqn:x} von Teilaufgabe c) nach $t$
+als
 \[
-(\dot{y}^1(t),\dot{y}^2(t))
+\begin{pmatrix*}[r]
+\dot{x}^1(t)\\
+\dot{x}^2(t)
+\end{pmatrix*}
 =
-(-4\sin t+3\cos t, -5\sin t + 4\cos t).
-\]
-Anwendung der $J$-Matrix auf den Tangentialvektor von Aufgabe c) ergibt
-\[
-\begin{pmatrix}
-4 & 3 \\
-5 & 4
-\end{pmatrix}
-\begin{pmatrix}
+\begin{pmatrix*}[r]
 -\sin t\\
  \cos t
-\end{pmatrix}
-=
-\begin{pmatrix}
--4\sin t + 3\cos t\\
--5\sin t + 4\cos t
-\end{pmatrix},
+\end{pmatrix*}
 \]
-was mit dem Resultat von Teilaufgabe b) übereinstimmt.
+gefunden.
+Anwendung der $J$-Matrix auf diesen Tangentialvektor ergibt
+\[
+\begin{pmatrix*}[r]
+1 &  2 \\
+2 & -1
+\end{pmatrix*}
+\begin{pmatrix*}[r]
+-\sin t\\
+ \cos t
+\end{pmatrix*}
+=
+\left(
+\renewcommand{\arraycolsep}{1.1pt}
+\begin{array}{rcr}
+ -\sin t &+& 2\cos t\\
+-2\sin t &-&  \cos t
+\end{array}
+\right).
+\]
+Andererseits findet man durch Ableiten von \eqref{201:eqn:y} in Teilaufgabe d)
+nach $t$ für
+den Tangentialvektor im $(x^1,x^2)$-Koordinatensystem die
+Komponenten
+\[
+\begin{pmatrix*}[r]
+\dot{y}^1(t)\\
+\dot{y}^2(t)
+\end{pmatrix*}
+=
+\left(
+\renewcommand{\arraycolsep}{1.1pt}
+\begin{array}{rcr}
+ -\sin t &+& 2\cos t\\
+-2\sin t &-& \cos t
+\end{array}
+\right).
+\]
+Die beiden Resultate stimmen übrerein.
+Die Ableitung nach $t$ wird also tatsächlich mit der Matrix $J$
+von $x$-Koordinaten in $y$-Koordinaten umgerechnet.
 \qedhere
 \end{teilaufgaben}
 \end{loesung}

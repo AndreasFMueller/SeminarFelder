@@ -35,13 +35,13 @@ von einem auf der Ausdehnung eines Gases basierenden Thermometer
 ergibt.
 
 Da die Temperatur nach obiger Definition nur durch Temperaturausgleich
-gemessen werden, wird die Messung durch die Wärmekapazität des Messgeräts
-beeinflusst.
-Hat das Messgerät stark abweichende Temepratur, ändert sich die Temperatur
+gemessen werden kann, wird die Messung durch die Wärmekapazität des
+Messgeräts beeinflusst.
+Hat das Messgerät stark abweichende Temperatur, ändert sich die Temperatur
 des zu messenden Körpers durch Kontakt sehr stark.
 Eine sinnvolle Temperaturangabe ist damit nicht mehr möglich.
 Der technische Fortschritt hat in der Vergangenheit aber ermöglicht, sehr
-kleine Temepratursensoren zu konstruieren.
+kleine Temperatursensoren zu konstruieren.
 Heutzutage enthalten sogar Mikrochips wie Computerprozessoren spezielle
 Dioden, die dazu da sind, die Temperatur des Chips zu überwachen und damit
 den Chip vor Überhitzung zu schützen.
@@ -50,9 +50,9 @@ kleiner Teilkörper genügend genau gemessen werden kann.
 
 \subsection{Das Temperaturfeld}
 Der Ausgleich der Temperatur braucht Zeit.
-Sind verschiedene Teile eines Körpers, dann werden diese Unterschiede
-mit der Zeit zwar kleiner werden, aber je kleiner die Unterschiede sind,
-desto langsamer wird auch der Ausgleich sein.
+Haben verschiedene Teile eines Körpers verschiedene Temperatur, dann
+werden diese Unterschiede mit der Zeit zwar kleiner werden, aber je
+kleiner die Unterschiede sind, desto langsamer wird auch der Ausgleich sein.
 Die Temperatur eines Körpers ist daher eine Idealisierung, die nur
 nach sehr langer Wartezeit erreicht werden kann.
 Genau genommen ist die Temperatur eines Körpers notwendigerweise eine
@@ -107,10 +107,10 @@ Die Theorie muss den klassischen Begriff der Ableitung umfassen.
 
 Die Geschwindigkeit, mit der sich die Temperatur in einem Punkt
 an die Temperatur der näheren Umgebung anpasst, hängt von den
-Ableitungen ab in diesem Punkt ab.
+Ableitungen in diesem Punkt ab.
 Die Zeitableitung von $T$ muss daher eine Funktion der Ableitungen
 sein.
-Die Zeitentwicklungsgleichung es muss daher eine Differentialgleichung
+Die Zeitentwicklungsgleichung muss daher eine Differentialgleichung
 der Form
 \begin{equation}
 \frac{\partial T}{\partial t}
@@ -135,7 +135,9 @@ Bei einer solchen Spiegelung ändern die ungeraden Ableitungen
 das Vorzeichen, die Funktion $F$ muss daher gerade in den Argumenten
 für die ungeraden Ableitungen sein.
 In der einfachsten Form einer Wärmeleitungsgleichung ist die rechte
-Seite eine Funktion nur von $x$ und der zweiten Ableitung von $T$.
+Seite der Gleichung \eqref{buch:fallstudie:eqn:allgwaermeleitung}
+eine Funktion nur von $x$ und der zweiten Ableitung von $T$, die
+ersten Ableitungen dürfen nicht vorkommen.
 
 \subsection{Die Wärmeleitungsgleichung}
 Aus Experimenten weiss man aber auch, dass die Geschwindigkeit der
@@ -159,8 +161,8 @@ a(h) \bigl(T(x+h) - 2T(x) + T(x-h)\bigr).
 \end{align*}
 Wenn die Temperaturdifferenzen zu den Nachbarpunkten gleich gross 
 sind, verschwindet die Änderungsrate.
-Sie kann daher nur von der zweiten Ableitung, $a(h)$ muss so
-sein, dass
+Sie kann daher nur von der zweiten Ableitung abhängen.
+Der Faktor $a(h)$ muss so gewählt werden, dass im Grenzwert
 \[
 \lim_{h\to 0}
 a(h) \bigl( T(x+h)-2T(x)+T(x-h)\bigr)
@@ -168,7 +170,7 @@ a(h) \bigl( T(x+h)-2T(x)+T(x-h)\bigr)
 a_0
 \frac{\partial T^2}{\partial x^2}
 \]
-ist.
+ein Vielfaches der zweiten Ableitung entsteht.
 Damit ist die eindimensionale Wärmeleitungsgleichung
 \begin{equation}
 \frac{\partial T}{\partial t}
@@ -226,7 +228,7 @@ Stabilitätseigenschaft mindestens für kurze Zeit weiterhin gelten,
 wenn die Theorie überhaupt testbare Vorhersagen ermöglich soll.
 Die Bewegungsgleichung einer erfolgreichen Feldtheorie müssen daher
 von einer Art sein, die die Existenz und Eindeutigkeit von Lösungen
-mindestens für kurze Zeit und kleine Raumgebiet garantieren.
+mindestens für kurze Zeit und ein kleines Raumgebiet garantieren.
 
 \subsection{Wärmeleitfähigkeit}
 Die Masseinheiten der beiden Seiten der Wärmeleitungsgleichung 

@@ -1,0 +1,22 @@
+%
+% cover.tex -- slide template
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\bgroup
+\begin{frame}[t]
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\vspace*{-5pt}
+\begin{center}
+\def\p{ (-6.6,-4.2) rectangle (6.6,4.2) }
+\begin{tikzpicture}
+\begin{scope}
+\clip \p;
+\node at (0,0) {\includegraphics[width=1.06\textwidth]{../../cover/buchcover.pdf}};
+\end{scope}
+\draw[color=yellow] \p;
+\end{tikzpicture}
+\end{center}
+\end{frame}
+\egroup

@@ -1,0 +1,90 @@
+%
+% anwendungenFelder.tex -- 3.	Anwendungen auf Felder, PDEs in ODE umwandeln (Grundlage, um Feldgleichungen als eine Familie von Oszillator-Gleichungen zu interpretieren)
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+
+%    Anwendungen auf Felder, PDEs in ODE umwandeln (Grundlage, um Feldgleichungen als eine Familie von Oszillator-Gleichungen zu interpretieren) 
+
+
+\section{Anwendung auf Feld\label{fourier:section:teil0}}
+
+\kopfrechts{Anwendung auf Feld}
+
+Gewöhnliche Differentialgleichungen sind berühmt berüchtigt schwierig zu lösen.
+Schlimmer geht es immer.
+Partielle Differenzialgleichungen enthaltet Ableitungen nach mehreren Variabeln.
+In diesem Abschnitt vereinfachen wir eine partielle in eine Gewöhnliche, mithilfe der Fourierreihe.
+Alle Ableitungen sollten schlussendlich den identischen Nenner besitzen.
+Als partielle Differentialgleichung verwenden wir die eindimensionale Wellengleichung mit der Lichtgeschwindigkeit als Ausbreitungsgeschwindigkeit. 
+
+\begin{equation}
+	\frac{\partial^2 u(x, t)}{\partial t^2} = c^2 \cdot \frac{\partial^2 u(x, t)}{\partial x^2}
+\end{equation}
+
+Wir nehmen an $u(x, t)$ ist eine sich periodisch wiederholende Funktion. 
+Wir führen eine Fourierreihen-Entwicklung durch. 
+
+\begin{equation}
+	u(x,t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n(t) \cos(n \omega x) + b_n(t) \sin(n \omega x) \right)
+\end{equation}
+
+Die Fourier Koeffizienten $a_n(t)$ und $b_n(t)$ sind neu von der Zeit abhängig. 
+$a_0$ ist konstant.
+Nun wird $u(x,t)$ in seiner Summenform in die Wellengleichung eingebaut. 
+Dazu muss fleissig abgeleitet werden, je zwei Mal nach $t$ und $x$.
+
+\begin{equation}
+	\frac{\partial^2 u(x,t)}{\partial t^2} = \sum_{n=1}^{\infty} \left( \frac{d^2}{dt^2} a_n(t) \cos(n \omega x) + \frac{d^2}{dt^2} b_n(t) \sin(n \omega x) \right)
+\end{equation}
+
+\begin{equation}
+	\frac{\partial^2 u(x,t)}{\partial x^2} = \sum_{n=1}^{\infty} \left( -a_n(t) n^2 \omega^2 \cos(n \omega t) - b_n(t) n^2 \omega^2 \sin(n \omega t) \right)
+\end{equation}
+
+Die Resultate in die Wellengleichung einsetzen.
+
+\begin{equation}
+	 \sum_{n=1}^{\infty} \left( \frac{d^2}{dt^2} a_n(t) \cos(n \omega x) + \frac{d^2}{dt^2} b_n(t) \sin(n \omega x) \right) = c^2 \sum_{n=1}^{\infty} \left( -a_n(t) n^2 \omega^2 \cos(n \omega t) - b_n(t) n^2 \omega^2 \sin(n \omega t) \right) 
+\end{equation}
+
+Die Beiden Summenzeichen kürzen sich raus. Mithilfe des Koeffizientenvergleichs, findet man zwei lösungen:
+
+\begin{equation}
+	\frac{d^2}{dt^2} a_n(t) + a_n(t) n^2 \omega^2 c^2 = 0
+	  \quad   \text{und} \quad  \frac{d^2}{dt^2} b_n(t) + b_n(t) n^2 \omega^2 c^2 = 0
+\end{equation}
+
+Wenn man im physik Unterricht aufgepasst hat, sollte einem diese Form bekannt vorkommen. Die Differentialgleichung vom ungedämpften Federpendel besitz dieselbe Form. 
+
+\begin{equation}
+	\frac{d^2}{dt^2} x(t) + \omega^2 x(t) = 0
+\end{equation}
+
+Die lösung von dieser DGL ist einfach eine ungedämpfte schwingung der Form 
+
+\begin{equation}
+x(t) = A \cos(\omega t) + B \sin(\omega t) \quad \text{oder} \quad x(t) = C \cos(\omega t - \varphi)
+\end{equation}
+
+Dieses Resultat beschreib mit welcher Frequenz und Amplitude eine Masse an einer Feder schwingt. 
+
+Könnte man nun dasselbe mit der resultierenden Lösung der Wellengleichung machen?
+Das Resultat wäre eine unendliche Anzahl von Felderpendeln, da $n$ nach unendlich läuft. 
+Die Kreisfrequenz wäre  $n \omega c$. 
+Dies macht mathematisch Sinn, physikalisch müsste man sich jedoch fragen, was genau hin und her pendelt und ob eine unendliche Frequenz Sinn macht.
+
+
+In diesem Kapitel wurde die Thematik stark vereinfacht dargestellt. 
+Anstelle eines vollständigen Feldes $u(x,y,z,t)$ wurde lediglich eine eindimensionale Funktion $u(x,t)$ betrachtet. Die Fourierreihe lässt sich zwar auch auf mehrdimensionale Felder anwenden, der damit verbundene mathematische Aufwand ist jedoch deutlich höher. 
+
+
+
+
+
+
+
+

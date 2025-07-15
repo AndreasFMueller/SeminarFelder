@@ -1,0 +1,43 @@
+\section{Verhalten von Bahnkurven in 2D und Nullklinen} \label{poinbendix:section:nullklinen}
+
+%TODO Nullklinen erklären anhand Beispie
+%TODO Verhalten von Bahnkurven anhand Nullklinen analysieren
+\subsection{Nullklinen} \label{poinbendix:subsection:nullklinen}
+TODO
+
+
+\begin{figure}
+    \centering
+    \input{papers/poinbendix/images/nullklinen.tikz}
+    \caption{Die Nullklinen unterteilen die Fläche in 4 Quadranten mit unterschiedlicher Flussrichtung.}
+    \label{poinbendix:fig:nullklinen}
+\end{figure}
+
+\subsection{Limesmengen} \label{poinbendix:subsection:limesmengen}
+
+Limesmengen beinhalten alle Punkte, welche von Bahnkurven nach unendlicher Zeit erreicht werden.
+Dies können einzelne Punkte sein (Nullstellen), periodische oder nicht periodische Bahnen oder Kombinationen davon.
+Dabei startet man bei einem beliebigen Punkt $p$ und schaut sich das Verhalten in positiver und negativer Zeit an.
+
+\begin{definition}[Limesmengen]
+Die Alpha- und Omega-Limesmengen
+\label{poinbendix:def:limesmengen}
+\begin{align*}
+    \alpha(p) &= \lim_{t\to-\infty} \Phi_t(p) \\
+    \omega(p) &= \lim_{t\to\infty} \Phi_t(p)
+\end{align*}
+beschreiben das Verhalten eines dynamischen Systems $\Phi_t(p)$ nach unendlicher Zeit $t$.
+\end{definition}
+
+Vereinfacht gesagt, beschreibt $\alpha(p)$ von wo aus die Bahnkurve den Punkt $p$ erreicht und $\omega(p)$ wohin sich die Bahnkurve danach fortbewegt.
+\footnote{Alpha und Omega sind der erste, respektive letzte Buchstabe im griechischen Alphabet, weshalb die Benennung der Limesmengen intuitiv Sinn ergibt.}
+
+\begin{beispiel} \label{poinbendix:beispiel:1dlimesmengen}
+Schauen wir uns die einfache, eindimensionale Differenzialgleichung
+\begin{equation*}
+    \dot{x} = \sin x,
+\end{equation*}
+mit einem Startpunkt von $p = \frac{\pi}{2}$ an.
+Am Punkt $p$ haben wir eine positive Ableitung ($\dot{p} = 1$), und der Punkt wird eingeschlossen von zwei Nullstellen $0$ und $\pi$.
+Daraus folgt, dass beide Limesmengen auf die Nullpunkte fallen $\alpha(p) = 0$ und $\omega(p) = \pi$.
+\end{beispiel}

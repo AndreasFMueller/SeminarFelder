@@ -6,38 +6,218 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 3
-\label{elastomechanik:section:teil3}}
-\kopfrechts{Teil 3}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+\section{Mathematische Herleitung der Feldgleichungen der linearen Elastizitätstheorie}
+\label{elastomechanik:section:herleitung2}
+\subsection{Einsteinsche Summationskonvention}
+In der Tensorrechnung, wie sie in der Elastizitätstheorie verwendet wird, gilt die sogenannte Einsteinsche Summationskonvention. 
+Diese Konvention besagt, dass über zweifach auftretende Indizes in einem Produkt automatisch summiert wird, ein explizites Summenzeichen ist nicht mehr notwendig.
 
-\subsection{De finibus bonorum et malorum
-\label{elastomechanik:subsection:malorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+Dies bedeutet beispielsweise:
+	\begin{equation}
+		a_i b_i = 
+		\sum_i a_i b_i
+	\end{equation}
+Die Konvention wird insbesondere bei der Notation von Spannung-Dehnungs-Beziehungen verwendet. Ein zentrales Beispiel in der linearen Elastizität ist:
+	\begin{equation}
+		\sigma_{ij} = 
+		C_{ijkl} \, \varepsilon_{kl}	
+	\end{equation}
+Hier wird über die Indizes $k$ und $l$ summiert (von 1 bis 3). 
+Diese Kurzschreibweise spart Schreibaufwand und erhöht die Übersichtlichkeit komplexer tensorwertiger Gleichungen.
 
+Die Einsteinsche Konvention ist insbesondere in der physikalischen Mechanik, Thermodynamik und Kontinuumsmechanik weit verbreitet.
 
+Im Rahmen dieser Arbeit wird die Einsteinsche Summationskonvention verwendet. 
+Das bedeutet: Wenn in einer Formel ein Index zweimal vorkommt (z.~B. $a_ib_i$), ist automatisch über diesen Index zu summieren, ohne dass ein explizites Summenzeichen angegeben wird.
+\subsection{Kinematische Beziehungen und Verzerrungstensor}
+Wir beschreiben die Verformung eines Punktes durch seinen Verschiebungsvektor $u_i(x)$ mit $i$ = 1,2,3 ($x$, $y$, $z$).
+$u_1$ entspricht der Verschiebung in $x$-Richtung, $u_2$ beschreibt die Verschiebung in $y$-Richtung und $u_3$ beschreibt die Verschiebung in $z$-Richtung.
+Ausgehend vom Verschiebungsfeld $u_i(x)$ definieren wir den Verzerrungstensor $\varepsilon_{ij}$ als symmetrisierten Gradienten des Verschiebungsfeldes:
+	\begin{equation}
+		\varepsilon_{ij} = 
+		\frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)
+	\end{equation}
+Diese Definition gewährleistet die Symmetrie des Verzerrungstensors ($\varepsilon_{ij}$ = $\varepsilon_{ji}$) und erfasst sowohl Dehnungen ($i$ = $j$) als auch Scherungen ($i$ $\neq$ $j$).
+Als tensorielle Schreibweise, sieht der Formel folgendermassen aus:
+	\begin{equation}
+		\boldsymbol{\varepsilon} = 
+		\frac{1}{2} \left( \nabla \vec{u} + (\nabla \vec{u})^T \right)
+	\end{equation}
+
+\subsection{Konstitutives Gesetz für isotrope Materialien}
+Das Hooke'sche Gesetz in tensorieller Form verknüpft Spannungen $\sigma_{ij}$ mit Verzerrungen $\varepsilon_{kl}$ zu:
+	\begin{equation}
+		\sigma_{ij} = 
+	\lambda \delta_{ij} \varepsilon_{kk} + 2\mu \varepsilon_{ij}
+	\end{equation}
+Hierbei sind $\lambda$ und $\mu$ (Lamé-Konstanten) materialabhängige Parameter. Für den Zusammenhang mit technischen Konstanten gilt:
+	\begin{equation}
+		\mu = 
+		G = 
+		\frac{E}{2(1+\nu)}, \quad \lambda = 
+		\frac{E \nu}{(1+\nu)(1-2\nu)}
+	\end{equation}	
+Als Deviatorische Darstellung ergibt das:
+	\begin{equation}
+		s_{ij} =
+		2\mu e_{ij}
+	\end{equation}
+mit
+	\begin{equation}
+		e_{ij} = 
+		\varepsilon_{ij} - \frac{1}{3} \varepsilon_{kk} \delta_{ij}
+	\end{equation}
+
+\subsection{Gleichgewichtsbedingungen}
+Aus der Impulsbilanz für ein infinitesimales Volumenelement folgt:
+	\begin{equation}
+		\frac{\partial \sigma_{ij}}{\partial x_j} + f_i =
+		0
+\end{equation}
+wobei $f_i$ Volumenkräfte darstellen. 
+Diese Gleichung beschreibt das lokale Kräftegleichgewicht in allen Raumrichtungen.
+
+\subsection{Navier-Cauchy-Gleichungen (Feldgleichungen)}
+Durch Einsetzen des Materialgesetzes in die Gleichgewichtsbedingungen erhalten wir die fundamentalen Feldgleichungen:
+	\begin{equation}
+		\mu \nabla^2 u_i + (\lambda + \mu) \frac{\partial}{\partial x_i} (\nabla \cdot \vec{u}) + f_i =
+		0
+	\end{equation}
+In Vektorenform ergibt das:
+	\begin{equation}
+		\mu \nabla^2 \vec{u} + (\lambda + \mu) \nabla (\nabla \cdot \vec{u}) + \vec{f} = 
+		0
+	\end{equation}
+
+\subsection{Herleitung der Navier-Cauchy-Gleichungen}
+Jetzt setzen wir die kinematischen, konstitutiven und Gleichgewichtsbeziehungen zusammen, um die vollständigen Feldgleichungen der linearen Elastizitätstheorie herzuleiten.
+Wir ersetzen $\sigma_{ij}$ in die Gleichgewichtsbedingung:
+	\begin{equation}
+		\frac{\partial}{\partial x_j}\left( \lambda \delta_{ij} \varepsilon_{kk} + 2\mu \varepsilon_{ij} \right) + f_i = 
+		0
+	\end{equation}
+Einzeln ausrechnen:
+	\begin{equation}
+		\lambda \frac{\partial \varepsilon_{kk}}{\partial x_i} + 2\mu \frac{\partial \varepsilon_{ij}}{\partial x_j} + f_i = 
+		0
+	\end{equation}
+Jetzt drücken wir die Verzerrungen durch die Verschiebungen aus:
+	\begin{equation}
+		\varepsilon_{kk} = 
+		\frac{\partial u_1}{\partial x_1} + \frac{\partial u_2}{\partial x_2} + \frac{\partial u_3}{\partial x_3} = 
+		\nabla \cdot \vec{u}
+	\end{equation}
+	\begin{equation}
+		\varepsilon_{ij} = 
+		\frac{1}{2}\left( \frac{\partial u_i}{\partial x_j} + \frac{\partial 	u_j}{\partial x_i} \right)
+	\end{equation}
+Zwischenschritt: Ableitung von $\varepsilon_{ij}$ einsetzen:
+	\begin{equation}
+		\frac{\partial \varepsilon_{ij}}{\partial x_j} = 
+		\frac{1}{2}\left( \frac{\partial^2 u_i}{\partial x_j \partial x_j} + \frac{\partial^2 u_j}{\partial x_i \partial x_j} \right)
+	\end{equation}
+und wegen Vertauschbarkeit der Ableitungen:
+	\begin{equation}
+		\frac{\partial^2 u_j}{\partial x_i \partial x_j} = 
+		\frac{\partial}{\partial x_i}\left( \frac{\partial u_j}{\partial x_j} \right) = 	\frac{\partial}{\partial x_i}(\nabla \cdot \vec{u})
+	\end{equation}
+Somit:
+	\begin{equation}
+		2\mu \frac{\partial \varepsilon_{ij}}{\partial x_j} = 
+		\mu \nabla^2 u_i + \mu 	\frac{\partial}{\partial x_i}(\nabla \cdot \vec{u})
+	\end{equation}
+Zusammen ergibt sich schliesslich:
+	\begin{equation}
+		\mu \nabla^2 u_i + (\lambda+\mu) \frac{\partial}{\partial x_i}(\nabla \cdot \vec{u}) + f_i = 
+		0
+	\end{equation}
+In kompakter Vektorschreibweise lautet die Gleichung:
+	\begin{equation}
+		\mu \nabla^2 \vec{u} + (\lambda+\mu) \nabla (\nabla \cdot \vec{u}) + \vec{f} = 
+		0
+	\end{equation}
+Dies sind die Navier-Cauchy-Gleichungen.
+	
+\subsection{Variationsformulierung der Elastizität}
+Zusätzlich kann das Problem über ein Energieprinzip formuliert werden:
+
+\textbf{Potentielle Energie:}
+	\begin{equation}
+		\Pi = 
+		\int_V \left( \frac{1}{2} \sigma_{ij} \varepsilon_{ij} - f_i u_i \right) \, dV
+	\end{equation}
+	
+\textbf{Interpretation:} Das System minimiert seine potentielle Energie im Gleichgewicht.
+
+\textbf{Bemerkung:} Durch Variation $\delta \Pi = 0$ erhalten wir wieder die Navier-Cauchy-Gleichungen (Euler-Lagrange-Prinzip).
+
+\bigskip
+
+\textbf{Mathematische Herleitung:}
+Das Prinzip der minimalen potentiellen Energie liefert einen alternativen Zugang:
+	\begin{equation}
+		\Pi = 
+		\int_V \left( \frac{1}{2} \sigma_{ij} \varepsilon_{ij} - f_i u_i \right) \, dV - \int_{\partial V} 	t_i u_i \, dS
+	\end{equation}
+\textbf{Stationaritätbedingung:}
+	\begin{equation}
+		\delta \Pi = 
+		0 \quad \Rightarrow \quad \text{Euler-Lagrange-Gleichungen entsprechen den Feldgleichungen}
+	\end{equation}
+\textbf{Schrittweise Variation:}
+\begin{enumerate}
+	\item Variation der Verzerrungsenergie:
+	\begin{equation}
+		\delta U = 
+		\int_V \sigma_{ij} \, \delta \varepsilon_{ij} \, dV
+	\end{equation}
+	
+	\item Variation der äusseren Arbeit:
+	\begin{equation}
+		\delta W = 
+		\int_V f_i \, \delta u_i \, dV + \int_{\partial V} t_i \, \delta u_i \, dS
+	\end{equation}
+	
+	\item Anwendung des Gauss'schen Satzes führt auf die schwache Form der Gleichgewichtsbedingungen.
+\end{enumerate}
+
+\subsection{Randbedingungen und Eindeutigkeit}
+Für eine eindeutige Lösung benötigen wir Randwerte:
+	\begin{enumerate}
+		\item[\textbf{Dirichlet-Randbedingung}] (Verschiebungen vorgegeben)
+			\begin{equation}
+				u_i = 
+				\bar{u}_i \quad \text{auf} \quad \partial V_u
+			\end{equation}
+		\item[\textbf{Naumann-Randbedingung}] (Spannungen oder Kräfte vorgegeben)
+			\begin{equation}
+				\sigma_{ij} n_j = 
+				\bar{t}_i \quad \text{auf} \quad \partial V_t
+			\end{equation}		
+	\end{enumerate}
+Der Satz von Kirchhoff garantiert die Eindeutigkeit der Lösung bei Vorgabe konsistenter Randbedingungen.
+
+\subsection{Tensorielle Ableitungsschritte}
+Ableitung der Navier-Cauchy-Gleichungen:
+	\begin{equation}
+		\frac{\partial \sigma_{ij}}{\partial x_j} = 
+		\frac{\partial}{\partial x_j} \left( \lambda \delta_{ij} \varepsilon_{kk} + 2\mu \varepsilon_{ij} \right) = 
+		\lambda \frac{\partial \varepsilon_{kk}}{\partial x_i} + 2\mu \frac{\partial \varepsilon_{ij}}{\partial x_j}	
+		= \mu \nabla^2 u_i + (\lambda + \mu) \frac{\partial}{\partial x_i} (\nabla \cdot \vec{u})
+	\end{equation}
+
+\subsection{Energieerhaltung und Dissipation}
+Für hyperelastische Materialien gilt die Energiebilanz:
+	\begin{equation}
+		\frac{d}{dt} \int_V \left( \frac{1}{2} \rho \dot{u}_i \dot{u}_i + \frac{1}{2} \sigma_{ij} \varepsilon_{ij} \right) \, dV = 
+		\int_V f_i \dot{u}_i \, dV + \int_{\partial V} t_i \dot{u}_i \, dS
+	\end{equation}
+Diese Gleichung zeigt die Erhaltung mechanischer Energie bei Abwesenheit dissipativer Effekte.
+
+\subsection{Anwendungsbeispiel: Ebener Verzerrungszustand}
+Für \(\varepsilon_{33} = \gamma_{13} = \gamma_{23} = 0\) vereinfachen sich die Gleichungen zu:
+	\begin{align}
+		\sigma_{11} &=	\frac{E (1-\nu)}{(1+\nu)(1-2\nu)} \varepsilon_{11} + \frac{E \nu}{(1+\nu)(1-2\nu)} \varepsilon_{22}
+		\sigma_{22} &=	\frac{E \nu}{(1+\nu)(1-2\nu)} \varepsilon_{11} + \frac{E (1-\nu)}{(1+\nu)(1-2\nu)} \varepsilon_{22}
+		\sigma_{12} &=	\frac{E}{2(1+\nu)} \gamma_{12}
+	\end{align}

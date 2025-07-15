@@ -6,38 +6,82 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 2 
-\label{elastomechanik:section:teil2}}
-\kopfrechts{Teil 2}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+\section{Einführung in die mathematische Formulierung der Elastizitätstheorie}
+\label{elastomechanik:section:teil2}
+\subsection{Annahmen und Grundprinzipien}
+Wird ein Festkörper mechanisch belastet, entstehen im Inneren Spannungen. Diese Spannungen führen zu Verformungen, die sich als Verschiebungen einzelner Punkte des Körpers äussern.
+Aus dem Verschiebungsfeld lassen sich Verzerrungen berechnen, wodurch sich ein sogenannter Verzerrungszustand ausbildet.
 
-\subsection{De finibus bonorum et malorum
-\label{elastomechanik:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+Um das mechanische Verhalten eines Körpers unter Belastung vollständig beschreiben zu können, werden Verschiebungen, Verzerrungen und Spannungen durch die folgenden drei Grundgleichungen der linearen Elastizitätstheorie erfasst \cite{elastomechanik:Technische_Mechanik_2:Elastostatik}:
 
+\begin{description}
+	\item [\textbf{Kinematischen Gleichungen:}] Stellen den Zusammenhang zwischen den Verschiebungen $u_i$ und den daraus resultierenden Verzerrungen $\varepsilon_{ij}$ her. 
+	Sie bilden die geometrische Grundlage der Deformation.
+	
+	\item [\textbf{Konstitutiven Gleichungen:}] Auch bekannt als Materialgesetze. 
+	Sie beschreiben den materialabhängigen Zusammenhang zwischen den Spannungen $\sigma_{ij}$ und den Verzerrungen $\varepsilon_{ij}$. 
+	Im Fall linear-elastischer, isotroper Materialien erfolgt dies über das Hooke’sche Gesetz.
+	
+	\item [\textbf{Gleichgewichtsbedingungen:}] Gewährleisten das mechanische Gleichgewicht im Festkörper, indem sie fordern, dass die Summe aller inneren Spannungen und äusseren Kräfte in jedem Punkt null ergibt.
+\end{description}
 
+\subsection{Spannungstensor und Verzerrungstensor}
+Durch die Cauchy-Spannungstensor werden Spannungsvektooren in jedem beliebige Schnittrichtung zugeornet, der auf der betreffenden Schnittfläche wirkt.
+Dieser Zusammenhang wird durch die Cauchy’sche Formel beschrieben:
+	\begin{equation}
+		t_i = 
+		\sigma_{ij} \cdot n_j
+	\end{equation}
+Der Spannungstensor ist aufgrund des Momentengleichgewichts an einem infinitesimalen Volumenelement symmetrisch. Schubspannungen müssen sich dabei paarweise ausgleichen. 
+Der Tensor enthält sowohl die Normal- als auch die Schubspannungen und beschreibt somit vollständig den inneren Spannungszustand im Material.
+
+Die Deformation des Körpers wird durch den Verzerrungstensor beschrieben, welcher die lokalen Längen- und Winkeländerungen in allen drei Raumrichtungen erfasst.
+
+Zur Herleitung der linearen Verzerrungen im räumlichen Fall werden zunächst die Verschiebungsänderungen entlang der Koordinatenachsen untersucht. 
+Aus diesen Änderungen wird beispielsweise in $x$-Richtung die relative Längenänderung berechnet, was direkt zur Definition der Dehnung $\varepsilon_{xx}$ führt. 
+Dieses Vorgehen lässt sich analog auf die übrigen Normal- und Schubverzerrungen übertragen.
+
+Die einzelnen Komponenten des Verzerrungstensors lauten \cite{elastomechanik:Technische_Mechanik_2:Elastostatik}:
+	\begin{equation}
+		\varepsilon_{xx} =
+		\frac{\partial u}{\partial x}
+	\end{equation}
+	und
+	\begin{equation}
+		\varepsilon_{xy} =
+		\frac{1}{2} \left( \frac{\partial u}{\partial y} + \frac{\partial v}{\partial x} \right)
+	\end{equation}
+
+\subsection{Elastizitätsgesetz und Materialkonstanten}
+Aus dem Hooke’schen Gesetz ist bekannt, dass im einachsigen, linearen Fall folgender Zusammenhang zwischen Spannung und Dehnung gilt:
+	\begin{equation}
+		\sigma = 
+		E \cdot \varepsilon
+	\end{equation}
+Im dreiachsigen Fall kann die lineare Beziehung zwischen den Spannungs- und Verzerrungskomponenten durch einen Elastizitätstensor 4. Stufe beschrieben werden:
+	\begin{equation}
+		\sigma_{ij} = 
+		E_{ijkl} \cdot \varepsilon_{kl}
+	\end{equation}
+Da wir den dreidimensionalen Fall unter der Annahme eines isotropen Materials betrachten, bei dem die mechanischen Eigenschaften in alle Richtungen gleich sind, reduziert sich die Form des Elastizitätstensors auf zwei unabhängige Konstanten: die sogenannten Lame’schen Konstanten $\lambda$ und $\mu$. 
+Damit ergibt sich das Elastizitätsgesetz in kompakter Form:
+	\begin{equation}
+		\sigma_{ij} = 
+		\lambda \cdot \delta_{ij} \cdot \varepsilon_{kk} + 2\mu \cdot \varepsilon_{ij}
+	\end{equation}
+Die Lame’schen Konstanten lassen sich durch die technischen Materialkonstanten $E$ (Elastizitätsmodul), $\nu$ (Poissonzahl) und $G$ (Schubmodul) wie folgt ausdrücken:
+	\begin{equation}
+		E = 
+		\mu \cdot \frac{3\lambda + 2\mu}{\lambda + \mu}, \quad 
+		\nu = 
+		\frac{\lambda}{2(\lambda + \mu)}, \quad 
+		G = 
+		\mu
+	\end{equation}
+Durch Einsetzen in die Spannungs-Verzerrungs-Beziehung kann das Elastizitätsgesetz auch in Form der Deviatorzerlegung dargestellt werden. 
+Dabei ergibt sich der Zusammenhang zwischen Spannungs- und Verzerrungsdeviator \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
+	\begin{equation}
+		s_{ij} = 
+		\sigma_{ij} - \frac{1}{3} \sigma_{kk} \delta_{ij} = 
+		2\mu e_{ij}
+	\end{equation}
