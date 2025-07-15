@@ -6,20 +6,29 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 0\label{ueberschall:section:teil0}}
-\kopfrechts{Teil 0}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{ueberschall:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
-
-
+\section{Einleitung\label{ueberschall:Einleitung}}
+\kopfrechts{Einleitung}
+\begin{align}
+    v_x = \frac{\partial \phi}{\partial x}\\
+    \intertext{}
+    v_y = \frac{\partial \phi}{\partial y}\\
+    \intertext{}
+    v_i = \frac{\partial\phi}{\partial x_i}\\
+    \intertext{}
+    \frac{\partial (\rho v_x)}{\partial x} + \frac{\partial (\rho v_y)}{\partial y} = \mathrm{div}\,\rho \vec{v} = 0\\
+    \intertext{}
+    v_x \frac{\partial v_x}{\partial x} + v_y \frac{\partial v_x}{\partial y} = -\frac{1}{\rho} \frac{\partial p}{\partial x}\\
+    v_x \frac{\partial v_y}{\partial x} + v_y \frac{\partial v_y}{\partial y} = -\frac{1}{\rho} \frac{\partial p}{\partial y}\\
+    \intertext{}
+    \intertext{}
+    \frac{\partial^2 \phi}{\partial x^2} + \frac{\partial^2 \phi}{\partial y^2} = 0\\
+    \intertext{}
+    \xi = x\\
+    \eta = y \sqrt{\beta}\\
+    \frac{\partial^2 \phi}{\partial \xi^2} + \frac{\partial^2 \phi}{\partial \eta^2} = 0\\
+    \intertext{}
+    \xi = x\\
+    \eta = y \sqrt{-\beta}\\
+    \frac{\partial^2 \phi}{\partial \xi^2} - \frac{\partial^2 \phi}{\partial \eta^2} = 0\\
+    F_D = \frac{1}{2} \rho A v^2 C
+\end{align}
