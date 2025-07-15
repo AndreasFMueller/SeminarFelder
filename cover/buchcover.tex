@@ -1,7 +1,7 @@
 %
 % buchcover.tex -- Cover für das Buch Felder
 %
-% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+% (c) 2018-2025 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \documentclass[11pt]{standalone}
 \usepackage{tikz}
@@ -17,7 +17,7 @@
 \usepackage{txfonts}
 \usepackage{ifthen}
 \usepackage{qrcode}
-\usetikzlibrary{math}
+\usetikzlibrary{math,fadings}
 \geometry{papersize={417mm,278mm},total={417mm,278mm},top=72.27pt, bottom=0pt, left=72.27pt, right=0pt}
 \newboolean{guidelines}
 \setboolean{guidelines}{true}
@@ -30,7 +30,7 @@
 \begin{tikzpicture}[>=latex, scale=1]
 \tikzmath{
 	real \ruecken, \einschlag, \gelenk, \breite, \hoehe;
-	\ruecken = 2.5;
+	\ruecken = 3.5;
 	\einschlag = 1.6;
 	\gelenk = 0.8;
 	\breite = 16.7;
@@ -40,13 +40,12 @@
 	\bogenhoehe = 2 * \einschlag + \hoehe;
 }
 
-%\clip (0,0) circle (6);
 
-\draw[fill=blue](0,0) rectangle({\bogenbreite},{\bogenhoehe});
+\draw[fill=blue] (0,0) rectangle ({\bogenbreite},{\bogenhoehe});
 \hsize=13.6cm
 
 \begin{scope}
-\clip (0,0) rectangle({\bogenbreite},{0.53*\bogenhoehe});
+\clip (0,0) rectangle({\bogenbreite},{0.48*\bogenhoehe});
 
 \coordinate (A) at (0,0);
 \coordinate (B) at ({0.9*\bogenbreite},0);
@@ -59,10 +58,22 @@
 
 
 \begin{scope}
-%\clip (D) -- (E) -- (F) -- (G) -- (H) -- cycle;
-\node at ({0.75*\bogenbreite},9.0)
-	{\includegraphics[width=23cm]{vektorfeld.jpeg}};
+\node at ({0.75*\bogenbreite},8.0)
+	{\includegraphics[width=38cm]{frontimage-flipped.png}};
 \end{scope}
+
+\begin{scope}
+\clip (0,0) -- ({0.5*\bogenbreite},0) -- ++(0,{0.54*\bogenhoehe})
+	-- (0,{0.5*\bogenhoehe}) -- cycle;
+\node at ({0.22*\bogenbreite},8.3)
+	{\includegraphics[width=38cm]{backimage-flipped.png}};
+\end{scope}
+
+%
+% 3.336cm = (2*(\einschlag+\breite+\gelenk)+\ruecken)*0.08
+%
+\node at ({0.5*\bogenbreite},{0.24*\bogenhoehe})
+	{\includegraphics[width=3.336cm]{ruecken1.png}};
 
 \end{scope}
 
@@ -86,7 +97,7 @@
 	[color=white,scale=1]
 	{\hbox to\hsize{\hfill%
 	\sf \fontsize{13}{5}\selectfont
-	{#2}
+	{#2}%
 	}};
 }
 
@@ -116,6 +127,14 @@ Dieses Buch bringt das Skript des Vorlesungsteils mit den von den
 Seminarteilnehmern beigetragenen Seminararbeiten zusammen.
 
 \medskip
+
+Zum Umschlagbild: Die Windströmung um die Gebäude der OST kann mit
+einem Softwarepaket wie OpenFOAM berechnet werden, wie es in Kapitel~24
+vorgestellt wird.
+Der Buchdeckel zeigt die %Ost-Westkomponente der
+Strömungsgeschwindigkeit
+des Windes auf 5\,m Höhe über Grund bei Westwind, auf der Rückseite (unten)
+wurde mit einer Ostströmung gerechnet.
 
 %Zum Umschlagbild: Eine Wendeltreppe entsteht aus horizontalen Treppenstufen,
 %die spiralförmig um die vertikale Achse angeordnet sind.

@@ -1,0 +1,451 @@
+%
+% teil1.tex -- Beispiel-File für das Paper
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Hodge Theorie provisorisch
+\label{maxwell:section:teil1}}
+\kopfrechts{Hodge Theorie provisorisch}
+Für den Teil der Inhomogenen Maxwellgleichungen benötigen wir die Hodge-Duale auf 1-Formen, 2-Formen und 3-Formen im vierdimensionalen Minkowski-Raum.
+Um dabei die korrekten Vorzeichen zu erhalten, muss die Hodge-Dualität mit Hilfe des metrischen Tensors $g^{ik}$  der Minkowski-Metrik verwendet werden.
+
+
+
+\subsection{Minkowski Metrik}
+In der Speziellen Relativitätstheorie (SRT) wird die Minkowski-Metrik verwendet.
+Da es in der SRT keine Krümmung und Gravitation gibt, sind alle Elemente ausserhalb der Diagonale des Metrischen Tensors null und somit ist die Raum-Zeit flach.
+Zwei Signaturen sind üblich.
+Einerseits gibt es die (-+++)-Signatur, bei welcher die Zeitkomponente negativ und die Raumkomponenten positiv gezählt werden.
+Andererseits gibt es die (+ - - -)-Signatur, bei welcher die Zeitkomponente positiv und die Raumkomponenten negativ gezählt werden.
+Beide Signaturen sind gleichwertig, solange man sich auf eine Metrik festlegt und diese konsequent beibehält.
+Im folgenden werden wir uns an die (-+++)-Signatur halten.
+Daher definieren wir den Metrischen Tensor als
+\begin{equation}
+	g^{ik} = \begin{pmatrix}
+		-1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 
+	\end{pmatrix}.
+	\label{maxwell:section:teil1:metrik}
+\end{equation}
+Der Ausdruck für ein Linienelement in dieser Metrik ist definiert als
+\begin{equation}
+	dl^2 = -c^2dt^2 +dx^2+dy^2+dz^2.
+\end{equation}
+Eine Konsequenz dieser Signatur ist, dass Zeitartige Abstände $ds^2 < 0$ und raumartige Abstände $ds^2 > 0$ sind.
+
+
+\subsection{Herleitung Hodgeduale(verweis auf Abschnitt im Buch)}
+Folgend alle Berechungen der Hodgeduale auf 1-/2- und 3-Formen mit $(-+++)$ -Metrik.
+Es gilt für $g^{ik}$ \eqref{maxwell:section:teil1:metrik} und für $ vol(M) = dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3$.
+
+\subsubsection{Auf 1-Formen}
+\begin{align*}
+	\star dx^0 
+	&=
+	s \, dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	dx^0 \wedge \star dx^0 
+	&=
+	dx^0 \wedge s \, dx^1 \wedge dx^2 \wedge dx^3 
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	&=
+	\underbrace{\langle dx^0, dx^0 \rangle}_{g^{00}} \, vol(M) 
+	\\
+	&= - dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = -1
+	\\
+	\Rightarrow \star dx^0 
+	&=
+	- dx^1 \wedge dx^2 \wedge dx^3
+\\
+\\
+	\star dx^1 
+	&=
+	s \, dx^0 \wedge dx^2 \wedge dx^3
+	\\
+	dx^1 \wedge \star dx^1 
+	&=
+	dx^1 \wedge s \, dx^0 \wedge dx^2 \wedge dx^3 
+	\\
+	&=
+	-s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	&=
+	\underbrace{\langle dx^1, dx^1 \rangle}_{g^{11}} \, vol(M) 
+	\\
+	&=
+	- dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = -1
+	\\
+	\Rightarrow \star dx^1 
+	&=
+	- dx^0 \wedge dx^2 \wedge dx^3
+\\
+\\
+	\star dx^2 
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^3
+	\\
+	dx^2 \wedge \star dx^2 
+	&=
+	dx^2 \wedge s \, dx^0 \wedge dx^1 \wedge dx^3 
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	&=
+	\underbrace{\langle dx^2, dx^2 \rangle}_{g^{22}} \, vol(M) 
+	\\
+	&=
+	dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = 1
+	\\
+	\Rightarrow \star dx^2 
+	&=
+	dx^0 \wedge dx^1 \wedge dx^3
+\\
+\\
+	\star dx^3 
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2
+	\\
+	dx^3 \wedge \star dx^3 
+	&=
+	dx^3 \wedge s \, dx^0 \wedge dx^1 \wedge dx^2 
+	\\
+	&= -s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	&=
+	\underbrace{\langle dx^3, dx^3 \rangle}_{g^{33}} \, vol(M) 
+	\\
+	&=
+	dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = -1
+	\\
+	\Rightarrow \star dx^3 
+	&=
+	-dx^0 \wedge dx^1 \wedge dx^2
+\end{align*}
+
+\subsubsection{Auf 2-Formen}
+\begin{align*}
+	\star \underbrace{(dx^0 \wedge dx^1)}_{\omega}
+	&=
+	s \, dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	dx^0 \wedge dx^1 \wedge s \, dx^2 \wedge dx^3
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle \omega, \omega \rangle \, vol(M)
+	\\
+	&=
+	\langle dx^0 \wedge dx^1, dx^0 \wedge dx^1 \rangle \, vol(M)
+	\\
+	&=
+	g^{00} \cdot g^{11} \cdot vol(M)
+	\\
+	&=
+	-1 \cdot 1 \cdot vol(M)
+	\\
+	&=
+	-dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = -1
+	\\
+	\Rightarrow \star(dx^0 \wedge dx^1)
+	&=
+	-dx^2 \wedge dx^3
+\\
+\\
+	\star \underbrace{(dx^1 \wedge dx^2)}_{\omega}
+	&=
+	s \, dx^0 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	dx^1 \wedge dx^2 \wedge s \, dx^0 \wedge dx^3
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle \omega, \omega \rangle \, vol(M)
+	\\
+	&=
+	\langle dx^1 \wedge dx^2, dx^1 \wedge dx^2 \rangle \, vol(M)
+	\\
+	&=
+	g^{11} \cdot g^{22} \cdot vol(M)
+	\\
+	&=
+	1 \cdot 1 \cdot vol(M)
+	\\
+	&=
+	dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = 1
+	\\
+	\Rightarrow \star(dx^1 \wedge dx^2)
+	&=
+	dx^0 \wedge dx^3
+\\
+\\
+	\star \underbrace{(dx^2 \wedge dx^3)}_{\omega}
+	&=
+	s \, dx^0 \wedge dx^1
+	\\
+	\omega \wedge \star \omega
+	&=
+	dx^2 \wedge dx^3 \wedge s \, dx^0 \wedge dx^1
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle \omega, \omega \rangle \, vol(M)
+	\\
+	&=
+	\langle dx^2 \wedge dx^3, dx^2 \wedge dx^3 \rangle \, vol(M)
+	\\
+	&=
+	g^{22} \cdot g^{33} \cdot vol(M)
+	\\
+	&=
+	1 \cdot 1 \cdot vol(M)
+	\\
+	&=
+	dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = 1
+	\\
+	\Rightarrow \star(dx^2 \wedge dx^3)
+	&=
+	dx^0 \wedge dx^1
+\\
+\\
+	\star \underbrace{(dx^0 \wedge dx^2)}_{\omega}
+	&=
+	s \, dx^1 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	dx^0 \wedge dx^2 \wedge s \, dx^1 \wedge dx^3
+	\\
+	&=
+	-s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle \omega, \omega \rangle \, vol(M)
+	\\
+	&=
+	\langle dx^0 \wedge dx^2, dx^0 \wedge dx^2 \rangle \, vol(M)
+	\\
+	&=
+	g^{00} \cdot g^{22} \cdot vol(M)
+	\\
+	&=
+	-1 \cdot 1 \cdot vol(M)
+	\\
+	&=
+	-dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = 1
+	\\
+	\Rightarrow \star(dx^0 \wedge dx^2)
+	&=
+	dx^1 \wedge dx^3
+\\
+\\
+	\star \underbrace{(dx^0 \wedge dx^3)}_{\omega}
+	&=
+	s \, dx^1 \wedge dx^2
+	\\
+	\omega \wedge \star \omega
+	&=
+	dx^0 \wedge dx^3 \wedge s \, dx^1 \wedge dx^2
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle \omega, \omega \rangle \, vol(M)
+	\\
+	&=
+	\langle dx^0 \wedge dx^3, dx^0 \wedge dx^3 \rangle \, vol(M)
+	\\
+	&=
+	g^{00} \cdot g^{33} \cdot vol(M)
+	\\
+	&=
+	-1 \cdot 1 \cdot vol(M)
+	\\
+	&=
+	-dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = -1
+	\\
+	\Rightarrow \star(dx^0 \wedge dx^3)
+	&=
+	-dx^1 \wedge dx^2
+\\
+\\
+	\star \underbrace{(dx^1 \wedge dx^3)}_{\omega}
+	&=
+	s \, dx^0 \wedge dx^2
+	\\
+	\omega \wedge \star \omega
+	&=
+	dx^1 \wedge dx^3 \wedge s \, dx^0 \wedge dx^2
+	\\
+	&=
+	-s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle \omega, \omega \rangle \, vol(M)
+	\\
+	&=
+	\langle dx^1 \wedge dx^3, dx^1 \wedge dx^3 \rangle \, vol(M)
+	\\
+	&=
+	g^{11} \cdot g^{33} \cdot vol(M)
+	\\
+	&=
+	1 \cdot 1 \cdot vol(M)
+	\\
+	&=
+	dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3 \rightarrow s = -1
+	\\
+	\Rightarrow \star(dx^1 \wedge dx^3)
+	&=
+	-dx^0 \wedge dx^2
+\end{align*}
+\subsubsection{Auf 3-Formen}
+\begin{align*}
+	\star \underbrace{dx^0 \wedge dx^1 \wedge dx^2}_{\omega}
+	&=
+	s \, dx^3
+	\\
+	\omega \wedge \star \omega 
+	&=
+	dx^0 \wedge dx^1 \wedge dx^2 \wedge s \, dx^3
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle dx^0 \wedge dx^1 \wedge dx^2 , dx^0 \wedge dx^1 \wedge dx^2 \rangle \, vol(M)
+	\\
+	&=
+	g^{00} \cdot g^{11} \cdot g^{22} \cdot vol(M)
+	\\
+	&=
+	-1 \cdot 1 \cdot 1 \cdot vol(M) \rightarrow s = -1
+	\\
+	\Rightarrow \star (dx^0 \wedge dx^1 \wedge dx^2) 
+	&= - dx^3
+\\
+\\
+	\star \underbrace{dx^0 \wedge dx^1 \wedge dx^3}_{\omega}
+	&=
+	s \, dx^2
+	\\
+	\omega \wedge \star \omega 
+	&=
+	dx^0 \wedge dx^1 \wedge dx^3 \wedge s \, dx^2
+	\\
+	&=
+	-s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle dx^0 \wedge dx^1 \wedge dx^3 , dx^0 \wedge dx^1 \wedge dx^3 \rangle \, vol(M)
+	\\
+	&=
+	g^{00} \cdot g^{11} \cdot g^{33} \cdot vol(M)
+	\\
+	&=
+	-1 \cdot 1 \cdot 1 \cdot vol(M) \rightarrow s = 1
+	\\
+	\Rightarrow \star (dx^0 \wedge dx^1 \wedge dx^3) 
+	&= dx^2
+\\
+\\
+	\star \underbrace{dx^0 \wedge dx^2 \wedge dx^23}_{\omega}
+	&=
+	s \, dx^1
+	\\
+	\omega \wedge \star \omega 
+	&=
+	dx^0 \wedge dx^2 \wedge dx^3 \wedge s \, dx^1
+	\\
+	&=
+	s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle dx^0 \wedge dx^2 \wedge dx^3 , dx^0 \wedge dx^2 \wedge dx^3 \rangle \, vol(M)
+	\\
+	&=
+	g^{00} \cdot g^{22} \cdot g^{33} \cdot vol(M)
+	\\
+	&=
+	-1 \cdot 1 \cdot 1 \cdot vol(M) \rightarrow s = -1
+	\\
+	\Rightarrow \star (dx^0 \wedge dx^2 \wedge dx^3) 
+	&= - dx^1
+\\
+\\
+	\star \underbrace{dx^1 \wedge dx^2 \wedge dx^3}_{\omega}
+	&=
+	s \, dx^0
+	\\
+	\omega \wedge \star \omega 
+	&=
+	dx^1 \wedge dx^2 \wedge dx^3 \wedge s \, dx^0
+	\\
+	&=
+	-s \, dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	\omega \wedge \star \omega
+	&=
+	\langle dx^1 \wedge dx^2 \wedge dx^3 , dx^1 \wedge dx^2 \wedge dx^3 \rangle \, vol(M)
+	\\
+	&=
+	g^{11} \cdot g^{22} \cdot g^{33} \cdot vol(M)
+	\\
+	&=
+	1 \cdot 1 \cdot 1 \cdot vol(M) \rightarrow s = -1
+	\\
+	\Rightarrow \star (dx^1 \wedge dx^2 \wedge dx^3) 
+	&= - dx^0
+\end{align*}
+
+
+
+
+
+\subsection{De finibus bonorum et malorum
+\label{maxwell:subsection:finibus}}
+At vero eos et accusamus et iusto odio dignissimos ducimus qui
+blanditiis praesentium voluptatum deleniti atque corrupti quos
+dolores et quas molestias excepturi sint occaecati cupiditate non
+provident, similique sunt in culpa qui officia deserunt mollitia
+animi, id est laborum et dolorum fuga \eqref{maxwell:equation1}.
+
+Et harum quidem rerum facilis est et expedita distinctio
+\ref{maxwell:section:teil2}.
+Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+impedit quo minus id quod maxime placeat facere possimus, omnis
+voluptas assumenda est, omnis dolor repellendus
+\ref{maxwell:section:teil3}.
+Temporibus autem quibusdam et aut officiis debitis aut rerum
+necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+molestiae non recusandae.
+Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
+voluptatibus maiores alias consequatur aut perferendis doloribus
+asperiores repellat.
+
+

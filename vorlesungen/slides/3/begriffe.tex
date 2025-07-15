@@ -1,0 +1,136 @@
+%
+% template.tex -- slide template
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\bgroup
+\definecolor{blau}{rgb}{0.4,0.6,1.0}
+\begin{frame}[t]
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\frametitle{Begriffe}
+\vspace{-20pt}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.48\textwidth}
+\begin{block}{Tangentialvektoren\strut
+\uncover<13->{{\color{orange}~``Forscher''}}}
+\begin{itemize}
+\item<1-> mit gleicher Geschwindigkeit durch einen Punkt gehende Kurven
+\item<2->
+\(
+X = \xi^{\color{blau}1}\vec{e}_{\color{blau}1} + \dots +
+\xi^{\color{blau}n} \vec{e}_{\color{blau}n}
+\)
+\item<3->
+\(
+\dot{\gamma}(t)
+=
+\dot{x}^{\color{blau}1}(t) \vec{e}_{\color{blau}1} + \dots
++ \dot{x}^{\color{blau}n}\vec{e}_{\color{blau}n}
+\)
+\item<4-> Koordinatentransformation:
+\(
+\dot{y}^k
+=
+{\color{blau}\sum_{i=1}^n}J^k\mathstrut_{\color{blau}i}\dot{x}^{\color{blau}i}
+\)
+\item<5-> $\xi^{\color{blau}i}$ {\color{blau}kontravariant}
+\item<6-> {\color{blau}Spalten}vektoren
+\item<7-> Differentialoperator:
+\(
+X
+=
+{\color{blau}\sum_{i=1}^n}
+\xi^{\color{blau}i} \frac{\partial}{\partial x^{\color{blau}i}}
+\)
+\end{itemize}
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{1-Formen\strut
+\uncover<14->{{\color{orange}~``Felder''}}}
+\begin{itemize}
+\item<1-> Etwas, was man entlang einer Kurve messen kann
+\item<2->
+\(
+\alpha
+=
+a_{\color{red}1}\,dx^{\color{red}1}
++ \dots +
+a_{\color{red}n}\,dx^{\color{red}n}
+\)
+\item<3->
+\(
+df
+=
+\frac{\partial f}{\partial x^{\color{red}1}} \,dx^{\color{red}1}
++ \dots +
+\frac{\partial f}{\partial x^{\color{red}n}}\,dx^{\color{red}n}
+\)
+\item<4-> Koordinatentransformation:
+\(
+\frac{\partial f}{\partial x^i}
+=
+{\color{red}
+\sum_{k=1}^n}
+\frac{\partial f}{\partial y^{\color{red}k}}J^{\color{red}k}\mathstrut_i
+\)
+\item<5-> $a_{\color{red}i}$ {\color{red}kovariant}
+\item<6-> {\color{red}Zeilen}vektoren
+\item<7-> Richtungsableitung und Differential $df$:
+\(
+X\cdot f
+=
+\langle
+df,X
+\rangle
+\)
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+\only<8>{allgemein kovariant:}
+\(
+\displaystyle
+\uncover<8->{
+\langle \alpha,X\rangle
+}
+\only<8->{=
+\biggl\langle
+{\color{red}\sum_{i=1}^n} a_{\color{red}i}(x)\,dx^{\color{red}i},
+{\color{blau}\sum_{k=1}^n} \xi^{\color{blau}k}\frac{\partial}{\partial x^{\color{blau}k}}
+\biggr\rangle
+}
+\only<9>{=
+\sum_{{\color{red}i},{\color{blau}k}=1}^n
+a_{\color{red}i}(x)\xi^{\color{blau}k}
+\biggl\langle
+dx^{\color{red}i},\frac{\partial}{\partial x^{\color{blau}k}}
+\biggr\rangle
+}
+\only<10>{=
+\sum_{{\color{red}i},{\color{blau}k}=1}^n
+a_{\color{red}i}(x)\xi^{\color{blau}k}
+\delta^{\color{red}i}_{\color{blau}k}
+}
+\only<11->{=
+\sum_{i=1}^n
+a_i(x)\xi^i
+}
+\only<12->{
+=
+{\color{red}
+\begin{pmatrix}a_1(x)\dots a_n(x)\end{pmatrix}
+}
+\smash{
+\color{blau}
+\begin{pmatrix}
+\xi^1\\
+\vdots\\[-2pt]
+\xi^n
+\end{pmatrix}
+}
+}
+\)
+\end{frame}
+\egroup

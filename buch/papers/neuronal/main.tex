@@ -6,34 +6,45 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\chapter{Foobar\label{chapter:neuronal}}
-\kopflinks{Barfoo}
+\chapter{Lösung von Feldgleichungen mit neuronalen Netzen\label{chapter:neuronal}}
+\kopflinks{Feldgleichungen mit neuronalen Netzen}
 \begin{refsection}
 \chapterauthor{Roman Cvijanovic, Nicola Dall'Acqua}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+Die Dynamik von Feldern, also die raum-zeitliche Änderung der Feldgröße, wird mittels Feldgleichungen beschrieben.
+Feldgleichungen sind partielle Differentialgleichungen und ihre Lösungen sind Funktionen.
+Das Lösen dieser Gleichungen ist von hoher Bedeutung in der Feldtheorie.
+Da es generell nicht möglich ist eine explizite Lösung für partielle Differentialgleichungen zu finden, müssen Lösungen approximiert werden.
 
-\input{papers/neuronal/teil0.tex}
-\input{papers/neuronal/teil1.tex}
-\input{papers/neuronal/teil2.tex}
-\input{papers/neuronal/teil3.tex}
+Hierzu gibt es diverse Approximationsverfahren.
+Innerhalb dieses Papers soll eine Methode - nämlich Lösungen mittels neuronaler Netze - vorgestellt werden.\newline
+
+Dazu wird die Methode zunächst theoretisch - am Beispiel der Wellengleichung - hergeleitet.
+Anschliessend wird die konkrete Lösung für die Wellengleichung und die Burgers-Gleichung vorgestellt.
+Zum Schluss werden die Methode, sowie weitere Anwendungsmöglichkeiten diskutiert.\newline
+
+%% Ein paar Hinweise für die korrekte Formatierung des Textes
+%% \begin{itemize}
+%% \item
+%% Absätze werden gebildet, indem man eine Leerzeile einfügt.
+%% Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
+%% \item
+%% Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
+%% Optionen werden gelöscht. 
+%% Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
+%% \item
+%% Beginnen Sie jeden Satz auf einer neuen Zeile. 
+%% Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
+%% in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
+%% anzuwenden.
+%% \item 
+%% Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
+%% Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
+%% \end{itemize}
+
+\input{papers/neuronal/chapters/1_herleitung.tex}
+\input{papers/neuronal/chapters/2_beispiel.tex}
+\input{papers/neuronal/chapters/3_weiteres.tex}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}

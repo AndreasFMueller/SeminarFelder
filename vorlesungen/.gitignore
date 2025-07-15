@@ -1,0 +1,6 @@
+*.log
+*.snm
+*.toc
+*.out
+*.nav
+0*/*.pdf

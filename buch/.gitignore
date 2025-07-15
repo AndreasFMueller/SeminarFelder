@@ -5,6 +5,8 @@ buch-blx.bib
 buch.bbl
 buch.blg
 buch.idx
+buch.ilg
+buch.ind
 buch.run.xml
 buch.toc
 buch.synctex.gz
@@ -12,6 +14,8 @@ paper-blx.bib
 paper.bbl
 paper.blg
 paper.idx
+paper.ilg
+paper.ind
 paper.run.xml
 paper.toc
 paper.synctex.gz
@@ -20,3 +24,5 @@ publish
 papername.tex
 paper.pdf
 test*.pdf
+chapter.pdf
+separata

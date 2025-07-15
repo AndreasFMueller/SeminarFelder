@@ -1,4 +1,5 @@
-%
+
++%
 % teil1.tex -- Beispiel-File für das Paper
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
@@ -6,53 +7,58 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
+\section{Schallintensität
 \label{helmholtz:section:teil1}}
 \kopfrechts{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+
+
+\subsection{in der Praxis}
+
+Warum sollte die Schallintensität gemessen werden? Ein Anwendungsbeispiel besteht darin, die Gegenmassnahmen zu ergreifen, wenn an einem Arbeitsplatz die Lärmbelastung in einer Fabrikhalle den Grenzwert überschreitet. Hierzu ist es erforderlich, dass die Schallleistung einer jeden Maschine zu bestimmen, um die lauteste zu identifizieren.  \newline
+
+Hierzu eignen sich Schallintensitätmessung, da sich diese in jeder Umgebunge messen lässt, unabhängig von der akustischen Eigenschaft der Raumes. Stationäre Hintergrundgeräusche haben keinen Einfluss auf die Intensitätsmessung und somit auch nicht auf die Schallleistungswerte. Da die Schallintensität ist eine vektorielle Grösse, die sowohl Betrag als auch Richtung besitzt und ist hilfreich in der Schallquellenlokalisierung.
+
+
+
+\subsection{Ebene Welle $\mathbf{Q} = 0$
+\label{helmholtz:subsection:ebeneWelle}}
+
+Ebene Welle bedeutet, dass ...
+\begin{enumerate}
+\item bei einer planaren Welle ist $P (\mathbf{r}) = P_0 = konst.\quad bzw. \quad \nabla P = 0$.
+\item Aus der Gleichung \eqref{helmholtz:equationReaktiveIntensitaet} folgt $\mathbf{Q} = \mathbf{0}$.
+\item sowie aus der Gleichung \eqref{helmholtz:equationAktiveIntensitaet} folgt $\mathbf{I} \neq \mathbf{0}$ da $ \nabla \phi$ parallel zur Ausbreitungsrichtung ist.
+\item Schalldruck $P$ und Schall-Geschwindigkeit $v$ sind in Phase ($\phi = 0^{\circ}$).
+\end{enumerate}
+
+
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{helmholtz:equation1}
-\end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
-
-\subsection{De finibus bonorum et malorum
-\label{helmholtz:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{helmholtz:equation1}.
-
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{helmholtz:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{helmholtz:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+	\mathbf{I}_c ~(\mathbf{r}) = \underbrace{\mathbf{I}~(\mathbf{r})}_{\textit{aktive Intensität}} + \underbrace{ \cancel{j\,\mathbf{Q}~(\mathbf{r})}}_{\textit{reaktive~Intensität}~=~0}.
+	\label{helmholtz:equationIntensitaetComplexplanar}
+\end{equation}	
 
 
+\subsection{stehende Welle $\mathbf{I} = 0,\mathbf{Q} \neq 0$
+\label{helmholtz:subsection:stehendeWelle}}
+
+Bei einer stehenden Welle überlagern (Superposition) sich zwei gleiche planare Wellen mit gleicher Amplitude in entgegengesetzter Richtung und hat folgende Charakteristik:
+
+\begin{enumerate}
+\item an jedem Punkt ist entweder  $P = maximal$ und $v = 0$ bei einem Bauch (Darstellung) oder $P = 0$  und $ v = maximal$ bei einem Knoten (Darstellung).
+\item fehlt noch was ??
+\item Schalldruck $P$ und Schall-Geschwindigkeit $v$ sind 90\textdegree phasenverschoben ($\phi = 90^{\circ}$).
+\end{enumerate}
+
+
+
+\begin{equation}
+	\mathbf{I}_c ~(\mathbf{r}) = \underbrace{\cancel{\mathbf{I}~(\mathbf{r})}}_{\textit{aktive Intensität}~=~0} + \underbrace{j\,\mathbf{Q}~(\mathbf{r})}_{\textit{reaktive~Intensität}}
+	\label{helmholtz:equationIntensitaetComplexStehend}
+\end{equation}	
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.4]{papers/helmholtz/images/Schallintensitaet.png}
+	\caption{Schallintensität Beispiel}
+	\label{fig:LaplaceAlg}
+\end{figure}

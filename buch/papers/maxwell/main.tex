@@ -1,0 +1,41 @@
+%
+% main.tex -- Paper zum Thema <maxwell>
+%
+% (c) 2020 Autor, OST Ostschweizer Fachhochschule
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\chapter{Vierdimensionale Formulierung der Maxwell-Gleichungen\label{chapter:maxwell}}
+\kopflinks{Vierdimensionale Formulierung der Maxwell-Gleichungen}
+\begin{refsection}
+\chapterauthor{Pascal Widmer, Mike Peng}
+
+Ein paar Hinweise für die korrekte Formatierung des Textes
+\begin{itemize}
+\item
+Absätze werden gebildet, indem man eine Leerzeile einfügt.
+Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
+\item
+Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
+Optionen werden gelöscht. 
+Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
+\item
+Beginnen Sie jeden Satz auf einer neuen Zeile. 
+Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
+in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
+anzuwenden.
+\item 
+Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
+Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
+\end{itemize}
+
+\input{papers/maxwell/teil0.tex}
+\input{papers/maxwell/teil1.tex}
+\input{papers/maxwell/df.tex}
+\input{papers/maxwell/InhomogeneMaxwellgleichungen.tex}
+\input{papers/maxwell/teil2.tex}
+\input{papers/maxwell/teil3.tex}
+
+\printbibliography[heading=subbibliography]
+\end{refsection}

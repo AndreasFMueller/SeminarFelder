@@ -131,8 +131,10 @@ Dazu integrieren wir über die $t$-Koordinate, wie in der folgenden
 Definition.
 
 \begin{definition}
-Die Faserintegration ist die linear Abbildung
-$\pi_*\colon \Omega^{p+1}(M)\to\Omega^p(M)$, die auf Basisformen durch
+Die {\em Faserintegration} ist die linear Abbildung
+\index{Faserintegration}%
+$\pi_*\colon \Omega^{p+1}(U\times[0,1])\to\Omega^p(U)$,
+die auf Basisformen durch
 \begin{align*}
 \alpha
 &=
@@ -179,10 +181,9 @@ Dann  ist
 \begin{equation}
 \pi_*d\omega - d\pi_*\omega 
 =
-(-1)^p(i_1^*\omega- i_0^*\omega)
+(-1)^{p+1}(i_1^*\omega- i_0^*\omega).
 \label{buch:pformen:poincarelemma:eqn:pid}
 \end{equation}
-für jede $p$-Form $\omega\in\Omega^p(U\times[0,1])$.
 \end{satz}
 
 \begin{proof}
@@ -342,7 +343,9 @@ Für jede $p$-Form $\omega\in\Omega^p(U)$ gilt
 \[
 Jd\omega - dJ\omega
 =
+(-1)^p(
 h_1^*\omega - h_0^*\omega
+)
 \]
 \end{satz}
 
@@ -399,16 +402,16 @@ $d\alpha=\omega$.
 Nach Satz~\ref{buch:pformen:poincarelemma:satz:homotopie} folgt
 wegen $d\omega=0$ sofort
 \[
-dJ\omega
+-dJ\omega
 =
-h_1^*\omega - h_0^*\omega.
+(-1)^p(h_1^*\omega - h_0^*\omega).
 \]
 Die Abbildung $h_0$ ist die konstante Abbildung $x\mapsto 0$, also ist ist
 $h_0^*\omega=0$.
 $h_1$ ist die identische Abbildung $x\mapsto x$, daher ist auch $h_1^*$
 die identische Abbildung von $\Omega^*(U)$ und daher $h_1^*\omega=\omega$.
-Damit filgt $dJ\omega=\omega$.
-Somit ist $\alpha =J\omega$ die gesuchte $p-1$-Form.
+Damit folgt $dJ\omega=\omega$.
+Somit ist $\alpha =(-1)^{p+1}J\omega$ die gesuchte $p-1$-Form.
 \end{proof}
 
 Wir prüfen nach, dass der ursprünglich für geschlossene 1-Formen

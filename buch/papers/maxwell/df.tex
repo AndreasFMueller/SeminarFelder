@@ -1,0 +1,163 @@
+\section{Homogene Maxwellgleichungen}
+Die homogenen Maxwellgleichungen bekommen wir durch die äussere Ableitung des Feldstärketensors, den wir in (Abschnitt vom Herr widmer, ref) durch $F = dA$ erhalten haben
+\[
+F_{\mu\nu}
+= 
+\begin{pmatrix}
+	0 & -E_1 & -E_2 & -E_3 \\
+	E_1 &  0 &  B_3 & -B_2 \\
+	E_2 & -B_3 &  0 &  B_1 \\
+	E_3 &  B_2 & -B_1 &  0 \\
+\end{pmatrix}.
+\]
+Wir wissen, aus (ref Buch dd=0), das
+\[
+ddA = dF = 0
+\]
+gelten muss.
+Für die Berechnung der äusseren Ableitung muss der Tensor zuerst als Differentialform geschrieben werden.
+Es resultiert die Zweiform
+\[
+F
+= \frac{1}{2} F_{\mu\nu} \, dx^\mu \wedge dx^\nu,
+\]
+man beachte dabei die einsteinsche Summationskonvention(ref Buch?).
+Da der Feldstärketensor antisymmetrisch $F_{\mu\nu} = -F_{\nu\mu}$ ist, benötigt man den Faktor $\frac{1}{2}$ um die doppelte Zählung der Komponenten zu vermeiden:
+\begin{align*}
+	F
+	= 
+	&+ \frac{1}{2} F_{\mu\nu} \, dx^\mu \wedge dx^\nu
+	\\
+	=
+	&+ \frac{1}{2} F_{00} \, dx^0 \wedge dx^0 + \frac{1}{2} F_{01} \, dx^0 \wedge dx^1 + \frac{1}{2} F_{02} \, dx^0 \wedge dx^2 + \frac{1}{2} F_{03} \, dx^0 \wedge dx^3
+	\\
+	&+ \frac{1}{2} F_{10} \, dx^1 \wedge dx^0 + \frac{1}{2} F_{11} \, dx^1 \wedge dx^1 + \frac{1}{2} F_{12} \, dx^1 \wedge dx^2 + \frac{1}{2} F_{13} \, dx^1 \wedge dx^3
+	\\
+	&+ \frac{1}{2} F_{20} \, dx^2 \wedge dx^0 + \frac{1}{2} F_{21} \, dx^2 \wedge dx^1 + \frac{1}{2} F_{22} \, dx^2 \wedge dx^2 + \frac{1}{2} F_{23} \, dx^2 \wedge dx^3
+	\\
+	&+ \frac{1}{2} F_{30} \, dx^3 \wedge dx^0 + \frac{1}{2} F_{31} \, dx^3 \wedge dx^1 + \frac{1}{2} F_{32} \, dx^3 \wedge dx^2 + \frac{1}{2} F_{33} \, dx^3 \wedge dx^3
+\end{align*} 
+Da gilt $dx^n \wedge dx^n = 0$ und $dx^n \wedge dx^{n+1} = - dx^{n+1} \wedge dx^n$, folgt nach aufsteigenden Indizes sortiert
+\begin{align*}
+	F
+	=
+	&+ \frac{1}{2} F_{01} \, dx^0 \wedge dx^1 + \frac{1}{2} F_{02} \, dx^0 \wedge dx^2 + \frac{1}{2} F_{03} \, dx^0 \wedge dx^3
+	\\
+	&- \frac{1}{2} F_{10} \, dx^0 \wedge dx^1 + \frac{1}{2} F_{12} \, dx^1 \wedge dx^2 + \frac{1}{2} F_{13} \, dx^1 \wedge dx^3
+	\\
+	&- \frac{1}{2} F_{20} \, dx^0 \wedge dx^2 - \frac{1}{2} F_{21} \, dx^1 \wedge dx^2 + \frac{1}{2} F_{23} \, dx^2 \wedge dx^3
+	\\
+	&- \frac{1}{2} F_{30} \, dx^0 \wedge dx^3 - \frac{1}{2} F_{31} \, dx^1 \wedge dx^3 - \frac{1}{2} F_{32} \, dx^2 \wedge dx^3
+\end{align*}
+und wegen $F_{\mu\nu} = -F_{\nu\mu}$
+\begin{align*}
+	F
+	=
+	&+ \frac{1}{2} F_{01} \, dx^0 \wedge dx^1 + \frac{1}{2} F_{02} \, dx^0 \wedge dx^2 + \frac{1}{2} F_{03} \, dx^0 \wedge dx^3
+	\\
+	&+ \frac{1}{2} F_{01} \, dx^0 \wedge dx^1 + \frac{1}{2} F_{12} \, dx^1 \wedge dx^2 + \frac{1}{2} F_{13} \, dx^1 \wedge dx^3
+	\\
+	&+ \frac{1}{2} F_{02} \, dx^0 \wedge dx^2 + \frac{1}{2} F_{12} \, dx^1 \wedge dx^2 + \frac{1}{2} F_{23} \, dx^2 \wedge dx^3
+	\\
+	&+ \frac{1}{2} F_{03} \, dx^0 \wedge dx^3 + \frac{1}{2} F_{13} \, dx^1 \wedge dx^3 + \frac{1}{2} F_{23} \, dx^2 \wedge dx^3
+	\\
+	\\
+	=
+	&+ \frac{1}{2} F_{01} \, dx^0 \wedge dx^1 + \frac{1}{2} F_{02} \, dx^0 \wedge dx^2 + \frac{1}{2} F_{03} \, dx^0 \wedge dx^3
+	\\
+	&+ \frac{1}{2} F_{12} \, dx^1 \wedge dx^2 + \frac{1}{2} F_{13} \, dx^1 \wedge dx^3 + \frac{1}{2} F_{23} \, dx^2 \wedge dx^3 \, .
+\end{align*}
+Für besseres Verständnis setzen wir nun konkret die Komponenten von $F_{\mu\nu}$ ein und erhalten
+ \begin{align*}
+ 	F
+ 	=
+ 	&- \frac{1}{2} E_1 \, dx^0 \wedge dx^1 - \frac{1}{2} E_2 \, dx^0 \wedge dx^2 - \frac{1}{2} E_3 \, dx^0 \wedge dx^3
+ 	\\
+ 	&+ \frac{1}{2} B_3 \, dx^1 \wedge dx^2 - \frac{1}{2} B_2 \, dx^1 \wedge dx^3 + \frac{1}{2} B_1 \, dx^2 \wedge dx^3 \, ,
+ \end{align*}
+was schön den Komponenten oberhalb der Diagonalen von $F_{\mu\nu}$ entspricht.
+Nun wenden wir die äussere Ableitung auf die Zweiform F an
+ \begin{align*}
+ 	dF =
+ 	&\cancel{\, - \, \frac{\d E_1}{\d x^0} \, dx^0 \wedge dx^0 \wedge dx^1} \cancel{\, - \, \frac{\d E_1}{\d x^1} \, dx^1 \wedge dx^0 \wedge dx^1}
+ 	 - \frac{\d E_1}{\d x^2} \, dx^2 \wedge dx^0 \wedge dx^1 - \frac{\d E_1}{\d x^3} \, dx^3 \wedge dx^0 \wedge dx^1
+ 	\\
+ 	&\cancel{\, - \, \frac{\d E_2}{\d x^0} \, dx^0 \wedge dx^0 \wedge dx^2} - \frac{\d E_2}{\d x^1} \, dx^1 \wedge dx^0 \wedge dx^2
+ 	 \cancel{\, - \, \frac{\d E_2}{\d x^2} \, dx^2 \wedge dx^0 \wedge dx^2} - \frac{\d E_2}{\d x^3} \, dx^3 \wedge dx^0 \wedge dx^2
+ 	\\
+ 	&\cancel{\, - \, \frac{\d E_3}{\d x^0} \, dx^0 \wedge dx^0 \wedge dx^3} - \frac{\d E_3}{\d x^1} \, dx^1 \wedge dx^0 \wedge dx^3
+ 	 - \frac{\d E_3}{\d x^2} \, dx^2 \wedge dx^0 \wedge dx^3 \cancel{\, - \, \frac{\d E_3}{\d x^3} \, dx^3 \wedge dx^0 \wedge dx^3}
+ 	\\
+ 	&+ \frac{\d B_3}{\d x^0} \, dx^0 \wedge dx^1 \wedge dx^2 \cancel{\, + \, \frac{\d B_3}{\d x^1} \, dx^1 \wedge dx^1 \wedge dx^2}
+ 	 \cancel{\, + \, \frac{\d B_3}{\d x^2} \, dx^2 \wedge dx^1 \wedge dx^2} + \frac{\d B_3}{\d x^3} \, dx^3 \wedge dx^1 \wedge dx^2
+ 	\\
+ 	&- \frac{\d B_2}{\d x^0} \, dx^0 \wedge dx^1 \wedge dx^3 \cancel{\, - \, \frac{\d B_2}{\d x^1} \, dx^1 \wedge dx^1 \wedge dx^3}
+ 	 - \frac{\d B_2}{\d x^2} \, dx^2 \wedge dx^1 \wedge dx^3 \cancel{\, - \, \frac{\d B_2}{\d x^3} \, dx^3 \wedge dx^1 \wedge dx^3}
+ 	\\
+ 	&+ \frac{\d B_1}{\d x^0} \, dx^0 \wedge dx^2 \wedge dx^3 + \frac{\d B_1}{\d x^1} \, dx^1 \wedge dx^2 \wedge dx^3
+ 	 \cancel{\, + \, \frac{\d B_1}{\d x^2} \, dx^2 \wedge dx^2 \wedge dx^3} \cancel{\, + \, \frac{\d B_1}{\d x^3} \, dx^3 \wedge dx^2 \wedge dx^3}
+ 	\\
+ 	\\
+ 	=
+ 	&- \frac{\d E_1}{\d x^2} \, dx^2 \wedge dx^0 \wedge dx^1 - \frac{\d E_1}{\d x^3} \, dx^3 \wedge dx^0 \wedge dx^1
+ 	 - \frac{\d E_2}{\d x^1} \, dx^1 \wedge dx^0 \wedge dx^2 - \frac{\d E_2}{\d x^3} \, dx^3 \wedge dx^0 \wedge dx^2
+ 	\\
+ 	&- \frac{\d E_3}{\d x^1} \, dx^1 \wedge dx^0 \wedge dx^3 - \frac{\d E_3}{\d x^2} \, dx^2 \wedge dx^0 \wedge dx^3
+ 	 + \frac{\d B_3}{\d x^0} \, dx^0 \wedge dx^1 \wedge dx^2 + \frac{\d B_3}{\d x^3} \, dx^3 \wedge dx^1 \wedge dx^2
+ 	\\
+ 	&- \frac{\d B_2}{\d x^0} \, dx^0 \wedge dx^1 \wedge dx^3 - \frac{\d B_2}{\d x^2} \, dx^2 \wedge dx^1 \wedge dx^3
+ 	 + \frac{\d B_1}{\d x^0} \, dx^0 \wedge dx^2 \wedge dx^3 + \frac{\d B_1}{\d x^1} \, dx^1 \wedge dx^2 \wedge dx^3 \, , 
+ \end{align*}
+sortieren nach aufsteigenden Indizes
+ \begin{align*}
+	dF =
+	&- \frac{\d E_1}{\d x^2} \, dx^0 \wedge dx^1 \wedge dx^2 - \frac{\d E_1}{\d x^3} \, dx^0 \wedge dx^1 \wedge dx^3
+	 + \frac{\d E_2}{\d x^1} \, dx^0 \wedge dx^1 \wedge dx^2 - \frac{\d E_2}{\d x^3} \, dx^0 \wedge dx^2 \wedge dx^3
+	\\
+	&+ \frac{\d E_3}{\d x^1} \, dx^0 \wedge dx^1 \wedge dx^3 + \frac{\d E_3}{\d x^2} \, dx^0 \wedge dx^2 \wedge dx^3
+	 + \frac{\d B_3}{\d x^0} \, dx^0 \wedge dx^1 \wedge dx^2 + \frac{\d B_3}{\d x^3} \, dx^1 \wedge dx^2 \wedge dx^3
+	\\
+	&- \frac{\d B_2}{\d x^0} \, dx^0 \wedge dx^1 \wedge dx^3 + \frac{\d B_2}{\d x^2} \, dx^1 \wedge dx^2 \wedge dx^3
+	 + \frac{\d B_1}{\d x^0} \, dx^0 \wedge dx^2 \wedge dx^3 + \frac{\d B_1}{\d x^1} \, dx^1 \wedge dx^2 \wedge dx^3
+\end{align*}
+und fassen anschliessend alles zusammen
+\begin{align*}
+	dF =
+	&\left( - \frac{\d E_1}{\d x^2} + \frac{\d E_2}{\d x^1} + \frac{\d B_3}{\d x^0} \right) dx^0 \wedge dx^1 \wedge dx^2
+	\\
+	+&\left( - \frac{\d E_1}{\d x^3} + \frac{\d E_3}{\d x^1} - \frac{\d B_2}{\d x^0} \right) dx^0 \wedge dx^1 \wedge dx^3
+	\\
+	+&\left( - \frac{\d E_2}{\d x^3} + \frac{\d E_3}{\d x^2} + \frac{\d B_1}{\d x^0} \right) dx^0 \wedge dx^2 \wedge dx^3
+	\\
+	+&\left( + \frac{\d B_3}{\d x^3} + \frac{\d B_2}{\d x^2} + \frac{\d B_1}{\d x^1} \right) dx^1 \wedge dx^2 \wedge dx^3 \, .
+\end{align*}
+\textbf{Aussage Unsicher!:} Da die Vorzeichen der partiellen Ableitung nicht passen, ändern wir dort die Reihenfolge der Wedgeprodukte
+\begin{align*}
+	dF =
+	&\left( - \frac{\d E_1}{\d x^2} + \frac{\d E_2}{\d x^1} + \frac{\d B_3}{\d x^0} \right) dx^0 \wedge dx^1 \wedge dx^2
+	\\
+	+&\left( + \frac{\d E_1}{\d x^3} - \frac{\d E_3}{\d x^1} + \frac{\d B_2}{\d x^0} \right) dx^0 \wedge dx^3 \wedge dx^1
+	\\
+	+&\left( - \frac{\d E_2}{\d x^3} + \frac{\d E_3}{\d x^2} + \frac{\d B_1}{\d x^0} \right) dx^0 \wedge dx^2 \wedge dx^3
+	\\
+	+&\left( + \frac{\d B_3}{\d x^3} + \frac{\d B_2}{\d x^2} + \frac{\d B_1}{\d x^1} \right) dx^1 \wedge dx^2 \wedge dx^3 \, .
+\end{align*}
+und erkennen nun, wenn $dx^0 = dt, dx^1 = dx, dx^2 = dy, dx^3 = dz$:
+\begin{align*}
+	dF =
+	&\Bigg( \underbrace{ - \frac{\d E_x}{\d y} + \frac{\d E_y}{\d x}}_{(\nabla \times E)_z} + \frac{\d B_z}{\d t} \Bigg) dt \wedge dx \wedge dy
+	\\
+	+&\Bigg( \underbrace{ + \frac{\d E_x}{\d z} - \frac{\d E_z}{\d x}}_{(\nabla \times E)_y} + \frac{\d B_y}{\d t} \Bigg) dt \wedge dz \wedge dx
+	\\
+	+&\Bigg( \underbrace{ - \frac{\d E_y}{\d z} + \frac{\d E_z}{\d y}}_{(\nabla \times E)_x} + \frac{\d B_x}{\d t} \Bigg) dt \wedge dy \wedge dz
+	\\
+	+&\Bigg( \underbrace{ + \frac{\d B_z}{\d z} + \frac{\d B_y}{\d y} + \frac{\d B_x}{\d x}}_{\nabla \cdot \vec{B}} \Bigg) dx \wedge dy \wedge dz \, .
+\end{align*}
+Das sind genau die homogenen Maxwellgleichungen
+\[
+\nabla \times \vec{E} + \frac{\d \vec{B}}{\d t} = 0
+\]
+und
+\[
+\nabla \cdot \vec{B} = 0 \, .
+\]

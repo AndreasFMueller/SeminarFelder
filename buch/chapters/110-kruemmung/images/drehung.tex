@@ -1,0 +1,99 @@
+%
+% drehung.tex -- Drehung eines Vektors an einem sphärischen Dreieck
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\coordinate (A) at (-4,-1);
+\coordinate (B) at (4,-2);
+\coordinate (C) at (1,5);
+
+\fill[color=gray!20] (A) -- (B) -- (C) -- cycle;
+
+\begin{scope}
+	\clip	(A) to[out=-16,in=-180]
+		(B) to[out=105,in=-57]
+		(C) to[out=-140,in=60] (A) -- cycle;
+	\fill[color=darkred!20,opacity=1.0] (A) circle[radius=1];
+	\fill[color=darkred!20,opacity=1.0] (B) circle[radius=1];
+	\fill[color=darkred!20,opacity=1.0] (C) circle[radius=1];
+	\begin{scope}
+		\clip (A) circle[radius=1];
+		\fill[color=blue!40,opacity=0.5]
+			(A) -- ++(0,-1) -- (B) -- cycle;
+		\fill[color=blue!40,opacity=0.5]
+			(A) -- (C) -- ($(A)+(0,1)$) -- cycle;
+	\end{scope}
+	\begin{scope}
+		\clip (B) circle[radius=1];
+		\fill[color=blue!40,opacity=0.5]
+			(A) -- ($(B)+(0,-1)$) -- (B) -- cycle;
+		\fill[color=blue!40,opacity=0.5]
+			(B) -- ++(0,3) -- (C) -- cycle;
+	\end{scope}
+	\begin{scope}
+		\clip (C) circle[radius=1];
+		\fill[color=blue!40,opacity=0.5]
+			(B) -- ++(0,3) -- (C) -- cycle;
+		\fill[color=blue!40,opacity=0.5]
+			(A) -- (C) -- ($(A)+(0,4)$) -- cycle;
+	\end{scope}
+\end{scope}
+
+\node at ($(A)+(27.4:0.6)$) {$\alpha$};
+\node at ($(B)+(140:0.6)$) {$\beta$};
+\node at ($(C)+(-101:0.6)$) {$\gamma$};
+
+% alpha = 76
+
+% beta = 75
+\fill[color=darkred!40,opacity=0.5] (B) -- ++(-75:1) arc(-75:0:1);
+
+\node at ($(B)+(-37.5:0.6)$) {$\beta$};
+
+% gamma = 83
+\fill[color=darkred!40,opacity=0.5] (C) -- ++(-57:1) arc (-57:18:1) -- cycle;
+\node at ($(C)+(-19.5:0.6)$) {$\beta$};
+
+\fill[color=blue!40,opacity=0.5] (A) -- ++(-16:1.5) arc (-16:38:1.5) -- cycle;
+\fill[color=blue!40,opacity=0.5] (A) -- ++(164:1.0) arc (164:218:1.0) -- cycle;
+
+\draw[->,color=blue,line width=1.4pt] (A) -- ++(-16:1.8);
+\draw[->,color=blue,line width=1.4pt] (C) -- ++(18:1.8);
+\draw[->,color=blue,line width=1.4pt] (B) -- ++(0:1.8);
+\draw[->,color=blue,line width=1.2pt] (A) -- ++(38:1.8);
+
+\node[color=blue] at ($(A)+(11:1.25)$) {$\varepsilon$};
+
+\fill[color=darkred!50,opacity=0.4] (A) -- ++(60:1) arc(60:135:1) -- cycle;
+\node at ($(A)+(97.5:0.6)$) {$\beta$};
+\fill[color=darkred!50,opacity=0.4] (A) -- ++(135:1) arc(135:218:1) -- cycle;
+\node at ($(A)+(176.5:0.6)$) {$\gamma$};
+\draw[color=darkred,line width=0.2] (A) -- ++(135:1);
+
+\node at (A) [below] {$A$};
+\node at (B) [below left] {$B$};
+\node at (C) [above left] {$C$};
+
+\draw[color=darkred,line width=1.2pt] (A) to[out=-16,in=-180] (B);
+\draw[color=darkred,line width=1.2pt] (B) to[out=105,in=-57] (C);
+\draw[color=darkred,line width=1.2pt] (C) to[out=-140,in=60] (A);
+
+\fill[color=darkred] (A) circle[radius=0.06];
+\fill[color=darkred] (B) circle[radius=0.06];
+\fill[color=darkred] (C) circle[radius=0.06];
+
+\end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,34 @@
+\begin{tikzpicture}[>=stealth, scale=1.5]
+  
+  % Draw axes
+  \draw[thick, black, ->] (-2,0) -- (2,0); % Horizontal axis
+  \draw[thick, black, ->] (0,-2) -- (0,2); % Vertical axis
+  
+  % Axis labels
+  \node[above] at (0,2) {$\dot{y} = 0$};
+  \node[right] at (2,0) {$\dot{x} = 0$};
+  
+  % Define colors for each quadrant
+  \colorlet{q1color}{red}
+  \colorlet{q2color}{blue}
+  \colorlet{q3color}{green}
+  \colorlet{q4color}{orange}
+
+  % Clockwise arrows in each quadrant, at 45° angles with unique colors
+  % First quadrant: down-right (southeast)
+  \draw[q1color, ->] (0.5,1.5) -- (1.5,0.5);
+  \node[above, right, q1color] at (1,1) {$\dot{x} > 0, \dot{y} < 0$};
+  
+  % Second quadrant: down-left (southwest)
+  \draw[q2color, ->] (1.5,-0.5) -- (0.5,-1.5);
+  \node[below, right, q2color] at (1,-1) {$\dot{x} < 0, \dot{y} < 0$};
+  
+  % Third quadrant: up-left (northwest)
+  \draw[q3color, ->] (-0.5,-1.5) -- (-1.5,-0.5);
+  \node[below, left, q3color] at (-1,-1) {$\dot{x} < 0, \dot{y} > 0$};
+  
+  % Fourth quadrant: up-right (northeast)
+  \draw[q4color, ->] (-1.5,0.5) -- (-0.5,1.5);
+  \node[above, left, q4color] at (-1,1) {$\dot{x} > 0, \dot{y} > 0$};
+  
+\end{tikzpicture}

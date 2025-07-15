@@ -1,0 +1,87 @@
+%
+% InhomogeneMaxwellgleichungen.tex -- Beispiel-File für das Paper
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Inhomogene Maxwellgleichungen
+	\label{maxwell:section:InhomogeneMaxwellgleichungen}}
+\kopfrechts{Inhomogene Maxwellgleichungen}
+(Teil dF = 0 kommt dann vorher und auch die "Herleitung" davon)
+
+Den Faraday-Tensor haben wir definiert als
+
+\begin{equation}
+	F = \begin{pmatrix}
+		0 & -E_x & -E_y & -E_z \\ E_x & 0 & B_z & -B_y \\ E_y & -B_z & 0 & B_x \\ E_z & B_y & -B_x & 0 
+	\end{pmatrix}.
+%	\label{maxwell:section:teil1:metrik}
+\end{equation}
+Wir haben dabei festgestellt, dass die äussere Ableitung von F verschwindet, da F eine geschlossene 2-Form ist.
+Um nun die inhomogenen Maxwellgleichungen bestimmen zu können müssen wir den Hodgeoperator ($\star$) auf F anwenden.
+Wir erinnern uns, dass F ausgeschrieben mit Wedgeprodukten definiert ist als
+
+\begin{align*}
+	F = 
+	&- E_x \, dt \wedge dx - E_y \, dt \wedge dy - E_z \, dt \wedge dz \\
+	&+ B_z \, dx \wedge dy - B_y \, dx \wedge dz + B_x \, dy \wedge dz.\\
+\end{align*}
+
+Der Hodgeoperator bildet eine k-Form auf eine (n-k)-Form ab und somit wird aus $\star F$ wieder eine 2-Form
+
+\begin{align*}
+	\star F =
+	& - E_{x} \, \star(dt \wedge dx) - E_{y} \, \star(dt \wedge dy) - E_{z} \, \star(dt \wedge dz) \\
+	& + B_z \, \star(dx \wedge dy) - B_y \, \star(dx \wedge dz) + B_x \, \star(dy \wedge dz)\\
+	= 
+	& \, E_{x} \, dy \wedge dz - E_{y} \, dx \wedge dz + E_{z} \, dx \wedge dy \\
+	& + B_z \, dt \wedge dz + B_y \, dt \wedge dy + B_x \, dt \wedge dx.\\
+\end{align*}
+Die erhaltene 2-form kann nun wieder als Matrix
+\begin{equation}
+	\star F = \begin{pmatrix}
+		0 & B_x & B_y & B_z \\ -B_x & 0 & E_z & -E_y \\ -B_y & -E_z & 0 & E_x \\ -B_z & E_y & -E_x & 0 
+	\end{pmatrix}
+	%	\label{maxwell:section:teil1:metrik}
+\end{equation}
+geschrieben werden.
+
+Nun wenden wir die äussere Ableiung darauf an und erhalten
+\begin{align*}
+	d(\star F) = \,
+	& d (E_{x} \, dy \wedge dz - E_{y} \, dx \wedge dz + E_{z} \, dx \wedge dy + B_z \, dt \wedge dz + B_y \, dt \wedge dy + B_x \, dt \wedge dx)\\
+	=
+	& \frac{\partial E_x}{\partial t} dt \wedge dy \wedge dz + \frac{\partial E_x}{\partial x} dx \wedge dy \wedge dz -
+	\frac{\partial E_y}{\partial t} dt \wedge dx \wedge dz -
+	\frac{\partial E_y}{\partial y} dy \wedge dx \wedge dz +\\
+	& \frac{\partial E_z}{\partial t} dt \wedge dx \wedge dy +
+	\frac{\partial E_z}{\partial z} dz \wedge dx \wedge dy +
+	\frac{\partial B_z}{\partial x} dx \wedge dt \wedge dz +
+	\frac{\partial B_z}{\partial y} dy \wedge dt \wedge dz +\\
+	& \frac{\partial B_y}{\partial x} dx \wedge dt \wedge dy +
+	\frac{\partial B_y}{\partial z} dz \wedge dt \wedge dy +
+	\frac{\partial B_x}{\partial y} dy \wedge dt \wedge dx +
+	\frac{\partial B_x}{\partial z} dz \wedge dt \wedge dx\\
+	=
+	&\left( \frac{\partial E_x}{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z} \right) dx \wedge dy \wedge dz +
+	\left(\frac{\partial E_x}{\partial t} + \frac{\partial B_y}{\partial z} - \frac{\partial B_z}{\partial y} \right) dt \wedge dy \wedge dz\\
+	&\left( -\frac{\partial E_y}{\partial t} + \frac{\partial B_x}{\partial z} - \frac{\partial B_z}{\partial x} \right) dt \wedge dx \wedge dz +
+	\left( \frac{\partial E_z}{\partial t} + \frac{\partial B_x}{\partial y} - \frac{\partial B_y}{\partial x} \right) dt \wedge dx \wedge dy. 
+\end{align*}
+Wenden wir nun noch mal den Hodge-Operator auf die erhaltene 3-Form an, erhalten wir
+\begin{align*}
+	\star d \star F = 
+	&\left( \frac{\partial E_x}{\partial x} + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z} \right) (-dt) +
+	\left(\frac{\partial E_x}{\partial t} + \frac{\partial B_y}{\partial z} - \frac{\partial B_z}{\partial y} \right) (-dx)\\
+	&\left( -\frac{\partial E_y}{\partial t} + \frac{\partial B_x}{\partial z} - \frac{\partial B_z}{\partial x} \right) dy +
+	\left( \frac{\partial E_z}{\partial t} + \frac{\partial B_x}{\partial y} - \frac{\partial B_y}{\partial x} \right) (-dz).\\
+	=
+	&\left( -\frac{\partial E_x}{\partial x} -\frac{\partial E_y}{\partial y} - \frac{\partial E_z}{\partial z} \right) dt +
+	\left(-\frac{\partial E_x}{\partial t} - \frac{\partial B_y}{\partial z} + \frac{\partial B_z}{\partial y} \right) dx\\
+	&\left( -\frac{\partial E_y}{\partial t} + \frac{\partial B_x}{\partial z} - \frac{\partial B_z}{\partial x} \right) dy +
+	\left( -\frac{\partial E_z}{\partial t} - \frac{\partial B_x}{\partial y} + \frac{\partial B_y}{\partial x} \right) dz.
+\end{align*}
+
+Weiter vereinfachen und nachvollziehen...
