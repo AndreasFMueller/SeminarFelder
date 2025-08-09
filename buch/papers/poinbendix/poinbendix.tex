@@ -2,8 +2,8 @@
 
 \begin{satz}[Poincaré-Bendixson]
 \label{poinbendix:satz:poinbendix}
-$\Phi_t(p) \in \Xi^r(\mathbb{S}^2)$ sei ein $r$-Fach differenzierbares, zweidimensionales dynamisches System mit Startpunkt $p \in \mathbb{S}^2$.
-Dann gilt für das Omega-Limit Set $\omega(p)$ eine der folgenden Optionen:
+$\Phi_t(p) \in \Xi^r(\mathbb{S}^2)$ sei ein $r$-fach differenzierbares, zweidimensionales dynamisches System mit Startpunkt $p \in \mathbb{S}^2$.
+Dann gilt für die Omega Limesmenge $\omega(p)$ eine der folgenden Optionen:
 \begin{enumerate}
 \item $\omega(p)$ ist eine Nullstelle
 \item $\omega(p)$ ist ein geschlossener Orbit
@@ -11,9 +11,9 @@ Dann gilt für das Omega-Limit Set $\omega(p)$ eine der folgenden Optionen:
 \end{enumerate}
 \end{satz}
 
-Dies gilt auf der Kugeloberfläche $\mathbb{S}^2$.\cite{poinbendix:melo}
+Dies gilt auf der Kugeloberfläche $\mathbb{S}^2$ \cite{poinbendix:melo}.
 Bis anhin haben wir aber mehrheitlich über planare Fälle gesprochen, weshalb der nächste Abschnitt darauf eingeht wieso wir hier die Kugeloberfläche nehmen.
-In den darauffolgenden Abschnitten wird für dann jeden Fall jeweils ein Beispiel gezeigt.
+In den darauffolgenden Abschnitten wird dann für jeden Fall jeweils ein Beispiel gezeigt.
 
 \subsection{Kugeloberfläche und Ebene} \label{poinbendix:subsection:kugeloberflaeche}
 
@@ -22,7 +22,7 @@ In Abbildung \ref{buch:koordinaten:diffmannig:fig:stereographisch} sieht man, da
 Somit ergibt sich für den Fall einer Nullstelle auf dem Nordpol eine divergierende Bahnkurve auf der Ebene.
 
 Auch wenn die Formulierung auf der Kugeloberfläche etwas eleganter ist, gilt der Satz von Poincaré-Bendixson sowohl auf der Ebene $\mathbb{R}^2$ wie auch auf der Kugeloberfläche $\mathbb{S}^2$.
-Allerdings gilt er nicht auf allen zweidimensionalen Abbildungen, so können zum Beispiel auf dem Torus Bahnkurven auftreten welche nicht wirklich periodisch sind, aber auch nicht auf eine Singularität fallen.\cite{poinbendix:wiki}
+Allerdings gilt er nicht auf allen zweidimensionalen Abbildungen, so können zum Beispiel auf dem Torus Bahnkurven auftreten welche nicht wirklich periodisch sind, aber auch nicht auf eine Singularität fallen \cite{poinbendix:wiki}.
 
 
 \subsection{Fall 1: $\omega(p)$ ist eine Nullstelle} \label{poinbendix:subsection:fall1}
@@ -54,7 +54,7 @@ Dieses Beispiel wurde gewählt da sehr schöne Bahnkurven entstehen.
 Wie diese Bahnkurven aussehen können sieht man in Abbildung \ref{poinbendix:fig:fixed_point_omega_set}.
 \end{beispiel}
 
-Zu beachten gilt es, dass Satz von Poincaré-Bendixson nur eine Aussage zu möglichen Lösungen ab einem Startpunkt $p$ macht.
+Zu beachten gilt es, dass der Satz von Poincaré-Bendixson nur eine Aussage zu möglichen Lösungen ab einem Startpunkt $p$ macht.
 Dies würde unterschiedliche Fälle erlauben für ein einzelnes Differentialgleichungssystem.
 Das obige Beispiel zeigt aber einen häufigen Fall, dass nämlich diverse Startpunkte $p$ dieselbe Nullstelle als Omega Limesmenge haben.
 
@@ -66,10 +66,15 @@ Das obige Beispiel zeigt aber einen häufigen Fall, dass nämlich diverse Startp
     \label{poinbendix:fig:fixed_point_omega_set}
 \end{figure}
 
-\subsection{Fall 2: $\omega(p)$ ist ein Geschlossener Orbit} \label{poinbendix:subsection:fall2}
+\subsection{Fall 2: $\omega(p)$ ist ein geschlossener Orbit} \label{poinbendix:subsection:fall2}
 
-Den zweiten Fall haben wir im Abschnitt zu den Nullklinen \ref{poinbendix:subsection:nullklinen} bereits angedeutet.
-Bahnkurven werden dabei eingefangen und da sie sich nicht kreuzen können, bleiben sie auf alle Zeiten periodisch.
+Im zweiten Fall fällt die Bahnkurve irgendwann auf einen geschlossenen Orbit.
+Ein geschlossener Orbit bedeutet, dass die Bahnkurve eine periodische Bewegung durchführt.
+
+Eine Variante ist, dass der Startpunkt $p$ bereits auf einem geschlossenen Orbit liegt.
+Also ist die Omega Limesmenge identische mit der Alpha Limesmenge.
+Diese Variante wird im folgenden Beispiel genauer gezeigt.
+
 
 \begin{beispiel} \label{poinbendix:beispiel:fall2_1}
 Das Gleichungssystem
@@ -77,10 +82,9 @@ Das Gleichungssystem
     \dot{x} &= y \\
     \dot{y} &= x
 \end{align*}
-erzeugt dabei kreisrunde Orbitale um den Nullpunkt herum.
+erzeugt dabei kreisrunde Orbits um den Nullpunkt herum.
 Der Nullpunkt ist also eine Nullstelle und stellt damit eine weitere Omega-Limesmenge dar.
 Die ganze Situation ist in Abbildung \ref{poinbendix:fig:fall_2} zu sehen.
-\end{beispiel}
 
 \begin{figure}
 \centering
@@ -90,15 +94,17 @@ Die ganze Situation ist in Abbildung \ref{poinbendix:fig:fall_2} zu sehen.
 \label{poinbendix:fig:fall_2}
 \end{figure}
 
-Es gibt aber auch die Möglichkeit, dass verschiedene Bahnkurven auf den selben Orbit konvergieren, wie im folgenden Beispiel gezeigt wird.
+\end{beispiel}
+
+Es gibt aber auch die zweite Variante, wo verschiedene Bahnkurven auf den selben Orbit konvergieren, wie im folgenden Beispiel gezeigt wird.
 
 \begin{beispiel} \label{poinbendix:beispiel:fall2_2}
-Das polare Gleichungssystem
+Das Gleichungssystem
 \begin{align*}
     \dot{r}       &= r(b-r^2) \\
     \dot{\varphi} &= -1
 \end{align*}
-kann als Illustration der Hopf-Bifurkation verwendet werden.
+in Polarkoordinaten kann als Illustration der Hopf-Bifurkation verwendet werden.
 Schaut man sich die Ableitung des Radius $r$ genauer an, erkennt man, dass diese bei $b = r^2$ verschwindet.
 Dies ist also eine Nullkline.
 Da die Ableitung zum Winkel $\varphi$ konstant ist, entsteht daher ein stabiler Zyklus mit Radius $\sqrt{b} \forall b > 0$.
@@ -116,15 +122,50 @@ Diese wäre ein weiteres Beispiel für den Fall 1.
 \label{poinbendix:fig:fall_2_2}
 \end{figure}
 
-\subsection{Fall 3: $\omega(p)$ ist ein Geschlossener Orbit welcher Singularitäten verbindet} \label{poinbendix:subsection:fall3}
-%TODO Beschreibung und Beispiel
+Im Abschnitt über die Nullklinen \ref{poinbendix:section:nullklinen} wurde klar, dass sich Bahnkurven nicht kreuzen können.
+Diese Erkenntnis hilft zu verstehen, wie ein periodisches Verhalten wie in den obenstehenden Beispielen entstehen kann.
+
+\subsection{Fall 3: $\omega(p)$ ist ein geschlossener Orbit welcher Singularitäten verbindet} \label{poinbendix:subsection:fall3}
+
+Der dritte Fall ist aus der Definition am schwierigsten zu verstehen.
+Dabei nähern sich Bahnkurven einem geschlossenen Orbit an wie im zweiten Beispiel von Fall 2 \ref{poinbendix:beispiel:fall2_2}.
+Nun gibt es aber die Besonderheit, dass auf diesem Orbit Nullstellen auftreten können.
+Dies führt dazu, dass sich die Bahnkurven zwar immer mehr dem Orbit annähern, aber stoppen sobald er erreicht ist.
+Es ist also unklar, in welcher Nullstelle die Omega Limesmenge zu liegen kommt.
+
+Auch dieser Fall wird wieder anhand eines Beispiels gezeigt.
+
+\begin{beispiel} \label{poinbendix:beispiel:fall3}
+
+Dieses Beispiel basiert auf dem Vorherigen Beispiel \ref{poinbendix:beispiel:fall2_2}.
+Die Ableitung des Radius $\dot{r}$ wird dabei unverändert belassen.
+Aber die Ableitung des Winkels $\dot{\varphi}$ wird angepasst und damit ergibt sich das Differentialgleichungssystem
 \begin{align*}
     \dot{r}       &= r(1-r^2) \\
-    \dot{\varphi} &= -1 + ar(2-r) \sin 3\varphi
+    \dot{\varphi} &= -1 + ar(2-r) \sin 3\varphi.
 \end{align*}
+Die Ableitung des Winkels $\dot{\varphi}$ kann nun durch den Parameter $a$ verändert werden.
+Wenn $a=0$ ist, dann haben wir die unveränderte Situation von Beispiel \ref{poinbendix:beispiel:fall2_2} und erhalten den Einheitskreis als Orbit (ohne Nullstelle!).
+Da auf dem Einheitskreis $r(2-r)=1$ ist, kann die Ableitung zum Winkel noch stärker vereinfacht werden zu
+\begin{equation*}
+    \dot{\varphi} = -1 + a \sin 3\varphi.
+\end{equation*}
+Wenn nun $a<1$ ist, dann wird einfach die Drehgeschwindigkeit verändert und es entstehen immer noch keine Nullstellen.
+Aber wählt man $a=1$, dann entstehen drei Nullstellen bei
+\begin{align*}
+    \sin 3\varphi &= 1 \\
+    3\varphi &= \frac{\pi}{2} + k\pi, k \in \mathbb{Z} \\
+    \varphi &= \frac{\pi}{6} + \frac{k\pi}{3}, k \in \mathbb{Z}.
+\end{align*}
+Ausserhalb des Einheitskreises ist $r(2-r)<1$ und die Differenzialgleichung zum Radius $\dot{r}$ hat keine Nullstelle (ausser dem Nullpunkt).
+Somit drehen die Bahnkurven im Uhrzeigersinn, bis sie sich dem Einheitskreis angenähert haben.
+Abbildung \ref{poinbendix:fig:fall_3} zeigt die Situation, wobei die Nullstellen mit einem \textit{X} dargestellt werden.
 \begin{figure}
 \centering
     \input{papers/poinbendix/images/fall_3_polar.pgf}
-    \caption{TODO} %TODO
-\label{poinbendix:fig:fall_2_2}
+    \caption{Lösungen des Differentialgleichungssystems aus Beispiel \ref{poinbendix:beispiel:fall3}.
+    Der periodischen Orbit als Omega-Limesmenge wird unterbrochen durch drei Nullstellen welche mit einem \textit{X} markiert sind.}
+\label{poinbendix:fig:fall_3}
 \end{figure}
+
+\end{beispiel}
