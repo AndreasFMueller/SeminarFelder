@@ -1,16 +1,16 @@
-\begin{tikzpicture}[>=latex]
+\begin{tikzpicture}[>=latex, thick]
   \draw[step=.5cm,gray,very thin] (-0.25,-0.25) grid (5.25,4.25);
   \coordinate (0) at (0, 0);
   \coordinate (A) at (3, 1);
   \coordinate (B) at (2, 3);
   \coordinate (C) at ($(A) + (B)$);
-  \fill[red!30, opacity=0.7] (0) -- (A) -- (C) -- (B) -- cycle;
+  \fill[darkred!30, opacity=0.7] (0) -- (A) -- (C) -- (B) -- cycle;
 
-  \draw[thick, ->, red] (0) -- (A) node[midway,below] {$\vone$};
-  \draw[thick, ->, blue] (0) -- (B) node[midway,left] {$\vtwo$};
+  \draw[thick, ->, darkred] (0) -- (A) node[midway,below] {$\acolored$};
+  \draw[thick, ->, blue] (0) -- (B) node[midway,left] {$\bcolored$};
   \draw[dashed] (A) -- (C);
   \draw[dashed] (B) -- (C);
   \node (K) at ($0.25*(O)+0.25*(A)+0.25*(B)+0.25*(C)$)
-    {$\vtwo \wedge \vone$};
+    {$\bcolored \wedge \acolored$};
   \draw[thick,->] (K) ++(0.6,0) arc (0:-270:0.6);
 \end{tikzpicture}

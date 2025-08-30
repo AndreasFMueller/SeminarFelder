@@ -1,0 +1,458 @@
+%
+% Iterative Lösung linearer Gleichungssysteme
+%
+\section{Iterative Lösung linearer Gleichungssysteme
+\label{buch:pdenumerik:section:linear}}
+Die grosse Zahl der Variablen, die in diskretisierten Gleichungen auftreten,
+macht den Gauss-Algorithmus ineffizient.
+Ausserdem ist er besonders bei grossen Gleichungssystemen anfällig auf
+Rundungsfehler.
+Die folgenden iterativen Verfahren versuchen, eine ungefähre Lösung
+schrittweise zu verbessern.
+Sofern die Iterationsvorschrift stabil ist, ergibt sich die Unempfindlichkeit
+auf Rundungsfehler automatisch daraus, dass kleine Fehler in späteren
+Schritten ausgeglichen werden.
+Für die nachfolgend skizzierten Verfahren kann man Kriterien angeben,
+unter denen dies der Fall ist.
+
+Im ganzen Abschnitt geht es um die Lösung eines linearen Gleichungssystems
+der Form $Ax=b$ mit einer $n\times n$-Matrix $A\in M_n(\mathbb{R})$ und
+einem $n$-dimensionalen Spaltenvektor $b\in\mathbb{R}^n$.
+Für die nachfolgend diskutierten Verfahren nehmen wir an, dass die
+Diagonalelemente $a_{kk}$ von $A$ alle von $0$ verschieden sind.
+
+%
+% Gauss-Seidel-Verfahren
+%
+\subsection{Gauss-Seidel-Verfahren
+\label{buch:pdenumerik:linear:subsection:gauss-seidel}}
+Das Verfahren von Gauss-Seidel geht davon aus, dass ein einzelne lineare
+\index{Gauss-Seidel-Verfahren}%
+Gleichung immer durch Modifikation einer Variable, deren Koeffizient in
+der Gleichung nicht verschwindet, erfüllt werden kann.
+Sie also
+\begin{equation}
+a_{k1}x_1 + \dots + a_{kk}x_k + \dots + a_{kn}x_n = b_k
+\label{buch:pdenumerik:linear:gauss-seidel:eqn:gl}
+\end{equation}
+die $k$-te Gleichung des Gleichungssystems.
+Wir nehmen ausserdem an, dass $a_{kk}\ne 0$ ist.
+Dann kann man die Gleichung erfüllen, indem man für die Variablen $x_k$
+den Wert
+\begin{equation}
+x_k^{\text{(neu)}}
+=
+\frac{1}{a_{kk}}
+\biggl(
+b_k
+-
+\sum_{i=1}^{k-1}a_{ki}x_i
+-
+\sum_{i=k+1}^na_{ki}x_i
+\biggr)
+\label{buch:pdenumerik:linear:gauss-seidel:eqn:schritt}
+\end{equation}
+wählt, den man durch Auflösen von
+\eqref{buch:pdenumerik:linear:gauss-seidel:eqn:gl}
+nach $x_k$ erhält.
+Damit ist zwar Gleichung $k$ des Gleichungssystems erfüllt, aber über die
+übrigen Gleichungen wissen wir nichts.
+Unter noch zu bestimmenden Bedingungen kann man aber annehmen, dass 
+$x_k^{\text{(neu)}}$ eine bessere Approximation der Lösung darstellt.
+
+Aus dieser Idee lässt sich jetzt ein iteratives Verfahren konstruieren.
+Wir beginnen mit einer initialen Schätzung $x^{(0)}$ der Lösung des
+Gleichungssystems.
+Ziel der Iteration ist, schrittweise bessere Approximationen $x^{(m)}$
+der Lösung zu bestimmen, die gegen die Lösung $x$ konvergieren.
+
+Um aus einer Approximation $x^{(m)}$ die nächste Iteration $x^{(m+1)}$
+zu bestimmen, wenden wir die Lösungsformel der Reihe nach auf alle
+Variablen an.
+Die erste Variable wird ersetzt durch
+\[
+x_1^{(m+1)}
+=
+\frac{1}{a_{11}}
+\biggl(
+b_1
+-
+\sum_{i=2}^n a_{1i}x_i^{(m)}
+\biggr).
+\]
+Für die Bestimmung von $x_2^{(m+1)}$ steht bereits ein neuer,
+hoffentlich verbesserter Wert für $x_1$ zur Verfügung, daher wird
+dieser in der Formel \eqref{buch:pdenumerik:linear:gauss-seidel:eqn:schritt}
+verwendet.
+Der neue Wert für $x_2$ ist daher
+\begin{equation}
+x_2^{(m+1)}
+=
+\frac{1}{a_{22}}
+\biggl(
+b_2 - a_{21}x_1^{(m+1)}
+-
+\sum_{i=3}^n a_{2i}x_i^{(m)}
+\biggr).
+\end{equation}
+In jedem Schritt werden also die bereits neu berechneten Variablen
+verwendet.
+Für die Variable $x_k^{(m+1)}$ bekommen wir daher die allgmeine
+Iterationsformel
+\begin{equation}
+x_k^{(m+1)}
+=
+\frac{1}{a_{kk}}
+\biggl(
+b_k - \sum_{i=1}^{k-1} a_{ki}x_i^{(m+1)} - \sum_{i=k+1}^n a_{ki}x_i^{(m)}
+\biggr).
+\label{buch:pdenumerik:linear:gauss-seidel:iteration}
+\end{equation}
+
+%
+% Jacobi-Verfahren
+%
+\subsection{Jacobi-Verfahren
+\label{buch:pdenumerik:linear:subsection:jacobi}}
+Das Gauss-Seidel-Verfahren verbessert die Variablenwerte der Lösung
+für eine Variable nach der anderen.
+Dies bedeutet auch, dass die Berechnung nicht parallelisiert werden
+kann.
+Um $x_{k+1}^{(m+1)}$ zu berechnen, muss die Berechnung von $x_k^{(m+1)}$
+bereits abgeschlossen sein.
+Das Jaocbi-Verfahren löst dieses Problem, zum Preis einer langsameren
+Konvergenz.
+
+Statt bei der Anwendung der Formel
+\eqref{buch:pdenumerik:linear:gauss-seidel:eqn:schritt}
+die neuen Werte $x_i^{(m+1)}$ mit $i<k$ zu verwenden, verwenden wir
+die bereits bekannten alten Werte $x_i^{(m)}$.
+Als Iterationsformel verwenden wir daher
+\begin{equation}
+x_k^{(m+1)}
+=
+\frac{1}{a_{kk}}
+\biggl(
+b_k
+-
+\sum_{i=1}^{k-1} a_{ki} x_i^{(m)}
+-
+\sum_{i=k+1}^n a_{ki} x_i^{(m)}
+\biggr)
+=
+\frac{1}{a_{kk}}
+\biggl(
+b_k
+-
+\sum_{i\ne k} a_{ki} x_i^{(m)}
+\biggr).
+\end{equation}
+Die rechte Seite kann für alle $k$ parallel ausgewertet werden.
+
+Die Anzahl der Rechenoperationen für einen Schritt des Jacobi-Verfahrens
+ist für eine beliebige Matrix $n$ Multiplikationen und ebensoviele
+Additionen für die Berechnung einer einzelnen Variable.
+Für alle Variablen zusammen ist der Rechenaufwand also $O(n^2)$,
+eine Potenz besser als für den Gauss-Algorithmus.
+
+Matrizen $A$, die aus der Diskretisation einer partiellen
+Differentialgleichung entstehen, enthalten in jeder Zeile nur ganz
+wenige Einträge typischerweise von der Grössenordnung der
+Dimension des Problems, unabhängig von $n$.
+Dies bedeutet, dass der Rechenaufwand für die Neuberechnung
+einer Variable tatsächlich nur von der Grössenordnung $O(1)$ ist
+und damit für einen Schritt des Jacobi-Verfahrens $O(n)$, eine
+wesentliche Verbesserung gegenüber dem gausschen Eliminationsalgorithmus.
+
+%
+% Matrix-Zerlegung
+%
+\subsection{Matrix-Zerlegung
+\label{buch:pdenumerik:linear:subsection:matrix-zerlegung}}
+Sowohl das Gauss-Seidel-Verfahren wie auch das Jacobi-Verfahren können
+in Matrixform geschrieben werden, was erlaubt, für die Analyse der Konvergenz
+des Verfahrens die Matrizenrechnung zu verwenden.
+Das Gauss-Seidel-Verfahren zeigt, dass wir in der Formel
+\eqref{buch:pdenumerik:linear:gauss-seidel:iteration}
+die Matrixelement unterhalb der diagonalen jeweils mit den neuen
+Variablenwerten $x_k^{(m+1)}$ und die Matrixelemente oberhalb der
+Diagonalen mit den alten Weten $x_k^{(m)}$ verrechnet werden.
+Wir zerlegen die Matrix $A$ daher in drei Matrizen:
+\[
+A = L + D + R,
+\]
+wobei $D$ die Diagonalelemente von $A$ umfasst, $L$ besteht aus den
+Einträgen unterhalb der Diagonalen und $R$ aus den Einträgen oberhalb der
+Diagonalen:
+\[
+L
+=
+\begin{pmatrix}
+        0&        0&        0& \dots&        0&     0\\
+   a_{21}&        0&        0& \dots&        0&     0\\
+   a_{31}&   a_{32}&        0& \dots&        0&     0\\[-3pt]
+   \vdots&   \vdots&   \vdots&\ddots&   \vdots&\vdots\\
+a_{n-1,1}&a_{n-1,2}&a_{n-1,3}& \dots&        0&     0\\
+   a_{n1}&   a_{n2}&   a_{n3}& \dots&a_{n,n-1}&     0
+\end{pmatrix},
+R
+=
+\begin{pmatrix}
+     0&a_{12}&a_{13}& \dots&a_{1,n-1}&   a_{1n}\\
+     0&     0&a_{13}& \dots&a_{2,n-1}&   a_{2n}\\
+     0&     0&     0& \dots&a_{3,n-1}&   a_{3n}\\[-3pt]
+\vdots&\vdots&\vdots&\ddots&   \vdots&   \vdots\\
+     0&     0&     0& \dots&        0&a_{n-1,n}\\
+     0&     0&     0& \dots&        0&        0
+\end{pmatrix}
+\]
+und
+\[
+D
+=
+\operatorname{diag}(a_{11},\dots,a_{nn})
+=
+\begin{pmatrix}
+a_{11}&     0& \dots&     0\\
+     0&a_{22}& \dots&     0\\[-3pt]
+\vdots&\vdots&\ddots&\vdots\\
+     0&     0& \dots& a_{nn}
+\end{pmatrix}
+\]
+Mit diesen drei Matrizen kann das Iterationsverfahren jetzt in
+Matrixform geschrieben werden.
+
+%
+% Matrixform de Jacobi-Verfahrens
+%
+\subsubsection{Matrixform des Jacobi-Verfahrens}
+Beim Jacobi-Verfahren werden gemäss
+Formel~\ref{buch:pdelinear:jacobi:eqn:iteration} nur die alten
+Werte verwendet, es gilt also
+\[
+Dx^{(m+1)} = b-(L+R)x^{(m)}
+\qquad\Rightarrow\qquad
+x^{(m+1)} = D^{-1}\bigl(b-(L+R) x^{(m)}).
+\]
+Dies ist die Iterationsformel für das Jacobi-Verfahren in Matrixform.
+
+%
+% Matrixform des Gauss-Seidel-Verfahrens
+%
+\subsubsection{Matrixform des Gauss-Seidel-Verfahrens}
+Beim Gauss-Seidel-Verfahren werden die jeweils neu berechneten
+Variablen verwendet, was durch die Gleichung
+\[
+(L+D)x^{(m+1)} = b-Rx^{(m)}
+\]
+ausgedrückt werden kann.
+Die Iterationsformel des Gauss-Seidel-Verfahrens in Matrixform
+ist daher
+\[
+x^{(m+1)} = (L+D)^{-1}(b - R x^{(m)}).
+\]
+Wegen $L+D=(LD^{-1}+I)D$ kann man $(L+D)^{-1}=D^{-1}(I+LD^{-1})^{-1}$
+schreiben.
+Dies scheint auf den ersten Blick sehr viel komplizierter, aber der
+zweite Faktor kann mit Hilfe der neumannschen Reihe als
+\[
+(I+LD^{-1})^{-1}
+=
+I
+- LD^{-1}
++ (LD^{-1})^2
+- (LD^{-1})^3
++ (LD^{-1})^4
+- \dots
+=
+\sum_{k=1}^\infty (-1)^k(LD^{-1})^k
+\]
+geschrieben werden.
+Wenn $LD^{-1}$ kleine Operatornorm hat, dann konvergiert die Reihe
+sehr rasch gegen die Inverse und der Ausdruck kann verwendet werden,
+um für die nachfolgenden Konvergenzbetrachtungen eine Aussage über die
+Operatornorm der Inversen zu bekommen.
+
+%
+% Konvergenz
+%
+\subsubsection{Konvergenz}
+Für die Lösung des Gleichungssystems $Ax=b$ sind die Iterationsgleichungen
+exakt erfüllt, es gilt also zum Beipsiel
+\[
+x
+=
+(L+D)^{-1}Rx
+\qquad\text{ bzw. }\qquad
+x
+=
+D^{-1}(L+R)x
+\]
+für das Gauss-Seidel- bzw.~das Jacobi-Verfahren.
+Das Iterationsverfahren findet Approximationen von $x$, die wir als
+\(
+x^{(m)} = x + \delta x^{(m)}
+\)
+schreiben können.
+
+Die Iterationsformel für das Jacobi-Verfahren wird damit zu
+\begin{align*}
+Dx^{(m+1)}
+&=
+b-(L+R)x^{(m)}
+\\
+Dx + D\delta x^{(m+1)}
+&=
+b - (L+R)x - (L+R)\delta x^{(m)}
+\intertext{Da $x$ eine Lösung ist, gitl $Dx = b-(L+R)x$, so dass sich
+die Gleichung zu}
+D\delta x^{(m+1)}
+&=
+-(L+R)\delta x^{(m)}
+\end{align*}
+vereinfachen lässt.
+Für den Fehler $\delta x^{(m)}$ gilt daher die einfachere
+Jacobi-Iterationsformel
+\[
+\delta x^{(m+1)} = -D^{-1}(L+R)x^{(m)}.
+\]
+Für die Konvergenz des Verfahrens kommt es also ausschliesslich auf die
+Eigenschaften der Matrix $D^{-1}(L+R)$ an.
+
+Für das Gauss-Seidel-Verfahren liefert die analoge Rechnung
+\begin{align*}
+(L+D)x^{(m+1)}
+&=
+b - Rx^{(m)}
+\\
+(L+D)x + (L+D)\delta x^{(m+1)}
+&=
+b - Rx - R\delta x^{(m)},
+\intertext{worin $(L+D)x=b-Rx$ vereinfacht werden kann, weil $x$ eine
+Lösung ist.
+Es bleibt die vereinfachte Gauss-Seidel-Iterationsformel}
+(L+D)
+\delta x^{(m+1)}
+&=
+-R\delta x^{(m)}
+\\
+\Rightarrow
+\qquad
+\delta x^{(m+1)}
+&=
+-(L+D)^{-1} R x^{(m)}
+\end{align*}
+für den Fehler.
+Wieder können wir schliessen, dass es nur auf Eigenschaften der
+Matrix $(L+D)^{-1}R$ ankommt.
+
+In beiden Fällen haben wir gefunden, dass für den Fehler eine
+Iterationsformel der Form $\delta x^{(m+1)} = C \delta x^{(m)}$
+gilt.
+Das Verfahren konvergiert für einen beliebigen Startwert genau dann,
+wenn $\|C^n\|\to 0$ geht.
+Dies ist der Fall, wenn der \emph{Gelfand-Radius}
+\index{Gelfand-Radius}%
+\[
+\varrho(C)
+=
+\limsup_{n\to\infty} \|C^n\|^{\frac1n}
+<
+1
+\]
+ist.
+Man kann zeigen, dass der Gelfand-Radius mit dem \emph{Spektralradius},
+\index{Spektralradius}%
+als mit dem Betrag des betragsgrössten Eigenwertes von $C$
+übereinstimmt \cite{buch:linalg}.
+
+\begin{satz}
+Das Gauss-Seidel-Verfahren konvergiert genau dann, wenn der Spektralradius
+von $(L+D)^{-1}R$ kleiner ist als $1$.
+Das Jacobi-Verfahren konvergiert genau dann, wenn der Spetralradius von
+$D^{-1}(L+R)$ kleiner ist als $1$.
+\end{satz}
+
+Die Bedingungen ist zum Beispiel dann erfüllt, wenn die Einträge auf
+der Diagonalen viel grösser sind als die übrigen Einträge, die man in
+$L$ und $R$ findet.
+
+Aus dem Spektralradius kann man auch eine untere Schranke für die nötige
+Anzahl der Iterationsschritte ableiten.
+Wir nehmen dazu an, dass der Fehler zu Beginn die Grössenordnung
+$\|\delta x^{(0)}\|=1$ hat
+und durch die Iteration auf $\varepsilon$ verkleiner werden soll.
+Die dazu nötige Anzahl Iterationen wird mit $m$ bezeichnet.
+Der Fehler nach $m$ Iterationen ist
+\[
+\|\delta x^{(m)}\|
+=
+\| C^n \delta x^{(0)} \|
+\le
+\|C\|^m \|\delta x^{(0)}\|
+=
+\|C\|^m
+\approx
+\varrho(C)^m.
+\]
+Damit der Fehler kleiner $\varepsilon$ wird, muss $m$ so gross werden, dass
+\begin{equation}
+\varrho(C)^m < \varepsilon
+\qquad\Rightarrow\qquad
+m\log\varrho(C) < \log\varepsilon
+\qquad\Rightarrow\qquad
+m < \frac{\log\varepsilon}{\log\varrho(C)}.
+\label{buch:pdenumerik:linear:konvergenzschritte}
+\end{equation}
+
+\begin{beispiel}
+Für die Differentialgleichung $y''=0$ mit $n$ äquidistanten Punkten
+führt auf die Matrix
+\[
+A
+=
+\begin{pmatrix}
+    -4&     1&     0&     0& \dots &      0\\
+     1&    -4&     1&     0& \dots &      0\\
+     0&     1&    -4&     1& \dots &      0\\
+     0&     0&     1&    -4& \dots &      0\\[-4pt]
+\vdots&\vdots&\vdots&\vdots& \ddots& \vdots\\
+     0&     0&     0&     0& \dots &     -4
+\end{pmatrix}.
+\]
+Für die Konvergenz der beiden Iterationsverfahren sind die
+Spektralradien der
+von $C_{\text{Gauss-Seidel}}=(L+D)^{-1}R$ für das Gauss-Seidel-Verfahren
+und
+von $C_{\text{Jacobi}}=D^{-1}(L+R)$ für das Jacobi-Verfahren
+bestimmen.
+Die numerische Rechnung im Fall $n=2$ ergibt
+\begin{align*}
+\varrho(C_{\text{Gauss-Seidel}})
+&\approx
+0.9206
+&&\text{bzw.}
+&
+\varrho(C_{\text{Jacobi}})
+&\approx
+0.9595.
+\end{align*}
+Beide Verfahren konvergieren also, auch wenn die Konvergenz nicht sehr schnell
+ist.
+Mit der Formel~\eqref{buch:pdenumerik:linear:konvergenzschritte}
+kann auch die Anzahl Schritte für eine Verbesserung des Fehlers um den
+Faktor $\varepsilon = 10^{-6}$ berechnet werden:
+\begin{align*}
+m_{\text{Gauss-Seidel}}
+&=
+167.05
+&&\text{bzw.}&
+m_{\text{Jacobi}}
+&=
+334.11.
+\end{align*}
+Die Anzahl der nötigen Iterationen für Konvergenz ist also sehr hoch.
+\end{beispiel}
+
+
+

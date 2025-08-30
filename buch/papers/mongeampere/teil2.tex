@@ -6,38 +6,92 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 2 
+\section{Vorgeschriebene gausssche Krümmung
 \label{mongeampere:section:teil2}}
 \kopfrechts{Teil 2}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
-
-\subsection{De finibus bonorum et malorum
-\label{mongeampere:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
-
+Mit der Definition der gausschen Krümmung können wir nun eine Differentialgleichung aufstellen,
+welche als Lösung eine Fläche mit einer gewünschten gausschen Krümmung hat.
+Dafür nehmen wir die explizite Form einer Fläche $z = f(x,y)$.
+Die Variablen sind nun nicht mehr $u, v$ sondern $x, y$.
+Nun brauchen wir die Koeffizienten der Fundamentalformen, welche mit dem Radiusvektor $\vec r$ und seinen Ableitungen 
+beschrieben werden können
+\begin{equation*}
+\begin{aligned}
+  \vec r &= \begin{pmatrix}
+   x \\
+   y \\
+   f(x, y)
+ \end{pmatrix} \\
+    \vec r_x &= \begin{pmatrix}
+      1 \\
+      0 \\
+      \frac{\partial f}{\partial x}
+    \end{pmatrix},
+      \quad &
+    \vec r_y &= \begin{pmatrix}
+      0 \\
+      1 \\
+      \frac{\partial f}{\partial y}
+    \end{pmatrix}\\
+      \vec r_{xx} &= \begin{pmatrix}
+      0 \\
+      0 \\
+      \frac{\partial^2 f}{\partial x^2}
+    \end{pmatrix},
+    \quad &
+    \vec r_{xy} &= \begin{pmatrix}
+      0 \\
+      0 \\
+      \frac{\partial^2 f}{\partial x \, \partial y}
+    \end{pmatrix},
+      \quad &
+    \vec r_{yy} &= \begin{pmatrix}
+      0 \\
+      0 \\
+      \frac{\partial^2 f}{\partial y^2}
+    \end{pmatrix}
+\end{aligned}
+\end{equation*}
+Damit sind die Koeffizienten der ersten Fundamentalform 
+\begin{equation}
+  E = 1 + \left(\frac{\partial f}{\partial x}\right)^2, \quad
+  F = \frac{\partial f}{\partial x} \cdot \frac{\partial f}{\partial y}, \quad
+  G = 1 + \left(\frac{\partial f}{\partial y}\right)^2
+  \label{mongeampere:fund1exp}
+\end{equation}
+Für die zweite Fundamentalform wird die Flächennormale benötigt, welche aus \eqref{mongeampere:norm} und \eqref{mongeampere:ds} 
+\begin{equation}
+  \vec m = \frac{\vec r_x \times \vec r_y}{\sqrt{EG-F^2}} = \begin{pmatrix}
+    \frac{\partial f}{\partial x} \\
+    \frac{\partial f}{\partial y} \\
+    1
+  \end{pmatrix}
+  \frac{1}{\sqrt{EG-F^2}}
+  \label{mongeampere:norm2}
+\end{equation}
+ist.
+Somit sind die Koeffizienten der zweiten Fundamentalform
+\begin{equation}
+  L = \frac{\displaystyle\frac{\partial^2 f}{\partial x^2}}{\sqrt{EG-F}}, \quad
+  M = \frac{\displaystyle\frac{\partial^2 f}{\partial x \, \partial y}}{\sqrt{EG-F}}, \quad
+  N = \frac{\displaystyle\frac{\partial^2 f}{\partial y^2}}{\sqrt{EG-F}}.
+  \label{mongeampere:2fund22}
+\end{equation}
+Setzen wir die Koeffizienten aus \eqref{mongeampere:fund1exp} und \eqref{mongeampere:2fund22} in die Formel der gausschen Krümmung \eqref{mongeampere:gausskrumm}
+ein, erhalten wir
+\begin{equation}
+  K = \frac{
+    \displaystyle\frac{\partial^2 f}{\partial x^2} \cdot \displaystyle\frac{\partial^2 f}{\partial y^2} - \left(\displaystyle\frac{\partial^2 f}{\partial x \, \partial y} \right)^2}
+    {\left[1 + 
+    \left(\displaystyle\frac{\partial f}{\partial x}\right)^2 +
+    \left(\displaystyle\frac{\partial f}{\partial y}\right)^2\right]^2}
+\qquad\Rightarrow\qquad
+    \det D^2 f = K \left[ 1 + 
+    \left(\nabla f\right)^2\right]^2.
+    \label{mongeampere:pd}
+\end{equation}
+Wie wir sehen können, ist der Zähler gleich der Determinante der hesseschen Matrix von $f(x,y)$.
+Der Nenner ist eine nichtlineare Funktion der ersten Ableitungen.
+Somit konnten wir zeigen, dass das Prescribed Gaussian Curvature Problem einer explizit definierten Fläche in einer 
+monge-ampèreschen Gleichung resultiert.
 

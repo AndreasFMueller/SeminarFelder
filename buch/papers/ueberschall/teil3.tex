@@ -10,7 +10,8 @@
 \kopfrechts{Luftwiderstand}
 Der Luftwiderstand im Unterschall- und im Überschallbereich 
 beruht auf unterschiedlichen physikalischen Mechanismen.
-Die Luftwiderstandskraft~\cite{StroemwiderWikiDE} eines Körpers 
+\index{Luftwiderstand}%
+Die Luftwiderstandskraft $F_W$~\cite{StroemwiderWikiDE} eines Körpers 
 berechnet sich zu
 \begin{align*}
     F_W
@@ -21,18 +22,20 @@ Bezugsfläche und $\tfrac{1}{2}\rho V^2$ den bereits bekannten dynamischen Druck
 präziser den Staudruck, bezeichnet.
 Im Unterschall entsteht der Widerstand hauptsächlich durch die Druckverteilung 
 infolge der Umströmung des Körpers. 
-Im Überschall hingegen dominiert der sogenannte Wellenwiderstand, 
+Im Überschall hingegen dominiert der sogenannte \emph{Wellenwiderstand}, 
+\index{Wellenwiderstand}%
 dessen Berechnung vergleichsweise einfach ist.
 In beiden Fällen käme auch der Reibungswiderstand noch hinzu,
-aber der wird hier vernachlässigt, weil er keine zentrale Rolle spielt.
+aber der ist hier vernachlässigbar.
 
 Der Wellenwiderstand entsteht beim Durchbrechen 
 der Schallmauer, wobei ein Teil der Bewegungsenergie 
-des Körpers in die Ausbildung von Schockwellen übergeht.
-Je nach Form des Objekts kann dieser Anteil deutlich 
-geringer sein als der Widerstand im Unterschallbereich.
-Ein sichtbares Ergebnis sind die Schockwellen auch machschen Kegel genannt.
-An den Schattenbildern der zuvor diskutierten Projektile 
+des Körpers in die Ausbildung von sichtbaren Schockwellen übergeht,
+auch bezeichnet als \emph{machsche Kegel}.
+\index{machscher Kegel}%
+\index{Kegel, machscher}%
+An den Schlierenbildern der zuvor diskutierten Projektile 
+\index{Projektil}%
 erkennt man deutlich,
 wie sich Schockwellen an der Spitze und am Heck 
 in kegelförmiger Strukturen ausbilden.
@@ -55,7 +58,7 @@ in kegelförmiger Strukturen ausbilden.
         \includegraphics[width=\linewidth]{papers/ueberschall/figures/2.66_mach_projektil.jpg}
         \caption*{$2.66\,\mathrm{Mach}$}
     \end{minipage}
-    \caption{Schattenbild von .50 Kaliber M33-Projektile für unterschiedliche Geschwindigkeiten~\cite{Mittelkaliber2020}.}
+    \caption{Schlierenbild von .50 Kaliber M33-Projektile für unterschiedliche Geschwindigkeiten~\cite{Mittelkaliber2020}.}
 ~\label{fig:machsche_kegel_projektil}
 \end{figure}
 Man erkennt bereits am ganz links dargestellten Projektil, 
@@ -77,7 +80,8 @@ wie in Abbildung~\ref{fig:luftwiderstand} qualitativ dargestellt.
 \end{figure}
 Dabei wird schnell ersichtlich, dass diese theoretische 
 Betrachtung nicht ganz der Wahrheit entspricht.
-Insbesondere im transsonischen Bereich, welcher rot gefärbt ist.
+Insbesondere um den \emph{transsonischen Bereich} herum, welcher rot gefärbt ist.
+\index{transsonisch}%
 Gemäss den zugrunde liegenden Formeln müsste eine 
 unendliche Kraft aufgebracht werden, 
 um die Schallgeschwindigkeit zu erreichen — ein Widerspruch zur Tatsache, 
@@ -100,12 +104,12 @@ jedoch mit $1/M$ abnimmt.
 Zur Veranschaulichung dieses Effekts wird nun ein reales Beispiel 
 mit empirisch ermittelten Daten herangezogen:
 Ein Projektil des Typs $.50\,\text{BMG}$ M33.
-Abbildung~\ref{fig:luftwiderstand_50-M33} zeigt den Verlauf
+Abbildung~\ref{fig:luftwiderstand_50-M33}(b) zeigt den Verlauf
 des Luftwiderstands über der Mach-Zahl.
 Dabei ist deutlich zu erkennen, dass der Luftwiderstand 
 im Übergang von Unterschall zu Überschall 
 deutlich ansteigt und nach dem Überschreiten der 
-Schallgeschwindigkeit bei etwa $1{,}2\,\text{Mach}$ 
+Schallgeschwindigkeit bei etwa $1.2\,\text{Mach}$ 
 wieder abnimmt.
 Die Vorgänge im transsonischen Bereich sind bis heute 
 nicht vollständig geklärt.
@@ -114,13 +118,13 @@ nicht vollständig geklärt.
     \begin{minipage}[t]{0.4\textwidth}
         \centering
         \includegraphics[width=\linewidth]{papers/ueberschall/figures/50-cal_projectile.jpg}
-        \caption*{$.50\,\text{BMG}$ M33-Projektil~\cite{ArmoryFarm50BMG}.}
+        \caption*{(a) $.50\,\text{BMG}$ M33-Projektil~\cite{ArmoryFarm50BMG}.}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.55\textwidth}
         \centering
         \includegraphics[width=\linewidth]{papers/ueberschall/figures/50-M33 Geschoss.jpg}
-        \caption*{Luftwiderstandskoeffizient $c_W$ als Funktion der Machzahl~\cite{Mittelkaliber2020}.}
+        \caption*{(b) Luftwiderstandskoeffizient $c_W$ als Funktion der Machzahl~\cite{Mittelkaliber2020}.}
     \end{minipage}
     \caption{Projektil und Luftwiderstandskurve.}
     ~\label{fig:luftwiderstand_50-M33}
@@ -134,36 +138,40 @@ transsonischen als auch im Überschallbereich optimal ist,
 erweist sich aufgrund der unterschiedlichen 
 Strömungsmechaniken als kaum möglich.
 Daher beschränken wir uns im Folgenden auf den einfachsten Fall.
-Der Sears-Haack-Körper, illustriert in Abbildung~\ref{fig:sears_haack}, 
+Der Sears-Haack-Körper, illustriert in Abbildung~\ref{fig:sears_haack}(a), 
+\index{Sears-Haack-Körper}%
 besitzt den theoretisch geringsten Wellenwiderstand. 
-Im Bereich von etwa $1{,}5$ bis $3\,\mathrm{Mach}$ 
+Im Bereich von etwa $1.5$ bis $3\,\mathrm{Mach}$ 
 stellt er die strömungsgünstigste Form dar. 
 Wolfgang Haack bestimmte diese Form mithilfe eines 
+\index{Haack, Wolfgang}%
 Variationsprinzips und legte die ausführliche Herleitung 
 in~\cite{Haack1941} vor.
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\textwidth]{papers/ueberschall/figures/Sears-Haack.png}
-    \caption{Der Sears-Haack-Körper~\cite{SearsHaackWikipedia}.}
-    \label{fig:sears_haack}
+    \begin{minipage}[t]{0.48\textwidth}
+       \centering
+        \includegraphics[height=4.5cm]{papers/ueberschall/figures/Sears-Haack.png}
+        \caption*{(a) Sears-Haack-Körper~\cite{SearsHaackWikipedia}}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[height=8cm]{papers/ueberschall/figures/hermes-a3a.jpg}
+        \caption*{(b) Hermes A-3A~\cite{WeebauHermesA3A}}
+    \end{minipage}
+    \caption{Körper mit minimalem Luftwiderstand und die Anwendung in der Luftfahrt.}
+    ~\label{fig:sears_haack}
 \end{figure}
-
 Haacks ursprüngliches Ziel war die Optimierung von Scharfschützengewehren. 
+\index{Scharfschützengewehr}%
 Praktische Gründe führten jedoch dazu, dass diese 
 Form nicht verwendet wurde. 
 Stattdessen erfolgte die Optimierung der Projektile 
-durch einen Heckkonus, wie in Abbildung~\ref{fig:luftwiderstand_50-M33} ersichtlich.
+durch einen Heckkonus, wie in Abbildung~\ref{fig:luftwiderstand_50-M33}(a) ersichtlich.
 Nichtsdestotrotz hat der Sears-Haack-Körper aufgrund 
 seiner strömungsoptimierten Form eine große Bedeutung 
 für die Gestaltung von Flugkörpern und Raketen
 im Überschallbereich erlangt.
-Ein gutes Beispiel dafür ist die Hermes A-3A 
-in Abbildung~\ref{fig:hermes}.
-\begin{figure}
-    \centering
-    \includegraphics[height=\textwidth, angle=90]{papers/ueberschall/figures/hermes-a3a.jpg}
-    \caption{Hermes A-3A~\cite{WeebauHermesA3A}.}
-    \label{fig:hermes}
-\end{figure}
-
-
+Ein gutes Beispiel dafür ist die Hermes A-3A, siehe Abbildung~\ref{fig:sears_haack}(b).
+\index{Hermes A-3A}%

@@ -8,6 +8,10 @@
 %
 \section{Grundbegriffe der Baustatik und Mechanik}
 \label{elastomechanik:section:teil1}
+In diesem Abschnitt werden die zentralen Begriffe und Gesetzmässigkeiten der Elastizitätstheorie in kompakter Form zusammengetragen. 
+Dabei wird bewusst auf eine systematische Herleitung verzichtet, da angenommen wird, dass der Leser mit vielen der verwendeten Begriffe bereits vertraut ist.
+Eine vertiefte Behandlung und Illustration erfolgt in späteren Abschnitten, beispielsweise im Rahmen der Herleitung der Feldgleichungen.
+
 \subsection{Begriffe}
 \begin{description}
 \item[\textbf{Druckkräfte:}] Druckkräfte sind Kräfte, die senkrecht auf die Oberfläche eines Körpers wirken und dabei eine Kompression bzw. Zusammenstauchung des Körpers verursachen. 
@@ -25,9 +29,9 @@ Der Elastizitätsmodul wird definiert als:
 		E=
 		\frac{\sigma}{\varepsilon},
 	\end{equation}
-	$\sigma$ = Spannung
+	$\sigma$ = Spannung,
 	
-	$\varepsilon$ = Dehnung
+	$\varepsilon$ = Dehnung, siehe auch (15.1)
 	
 \item[\textbf{Isotropie:}] Isotropie beschreibt eine Materialeigenschaft, bei der die mechanischen Eigenschaften in allen Raumrichtungen identisch sind. 
 Ein isotropes Material reagiert auf Belastungen unabhängig von der Belastungsrichtung stets gleich.
@@ -39,7 +43,7 @@ Sie sind die Grundlage für die geometrische Beschreibung der Deformation in der
 Für kleine Verformungen gilt \cite{elastomechanik:Technische_Mechanik_2:Elastostatik}:
 	\begin{equation}
 		\varepsilon_{ij} = 
-		\frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)
+		\frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right).
 	\end{equation}
 Dabei ist:
 	
@@ -48,6 +52,17 @@ Dabei ist:
 	$x_j$ = Raumkoordinate in Richtung $j$
 	
 Diese Gleichungen stellen sicher, dass die Verzerrungen aus einem stetigen Verschiebungsfeld berechnet werden können.
+
+\item[\textbf{Lamé-Konstanten ($\lambda{,\mu}$):}] Die Lamé-Konstanten werden die Konstanten $\lambda$ und $\mu$ bezeichnet. 
+Die sind zwei materialabhängige Parameter, die das mechanische Verhalten eines isotropen elastischen Materials vollständig beschreiben.
+Die Lamé-Konstante ($\lambda$) lässt sich aus dem Elastizitätsmodul und der Poisson-Zahl wie folgt berechnen \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
+\begin{equation}
+	\lambda = 
+	\frac{E \cdot \nu}{(1 + \nu)(1 - 2\nu)}
+\end{equation}
+$\mu$ = Schubmodul
+
+$\lambda$ = steht in Verbindung mit der Volumenverformung
 	
 \item[\textbf{Normalkraft ($N$):}] Die Normalkraft ist eine Kraft, die senkrecht (normal) zur Querschnittsfläche eines Körpers oder Bauteils wirkt. 
 Sie entsteht durch Zug oder Druck entlang der Längsachse des Körpers und ist eine der wichtigsten Grundkräfte in der technischen Mechanik und Statik.
@@ -67,7 +82,7 @@ Sie ist definiert als
 	
 \item[\textbf{Schubmodul ($\mu$) oder ($G$):}] Der Schubmodul ist eine mechanische Materialkonstante, die beschreibt, wie steif ein Material gegenüber Scherkräften ist.
 Scherkräfte (auch Schubkräfte) sind Kräfte, die parallel zur Fläche eines Körpers wirken. 
-Bei isotropen Materialien wird es folgend berechnet:
+Bei isotropen Materialien wird er folgend berechnet:
 	\begin{equation}
 		\mu = 
 		\frac{E}{2(1 + \nu)} =
@@ -92,6 +107,47 @@ Da der Spannungstensor für reine Elastizität symmetrisch ist, gilt:
 		\sigma_{ij} = 
 		\sigma_{ji}.
 	\end{equation}
+	
+\item[\textbf{Verschiebung ($u_i$):}] Die Verschiebung beschreibt die Ortsänderung eines Punktes im Körper infolge einer Belastung.
+
+Sei $\vec{x} = (x_1, x_2, x_3)$ der ursprüngliche Ort eines Materialpunktes im unbelasteten Zustand und $\vec{x}' = (x_1', x_2', x_3')$ der Ort desselben Punktes im belasteten Zustand.  
+Die \emph{Verschiebungsvektorkomponenten} $u_i$ ergeben sich aus:
+\begin{equation}
+	u_i(\vec{x}) = x_i' - x_i,
+	\quad i = 1,2,3.
+\end{equation}
+
+In kartesischen Koordinaten gilt damit:
+\[
+\vec{u}(\vec{x}) =
+\begin{bmatrix}
+	u_1(\vec{x}) \\
+	u_2(\vec{x}) \\
+	u_3(\vec{x})
+\end{bmatrix}
+=
+\begin{bmatrix}
+	u(\vec{x}) \\
+	v(\vec{x}) \\
+	w(\vec{x})
+\end{bmatrix}
+\]
+wobei $u, v, w$ die Verschiebungskomponenten in den Richtungen $x, y, z$ darstellen.
+
+Die Verschiebung bildet die Grundlage zur Definition der Verzerrung. 
+Aus den partiellen Ableitungen der Verschiebungskomponenten werden im nächsten Abschnitt die Verzerrungskomponenten $\varepsilon_{ij}$ bestimmt:
+
+\begin{equation}
+	\varepsilon_{ij} = \frac{1}{2}
+	\left(
+	\frac{\partial u_i}{\partial x_j}
+	+
+	\frac{\partial u_j}{\partial x_i}
+	\right).
+\end{equation}
+
+Hierbei sind $i,j \in \{1,2,3\}$ und es gilt die \emph{Einstein’sche Summationskonvention}.
+
 \item[\textbf{Verzerrung ($\varepsilon$):}] Die Verzerrung (auch Dehnung genannt) beschreibt die relative Änderung der Form oder Länge eines Körpers infolge einer äusseren Belastung. 
 Sie ist ein massloser Wert, da sie ein Verhältnis zweier Längen ist.
 Die Normalverrung wird berechnet mit
@@ -150,11 +206,11 @@ her, wobei $E$ der Elastizitätsmodul des Materials ist \cite{elastomechanik:Kon
 		\varepsilon_{kk} =
 		\varepsilon_{11} + \varepsilon_{22} + \varepsilon_{33},
 	\end{equation}
-	das ist die Volumendehnung \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}.
+	dies ist die Volumendehnung \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}.
 	
 	$\delta_{ij}$ = Kronecker-Delta 
 	
-	$\lambda_{,\mu}$ = Lamé-Konstanten
+	$\lambda{,\mu}$ = Lamé-Konstanten
 	
 \item[\textbf{Isotropes Verhalten:}] Wird durch zwei Konstanten ($E$, $u$) beschrieben. 
 Gilt für viele Metalle wie Stahl näherungsweise.
@@ -163,17 +219,6 @@ Gilt für viele Metalle wie Stahl näherungsweise.
 Wird durch einen allgemeinen Elastizitätstensor vierter Stufe $C_{ijkl}$ beschrieben.
 	
 Für unsere Arbeit wird die Herleitung des anisotropen Materialverhaltens nicht thematisiert, da sie den Rahmen dieser Seminararbeit sprengen würde.
-	
-\item[\textbf{Lamé-Konstanten ($\lambda_{,\mu}$):}] Die Lamé-Konstanten werden die Konstanten $\lambda$ und $\mu$ bezeichnet. 
-Die sind zwei materialabhängige Parameter, die das mechanische Verhalten eines isotropen elastischen Materials vollständig beschreiben.
-Die Lamé-Konstante ($\lambda$) lässt sich aus dem Elastizitätsmodul und der Poisson-Zahl wie folgt berechnen \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
-	\begin{equation}
-		\lambda = 
-		\frac{E \cdot \nu}{(1 + \nu)(1 - 2\nu)}
-	\end{equation}
-	$\mu$ = Schubmodul
-	
-	$\lambda$ = steht in Verbindung mit der Volumenverformung
 	
 \item[\textbf{Materialverhaltenseigenschaften:}] Für ideal elastisches Verhalten gilt:
 	\begin{enumerate}
@@ -191,13 +236,14 @@ Die Lamé-Konstante ($\lambda$) lässt sich aus dem Elastizitätsmodul und der P
 		\frac{1+\nu}{E} \cdot \sigma_{ij} - \frac{\nu}{E} \cdot \sigma_{kk} \cdot \delta_{ij}
 	\end{equation}
 wobei die Verzerrung aus der direkten Spannung und der Spur des Spannungstensors unter Berücksichtigung des Elastizitätsmoduls und der Poisson-Zahl berechnet wird \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}.
-\end{description}
 
-\subsection{Anisotropes Materialverhalten}
-Bei anisotropen Materialien hängen die mechanischen Eigenschaften von der Richtung ab. Solche Materialien können nicht mehr durch zwei Konstanten beschrieben werden, sondern benötigen einen allgemeinen Elastizitätstensor vierter Stufe $C_{ijkl}$:
+\item[\textbf{Anisotropes Materialverhalten:}] Bei anisotropen Materialien hängen die mechanischen Eigenschaften von der Richtung ab. 
+Solche Materialien können nicht mehr durch zwei Konstanten beschrieben werden, sondern benötigen einen allgemeinen Elastizitätstensor vierter Stufe $C_{ijkl}$:
 \begin{equation}
 	\sigma_{ij} = C_{ijkl} \varepsilon_{kl}
 \end{equation}
-Die Anzahl der unabhängigen Komponenten hängt von der Symmetrie ab (bis zu 81 bei vollanisotropem Verhalten). Ein Beispiel ist Holz, dessen Steifigkeit stark von der Faserrichtung abhängt.
+Die Anzahl der unabhängigen Komponenten hängt von der Symmetrie ab (bis zu 81 bei vollanisotropem Verhalten). 
+Ein Beispiel ist Holz, dessen Steifigkeit stark von der Faserrichtung abhängt.
 
 Für unsere Arbeit wird die Herleitung des anisotropen Verhaltens nicht weiter behandelt, da dies den Rahmen der Seminararbeit sprengen würde.
+\end{description}

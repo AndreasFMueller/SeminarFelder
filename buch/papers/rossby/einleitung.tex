@@ -1,15 +1,30 @@
 
 
 Schon im frühen 20. Jahrhundert begannen Meteorolog:innen zu erkennen, dass grossräumige Strömungen in der Atmosphäre nicht nur durch Temperaturunterschiede, sondern auch durch die Erdrotation beeinflusst werden \cite{rossby:https://doi.org/10.1002/wcc.95}.
+\index{Erdrotation}%
 Eine Schlüsselfigur in diesem Zusammenhang war Carl-Gustaf Rossby, ein schwedisch-amerikanischer Meteorologe.
-In seiner Arbeit von 1939 untersuchte er den Zusammenhang zwischen der Intensität der zonalen Zirkulation und der Verschiebung der sogenannten permanenten Aktionszentren in der Atmosphäre \cite{rossby:rossby:1939relation}.
+\index{Rossby, Carl-Gustaf}%
+In seiner Arbeit von 1939 untersuchte er den Zusammenhang zwischen der Intensität der zonalen Zirkulation und der Verschiebung der sogenannten permanenten Aktionszentren in der Atmosphäre \cite{rossby:1939relation}.
+\index{Zirkulation}%
+\index{Aktionszentren, permanente}%
 Ein Jahr später veröffentlichte er seine grundlegende Theorie der planetaren Wellenmuster in der Atmosphäre, die heute als \emph{Rossby-Wellen} bekannt sind \cite{rossby:1940planetary}.
+\index{planetare Wellen}%
+\index{Rossby-Wellen}%
 Diese Wellen sind heute ein zentrales Konzept in der Dynamik der Atmosphäre und tragen wesentlich zum Verständnis des Wetters in den mittleren Breiten bei.
+\index{Dynamik}%
 
 Rossby erkannte, dass die scheinbaren Kräfte, die durch die Rotation der Erde entstehen, insbesondere der \emph{Coriolis-Effekt}, eine wellenartige Bewegung grossräumiger atmosphärischer Strömungen erzeugen können.
+\index{Coriolis-Effekt}%
 Diese wellenförmigen Muster bewegen sich typischerweise von West nach Ost und beeinflussen massgeblich Hoch- und Tiefdrucksysteme sowie den Verlauf von Wetterfronten über Tage hinweg.
+\index{Hochdrucksystem}%
+\index{Tiefdrucksystem}%
+\index{Wetterfront}%
 
 Die Untersuchung dieser Prozesse erfordert ein Verständnis physikalischer Konzepte wie der \emph{Vorticity} (Wirbelstärke), der \emph{absoluten} und \emph{potenziellen Vorticity} sowie deren Erhaltung unter bestimmten Bedingungen.
+\index{Vorticity}%
+\index{Wirbelstärke}%
+\index{Vorticity!absolut}%
+\index{Vorticity!potenziell}%
 Diese Begriffe ermöglichen es, die Bewegung von Luftpaketen auf einem rotierenden Planeten mathematisch zu beschreiben und zu erklären, warum Rossby-Wellen entstehen und wie sie sich ausbreiten.
 
 Ziel dieser Arbeit ist es, die Grundlagen der atmosphärischen Dynamik zu skizzieren, die zur Entstehung von Rossby-Wellen führen.
@@ -18,24 +33,34 @@ Die Erhaltung dieser Grösse stellt den Ausgangspunkt für die mathematische Her
 Abschliessend wird ihre Rolle in typischen Wetterphänomenen beleuchtet.
 
 
-\subsection{Visuelle Einführung: Rossby-Wellen im Wettergeschehen}
+\subsection{Rossby-Wellen im Wettergeschehen}
 
 Zur Einführung betrachten wir zunächst ein einzelnes Kartenbeispiel
 (Abbildung~\ref{fig:rossby_atlantic_single}), das als Referenz für die Interpretation der
 folgenden Abbildungen dient.
 Die Darstellung basiert auf ERA5-Reanalysedaten des ECMWF (abgerufen über die CDS~API)
+\index{ERA5}%
+\index{ECMWF}%
 und zeigt die atmosphärische Situation am 1.\ Mai~2025 um 00:00~UTC auf dem Druckniveau
 von 500\,hPa, das sich in der oberen Troposphäre im Bereich des Jetstreams befindet.
+\index{Troposphäre}%
 
 
 Die Karte nutzt eine Lambert-Conformal-Kartenprojektion mit Mittelmeridian \(-30^\circ\), zentriert auf den Atlantischen Ozean.
+\index{Lambert-Conformal}%
 Der dargestellte Ausschnitt reicht von Nordamerika über den Atlantik bis nach Europa (\(-90^\circ\) bis \(30^\circ\) Länge, \(20^\circ\) bis \(75^\circ\) Breite).
+\index{Nordamerika}%
+\index{Atlantik}%
+\index{Europa}%
+\index{Afrika}%
 
 Inhaltlich zeigt die Karte:
 \begin{itemize}
-	\item \textbf{Geopotentielle Höhenlinien} (in Metern, schwarze Linien): verbinden Punkte gleichen Druckniveaus, geben Auskunft über die grossräumige Druck- und Temperaturverteilung.
-	\item \textbf{Farbflächen}: Windgeschwindigkeit in m/s.
-	\item \textbf{Pfeile}: Windvektoren, deren Richtung und Länge Strömungsrichtung und -geschwindigkeit wiedergeben.
+	\item \emph{Geopotentielle Höhenlinien} (in Metern, schwarze Linien): verbinden Punkte gleichen Druckniveaus, geben Auskunft über die grossräumige Druck- und Temperaturverteilung.
+\index{geopotentielle Höhe}%
+	\item \emph{Farbflächen}: Windgeschwindigkeit in m/s.
+\index{Windgeschwindigkeit}%
+	\item \emph{Pfeile}: Windvektoren, deren Richtung und Länge Strömungsrichtung und -ge\-schwin\-dig\-keit wiedergeben.
 \end{itemize}
 
 Das wellenförmige Muster der Höhenlinien und Windfelder ist charakteristisch für Rossby-Wellen, die sich von West nach Ost ausbreiten und mit Hoch- und Tiefdrucksystemen verknüpft sind.
@@ -57,18 +82,7 @@ wellenförmige Verlagerung und Verstärkung der Systeme deutlich erkennbar wird.
 
 \begin{figure}
 	\centering
-	\renewcommand{\arraystretch}{0.5}
-	\begin{tabular}{ccc}
-		\includegraphics[width=0.32\textwidth, trim=3.1cm 3cm 3cm 0.8cm, clip]{papers/rossby/images/data_2025_5_1_00_00_500.jpg} &
-		\includegraphics[width=0.32\textwidth, trim=3.1cm 3cm 3cm 0.8cm, clip]{papers/rossby/images/data_2025_5_1_12_00_500.jpg} &
-		\includegraphics[width=0.32\textwidth, trim=3.1cm 3cm 3cm 0.8cm, clip]{papers/rossby/images/data_2025_5_2_00_00_500.jpg}   \\
-		\includegraphics[width=0.32\textwidth, trim=3.1cm 3cm 3cm 0.8cm, clip]{papers/rossby/images/data_2025_5_2_12_00_500.jpg} &
-		\includegraphics[width=0.32\textwidth, trim=3.1cm 3cm 3cm 0.8cm, clip]{papers/rossby/images/data_2025_5_3_00_00_500.jpg} &
-		\includegraphics[width=0.32\textwidth, trim=3.1cm 3cm 3cm 0.8cm, clip]{papers/rossby/images/data_2025_5_3_12_00_500.jpg}   \\
-		\includegraphics[width=0.32\textwidth, trim=3.1cm 3cm 3cm 0.8cm, clip]{papers/rossby/images/data_2025_5_4_00_00_500.jpg} &
-		\includegraphics[width=0.32\textwidth, trim=3.1cm 3cm 3cm 0.8cm, clip]{papers/rossby/images/data_2025_5_4_12_00_500.jpg} &
-		\includegraphics[width=0.32\textwidth, trim=3.1cm 3cm 3cm 0.8cm, clip]{papers/rossby/images/data_2025_5_5_00_00_500.jpg}   \\
-	\end{tabular}
+	\includegraphics[width=\textwidth]{papers/rossby/images/rossby_2025.pdf}
 	\caption{Abfolge der Rossby-Wellenstruktur in 500\,hPa Höhe vom 1.\ bis 5.\ Mai 2025 in 12-Stunden-Schritten.
 		Die Teilabbildungen sind zeilenweise von links nach rechts zu lesen, beginnend mit dem 1.\ Mai 00:00~UTC (oben links)
 		bis zum 5.\ Mai 00:00~UTC (unten rechts).}

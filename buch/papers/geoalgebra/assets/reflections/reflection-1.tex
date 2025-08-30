@@ -1,7 +1,12 @@
-\begin{tikzpicture}[>=latex, scale=3]
+\begin{tikzpicture}[>=latex, scale=3, thick]
+\fill[color=gray!20] (0,0) circle[radius=0.8pt];
+\draw[->,color=gray!20,line width=4.8pt] (0,0) -- (0,1.26);
+\draw[->,color=gray!20,line width=4.8pt] (0,0) -- (1.26,0);
+\node[color=gray!40] at (0.7,-0.02) [below] {$\mathbf{e}_1$};
+\node[color=gray!40] at (-0.02,0.7) [left] {$\mathbf{e}_2$};
   \draw [->](0, 0) -- (0, 1.2) node [right]{$\v$};
-\draw [red, ->](0, 0) -- (0, 1) node [right]{$\a_{||}$};
+\draw [darkred, ->](0, 0) -- (0, 1) node [right]{$\a_{||}$};
 \draw [blue, ->](0, 0) -- (1, 1) node [right]{$\a$};
 \draw [blue!30, ->](0, 0) -- (-1, 1) node [left]{$\a'$};
-  \draw [red, ->](0, 0) -- (-1, 0) node [above]{$\a_{\perp}$};
+  \draw [darkred, ->](0, 0) -- (-1, 0) node [above]{$\a_{\perp}$};
 \end{tikzpicture}

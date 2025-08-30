@@ -6,19 +6,29 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\subsection{Interprozess Kommunikation \label{parallelisierung:subsection:Interprozess}}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{parallelisierung:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
+\subsection{Kommunikation zwischen Gebieten
+\label{parallelisierung:sub:Interprozess}}
+Zuerst eine kurze Rekapitulation zu einigen Begrifflichkeiten, welche wichtig sind für die Welt der parallelen Programmierung.
+Ein Prozessor ist eine Physische Recheneinheit wie zum Beispiel eine CPU oder GPU.
+Prozessoren sind meist aus mehreren Kernen aufgebaut.
+Jeder Kern ist eine eigenständige Recheneinheit und ist mit privatem wie auch mit anderen Kernen geteiltem Speicher verbunden.
+Ein Prozess ist ein eigenständiges Programm, welches vom Betriebssystem alle nötigen Resourcen wie Speicher, Rechenzeit und Daten zugeteilt bekommt.
+Threads sind Teilaufgaben eines Prozesses, die gleichzeitig auf den verschiedenen Kernen des Prozessors arbeiten und sich die Daten und den Speicher dieses Prozesses teilen.
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
+Für das Austauschen von Daten zwischen Teilgebieten gibt es zwei häufig verwendete Parallele Programmier- und Kommunikationsschnittstellen, OpenMP und MPI.
+Im folgen werden beide kurz vorgestellt.
 
+\subsubsection{OpenMP}
+OpenMP ist eine API, welche sehr einfach das erzeugen von Threads und die Kommunikation zwischen diesen ermöglicht.
+Jedes Teilgebiet wird hier einem Thread zugeteilt. 
+Da sich diese Threads den Speicher des Prozesses teilen, nutzt OpenMP Shared-Memory für den Austausch von Daten.
+Bei OpenMP gibt es keinen Thread-eigenen Speicher.
+Jeder Thread kann also auf die Randzellen anderer Threads zugreifen.
+Dadurch benötigt es keine Kommunikation zwischen den Teilgebieten im engeren Sinn.
 
+Für kleine Systeme ist OpenMP eine einfache und gute Lösung.
+Da es aber auf Shared-Memory basiert ist es schlecht skalierbar.
+Werden für grosse Berechnungen mehrere Prozessoren verwendet ist Shared-Memory oft nicht verfügbar.
+Der einfache Aufbau für den Programmierer bedeutet außerdem weniger Kontrolle über die Datenverteilung.
+
+\subsubsection{MPI}

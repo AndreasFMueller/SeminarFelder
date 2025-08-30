@@ -43,7 +43,7 @@ berechnen wobei ersichtlich ist, dass
 \end{align*}
 Die Laplace-Gleichung $\Delta \Phi = 0$ ist somit erfüllt.
 
-Es existiert dann auch eine sogenannte Stromfunktion
+Es existiert dann auch eine sogenannte \emph{Stromfunktion}
 \begin{align*}
     \Psi
     =
@@ -65,7 +65,7 @@ welche die Bedingung
     -\frac{\partial \Psi}{\partial x}
 \end{align*}
 erfüllt.
-$u$ und $v$ sind die Geschwindigkeiten in $x$- und $y$-Richtung.
+$u$ und $v$ sind die Geschwindigkeitskomponenten in $x$- und $y$-Richtung.
 Auch die Stromfunktion ist eine Lösung der Laplace-Gleichung
 \begin{align*}
     \frac{\partial^2 \Psi}{\partial x^2}
@@ -76,13 +76,14 @@ Auch die Stromfunktion ist eine Lösung der Laplace-Gleichung
 \end{align*}
 
 Wenn wir $\Psi = c$ setzen, dann erhalten wir die Gleichung
-einer Stromlinie
 \begin{align}
     c = U y - A \frac{l}{2 \pi} 
     \cos\left(\frac{2 \pi x}{l}\right) 
-    e^{-\frac{2 \pi y}{l}},\label{eq:stromlinie}
+    e^{-\frac{2 \pi y}{l}}\label{eq:stromlinie}
 \end{align}
-aufgelöst nach $y$ ergibt das
+einer Stromlinie.
+\index{Stromlinie}%
+Aufgelöst nach $y$ ergibt das
 \begin{align*}
     y
     =
@@ -94,13 +95,15 @@ Wir setzen zusätzlich
 \begin{align*}
     \frac{A}{U} \ll 1,
 \end{align*}
-damit näherungsweise gilt
+damit näherungsweise
 \begin{align*}
     y
     =
-    h \cos\left(\frac{2 \pi x}{l}\right).
+    h \cos\left(\frac{2 \pi x}{l}\right)
 \end{align*}
+gilt.
 Die Stromlinie sehr nahe am Wellblech ist eine
+\index{Wellblech}%
 Kosinunslinie bzw. sie entspricht gerade der Kontur
 des Blechs, wie in Abbildung~\ref{fig:stromlinien} ersichtlich.
 \begin{figure}
@@ -119,6 +122,7 @@ in Gerade über, weil
 \end{align*}
 
 Mithilfe der bernoullischen Gleichung~\cite{BernoulliWikiDE}
+\index{Bernoulli, Gesetz von}%
 \begin{align*}
     p_{\text{tot}} 
     = 
@@ -147,6 +151,10 @@ Es bleibt somit:
 \end{align*}
 was bedeutet, dass entlang einer Stromlinie 
 der statische Druck und der dynamische Druck
+\index{Druck!statisch}%
+\index{statischer Druck}%
+\index{Druck!dynamisch}%
+\index{dynamischer Druck}%
 zusammen konstant bleiben.
 Wenn wir nun den lokalen Druck $p$ berechnen möchten, 
 verwenden wir die freie Strömungsgeschwindigkeit $U$
@@ -178,7 +186,7 @@ während an den konvexen Stellen der niedrigste Druck herrscht.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{papers/ueberschall/figures/Druckverteilung.pdf}
-    \caption{Relative Druckverteilung über dem Wellblech.}
+    \caption{Relative Druckverteilung über dem Wellblech im Unterschall.}
     ~\label{fig:druckverteilung}  
 \end{figure}
 
@@ -188,7 +196,6 @@ Die Ausgangslage ist eine partielle Differentialgleichung zweiter Ordnung,
 die durch geeignete Vereinfachungen auf jene Terme reduziert wurde, 
 welche den grössten Einfluss auf die Abweichung haben.
 Das genaue Vorgehen ist in~\cite{Ackeret1928} ausführlich dokumentiert.
-
 Die folgende Gleichung stellt daher eine Näherungslösung dar,
 die jedoch wesentliche Eigenschaften der exakten Lösung widerspiegelt:
 \begin{align}
@@ -197,7 +204,7 @@ die jedoch wesentliche Eigenschaften der exakten Lösung widerspiegelt:
     +
     \frac{\partial^2 \Phi}{\partial y^2}
     =
-    0\label{eq:kompressible_stroemung}
+    0.\label{eq:kompressible_stroemung}
 \end{align}
 Der Ausdruck in der Klammer ist eine Konstante, d.h.
 durch die einfache Koordinatentransformation
@@ -212,16 +219,15 @@ durch die einfache Koordinatentransformation
     &=
     \sqrt{1-\frac{U^2}{a^2}}
 \end{align*}
-wird daraus wenig überraschend
+wird daraus wenig überraschend die gewöhnlichen laplaceschen Gleichung
 \begin{align*}
     \frac{\partial^2 \Phi}{\partial \xi^2} 
     +
     \frac{\partial^2 \Phi}{\partial \eta^2}
     =
-    0
+    0,
 \end{align*}
-die gewöhnlichen laplaceschen Gleichung, wie
-bei der Potentialströmung.
+wie bei der Potentialströmung.
 Das Potential dieser kompressiblen Strömung ergibt sich zu
 \begin{align*}
     \Phi
@@ -272,13 +278,13 @@ Dazu werden die Stromlinien über einem Buckel visualisiert.
     \begin{minipage}[b]{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{papers/ueberschall/figures/abklingen_10.pdf}
-        \caption*{$\beta = 1$ ; $U = 10 \frac{\mathrm{m}}{\mathrm{s}}$}
+        \caption*{$\beta = 1$ ; $U = 10\,\frac{\mathrm{m}}{\mathrm{s}}$}
     \end{minipage}
     \hfill
     \begin{minipage}[b]{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{papers/ueberschall/figures/abklingen_200.pdf}
-        \caption*{$\beta = 0.81$ ; $U = 200 \frac{\mathrm{m}}{\mathrm{s}}$}
+        \caption*{$\beta = 0.81$ ; $U = 200\,\frac{\mathrm{m}}{\mathrm{s}}$}
     \end{minipage}
     \hfill
     \begin{minipage}[b]{0.32\textwidth}
@@ -301,7 +307,7 @@ Gleichung~\eqref{eq:kompressible_stroemung}:
     -\frac{\partial^2 \Phi}{\partial y^2},
 \end{align*}
 wobei der rechte Term zur besseren Übersicht auf die 
-linke Seite verschoben wurde.
+andere Seite genommen wurde.
 Da im Überschallbereich $U > a$ gilt, wird der Ausdruck 
 in der Klammer negativ.
 Es ist daher sinnvoll, die Gleichung in der Form
@@ -312,7 +318,7 @@ Es ist daher sinnvoll, die Gleichung in der Form
     \frac{\partial^2 \Phi}{\partial y^2}
 \end{align*}
 umzuschreiben.
-Führen wir nun eine geeignete Koordinatentransformation durch,
+Führen wir nun die Koordinatentransformation
 \begin{align*}
     x 
     &= 
@@ -325,6 +331,7 @@ mit dem Parameter
 \begin{align*}
     \beta = \sqrt{\frac{U^2}{a^2} - 1},
 \end{align*}
+durch,
 so ergibt sich die transformierte Gleichung:
 \begin{align}
     \frac{\partial^2 \Phi}{\partial \xi^2}
@@ -338,10 +345,12 @@ für den Unterschallbereich, weist jedoch ein
 unterschiedliches Vorzeichen im zweiten Term auf.
 Dementsprechend handelt es sich hier um eine hyperbolische 
 Differentialgleichung, die Wellenvorgänge beschreibt.
-Das Strömungsverhalten im Überschallbereich ist daher — 
-in gewisser Weise — mit dem Verhalten von Wellen in Wasser vergleichbar.
+\index{partielle Differentialgleichung!hyperbolisch}%
+Das Strömungsverhalten im Überschallbereich ist daher ---
+in gewisser Weise --- mit dem Verhalten von Wellen in Wasser vergleichbar.
+\index{Wellengleichung}%
 
-Die Lösung von Gleichung~\ref{eq:wellengl_ueberschall} lautet:
+Die Lösung von Gleichung~\eqref{eq:wellengl_ueberschall} lautet:
 \begin{align*}
     \Phi
     =
@@ -368,7 +377,7 @@ und für $\Psi$
     A \cos\left(
         \frac{2\pi}{l}
         (\eta-\xi)
-    \right)
+    \right).
 \end{align*}
 In den Koordinaten $x$, $y$ entspricht $\eta = \xi$ gerade 
 \begin{align*}
@@ -390,14 +399,19 @@ Für $\sin \alpha$ ergibt sich
     =
     \frac{\tan \alpha}{\sqrt{1 + \tan^2 \alpha}}
     =
-    \frac{a}{U}
+    \frac{a}{U},
 \end{align*}
-$a$ ist auch bekannt als der mach-dopplersche Winkel.
+$a$ ist auch bekannt als der \emph{mach-dopplersche Winkel}.
+\index{mach-dopplerscher Winkel}%
+\index{Winkel, mach-dopplersch}%
 
 Betrachten wir nun erneut die Druckverteilung, so erkennen wir in 
 Abbildung~\ref{fig:druckvert_ueberschall} die sogenannten machschen Störungslinien. 
+\index{Störungslinie}%
 Diese sind besser bekannt als Schockwellen, 
+\index{Schockwelle}%
 die beim Durchbrechen der Schallmauer sichtbar werden. 
+\index{Schallmauer}%
 Auf jeder machschen Linie ist das Potential \(\Phi\) konstant. 
 Alle Linien verlaufen parallel und besitzen die Steigung \(\tan \alpha\).
 Ein exponentielles Abklingen, wie es im Unterschallfall auftritt, 
@@ -406,22 +420,24 @@ Die Maxima und Minima des Drucks entstehen nicht länger an den Wellenbergen,
 sondern befinden sich an den Wendepunkten der Wellenform. 
 Dies liegt daran, dass an diesen Punkten die größte Neigung relativ zur 
 ungestörten Anströmung mit Geschwindigkeit \(U\) vorliegt 
-(vgl. Abbildung~\ref{fig:wellblech}).
+(siehe Abbildung~\ref{fig:wellblech}).
 \begin{figure}
     \centering
     \begin{minipage}[b]{\textwidth}
         \centering
         \includegraphics[width=\linewidth]{papers/ueberschall/figures/druck_mach_kegel_400.pdf}
-        \caption*{$U = 400 \frac{\mathrm{m}}{\mathrm{s}}$}
+        \caption*{$U = 400\,\frac{\mathrm{m}}{\mathrm{s}}$}
         ~\label{fig:druckvert_ueberschall_u400}
     \end{minipage}
     \hfill
     \begin{minipage}[b]{\textwidth}
         \centering
         \includegraphics[width=\linewidth]{papers/ueberschall/figures/druck_mach_kegel_600.pdf}
-        \caption*{$U = 600 \frac{\mathrm{m}}{\mathrm{s}}$}
+        \caption*{$U = 600\,\frac{\mathrm{m}}{\mathrm{s}}$}
         ~\label{fig:druckvert_ueberschall_u600}
     \end{minipage}
-    \caption{Relative Druckverteilung über dem Wellblech im Überschall.}
+    \caption{Relative Druckverteilung über dem Wellblech im Überschall.
+Schockwellen bilden mit dem Rand den mach-dopplerschen Winkel, der von der
+Strömungsgeschwindigkeit abhängt.}
 ~\label{fig:druckvert_ueberschall}
 \end{figure}

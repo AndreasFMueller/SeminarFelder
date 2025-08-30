@@ -1,21 +1,24 @@
 
 \subsection{Idealisiertes zonales und meridionales Windfeld}
 
-In der Meteorologie werden Windgeschwindigkeiten in ein rechtwinkliges Koordinatensystem zerlegt. 
-Die {zonal}e Komponente \(u\) beschreibt die Geschwindigkeit in Ost-West-Richtung, 
-die {meridional}e Komponente \(v\) jene in Nord-Süd-Richtung. 
-Positive Werte von \(u\) stehen für eine Strömung nach Osten, positive Werte von \(v\) für eine Strömung nach Norden.
-
+In der Meteorologie werden Windgeschwindigkeiten in ein rechtwinkliges
+Koordinatensystem zerlegt. Die \emph{zonal}e Komponente \(u\) beschreibt die
+\index{zonal}%
+Geschwindigkeit in Ost-West-Richtung, die \emph{meridional}e Komponente \(v\) jene
+\index{meridional}%
+in Nord-Süd-Richtung. Positive Werte von \(u\) stehen für eine Strömung nach
+Osten, positive Werte von \(v\) für eine Strömung nach Norden.
 
 Abbildung~\ref{fig:zonal_wind} zeigt ein idealisiertes zonales Windfeld, bei
 dem ausschliesslich eine Ost-West-Strömung vorliegt (\(v = 0\)). Die
-Geschwindigkeit hängt von der geographischen Breite \(\varphi\) ab und folgt der
-Beziehung
+Geschwindigkeit hängt von der geographischen Breite \(\varphi\) ab und folgt
+der Beziehung
 \begin{equation}
 	u = U_0 \cdot \sin^2(\varphi).
 	\label{rossby:eq:zonal_wind}
 \end{equation}
 Ein Druckgradient oder eine vertikale Struktur sind nicht berücksichtigt, es handelt sich um ein rein theoretisches, horizontal homogenes Modell.
+\index{Druckgradient}%
 
 \begin{figure}
 	\centering
@@ -46,67 +49,74 @@ Die Erde rotiert einmal pro Tag um ihre eigene Achse. In einem rotierenden
 Bezugssystem wie der Erde treten dabei Scheinkräfte auf, die in der klassischen
 Mechanik berücksichtigt werden müssen. Eine davon ist die {Coriolis-Kraft},
 welche bewegte Luft- und Wassermassen auf der {Nordhalbkugel} nach rechts und
+\index{Luftmasse}%
+\index{Wassermasse}%
 auf der {Südhalbkugel} nach links ablenkt. Ihre Wirkung ist maximal an den
 Polen und verschwindet am Äquator. Die Coriolis-Kraft ist keine reale Kraft,
 sondern eine Folge der Drehung des Koordinatensystems.
 
-Wir betrachten ein lokales kartesisches Koordinatensystem auf der Erdoberfläche mit den Achsen
+Wir betrachten ein lokales kartesisches Koordinatensystem auf der Erdoberfläche
+mit den Achsen
 \begin{equation}
-(x,y,z) = (\text{Ost–West}, \; \text{Nord–Süd}, \; \text{Vertikal}).
+	(x,y,z) = (\text{Ost–West}, \; \text{Nord–Süd}, \; \text{Vertikal}).
 \end{equation}
-Dabei bezeichnet \(y\) die Entfernung in Nord–Süd-Richtung (Meridionalrichtung). 
-Da die Erde den Radius \(a\) besitzt, ergibt sich für kleine Breitenänderungen \(\mathrm{d}\varphi\) die entsprechende Nord–Süd-Distanz
+Dabei bezeichnet \(y\) die Entfernung in Nord–Süd-Richtung (Meridionalrichtung).
+Da die Erde den Radius \(a\) besitzt, ergibt sich für kleine Breitenänderungen \(d\varphi\) die entsprechende Nord–Süd-Distanz
 \begin{equation}
-\mathrm{d}y = a \, \mathrm{d}\varphi.
+	dy = a \, d\varphi.
 \end{equation}
 Durch Integration erhält man
 \begin{equation}
-y = a \, \varphi \qquad (\varphi ).
+	y = a \, \varphi + \varphi_0.
 \end{equation}
 
 Der Coriolis-Parameter ist definiert als
 \begin{equation}
-f(\varphi) = 2 \, \Omega \, \sin(\varphi),
+	f(\varphi) = 2 \, \Omega \, \sin(\varphi),
 \end{equation}
-wobei \(\Omega\) die Erdrotationsrate bezeichnet. 
-Die Breitenänderung von \(f\) mit der Nord–Süd-Koordinate \(y\) ergibt den \(\beta\)-Parameter:
+wobei \(\Omega\) die Erdrotationsrate bezeichnet.
+\index{Erdrotationsrate}%
+Die Breitenänderung von \(f\) mit der Nord–Süd-Koordinate \(y\) ergibt den \(\beta\)-Parameter
+\index{beta-Parameter@$\beta$-Parameter}%
 \begin{equation}
-\beta = \frac{\partial f}{\partial y} 
-      = \frac{\partial f}{\partial \varphi} \cdot \frac{\partial \varphi}{\partial y}.
+	\beta = \frac{\partial f}{\partial y}
+	= \frac{\partial f}{\partial \varphi} \cdot \frac{\partial \varphi}{\partial y}.
 \end{equation}
 Da gilt
 \begin{equation}
-\frac{\partial f}{\partial \varphi} = 2 \Omega \cos(\varphi), 
-\qquad 
-\frac{\partial \varphi}{\partial y} = \frac{1}{a},
+	\frac{\partial f}{\partial \varphi} = 2 \Omega \cos(\varphi),
+	\qquad
+	\frac{\partial \varphi}{\partial y} = \frac{1}{a},
 \end{equation}
 folgt
 \begin{equation}
-\beta = \frac{2 \Omega \cos(\varphi)}{a}.
+	\beta = \frac{2 \Omega \cos(\varphi)}{a}.
 \end{equation}
 
-Damit ist klar: \(y\) ist die Nord–Süd-Koordinate auf der Erdoberfläche, 
-direkt über \(y = a \varphi\) mit der geographischen Breite verknüpft.
+Damit ist klar: \(y\) ist die Nord–Süd-Koordinate auf der Erdoberfläche, direkt
+über \(y = a \varphi\) mit der geographischen Breite verknüpft.
 
+\begin{beispiel}\textbf{Rechenbeispiel: Velofahren in Zürich}
+\index{Velofahren}%
 
-\begin{beispiel}
-\paragraph{Rechenbeispiel: Velofahren in Zürich}
-
+\noindent
 Wir berechnen die Coriolis-Kraft auf einen Radfahrer in Zürich.
+\index{Radfahrer}%
 
 \begin{description}
-	\item[Gegeben:] Geschwindigkeit \(v = 8.33\,\mathrm{m/s}\) (30\,km/h), Masse \(m =
-	      80\,\mathrm{kg}\), geographische Breite \(\varphi = 47^\circ\) (Zürich),
-	      Erdrotationsrate \(\Omega \approx 7.292 \times 10^{-5}\,\mathrm{rad/s}\).
-	\item[Formel:]
-	      \[
-		      F_C = 2\,m\,v\,\Omega\,\sin(\varphi)
-	      \]
-	\item[Einsetzen:]
-	      \[
-		      F_C \approx 2 \cdot 80 \cdot 8.33 \cdot 7.292 \times 10^{-5} \cdot \sin(47^\circ)
-		      \approx 0.070\,\mathrm{N}
-	      \]
+\item[Gegeben:] Geschwindigkeit \(v = 8.33\,\mathrm{m/s}\) (30\,km/h), Masse \(m =
+      80\,\mathrm{kg}\), geographische Breite \(\varphi = 47^\circ\) (Zürich),
+      Erdrotationsrate \(\Omega \approx 7.292 \times 10^{-5}\,\mathrm{rad/s}\).
+\item[Formel:]
+      \[
+	      F_C = 2mv\Omega\sin(\varphi)
+      \]
+\item[Einsetzen:]
+      \[
+	      F_C \approx 2 \cdot 80 \cdot 8.33 \cdot 7.292 \times 10^{-5} \cdot \sin(47^\circ)
+	      \approx 0.070\,\mathrm{N}
+\qedhere
+      \]
 \end{description}
 
 \end{beispiel}
@@ -120,9 +130,10 @@ Dieser Effekt ist massgeblich für die Westwinddrift in den mittleren Breiten un
 Die \(\beta\)-Ebene ist eine lokale Approximation der Erdkugel in der Umgebung
 einer bestimmten geographischen Breite~\(\varphi_0\)
 (Abbildung~\ref{fig:beta_plane}). Ziel dieser Vereinfachung ist es, die
-Breitenabhängigkeit der Coriolis-Kraft in mathematischen Modellen handhabbar zu
-machen. Der \emph{Coriolis-Parameter} wird dazu in der Nähe der Referenzbreite linear
-entwickelt:
+Breitenabhängigkeit der Coriolis-Kraft in mathematischen Modellen leichter
+handhabbar zu machen. Der \emph{Coriolis-Parameter} wird dazu in der Nähe der
+\index{Coriolis-Parameter}%
+Referenzbreite linear entwickelt:
 \begin{equation}
 	f(y) = f_0 + \beta y,
 	\label{rossby:eq:beta_plane}
@@ -132,12 +143,12 @@ Referenzbreite ist und $y$ die meridionale Entfernung vom
 Referenzbreitenkreis bezeichnet.
 Der Term
 \begin{equation}
-	f_0 = 2\Omega \sin(\phi_0)
+	f_0 = 2\Omega \sin(\varphi_0)
 	\label{rossby:eq:coriolis_parameter_ref}
 \end{equation}
 bezeichnet den Coriolisparameter an der Referenzbreite, und
 \begin{equation}
-	\beta = \left.\frac{\partial f}{\partial y}\right|_{\phi_0} = \frac{2\Omega \cos(\phi_0)}{a}
+	\beta = \left.\frac{\partial f}{\partial y}\right|_{\varphi_0} = \frac{2\Omega \cos(\varphi_0)}{a}
 	\label{rossby:eq:beta_parameter_ref}
 \end{equation}
 beschreibt die Änderung von $f$ mit der geographischen Breite; $a$ ist der
@@ -152,30 +163,36 @@ Erde berücksichtigen zu müssen.
 		\begin{scope}[rotate around={23.5:(0,0)}]
 			% Axes
 			\draw (-2,0) -- (2,0);
-			\draw[->] (0,-2) -- (0,2) node[above] {Pol};
+			\draw[->, >=latex] (0,-2) -- (0,2) node[above] {Pol};
 
 			% Earth (circle)
 			\draw[thick] (1,0) arc[start angle=0, end angle=360, radius=1];
 
 			% 3D-style spinning arrow (elliptical path)
-			\draw[->, thick] ({0.3*cos(10)},{1.5 + 0.1*sin(10)})
+			\draw[->, >=latex, thick] ({0.3*cos(10)},{1.5 + 0.1*sin(10)})
 			arc[start angle=10, end angle=320, x radius=0.3, y radius=0.1];
+			\draw[blue, thick] ($(30:1) + (120:0.5)$) -- ($(30:1) + (-60:0.5)$)
+			node[midway, above right, blue] {$\beta$-Ebene};
 
-			% Point on the circle
-			\fill[red] (30:1) circle[radius=0.05] node[right] {$P$};
-			\draw[blue, thick] ($(30:1) + (120:0.5)$) -- ($(30:1) + (-60:0.5)$);
+			% Angle phi
 
 			% Connection from center to P
 			\draw[] (0,0) -- (30:1);
 
-			% Angle phi
+
 			\draw[thick] (0.5,0) arc[start angle=0, end angle=30, radius=0.5];
 			\node at (0.65,0.12) {$\varphi$};
+
+			% Point on the circle
+			\fill[red] (30:1) circle[radius=0.05] node[right] {$P$};
+			% \draw[blue, thick] ($(30:1) + (120:0.5)$) -- ($(30:1) + (-60:0.5)$);
+
 		\end{scope}
 	\end{tikzpicture}
 	\caption{Schematische Darstellung der $\beta$-Ebenen-Approximation um einen Referenzbreitenkreis.
-		Der rote Punkt \(P\) markiert die Referenzbreite, in deren Umgebung die Erdoberfläche als tangentiale Ebene angenähert wird.
-		Die blaue Linie zeigt den Tangentialebene durch \(P\), der Pfeil die Rotationsrichtung der Erde. 
-		Der Winkel \(\varphi\) beschreibt die geographische Breite des Punktes \(P\).}
+		Der rote Punkt \(P\) markiert die Referenzbreite, in deren Umgebung die Erdoberfläche durch eine Tangentialebene angenähert wird.
+		Die blaue Linie symbolisiert die $\beta$-Ebene, also die Tangentialebene an der Erdoberfläche im Punkt \(P\);
+		der Pfeil zeigt die Rotationsrichtung der Erde.
+		Der Winkel \(\varphi\) gibt die geographische Breite des Punktes \(P\) an.}
 	\label{fig:beta_plane}
 \end{figure}

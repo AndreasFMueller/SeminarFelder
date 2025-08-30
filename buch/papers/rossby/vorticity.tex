@@ -1,9 +1,11 @@
 
 \subsection{Vorticity – Wirbelstärke in der Atmosphäre}
 
-Die grossräumige Bewegung der Luft in der Atmosphäre lässt sich nicht nur durch
+Die grossräumige Bewegung der Luft in der Atmosphäre lässt sich nicht nur durch die
 Geschwindigkeit beschreiben, sondern auch durch ihre Rotationseigenschaften.
 Diese Eigenschaft wird durch die sogenannte \emph{Vorticity} (Wirbelstärke)
+\index{Vorticity}%
+\index{Wirbelstärke}%
 quantifiziert. Physikalisch beschreibt sie die Tendenz eines Luftpakets, sich
 um seine eigene vertikale Achse zu drehen.
 
@@ -14,6 +16,8 @@ Geschwindigkeitsfeldes:
 	\label{rossby:eq:vorticity}
 \end{equation}
 Für grossräumige Strömungen in der Atmosphäre betrachtet man hauptsächlich die vertikale Komponente dieser Rotation, die sogenannte \emph{relative Vorticity}.
+\index{relative Vorticity}%
+\index{Vorticity, relativ}%
 In kartesischen Koordinaten ergibt sich diese im einfachsten Fall zu:
 \begin{equation}
 	\zeta = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y},
@@ -21,6 +25,8 @@ In kartesischen Koordinaten ergibt sich diese im einfachsten Fall zu:
 \end{equation}
 wobei \(u\) und \(v\) die zonale bzw. meridionale Windkomponente bezeichnen.
 Positive Vorticity (\(\zeta > 0\)) steht für eine zyklonale Rotation (auf der Nordhalbkugel gegen den Uhrzeigersinn), negative Vorticity (\(\zeta < 0\)) für eine antizyklonale Rotation (im Uhrzeigersinn).
+\index{zyklonale Rotation}%
+\index{antizyklonale Rotation}%
 \begin{figure}
 	\centering
 	% Erste Reihe
@@ -39,7 +45,7 @@ Positive Vorticity (\(\zeta > 0\)) steht für eine zyklonale Rotation (auf der N
 		\includegraphics[width=\linewidth]{papers/rossby/images/vorticity_plot2.pdf}\\
 		{\small \( \vec{u} = (y^2,0),\ \zeta = -2y\)}
 	\end{minipage}
-
+	\\[15pt]
 	% Zweite Reihe
 	\begin{minipage}{0.32\linewidth}
 		\centering
@@ -63,8 +69,9 @@ Luftpakets relativ zum Erdboden. Da sich jedoch auch die Erde selbst dreht,
 muss diese planetare Rotation bei der Beschreibung der Gesamtdrehung
 berücksichtigt werden. Daraus ergibt sich der Begriff der \emph{absoluten
 	Vorticity}, welche die Summe aus relativer und planetarer Vorticity darstellt.
+\index{Vorticity, absolut}%
 
-Die planetare Vorticity wird durch den \emph{Coriolis-Parameter} \(
+Die planetare Vorticity wird durch den Coriolis-Parameter \(
 f = 2 \Omega \sin \varphi \) beschrieben, wobei \( \Omega \) die
 Erdrotationsrate und \( \varphi \) die geographische Breite ist. Dieser
 Ausdruck ergibt sich aus der Projektion der Erdrotation auf die lokale
@@ -81,7 +88,7 @@ wobei \( \zeta \) die relative und \( f \) die planetare Vorticity ist.
 \subsection{Potenzielle Vorticity und ihre Erhaltung}
 
 Die \emph{potenzielle Vorticity} erweitert das Konzept der \emph{absoluten
-	Vorticity} um die vertikale Struktur der Atmosphäre. In ihrer Erhaltungsform
+Vorticity} um die vertikale Struktur der Atmosphäre. In ihrer Erhaltungsform
 ist sie ein zentrales Werkzeug zur Beschreibung grossskaliger Strömungen und
 Wellenprozesse.
 
@@ -92,89 +99,26 @@ konstantem Luftvolumen, lautet die Definition:
 	\label{rossby:eq:potential_vorticity}
 \end{equation}
 wobei \(\zeta\) die relative Vorticity, \(f\) den Coriolis-Parameter und \(H\) die effektive Schichthöhe der betrachteten Luftsäule bezeichnet.
-Dieser Ausdruck berücksichtigt sowohl die horizontale Rotation als auch die vertikale Ausdehnung eines Luftpakets.
+Dieser Ausdruck berücksichtigt sowohl die horizontale Rotation als auch die vertikale Ausdehnung eines Luftpakets. 
+
+Man kann die potentielle Vorticity als die \emph{allgemeinere Erhaltungsgröße}
+verstehen, welche die Drehimpulserhaltung als Spezialfall umfasst. Während
+\index{Drehimpulserhaltung}%
+die Drehimpulserhaltung nur die axiale Rotation einer Luftsäule beschreibt,
+fasst die potentielle Vorticity zusätzlich Effekte der vertikalen Schichtung
+und der relativen Vorticity zusammen. Eine anschauliche Analogie ist die
+Eiskunstläufer:in, die ihre Rotationsgeschwindigkeit ändert, wenn sie die Arme
+\index{Eiskunstläuferin}%
+an den Körper zieht oder ausstreckt: die Drehimpulserhaltung erzwingt eine
+Anpassung der Rotationsgeschwindigkeit an das veränderte Trägheitsmoment. In der
+Atmosphäre entspricht dies der Anpassung der Vorticity an Änderungen der
+Schichthöhe, wie sie in Gl.~\eqref{rossby:eq:potential_vorticity} beschrieben ist.
 
 
 
 \begin{figure}
 	\centering
-	\begin{tikzpicture}[scale=1.05, >=stealth]
-		% params
-		\def\Rone{0.5}\def\Rtwo{0.25}\def\Rthree{0.75}\def\r{0.12}
-		\def\H{3.0}  \def\dH{0.8}
-		\def\DX{3}
-
-		% guide rays (dashed perspective)
-		% \draw[dashed] (-0.2,\H) -- (\DX+0.2,\H);
-		% \draw[dashed] (-0.2,0)  -- (\DX+0.2,0);
-
-		% center cylinder (height H)
-		\draw (0,0) ellipse ({\Rone} and {\r});
-		\draw (-\Rone,0) -- (-\Rone,\H);
-		\draw (\Rone,0) -- (\Rone,\H);
-		\draw (0,\H) ellipse ({\Rone} and {\r});
-		\node[above] at (0,\H+0.35) {$\zeta$};
-		% \draw[->] (1.4,1.7) -- (0.7,1.7);
-
-		% right cylinder (H+dH)
-		\begin{scope}[xshift=\DX cm]
-			\draw (0,{-\dH/2}) ellipse ({\Rtwo} and {\r});         % bottom
-			\draw (-\Rtwo,{-\dH/2}) -- (-\Rtwo,{\H+\dH/2});
-			\draw ( \Rtwo,{-\dH/2}) -- ( \Rtwo,{\H+\dH/2});
-			\draw (0,{\H+\dH/2}) ellipse ({\Rtwo} and {\r});        % top
-			\node[above] at (0,{\H+\dH/2+0.35}) {$\zeta+\mathrm{d}\zeta$};
-			\node[right] at (\Rtwo+0.25,{\H/2}) {$H+\mathrm{d}H$};  % center the label
-			% \draw[->] (-1.4,{\H/2}) -- (-0.7,{\H/2});
-		\end{scope}
-
-
-		\begin{scope}[xshift={-\DX cm}]
-			\draw (0,{ \dH/2}) ellipse ({\Rthree} and {\r});          % bottom
-			\draw (-\Rthree,{ \dH/2}) -- (-\Rthree,{\H-\dH/2});
-			\draw ( \Rthree,{ \dH/2}) -- ( \Rthree,{\H-\dH/2});
-			\draw (0,{\H-\dH/2}) ellipse ({\Rthree} and {\r});        % top
-			\node[above] at (0,{\H-\dH/2+0.35}) {$\zeta-\mathrm{d}\zeta$};
-			\node[left]  at (-\Rthree-0.25,{\H/2}) {$H-\mathrm{d}H$}; % center the label
-		\end{scope}
-		% spin symbols on tops
-		% spin symbols: use H±dH/2 so the midline matches
-		% at the top (tweak to taste)
-		\def\spinrxone{1.2}\def\spinrxtwo{0.8}\def\spinrxthree{0.5}
-		\def\spinry{0.2}\def\spinstart{20}
-
-		\foreach \x/\y/\spinrx in {-\DX/{\H-\dH/2}/\spinrxone, 0/{\H}/\spinrxtwo, \DX/{\H+\dH/2}/\spinrxthree}{
-		\begin{scope}[xshift=\x cm]
-			\draw[->, thick]
-			({\spinrx*cos(\spinstart)}, {\y-0.5 + \spinry*sin(\spinstart)})
-			arc[start angle=\spinstart, end angle=\spinstart+300,
-					x radius=\spinrx, y radius=\spinry];
-		\end{scope}
-		}
-
-		\foreach \x/\y/\spinrx in { 0/{\H}/\spinrxtwo, \DX/{\H+\dH/2}/\spinrxthree}{
-		\begin{scope}[xshift=\x cm]
-			\draw[->, thick]
-			({\spinrx*cos(\spinstart)}, {\y-0.7 + \spinry*sin(\spinstart)})
-			arc[start angle=\spinstart, end angle=\spinstart+300,
-					x radius=\spinrx, y radius=\spinry];
-		\end{scope}
-		}
-
-		\foreach \x/\y/\spinrx in { \DX/{\H+\dH/2}/\spinrxthree}{
-		\begin{scope}[xshift=\x cm]
-			\draw[->, thick]
-			({\spinrx*cos(\spinstart)}, {\y-0.9 + \spinry*sin(\spinstart)})
-			arc[start angle=\spinstart, end angle=\spinstart+300,
-					x radius=\spinrx, y radius=\spinry];
-		\end{scope}
-		}
-
-		% captions
-		\node[align=center] at (-\DX,-1.2)
-		{$H\downarrow \Rightarrow |\zeta|\downarrow$\\[2pt]\emph{vortex squashing}\\ horizontal divergence};
-		\node[align=center] at (\DX,-1.2)
-		{$H\uparrow \Rightarrow |\zeta|\uparrow$\\[2pt]\emph{vortex stretching}\\ horizontal convergence};
-	\end{tikzpicture}
+	\includegraphics[width=\textwidth]{papers/rossby/images/column_streching.jpeg}
 
 
 	\caption{%
@@ -185,23 +129,28 @@ Dieser Ausdruck berücksichtigt sowohl die horizontale Rotation als auch die ver
 		(\emph{vortex squashing}), während eine Vergrösserung ($H \uparrow$) über
 		Konvergenz zu einer Zunahme von $|\zeta|$ (\emph{vortex stretching}) führt.
 		Damit bleibt das Verhältnis $q=(\zeta+f)/H$ entlang der Trajektorie eines
-		Luftpakets konstant.%
+		Luftpakets konstant (eigene Darstellung inspieriert durch \cite{rossby:beal_pv}).%
 	}
 	\label{fig:pv_conservation}
 \end{figure}
 
+
 Ein zentrales Ergebnis der quasi-geostrophischen Theorie ist die Erhaltung der
+\index{quasi-geostrophisch}%
+\index{Erhaltung der potenziellen Vorticity}%
 potenziellen Vorticity entlang der Trajektorie eines Luftpakets:
+\index{Trajektorie}%
 \begin{equation}
 	\frac{Dq}{Dt} = 0.
 	\label{rossby:eq:pv_conservation}
 \end{equation}
 Unter den genannten Bedingungen treten weder Reibung noch diabatische Wärmeflüsse auf, und die Masse der Luftsäule bleibt erhalten.
+\index{diabatische}%
 Damit heben sich Änderungen in \(\zeta\), \(f\) und \(H\) entlang der Bewegung eines Luftpakets gegenseitig so auf, dass das Verhältnis \((\zeta + f)/H\) konstant bleibt.
 
 Die Erhaltung der potenziellen Vorticity erklärt viele grossskalige atmosphärische Phänomene: Wird ein Luftpaket nach Norden transportiert (höheres \(f\)), so muss es zyklonale
 Vorticity (\(\zeta > 0\)) abbauen oder sich ausdehnen (\(H \uparrow\)), um
 \(q\) konstant zu halten. Bei einer südlichen Verlagerung gilt der umgekehrte
 Mechanismus. Diese Dynamik ist eine der physikalischen Grundlagen für das
-Entstehen und die Ausbreitung von Rossby-Wellen, die im folgenden Kapitel
+Entstehen und die Ausbreitung von Rossby-Wellen, die im folgenden Abschnitt
 behandelt werden.

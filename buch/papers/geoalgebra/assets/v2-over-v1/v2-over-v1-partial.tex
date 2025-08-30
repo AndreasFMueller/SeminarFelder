@@ -1,4 +1,4 @@
-\begin{tikzpicture}[>=latex]
+\begin{tikzpicture}[>=latex, thick]
   \draw[step=.5cm,gray,very thin] (-0.25,-0.25) grid (5.25,4.25);
   \coordinate (O) at (0,0);
   \coordinate (A) at (3,1);
@@ -9,14 +9,14 @@
 
   \fill[blue!30,opacity=0.7] (O) -- (A) -- (M_AC) -- (M_OB) -- cycle;
 
-  \draw[thick,->,red] (O) -- (A) node[midway,below] {$\vone$};
-  \draw[thick,->,blue] (O) -- (B) node[midway,left] {$\vtwo$};
+  \draw[thick,->,darkred] (O) -- (A) node[midway,below] {$\acolored$};
+  \draw[thick,->,blue] (O) -- (B) node[midway,left] {$\bcolored$};
   \draw[dashed] (A) -- (C);
   \draw[dashed] (B) -- (C);
   \draw[thick,->,blue] (3.7, 1.9) -- (4.3, 2.8);
 
 
   \node (K) at ($0.25*(O)+0.25*(A)+0.25*(B)+0.25*(C)$)
-    {$\vone \wedge \vtwo$};
+    {$\acolored \wedge \bcolored$};
   \draw[thick,->] (K) ++(0.6,0) arc (0:270:0.6);
 \end{tikzpicture}

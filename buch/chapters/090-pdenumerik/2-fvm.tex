@@ -1,0 +1,116 @@
+%
+% Finite Volumina
+%
+\section{Finite Volumina
+\label{buch:pdenumerik:section:fvm}}
+\index{finite Volumina}%
+\index{Volumina, finite}%
+Für gewisse Erhaltungssätze wie zum Beispiel die Kontinuitätsgleichung
+\index{Erhaltungssatz}%
+ist eine alternative Diskretisation besser geeignet.
+\index{Kontinuitätsgleichung}%
+Wir betrachten als Beispiel die eindimensionale Kontinuitätsgleichung
+in der eindimensionalen Form
+\[
+\frac{\partial \varrho}{\partial t}
++
+\frac{\partial j}{\partial x}
+=
+0.
+\]
+Sie drückt aus, dass die zeitliche Dichteänderung davon abhängt, wie
+schnell der zugehörige Strom $j$ von $x$ abhängt.
+\index{Strom}
+Die zugehörige dreidimensionale Form ist
+\[
+\frac{\partial \varrho}{\partial t}
++
+\operatorname{div}\vec{\jmath} 
+=
+0.
+\]
+
+Statt die Werte in einem Punkt zu betrachten, wie das die Methode
+der finiten Differenzen macht, betrachten wir jetzt die Ereignisse
+ein einem kleinen Volumen.
+Integrieren wir die Kontinuitätsgleichung über einen Quader $V$, dann
+kann das Volumenintegral der Divergenz mit dem Satz von Gauss 
+\index{Satz von Gauss}%
+\index{Gauss, Satz von}%
+in ein Oberflächenintegral umgewandelt werden:
+\begin{align}
+0
+&=
+\int_V \frac{\partial\varrho}{\partial t}\,dV
++
+\int_V \operatorname{div}\vec\jmath\,dV
+\notag
+\\
+&=
+\int_V \frac{\partial\varrho}{\partial t}\,dV
++
+\int_{\partial V} \vec\jmath\,d\vec{n}
+\notag
+\intertext{und die Zeitableitung kann aus dem Intergral genommen
+werden.
+Es bleibt die Gleichung}
+0
+&=
+\frac{\partial}{\partial t}
+\int_V\varrho\,dV
++
+\int_{\partial V} \vec{\jmath}\,d\vec{n}.
+\label{buch:pdenumerik:fvm:eqn:integralform}
+\end{align}
+Dies ist die Integralform der Kontinuitätsgleichung.
+
+Die Gleichung~\eqref{buch:pdenumerik:fvm:eqn:integralform}
+suggeriert eine alternative Art der Diskretisation.
+Statt einer Variablen, die für den Wert von $\varrho$ in den Gitterpunkten
+stehen, verwenden wir Variablen, die für den Wert von $\varrho$ im ganzen
+Volumen $V$ stehen.
+Statt eines Gitters zerlegen wir den Definitionsbereich daher
+in kleine Polyeder $V$. 
+Für den Strom brauchen wir dann Variablen, die für den Strom durch 
+jede Seitenfläche des Polyeders stehen.
+
+Im eindimensionalen Fall ist das Volumen einfach nur ein kleines 
+Intervall $V_k = [x_k,x_{k+1}]$.
+Die Variable $j_k$ ist die Stromdichte im Punkt $x_k$.
+Die Variable $\varrho_k$ steht für die Dichte im ganzen Intervall $V_k$.
+Die Gleichung \eqref{buch:pdenumerik:fvm:eqn:integralform}
+wird jetzt zu
+\[
+0
+=
+\frac{\partial}{\partial t}
+\varrho_k\cdot|V_k|
++
+(j_{k+1}-j_{k}).
+\]
+Für die Zeitdiskretisation können wir wieder finite Differenzen
+verwenden und damit
+\[
+\frac{
+\varrho_k(t+\Delta t)
+\varrho_k(t)
+}{
+\Delta t
+}
+=
+\frac{j_k-j_{k+1}}{|V_{k}|}
+=
+\frac{j_k-j_{k+1}}{x_{k+1}-x_k}.
+\]
+
+Im mehrdimensionalen Fall müssen die Variablen $\vec{\jmath}_k$ mit
+der Flächennormale der Seitenflächen des Volumens $V_k$ multiplizieren
+und addieren.
+Die Variablen $\varrho_k$ müssen mit dem Volumen $|V_k|$ multipliziert
+werden.
+So entstehen wieder lineare Gleichungen für die Variablen $\varrho_k$
+und $\vec{\jmath}_k$.
+
+
+
+

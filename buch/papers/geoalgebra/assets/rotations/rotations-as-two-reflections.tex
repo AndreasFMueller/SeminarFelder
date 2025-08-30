@@ -1,14 +1,16 @@
-\begin{tikzpicture}[>=latex, scale=2]
-\fill[green!30] (-0.5, 0.5) -- (-0.5, 2) -- (-0.1, 0.9) -- cycle;
+\begin{tikzpicture}[>=latex, scale=2, thick]
+\fill[darkgreen!30] (-0.5, 0.5) -- (-0.5, 2) -- (-0.1, 0.9) -- cycle;
 \draw[thick, ->] (0, 0) -- (0.5, 2) node[left]{$\v$};
 \draw[thick, ->] (0, 0) -- (2, 0.5) node[above]{$\u$};
-\fill[green!30] (0.68, 0.21) -- (1.38, 1.53) -- (0.51, 0.75) -- cycle;
-\fill[green!30] (0.69, 0.13) -- (1.94, -0.70) -- (0.80, -0.42) -- cycle;
+\fill[darkgreen!30] (0.68, 0.21) -- (1.38, 1.53) -- (0.51, 0.75) -- cycle;
+\fill[darkgreen!30] (0.69, 0.13) -- (1.94, -0.70) -- (0.80, -0.42) -- cycle;
 \draw[thick, blue] (-0.5, 0.5) -- (0.68, 0.21);
 \draw[thick, blue] (-0.5, 2) -- (1.38, 1.53);
 \draw[thick, blue] (-0.1, 0.9) -- (0.51, 0.75);
 
-\draw[thick, red] (0.68, 0.21) -- (0.69, 0.13);
-\draw[thick, red] (1.38, 1.53) -- (1.94, -0.70);
-\draw[thick, red] (0.51, 0.75) -- (0.80, -0.42);
+\node[below left] at (0,0) {$O$};
+
+\draw[thick, darkred] (0.68, 0.21) -- (0.69, 0.13);
+\draw[thick, darkred] (1.38, 1.53) -- (1.94, -0.70);
+\draw[thick, darkred] (0.51, 0.75) -- (0.80, -0.42);
 \end{tikzpicture}

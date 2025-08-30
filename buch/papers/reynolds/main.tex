@@ -10,26 +10,45 @@
 \kopflinks{Reynolds-Averaged-Navier-Stokes}
 \begin{refsection}
 \chapterauthor{Damian Birchler und Sebastian Eggli}
+\index{Damian Birchler}%
+\index{Birchler, Damian}%
+\index{Sebastian Eggli}%
+\index{Eggli, Sebastian}%
 
 \section{Einleitung}
 
 \subsection{Warum CFD-Simulation?}
 
 Für kostspielige Bauteile oder Bauteile, die ein grosses Optimierungspotenzial haben,
+\index{Optimierungspotential}%
 lohnt es sich, deren Funktionstüchtigkeit vorgängig mittels CFD-Simulation zu überprüfen.
+\index{CFD-Simulation}%
 Ein Beispiel dafür könnte das Turbinenrad einer Wasserkraftanlage sein,
+\index{Turbinenrad}%
+\index{Wasserkraftanlage}%
 da dieses einerseits ein sehr kostspieliges Bauteil ist (meistens mehrere Mio. CHF)
 und andererseits Möglichkeiten für parametrisierte Optimierung bietet.
+\index{Optimierung}%
 
 \subsection{Das Problem der Turbulenz}
 
-Fluide - also Gase oder Flüssigkeiten - verhalten sich je nach Gegebenheit - Strömungsgeschwindigkeit, Temperatur, Druck, uvm. -
+Fluide---also Gase oder Flüssigkeiten---verhalten sich je nach Gegebenheit---Strömungs\-ge\-schwindigkeit, Temperatur, Druck, uvm.---
+\index{Turbulenz}%
+\index{Fluid}%
+\index{Gas}%
+\index{Flüssigkeit}%
 ``laminar'' oder ``turbulent''. Verhält sich ein fluid laminar, bewegen sich die Teilchen des Fluids in mehr oder weniger
+\index{laminar}%
+\index{turbulent}%
 parallelen Bahnen. In turbulenten Strömungen entstehen Wirbel, englisch ``eddies''. Für eingehende Erläuterungen zu laminaren
+\index{Wirbel}%
+\index{eddy}%
 und turbulenten Strömungen wird auf die Standardwerke wie z.B. \cite{reynolds:oertel} verwiesen.
 
 Und genau da liegen die Herausforderungen von Simulationen turbulenter Strömungen,
 denn um alle diese Wirbel zu simulieren, müsste man eine Simulation mit beliebig feinem Mesh und beliebig kleinem Zeitschritt durchführen.
+\index{Zeitschritt}%
+\index{Mesh}%
 Dies ist auch mit modernen Rechenressourcen nicht zu bewerkstelligen.
 Daraus lässt sich auch schliessen, dass Simulationen von turbulenten Strömungen per se immer nur eine Näherung an die Realität sind.
 Denn es wird immer kleine und/oder kurzlebige Wirbel geben, die durch die Simulation nicht aufgelöst werden können.
@@ -37,97 +56,9 @@ Da diese nicht aufgelösten Wirbel in Realität auch Energie umwandeln, kann ein
 
 
 \input{papers/reynolds/teil0.tex}
+\input{papers/reynolds/teil1.tex}
 
 
-\section{Praktische Anwendung}
-
-\subsection{Simulationsdomäne}
-\label{subsubsec:domain-desc}
-
-Um dem Leser oder der Leserin ein möglichst praxisrelevantes Verständnis der Problematik zu vermitteln, werden
-im nachfolgenden Teil Beispiele von CFD-Simulationen gezeigt.
-Dabei wird die in Grafik~\ref{fig:SimDomain} gezeigte Geometrie verwendet.
-Die Geometrie ist immer vollständig mit Wasser (\SI{25}{\degreeCelsius}) gefüllt,
-auf der linken Seite ist ein Einlass mit Einlassgeschwindigkeit \SI{10}{\meter\per\second} definiert und
-auf der rechten Seite ein Auslass auf Umgebungsdruck.
-Das Mesh\footnote{``Mesh'' bezeichnet die Unterteilung des zu simulierenden Volumens in einzelne Zellen,
-in denen die Navier-Stokes-Gleichung gelöst werden.} ist so gewählt, dass es in der Tiefe nur ein Element hat,
-bzw. so dass die Simulation einer zweidimensionalen Simulation entspricht.
-
-\begin{figure}
-    \includegraphics[width=\textwidth]{papers/reynolds/images/domain.png}
-    \caption{Simulationsgeometrie}
-    \label{fig:SimDomain}
-\end{figure}
-
-\subsection{Verschiedene Turbulenzmodelle}
-
-Viele prominente Turbulenzmodelle bestehen aus zwei Skalarfeldern.
-Es gibt jedoch auch zusammengesetzte Modelle, die aus mehreren Modellen bestehen.
-Dabei gibt es zusammengesetzte Modelle, die für verschiedene Bereiche der Simulation verschiedene Modelle benützen,
-um die jeweiligen Begebenheiten besser zu repräsentieren,
-sowie zusammengesetzte Modelle, die zeitliche und räumliche Mittelung in einem Modell vereinen.
-Je komplizierter ein Modell, desto höher ist auch der Rechenaufwand.
-
-Das wohl meistverbreitete Turbulenzmodell ist das k-$\epsilon$-Modell, das mit zwei Feldern auskommt. Das k-Feld für die
-turbulente kinetische Energie, und das $\epsilon$-Feld für die Eddy-Viskosität, welche eine aufgrund der Turbulenzen errechnete
-hypothetische Viskosität darstellt.
-Folgend eine nicht vollständige Liste von Turbulenzmodellen für RANS:
-
-\begin{itemize}
-    \item k-$\epsilon$
-    \item k-$\omega$
-    \item Shear Stress Transport (SST) (Kombination aus k-$\epsilon$ und k-$\omega$)
-    \item Quadratisch/Kubisch k-$\epsilon$
-    \item RANS-LES kombiniertes Modell ($\ge 4$ Felder)
-\end{itemize}
-
-Jedes dieser Turbulenzmodelle hat seine Eigenheiten und spezifischen Einsatzbereiche.
-So ist das k-$\epsilon$ Modell zum Beispiel nicht geeignet für schwach turbulente Strömungen,
-wo es die Effekte der Verwirbellung tendenziell überschätzt (siehe Abbildung ~\ref{fig:k-e}).
-Das k-$\omega$-Modell ist in diesem Bereichen besser geeignet, wie man in Abbildung ~\ref{fig:k-w}
-erkennen kann. Das SST-Modell kombiniert die beiden Modelle, so dass im Wandbereich,
-wo die meisten Turbulenzen auftreten, k-$\epsilon$ verwendet wird und um im mittleren Bereich,
-wo die Turbulenzen schwächer ausgeprägt sind, k-$\omega$.~\ref{fig:SST} verwendet wird.
-Aufgrund dieser Charakteristik ist das SST-Modell auch eins der realistischsten Modelle,
-benötigt jedoch drei Felder (k, $\epsilon$ und $\omega$), was den Rechenaufwand erhöht.
-In den Bilder ~\ref{fig:ohne},~\ref{fig:k-e},~\ref{fig:k-w} und ~\ref{fig:SST}
-wird ein Vergleich zwischen den verschiedenen Modellen sowie eine Simulation ohne
-Reynolds-Averaging gezeigt.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.99\textwidth]{papers/reynolds/croppedimages/dns.png}
-  \caption{Ohne Reynolds-Averaging}
-  \label{fig:ohne}
-  \centering
-  \includegraphics[width=0.99\textwidth]{papers/reynolds/croppedimages/k-e.png}
-  \caption{Mit k-$\epsilon$ Turbulenzmodell}
-  \label{fig:k-e}
-  \centering
-  \includegraphics[width=0.99\textwidth]{papers/reynolds/croppedimages/k-w.png}
-  \caption{Mit k-$\omega$ Turbulenzmodell}
-  \label{fig:k-w}
-  \centering
-  \includegraphics[width=0.99\textwidth]{papers/reynolds/croppedimages/sst.png}
-  \caption{Mit SST Turbulenzmodell}
-  \label{fig:SST}
-\end{figure}
-
-Die Verwendung des passenden Turbullenzmodells erfordert viel Erfahrung sowie ein gutes 
-praktisches Verständnis der simulierten Strömung. Auch muss an dieser Stelle nochmals erwähnt werden,
-dass durch die Verwendung von Turbulenzmodellen Simulationen von turbulenten Strömungen bestenfalls eine Näherungen sind.
-Darum werden CFD-Simulationen vorwiegend für Optimierungsprobleme eingesetzt, da mehrere Simulationen in Relation zu einander
-oft relativ genau sind (vorausgesetzt die Grenze zwischen laminar und turbulent befindet sich nicht im simulierten Bereich).
-Wenn man also zum Beispiel in der in Abschnitt \ref{subsubsec:domain-desc} beschriebenen Simulation den Kreis durch ein
-eiförmige Geometrie ersetzen würde, könnte man in den Simulationsergebnissen eine klare Veränderung feststellen.
-Diese Veränderung würde in den meisten Fällen auch ungefähr der Veränderung in der Realität entsprechen,
-die Ergebnisse der einzelnen Simulationen stimmen jedoch meist nicht wirklich mit den realen Begebenheiten überein.
-
-
-% \input{papers/reynolds/teil1.tex}
-% \input{papers/reynolds/teil2.tex}
-% \input{papers/reynolds/teil3.tex}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}

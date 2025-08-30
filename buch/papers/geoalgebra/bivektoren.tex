@@ -4,11 +4,13 @@
 \kopfrechts{Bivektoren}
 \subsection{Idee}
 \label{geoalgebra:section:bivektoren:idee}
-\newcommand{\vone}{\color{red}\mathbf{v}_1\color{black}}
-\newcommand{\vtwo}{\color{blue}\mathbf{v}_2\color{black}}
-Durch das Wedgeprodukt zwischen $\vone$ und $\vtwo$ erhalten wir
+\newcommand{\acolored}{\color{darkred}\a\color{black}}
+\newcommand{\bcolored}{\color{blue}\b\color{black}}
+Durch das Wedgeprodukt zwischen $\acolored$ und $\bcolored$ erhalten wir
 den
-Bivektor $\vone \wedge \vtwo$. Einen Bivektor können wir uns als \emph{orientierte Fläche}, die zwischen den beiden Vektoren aufgespannt
+Bivektor $\acolored \wedge \bcolored$. Einen Bivektor können wir uns als \emph{orientierte Fläche}, die zwischen den beiden Vektoren aufgespannt
+\index{Bivektor}%
+\index{orientierte Fläche}%
 wird, vorstellen (siehe \autoref{geoalgebra:fig:bivektor-als-flaeche}).
 \begin{figure}
   \begin{center}
@@ -20,26 +22,27 @@ wird, vorstellen (siehe \autoref{geoalgebra:fig:bivektor-als-flaeche}).
 \subsection{Bivektoren als orientierte Fläche}
 Es ist wichtig, dass wir uns die Idee einer orientierten Fläche
 verinnerlichen. Wie wir bereits in \autoref{geoalgebra:section:bivektoren:idee} gesehen haben,
-gibt das Wedgeprodukt $\vone \wedge \vtwo$
+gibt das Wedgeprodukt $\acolored \wedge \bcolored$
 einen Bivektor, der die Fläche zwischen den beiden Vektoren als
 eine \emph{im Gegenuhrzeigersinn orientierte Fläche} repräsentiert.
-Wir können uns vorstellen, als ob wir den Vektor $\vone$
-am Vektor $\vtwo$ ``aufspannen'' (siehe \autoref{geoalgebra:fig:aufspannende-flaeche-v1-v2})
+Wir können uns vorstellen, als ob wir den Vektor $\acolored$
+am Vektor $\bcolored$ ``aufspannen'' \cite{geoalgebra:vince2009} (siehe \autoref{geoalgebra:fig:aufspannende-flaeche-v1-v2}).
 
 \begin{figure}
 \begin{center}
 \input{papers/geoalgebra/assets/v2-over-v1/v2-over-v1-partial.tex}
 \input{papers/geoalgebra/assets/v2-over-v1/v2-over-v1-full.tex}
 \end{center}
-  \caption{Vektor $\vone$ wird an $\vtwo$ aufgespannt}\label{geoalgebra:fig:aufspannende-flaeche-v1-v2}
+  \caption{Vektor $\acolored$ wird an $\bcolored$ aufgespannt}\label{geoalgebra:fig:aufspannende-flaeche-v1-v2}
 \end{figure}
 
 
-Analog dazu stellen wir uns vor, dass wir beim Bivektor $\vtwo \wedge \vone$ den Vektor
-$\vtwo$ am Vektor $\vone$ aufspannen (siehe \autoref{geoalgebra:fig:aufspannende-flaeche-v2-v1}).
+Analog dazu stellen wir uns vor, dass wir beim Bivektor $\bcolored \wedge \acolored$ den Vektor
+$\bcolored$ am Vektor $\acolored$ aufspannen (siehe \autoref{geoalgebra:fig:aufspannende-flaeche-v2-v1}).
 In diesem Fall entsteht eine im Uhrzeigersinn orientierte Fläche mit demselben
 Flächeninhalt. Laut Axiom \eqref{geoalgebra:eq:antikommutativ} ist das Wedgeprodukt
-\emph{antikommutativ}, d.h. $\vone \wedge \vtwo = -\vtwo \wedge \vone$. Das Vorzeichen bestimmt also,
+\emph{antikommutativ}, d.~h. $\a \wedge \b = -\b \wedge \a$. Das Vorzeichen bestimmt also,
+\index{antikommutativ}%
 wie die Fläche orientiert ist.
 
 \begin{figure}
@@ -47,32 +50,31 @@ wie die Fläche orientiert ist.
 \input{papers/geoalgebra/assets/v1-over-v2/v1-over-v2-partial.tex}
 \input{papers/geoalgebra/assets/v1-over-v2/v1-over-v2-full.tex}
 \end{center}
-  \caption{$\vtwo$ wird an $\vone$ aufgespannt}\label{geoalgebra:fig:aufspannende-flaeche-v2-v1}
+  \caption{$\bcolored$ wird an $\acolored$ aufgespannt}\label{geoalgebra:fig:aufspannende-flaeche-v2-v1}
 \end{figure}
 
 Eine positive, orientierte Fläche ist generell einem Umlaufsinn \emph{im Uhrzeigersinn}
+\index{Umlaufsinn}%
 zuzuordnen, eine negative, orientierte Fläche bedeutet ein Umlaufsinn \emph{im Gegenuhrzeigersinn}.
 
 
 \subsection{Rechenbeispiel mit Zahlen}
 \label{geoalgebra:section:example}
 
-Wir nehmen an, dass 
-\begin{equation}
-  \begin{aligned}
-    &\mathbf{a} &= \begin{pmatrix} 3 \\ 1 \end{pmatrix} = 3 \eone + \etwo \\
-    \text{und}\quad
-    &\mathbf{b} &= \begin{pmatrix} 1 \\ 2 \end{pmatrix} = \eone + 2 \etwo.
-  \end{aligned}
-\end{equation}
+Angenommen, dass 
+\begin{align*}
+    \mathbf{a} &= \begin{pmatrix} 3 \\ 1 \end{pmatrix} = 3 \eone + \etwo, \\
+    \mathbf{b} &= \begin{pmatrix} 1 \\ 2 \end{pmatrix} = \eone + 2 \etwo.
+\end{align*}
 Das Wedgeprodukt zwischen den beiden Vektoren ergibt
-\begin{equation}
-  \begin{aligned}
-    \mathbf{a} \wedge \mathbf{b} &= (3 \eone + \etwo) \wedge (\eone + 2 \etwo) \\
+\begin{align}
+    \mathbf{a} \wedge \mathbf{b} &= (3 \eone + \etwo) \wedge (\eone + 2 \etwo)
+\notag
+\\
     &= 5 \eone \wedge \etwo.
-  \end{aligned}
-\end{equation}
-Die Fläche im aufgespannten Parallelogramm ist $5$ und im Gegenuhrzeigersinn orientiert.
+\label{geoalgebra:bivektor:beispiel}
+\end{align}
+Der Flächeninhalt des aufgespannten Parallelogramms ist $5$ und im Gegenuhrzeigersinn orientiert.
 
 \subsection{Äquivalente Bivektoren}
 Da Bivektoren orientierte Flächen sind, sind sie nicht eindeutig. Es gibt unendlich viele mögliche Kombinationen von Vektoren,
@@ -88,17 +90,18 @@ und den anderen stauchen. Dies lässt sich bereits aus unseren Axiomen herleiten
 Sei
   \begin{align*}
     \a &= \begin{pmatrix} 3 \\ 1 \end{pmatrix} \\
-    \b &= \begin{pmatrix} 1 \\ 2 \end{pmatrix}
+    \b &= \begin{pmatrix} 1 \\ 2 \end{pmatrix}.
   \end{align*}
-Das Wedgeprodukt zwischen $\a$ und $\b$ ergibt
-  \begin{equation}
+Das Wedgeprodukt zwischen $\a$ und $\b$ ergibt gemäss
+\eqref{geoalgebra:bivektor:beispiel}
+  \begin{equation*}
     \a \wedge \b = 5 \eone \wedge \etwo.
-  \end{equation}
+  \end{equation*}
 
-  Wir strecken $\a$ und stauchen $\b$ um denselben Faktor $2$. Durch die Bilinearität (\eqref{geoalgebra:eq:bilinear}) ergibt
-  \begin{equation}
-    2 \a \wedge \frac{1}{2} \b = 2 \frac{1}{2} \a \wedge \b = \a \wedge \b.
-  \end{equation}
+  Wir strecken $\a$ und stauchen $\b$ um denselben Faktor $2$. Durch die Bilinearität \eqref{geoalgebra:eq:bilinear} ergibt
+  \begin{equation*}
+    2 \a \wedge \frac{1}{2} \b = 2 \frac{1}{2} \a \wedge \b = \a \wedge \b. \qedhere
+  \end{equation*}
 
 
 
@@ -111,7 +114,7 @@ Das Wedgeprodukt zwischen $\a$ und $\b$ ergibt
 \end{figure}
 \end{beispiel}
 
-Derselbe Bivektor kann aber auch über Vektoren in andere Richtungen erreicht werden, z.B. über die Standardbasisvektoren $\eone$ und $\etwo$ (siehe \autoref{geoalgebra:fig:equivalent-bivectors-unit-vectors}).
+Derselbe Bivektor kann aber auch über Vektoren in andere Richtungen erreicht werden, z.\~B. über die Standardbasisvektoren $\eone$ und $\etwo$ (siehe \autoref{geoalgebra:fig:equivalent-bivectors-unit-vectors}).
 
 \begin{figure}
 \begin{center}
@@ -127,21 +130,22 @@ Derselbe Bivektor kann aber auch über Vektoren in andere Richtungen erreicht we
 
 \subsection{Bivektoren im dreidimensionalen Raum}
 Bivektoren sind in allen Dimensionen genauso orientierte Flächen wie in zwei Dimensionen.
-Statt, dass wir jedoch das Resultat einfach so erhalten, erhalten wir \emph{Projektionen}
+Anstelle das Resultat einfach so zu erhalten, erhalten wir \emph{Projektionen}
 auf alle von den Standardbasisvektoren aufgespannten Ebenen.
 
 In \eqref{geoalgebra:eq:wedgeprodukt-dreidimensional} haben wir das Wedgeprodukt zwischen zwei Vektoren
 in drei Dimensionen bereits hergeleitet. Wir erhielten drei Summanden aus Wedgeprodukten mit skalaren Faktoren
-\begin{align*}
-&(a_1 b_2 - a_2 b_1) \eone \wedge \etwo \\
-  &+(a_2 b_3 - a_3 b_2) \etwo \wedge \ethree \\
-  &+(a_3 b_1 - a_1 b_3) \ethree \wedge \eone.
-\end{align*}
+\begin{equation*}
+(a_1 b_2 - a_2 b_1) \eone \wedge \etwo 
+  +(a_2 b_3 - a_3 b_2) \etwo \wedge \ethree 
+  +(a_3 b_1 - a_1 b_3) \ethree \wedge \eone.
+\end{equation*}
 Der Term $a_1 b_2 - a_2 b_1$ ist der Flächeninhalt der \emph{Projektion} (oder des ``Schattens'') des aufgespannten Parallelogramms auf die $\eone$-$\etwo$-Ebene.
+\index{Projektion}
 Analog dazu ist $a_2 b_3 - a_3 b_2$ der Flächeninhalt der Projektion auf die $\etwo$-$\ethree$-Ebene und $a_3 b_1 - a_1 b_3$ der Flächeninhalt
 der Projektion auf die $\ethree$-$\eone$-Ebene (siehe \autoref{geoalgebra:fig:bivectors-3d}).
 
-\begin{figure}[h]
+\begin{figure}
   \centering
   \includegraphics[width=0.4\textwidth]{papers/geoalgebra/assets/bivectors-3d.png}
   \caption{Bivektoren im dreidimensionalen Raum}
@@ -149,18 +153,23 @@ der Projektion auf die $\ethree$-$\eone$-Ebene (siehe \autoref{geoalgebra:fig:bi
 \end{figure}
 
 \subsection{Bivektoren als algebraische Struktur}
-Bisher wurde besonders auf geometrische Vorstellungen eines Bivektors eingegangen. Vor dem nächsten Thema sollte hier noch kurz
-auf die algebraische Struktur eines Bivektors eingegangen werden. Das Wedgeprodukt zweier zweidimensionalen Vektoren ergibt
-einen Bivektor mit genau einer Komponente. Das Wedgeprodukt zwischen zwei dreidimensionalen Vektoren ergibt einen Bivektor mit drei Komponenten
-und das Wedgeprodukt zwischen
-zwei vierdimensionalen Vektoren ergibt sechs.
+Das Wedgeprodukt zweier zweidimensionalen Vektoren ergibt wie in \eqref{geoalgebra:eq:2d-wedgeproduct}
+gezeigt einen Bivektor mit genau einer Komponente. Im zweidimensionalen Raum gibt es ja auch nur eine
+Ebene $\eone \wedge \etwo$. 
+Das Wedgeprodukt zwischen zwei dreidimensionalen Vektoren ergibt hingegen
+gemäss \eqref{geoalgebra:eq:wedgeprodukt-dreidimensional} einen
+Bivektor mit drei Komponenten, eine Komponente pro von den Standardbasisvektoren aufgespannte
+Ebene im Raum.
+Das Wedgeprodukt zweier vierdimensionaler Vektoren hat sechs Komponenten,
+jeweils eine für jede von den Standardbasisvektoren aufgespannte Fläche. Die möglichen Ebenen sind:
+$\eone \wedge \etwo, \eone \wedge \ethree, \eone \wedge \mathbf{e}_{4}, \etwo \wedge \ethree, \etwo \wedge \mathbf{e}_{4}, \ethree \wedge \mathbf{e}_{4}$.
 
 Die Anzahl Komponenten, die aus einem Bivektor resultieren, hängt also von der Dimension des Vektorraums ab, den wir betrachten.
 Wie in \eqref{geoalgebra:eq:2d-wedgeproduct} bereits erkannt, fallen die Terme, welche Wedgeprodukte von gleichen Vektoren $\mathbf{v}_i \wedge \mathbf{v}_i$ beinhalten,
 immer weg, da diese Produkte $0$ ergeben. Ausserdem werden vertauschte Reihenfolgen einfach negiert und zusammengefasst: 
-\begin{equation}
-  \lambda \mathbf{v}_i \wedge \mathbf{v}_j + \mu \mathbf{v}_j \wedge \mathbf{v_i} = \lambda \mathbf{v}_i \wedge \mathbf{v}_j - \mu \mathbf{v}_i \wedge \mathbf{v}_j = (\mu - \lambda) \mathbf{v}_i \wedge \mathbf{v}_j
-\end{equation}
+\begin{equation*}
+  \lambda \mathbf{v}_i \wedge \mathbf{v}_j + \mu \mathbf{v}_j \wedge \mathbf{v_i} = \lambda \mathbf{v}_i \wedge \mathbf{v}_j - \mu \mathbf{v}_i \wedge \mathbf{v}_j = (\mu - \lambda) \mathbf{v}_i \wedge \mathbf{v}_j.
+\end{equation*}
 Wir erhalten also für jede Kombination von verschiedenen Basisvektoren eines Vektorraums eine Komponente.
 \begin{satz}
 Sei $N$ die Dimension des Vektorraumes. Die Dimension $K$ des Raums der Bivektoren berechnet sich als

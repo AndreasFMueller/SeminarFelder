@@ -1,4 +1,4 @@
-\begin{tikzpicture}[>=latex]
+\begin{tikzpicture}[>=latex, thick]
   \draw[step=.5cm,gray,very thin] (-0.25,-0.25) grid (2.25,3.25);
   \coordinate (O) at (0,0);
   \coordinate (A) at (2,0);
@@ -7,7 +7,7 @@
 
   \fill[blue!30,opacity=0.7] (O) -- (A) -- (C) -- (B) -- cycle;
 
-  \draw[thick,->,red] (O) -- (A) node[midway,below] {$2 \eone$};
+  \draw[thick,->,darkred] (O) -- (A) node[midway,below] {$2 \eone$};
   \draw[thick,->,blue] (O) -- (B) node[midway,left] {$\frac{5}{2} \etwo$};
   \draw[dashed] (A) -- (C);
   \draw[dashed] (B) -- (C);

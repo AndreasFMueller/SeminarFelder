@@ -7,52 +7,38 @@
 % !TEX encoding = UTF-8
 %
 \section{Lokalität
-\label{parallelisierung:section:Lokalität}}
+\label{parallelisierung:sec:Lokalitaet}}
 \kopfrechts{Lokalität}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
-\begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{parallelisierung:equation1}
-\end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+Lokalität beschreibt den Umstand, dass ein physikalischer oder mathematischer Vorgang nur von seiner unmittelbaren Umgebung beeinflusst wird. 
+Dieses Konzept ist zentral für das Verständnis vieler physikalischer Prozesse und bildet zugleich die Grundlage für numerische Verfahren, mit denen wir Feldgleichungen berechnen können. 
+Ohne die Annahme der Lokalität wäre es nicht möglich, komplexe Systeme in Teilprobleme zu zerlegen und effizient auf Rechnerarchitekturen umzusetzen.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+\subsection{Lokalität im physikalischen Sinn
+	\label{parallelisierung:sub:LokalitaetPhysik}}
+Auf einfache Weise lässt sich Lokalität am Beispiel der Wärmeleitung veranschaulichen. 
+Die Temperatur an einem bestimmten Ort hängt nicht unmittelbar von allen Punkten im Material ab, sondern nur von den direkt benachbarten Zellen. 
+Der Wärmestrom ergibt sich lokal aus den Temperaturdifferenzen zwischen einem Punkt und seinen Nachbarn.
+Eine heiße Stelle in einem Metallblock beeinflusst also nicht direkt eine weit entfernte Stelle, sondern nur die benachbarten Bereiche. 
+Diese Nachbarstellen wiederum beeinflussen die nächsten, und so breitet sich Wärme schrittweise aus. 
+Es gibt Beispiele von Fernwirkung in der Physik wie zum Beispiel das Newton'sche Gravitationsgesetz oder Coulombs Gesetz für elektrische Ladung.
+In der modernen Physik können jedoch alle physikalischen Prozesse durch Felder mit streng lokalen Wechselwirkungen erklärt werden.
+Es gibt ausserhalb der Quantenmechanik keine echte Fernwirkung in der Physik.
 
-\subsection{De finibus bonorum et malorum
-\label{parallelisierung:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{parallelisierung:equation1}.
+\subsection{Lokalität im mathematischen Sinn
+\label{parallelisierung:sub:LokalitaetMathematik}}
+In der Mathematik tritt Lokalität vor allem bei Differentialoperatoren auf. 
+Eine Ableitung an einer Stelle beschreibt das Verhalten einer Funktion in einer sehr kleinen Umgebung dieses Punktes. 
+In der numerischen Mathematik, wo kontinuierliche Operatoren durch diskrete Approximationen ersetzt werden, wird dieses Prinzip besonders deutlich. 
+So wird etwa eine erste Ableitung durch Differenzen zwischen benachbarten Gitterpunkten dargestellt, und eine zweite Ableitung durch Kombination dieser Differenzen. 
+Damit greift die Berechnung stets nur auf Werte aus der unmittelbaren Nachbarschaft zu. 
+Diese Eigenschaft macht Differentialoperatoren lokal und ermöglicht die Umsetzung auf Gittern.
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{parallelisierung:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{parallelisierung:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
-
+\subsection{Lokalität und PDEs
+\label{parallelisierung:sub:LokalitaetPDE}}
+Für partielle Differentialgleichungen (PDEs) ist die Lokalität von zentraler Bedeutung. 
+Die Veränderung einer Größe in Raum und Zeit hängt immer nur von den lokalen Gradienten oder Krümmungen ab. 
+Würde ein Operator auf das gesamte Feld wirken, könnte man die Gleichung nicht sinnvoll numerisch lösen. 
+Zudem ist Lokalität entscheidend für die Parallelisierung, denn nur da jedes Teilgebiet seine Lösung ausschließlich aus lokalen Informationen berechnen kann, lassen sich deren Berechnungen auf mehrere Prozessoren verteilen. 
+Lediglich an den Grenzen der Teilgebiete muss kommuniziert werden, um den Austausch der Randzellen sicherzustellen. 
+Somit bildet Lokalität nicht nur die theoretische Grundlage für PDEs, sondern auch die praktische Voraussetzung für deren effiziente Berechnung auf modernen Rechnerarchitekturen.
 
