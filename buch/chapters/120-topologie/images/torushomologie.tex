@@ -1,0 +1,78 @@
+%
+% torushomologie.tex -- Triangulation eines Torus
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\def\h{5}
+\def\b{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+
+\clip (-\b,-\b) rectangle ({\h+\b},{\h+\b});
+
+\fill[color=gray!20] (0,0) rectangle (\h,\h);
+\draw[line width=0.2pt] (-2,0) -- ({\h+2},0);
+\draw[line width=0.2pt] (-2,\h) -- ({\h+2},\h);
+\draw[line width=0.2pt] (0,-2) -- (0,{\h+2});
+\draw[line width=0.2pt] (\h,-2) -- (\h,{\h+2});
+
+\draw (0,0) -- (\h,\h);
+\draw[color=black!40] (\h,0) -- ++(\h,\h);
+\draw[color=black!40] (0,\h) -- ++(\h,\h);
+\draw[color=black!40] (\h,\h) -- ++(\h,\h);
+\draw[color=black!40] (-\h,-\h) -- ++(\h,\h);
+\draw[color=black!40] (-\h,0) -- ++(\h,\h);
+\draw[color=black!40] (0,-\h) -- ++(\h,\h);
+
+\draw[color=darkred!40,line width=1.4pt] (-\h,\h) -- ({2*\h},\h);
+\draw[color=darkred!40,line width=1.4pt] (-\h,0) -- ({2*\h},0);
+\draw[color=darkred,line width=1.4pt] (0,0) -- (\h,0);
+\node[color=darkred] at ({0.5*\h},0) [below] {$\mathstrut a$};
+
+\draw[color=blue!40,line width=1.4pt] (\h,-\h) -- (\h,{2*\h});
+\draw[color=blue!40,line width=1.4pt] (0,-\h) -- (0,{2*\h});
+\draw[color=blue,line width=1.4pt] (0,0) -- (0,\h);
+\node[color=blue] at (0,{0.5*\h}) [left] {$\mathstrut b$};
+
+\node at ({0.5*\h},{0.5*\h}) [above left] {$d$};
+
+\fill (0,0) circle[radius=0.07];
+\fill[color=black!40] (\h,0) circle[radius=0.07];
+\fill[color=black!40] (0,\h) circle[radius=0.07];
+\fill[color=black!40] (\h,\h) circle[radius=0.07];
+
+\node at ({0.25*\h},{0.75*\h}) {$\Delta_1$};
+\node at ({0.75*\h},{0.25*\h}) {$\Delta_2$};
+\node at (0,0) [above left] {$p$};
+
+\node[color=black!40] at ({0.66*\h},{1.15*\h}) {$\Delta_2$};
+\node[color=black!40] at ({0.33*\h},{-0.15*\h}) {$\Delta_1$};
+\node[color=black!40] at (0,{-0.15*\h}) [left] {$\Delta_2$};
+\node[color=black!40] at (\h,{-0.15*\h}) [left] {$\Delta_2$};
+\node[color=black!40] at ({-0.15*\h},0) [below] {$\Delta_1$};
+
+\node[color=black!40] at ({-0.15*\h},\h) [below] {$\Delta_1$};
+\node[color=black!40] at (0,{1.15*\h}) [right] {$\Delta_1$};
+\node[color=black!40] at (\h,{1.15*\h}) [right] {$\Delta_1$};
+\node[color=black!40] at (\h,{0.66*\h}) [right] {$\Delta_1$};
+
+\node[color=black!40] at (0,{0.33*\h}) [left] {$\Delta_2$};
+\node[color=black!40] at ({1.15*\h},0) [above] {$\Delta_2$};
+\node[color=black!40] at ({1.15*\h},\h) [above] {$\Delta_2$};
+
+\node[color=black!40] at ({-0.15*\h},{1.15*\h}) {$\Delta_2$};
+\node[color=black!40] at ({1.15*\h},{-0.15*\h}) {$\Delta_1$};
+
+\end{tikzpicture}
+\end{document}
+

@@ -6,7 +6,9 @@
 
 all:	unterteilung.pdf						\
 	sphaere.jpg							\
-	morse.pdf
+	morse.pdf							\
+	toruspfade.pdf							\
+	torushomologie.pdf
 
 sphaere.png:	sphaere.pov
 	povray +A0.1 +W1920 -H1080 -Osphaere.png sphaere.pov
@@ -29,3 +31,9 @@ torus-levels.png:	torus-levels.pov torus.inc
 	povray +A0.1 -W1920 -H1080 -Otorus-levels.png torus-levels.pov
 torus-levels.jpg:	torus-levels.png Makefile
 	magick -extract 970x1080+484+0 torus-levels.png torus-levels.jpg
+
+toruspfade.pdf:	toruspfade.tex
+	pdflatex toruspfade.tex
+
+torushomologie.pdf:	torushomologie.tex
+	pdflatex torushomologie.tex

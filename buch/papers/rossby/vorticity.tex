@@ -4,6 +4,8 @@
 Die grossräumige Bewegung der Luft in der Atmosphäre lässt sich nicht nur durch die
 Geschwindigkeit beschreiben, sondern auch durch ihre Rotationseigenschaften.
 Diese Eigenschaft wird durch die sogenannte \emph{Vorticity} (Wirbelstärke)
+\index{Vorticity}%
+\index{Wirbelstärke}%
 quantifiziert. Physikalisch beschreibt sie die Tendenz eines Luftpakets, sich
 um seine eigene vertikale Achse zu drehen.
 
@@ -14,6 +16,8 @@ Geschwindigkeitsfeldes:
 	\label{rossby:eq:vorticity}
 \end{equation}
 Für grossräumige Strömungen in der Atmosphäre betrachtet man hauptsächlich die vertikale Komponente dieser Rotation, die sogenannte \emph{relative Vorticity}.
+\index{relative Vorticity}%
+\index{Vorticity, relativ}%
 In kartesischen Koordinaten ergibt sich diese im einfachsten Fall zu:
 \begin{equation}
 	\zeta = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y},
@@ -21,6 +25,8 @@ In kartesischen Koordinaten ergibt sich diese im einfachsten Fall zu:
 \end{equation}
 wobei \(u\) und \(v\) die zonale bzw. meridionale Windkomponente bezeichnen.
 Positive Vorticity (\(\zeta > 0\)) steht für eine zyklonale Rotation (auf der Nordhalbkugel gegen den Uhrzeigersinn), negative Vorticity (\(\zeta < 0\)) für eine antizyklonale Rotation (im Uhrzeigersinn).
+\index{zyklonale Rotation}%
+\index{antizyklonale Rotation}%
 \begin{figure}
 	\centering
 	% Erste Reihe
@@ -63,8 +69,9 @@ Luftpakets relativ zum Erdboden. Da sich jedoch auch die Erde selbst dreht,
 muss diese planetare Rotation bei der Beschreibung der Gesamtdrehung
 berücksichtigt werden. Daraus ergibt sich der Begriff der \emph{absoluten
 	Vorticity}, welche die Summe aus relativer und planetarer Vorticity darstellt.
+\index{Vorticity, absolut}%
 
-Die planetare Vorticity wird durch den \emph{Coriolis-Parameter} \(
+Die planetare Vorticity wird durch den Coriolis-Parameter \(
 f = 2 \Omega \sin \varphi \) beschrieben, wobei \( \Omega \) die
 Erdrotationsrate und \( \varphi \) die geographische Breite ist. Dieser
 Ausdruck ergibt sich aus der Projektion der Erdrotation auf die lokale
@@ -96,12 +103,14 @@ Dieser Ausdruck berücksichtigt sowohl die horizontale Rotation als auch die ver
 
 Man kann die potentielle Vorticity als die \emph{allgemeinere Erhaltungsgröße}
 verstehen, welche die Drehimpulserhaltung als Spezialfall umfasst. Während
+\index{Drehimpulserhaltung}%
 die Drehimpulserhaltung nur die axiale Rotation einer Luftsäule beschreibt,
 fasst die potentielle Vorticity zusätzlich Effekte der vertikalen Schichtung
 und der relativen Vorticity zusammen. Eine anschauliche Analogie ist die
 Eiskunstläufer:in, die ihre Rotationsgeschwindigkeit ändert, wenn sie die Arme
+\index{Eiskunstläuferin}%
 an den Körper zieht oder ausstreckt: die Drehimpulserhaltung erzwingt eine
-Anpassung der Rotationsgeschwindigkeit an die veränderte Trägheit. In der
+Anpassung der Rotationsgeschwindigkeit an das veränderte Trägheitsmoment. In der
 Atmosphäre entspricht dies der Anpassung der Vorticity an Änderungen der
 Schichthöhe, wie sie in Gl.~\eqref{rossby:eq:potential_vorticity} beschrieben ist.
 
@@ -127,17 +136,21 @@ Schichthöhe, wie sie in Gl.~\eqref{rossby:eq:potential_vorticity} beschrieben i
 
 
 Ein zentrales Ergebnis der quasi-geostrophischen Theorie ist die Erhaltung der
+\index{quasi-geostrophisch}%
+\index{Erhaltung der potenziellen Vorticity}%
 potenziellen Vorticity entlang der Trajektorie eines Luftpakets:
+\index{Trajektorie}%
 \begin{equation}
 	\frac{Dq}{Dt} = 0.
 	\label{rossby:eq:pv_conservation}
 \end{equation}
 Unter den genannten Bedingungen treten weder Reibung noch diabatische Wärmeflüsse auf, und die Masse der Luftsäule bleibt erhalten.
+\index{diabatische}%
 Damit heben sich Änderungen in \(\zeta\), \(f\) und \(H\) entlang der Bewegung eines Luftpakets gegenseitig so auf, dass das Verhältnis \((\zeta + f)/H\) konstant bleibt.
 
 Die Erhaltung der potenziellen Vorticity erklärt viele grossskalige atmosphärische Phänomene: Wird ein Luftpaket nach Norden transportiert (höheres \(f\)), so muss es zyklonale
 Vorticity (\(\zeta > 0\)) abbauen oder sich ausdehnen (\(H \uparrow\)), um
 \(q\) konstant zu halten. Bei einer südlichen Verlagerung gilt der umgekehrte
 Mechanismus. Diese Dynamik ist eine der physikalischen Grundlagen für das
-Entstehen und die Ausbreitung von Rossby-Wellen, die im folgenden Kapitel
+Entstehen und die Ausbreitung von Rossby-Wellen, die im folgenden Abschnitt
 behandelt werden.

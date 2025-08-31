@@ -15,27 +15,27 @@ $u_1$ entspricht der Verschiebung in $x$-Richtung, $u_2$ beschreibt die Verschie
 Ausgehend vom Verschiebungsfeld $u_i(x)$ definieren wir den Verzerrungstensor $\varepsilon_{ij}$ als symmetrisierten Gradienten des Verschiebungsfeldes:
 \begin{equation}
 	\varepsilon_{ij} = 
-	\frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)
+	\frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right).
 \end{equation}
 Diese Definition gewährleistet die Symmetrie des Verzerrungstensors ($\varepsilon_{ij}$ = $\varepsilon_{ji}$) und erfasst sowohl Dehnungen ($i$ = $j$) als auch Scherungen ($i$ $\neq$ $j$).
-Als tensorielle Schreibweise, sieht der Formel folgendermassen aus:
+Als tensorielle Schreibweise, sieht die Formel folgendermassen aus:
 \begin{equation}
 	\boldsymbol{\varepsilon} = 
-	\frac{1}{2} \left( \nabla \vec{u} + (\nabla \vec{u})^T \right)
+	\frac{1}{2} \left( \nabla \vec{u} + (\nabla \vec{u})^T \right).
 \end{equation}
 
 \subsection{Konstitutives Gesetz für isotrope Materialien}
 Das hookesche Gesetz in tensorieller Form verknüpft Spannungen $\sigma_{ij}$ mit Verzerrungen $\varepsilon_{kl}$
 \begin{equation}
 	\sigma_{ij} = 
-	\lambda \delta_{ij} \varepsilon_{kk} + 2\mu \varepsilon_{ij}
+	\lambda \delta_{ij} \varepsilon_{kk} + 2\mu \varepsilon_{ij}.
 \end{equation}
 Hierbei sind $\lambda$ und $\mu$ (Lamé-Konstanten) materialabhängige Parameter. Für den Zusammenhang mit technischen Konstanten gilt:
 \begin{equation}
 	\mu = 
 	G = 
 	\frac{E}{2(1+\nu)}, \quad \lambda = 
-	\frac{E \nu}{(1+\nu)(1-2\nu)}
+	\frac{E \nu}{(1+\nu)(1-2\nu)}.
 \end{equation}	
 Als deviatorische Darstellung ergibt das:
 \begin{equation}
@@ -45,159 +45,191 @@ Als deviatorische Darstellung ergibt das:
 mit
 \begin{equation}
 	e_{ij} = 
-	\varepsilon_{ij} - \frac{1}{3} \varepsilon_{kk} \delta_{ij}
+	\varepsilon_{ij} - \frac{1}{3} \varepsilon_{kk} \delta_{ij}.
 \end{equation}
-
-\subsection{Gleichgewichtsbedingungen}
-Aus der Impulsbilanz für ein infinitesimales Volumenelement folgt:
-\begin{equation}
-	\frac{\partial \sigma_{ij}}{\partial x_j} + f_i =
-	0,
-\end{equation}
-wobei $f_i$ Volumenkräfte darstellen. 
-Diese Gleichung beschreibt das lokale Kräftegleichgewicht in allen Raumrichtungen.
 
 \subsection{Navier-Cauchy-Gleichungen (Feldgleichungen)}
-Durch Einsetzen des Materialgesetzes in die Gleichgewichtsbedingungen erhalten wir die fundamentalen Feldgleichungen:
+Durch Einsetzen des Materialgesetzes (15.31) in die Gleichgewichtsbedingungen (15.35) erhalten wir die fundamentalen Feldgleichungen:
 \begin{equation}
 	\mu \nabla^2 u_i + (\lambda + \mu) \frac{\partial}{\partial x_i} (\nabla \cdot \vec{u}) + f_i =
 	0.
 \end{equation}
-In Vektorenform ergibt das:
+In Vektorform ergibt das:
 \begin{equation}
 	\mu \nabla^2 \vec{u} + (\lambda + \mu) \nabla (\nabla \cdot \vec{u}) + \vec{f} = 
 	0.
 \end{equation}
+Die Herleitung gestaltet sich wie folgt
 
-\subsection{Herleitung der Navier-Cauchy-Gleichungen}
+\begin{proof}[Herleitung]
 Jetzt setzen wir die kinematischen, konstitutiven und Gleichgewichtsbeziehungen zusammen, um die vollständigen Feldgleichungen der linearen Elastizitätstheorie herzuleiten.
 Wir ersetzen $\sigma_{ij}$ in die Gleichgewichtsbedingung:
 \begin{equation}
 	\frac{\partial}{\partial x_j}\left( \lambda \delta_{ij} \varepsilon_{kk} + 2\mu \varepsilon_{ij} \right) + f_i = 
-	0
+	0.
 \end{equation}
 Einzeln ausrechnen:
 \begin{equation}
 	\lambda \frac{\partial \varepsilon_{kk}}{\partial x_i} + 2\mu \frac{\partial \varepsilon_{ij}}{\partial x_j} + f_i = 
-	0
+	0.
 \end{equation}
 Jetzt drücken wir die Verzerrungen durch die Verschiebungen aus:
-\begin{equation}
-	\varepsilon_{kk} = 
+\begin{align}
+	\varepsilon_{kk} &= 
 	\frac{\partial u_1}{\partial x_1} + \frac{\partial u_2}{\partial x_2} + \frac{\partial u_3}{\partial x_3} = 
 	\nabla \cdot \vec{u}
-\end{equation}
-\begin{equation}
-	\varepsilon_{ij} = 
-	\frac{1}{2}\left( \frac{\partial u_i}{\partial x_j} + \frac{\partial 	u_j}{\partial x_i} \right)
-\end{equation}
+	\\
+	\varepsilon_{ij} &= 
+	\frac{1}{2}\left( \frac{\partial u_i}{\partial x_j} + \frac{\partial 	u_j}{\partial x_i} \right).
+\end{align}
 Zwischenschritt: Ableitung von $\varepsilon_{ij}$ einsetzen:
 \begin{equation}
 	\frac{\partial \varepsilon_{ij}}{\partial x_j} = 
-	\frac{1}{2}\left( \frac{\partial^2 u_i}{\partial x_j \partial x_j} + \frac{\partial^2 u_j}{\partial x_i \partial x_j} \right)
+	\frac{1}{2}\left( \frac{\partial^2 u_i}{\partial x_j \partial x_j} + \frac{\partial^2 u_j}{\partial x_i \partial x_j} \right).
 \end{equation}
 und wegen Vertauschbarkeit der Ableitungen:
 \begin{equation}
 	\frac{\partial^2 u_j}{\partial x_i \partial x_j} = 
-	\frac{\partial}{\partial x_i}\left( \frac{\partial u_j}{\partial x_j} \right) = 	\frac{\partial}{\partial x_i}(\nabla \cdot \vec{u})
+	\frac{\partial}{\partial x_i}\left( \frac{\partial u_j}{\partial x_j} \right) = 	\frac{\partial}{\partial x_i}(\nabla \cdot \vec{u}).
 \end{equation}
 Somit:
 \begin{equation}
 	2\mu \frac{\partial \varepsilon_{ij}}{\partial x_j} = 
-	\mu \nabla^2 u_i + \mu 	\frac{\partial}{\partial x_i}(\nabla \cdot \vec{u})
+	\mu \nabla^2 u_i + \mu 	\frac{\partial}{\partial x_i}(\nabla \cdot \vec{u}).
 \end{equation}
 Zusammen ergibt sich schliesslich:
 \begin{equation}
 	\mu \nabla^2 u_i + (\lambda+\mu) \frac{\partial}{\partial x_i}(\nabla \cdot \vec{u}) + f_i = 
-	0
+	0.
 \end{equation}
 In kompakter Vektorschreibweise lautet die Gleichung:
 \begin{equation}
 	\mu \nabla^2 \vec{u} + (\lambda+\mu) \nabla (\nabla \cdot \vec{u}) + \vec{f} = 
-	0
+	0.
 \end{equation}
 Dies sind die Navier-Cauchy-Gleichungen.
-
+\end{proof}
 \subsection{Variationsformulierung der Elastizität}
 Zusätzlich kann das Problem über ein Energieprinzip formuliert werden:
 
-\textbf{Potentielle Energie:}
-\begin{equation}
-	\Pi = 
-	\int_V \left( \frac{1}{2} \sigma_{ij} \varepsilon_{ij} - f_i u_i \right) \, dV
-\end{equation}
-
-\textbf{Interpretation:} Das System minimiert seine potentielle Energie im Gleichgewicht.
-
-\textbf{Bemerkung:} Durch Variation $\delta \Pi = 0$ erhalten wir wieder die Navier-Cauchy-Gleichungen (Euler-Lagrange-Prinzip).
-
-
-\textbf{Mathematische Herleitung:}
-Das Prinzip der minimalen potentiellen Energie liefert einen alternativen Zugang:
-\begin{equation}
-	\Pi = 
-	\int_V \left( \frac{1}{2} \sigma_{ij} \varepsilon_{ij} - f_i u_i \right) \, dV - \int_{\partial V} 	t_i u_i \, dS
-\end{equation}
-\textbf{Stationaritätsbedingung:}
-\begin{equation}
-	\delta \Pi = 
-	0 \quad \Rightarrow \quad \text{Euler-Lagrange-Gleichungen entsprechen den Feldgleichungen}
-\end{equation}
-\textbf{Schrittweise Variation:}
-
-\begin{enumerate}
-	\item Variation der Verzerrungsenergie:
+\begin{description}
+	\item[\textbf{Potenzielle Energie:}]
 	\begin{equation}
-		\delta U = 
-		\int_V \sigma_{ij} \, \delta \varepsilon_{ij} \, dV
+		\Pi = \int_V \left( \frac{1}{2} \sigma_{ij} \varepsilon_{ij} - f_i u_i \right) \, dV
 	\end{equation}
 	
-	\item Variation der äusseren Arbeit:
-	\begin{equation}
-		\delta W = 
-		\int_V f_i \, \delta u_i \, dV + \int_{\partial V} t_i \, \delta u_i \, dS
-	\end{equation}
+	\item[\textbf{Interpretation:}] 
+	Das System minimiert seine potentielle Energie im Gleichgewicht. 
+	Dies bedeutet, dass kleine virtuelle Änderungen der Verschiebungen $u_i$ die Gesamtenergie nicht verringern können.
 	
-	\item Anwendung des Gauss'schen Satzes führt auf die schwache Form der Gleichgewichtsbedingungen.
-\end{enumerate}
-
-\subsection{Randbedingungen und Eindeutigkeit}
-Für eine eindeutige Lösung benötigen wir Randwerte:
-\begin{enumerate}
-	\item[\textbf{Dirichlet-Randbedingung}] (Verschiebungen vorgegeben)
+	\item[\textbf{Bemerkung:}] 
+	Durch die Bedingung $\delta \Pi = 0$ (erste Variation verschwindet) erhalten wir wieder die Navier–Cauchy-Gleichungen (Euler–Lagrange-Prinzip).
+	
+	\item[\textbf{Mathematische Herleitung:}] 
+	Die potentielle Gesamtenergie $\Pi$ setzt sich zusammen aus der im Körper gespeicherten elastischen Deformationsenergie $U$ und der von den äusseren Kräften geleisteten potentiellen Arbeit $W$:
 	\begin{equation}
-		u_i = 
-		\bar{u}_i \quad \text{auf} \quad \partial V_u
+		\Pi = U - W
 	\end{equation}
-	\item[\textbf{Neumann-Randbedingung}] (Spannungen oder Kräfte vorgegeben)
+	mit
+	\begin{align}
+		U &= \frac{1}{2} \int_V \sigma_{ij} \, \varepsilon_{ij} \, dV, \\
+		W &= \int_V f_i \, u_i \, dV + \int_{\partial V} t_i \, u_i \, dS.
+	\end{align}
+	Hierbei beschreibt $U$ die im Material gespeicherte Energie infolge elastischer Verformung, während $W$ die Arbeit der Volumenkräfte $f_i$ und der Oberflächenkräfte $t_i$ darstellt.
+	
+	\item[\textbf{Stationaritätsbedingung:}]
+	Das Prinzip der minimalen potentiellen Energie besagt, dass sich die Gleichgewichtslösung dadurch auszeichnet, dass $\Pi$ stationär ist:
 	\begin{equation}
-		\sigma_{ij} n_j = 
-		\bar{t}_i \quad \text{auf} \quad \partial V_t
-	\end{equation}		
-\end{enumerate}
-Der Satz von Kirchhoff garantiert die Eindeutigkeit der Lösung bei Vorgabe konsistenter Randbedingungen.
+		\delta \Pi = 0
+	\end{equation}
+	für alle zulässigen virtuellen Verschiebungen $\delta u_i$.
+	
+	\item[\textbf{Schrittweise Herleitung der schwachen Form:}]
+	\begin{enumerate}
+		\item Variation der inneren Energie:
+		\begin{equation}
+			\delta U = 
+			\int_V \sigma_{ij} \, \delta \varepsilon_{ij} \, dV
+		\end{equation}
+		mit
+		\begin{equation}
+			\delta \varepsilon_{ij} = 
+			\frac{1}{2} \left( \delta u_{i,j} + \delta u_{j,i} \right).
+		\end{equation}
+		Da $\sigma_{ij} = \sigma_{ji}$ gilt, vereinfacht sich der Ausdruck zu:
+		\begin{equation}
+			\delta U = 
+			\int_V \sigma_{ij} \, \delta u_{i,j} \, dV.
+		\end{equation}
+		
+		\item Variation der äusseren Arbeit:
+		\begin{equation}
+			\delta W = 
+			\int_V f_i \, \delta u_i \, dV + \int_{\Gamma_t} t_i \, \delta u_i \, dS.
+		\end{equation}
+		
+		\item Einsetzen in $\delta\Pi = \delta U - \delta W = 0$:
+		\begin{equation}
+			\int_V \sigma_{ij} \, \delta u_{i,j} \, dV - \int_V f_i \, \delta u_i \, dV - \int_{\Gamma_t} t_i \, \delta u_i \, dS = 
+			0.
+			\label{eq:pvw}
+		\end{equation}
+		
+		\item Anwendung der partiellen Integration (Divergenzsatz) auf den ersten Term:
+		\begin{equation}
+			\int_V \sigma_{ij} \, \delta u_{i,j} \, dV 
+			= -\int_V \sigma_{ij,j} \, \delta u_i \, dV + \int_{\Gamma} \sigma_{ij} n_j \, \delta u_i \, dS.
+		\end{equation}
+		Auf $\Gamma_t$ gilt $\sigma_{ij} n_j = t_i$, auf $\Gamma_u$ gilt $\delta u_i = 0$. 
+		Damit reduziert sich (15.59) zu:
+		\begin{equation}
+			\int_V \left( -\sigma_{ij,j} - f_i \right) \delta u_i \, dV = 
+			0.
+		\end{equation}
+		
+		\item Da $\delta u_i$ im Volumen beliebig ist, folgt die starke Form:
+		\begin{equation}
+			\sigma_{ij,j} + f_i = 
+			0 \quad \text{in } V,
+		\end{equation}
+		mit den Randbedingungen:
+		\begin{equation}
+			u_i = \bar u_i \ \text{auf } \Gamma_u, \quad \sigma_{ij} n_j =
+			t_i \ \text{auf } \Gamma_t.
+		\end{equation}
+	\end{enumerate}
+\end{description}
+\subsection{Energieerhaltung und Dissipation:}
+Die zuvor hergeleitete Variationsformulierung basiert auf der Annahme, dass die im System gespeicherte Energie und die von den äusseren Kräften geleistete Arbeit im Gleichgewicht zueinander stehen. 
 
-\subsection{Tensorielle Ableitungsschritte}
-Ableitung der Navier-Cauchy-Gleichungen:
-\begin{align}
-	\frac{\partial \sigma_{ij}}{\partial x_j}& = 
-	\frac{\partial}{\partial x_j} \left( \lambda \delta_{ij} \varepsilon_{kk} + 2\mu \varepsilon_{ij} \right)
-	\\
-	&= \lambda \frac{\partial \varepsilon_{kk}}{\partial x_i} + 2\mu \frac{\partial \varepsilon_{ij}}{\partial x_j}
-	\\
-	&= \mu \nabla^2 u_i + (\lambda + \mu) \frac{\partial}{\partial x_i} (\nabla \cdot \vec{u})
-\end{align}
+Es ist daher sinnvoll, die physikalische Bedeutung dieser Energiebetrachtung zu verdeutlichen und zu zeigen, wie sich Energieerhaltung und eventuelle Dissipation in diesem Rahmen darstellen.
 
-\subsection{Energieerhaltung und Dissipation}
-Für hyperelastische Materialien gilt die Energiebilanz:
+
+Für einen rein elastischen Körper ohne Dämpfungsmechanismen gilt:
 \begin{equation}
 	\frac{d}{dt} \int_V \left( \frac{1}{2} \rho \dot{u}_i \dot{u}_i + \frac{1}{2} \sigma_{ij} \varepsilon_{ij} \right) \, dV = 
-	\int_V f_i \dot{u}_i \, dV + \int_{\partial V} t_i \dot{u}_i \, dS
+	\int_V f_i \dot{u}_i \, dV + \int_{\partial V} t_i \dot{u}_i \, dS.
 \end{equation}
-Diese Gleichung zeigt die Erhaltung mechanischer Energie bei Abwesenheit dissipativer Effekte.
+Dies bedeutet, dass die von den äusseren Kräften zugeführte Arbeit vollständig als kinetische oder elastische Deformationsenergie gespeichert wird. 
+Es tritt keine Dissipation auf ($D=0$). 
+Bei Anwesenheit von plastischen oder viskoelastischen Effekten würde ein Teil der Energie als Wärme dissipiert, was in dieser Herleitung jedoch nicht betrachtet wird.
 
 \subsection{Anwendungsbeispiel: Ebener Verzerrungszustand}
-Für \(\varepsilon_{33} = \gamma_{13} = \gamma_{23} = 0\) vereinfachen sich die Gleichungen zu:
+Die allgemeinen Gleichungen der linearen Elastizitätstheorie und ihre Variationsformulierung gelten für dreidimensionale Probleme. 
+In vielen praktischen Anwendungen, beispielsweise bei dünnen Platten oder Bauteilen mit grosser Ausdehnung in zwei Richtungen, kann jedoch eine Vereinfachung vorgenommen werden. 
+Ausgehend von den zuvor hergeleiteten allgemeinen Formeln ergibt sich durch die Annahmen  \(\varepsilon_{33} = \gamma_{13} = \gamma_{23} = 0\) der ebene Verzerrungszustand. 
+
+Hierbei bedeutet:
+
+$\varepsilon_{33}$: Dehnung senkrecht zur betrachteten Ebene (in $x_3$-Richtung),
+
+$\gamma_{13}$: Schubverzerrung in der $x_1$-$x_3$-Ebene (Verkippung dieser Ebene),
+
+$\gamma_{23}$: Schubverzerrung in der $x_2$-$x_3$-Ebene (Verkippung dieser Ebene).
+
+Diese Grössen werden zu null gesetzt, da im ebenen Verzerrungszustand keine Formänderung in $x_3$-Richtung und keine Schubverformungen senkrecht zur betrachteten Ebene auftreten.
+
+Die verbleibenden Spannungs-Dehnungs-Beziehungen lauten:
 \begin{align}
 	\sigma_{11} &=	\frac{E (1-\nu)}{(1+\nu)(1-2\nu)} \varepsilon_{11} + \frac{E \nu}{(1+\nu)(1-2\nu)} \varepsilon_{22}
 	\\
@@ -205,3 +237,4 @@ Für \(\varepsilon_{33} = \gamma_{13} = \gamma_{23} = 0\) vereinfachen sich die 
 	\\
 	\sigma_{12} &=	\frac{E}{2(1+\nu)} \gamma_{12}
 \end{align}
+Dieses vereinfachte Modell lässt sich direkt aus den allgemeinen Materialgleichungen ableiten und zeigt, wie sich die theoretische Herleitung auf konkrete technische Anwendungsfälle übertragen lässt.

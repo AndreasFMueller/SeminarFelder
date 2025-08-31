@@ -2,44 +2,56 @@
 \label{geoalgebra:section:trivectors-n-vectors}
 In zwei Dimensionen sind wir limitiert auf Bivektoren. Was passiert jedoch, wenn wir einen Bivektor
 im dreidimensionalen Raum wieder mit dem Wedgeprodukt mit einem dritten Vektor verknüpfen?
-
+Es ergibt sich folgende Berechnung:
 {
-\begin{equation} 
-\begin{aligned}
-\a \wedge \b \wedge \c &= (a_1 \eone + a_2 \etwo + a_3 \ethree) \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \wedge (c_1 \eone + c_2 \etwo + c_3 \ethree) \\
-&= ((a_1 b_2 - a_2 b_1) \eone \wedge \etwo +(a_2 b_3 - a_3 b_2) \etwo \wedge \ethree +(a_3 b_1 - a_1 b_3) \ethree \wedge \eone) \\
-&\quad\wedge (c_1 \eone + c_2 \etwo + c_3 \ethree) \\
-&= (a_1 b_2 - a_2 b_1) c_1 \eone \wedge \etwo \wedge \eone \cdots
-\end{aligned}
+\begin{align} 
+\a \wedge \b \wedge \c
+&=
+(a_1 \eone + a_2 \etwo + a_3 \ethree) \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \wedge (c_1 \eone + c_2 \etwo + c_3 \ethree)
+\notag
+\\
+&=
+((a_1 b_2 - a_2 b_1) \eone \wedge \etwo +(a_2 b_3 - a_3 b_2) \etwo \wedge \ethree +(a_3 b_1 - a_1 b_3) \ethree \wedge \eone)
+\notag
+\\
+&\quad\wedge (c_1 \eone + c_2 \etwo + c_3 \ethree)
+\notag
+\\
+&=
+(a_1 b_2 - a_2 b_1) c_1 \eone \wedge \etwo \wedge \eone \cdots.
 \label{geoalgebra:eq:trivector}
-\end{equation}
+\end{align}
 Es fällt auf, dass viele Terme mit Wedgeprodukten zwischen gleichen Standardbasisvektoren übrig bleiben. Zum Beispiel ist der erste Term in \eqref{geoalgebra:eq:trivector}
-\begin{equation}
+\begin{equation*}
 (a_1 b_2 - a_2 b_1) c_1 \eone \wedge \etwo \wedge \eone.
-\end{equation}
+\end{equation*}
 Durch Umformen mit den bekannten Axiomen erhalten wir
-\begin{equation}
-=-(a_1 b_2 - a_2 b_1) c_1 \etwo \wedge \underbrace{\eone \wedge \eone}_{0} = 0
-\end{equation}
+\begin{equation*}
+=-(a_1 b_2 - a_2 b_1) c_1 \etwo \wedge \underbrace{\eone \wedge \eone}_{\displaystyle =0} = 0
+\end{equation*}
 Es fallen alle Kombination bis auf $\eone \wedge \etwo \wedge \ethree$ (und Permutationen) weg.
-Durch Umformungen mit \eqref{geoalgebra:eq:antikommutativ} und
-\eqref{geoalgebra:lemma:null} erhalten wir dann
-\begin{equation}
-  \begin{aligned}
+Durch Umformungen mit
+\eqref{geoalgebra:eq:antikommutativ} und
+\eqref{geoalgebra:lemma:null}
+erhalten wir dann
+\begin{align*}
   \a \wedge \b \wedge \c &= (a_1 b_2 c_3 - a_1 b_3 c_2 + a_2 b_1 c_3 + a_2 b_3 c_1 - a_3 b_2 c_1 + a_3 b_1 c_2) \eone \wedge \etwo \wedge \ethree \\
-  &= \lambda \eone \wedge \etwo \wedge \ethree
-  \end{aligned}
-\end{equation}
+  &= \lambda \eone \wedge \etwo \wedge \ethree,
+\end{align*}
 wobei der Koeffizient $\lambda$ wieder als Determinante
-\begin{equation}
-\begin{vmatrix} a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ c_1 & c_2 & c_3 \end{vmatrix} \eone \wedge \etwo \wedge \ethree
-\end{equation}
+\index{Determinante}%
+\begin{equation*}
+\lambda = \begin{vmatrix} a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ c_1 & c_2 & c_3 \end{vmatrix}
+\end{equation*}
 geschrieben werden kann.
 
-Ein Trivektor ist ein \emph{orientiertes Volumen}, welches von den drei Vektoren als \emph{Parallelpiped} aufgespannt wird.
+Ein \emph{Trivektor} ist ein \emph{orientiertes Volumen}, welches von den drei Vektoren als \emph{Parallelpiped} aufgespannt wird.
+\index{Trivektor}%
+\index{orientiertes Volumen}%
+\index{Parallelpiped}%
 
 Die Anzahl Komponenten $K$ eines $k$-Vektors in $N$ Dimensionen ergibt sich analog zu \eqref{geoalgebra:eq:components-bivectors} durch
-\begin{equation}
-  K = \binom{N}{k}
-\end{equation}
+\begin{equation*}
+  K = \binom{N}{k}.
+\end{equation*}
 }
