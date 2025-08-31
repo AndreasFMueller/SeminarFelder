@@ -84,7 +84,7 @@ Dies wird ersichtlicher, wenn man die Herleitung der Wellengleichung aus zum Bei
 \subsubsection{Herleitung}
 Zur Herleitung der Wellengleichung im Elektrischen Feld ist die Identität
 \[
-    \nabla \times \nabla \times \mathbf{U} = \nabla(\nabla \cdot \mathbf{U}) - \nabla^2 \mathbf{U}
+    \nabla \times \nabla \times \mathbf{U} = \nabla(\nabla \cdot \mathbf{U}) - \nabla^2 \mathbf{U}\label{particles:eq:curl-identity}
 \]
 notwendig. 
 Diese wurde in Abschnit \mytodo{Wurde diese schon vorgestellt?} bereits hergeleitet und gilt für sämmtliche Vektorfelder.
@@ -92,29 +92,62 @@ Diese wurde in Abschnit \mytodo{Wurde diese schon vorgestellt?} bereits hergelei
 Als erster Schritt der Herleitung wird $\rho = 0$, also ein Medium ohne freie Ladungsträger, angenommen.
 Das gausssche Gesetz
 \[
-    \nabla \cdot E = \frac{\rho}{\varepsilon_0}
+    \nabla \cdot \mathbf{D} = \rho_\text{frei}
 \]
-wird unter dieser Anname zu
+wird unter dieser Annahme zu
 \[
-    \nabla \cdot E = 0.
+    \nabla \cdot \mathbf{D} = 0.\label{particles:eq:gauss}
 \]
-Weiter wird der Erweiterte Druchflutungssatz
+Weiter wird der Erweiterte Durchflutungssatz
 \[
     \nabla \times \mathbf{H} = \mathbf{j}_\text{frei} + \frac{\d \mathbf{D}}{dt}
 \]
-durch Anname einer Stromdichte von $\mathbf{j}_\text{frei} = 0$ zu
+durch Annahme einer Stromdichte von $\mathbf{j}_\text{frei} = 0$ zu
 \[
-    \nabla \times \mathbf{H} = \frac{\d \mathbf{D}}{dt}.
+    \nabla \times \mathbf{H} = \frac{\d \mathbf{D}}{dt}.\label{particles:eq:durchflutungssatz}
 \]
-Durch diese Annamen wird das erhaltene Resultat 
-
-Unter anname eines linearen Mediums wird $D$ zu $H/\mu$ und $D$ zu $\varepsilon E$.
-Im linearen Medium lautet der Durchflutungssatz also
+Das Induktionsgesetz
 \[
-    \nabla \times H = \mu \varepsilon \frac{\d E}{dt}.
+    \nabla \times \mathbf{E} = -\frac{\d \mathbf{B}}{\d t}\label{particles:eq:induktionsgesetz}
 \]
-% TODO: Herleitung fertig machen (keine Lust mehr)
+wird ebenfalls benötigt.
 
+Um die elektrische Flussdichte $\mathbf{D}$ mit dem elektrischen Feld $\mathbf{E}$ in Relation zu bringen, wird die Permittivität $\varepsilon$ beigezogen.
+Die Permittivität ist abhängig vom Medium. 
+$\mathbf{D}$ und $\mathbf{E}$ stehen also im Verhältnis
+\[
+    \mathbf{D} = \varepsilon \mathbf{E}.
+\]
+Ein ähnliches Verhältnis stellt sich zwischen der magnetischen Flussdichte $\mathbf{B}$ und der magnetischen Feldstärke $\mathbf{H}$ ein, wobei das Verhältnis durch die Permeabilität $\mu$ als
+\[
+    \mathbf{B} = \mu \mathbf{H} \quad \text{bzw.} \quad \mathbf{H} = \frac{\mathbf{B}}{\mu}
+\]
+gegeben wird.
+Auch die Permeabilität ist mediumabhängig.
+
+Zunächst wird das Induktionsgesetz~\ref{particles:eq:induktionsgesetz} durch den curl zu
+\begin{align}
+    \nabla \times \nabla \times \mathbf{E} 
+        &= - \nabla \times \frac{\d\mathbf{B}}{\d t} \\
+        &= - \frac{\d}{\d t} \nabla \times \mathbf{B}
+\end{align}
+erweitert.
+Durch die Identität~\ref{particles:eq:curl-identity} und der Permeabilität kann das Resultat zu
+\[
+    \nabla(\nabla \cdot \mathbf{E}) - \nabla^2 \mathbf{E} = -\mu \frac{\d}{\d t} \nabla \times \mathbf{H}
+\]
+ungeformt werden.
+Durch einsetzen des gaussschen Gesetz~\ref{particles:eq:gauss} und dem Durchflutungssatz~\ref{particles:eq:durchflutungssatz} entsteht
+\[
+    - \nabla^2 \mathbf{E} = -\mu \frac{\d}{\d t} \frac{\d \mathbf{D}}{\d t},
+\]
+und schliesslich mit $\mathbf{D} = \varepsilon \mathbf{E}$
+\[
+    \nabla^2 \mathbf{E} = \mu\varepsilon \frac{\d^2 \mathbf{E}}{\d t^2},
+\]
+was der Wellengleichung entspricht.
+
+\mytodo{Da fehlt irgendwie noch ein $()^{-1}$ bei $\mu\varepsilon$}
 
 
 \subsection{Schwinger-Limit}\label{particles:section:lin-medium:schwinger}
