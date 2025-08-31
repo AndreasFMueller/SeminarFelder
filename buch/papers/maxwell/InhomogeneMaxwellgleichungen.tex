@@ -38,9 +38,9 @@ Damit wir wissen, welche geometrische Form die Operation
 	\delta F = \ast d{\ast} F
 \end{equation*}
 haben wird, überlegen wir uns, was der Hodge-Operator und die äussere Ableitung mit dem Grad machen.
-
+%
 Der Hodge-Operator bildet eine $k$-Form auf eine $(n-k)$-Form ab.
-Da wir uns im vierdimensionalen Minkowsky-Raum befinden, wird durch Anwendung des Hodge-Operators auf die 2-Form $F$ wieder eine 2-Form.
+Da wir uns im vierdimensionalen Minkowski-Raum befinden, wird durch Anwendung des Hodge-Operators auf die 2-Form $F$ wieder eine 2-Form.
 Die Anwendung der äusseren Ableitung erhöht den Grad um eins und ergibt somit eine 3-Form.
 Durch erneutes Anwenden des Hodge-Operators entsteht schliesslich eine 1-Form.
 
@@ -64,15 +64,13 @@ Wir erinnern uns, dass $F$ ausgeschrieben mit Wedge-Produkten definiert ist als
 \subsubsection{Berechnung von $\ast F$}
 Zuerst wenden wir den Hodge-Operator auf $F$ an und erhalten
 \begin{align*}
-	\ast F =
-	& - \frac{E_{1}}{c} \, {\ast}(dx^0 \wedge dx^1) - \frac{E_{2}}{c} \, {\ast}(dx^0 \wedge dx^2) - \frac{E_{3}}{c} \, {\ast}(dx^0 \wedge dx^3) \\
-	& + \, B_3 \, \, {\ast}(dx^1 \wedge dx^2) - \, B_2 \, \, {\ast}(dx^1 \wedge dx^3) + B_1 \, {\ast}(dx^2 \wedge dx^3).
-\end{align*}
-Die Hodge-Duale können aus der Tabelle \ref{maxwell:section:teil1:Hodge-Tabelle} entnommen werden und wir erhalten
-\begin{align*}
-	\ast F =
-	\phantom{+} & \frac{E_{1}}{c} \, dx^2 \wedge dx^3 - \frac{E_{2}}{c} \, dx^1 \wedge dx^3 + \frac{E_{3}}{c} \, dx^1 \wedge dx^2 \\
-	 + & \, B_3 \, \, dx^0 \wedge dx^3 + \, B_2 \, \, dx^0 \wedge dx^2 + \, B_1 \, \, dx^0 \wedge dx^1.
+	\ast F &=
+	 - \frac{E_{1}}{c} \, {\ast}(dx^0 \wedge dx^1) - \frac{E_{2}}{c} \, {\ast}(dx^0 \wedge dx^2) - \frac{E_{3}}{c} \, {\ast}(dx^0 \wedge dx^3) \\
+	&\phantom{=} + \, B_3 \, \, {\ast}(dx^1 \wedge dx^2) - \, B_2 \, \, {\ast}(dx^1 \wedge dx^3) + B_1 \, {\ast}(dx^2 \wedge dx^3).
+\intertext{Die Hodge-Duale können aus der Tabelle \ref{maxwell:section:teil1:Hodge-Tabelle} entnommen werden und wir erhalten}
+	\ast F &=
+	\phantom{+}  \frac{E_{1}}{c} \, dx^2 \wedge dx^3 - \frac{E_{2}}{c} \, dx^1 \wedge dx^3 + \frac{E_{3}}{c} \, dx^1 \wedge dx^2 \\
+	 &\phantom{=}+ \, B_3 \, \, dx^0 \wedge dx^3 + \, B_2 \, \, dx^0 \wedge dx^2 + \, B_1 \, \, dx^0 \wedge dx^1.
 \end{align*}
 Die erhaltene 2-Form kann nun wieder als Matrix
 \begin{equation}
@@ -83,53 +81,54 @@ Die erhaltene 2-Form kann nun wieder als Matrix
 \end{equation}
 geschrieben werden.
 Wir sehen, dass durch den Hodge-Operator die $E$ und $B$ ihre Plätze tauschen.
+
 \subsubsection{Berechnung von $d {\ast} F$}
 Nun wenden wir die äussere Ableitung an und erhalten
 \begin{align*}
 	d{\ast} F
-	= &\phantom{+} d \, \Bigg(
+	&= d \, \bigg(
 	\frac{E_{1}}{c} \, dx^2 \wedge dx^3
 	- \frac{E_{2}}{c} \, dx^1 \wedge dx^3
 	+ \frac{E_{3}}{c} \, dx^1 \wedge dx^2 
-	\\
-	&+ B_3 \, dx^0 \wedge dx^3
+	\\[-1pt]
+	&\qquad+ B_3 \, dx^0 \wedge dx^3
 	+ B_2 \, dx^0 \wedge dx^2
 	+ B_1 \, dx^0 \wedge dx^1
-	\Bigg) \\[1ex]
-	= &\quad \frac{1}{c} \frac{\partial E_1}{\partial x^0} \, dx^0 \wedge dx^2 \wedge dx^3
+	\bigg) \\[1ex]
+	&= \phantom{+} \frac{1}{c} \frac{\partial E_1}{\partial x^0} \, dx^0 \wedge dx^2 \wedge dx^3
 	+ \frac{1}{c} \frac{\partial E_1}{\partial x^1} \, dx^1 \wedge dx^2 \wedge dx^3
 	- \frac{1}{c} \frac{\partial E_2}{\partial x^0} \, dx^0 \wedge dx^1 \wedge dx^3 
 	\\
-	&- \frac{1}{c} \frac{\partial E_2}{\partial x^2} \, dx^2 \wedge dx^1 \wedge dx^3
+	&\phantom{=}- \frac{1}{c} \frac{\partial E_2}{\partial x^2} \, dx^2 \wedge dx^1 \wedge dx^3
 	+ \frac{1}{c} \frac{\partial E_3}{\partial x^0} \, dx^0 \wedge dx^1 \wedge dx^2
 	+ \frac{1}{c} \frac{\partial E_3}{\partial x^3} \, dx^3 \wedge dx^1 \wedge dx^2 
 	\\
-	&+\phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^1} \, dx^1 \wedge dx^0 \wedge dx^3
+	&\phantom{=}+\phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^1} \, dx^1 \wedge dx^0 \wedge dx^3
 	+ \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^2} \, dx^2 \wedge dx^0 \wedge dx^3
 	+ \phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^1} \, dx^1 \wedge dx^0 \wedge dx^2 \\
-	&+\phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^3} \, dx^3 \wedge dx^0 \wedge dx^2
+	&\phantom{=}+\phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^3} \, dx^3 \wedge dx^0 \wedge dx^2
 	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^2} \, dx^2 \wedge dx^0 \wedge dx^1
 	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^3} \, dx^3 \wedge dx^0 \wedge dx^1 
 	\\[2ex]
-	= &\phantom{+} \: \left(
+	&=\hspace*{5pt} \left(
 	\phantom{+} \frac{1}{c} \frac{\partial E_1}{\partial x^1}
 	+ \frac{1}{c} \frac{\partial E_2}{\partial x^2}
 	+ \frac{1}{c} \frac{\partial E_3}{\partial x^3}
 	\right) dx^1 \wedge dx^2 \wedge dx^3 
 	\\
-	&+ \left(
+	&\phantom{=}+ \left(
 	\phantom{+} \frac{1}{c} \frac{\partial E_1}{\partial x^0}
 	+ \phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^3}
 	- \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^2}
 	\right) dx^0 \wedge dx^2 \wedge dx^3 
 	\\
-	&+ \left(
+	&\phantom{=}+ \left(
 	-\frac{1}{c} \frac{\partial E_2}{\partial x^0}
 	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^3}
 	- \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^1}
 	\right) dx^0 \wedge dx^1 \wedge dx^3 
 	\\
-	&+ \left(
+	&\phantom{=}+ \left(
 	\phantom{+} \frac{1}{c} \frac{\partial E_3}{\partial x^0}
 	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^2}
 	- \phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^1}
@@ -178,7 +177,7 @@ und erhalten
 \end{align*}
 Mit Hilfe der Lichtgeschwindigkeit im Vakuum 
 \begin{equation*}
-	c = \frac{1}{\sqrt{\varepsilon_0 \mu_0}}
+	c = \frac{1}{\!\sqrt{\varepsilon_0 \mu_0\mathstrut}}
 \end{equation*}
 können wir die Gleichung noch etwas umformulieren und erhalten
 \begin{align}
@@ -209,9 +208,13 @@ Die anderen drei Terme mit $dx,dy,dz$ deuten stark auf die linke Seite der Ampè
 Beachten wir, dass 
 \begin{equation*}
 	\nabla \times \vec{B} = 
+\renewcommand{\arraystretch}{1.7}
 	\begin{pmatrix}
+		\displaystyle
 		\frac{\partial B_3}{\partial y} - \frac{\partial B_2}{\partial z}\\[1ex]
+		\displaystyle
 		\frac{\partial B_1}{\partial z} - \frac{\partial B_3}{\partial x}\\[1ex]
+		\displaystyle
 		\frac{\partial B_2}{\partial x} - \frac{\partial B_1}{\partial y}
 	\end{pmatrix}
 \end{equation*}
@@ -234,7 +237,7 @@ Da alle räumlichen Komponenten auf der rechten Seite von \eqref{maxwell:section
 Somit ergibt sich
 \begin{align*}
 	\ast d {\ast} F
-	& = \mu_0 \left( -\frac{\rho}{\varepsilon_0 \mu_0}\,dt + J_1\, dx + J_2\, dy + J_3\, dz \right)\\[2ex]
+	& = \mu_0 \left( -\frac{\rho}{\varepsilon_0 \mu_0}\,dt + J_1\, dx + J_2\, dy + J_3\, dz \right)\\[1ex]
 	& = \mu_0 \left( -c^2 \rho \,dt + J_1 \,dx + J_2 \,dy + J_3 \,dz \right).
 \end{align*}
 Den Klammerausdruck definieren wir nun als Viererstromdichte
@@ -251,7 +254,7 @@ Die gesamte Information der beiden Gleichungen steckt in
 \begin{equation}
 	\ast d {\ast} F = \mu_0 J.
 \end{equation}
-Zusätzlich ist die Formulierung kovariant und behält somit seine Form bei Koordinatentransformationen.
+Zusätzlich ist die Formulierung kovariant und behält somit ihre Form bei Koordinatentransformationen.
 \begin{comment}
 Damit wir nun den erhaltenen Ausdruck auch interpretieren können definieren wir die Viererstromdichte als
 \begin{equation}

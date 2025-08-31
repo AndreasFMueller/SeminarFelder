@@ -17,12 +17,12 @@ Da $F$ eine geschlossene 2-Form ist, gilt
 dF = 0 .
 \]
 Für die Berechnung der äusseren Ableitung muss der Tensor zuerst als Differentialform geschrieben werden.
-Es resultiert die Zweiform
+Es resultiert die 2-Form
 \[
 F
 = \frac{1}{2} F_{\mu\nu} \, dx^\mu \wedge dx^\nu,
 \]
-man beachte dabei die einsteinsche Summationskonvention \ref{buch:koordinaten:tangentialvektoren:def:einsteinschesummenkonvention}.
+man beachte dabei die einsteinsche Summationskonvention von Definition~\ref{buch:koordinaten:tangentialvektoren:def:einsteinschesummenkonvention}.
 Da der Feldstärketensor antisymmetrisch $F_{\mu\nu} = -F_{\nu\mu}$ ist, benötigt man den Faktor $\frac{1}{2}$, um die doppelte Zählung der Komponenten zu vermeiden:
 \begin{align*}
 	F
@@ -51,7 +51,7 @@ Mit der Definition \ref{maxwell:hodge:kurzschreibweise} gilt $dx^{ik} = 0$ wenn 
 	\\
 	&- \frac{1}{2} F_{30} \, dx^{03} - \frac{1}{2} F_{31} \, dx^{13} - \frac{1}{2} F_{32} \, dx^{23} \phantom{+ \frac{1}{2} F_{33} \, dx^{33}}
 \end{align*}
-und wegen $F_{\mu\nu} = -F_{\nu\mu}$
+und wegen $F_{\mu\nu} = -F_{\nu\mu}$ folgt aus
 \begin{align*}
 	F
 	=
@@ -63,7 +63,7 @@ und wegen $F_{\mu\nu} = -F_{\nu\mu}$
 	\\
 	&+ \frac{1}{2} F_{03} \, dx^{03} + \frac{1}{2} F_{13} \, dx^{13} + \frac{1}{2} F_{21} \, dx^{23} \phantom{+ \frac{1}{2} F_{33} \, dx^{33}}
 \end{align*}
-folgt anschliessend
+anschliessend
 \begin{align*}
 	F
 	=
@@ -84,7 +84,7 @@ Zum besseren Verständnis setzen wir nun konkret die Komponenten von $F_{\mu\nu}
 	\phantom{+ \frac{1}{c} F_{12} \, dx^{12}} \phantom{+ \frac{1}{c} F_{22} \, dx^{22}} &+ \phantom{\frac{1}{c}} B_1 \, dx^{23} \, ,
 \end{align*}
 was schön den Komponenten oberhalb der Diagonalen von $F_{\mu\nu}$ entspricht.
-Nun wenden wir die äussere Ableitung auf die 2-Form $F$ an, man beachte dabei Definition \ref{maxwell:hodge:kurzschreibweise}
+Nun wenden wir die äussere Ableitung auf die 2-Form $F$ an, man beachte dabei Definition \ref{maxwell:hodge:kurzschreibweise}:
  \begin{align*}	
  	dF =
  	& -  \frac{1}{c} \frac{\d E_1}{\d x^0} \, dx^{001} - \frac{1}{c} \frac{\d E_1}{\d x^1} \, dx^{101}
@@ -117,7 +117,7 @@ Nun wenden wir die äussere Ableitung auf die 2-Form $F$ an, man beachte dabei D
  	&- \phantom{\frac{1}{c}} \frac{\d B_2}{\d x^0} \, dx^{013} - \phantom{\frac{1}{c}} \frac{\d B_2}{\d x^2} \, dx^{213}
  	 + \phantom{\frac{1}{c}} \frac{\d B_1}{\d x^0} \, dx^{023} + \phantom{\frac{1}{c}} \frac{\d B_1}{\d x^1} \, dx^{123} .  
 	\\
-	\intertext{Weiter sortieren wir nach aufsteigenden Indizes}
+	\intertext{Weiter sortieren wir nach aufsteigenden Indizes,}
 	dF =
 	&- \frac{1}{c} \frac{\d E_1}{\d x^2} \, dx^{012} - \frac{1}{c} \frac{\d E_1}{\d x^3} \, dx^{013}
 	 + \frac{1}{c} \frac{\d E_2}{\d x^1} \, dx^{012} - \frac{1}{c} \frac{\d E_2}{\d x^3} \, dx^{023}
@@ -126,9 +126,9 @@ Nun wenden wir die äussere Ableitung auf die 2-Form $F$ an, man beachte dabei D
 	 + \phantom{\frac{1}{c}} \frac{\d B_3}{\d x^0} \, dx^{012} + \phantom{\frac{1}{c}} \frac{\d B_3}{\d x^3} \, dx^{123}
 	\\
 	&- \phantom{\frac{1}{c}} \frac{\d B_2}{\d x^0} \, dx^{013} + \phantom{\frac{1}{c}} \frac{\d B_2}{\d x^2} \, dx^{123}
-	 + \phantom{\frac{1}{c}} \frac{\d B_1}{\d x^0} \, dx^{023} + \phantom{\frac{1}{c}} \frac{\d B_1}{\d x^1} \, dx^{123}
+	 + \phantom{\frac{1}{c}} \frac{\d B_1}{\d x^0} \, dx^{023} + \phantom{\frac{1}{c}} \frac{\d B_1}{\d x^1} \, dx^{123},
 \end{align*}
-und fassen anschliessend alles zusammen
+und fassen anschliessend alles zusammen zu
 \begin{align*}
 	dF =
 	&\left( - \frac{1}{c} \frac{\d E_1}{\d x^2} + \frac{1}{c} \frac{\d E_2}{\d x^1} + \phantom{\frac{1}{c}} \frac{\d B_3}{\d x^0} \right) dx^{012}
@@ -139,7 +139,7 @@ und fassen anschliessend alles zusammen
 	\\
 	+&\left( \phantom{+} \phantom{\frac{1}{c}} \frac{\d B_3}{\d x^3} + \phantom{\frac{1}{c}} \frac{\d B_2}{\d x^2} + \phantom{\frac{1}{c}} \frac{\d B_1}{\d x^1} \right) dx^{123} \, .
 	\\
-	\intertext{Wechseln wir nun zu den Raum-Zeit Koordinaten gemäss \eqref{maxwell:koordinaten}, erhalten wir}
+	\intertext{Wechseln wir nun zu den Raum-Zeit-Koordinaten gemäss \eqref{maxwell:koordinaten}, erhalten wir}
 	dF =
 	&\left( - \frac{1}{c} \frac{\d E_1}{\d y} + \frac{1}{c} \frac{\d E_2}{\d x} + \frac{1}{c} \frac{\d B_3}{\d t} \right) c \, dt \wedge dx \wedge dy
 	\\
@@ -172,11 +172,9 @@ und fassen anschliessend alles zusammen
 	\phantom{=} =&0 \, .
 \end{align*}
 Nun haben wir vier unabhängige Gleichungen erhalten, welche allgemein kovariant sind und in der Sprache der Vektoranalysis in zwei Gleichungen zusammengefasst werden können. 
-In diesem Fall entsprechen sie genau den klassischen homogenen Maxwell-Gleichungen
-\[
-\nabla \times \vec{E} + \frac{\d \vec{B}}{\d t} = 0
-\]
-und
-\[
-\nabla \cdot \vec{B} = 0 \, .
-\]
+In diesem Fall entsprechen sie genau den klassischen homogenen Maxwell-Gleichun\-gen
+\begin{align*}
+\nabla \times \vec{E} + \frac{\d \vec{B}}{\d t} &= 0
+\intertext{und}
+\nabla \cdot \vec{B} &= 0 \, .
+\end{align*}
