@@ -6,9 +6,9 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Inhomogene Maxwellgleichungen
+\section{Inhomogene Maxwell-Gleichungen
 	\label{maxwell:section:InhomogeneMaxwellgleichungen}}
-\kopfrechts{Inhomogene Maxwellgleichungen}
+\kopfrechts{Inhomogene Maxwell-Gleichungen}
 Den Faraday-Tensor haben wir definiert als
 \begin{equation*}
 	F_{\mu \nu} = \begin{pmatrix}
@@ -30,8 +30,8 @@ Aus den klassischen inhomogenen Maxwell-Gleichungen
 	\nabla \times \vec{B} - \varepsilon_0 \mu_0 \frac{\partial \vec{E}}{\partial t}&= \mu_0 \vec{J}
 	\label{maxwell:section:inhomogeneMaxwellgleichungen:ampereMaxwell}
 \end{align}
-sehen wir, welche Operationen mit den $\vec{E}$ und $\vec{B}$ gemacht werden müssen.
-Da im Faraday-Tensor die elektrische Feldstärke $\vec{E}$ und magnetischen Flussdichte $\vec{B}$ enthalten sind, wenden wir das Kodifferential auf $F$ an und untersuchen, ob die obigen Operationen in der Sprache der Differentialformen herauskommen.
+erkennen wir, welche Operationen mit $\vec{E}$ und $\vec{B}$ gemacht werden müssen.
+Da im Faraday-Tensor die elektrische Feldstärke $\vec{E}$ und die magnetische Flussdichte $\vec{B}$ enthalten sind, wenden wir das Kodifferential auf $F$ an und untersuchen, ob die obigen Operationen in der Sprache der Differentialformen herauskommen.
 
 Damit wir wissen, welche geometrische Form die Operation 
 \begin{equation*}
@@ -40,12 +40,13 @@ Damit wir wissen, welche geometrische Form die Operation
 haben wird, überlegen wir uns, was der Hodge-Operator und die äussere Ableitung mit dem Grad machen.
 
 Der Hodge-Operator bildet eine $k$-Form auf eine $(n-k)$-Form ab.
-Da wir uns im vierdimensionalen Minkowsky-Raum befinden wird durch Anwendung des Hodge-Operators auf die 2-Form $F$ wieder eine 2-Form.
-Anwenden der äusseren Ableitung erhöht den Grad um eins und ergibt somit eine 3-Form.
-Durch erneutes Anwenden des Hodge-Operators entsteht schlussendlich eine 1-Form.
+Da wir uns im vierdimensionalen Minkowsky-Raum befinden, wird durch Anwendung des Hodge-Operators auf die 2-Form $F$ wieder eine 2-Form.
+Die Anwendung der äusseren Ableitung erhöht den Grad um eins und ergibt somit eine 3-Form.
+Durch erneutes Anwenden des Hodge-Operators entsteht schliesslich eine 1-Form.
 
 Aus den Gleichungen \eqref{maxwell:section:inhomogeneMaxwellgleichungen:gaussE} und \eqref{maxwell:section:inhomogeneMaxwellgleichungen:ampereMaxwell} sehen wir, dass auf der rechten Seite Terme in Form von Ladungs- und Stromdichten auftreten.
-Es liegt nahe, auch $\rho$ und $\vec{J}$ zu einem einzigen geometrischen Objekt zusammenzufassen, weil beides Quellenterme sind und das Ziel ist, beide inhomogenen Maxwell-Gleichungen in eine Gleichung unterzubringen.
+Es liegt nahe, auch $\rho$ und $\vec{J}$ zu einem einzigen geometrischen Objekt zusammenzufassen, da beide Quellenterme darstellen.
+Das Ziel dabei ist, die beiden inhomogenen Maxwell-Gleichungen in einer einzigen Gleichung zusammenzufassen.
 
 Folglich muss das geometrische Objekt, welches die Ladungs- und Stromdichte enthält, eine 1-Form sein.
 Diese werden wir zukünftig Viererstromdichte $J$ nennen.
@@ -70,7 +71,7 @@ Zuerst wenden wir den Hodge-Operator auf $F$ an und erhalten
 Die Hodge-Duale können aus der Tabelle \ref{maxwell:section:teil1:Hodge-Tabelle} entnommen werden und wir erhalten
 \begin{align*}
 	\ast F =
-	& \, \frac{E_{1}}{c} \, dx^2 \wedge dx^3 - \frac{E_{2}}{c} \, dx^1 \wedge dx^3 + \frac{E_{3}}{c} \, dx^1 \wedge dx^2 \\
+	\phantom{+} & \frac{E_{1}}{c} \, dx^2 \wedge dx^3 - \frac{E_{2}}{c} \, dx^1 \wedge dx^3 + \frac{E_{3}}{c} \, dx^1 \wedge dx^2 \\
 	 + & \, B_3 \, \, dx^0 \wedge dx^3 + \, B_2 \, \, dx^0 \wedge dx^2 + \, B_1 \, \, dx^0 \wedge dx^1.
 \end{align*}
 Die erhaltene 2-Form kann nun wieder als Matrix
@@ -95,45 +96,46 @@ Nun wenden wir die äussere Ableitung an und erhalten
 	+ B_2 \, dx^0 \wedge dx^2
 	+ B_1 \, dx^0 \wedge dx^1
 	\Bigg) \\[1ex]
-	= \phantom{+} &\frac{1}{c} \frac{\partial E_1}{\partial x^0} \, dx^0 \wedge dx^2 \wedge dx^3
+	= &\quad \frac{1}{c} \frac{\partial E_1}{\partial x^0} \, dx^0 \wedge dx^2 \wedge dx^3
 	+ \frac{1}{c} \frac{\partial E_1}{\partial x^1} \, dx^1 \wedge dx^2 \wedge dx^3
 	- \frac{1}{c} \frac{\partial E_2}{\partial x^0} \, dx^0 \wedge dx^1 \wedge dx^3 
 	\\
-	- &\frac{1}{c} \frac{\partial E_2}{\partial x^2} \, dx^2 \wedge dx^1 \wedge dx^3
+	&- \frac{1}{c} \frac{\partial E_2}{\partial x^2} \, dx^2 \wedge dx^1 \wedge dx^3
 	+ \frac{1}{c} \frac{\partial E_3}{\partial x^0} \, dx^0 \wedge dx^1 \wedge dx^2
 	+ \frac{1}{c} \frac{\partial E_3}{\partial x^3} \, dx^3 \wedge dx^1 \wedge dx^2 
 	\\
-	+&\phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^1} \, dx^1 \wedge dx^0 \wedge dx^3
+	&+\phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^1} \, dx^1 \wedge dx^0 \wedge dx^3
 	+ \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^2} \, dx^2 \wedge dx^0 \wedge dx^3
 	+ \phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^1} \, dx^1 \wedge dx^0 \wedge dx^2 \\
-	+&\phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^3} \, dx^3 \wedge dx^0 \wedge dx^2
+	&+\phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^3} \, dx^3 \wedge dx^0 \wedge dx^2
 	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^2} \, dx^2 \wedge dx^0 \wedge dx^1
 	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^3} \, dx^3 \wedge dx^0 \wedge dx^1 
 	\\[2ex]
-	= \phantom{+} &\left(
+	= &\phantom{+} \: \left(
 	\phantom{+} \frac{1}{c} \frac{\partial E_1}{\partial x^1}
 	+ \frac{1}{c} \frac{\partial E_2}{\partial x^2}
 	+ \frac{1}{c} \frac{\partial E_3}{\partial x^3}
 	\right) dx^1 \wedge dx^2 \wedge dx^3 
 	\\
-	+ &\left(
+	&+ \left(
 	\phantom{+} \frac{1}{c} \frac{\partial E_1}{\partial x^0}
 	+ \phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^3}
 	- \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^2}
 	\right) dx^0 \wedge dx^2 \wedge dx^3 
 	\\
-	+ &\left(
+	&+ \left(
 	-\frac{1}{c} \frac{\partial E_2}{\partial x^0}
 	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^3}
 	- \phantom{\frac{1}{c}} \frac{\partial B_3}{\partial x^1}
 	\right) dx^0 \wedge dx^1 \wedge dx^3 
 	\\
-	+ &\left(
+	&+ \left(
 	\phantom{+} \frac{1}{c} \frac{\partial E_3}{\partial x^0}
 	+ \phantom{\frac{1}{c}} \frac{\partial B_1}{\partial x^2}
 	- \phantom{\frac{1}{c}} \frac{\partial B_2}{\partial x^1}
 	\right) dx^0 \wedge dx^1 \wedge dx^2.
 \end{align*}
+
 \subsubsection{Berechnung von $\ast d {\ast} F$}
 Wenden wir nun noch einmal den Hodge-Operator auf die erhaltene 3-Form an, ergibt sich gemäss Tabelle ~\ref{maxwell:section:teil1:Hodge-Tabelle}
 \begin{align*}
@@ -152,7 +154,7 @@ Wenden wir nun noch einmal den Hodge-Operator auf die erhaltene 3-Form an, ergib
 	\left( -\frac{1}{c}\frac{\partial E_3}{\partial x^0} - \frac{\partial B_1}{\partial x^2} + \frac{\partial B_2}{\partial x^1} \right) dx^3.
 \end{align*}
 %Damit wir nun wieder auf etwas physikalisch Sinnvolles kommen, ersetzen wir alle $dx^0$ mit $cdt$, $dx^1$ mit $dx$, %$dx^2$ mit $dy$ und $dx^3$ mit $dz$ und erhalten
-Damit wir nun wieder auf etwas physikalisch leichter Verständliches kommen, ersetzen wir
+Um die Verbindung zur gewohnten physikalischen Darstellung herzustellen, ersetzen wir gemäss \eqref{maxwell:koordinaten}
 \begin{equation}
 	dx^0 = c\,dt, \quad dx^1 = dx, \quad dx^2 = dy, \quad dx^3 = dz,
 \end{equation}
@@ -190,7 +192,7 @@ können wir die Gleichung noch etwas umformulieren und erhalten
 	\left( -\varepsilon_0\mu_0\frac{\partial E_3}{\partial t} - \frac{\partial B_1}{\partial y} + \frac{\partial B_2}{\partial x} \right) dz. \notag
 \end{align}
 
-Dieser Ausdruck soll nun also alle Teile der einen Seite der inhomogenen Maxwell-Gleichungen enthalten.
+Dieser Ausdruck sollte nun sämtliche Teile der linken Seite der inhomogenen Maxwell-Gleichungen enthalten.
 Wir erkennen die Divergenz der elektrischen Feldstärke, die Rotation der magnetischen Flussdichte und die zeitliche Ableitung der elektrischen Feldstärke in den jeweiligen Komponenten.
 \subsection{Bestimmung der Viererstromdichte $J$}
 
@@ -221,7 +223,7 @@ gilt, erkennen wir nun deutlich, dass gemäss \eqref{maxwell:section:inhomogeneM
 \end{align*}
 gelten muss.
 
-Nun haben wir also herausgefunden dass
+Nun haben wir also herausgefunden, dass
 \begin{equation}
 	\ast d {\ast} F = -\frac{\rho}{\varepsilon_0}\,dt + \mu_0 (J_1 \,dx +  J_2 \,dy +  J_3 \,dz)
 	\label{maxwell:section:inhomogemeMaxwellgleichungen:hdhF}
