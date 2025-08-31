@@ -537,36 +537,99 @@ Dies bedeutet, dass Ränder immer auch Zyklen sind, dass also
 $B_k\subset Z_k$ für alle $k$ gilt.
 
 %
-% Homologievektorräume
 %
-\subsubsection{Homologievektorräume}
-Da die Ränder einen Untervektorraum des Raumes der Zyklen bilden,
-können wir die Quotientengruppen bilden und ihnen einen Namen geben.
+%
+\subsubsection{Homologie}
+Die Intuition sagt, dass zwei beliebige Meridiankreise auf dem Torus in
+Abbildung~\ref{buch:topologie:intro:fig:torus}
+gleichwertig sind.
+Das gleiche gilt auch für Merdiane auf der Kugel von
+Abbildung~\ref{buch:topologie:intro:fig:sphere}.
+Doch wie lässt sich dies mathematisch exakt fassen?
+Die Vektorräume der Simplizes bieten eine Möglichkeit.
 
-\begin{definition}[Homologievektorraum]
-Die Homologievektorraum in Dimension $k$ ist definiert als
-\[
-H_k(S,\mathbb{R})
-=
-Z_k / B_k.
-\]
+Zwischen zwei benachbarten Meridiankreisen des Torus befindet sich ein
+Streifen von Dreiecken.
+Die beiden Merdiankreise sind als der Gemeinsame Rand eines 
+simplizialen Teilkomplexes des Torus.
+Das gleiche gilt auch für zwei Meridiane auf der Kugel: sie sind
+der gemeinsame Rand 
+
+\begin{definition}[homolog]
+Zwei Vektoren $a,b\in C_k$ heissen \emph{homolog}, 
+\index{homolog}
+wenn es ein $c\in C_{k+1}$ gibt mit $\partial c=b-a$.
 \end{definition}
 
-Die Homologievektorräume abstrahieren nützliche topologische Information
-eines simplizialen Komplexes.
-Das nachstehende Beispiel zeigt, dass sich die Zahl der
-Zusammenhangskomponenten aus $H_0(S)$ ablesen lässt.
-Dazu muss zunächst der Zusammenhangsbegriff für einen simplizialen Komplex
-eingeführt werden.
+Zwei Vektoren heissen also homolog, wenn ihre Differenz ein Rand ist,
+wenn also $b-a\in B_k$.
+Die Homologierelation ist symmetrisch, denn wenn $\partial c=b-a$ ist,
+dann gilt wegen der Linearität $\partial (-c) = -(\partial c)=-(b-a)=a-b$.
+Sie ist auch transitiv, denn wenn $a$ und $b$ homolog sind dank
+$b-a=\partial d_1$ und $b$ und $c$ dank $c-b=\partial d_2$, dann gilt
+für $d=d_1+d_2$
+\[
+\partial d
+=
+\partial(d_1+d_2)
+=
+\partial d_1
++
+\partial d_2
+=
+(b-a)+(c-b)
+=
+c-a,
+\]
+also ist auch $a$ und $c$ homolog.
+Und schliesslich ist jedes $a\in C_k$ zu sich selbst homolog,
+weil $a-a=0=\partial 0$.
+Homologie ist also eine Äquivalenzrelation.
 
-\begin{definition}[Zusammenhang]
+Besonders einfach wird die Bedingung im Falle von $0$-Zellen, also
+den Ecken.
+Hier fällt Homologie mit dem anschaulichen Begriff der Pfade zwischen
+Ecken zusammen.
+
+\begin{definition}[Pfad]
 Ein \emph{Pfad} zwischen zwei Ecken $a$ und $b$ eines simplizialen Komplexes
 \index{Pfad}
 ist eine Folge $a_0=1,a_1,\dots,a_k=b$ derart, dass $(a_i,a_{i+1})$
 für alle $i=0,\dots,k-1$ eine Kante ist.
-Zwei Punkte heissen \emph{verbunden}, wenn es einen Pfad zwischen ihnen
-\index{verbunden}
-gibt.
+\end{definition}
+
+Zwei Punkte $a$ und $b$ eines simplizialen Komplexes sind homolog
+genau dann, wenn es einen Pfad $aa_1a_2\dots a_{k-1}b$ zwischen
+den beiden Punkten gibt.
+Der Pfad ist die Linearkombination
+\[
+c = aa_1 + a_1a_2 + \dots + a_{k-2}a_{k-1} + a_{k-1}b
+\]
+mit dem Rand
+\[
+\partial c
+=
+(a_1 - a) + (a_2-a_1) + \dots + (a_{k-1}-a_{k-2}) + (b-a_{k-1})
+=
+b-a.
+\]
+
+\begin{definition}[verbundene Punkte]
+Zwei Punkte eines simplizialen Komplexes heissen \emph{verbunden},
+wenn es einen Pfad zwischen Ihnen gibt.
+\end{definition}
+
+%
+% Komponenten eines simplizialen Komplexes
+%
+\subsubsection{Zusammenhangskomponenten eines simplizialen Komplexes}
+Da Homologie eine Äquivalenzrelation ist, ist auch die Verbingungsrelation
+ein Äquivalenzrelation.
+Die Äquivalenzklassen bestehen aus Punkten, die miteinander verbunden
+sind.
+Wir geben ihnen mit der folgenden Definition einen Namen.
+
+\begin{definition}[Zusammenhang]
 Ein simplizialer Komplex heisst \emph{zusammenhängend}, wenn es zwischen
 \index{zusammenhängend}%
 zwei beliebige Ecken immer einen Pfad gibt.
@@ -583,6 +646,36 @@ allen mit $s$ verbundenen Ecken besteht.
 Dann wählt man eine weitere Ecke aus $S\setminus S(s)$ und wiederholt
 den Prozess.
 
+%
+% Homologievektorräume
+%
+\subsubsection{Homologievektorräume}
+Da die Ränder einen Untervektorraum des Raumes der Zyklen bilden,
+können wir die Quotientengruppen bilden und ihnen einen Namen geben.
+
+\begin{definition}[Homologievektorraum]
+Die Homologievektorraum in Dimension $k$ ist der Vektorraum
+\[
+H_k(S,\mathbb{R})
+=
+Z_k / B_k,
+\]
+der aus den Äquivalenzklassen von homologen Zyklen besteht.
+\end{definition}
+
+Ein Vektor in $H_k(S,\mathbb{R})$ kann also immer durch einen Zyklus
+in $Z_k(S)$ dargestellt werden.
+Die Darstellung ist aber nicht eindeutig.
+Zwei Zyklen $z_1\in Z_k$ und $z_2\in Z_k$ ergeben die gleiche Darstellung,
+wenn die Differenz $z_2-z_1\in B_k$ ist, wenn die $z_i$ also homolog sind.
+
+Die Homologievektorräume abstrahieren nützliche topologische Information
+eines simplizialen Komplexes.
+Das nachstehende Beispiel zeigt, dass sich die Zahl der
+Zusammenhangskomponenten aus $H_0(S)$ ablesen lässt.
+Dazu muss zunächst der Zusammenhangsbegriff für einen simplizialen Komplex
+eingeführt werden.
+
 \begin{beispiel}
 Wir zeigen: Ist $S$ ein simplizialer Komplex mit $n$ Komponenten, dann ist 
 $H_0(S)$ ein $n$-dimensionaler Vektorraum.
@@ -590,32 +683,24 @@ $H_0(S)$ ein $n$-dimensionaler Vektorraum.
 
 Der Vektorrraum $Z_0(S)$ hat die Ecken des simplizialen Komplexes als Basis,
 hat also die Anzahl der Ecken von $S$ als Dimension.
-Bei der Bildung des Quotienten $Z_0/B_0$ werden Vektoren miteinander
-identifiziert, die Ränder sind.
-In die Sprache der Ecken und Kanten übersetzt bedeutet dies, das zwei
-Ecken $a$ und $b$ den gleichen Basisvektor ergeben, wenn $a-b$ ein
-Rand ist.
-Dies ist zum Beispiel der Fall, wenn $a$ und $b$ die Enden einer Kante
-sind.
-Es ist aber auch der Fall, wenn es einen Pfad zwischen $a$ und $b$ gibt.
-Ein solcher besteht nämlich aus den Kanten
-\[
-c = aa_1 + a_1a_2 + \dots + a_{k-2}a_{k-1} + a_{k-1}b
-\]
-mit dem Rand
-\[
-\partial c
-=
-(a_1 - a) + (a_2-a_1) + \dots + (a_{k-1}-a_{k-2}) + (b-a_{k-1})
-=
-b-a.
-\]
+Bei der Bildung des Quotienten $Z_0/B_0$ werden homologe Vektoren miteinander
+identifiziert.
+Das sind aber genau die verbundenen Punkte.
 Zwei Basisvektoren in $Z_0$ werden im Quotienten $H_0(S)=Z_0(S)/B_0(S)$
 genau dann miteinander identifiziert, wenn sie in der gleichen
 Zusammenhangskomponenten sind.
 Also gibt es in $H_0(S)$ genau so viele linear unabhängige Vektoren,
 wie es Zusammenhangskomponenten gibt.
 \end{beispiel}
+
+%
+% Unterteilung und Homologie
+%
+\subsubsection{Unterteilung und Homologie}
+Wenn die Homologievektorräume topologische Eigenschaften des simplizialen
+Komplexes wiedergeben, dann darf man erwarten, dass sie sich nicht
+ändern, wenn man den Komplex durch Einfügen neuer Punkte unterteilt.
+Dies ist tatsächlich so, wie der folgende Satz beweist.
 
 \begin{satz}
 \label{buch:topologie:eulercharakteristik:satz:homologieunterteilung}
@@ -626,17 +711,123 @@ Homologievektorräumen.
 \begin{proof}
 Wir müssen zeigen, dass das Hinzufügen eines Unterteilungspunktes 
 die einzelnen Vektorräume nicht ändert.
+Wir werden keinen vollständigen formellen Beweis geben, sondern
+nur anhand einiger Fälle illustrieren, dass die durch den eingefügten
+Punkt entstandenen neuen Zyklen homolog sind zu bereits vorhandenen.
 
 Die Unterteilung einer Kante $a_0a_1$ mit einem neuen Punkt $b$ erzeugt
 zwei neue Kanten $a_0b$ und $ba_1$.
 Da $b-a_0=\partial (a_0b)$ ein Rand ist, sind die Vektoren $a_0\in H_0$
-und $b\in H_0$ äquivalent.
+und $b\in H_0$ homolog.
 Insbesondere hat sich $H_0$ durch den neuen Punkt nicht verändert.
 
+Ein Unterteilungspunkt auf einer Kante eines Dreiecks fügt auch
+eine neu Kante ein, die den neuen Punkt mit dem gegenüberliegenden
+Punkt des Dreiecks verbindet.
+Die beiden Hälften des Dreiecks haben als Rand jeweils einen Zyklus,
+der die neue Kante enthält.
 
+Nehmen wir an, dass diese neue Kante Teil eines Zyklus $z$ ist.
+Dann muss der Zyklus auch eine der halben Kanten enthalten.
+Indem wir den Rand des Dreieck subtrahieren, welches die gleiche halbe
+Kante enthält, verschwindet sowohl die neue Kante wie auch die
+halbe Kante us dem Zyklus $z$.
+Indem wir diese Operation wenn nötig mehrmals durchführen, erhalten
+wir einen homologen Zyklus, der im nicht unterteilten simplizialen
+Komplex liegt.
+Das Hinzufügen eines Unterteilungspunktes hat also nur neue Zyklen
+hinzugefügt, die homolog sind zu bereits bekannten.
+
+Wir unterteilen jetzt das Dreieck $abc$ mit dem inneren Punkt $p$.
+Es entstehen drei neue Dreiecke $abp$, $bcp$ und $cap$ und drei neue
+Kanten $ap$, $bp$ und $cp$.
+Wenn ein Zyklus im unterteilten $Z_1$ eine der neuen Kanten
+enthält, dann muss er auch noch eine weitere solche Kanten enthalten.
+Die beiden Kanten gehören zu genau einem der neuen Dreiecke.
+Indem man den Rand dieses Dreiecks vom Zyklus subtrahiert, erhält
+man einen homologen Zyklus, der die neuen Kanten nicht mehr braucht.
+
+Als letztes Beispiel unterteilen wir ein Tetraeder $abcd$ mit
+mit einem inneren Punkt $p$.
+Dabei entstehen zu jeder Seitenfläche des Tetraeders ein neues 
+Tetraeder.
+Je zwei der Tetraeder haben jeweils ein neues Dreieck als Seitenfläche
+gemeinsam, und je drei eine neue Kante.
+Wenn ein Zyklus $z\in Z_2$ eines der neuen Dreieck enthält, dann
+muss er auch zwei weitere der neuen Dreiecke enthalten.
+Diese drei Dreieck bestimmen genau eines der neuen Tetraeder.
+Subtrahiert man diese Tetraeder von $z$, erhält man einen neuen
+Zyklus, der $p$ nicht mehr enthält.
+Jeder Zyklus im verfeinerten simplizialen Komplex ist also homolog
+zu einem Zyklus im ursprünglichen Komplex.
 \end{proof}
 
-\subsubsection{Betti-Zahlen und Euler-Charakteristik}
+Der Satz bedeutet, dass die Homologievektorräume mit Hilfe einer
+beliebigen Tringulation berechnet werden können.
+
+\begin{beispiel}
+\label{buch:topologie:euler:beispiel:tetraeder}
+Ein (hohles) Tetraeder $T$ hat vier Ecken, sechs Kanten und vier Seitenflächen.
+Das es zusammenhängend ist, wissen wir bereits, dass
+$H_0(T,\mathbb{R})=\mathbb{R}$ ist.
+
+Ein eindimensionaler Zyklus ist ein geschlossener Weg.
+Enthält ein solcher Weg zwei aneinanderstossende Kanten, dann kann
+man den Rand des zugehörige Dreiecks subtrahieren und erhält
+einen homologen Zyklus mit einer Kante weniger.
+Wiederholung des Prozesses zeigt, dass jeder Zyklus zu 0 homolog
+ist, es folgt $H_1(T,\mathbb{R})=0$.
+
+Da das Tetraeder keine dreidimensionalen Simplizes enthält, ist 
+$B_2(T)=0$ und folglich $H_2(T,\mathbb{R})=Z_2(T)$.
+\end{beispiel}
+
+\begin{beispiel}
+\label{buch:topologie:euler:beispiel:kugel}
+Da eine Kugel durch Zentralprojektion von einem Tetrader mit
+Mittelpunkt im Kugelmittelpunkt trianguliert werden kann, gilt
+\[
+H_0(S^2,\mathbb{R}) = \mathbb{R},\qquad
+H_1(S^2,\mathbb{R}) = 0,\qquad
+H_2(S^2,\mathbb{R}) = \mathbb{R}
+\qedhere
+\]
+\end{beispiel}
+
+\input{chapters/120-topologie/fig/fig-torushomologie.tex}%
+
+\begin{beispiel}
+\label{buch:topologie:euler:beispiel:torus}
+Zur Berechnung der Homologievektorräume eines zweidimensionalen
+Torus $T^2$ lassen sich mit der Triangulation von
+Abbildung~\ref{buch:topologie:euler:fig:torushomologie} bestimmen.
+Sie enthält genau eine Ecke $p$, drei Kanten $a$, $b$ und $d$ und
+zwei Dreiecke $\Delta_1$ und $\Delta_2$.
+Die gleichfarbigen Kanten sind jeweils miteinander zu identifizieren.
+Sie entsprechen den farbigen Kurven auf dem Torus von
+Abbildung~\ref{buch:topologie:intro:fig:torus}.
+
+Da der Torus zusammenhängend ist, ist $H_0(T^2,\mathbb{R})=\mathbb{R}$.
+
+Zwei eindimensionale Zyklen sind leicht zu identifizieren: die 
+horizontalen und vertikalen Kanten.
+Die diagonale Kante ist homolog zur Verkettung der anderen beiden,
+so dass $H_1(T^2,\mathbb{R})$ ein zweidimensionaler Vektorraum
+mit den beiden farbigen Kanten als Basis ist.
+Somit ist $H_2(T^2,\mathbb{R})=\mathbb{R}^2$.
+
+Da $T^2$ keine dreidimensionalen Simplizes enthält, ist $B_2(T^2)=0$
+und folglich $H_2(T^2,\mathbb{R}) = Z_2(T^2)$.
+Ein zweidimensionaler Zyklus, der das eine Dreieck enthält, muss auch
+das andere enthalten, damit sich die Ränder in der Summe wegheben.
+Somit ist $\Delta_1 + \Delta_2$ der einzige Zyklus und es folgt
+$H_2(T^2,\mathbb{R})=\mathbb{R}$.
+\end{beispiel}
+
+%
+% Betti-Zahlen
+%
+\subsubsection{Betti-Zahlen}
 Die Homologievektorräume sind endlichdimensionale Vektorräume.
 Ihre Dimension sagt etwas über die Komplexität des simplizialen
 Komplexes aus und verdient daher einen eigenen Namen.
@@ -661,6 +852,38 @@ Gemäss Satz~\ref{buch:topologie:eulercharakteristik:satz:homologieunterteilung}
 ändert die Unterteilung die Homologie-Vektorräume nicht, also ändert sich
 auch deren Dimension nicht.
 \end{proof}
+
+\begin{beispiel}
+\label{buch:topologie:euler:beispiel:betti-tetraeder}
+Im Beispiel~\ref{buch:topologie:euler:beispiel:tetraeder} wurden die 
+Homologievektorräume eines Tetraeders und anschliessend in
+Beispiel~\ref{buch:topologie:euler:beispiel:kugel} einer Kugel berechnet.
+Daraus lassen sich die Bettizahlen
+\[
+\beta_0(T) = \beta_0(S^2) = 1,\qquad
+\beta_1(T) = \beta_1(S^2) = 0,\qquad
+\beta_2(T) = \beta_2(S^2) = 1
+\]
+ablesen.
+\end{beispiel}
+
+\begin{beispiel}
+\label{buch:topologie:euler:beispiel:betti-torus}
+Im Beispiel~\ref{buch:topologie:euler:beispiel:torus} wurden die 
+Homologievektorräume eines Torus $T^2$ berechnet.
+Daraus lassen sich die Bettizahlen
+\[
+\beta_0(T^2) = 1,\qquad
+\beta_1(T^2) = 2,\qquad
+\beta_2(T^2) = 1
+\]
+ablesen.
+\end{beispiel}
+
+%
+% Euler-Charakteristik
+%
+\subsubsection{Euler-Charakteristik}
 
 \begin{satz}
 Die Euler-Charakteristik ist durch die Betti-Zahlen bestimmt,
