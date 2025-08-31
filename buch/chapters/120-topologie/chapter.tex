@@ -552,11 +552,89 @@ Z_k / B_k.
 \]
 \end{definition}
 
+Die Homologievektorräume abstrahieren nützliche topologische Information
+eines simplizialen Komplexes.
+Das nachstehende Beispiel zeigt, dass sich die Zahl der
+Zusammenhangskomponenten aus $H_0(S)$ ablesen lässt.
+Dazu muss zunächst der Zusammenhangsbegriff für einen simplizialen Komplex
+eingeführt werden.
+
+\begin{definition}[Zusammenhang]
+Ein \emph{Pfad} zwischen zwei Ecken $a$ und $b$ eines simplizialen Komplexes
+\index{Pfad}
+ist eine Folge $a_0=1,a_1,\dots,a_k=b$ derart, dass $(a_i,a_{i+1})$
+für alle $i=0,\dots,k-1$ eine Kante ist.
+Zwei Punkte heissen \emph{verbunden}, wenn es einen Pfad zwischen ihnen
+\index{verbunden}
+gibt.
+Ein simplizialer Komplex heisst \emph{zusammenhängend}, wenn es zwischen
+\index{zusammenhängend}%
+zwei beliebige Ecken immer einen Pfad gibt.
+Eine \emph{Zusammenhangskomponente} eines simplizialen Komplexes ist ein
+\index{Zusammenhangskomponente}%
+maximaler zusammenhängender Teilkomplex.
+\end{definition}
+
+Ein simplizialer Komplex $S$ lässt sich iterativ in
+Zusammenhangskomponenten zerlegen.
+Dazu wählt man eine beliebige Ecke $s$ und findet ihre
+Zusammenhangskomponente $S(s)$, indem man den Teilkomplex bildet, der aus
+allen mit $s$ verbundenen Ecken besteht.
+Dann wählt man eine weitere Ecke aus $S\setminus S(s)$ und wiederholt
+den Prozess.
+
+\begin{beispiel}
+Wir zeigen: Ist $S$ ein simplizialer Komplex mit $n$ Komponenten, dann ist 
+$H_0(S)$ ein $n$-dimensionaler Vektorraum.
+\medskip
+
+Der Vektorrraum $Z_0(S)$ hat die Ecken des simplizialen Komplexes als Basis,
+hat also die Anzahl der Ecken von $S$ als Dimension.
+Bei der Bildung des Quotienten $Z_0/B_0$ werden Vektoren miteinander
+identifiziert, die Ränder sind.
+In die Sprache der Ecken und Kanten übersetzt bedeutet dies, das zwei
+Ecken $a$ und $b$ den gleichen Basisvektor ergeben, wenn $a-b$ ein
+Rand ist.
+Dies ist zum Beispiel der Fall, wenn $a$ und $b$ die Enden einer Kante
+sind.
+Es ist aber auch der Fall, wenn es einen Pfad zwischen $a$ und $b$ gibt.
+Ein solcher besteht nämlich aus den Kanten
+\[
+c = aa_1 + a_1a_2 + \dots + a_{k-2}a_{k-1} + a_{k-1}b
+\]
+mit dem Rand
+\[
+\partial c
+=
+(a_1 - a) + (a_2-a_1) + \dots + (a_{k-1}-a_{k-2}) + (b-a_{k-1})
+=
+b-a.
+\]
+Zwei Basisvektoren in $Z_0$ werden im Quotienten $H_0(S)=Z_0(S)/B_0(S)$
+genau dann miteinander identifiziert, wenn sie in der gleichen
+Zusammenhangskomponenten sind.
+Also gibt es in $H_0(S)$ genau so viele linear unabhängige Vektoren,
+wie es Zusammenhangskomponenten gibt.
+\end{beispiel}
+
 \begin{satz}
 \label{buch:topologie:eulercharakteristik:satz:homologieunterteilung}
 Ein Unterteilung des simplizialen Komplexes führt zu isomorphen
 Homologievektorräumen.
 \end{satz}
+
+\begin{proof}
+Wir müssen zeigen, dass das Hinzufügen eines Unterteilungspunktes 
+die einzelnen Vektorräume nicht ändert.
+
+Die Unterteilung einer Kante $a_0a_1$ mit einem neuen Punkt $b$ erzeugt
+zwei neue Kanten $a_0b$ und $ba_1$.
+Da $b-a_0=\partial (a_0b)$ ein Rand ist, sind die Vektoren $a_0\in H_0$
+und $b\in H_0$ äquivalent.
+Insbesondere hat sich $H_0$ durch den neuen Punkt nicht verändert.
+
+
+\end{proof}
 
 \subsubsection{Betti-Zahlen und Euler-Charakteristik}
 Die Homologievektorräume sind endlichdimensionale Vektorräume.
