@@ -8,7 +8,8 @@ all:	unterteilung.pdf						\
 	sphaere.jpg							\
 	morse.pdf							\
 	toruspfade.pdf							\
-	torushomologie.pdf
+	torushomologie.pdf						\
+	rand.pdf
 
 sphaere.png:	sphaere.pov
 	povray +A0.1 +W1920 -H1080 -Osphaere.png sphaere.pov
@@ -37,3 +38,9 @@ toruspfade.pdf:	toruspfade.tex
 
 torushomologie.pdf:	torushomologie.tex
 	pdflatex torushomologie.tex
+
+rand.pdf:	rand.tex randpoints.tex
+	pdflatex rand.tex
+
+randpoints.tex:	randpoints.m
+	octave randpoints.m
