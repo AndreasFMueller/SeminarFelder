@@ -47,16 +47,18 @@ Die angepasste Wellengleichung
 \]
 kann nun nach $u(t+T)$, also nach dem Wert von $u$ einen Zeitschritt in der Zukunft, umgestellt werden, was in
 \[
-    \underbrace{
+    \underbrace{%
         u(t+T) = 2 u(t) - u(t+T) + T^2      % Equation part 1
         \vphantom{\mathbf{D}^2_{xy}}        % Adjust height
-    }_{
+    }_{%
+        \textstyle
         \frac{\d^2 u(t)}{\d t^2}            % Description
     } 
     \cdot 
-    \underbrace{
+    \underbrace{%
         c^2 \cdot (\mathbf{D}^2_{xy} * u)   % Equation part 2
-    }_{
+    }_{%
+        \textstyle
         \nabla^2 u                          % Description
         \vphantom{\frac{\d^2 u(t)}{\d t^2}} % Adjust height
     }
@@ -79,24 +81,27 @@ verwendet.
 
 Die resultierende Wellengleichung lautet
 \[
-    \underbrace{
+    \underbrace{%
         u(t+T) = 2 u(t) - u(t+T) + T^2      % Equation part 1
         \vphantom{\mathbf{D}^2_{xy}}        % Adjust height
-    }_{
+    }_{%
+        \textstyle
         \frac{\d^2 u(t)}{\d t^2}            % Description
     } 
     \cdot 
-    \underbrace{
+    \underbrace{%
         c^2 \cdot (\mathbf{D}^2_{xy} * u)   % Equation part 2
-    }_{
+    }_{%
+        \textstyle
         \nabla^2 u                          % Description
         \vphantom{\frac{\d^2 u(t)}{\d t^2}} % Adjust height
     }
      - 
-    \underbrace{
+    \underbrace{%
         d \cdot T \cdot (u(t) - u(T-1))
         \vphantom{\mathbf{D}^2_{xy}}        % Adjust height
-    }_{
+    }_{%
+        \textstyle
         d \cdot \frac{\d u(t)}{\d t}        % Description
     }.
 \]
@@ -121,4 +126,4 @@ Der grüne Kanal diktiert nun das Spannungsfeld zu Beginn der Simulation. % CHEC
 
 \subsection{Performance} % TODO: Evtl. weg lassen...
 Die Simulation ist trotz relativ tiefer Auflösung nicht trivial. 
-Der WaveSimulator2D zieht Nutzen aus CuPy um die Faltung des Laplace Kernels mit den aktuellen Feldwerten auf der Grafikkarte laufen zu lassen.
+Der WaveSimulator2D zieht Nutzen aus der \texttt{CuPy} Bibliothek um die Faltung des Laplace Kernels mit den aktuellen Feldwerten auf der Grafikkarte laufen zu lassen.
