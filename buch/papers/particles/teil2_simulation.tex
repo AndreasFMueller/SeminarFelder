@@ -10,16 +10,16 @@
 \kopfrechts{Simulation}
 
 Für die konventionelle Wellengleichung~\ref{particles:eq:wellengleichung} können Lösungen besonders für einfache Fälle auch analytisch gefunden werden.
-Sobald jedoch das Medium nichtlinear und der Proportionalitätsfaktor $c$ nicht mehr unabhängig von der Spannung deformation $u$ ist, wird ein analytisches Lösen beinahe unmöglich.
-Entsprechend wurde in der hinsicht darauf, dass schliesslich auch nichtlineare Medien simuliert werden können, ein numerischer Ansatz gewählt.
+Sobald jedoch das Medium nichtlinear und der Proportionalitätsfaktor $c$ nicht mehr unabhängig von der Deformation $u$ ist, wird ein analytisches Lösen beinahe unmöglich.
+Entsprechend wurde in der Hinsicht darauf, dass schliesslich auch nichtlineare Medien simuliert werden können, ein numerischer Ansatz gewählt.
 
 So wurde für die Simulationen eine von \textbf{insert name} angepasste Version des Open-Source Wellensimulators WaveSimulator2D~\cite{repo:wavesim2d} verwendet. % TODO: Insert name and cite
-Dieser simuliert eine zwidimensionale Szene, indem er die Wellengleichung für einen diskreten Zeitschritt simuliert und das resultierende Feld anzeigt.
+Dieser simuliert eine zweidimensionale Szene, indem er die Wellengleichung für einen diskreten Zeitschritt simuliert und das resultierende Feld anzeigt.
 Die Szene wird dabei ebenfalls örtlich diskretisiert, indem sie in Pixel aufgeteilt wird.
 
 \subsection{Wellengleichung\label{particles:section:simulation:wellengleichung}}
 Die Diskretisierung der Raumdimensionen erlaubt das Berechnen von $\nabla^2 u$ als Faltung des Felds $u$ mit einem Laplace kernel.
-WaveSim2D verwendet dazu das Kernel
+WaveSim2D verwendet dazu den Kernel
 \[
     \mathbf{D}^2_{xy} = 
     \begin{pmatrix}
@@ -45,7 +45,7 @@ Die angepasste Wellengleichung
 \[
     \frac{u(t-T) - 2 u(t) + u(t+T)}{T^2} = c^2 \cdot (\mathbf{D}^2_{xy} * u)
 \]
-kann nun nach $u(t+T)$, also nach dem Wert von u einen Zeitschritt in der Zukunft, umgestellt werden, was in
+kann nun nach $u(t+T)$, also nach dem Wert von $u$ einen Zeitschritt in der Zukunft, umgestellt werden, was in
 \[
     \underbrace{
         u(t+T) = 2 u(t) - u(t+T) + T^2      % Equation part 1
@@ -70,7 +70,7 @@ Die angepasste Wellengleichung
 \[
     \frac{\d^2 u}{\d t^2} + d \frac{\d u}{\d t}= c^2 \cdot \nabla^2 u
 \]
-mit der Dämpfung $d$ als Skalarfeld kann entlang dem selben Weg wie in Abschnitt~\ref{particles:section:simulation:wellengleichung} dargestellt nach $u(t+T)$ ungeformt werden.
+mit der Dämpfung $d$ als Skalarfeld kann entlang dem selben Weg wie in Abschnitt~\ref{particles:section:simulation:wellengleichung} dargestellt nach $u(t+T)$ umgeformt werden.
 Dabei wird für die Ableitung $\frac{\d u}{\d t}$ der einseitige Differenzquotient
 \[
     \frac{\d u}{\d t} \approx \frac{ - u(t-T)}{T}
@@ -111,12 +111,12 @@ Einige Beispiele der daraus resultierenden Spannungs-Deformations-Kurven sind in
 \mytodo{Beschreiben, wie der Simulator das einrechnet}
 
 \subsection{Szenendefinition}
-Zur Definition des Ausgangszustands des Feldes sowie der Eigenschaften des Mediums mimmt der Simulator ein RGB-Bild entgegen.
+Zur Definition des Ausgangszustands des Feldes sowie der Eigenschaften des Mediums nimmt der Simulator ein RGB-Bild entgegen.
 Den drei Farbkanälen wird jeweils eine Funktion zugeteilt.
 Der rote Kanal bestimmt den Brechungsindex des jeweiligen Pixels, während über den blauen Kanal die Dämpfung bestimmt werden kann.
 Über den grünen Kanal können im unveränderten Simulator Quellen dargestellt werden, wobei der Farbwert die Frequenz der Quelle darstellt.
 Damit die in der Simulation enthaltene Energie nicht fortlaufend ansteigt, wurde die Funktion des grünen Kanals durch \textbf{insert name} angepasst. % TODO: Echter Name von Huygens einfügen
-Der grüne Kanal diktiert nun das Spannungsfeld am Anfang der Simulation. % CHECK: ist es die Spannung oder die Deformation?
+Der grüne Kanal diktiert nun das Spannungsfeld zu Beginn der Simulation. % CHECK: ist es die Spannung oder die Deformation?
 % TODO: Beispielszene
 
 \subsection{Performance} % TODO: Evtl. weg lassen...
