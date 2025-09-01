@@ -1,0 +1,45 @@
+
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz, 10pt]{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows, arrows.meta,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=Latex,thick,scale=\skala]
+    \begin{axis}[
+        scaled ticks=true,
+        axis y line=center,
+        axis x line=middle,
+        minor xtick={},
+        minor ytick={},
+        xlabel={\(\displaystyle F\)},
+        every axis x label/.style={
+            at={(ticklabel* cs:0.985)},anchor=south east,
+        },
+        xmin=-2.3, 
+        xmax=2.5,
+        xtick style={thick, color=black},
+        xtick={-2,-1,0,1,2},
+        ylabel={\(\displaystyle \Delta l\)},
+        ymin=-2.3, 
+        ymax=2.5,
+        ytick style={thick, color=black},
+        ytick={-2,-1,0,1,2},
+        width=6cm,
+        height=5cm,
+        scale only axis,
+        axis line style={-{Latex[scale=1.25]}, thick},
+    ]
+        \addplot[thick, blue, domain=-2:2]{x};
+    \end{axis}
+\end{tikzpicture}
+\end{document}
