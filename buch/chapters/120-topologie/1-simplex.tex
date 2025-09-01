@@ -350,11 +350,13 @@ entgegengesetzter Richtung durchlaufen.
 
 \begin{definition}
 Sei $S$ ein $n$-dimensionaler simplizialer Komplex.
-Für jedes $k$, $0\le k\le n$ ist $C_k$ der reelle Vektorraum, aufgespannt
+Für jedes $k$, $0\le k\le n$ ist $C_k$ der reelle Vektorraum aufgespannt
 von den Simplizes von $S$.
+Die Elemente $c\in C_k$ sind Linearkombinationen von $k$-dimensionalen
+Simplizes.
+Sie werden auch $k$-dimensionale \emph{Ketten} genannt.
+\index{Kette}%
 \end{definition}
-
-
 
 \begin{beispiel}
 \label{buch:topologie:eulercharakteristik:bsp:dreieck}
@@ -471,6 +473,63 @@ in ein Vorzeichen vor der Summe, entsteht}
 \end{align*}
 Die beiden Summen heben sich weg, was die Behauptung beweist.
 \end{proof}
+
+%
+% Kettenkomplex
+%
+\subsubsection{Kettenkomplex}
+Der Randoperator $\partial_k$ ist eine lineare Operation, die den Grad 
+erniedrigt.
+Ausserdem gilt, dass der iterierte Randoperator verschwindet.
+Diese algebraische Struktur tritt auch in anderen Zusammenhängen
+auf und verdient daher einen eigenen Namen, der in der folgenden
+Definition eingeführt wird.
+
+\begin{definition}[Kettenkomplex]
+Eine Folge von Vektorräumen $C_k$ und linearen Abbildungen
+$\partial_k\colon C_k\to C_{k+1}$
+mit der Eigenschaft $\partial_{k-1}\circ\partial_k=0$ heisst
+ein \emph{Kettenkomplex}.
+\index{Kettenkomplex}%
+Kettenkomplexe werden manchmal auch $(C_*,\partial_*)$ notiert.
+\end{definition}
+
+Ein Kettenkomplex $(C_*,\partial_*)$ kann daher auch als Diagramm
+\begin{equation}
+\dots
+\xleftarrow{\;\quad\clap{$\partial_{k-2}$}\quad\;}
+C_{k-2}
+\xleftarrow{\;\quad\clap{$\partial_{k-1}$}\quad\;}
+C_{k-1}
+\xleftarrow{\;\quad\clap{$\partial_{k}$}\quad\;}
+C_k
+\xleftarrow{\;\quad\clap{$\partial_{k+1}$}\quad\;}
+C_{k+1}
+\xleftarrow{\;\quad\clap{$\partial_{k+2}$}\quad\;}
+\dots
+\label{buch:topologie:simplex:eqn:kettenkomplex}
+\end{equation}
+von linearen Abbildung geschrieben werden.
+Die Forderung, dass die Verkettung $\partial_{k-1}\circ\partial_k=0$
+ist, ist gleichbedeutend mit der Forderung, dass das Bild von $\partial_k$
+im Kern von $\partial_{k+1}$ enthalten ist, oder
+$\operatorname{im}\partial_k \subset \ker\partial_{k-1}$.
+Der Kern von $\partial_{k-1}$ kann aber durchaus grösser sein, es kann
+also Elemente $c_{k-1}\in C_{k-1}$ geben mit $\partial_{k-1} c_{k-1}=0$,
+für die es kein $c_k\in C_k$ gibt $c_{k-1}=\partial_kc_k$.
+
+\begin{definition}[exakte Folge]
+Eine Folge der Form
+\eqref{buch:topologie:simplex:eqn:kettenkomplex}
+heisst \emph{exakt}, wenn für alle $k$ gilt
+$\ker\partial_{k-1} = \operatorname{im}\partial_k$.
+\end{definition}
+
+Von besonderem Interesse sind als Kettenkomplexe, die \emph{nicht}
+exakt sind.
+Die Kettenkomplexe, die aus einem simplizialen Komplex abgeleitet
+werden, sind oft von dieser Art.
+Der Begriff der Homologie dient dzu, die Nichtexaktheit zu messen.
 
 %
 % Homologie
@@ -905,5 +964,109 @@ es gilt
 \end{satz}
 
 \begin{proof}
+Die Eulercharakteristik ist als alternierende Summe der Anzahl der Simplizes 
+jeder Dimension definiert.
+Die Anzahl tritt als Dimension der Vektorräume $C_k$ auf.
+$\dim C_0$ ist die Anzahl der Ecken, $\dim C_1$ die Anzahl der Kanten,
+$\dim C_2$ die Anzahl der Dreieck usw.
+Die Euler-Charakteristik kann man daher auch schreiben als
+\[
+\chi(S)
+=
+\sum_{k=0}^n (-1)^k \dim C_k.
+\]
+Um die Notation zu vereinfachen, schreiben wir für die alternierende
+Summe der Betti-Zahlen als
+\[
+\chi_H(S)
+=
+\sum_{k=0}^n
+(-1)^k \beta_k
+=
+\sum_{k=0}^n
+(-1)^k \dim H_k(S,\mathbb{R}),
+\]
+wobei die Notation andeuten soll, dass dies die ``homologisch''
+definierte Euler-Charakteristik ist.
+
+Die Homologievektorräume sind ebenfalls endlichdimensionale Vektorräume.
+Ihre Dimension ergibt sich aus
+\[
+\dim H_k(S)
+=
+\dim Z_k(S) - \dim B_k(S).
+\]
+Die Dimensionen von $Z_k$ und $B_k$ sind aber mit den Dimensionen von
+$C_k$ über den Randoperator verbunden.
+
+Die Ränder $B_k$ sind der Bildraum des Operators $\partial_{k+1}$, seine
+dimension wird durch den Rang gegeben:
+\begin{equation}
+\dim B_k
+= 
+\operatorname{Rang} \partial_{k+1}.
+\label{buch:topologie:simplex:eqn:dimb}
+\end{equation}
+
+Die Zyklen $Z_k$ bilden den Kern des Operators $\partial_k$, so dass
+die Dimension von $Z_k$
+\begin{equation}
+\dim Z_k
+=
+\dim\ker \partial_k
+=
+\dim C_k - \operatorname{rank} \partial_k
+\label{buch:topologie:simplex:eqn:dimz}
+\end{equation}
+ist.
+
+Aus den Gleichungen folgt jetzt für die Betti-Zahlen
+\begin{equation}
+\dim H_k(S,\mathbb{R})
+=
+\dim Z_k - \dim B_k
+=
+\dim C_k - \operatorname{rank} \partial_k
+- \operatorname{rank}\partial_{k+1}.
+\label{buch:topologie:simplex:eqn:dimh}
+\end{equation}
+Daraus kann man jetzt die alternierende Summe der Betti-Zahlen
+ausrechnen
+\begin{align*}
+\chi_H(S)
+&=
+\sum_{k=0}^n (-1)^k \dim H_k(S,\mathbb{R})
+\\
+&=
+\sum_{k=0}^n (-1)^k\bigl(
+\dim C_k - \operatorname{rank} \partial_k
+- \operatorname{rank}\partial_{k+1}
+\bigr)
+\\
+&=
+\sum_{k=0}^n (-1)^k\dim C_k
+-\sum_{k=0}^n(-1)^k\operatorname{rank}\partial_k
+-\sum_{k=1}^n(-1)^k\operatorname{rank}\partial_{k+1}.
+\intertext{Die erste Summe ist die Euler-Charakteristik.
+In der letzten Summe verschieben wir den Summationsindex um 1 und
+erhalten die leichter zu vergleichenden Summen}
+&=
+\chi(S)
+-\sum_{k=0}^n(-1)^k\operatorname{rank}\partial_k
++\sum_{k=1}^{n+1}(-1)^{k}\operatorname{rank}\partial_{k}.
+\intertext{Bis auf den ersten Term der linken Summe und den letzten Term
+der rechten Summe haben sich die Terme der beiden Summen gegenseit weg,
+so dass nur}
+&=
+\chi(S)
+-\operatorname{rank}\partial_0
++(-1)^{n+1}\operatorname{rank}\partial_{k+1}
+\end{align*}
+übrig bleibt.
+Der Operator $\partial_0$ ist aber der Nulloperator und hat daher Rang 0.
+Da $S$ ein $n$-dimensionaler simplizialer Komplex ist, gibt es keine
+$n+1$-Zyklen.
+Somit ist auch $\partial_{n+1}=0$ und $\operatorname{rank}\partial_{n+1}=0$
+und damit $\chi_H(S) = \chi(S)$.
 \end{proof}
 
