@@ -5,9 +5,9 @@
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
-%
 \section{Gebietsunterteilung}
 \label{parallelisierung:sec:dd}
+\kopfrechts{Gebietsunterteilung}
 
 \subsection{Motivation}
 Wie im Kapitel der numerischen Methoden gezeigt, führt eine Verfeinerung der Raum- und Zeitauflösung zwar zu genaueren Ergebnissen, jedoch auch zu einem erheblich höheren Rechenaufwand. 
@@ -115,7 +115,6 @@ T=0^\circ\mathrm{C}\ \text{(rechts)},\quad
 T=80^\circ\mathrm{C}\ \text{(oben)},\quad
 T=20^\circ\mathrm{C}\ \text{(unten)}.
 \]
-
 Das Gitter (Ränder mit Werten, innen $I$):
 \[
 \begin{array}{ccccc}
@@ -126,7 +125,6 @@ Das Gitter (Ränder mit Werten, innen $I$):
 	20 & 20 & 20 & 20 & 20
 \end{array}
 \]
-
 Innere Unbekannte ($3\times 3 = 9$):
 \[
 T_{2,2},\ T_{2,3},\ T_{2,4},\ T_{3,2},\ T_{3,3},\ T_{3,4},\ T_{4,2},\ T_{4,3},\ T_{4,4}.
@@ -135,15 +133,15 @@ T_{2,2},\ T_{2,3},\ T_{2,4},\ T_{3,2},\ T_{3,3},\ T_{3,4},\ T_{4,2},\ T_{4,3},\ 
 \subsubsection*{Diskretisierung}
 Die 9 Gleichungen lauten:
 \begin{alignat*}{6}
-	-4\mathbf{T_{2,2}} &+ T_{3,2} &+ 80 &+ T_{2,3} &+ 100 &= 0, \\
-	-4\mathbf{T_{2,3}} &+ T_{3,3} &+ 80 &+ T_{2,4} &+ T_{2,2} &= 0, \\
-	-4\mathbf{T_{2,4}} &+ T_{3,4} &+ 80 &+ 0 &+ T_{2,3} &= 0, \\
-	-4\mathbf{T_{3,2}} &+ T_{4,2} &+ T_{2,2} &+ T_{3,3} &+ 100 &= 0, \\
-	-4\mathbf{T_{3,3}} &+ T_{4,3} &+ T_{2,3} &+ T_{3,4} &+ T_{3,2} &= 0, \\
-	-4\mathbf{T_{3,4}} &+ T_{4,4} &+ T_{2,4} &+ 0 &+ T_{3,3} &= 0, \\
-	-4\mathbf{T_{4,2}} &+ 20 &+ T_{3,2} &+ T_{4,3} &+ 100 &= 0, \\
-	-4\mathbf{T_{4,3}} &+ 20 &+ T_{3,3} &+ T_{4,4} &+ T_{4,2} &= 0, \\
-	-4\mathbf{T_{4,4}} &+ 20 &+ T_{3,4} &+ 0 &+ T_{4,3} &= 0.
+	-4\color{darkred}{T_{2,2}} &+ T_{3,2} &+ 80 &+ T_{2,3} &+ 100 &= 0, \\
+	-4\color{darkred}{T_{2,3}} &+ T_{3,3} &+ 80 &+ T_{2,4} &+ T_{2,2} &= 0, \\
+	-4\color{darkred}{T_{2,4}} &+ T_{3,4} &+ 80 &+ 0 &+ T_{2,3} &= 0, \\
+	-4\color{darkred}{T_{3,2}} &+ T_{4,2} &+ T_{2,2} &+ T_{3,3} &+ 100 &= 0, \\
+	-4\color{darkred}{T_{3,3}} &+ T_{4,3} &+ T_{2,3} &+ T_{3,4} &+ T_{3,2} &= 0, \\
+	-4\color{darkred}{T_{3,4}} &+ T_{4,4} &+ T_{2,4} &+ 0 &+ T_{3,3} &= 0, \\
+	-4\color{darkred}{T_{4,2}} &+ 20 &+ T_{3,2} &+ T_{4,3} &+ 100 &= 0, \\
+	-4\color{darkred}{T_{4,3}} &+ 20 &+ T_{3,3} &+ T_{4,4} &+ T_{4,2} &= 0, \\
+	-4\color{darkred}{T_{4,4}} &+ 20 &+ T_{3,4} &+ 0 &+ T_{4,3} &= 0.
 \end{alignat*}
 
 \subsubsection*{Matrixformulierung}
@@ -156,7 +154,6 @@ Wir ordnen die Unbekannten zeilenweise:
 	T_{4,2}\\T_{4,3}\\T_{4,4}
 \end{bmatrix}.
 \]
-
 Dann gilt:
 \[
 \mathbf{A}\vec{u}=\vec{b},
@@ -187,7 +184,7 @@ mit
 \subsubsection*{Interpretation und Lösung}
 \begin{itemize}
 	\item $\mathbf{A}$ ist dünnbesetzt und spiegelt die 5-Punkt-Nachbarschaft wider.
-	\item $\vec{b}$ enthält die Beiträge der Randwerte (verschieden je nach Lage).
+	\item $\vec{b}$ enthält die Beiträge der Randwerte (verschieden je nach Position).
 	\item Das System besitzt eine eindeutige Lösung: es liefert eine „schräg“ verlaufende Temperaturverteilung zwischen den warmen und kalten Rändern.
 \end{itemize}
 
