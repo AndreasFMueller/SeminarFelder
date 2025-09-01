@@ -153,8 +153,8 @@ t_0
 -
 t_1
 +
-t_2
-\intertext{Die wir auch}
+t_2,
+\intertext{die wir auch}
 &=
 \sum_{k=0}^2 (-1)^kt_k
 \end{align*}
@@ -752,6 +752,7 @@ Homologievektorräumen.
 \end{satz}
 
 \begin{proof}
+\input{chapters/120-topologie/fig/fig-unterzyklen.tex}%
 Wir müssen zeigen, dass das Hinzufügen eines Unterteilungspunktes 
 die einzelnen Vektorräume nicht ändert.
 Wir werden keinen vollständigen formellen Beweis geben, sondern
@@ -764,31 +765,39 @@ Da $b-a_0=\partial (a_0b)$ ein Rand ist, sind die Vektoren $a_0\in H_0$
 und $b\in H_0$ homolog.
 Insbesondere hat sich $H_0$ durch den neuen Punkt nicht verändert.
 
-Ein Unterteilungspunkt auf einer Kante eines Dreiecks fügt auch
+Ein Unterteilungspunkt $s$ auf einer Kante eines Dreiecks $abc$ fügt auch
 eine neu Kante ein, die den neuen Punkt mit dem gegenüberliegenden
 Punkt des Dreiecks verbindet.
 Die beiden Hälften des Dreiecks haben als Rand jeweils einen Zyklus,
 der die neue Kante enthält.
 
-Nehmen wir an, dass diese neue Kante Teil eines Zyklus $z$ ist.
-Dann muss der Zyklus auch eine der halben Kanten enthalten.
-Indem wir den Rand des Dreieck subtrahieren, welches die gleiche halbe
-Kante enthält, verschwindet sowohl die neue Kante wie auch die
-halbe Kante us dem Zyklus $z$.
+Nehmen wir an, dass diese neue Kante Teil eines Zyklus $z$ ist
+(in Abbildung~\ref{buch:topologie:simplex:fig:unterzyklen} links
+die Kante $cs$).
+Dann muss der Zyklus auch eine der halben Kanten enthalten (den
+Teil $sb$ in der Abbildung).
+Indem wir den Rand des Dreiecks $\Delta$ subtrahieren, welches die gleiche
+halbe Kante enthält, verschwindet sowohl die neue Kante wie auch die
+halbe Kante us dem Zyklus $z$, $z'=z-\partial\Delta$.
 Indem wir diese Operation wenn nötig mehrmals durchführen, erhalten
 wir einen homologen Zyklus, der im nicht unterteilten simplizialen
 Komplex liegt.
 Das Hinzufügen eines Unterteilungspunktes hat also nur neue Zyklen
 hinzugefügt, die homolog sind zu bereits bekannten.
 
-Wir unterteilen jetzt das Dreieck $abc$ mit dem inneren Punkt $p$.
-Es entstehen drei neue Dreiecke $abp$, $bcp$ und $cap$ und drei neue
-Kanten $ap$, $bp$ und $cp$.
-Wenn ein Zyklus im unterteilten $Z_1$ eine der neuen Kanten
-enthält, dann muss er auch noch eine weitere solche Kanten enthalten.
-Die beiden Kanten gehören zu genau einem der neuen Dreiecke.
-Indem man den Rand dieses Dreiecks vom Zyklus subtrahiert, erhält
-man einen homologen Zyklus, der die neuen Kanten nicht mehr braucht.
+Wir unterteilen jetzt das Dreieck $abc$ mit dem inneren Punkt $s$
+(Abbildung~\ref{buch:topologie:simplex:fig:unterzyklen} rechts).
+Es entstehen drei neue Dreiecke $abs$, $bcs$ und $cas$ und drei neue
+Kanten $as$, $bs$ und $cs$ (in der Abbildung {\color{darkgreen}grün}
+eingezeichnet).
+Wenn ein Zyklus ${\color{darkred}z}$ im unterteilten $Z_1$ eine der
+neuen Kanten enthält, dann muss er auch noch eine weitere solche
+Kanten enthalten (die Kanten $cs$ und $bs$ in der Abbildung).
+Die beiden Kanten gehören zu genau einem der neuen Dreiecke ($\Delta$
+in der Abbildung).
+Indem man den Rand dieses Dreiecks vom Zyklus $z$ subtrahiert, erhält
+man einen homologen Zyklus $z'=z-\partial\Delta$, der die neuen Kanten
+nicht mehr braucht.
 
 Als letztes Beispiel unterteilen wir ein Tetraeder $abcd$ mit
 mit einem inneren Punkt $p$.

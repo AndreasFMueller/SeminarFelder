@@ -9,7 +9,8 @@ all:	unterteilung.pdf						\
 	morse.pdf							\
 	toruspfade.pdf							\
 	torushomologie.pdf						\
-	rand.pdf
+	rand.pdf							\
+	unterzyklen.pdf
 
 sphaere.png:	sphaere.pov
 	povray +A0.1 +W1920 -H1080 -Osphaere.png sphaere.pov
@@ -44,3 +45,10 @@ rand.pdf:	rand.tex randpoints.tex
 
 randpoints.tex:	randpoints.m
 	octave randpoints.m
+
+unterzyklen.pdf:	unterzyklen.tex u.tex
+	pdflatex unterzyklen.tex
+
+u.tex:	u.m
+	octave u.m
+
