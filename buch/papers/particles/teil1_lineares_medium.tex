@@ -79,19 +79,19 @@ Lokal interferieren diese Laserstrahlen zwar, stören jedoch nicht ihren weitere
 
 \subsection{Wellengleichung}\label{particles:section:lin-medium:wellengleichung}
 Die Wellengleichung 
-\[
+\begin{equation}
     \frac{\d^2 u}{\d t^2} = c^2 \cdot \nabla^2 u, \label{particles:eq:wellengleichung}
-\]
-hat in vielen Feldern anwendung.
+\end{equation}
+hat in vielen Feldern Anwendung.
 Dabei steht auf der linken Seite die zweite Ableitung nach der Zeit und auf der rechten die räumliche Ableitung sowie die Konstante $c^2$.
 Eine massgebende Anname ist dabei die Linearität des Mediums.
 Dies wird ersichtlicher, wenn man die Herleitung der Wellengleichung aus zum Beispiel den Maxwell-Gleicungen betrachtet.
 
 \subsubsection{Herleitung}
 Zur Herleitung der Wellengleichung im Elektrischen Feld ist die Identität
-\[
+\begin{equation}
     \nabla \times \nabla \times \mathbf{U} = \nabla(\nabla \cdot \mathbf{U}) - \nabla^2 \mathbf{U}\label{particles:eq:curl-identity}
-\]
+\end{equation}
 notwendig. 
 Diese wurde in Abschnit \mytodo{Wurde diese schon vorgestellt?} bereits hergeleitet und gilt für sämmtliche Vektorfelder.
 
@@ -101,21 +101,21 @@ Das gausssche Gesetz
     \nabla \cdot \mathbf{D} = \rho_\text{frei}
 \]
 wird unter dieser Annahme zu
-\[
+\begin{equation}
     \nabla \cdot \mathbf{D} = 0.\label{particles:eq:gauss}
-\]
-Weiter wird der Erweiterte Durchflutungssatz
+\end{equation}
+Weiter wird der erweiterte Durchflutungssatz
 \[
     \nabla \times \mathbf{H} = \mathbf{j}_\text{frei} + \frac{\d \mathbf{D}}{dt}
 \]
 durch Annahme einer Stromdichte von $\mathbf{j}_\text{frei} = 0$ zu
-\[
+\begin{equation}
     \nabla \times \mathbf{H} = \frac{\d \mathbf{D}}{dt}.\label{particles:eq:durchflutungssatz}
-\]
+\end{equation}
 Das Induktionsgesetz
-\[
+\begin{equation}
     \nabla \times \mathbf{E} = -\frac{\d \mathbf{B}}{\d t}\label{particles:eq:induktionsgesetz}
-\]
+\end{equation}
 wird ebenfalls benötigt.
 
 Um die elektrische Flussdichte $\mathbf{D}$ mit dem elektrischen Feld $\mathbf{E}$ in Relation zu bringen, wird die Permittivität $\varepsilon$ beigezogen.
