@@ -137,17 +137,24 @@ Durch die Identität~\ref{particles:eq:curl-identity} und der Permeabilität kan
     \nabla(\nabla \cdot \mathbf{E}) - \nabla^2 \mathbf{E} = -\mu \frac{\d}{\d t} \nabla \times \mathbf{H}
 \]
 ungeformt werden.
-Durch einsetzen des gaussschen Gesetz~\ref{particles:eq:gauss} und dem Durchflutungssatz~\ref{particles:eq:durchflutungssatz} entsteht
+Durch Einsetzen des gaussschen Gesetz~\ref{particles:eq:gauss} und dem Durchflutungssatz~\ref{particles:eq:durchflutungssatz} entsteht
 \[
     - \nabla^2 \mathbf{E} = -\mu \frac{\d}{\d t} \frac{\d \mathbf{D}}{\d t},
 \]
-und schliesslich mit $\mathbf{D} = \varepsilon \mathbf{E}$
+und schliesslich entsteht mit $\mathbf{D} = \varepsilon \mathbf{E}$
 \[
-    \nabla^2 \mathbf{E} = \mu\varepsilon \frac{\d^2 \mathbf{E}}{\d t^2},
+    \nabla^2 \mathbf{E} = \mu\varepsilon \frac{\d^2 \mathbf{E}}{\d t^2} 
+    \quad \text{bzw.} \quad
+    \frac{\d^2 \mathbf{E}}{\d t^2} = \frac{1}{\mu \varepsilon} \nabla^2 \mathbf{E},
 \]
 was der Wellengleichung entspricht.
+Durch ähnliches Vorgehen kann diese auch für die magnetische Feldstärke $\mathbf{B}$ hergeleitet werden.
 
-\mytodo{Da fehlt irgendwie noch ein $()^{-1}$ bei $\mu\varepsilon$}
+Dabei wird durch Parametervergleich mit der Wellengleichung aus~\ref{particles:eq:wellengleichung} klar, dass die Ausbreitungsgeschwindigkeit
+\[
+    c = \frac{1}{\sqrt{\mu\varepsilon}}\label{particles:eq:lichtgeschwindigkeit}
+\]
+beträgt.
 
 
 \subsection{Schwinger-Limit}\label{particles:section:lin-medium:schwinger}
