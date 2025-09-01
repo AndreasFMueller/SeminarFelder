@@ -33,7 +33,14 @@ Ein Beispiel davon wird im Video~\ref{particles:huygens-optics} von Huygens Opti
     \cdot
     (1 + \alpha |F|^n)
 \]
-eingesetzt wird.
+eingesetzt wird. Ein Beispiel der daraus resultierenden Graphen ist in \autoref{particles:fig:nichtlin-medium:deform} und \autoref{particles:fig:nichtlin-medium:elast-modul} abgebildet.
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics{./papers/particles/figures/out/nichtlineares_medium_deformation.pdf}\label{particles:fig:nichtlin-medium:deform}}\hfill
+    \subfigure[]{\includegraphics{./papers/particles/figures/out/nichtlineares_medium_elast_modul.pdf}\label{particles:fig:nichtlin-medium:elast-modul}}
+    \caption{Deformation~(a) und Elastisches Modul~(b) eines nichtlinearen Mediums mit $D_0 = 1$, $\alpha = 0.005$ und $n = 1.5$.}
+\end{figure}
+
 Wiederholen wir nun wieder die Simulation aus Abschnitt~\ref{particles:section:lin-medium:superposition}, so fällt zunächst kein Unterschied auf.
 Abbildung~\mytodo{Abbildung mit nichtlinearem Medium und Referenz dazu einfügen} zeigt einen Vergleich der beiden Resultate.
 % TODO: Grafik mit gleichem Aufbau wie in "lineares Medium", aber mit nichtlinearem medium (Zwei Lichtwellen)
@@ -46,14 +53,14 @@ Damit die Auswirkung der nichtlinearen Effekte erkannt werden können, müssen d
 Der in Abbildung~\mytodo{Abbildung Anfangszustand} gezeigte Anfangszustand kann durch das Aufeinandertreffen der Wellen im Zentrum besonders grosse Feldstärken hervorrufen.
 Wird die Simulation nun abgespielt, so geschieht etwas Unerwartetes: Die Energie im Feld scheint sich im Zentrum zu sammeln.
 Die besondere Region inmitten des Simulationsfelds wächst, bis die im Ausgangszustand definierten Wellen entweder gegen den Rand der Simulation verschwinden oder ihre Energie in die Region im Zentrum gesteckt haben.
-Dieser Prozess wird in den Abbidlungen~\mytodo{Bilder des wachsenden Partikels} veranschaulicht.
+Dieser Prozess wird in den Abbildungen~\mytodo{Bilder des wachsenden Partikels} veranschaulicht.
 
-Die nächste Phase zeichnet sich durch Oszilieren der symmetrischen Feldanordnung aus. 
+Die nächste Phase zeichnet sich durch Oszillieren der symmetrischen Feldanordnung aus. 
 Weiter sind einige schwache Wellen zu erkennen, welche die Region der konzentrierten Energie verlassen.
 Einige Bilder sind in Abbildung~\mytodo{Bilder des symmetrischen Partikels} gezeigt.
 
 In einer nächsten Phase wird die Symmetrie der Feldanordnung gebrochen, vermutlich da die gespeicherte Energie und so die Grösse der Anordnung zu klein wird.
-Aufgrund des Längenelements der ortdiskreten Simulation sind wohl ab einer gewissen Grösse keine symmetrischen Anordnungen mehr möglich, welche stabil sind.
+Aufgrund des Längenelements der ortsdiskreten Simulation sind wohl ab einer gewissen Grösse keine symmetrischen Anordnungen mehr möglich, welche stabil sind.
 Die konzentrierte Energie bleibt jedoch einen weiteren Moment bestehen, wie die Abbildung~\mytodo{Bilder asymmetrischer Partikel} zeigt.
 
 In der letzten Phase wird die Energie zu klein, um die Anordnung aufrechtzuerhalten. 
