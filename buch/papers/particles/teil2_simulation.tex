@@ -9,16 +9,21 @@
 \section{Simulation\label{particles:section:simulation}}
 \kopfrechts{Simulation}
 
-Für die konventionelle Wellengleichung~\ref{particles:eq:wellengleichung} können Lösungen besonders für einfache Fälle auch analytisch gefunden werden.
-Sobald jedoch das Medium nichtlinear und der Proportionalitätsfaktor $c$ nicht mehr unabhängig von der Deformation $u$ ist, wird ein analytisches Lösen beinahe unmöglich.
-Entsprechend wurde in der Hinsicht darauf, dass schliesslich auch nichtlineare Medien simuliert werden können, ein numerischer Ansatz gewählt.
+Für die konventionelle Wellengleichung~\eqref{particles:eq:wellengleichung} 
+können Lösungen besonders für einfache Fälle auch analytisch gefunden werden.
+Sobald jedoch das Medium nichtlinear und 
+der Proportionalitätsfaktor $c$ nicht mehr unabhängig von der Deformation $u$ ist, 
+wird eine analytische Lösung beinahe unmöglich.
+Entsprechend wurde in der Hinsicht darauf, 
+dass schliesslich auch nichtlineare Medien simuliert werden können, 
+ein numerischer Ansatz gewählt.
 
 So wurde für die Simulationen eine von \textbf{insert name} angepasste Version des Open-Source Wellensimulators WaveSimulator2D~\cite{repo:wavesim2d} verwendet. % TODO: Insert name and cite
 Dieser simuliert eine zweidimensionale Szene, indem er die Wellengleichung für einen diskreten Zeitschritt simuliert und das resultierende Feld anzeigt.
 Die Szene wird dabei ebenfalls örtlich diskretisiert, indem sie in Pixel aufgeteilt wird.
 
 \subsection{Wellengleichung\label{particles:section:simulation:wellengleichung}}
-Die Diskretisierung der Raumdimensionen erlaubt das Berechnen von $\nabla^2 u$ als Faltung des Felds $u$ mit einem Laplace kernel.
+Die Diskretisierung der Raumdimensionen erlaubt die Berechnung von $\nabla^2 u$ als Faltung des Felds $u$ mit einem Laplace kernel.
 WaveSim2D verwendet dazu den Kernel
 \[
     \mathbf{D}^2_{xy} = 
