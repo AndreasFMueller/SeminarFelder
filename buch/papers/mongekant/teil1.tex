@@ -6,53 +6,162 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
+\section{Monge-Formulierung des optimalen Transports
 \label{mongekant:section:teil1}}
-\kopfrechts{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
-\begin{equation}
-\int_a^b x^2\, dx
+\kopfrechts{Monge-Formulierung}
+
+Nachdem die Grundbegriffe des Transports eingeführt wurden,
+formulieren wir das von Gaspard Monge (1781) aufgestellte Optimierungsproblem.
+Dazu können wir \eqref{mongekant:eq:monge_transport_cost} verwenden,
+um die günstigsten Transportkosten zu berechnen:
+\begin{align}
+C_M(\mu, \nu)
+&:=
+\inf_{T}
+\int_X c\,\Bigl(x, T(x)\Bigr)\, d\mu(x)
+,\quad
+\text{wobei } T_{\#}\mu=\nu
+.
+\label{mongekant:eq:monge_problem}
+\end{align}
+Wir schreiben \emph{Infimum} und nicht \emph{Minimum},
+weil es nicht immer eine Abbildung $T$ gibt,
+die das Infimum annimmt.
+Ein konkretes Gegenbeispiel sehen wir in
+Abschnitt~\ref{mongekant:subsection:monge_inexistence}.
+
+Zwei besonders wichtige Fälle,
+in denen das Infimum tatsächlich ein Minimum ist,
+sind:
+\begin{itemize}
+\item Der diskreten Fall, wenn
+\begin{align*}
+\mu
+&=
+\frac{1}{n} \sum_{i=1}^n \delta_{x_i}
+\\
+\nu
+&=
+\frac{1}{n} \sum_{j=1}^n \delta_{y_j}
+.
+\end{align*}
+\item Der absolut stetigen Fall, wenn
+\begin{align}
+\begin{aligned}
+d\mu
+&=
+f(x)\, dx
+\\
+d\nu
+&=
+g(y)\, dy
+.
+\end{aligned}
+\label{mongekant:eq:absolute_densities}
+\end{align}
+Diesen Zusammenhang erhält man,
+wenn man \eqref{mongekant:eq:absolute_continuity} ableitet und
+Gleichheit für alle möglichen Teilmengen $A$ und $B$ fordert.
+\end{itemize}
+Die Beweise für die Existenz eines optimalen Transportmaps in beiden Szenarien
+benötigen tiefere Resultate aus Topologie und Masstheorie und
+liegen ausserhalb des Umfangs dieses Seminars.
+
+\subsection{Zusammenhang mit der Monge-Ampère-Gleichung}
+Der interessierte Leser fragt sich vielleicht,
+ob die Monge-Ampère-Gleichung aus Kapitel~\ref{chapter:mongeampere}
+mit dem Monbe-Problem zusammenhängt.
+Tatsächlich gibt es einen Zusammenhang,
+den wir nun kurz erläutern wollen.
+
+Betrachten wir den absolut stetigen Fall aus \eqref{mongekant:eq:absolute_densities}.
+Wir wissen,
+dass die Massenerhaltung gilt,
+also muss
+\begin{align*}
+\int_{A} f(x) \, dx
+&=
+\int_{T(A)} g(y) \, dy
+\end{align*}
+für alle messbaren $A$ gelten.
+gelten.
+Setzt man $y = T(x)$,
+erhalten wir
+\begin{align*}
+\int_{A} f(x) \, dx
+&=
+\int_{A} g\,\Bigl(T(x)\Bigr) \det\Bigl(DT(x)\Bigr) \, dx
+.
+\end{align*}
+Wird nun $T = \nabla \varphi$ gewählt,
+wobei $\varphi$ eine konvexe Funktion ist,
+die zweimal stetig differenzierbar ist,
+ergibt sich
+\begin{align*}
+\int_{A} f(x) \, dx
+&=
+\int_{T(A)} g\,\Bigl(\nabla \varphi(x)\Bigr) \det\Bigl(D^2 \varphi(x)\Bigr) \, dx
+.
+\end{align*}
+Da die Gleichheit für alle messbaren $A$ gelten muss,
+können wir die Integranden gleichsetzen und erhalten
+\begin{align*}
+f(x)
+&=
+g\,\Bigl(\nabla \varphi(x)\Bigr) \det\Bigl(D^2 \varphi(x)\Bigr)
+.
+\end{align*}
+Lösen wir nach $\det(D^2 \varphi(x))$ auf,
+folgt die Monge-Ampère-Gleichung
+\begin{align*}
+\det\,\Bigl(D^2 \varphi(x)\Bigr)
+&=
+\frac{f(x)}{g\,\Bigl(\nabla \varphi(x)\Bigr)}
+.
+\end{align*}
+In \cite{mongekant:brenier} wird eindrücklich gezeigt,
+dass die Abbildung $T = \nabla \varphi$
+die eindeutige Lösung des Monge-Problems \eqref{mongekant:eq:monge_problem} ist,
+wenn $c(x,y) = \left\lvert x - y\right\rvert^2$ ist.
+
+\subsection{Fallbeispiel: Nichtexistenz einer Lösung%
+\label{mongekant:subsection:monge_inexistence}}
+Betrachten wir den Fall,
+in dem die Quellverteilung $\mu$ eine Punktmasse ist,
+\begin{align*}
+\mu
+&=
+\delta_{x_1}
+\end{align*}
+und die Zielverteilung $\nu$ aus zwei unterschiedlichen Punkten besteht
+\begin{align*}
+\nu
+&=
+\frac{1}{2} \delta_{y_1} + \frac{1}{2} \delta_{y_2}
+,\quad
+\text{wobei } y_1 \neq y_2
+\end{align*}
+Dann gilt $\nu(\{y_1\}) = \frac{1}{2}$,
+aber für
+\begin{align*}
+\mu\left(\left\{T^{-1}(y_1)\right\}\right)
 =
-\left[ \frac13 x^3 \right]_a^b
+\begin{cases}
+0,
+&\text{wenn }
+T^{-1}(y_1)
+\neq
+x_1
+\\
+1,
+&\text{wenn }
+T^{-1}(y_1)
 =
-\frac{b^3-a^3}3.
-\label{mongekant:equation1}
-\end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
-
-\subsection{De finibus bonorum et malorum
-\label{mongekant:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{mongekant:equation1}.
-
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{mongekant:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{mongekant:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+x_1
+.
+\end{cases}
+\end{align*}
+Somit kann kein Bildmass $T_{\#}\mu$ die Gleichung $T_{\#}\mu=\nu$ erfüllen --
+das Monge‑Problem \eqref{mongekant:eq:monge_problem} besitzt in diesem Beispiel keine Lösung.
 
 
