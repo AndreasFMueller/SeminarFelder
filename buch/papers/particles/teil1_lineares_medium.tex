@@ -90,7 +90,7 @@ Dies wird ersichtlicher, wenn man die Herleitung der Wellengleichung beispielswe
 \subsubsection{Herleitung}
 Zur Herleitung der Wellengleichung im Elektrischen Feld ist die Identität
 \begin{equation}
-    \nabla \times \nabla \times \mathbf{U} = \nabla(\nabla \cdot \mathbf{U}) - \nabla^2 \mathbf{U}\label{particles:eq:curl-identity}
+    \nabla \times \nabla \times \mathbf{U} = \nabla(\nabla \cdot \mathbf{U}) - \nabla^2 \mathbf{U}\label{particles:eq:rot-identity}
 \end{equation}
 notwendig. 
 Diese wurde in Abschnitt \mytodo{Wurde diese schon vorgestellt?} bereits hergeleitet und gilt für sämtliche Vektorfelder.
@@ -131,14 +131,14 @@ Ein ähnliches Verhältnis stellt sich zwischen der magnetischen Flussdichte $\m
 gegeben wird.
 Auch die Permeabilität ist mediumabhängig.
 
-Zunächst wird das Induktionsgesetz~\ref{particles:eq:induktionsgesetz} durch den curl zu
+Zunächst wird das Induktionsgesetz~\eqref{particles:eq:induktionsgesetz} durch den $\mathrm{rot}$ zu
 \begin{align}
     \nabla \times \nabla \times \mathbf{E} 
         &= - \nabla \times \frac{\d\mathbf{B}}{\d t} \\
         &= - \frac{\d}{\d t} \nabla \times \mathbf{B}
 \end{align}
 erweitert.
-Durch die Identität~\ref{particles:eq:curl-identity} und der Permeabilität kann das Resultat zu
+Durch die Identität~\eqref{particles:eq:rot-identity} und der Permeabilität kann das Resultat zu
 \[
     \nabla(\nabla \cdot \mathbf{E}) - \nabla^2 \mathbf{E} = -\mu \frac{\d}{\d t} \nabla \times \mathbf{H}
 \]
