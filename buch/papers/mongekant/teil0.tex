@@ -6,20 +6,99 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 0\label{mongekant:section:teil0}}
-\kopfrechts{Teil 0}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{mongekant:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
+\section{Mathematisches Grundgerüst\label{mongekant:section:teil0}}
+\kopfrechts{Mathematisches Grundgerüst}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
+Um die Modelle des optimalen Transports zu verstehen,
+müssen wir uns zunächst mit einigen mathematischen Grundlagen vertraut machen.
+Damit die Konzepte klar werden,
+werden wir die Theorie anhand eines anschaulichen Beispiels mit Sandhaufen erläutern.
 
+\subsection{Transport von Masse\label{mongekant:subection:transport}}
+Stellen wir uns vor,
+wir wollen einen Sandhaufen im Raum $X$
+in einen neuen Sandhaufen im Raum $Y$ transportieren.
+Eine Teilmenge $A\subset X$ des Quellhaufens enthält die Masse $\mu(A)$,
+was man sich als die Masse einer Schaufel Sand vorstellen kann.
+Analog enthält eine Teilmenge $B\subset Y$ des Zielhaufens die Masse $\nu(B)$.
 
+Der Transport wird durch eine Abbildung
+\begin{align*}
+T\colon X\to Y
+,\qquad y=T(x)
+\end{align*}
+beschrieben,
+die jedem Punkt $x\in X$ einen Zielpunkt $y\in Y$ zuordnet.
+Damit die Masse beim Transport erhalten bleibt,
+muss für jede messbare Teilmenge $B\subset Y$
+\begin{align*}
+\nu(B)
+&=
+\mu(A)
+\\
+&=
+\mu\left(T^{-1}(B)\right)
+=
+T_{\#}\mu(B)
+\end{align*}
+gelten.
+$T_{\#}\mu$ wird in der Literatur als \emph{Push-Forward} von $\mu$ nach $\nu$ durch $T$ bezeichnet.
+In Abbildung~\ref{mongekant:fig:optimal_transport} ist der 1-dimensionale Fall dargestellt.
+
+\begin{figure}
+\centering
+\input{papers/mongekant/fig/optimal_transport}
+\caption{1-dimensionaler Transport von $\mu(A)$ nach $\nu(B)$ mittels Abbildung $T$}
+\label{mongekant:fig:optimal_transport}
+\end{figure}
+
+In vielen Anwendungen sind $\mu$ und $\nu$ Wahrscheinlichkeitsmasse,
+also gilt
+\begin{align*}
+\mu(X)
+&=
+\nu(Y)
+=
+1
+.
+\end{align*}
+Befindet sich $\mu$ (bzw. $\nu$) im absolut stetigen Fall,
+existieren Dichten $f,g\in L^{1}$ mit
+\begin{align}
+\begin{aligned}
+\mu(A)
+&=
+\int_A f(x) \, dx
+\\
+\nu(B)
+&=
+\int_B g(y) \, dy
+.
+\end{aligned}
+\label{mongekant:eq:absolute_continuity}
+\end{align}
+
+\subsection{Kosten des Transports\label{mongekant:subsection:transport_cost}}
+Nun stellt sich die Frage,
+wie \glqq teuer\grqq{} der Transport von $A$ nach $B$ ist.
+Dazu führen wir eine Kostenfunktion $c : X \times Y \to [0, +\infty]$ ein,
+die die Kosten $c(x,y)$ für den Transport eines Sandkorns
+von $x \in X$ nach $y \in Y$ angibt.
+Die Gesamtkosten $I$ für den Transport $T$ von $X$ nach $Y$ sind dann
+\begin{align}
+I(T)
+&=
+\int_X c\,\Bigl(x, T(x)\Bigr) \, d\mu(x)
+\label{mongekant:eq:monge_transport_cost}
+.
+\end{align}
+Die Schreibweise $d\mu(x)$ ist die übliche Formulierung des
+Lebesgue‑Integrals über ein beliebiges Mass.
+Man kann sich $d\mu(x)$ als \glqq infinitesimale Masse\grqq{} vorstellen,
+die an der Stelle $x$ liegt.
+Oder um unsere Sandhaufen-Analogie vorzusetzen,
+die Masse eines einzelnen Sandkorns.
+In der Literatur wird auch oft die alternative Schreibweise $\mu(dx)$ verwendet,
+diese suggeriert jedoch fälschlicherweise dass die Masse unabhängig vom Ort ist,
+was im Allgemeinen nicht der Fall ist.
+Deshalb benutzen wir ausschliesslich die Schreibweise $d\mu(x)$.
