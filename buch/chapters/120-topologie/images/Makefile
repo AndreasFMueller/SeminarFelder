@@ -10,7 +10,8 @@ all:	unterteilung.pdf						\
 	toruspfade.pdf							\
 	torushomologie.pdf						\
 	rand.pdf							\
-	unterzyklen.pdf
+	unterzyklen.pdf							\
+	zyklus.pdf
 
 sphaere.png:	sphaere.pov
 	povray +A0.1 +W1920 -H1080 -Osphaere.png sphaere.pov
@@ -51,4 +52,22 @@ unterzyklen.pdf:	unterzyklen.tex u.tex
 
 u.tex:	u.m
 	octave u.m
+
+zyklusgroesse = 1020x1080+450+0
+
+zhomolog.png:	zhomolog.pov tetra.inc tetrapoints.inc zyklusgitter.inc
+	povray +A0.1 -W1920 -H1080 -Ozhomolog.png zhomolog.pov
+zhomolog.jpg:	zhomolog.png Makefile
+	magick -extract $(zyklusgroesse) zhomolog.png zhomolog.jpg
+
+zyklus.png:	zyklus.pov tetra.inc tetrapoints.inc zyklusgitter.inc
+	povray +A0.1 -W1920 -H1080 -Ozyklus.png zyklus.pov
+zyklus.jpg:	zyklus.png Makefile
+	magick -extract $(zyklusgroesse) zyklus.png zyklus.jpg
+
+tetrapoints.inc:	tetra.m
+	octave tetra.m
+
+zyklus.pdf:	zyklus.tex zhomolog.jpg zyklus.jpg
+	pdflatex zyklus.tex
 
