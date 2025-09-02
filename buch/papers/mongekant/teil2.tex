@@ -1,43 +1,264 @@
 %
-% teil2.tex -- Beispiel-File für teil2 
+% teil2.tex -- Beispiel-File für teil2
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 2 
+\section{Kantorowitch-Formulierung%
 \label{mongekant:section:teil2}}
-\kopfrechts{Teil 2}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+\kopfrechts{Kantorowitch-Formulierung}
 
-\subsection{De finibus bonorum et malorum
-\label{mongekant:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+Im vorangegangenen Abschnitt haben wir das klassische Monge‑Problem beschrieben.
+Dieses Modell ist intuitiv,
+aber die Forderung $T_{\#}\mu=\nu$ ist sehr streng.
+Wie wir bereits in Abschnitt~\ref{mongekant:subsection:monge_inexistence} gesehen haben,
+kann das Monge‑Problem bereits für sehr einfache Masse keine Lösung besitzen.
+
+Um dieses Existenzproblem zu umgehen,
+hat Leonid Witaljewitch~Kantorowitch das Modell relaxiert.
+Anstatt nach einer Abbildung $T\colon X\to Y$ zu suchen,
+wird ein \emph{Transportplan} $\gamma(x,y) \in \mathcal{P}(X \times Y)$ eingeführt.
+Ein Transportplan ist ein Wahrscheinlichkeitsmass,
+dass beschreibt,
+wie viel Masse von einem Punkt $x\in X$ zu jedem Punkt in $Y$ transportiert wird.
+Zudem muss ein Transportplan $\gamma$ die folgenden Randbedingungen erfüllen:
+\begin{align}
+\begin{aligned}
+\gamma(A \times Y)
+&=
+\mu(A)
+,\quad \forall A \subset X
+\\
+\gamma(X \times B)
+&=
+\nu(B)
+,\quad \forall B \subset Y
+.
+\end{aligned}
+\label{mongekant:eq:kantorowitch_marginals}
+\end{align}
+Somit ändert sich das Optimierungsproblem zu
+\begin{align}
+C_K(\mu, \nu)
+&:=
+\inf_{\gamma}
+\int_{X \times Y} c(x,y)\, d\gamma(x,y)
+,\quad
+\forall \gamma \in \Gamma(\mu, \nu)
+,
+\label{mongekant:eq:kantorowitch_problem}
+\end{align}
+wobei $\Gamma(\mu, \nu)$ die Menge aller Transportpläne ist,
+die die Randbedingungen \eqref{mongekant:eq:kantorowitch_marginals} erfüllen.
+
+Die Kantorowitch‑Formulierung bringt zwei zentrale Vorteile mit sich,
+die wir im Folgenden ausnutzen werden:
+\begin{enumerate}
+\item \textbf{Existenz.}
+Durch die Relaxation zu einer linearen Optimierung
+über die konvexe Menge $\Gamma(\mu,\nu)$ kann man,
+gemäss \cite{mongekant:ethlecture},
+bereits unter sehr milden Annahmen
+einen optimalen Plan $\gamma^{\ast}$ garantieren.
+\item \textbf{Dualität.}
+Das lineare Programm lässt sich in ein \emph{duales} Problem umformen,
+was zu weiteren Einsichten in das Problem führt.
+In Abschnitt~\ref{mongekant:subsection:kantorowitch_duality} werden
+wir das duale Problem herleiten.
+\end{enumerate}
+
+\subsection{Zusammenhang zu Monge-Formulierung%
+\label{mongekant:subsection:monge_kantorowitch_connection}}
+Nun stellt sich die Frage,
+wie die Monge- und Kantorowitch-Formulierung zusammenhängen und
+ob sie ähnliche Ergebnisse liefern.
+Dafür nehmen wir an,
+dass eine optimale Abbildung $T\colon X \to Y$ für das Monge-Problem existiert,
+für die \eqref{mongekant:eq:monge_problem} minimal wird.
+Wählen wir jetzt
+\begin{align}
+d\gamma(x,y)
+&=
+d\mu(x) \delta_{y=T(x)}
+\label{mongekant:eq:plan_from_map}
+\end{align}
+und setzen dies in die Randbedingungen \eqref{mongekant:eq:kantorowitch_marginals} ein,
+\begin{align*}
+\gamma(A \times Y)
+&=
+\int_A \delta_{T(x) \in Y}\, d\mu(x)
+\\
+&=
+\mu(A)
+\\
+\gamma(X \times B)
+&=
+\int_X \delta_{T(x) \in B}\, d\mu(x)
+\\
+&=
+\mu\left(T^{-1}[B]\right)
+\\
+&=
+\nu(B)
+,
+\end{align*}
+sehen wir,
+dass $\gamma$ diese erfüllt.
+Jetzt können wir also \eqref{mongekant:eq:plan_from_map} in \eqref{mongekant:eq:kantorowitch_problem} einsetzen:
+\begin{align*}
+\int_{X \times Y} c(x,y)\, d\gamma(x,y)
+&=
+\int_X \int_Y c(x,y) \delta_{y=T(x)}\, dy\, d\mu(x)
+\\
+&=
+\int_X c(x, T(x))\, d\mu(x)
+.
+\end{align*}
+Das entpricht genau den Kosten in \eqref{mongekant:eq:monge_transport_cost}.
+Daraus folgt,
+\begin{align*}
+C_K(\mu, \nu)
+&\leq
+C_M(\mu, \nu)
+.
+\end{align*}
+Somit liefert die Kantorowitch-Formulierung immer mindestens so gute Ergebnisse
+wie die Monge-Formulierung.
+Berücksichtigt man zudem,
+dass die Kantorowitch-Formulierung weniger strenge Anforderungen an das Problem stellt,
+ergibt sich,
+ein klarer Vorteil für die Kantorowitch-Formulierung.
+
+\subsection{Dualität im Kantorowitch-Problem%
+\label{mongekant:subsection:kantorowitch_duality}}
+
+Um das duale Problem herzuleiten,
+starten wir mit dem Kantorowitch-Problem \eqref{mongekant:eq:kantorowitch_problem}
+und versuchen die Randbedingungen \eqref{mongekant:eq:kantorowitch_marginals}
+mit Lagrangemultiplikatoren $\xi \colon X \to \mathbb{R}$ und
+$\eta \colon Y \to \mathbb{R}$ implizit zu berücksichtigen,
+so dass $\gamma$ nur noch durch die Nichtnegativitätsbedingung im Gebiet $X\times Y$
+eingeschränkt ist:
+\begin{align*}
+\inf_{\gamma \in \Gamma}
+\int_{X \times Y} c(x,y)\, d\gamma
+=&
+\inf_{\gamma \geq 0}
+\int_{X \times Y} c(x,y)\, d\gamma
+\\
+ & + \sup_{\xi, \eta} \Biggl(
+\underbrace{
+\int_X \xi(x)\, d\mu(x) - \int_{X \times Y} \xi(x)\, d\gamma
+}_{\gamma(A \times Y) = \mu(A)}
++
+\underbrace{
+\int_Y \eta(x)\, d\nu(x) - \int_{X \times Y} \eta(x)\, d\gamma
+}_{\gamma(X \times B) = \nu(B)}
+\Biggr)
+.
+\end{align*}
+Somit gilt für
+\begin{align*}
+\sup_{\xi, \eta} (\ldots)
+&=
+\begin{cases}
+0,
+& \text{falls } \gamma \in \Gamma(\mu, \nu) \\
++\infty,
+& \text{sonst}
+\end{cases}
+.
+\end{align*}
+Verschieben wir jetzt das Supremum nach aussen,
+was erlaubt ist,
+da das Supremum über $\xi$ und $\eta$ nicht von $\gamma$ abhängt,
+und fassen wir die Integrale zusammen,
+ergibt sich
+\begin{align*}
+\inf_{\gamma \in \Gamma}
+\int_{X \times Y} c(x,y)\, d\gamma
+&=
+\inf_{\gamma \geq 0}
+\sup_{\xi, \eta}
+\int_X \xi(x)\, d\mu(x)
++ \int_Y \eta(y)\, d\nu(y)
++ \int_{X \times Y} \bigl(c(x,y) - \xi(x) - \eta(y)\bigr)\, d\gamma
+\\
+&=
+\inf_{\gamma \geq 0}
+\sup_{\xi, \eta}
+\int_X \xi(x)\, d\mu(x)
++ \int_Y \eta(y)\, d\nu(y)
++ \int_{X \times Y} \bigl(c(x,y) - \xi(x) - \eta(y)\bigr)\, d\gamma
+\\
+&=
+\sup_{\xi, \eta}
+\int_X \xi(x)\, d\mu(x)
+\int_Y \eta(y)\, d\nu(y)
++ \underbrace{
+\inf_{\gamma \geq 0} \int_{X \times Y} \bigl(c(x,y) - \xi(x) - \eta(y)\bigr)\, d\gamma
+}_{\Xi}
+.
+\end{align*}
+Dabei gilt
+\begin{align*}
+\Xi
+&=
+\begin{cases}
+0,
+& \text{falls } c(x,y) - \xi(x) - \eta(y) \geq 0
+,\quad\forall (x,y) \in X \times Y
+\\
+-\infty,
+& \text{sonst}
+\end{cases}
+.
+\end{align*}
+Somit ergibt sich die duale Beziehung
+\begin{align}
+\inf_{\gamma \in \Gamma(\mu, \nu)}
+\int_{X \times Y} c(x,y)\, d\gamma
+&=
+\sup_{\xi, \eta}
+\int_X \xi(x)\, d\mu(x)
++ \int_Y \eta(y)\, d\nu(y)
+,
+\label{mongekant:eq:kantorowitch_dual}
+\end{align}
+wobei $\xi + \eta \leq c$ gilt.
+
+Allerdings ist jetzt fraglich,
+wie die Funktionen $\xi(x)$ und $\eta(y)$ zu interpretieren sind.
+Dafür möchten wir ein
+auf die heutige Zeit angepasstes Beispiel aus \cite{mongekant:villani} verwenden.
+
+Jeden Morgen geniessen die Menschen zu Hause ihre Kaffeepause.
+Insgesamt kostet es Nespresso $c(x,y)$ Franken,
+um eine Schachtel der nötigen Espresso‑Kapseln von Ort $x$ zu Ort $y$ zu transportieren,
+also von den Lagern zu den Haushalten.
+Nespresso möchten diese teure Gewohnheit optimieren und
+dafür das passende Kantorovich‑Problem formulieren.
+Mathematiker kommen zu Nespresso und schlagen ein neues Zahlungsmodell vor.
+Für jede Schachtel,
+die an Ort $x$ liegt,
+verlangen sie $\xi(x)$ Franken,
+und für die Lieferung an Ort $y$ verlangen sie $\eta(y)$ Franken.
+Allerdings werden die Mathematiker die konkreten
+Versandrouten nicht preisgeben.
+Damit Nespresso dieses Angebot akzeptiert,
+muss selbstverständlich gelten $\xi(x)+\eta(y) \leq c(x,y)$.
 
 
+Die Idee ist:
+Wenn die Mathematiker klug genug sind,
+können sie die Sendung günstiger machen.
+Das wird durch den \emph{Kantorovich‑Dualitätssatz} garantiert.
+
+\noindent
+\emph{Hinweis.}
+In manchen Fällen können die Mathematiker sogar \emph{negative} Preise ansetzen.
+Das bedeutet,
+sie erhalten für bestimmte Abhol‑ oder Lieferorte einen Zuschuss,
+um insgesamt die Gesamtkosten zu senken.
