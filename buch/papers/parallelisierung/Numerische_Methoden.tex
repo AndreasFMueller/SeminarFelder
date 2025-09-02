@@ -7,6 +7,7 @@
 % !TEX encoding = UTF-8
 %
 \section{Numerische Methoden}
+\kopfrechts{Numerische Methoden}
 
 Bisher wurden Feldgleichungen und deren Lösungen aus einer theoretischen und abstrakten Perspektive betrachtet.
 Dies ist grundlegend für das Verständnis der zugrundeliegenden Konzepte.
@@ -19,7 +20,7 @@ Ein prominentes Beispiel dafür ist das numerische Wettermodell des ECMWF (Europ
 Als wichtigste und somit einflussreichste Parameter dieses Modells gelten der Luftdruck, die Lufttemperatur, die Windgeschwindigkeit bzw. -richtung, die Luftfeuchtigkeit sowie diverse Niederschlagsparameter \cite{ecmwf2023}.
 Diese Messwerte liegen jedoch nur mit begrenzter zeitlicher und räumlicher Auflösung vor.
 
-Sie bestimmen somit die Feinheit des zugrundeliegenden Datenrasters – ein Umstand, der sich später als entscheidend erweisen wird.
+Sie bestimmen somit die Feinheit des zugrundeliegenden Datenrasters --- ein Umstand, der sich später als entscheidend erweisen wird.
 
 \subsection{Diskretisierung statt Interpolation}
 
@@ -30,8 +31,8 @@ Daher sollen im Folgenden nur einige ausgewählte, nicht abschließende Aspekte 
 Ein erster wesentlicher Punkt ist, dass Interpolation ein rein mathematisches Verfahren darstellt, das keinerlei physikalische Gesetzmäßigkeiten berücksichtigt.
 In der Praxis führt dies dazu, dass verrauschte und durch das Abtasten bereits verfälschte Messwerte durch Interpolation weiter verfälscht werden können.
 
-Eine mögliche Lösung wäre, die Interpolation um ein physikalisches Modell zu erweitern, welches die Lücken auf plausible Weise schließt.
-Dabei würde jedoch ein weiteres physikalisches Modell entstehen, das letztlich nur dazu dient, Daten für das eigentliche Modell zu liefern – was den methodischen Aufwand verdoppelt, ohne zwingend zusätzliche Erkenntnisse zu bringen.
+Eine mögliche Lösung wäre, die Interpolation um ein physikalisches Modell zu erweitern, sprich ein Kalman Filter, welches die Lücken auf möglichst plausible Weise schließt.
+Dabei würde jedoch ein weiteres physikalisches Modell entstehen, das letztlich nur dazu dient, Daten für das eigentliche Modell zu liefern --- was den methodischen Aufwand verdoppelt, ohne zwingend zusätzliche Erkenntnisse zu bringen.
 
 Ein weiterer zentraler Vorteil numerischer Verfahren liegt in ihrer Fähigkeit, auch Gleichungen zu lösen, die keine geschlossene analytische Lösung besitzen.
 Dies ist insbesondere in der Strömungsmechanik von Bedeutung.
@@ -69,7 +70,7 @@ Sie ist weit verbreitet in der Computational Fluid Dynamics (CFD), insbesondere 
 
 \subsubsection{Wahl der Methode}
 
-Für das im Folgenden betrachtete Beispiel – die eindimensionale Wärmeleitungsgleichung – ist die Finite-Differenzen-Methode besonders geeignet.
+Für das im Folgenden betrachtete Beispiel --- die eindimensionale Wärmeleitungsgleichung --- ist die Finite-Differenzen-Methode besonders geeignet.
 Die Geometrie ist einfach, und das Verfahren erlaubt eine direkte, transparente Umsetzung der zugrundeliegenden physikalischen Zusammenhänge in eine diskrete Form.
 Daher wird im nächsten Abschnitt die FDM im Detail erläutert und anhand eines konkreten Beispiels demonstriert.
 
@@ -87,11 +88,11 @@ Im folgenden wird im 2D-Raum gearbeitet, also resultiert
 \begin{equation}
 	\frac{\partial T}{\partial t}
 	=
-	\alpha \left(
+	\alpha \biggl(
 	\frac{\partial^2 T}{\partial x^2}
 	+
 	\frac{\partial^2 T}{\partial y^2}
-	\right).
+	\biggr).
 	\label{parallelisierung:eq:Wärmeleitung_2D}
 \end{equation}
 
@@ -153,7 +154,7 @@ Zusätzlich bestimmen wir den Differentialquotienten an einem vorangehenden Gitt
 um mittels einer letzen Anwendung des Differentialquotienten die Änderung dieser beiden Änderungen, also genau das was die zweite Ableitung beschreibt, diskret zu bestimmen
 \begin{equation}
 	\frac{\partial^2 T}{\partial x^2} \approx
-	\frac{ \left( \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x} \right) - \left( \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x} \right) }{\Delta x}.
+	\frac{ \biggl( \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x} \biggr) - \biggl( \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x} \biggr) }{\Delta x}.
 \end{equation}
 Schlussendlich vereinfacht sich dies zu 
 \begin{equation}
@@ -167,26 +168,26 @@ Für die y-Richtung folgt analog
 \end{equation}
 
 
-Nun setzen wir die in den Formeln \eqref{parallelisierung:eq:discrete_time_derivative},  \eqref{parallelisierung:eq:discrete_x_derivative} und \eqref{parallelisierung:eq:discrete_y_derivative} gefundenen Gleichungen in die Ursprüngliche zweidimensionale Wärmeleitungsgleichung Formel \eqref{parallelisierung:eq:Wärmeleitung_2D} ein.
+Nun setzen wir die in den Formeln \eqref{parallelisierung:eq:discrete_time_derivative},  \eqref{parallelisierung:eq:discrete_x_derivative} und \eqref{parallelisierung:eq:discrete_y_derivative} gefundenen Gleichungen in die ursprüngliche zweidimensionale Wärmeleitungsgleichung Formel \eqref{parallelisierung:eq:Wärmeleitung_2D} ein.
 Somit erhalten wir 
 
 \begin{equation}
 	\label{parallelisierung:eq:update_formula_unsorted}
 	\frac{T_{i,j}^{n+1} - T_{i,j}^n}{\Delta t}
 	=
-	\alpha \left(
+	\alpha \biggl(
 	\frac{T_{i+1,j}^n - 2 T_{i,j}^n + T_{i-1,j}^n}{(\Delta x)^2}
 	+
 	\frac{T_{i,j+1}^n - 2 T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}
-	\right),
+	\biggr),
 \end{equation}
-womit die diskretisierung der Wärmeleitungsgleichung mittels der Finite-Differenzen-Methode gezeigt ist.
+womit die Diskretisierung der Wärmeleitungsgleichung mittels der Finite-Differenzen-Methode gezeigt ist.
 
 \subsubsection{Explizite Updateformel}
 \label{parallelisierung:sec:update_formel}
 
 
-Aufgrund der lokalität und kausalität der Feldgleichungen ist die Temperatur eines Gitterpunkts \( (x_i, y_j)\) zu einem bestimmten Zeitpunkt in der Zukunft \( (t_n)\) sprich \(T_{i,j}^{n+1}\) nur von dem  vorangegangenen Zustand eben dieses Gitterpunkts und desen direkten Nachbbaren abhängig.
+Aufgrund der Lokalität und Kausalität der Feldgleichungen ist die Temperatur eines Gitterpunkts \( (x_i, y_j)\) zu einem bestimmten Zeitpunkt in der Zukunft \( (t_{n+1})\) sprich \(T_{i,j}^{n+1}\) nur von dem  vorangegangenen Zustand eben dieses Gitterpunkts und desen direkten Nachbbaren abhängig.
 Dies ist  in der nach \(T_{i,j}^{n+1}\) umgestellten Formel (\ref{parallelisierung:eq:update_formula_unsorted}) ersichtlich:
 \begin{equation}
 	\label{parallelisierung:eq:update_formula_sorted}
@@ -194,11 +195,11 @@ Dies ist  in der nach \(T_{i,j}^{n+1}\) umgestellten Formel (\ref{parallelisieru
 	=
 	T_{i,j}^n
 	+
-	\alpha \, \Delta t \left(
+	\alpha \, \Delta t \biggl(
 	\frac{T_{i+1,j}^n - 2 T_{i,j}^n + T_{i-1,j}^n}{(\Delta x)^2}
 	+
 	\frac{T_{i,j+1}^n - 2 T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}
-	\right)
+	\biggr)
 \end{equation}
 
 Aus Übersichtsgründen fassen wir alle Konstanten (\(\alpha, \Delta t, \Delta x, \Delta y) \) zu einer neuen Konstanten zusammen.
@@ -223,7 +224,7 @@ Nun sind wir in der Lage, Formel \eqref{parallelisierung:eq:update_formula_sorte
 \end{equation}
 Diese Formel wird als explizite Updateformel bezeichent, da sie iterativ auf Grundlage von gemesenen Daten oder zuvor berechneten Datenpunkten den nächsten Zeitschritt auswertet.
 
-Es ist nun klar ersichtlich, dass die Temperatur an einem Punkt (\(x_i, y_j\)) zu einem gegebenen Zeitpunkt \(t_{n+1}\)  von der Temperatur an diesem Punkt zum Zeitpunkt \(t_n\) und der Wärmeflussbilanz zu den 4 direkten Nachbarquadraten abhängig ist.
+Es ist nun klar ersichtlich, dass die Temperatur an einem Punkt (\(x_i, y_j\)) zu einem gegebenen Zeitpunkt \(t_{n+1}\)  von der Temperatur an diesem Punkt zum Zeitpunkt \(t_n\) und der Wärmeflussbilanz zu den vier direkten Nachbarquadraten abhängig ist.
 
 \subsubsection{Stabilitätskriterien}
 
@@ -273,13 +274,14 @@ Für den zweidimensionalen Fall gilt:
 \end{equation}
 Mit \(\Delta l = \Delta x = \Delta y\) folgt \(\lambda = \lambda_x = \lambda_y\), sodass sich die Formel zu
 \begin{equation}
+	\label{parallelisierung:eq:stabForExp}
 	2\lambda = 2 \frac{\alpha \, \Delta t}{(\Delta l)^2} \leq \frac{1}{2}
 	\quad \Rightarrow \quad
 	\lambda = \frac{\alpha \, \Delta t}{(\Delta l)^2} \leq \frac{1}{4}
 \end{equation}
-ergiebt.
+ergibt.
 
-\paragraph{Physikalische Intuition}  
+\subsubsection{Physikalische Intuition}  
 Man kann sich die Wärmeausbreitung wie das Füllen mehrerer miteinander verbundener Wasserbehälter vorstellen.  
 Ist der Zeitabstand \(\Delta t\) zwischen den „Kontrollpunkten“ zu groß, können sich die Pegel zwischen den Behältern stark über- oder unterschwingen, anstatt sich gleichmäßig auszugleichen.  
 Eine Erhöhung der thermischen Diffusivität \(\alpha\) wirkt ähnlich wie eine Verringerung der Viskosität einer Flüssigkeit: der Ausgleich erfolgt schneller, sodass kleinere Zeitintervalle notwendig werden.  
@@ -321,13 +323,13 @@ Für \(\Delta t = 1\,\mathrm{s}\) ergibt sich
 10^{-5} \cdot \frac{1}{0.01^2}
 \approx 0.135 < \frac14.
 \]
-Die Simulation konvergiert auf der Basisi von \eqref{parallelisierung:eq:update_formel} nach 234 Iterationen zum stabilen Endzustand (Abbildung~\ref{parallelisierung:fig:simulation_10x10_0.135}).
+Die Simulation konvergiert auf der Basis von \eqref{parallelisierung:eq:update_formel} nach 234 Iterationen zum stabilen Endzustand (Abbildung~\ref{parallelisierung:fig:simulation-10x10-0-135}).
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_10x10_0.135.pdf}
 	\caption{Temperaturverteilung für \(10\times 10\)-Gitter, \(\lambda = 0.135\), nach Konvergenz.}
-	\label{parallelisierung:fig:simulation_10x10_0.135}
+	\label{parallelisierung:fig:simulation-10x10-0-135}
 \end{figure}
 
 \paragraph{Fall 2: Instabile Simulation}  
@@ -337,24 +339,23 @@ Erhöhen wir die Auflösung auf \(15\times 15\) Messpunkte (\(\Delta l = 0.006\,
 10^{-5} \cdot \frac{1}{0.006^2}
 \approx 0.376 > \frac14.
 \]
-
-Aus diesen Modellparameteren resultierende folgende Temperaturverteilungen.
+Diese Parameter verletzen die aus \eqref{parallelisierung:eq:stabForExp} hervorgehende Stabilitätsbedingung. Somit ist nun mit einer Simulation zu rechnen die nicht wie zuvor sauber konvergiert sondern mit dem fortschreiten der Zeit immer instabiler wird.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.376_3it.pdf}
 	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.376\), nach 3 Iterationen.}
-	\label{parallelisierung:fig:simulation_15x15_0.376_3it}
+	\label{parallelisierung:fig:simulation-15x15-0-376-3it}
 \end{figure}
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.376_4it.pdf}
 	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.376\), nach 4 Iterationen: erste Instabilitätsartefakte.}
-	\label{parallelisierung:fig:simulation_15x15_0.376_4it}
+	\label{parallelisierung:fig:simulation-15x15-0-376-4it}
 \end{figure}
 
-Zunächst scheint die Simulation noch plausibel (Abbildung~\ref{parallelisierung:fig:simulation_15x15_0.376_3it}), doch bereits nach wenigen Iterationen erscheinen die ersten auffälligen Werte (orange Zahlen in Abbildung~\ref{parallelisierung:fig:simulation_15x15_0.376_4it}). Anhand der physikalischen Intuition sowie den Ergebnissen der stabilen Simulation ist bekannt, dass das Temperaturgefälle von jeder Zelle in der oberen bzw. unteren Hälfte der Metallplatte bei jedem weiteren Schritt nach oben respektive unten (entlang der orangen Pfeile) streng monoton fallend sein muss. Das heißt, es kann nicht plötzlich wieder heißer werden, obwohl wir näher an den Rand gehen. Daraus lässt sich schließen, dass die orange markierten Werte unphysikalisch und somit erste Instabilitäts-Artefakte sind.
+Zunächst scheint die Simulation noch plausibel (Abbildung~\ref{parallelisierung:fig:simulation-15x15-0-376-3it}), doch bereits nach wenigen Iterationen erscheinen die ersten auffälligen Werte (orange Zahlen in Abbildung~\ref{parallelisierung:fig:simulation-15x15-0-376-4it}). Anhand der physikalischen Intuition sowie den Ergebnissen der stabilen Simulation ist bekannt, dass das Temperaturgefälle von jeder Zelle in der oberen bzw. unteren Hälfte der Metallplatte bei jedem weiteren Schritt nach oben respektive unten entlang der orangen Pfeile streng monoton fallend sein muss. Das heißt, es kann nicht plötzlich wieder heißer werden, obwohl wir näher an den Rand gehen. Daraus lässt sich schließen, dass die orange markierten Werte unphysikalisch und somit erste Instabilitäts-Artefakte sind.
 
 
 Die Ursache lässt sich durch Umformung der Update-Formel verdeutlichen mit
@@ -373,10 +374,10 @@ Dies führt dazu, dass Unterschiede zwischen benachbarten Zellen nicht geglätte
 	\centering
 	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.376_15it.pdf}
 	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.376\), nach 15 Iterationen: klare Instabilitätsartefakte.}
-	\label{parallelisierung:fig:simulation_15x15_0.376_15it}
+	\label{parallelisierung:fig:simulation-15x15-0-376-15it}
 \end{figure}
 
-Lediglich 10 iterationen später zeigt sich das Verhalten gemäss Abbildung~\ref{parallelisierung:fig:simulation_15x15_0.376_15it}, hier ist die Instabilität ser SImulation aufgrund der Verletzung der 2D Stabilitätbedinung mit \(\lambda = 0.376 > \frac{1}{4}\).
+Lediglich 10 Iterationen später zeigt sich das Verhalten gemäss Abbildung~\ref{parallelisierung:fig:simulation-15x15-0-376-15it}, hier ist die Instabilität der Simulation aufgrund der Verletzung der 2D Stabilitätbedinung mit \(\lambda = 0.376 > \frac{1}{4}\) deutlich Sichtbar.
 
 \paragraph{Fall 3: Wiederherstellung der Stabilität}  
 Durch Verringerung von \(\Delta t\) auf \(0.5\,\mathrm{s}\) ergibt sich
@@ -385,11 +386,13 @@ Durch Verringerung von \(\Delta t\) auf \(0.5\,\mathrm{s}\) ergibt sich
 \frac{50}{7850 \cdot 470} \cdot \frac{0.5}{0.006^2}
 \approx 0.188 < \frac14,
 \]
-wodurch die Simulation wieder stabil wird. Die Konvergenz wird nach 315 Iterationen erreicht (Abbildung~\ref{parallelisierung:fig:simulation_15x15_0.188_konv}).
+wodurch die Simulation wieder stabil wird. Die Konvergenz wird nach 315 Iterationen erreicht (Abbildung~\ref{parallelisierung:fig:simulation-15x15-0-188-konv}).
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.188_konv.pdf}
 	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.188\), stabil nach Konvergenz.}
-	\label{parallelisierung:fig:simulation_15x15_0.188_konv}
+	\label{parallelisierung:fig:simulation-15x15-0-188-konv}
 \end{figure}
+
+
