@@ -1,0 +1,80 @@
+%
+% toruspfade.tex -- Pfadintegrale in einem Torus
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{document}
+\def\skala{1}
+\def\h{3}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function = {
+	fx(\T) = \T;
+	fy(\T) = 0.5*(1+\T)*\T*\T-0.25*sin(720*\T);
+	Fx(\T) = (2+0.8)*\h*fx(\T);
+	Fy(\T) = (1+0.7)*\h*fy(\x);
+}]
+
+\fill[color=gray!10] (0,0) rectangle ++(\h,\h);
+
+\foreach \x in {-1,...,3}{
+	\draw[line width=0.3pt] ({\x*\h},{-\h-0.1}) -- ({\x*\h},{2*\h+0.3});
+}
+\foreach \y in {-1,...,2}{
+	\draw[line width=0.3pt] ({-\h-0.1},{\y*\h}) -- ({3*\h+0.3},{\y*\h});
+}
+\draw[->] ({-\h-0.1},0) -- ({3*\h+0.3},0) coordinate[label={$x$}];
+\draw[->] (0,{-\h-0.1}) -- (0,{2*\h+0.3}) coordinate[label={right:$y$}];
+
+%\draw[color=darkred,line width=1.4pt] (0,0) -- (\h,0);
+%\draw[color=blue,line width=1.4pt] (0,0) -- (0,\h);
+
+\coordinate (B) at ({0.8*\h},{0.7*\h});
+
+\draw[color=orange,line width=1.4pt] (0,0) -- (B);
+%\draw[color=darkgreen,line width=1.4pt] (0,0) -- ($(B)+({2*\h},\h)$);
+
+\foreach \s in {0.1,0.2,...,0.9}{
+	\draw[color=darkgreen,line width=0.3pt]
+		plot[domain=0:0.5,samples=100]
+		({\s*Fx(\x)+(1-\s)*(4*\h*\x)},{\s*Fy(\x)})
+		--
+		plot[domain=0.5:0.75,samples=100]
+		({\s*Fx(\x)+(1-\s)*(2*\h))},{\s*Fy(\x)+(1-\s)*(4*\h*(\x-0.5))})
+		--
+		plot[domain=0.75:1,samples=100]
+	({\s*Fx(\x)+(1-\s)*(2*\h+4*(\x-0.75)*0.8*\h)},{\s*Fy(\x)+(1-\s)*(\h+4*(\x-0.75)*0.7*\h)});
+}
+\draw[color=darkred,line width=1.4pt] (0,0) -- ++({2*\h},0);
+\draw[color=blue,line width=1.4pt] ({2*\h},0) -- ++(0,\h);
+\draw[color=orange,line width=1.4pt] ({2*\h},\h) -- ($(B)+({2*\h},\h)$);
+
+\draw[color=darkgreen,line width=1.4pt] plot[domain=0:1,smooth]
+	({(2+0.8)*\h*fx(\x)},{(1+0.7)*\h*fy(\x)});
+
+\foreach \x in {-1,...,2}{
+	\foreach \y in {-1,...,1}{
+		\fill[color=gray!50] ($(B)+({\x*\h},{\y*\h})$)
+			circle[radius=0.07];
+		\node[color=gray!50] at ($(B)+({\x*\h},{\y*\h})$)
+			[above right] {$B$};
+	}
+}
+
+\fill (B) circle[radius=0.07];
+\node at (B) [above right] {$B$};
+
+\fill (0,0) circle[radius=0.07];
+\node at (0,0) [above left] {$A$};
+
+\end{tikzpicture}
+\end{document}
+

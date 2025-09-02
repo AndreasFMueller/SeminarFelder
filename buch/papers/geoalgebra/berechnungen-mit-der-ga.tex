@@ -1,24 +1,22 @@
 \newcommand{\eot}{\mathbf{e}_{12}}
 % \newcommand{\eott}{\mathbf{e}_{123}}
 \section{Berechnungen mit der geometrischen Algebra}
-Da für beliebige Standardbasisvektoren $\eone, \etwo$ das Skalarprodukt $\eone \cdot \etwo = 0$ ergibt,
+Da für die Standardbasisvektoren $\eone, \etwo$ das Skalarprodukt $\eone \cdot \etwo = 0$ ergibt,
 folgt, dass das geometrische Produkt zwischen $\eone$ und $\etwo$
-\begin{equation}
-  \begin{aligned}
-  \eone \etwo &= \eone \cdot \etwo + \eone \wedge \etwo \\
+\begin{align}
+  \eone \etwo &= \eone \cdot \etwo + \eone \wedge \etwo
+\notag
+\\
   &= \eone \wedge \etwo
-  \end{aligned}
   \label{geoalgebra:eq:eot}
-\end{equation}
+\end{align}
 ergibt.
 Daraus folgt, dass
-\begin{equation}
-  \begin{aligned}
+\begin{align*}
   \eone^2 &= \eone \cdot \eone + \eone \wedge \eone \\
   &= \eone \cdot \eone \\
   &= 1.
-  \end{aligned}
-\end{equation}
+\end{align*}
 
 Der Ausdruck $\eone \etwo$ wird im Folgenden zu $\eot$ verkürzt.
 In \eqref{geoalgebra:eq:eot} wurde aber gezeigt, dass $\eone \etwo$ eben
@@ -28,51 +26,61 @@ genau $\eone \wedge \etwo$ entspricht. Es gilt
   \label{geoalgebra:eq:eot_wedge}
 \end{equation}
 Analog dazu bedeutet $\mathbf{e}_{121} = \eone \etwo \eone$.
-Anders als in \eqref{geoalgebra:eq:eot_wedge}lässt sich durch Anwenden von \eqref{geoalgebra:eq:antikommutativ}
+Anders als in \eqref{geoalgebra:eq:eot_wedge} lässt sich durch Anwenden von \eqref{geoalgebra:eq:antikommutativ}
 aber zeigen, dass
-\begin{equation}
+\begin{equation*}
   \mathbf{e}_{121} = - \mathbf{e}_{112} = -\etwo. 
-\end{equation}
+\end{equation*}
 Jedesmal, wenn ein Index ``getauscht'' wird ($\mathbf{e}_{121} = -\mathbf{e}_{112}$), wird auch das Vorzeichen
 gewechselt.
 
 In \autoref{geoalgebra:section:trivectors-n-vectors} wurde bereits auf Trivektoren und $n$-Vektoren eingegangen. 
 In der geometrischen Algebra
 spricht man auch von \emph{Graden}. Ein Skalar ist von
+\index{Grad}%
 Grad $0$, ein Vektor ist von Grad $1$, ein Bivektor ist von Grad $2$, ein Trivektor von Grad $3$ und so weiter.
 
 Desweiteren wird von \emph{Multivektoren} gesprochen, wenn eine Summe von verschiedenen Graden vorliegt, zum Beispiel
-\begin{align}
+\begin{align*}
 A &= 2 + 3 \eone + \eot \\
 B &= 1 + \eone + 2 \eot.
-\end{align}
+\end{align*}
 
 Mit der geometrischen Algebra ist ähnlich zu den komplexen Zahlen eine Algebra definiert,
 mit welcher gerechnet werden kann. So können zum Beispiel Multivektoren addiert
-\begin{equation}
-\begin{aligned}
+\begin{align*}
 A + B &= (2 + 3 \eone + \eot) + (1 + \eone + 2 \eot) \\
 &= 3 + 4 \eone + 3 \eot,
-\end{aligned}
-\end{equation}
-oder sogar multipliziert werden
-\begin{equation}
-\begin{aligned}
-A  B &= (2 + 3 \eone + \eot) (1 + \eone + 2 \eot) \\
-&= 2 + 2 \eone + 4 \eot + 3 \eone + 3 \eone^2 + 6 \eone \eot + \eot + \eot \eone + 2 \eot^2 \\
-&= 2 + 2 \eone + 4 \eot + 3 \eone + 3 + 6 \etwo + \eot - \etwo - 2 \\
-&= 3 + 5 \eone + 5 \etwo + 5 \eot \\.
-\end{aligned}
-\end{equation}
+\end{align*}
+oder sogar multipliziert werden:
+\begin{align*}
+A  B
+&=
+(2 + 3 \eone + \eot) (1 + \eone + 2 \eot)
+\notag
+\\
+&=
+2 + 2 \eone + 4 \eot + 3 \eone + 3 \eone^2 + 6 \eone \eot + \eot + \eot \eone + 2 \eot^2
+\notag
+\\
+&=
+2 + 2 \eone + 4 \eot + 3 \eone + 3 + 6 \etwo + \eot - \etwo - 2
+\notag
+\\
+&=
+3 + 5 \eone + 5 \etwo + 5 \eot.
+\end{align*}
 
 Ausserdem ist das geometrische Produkt assoziativ
-\begin{equation}
+\index{assoziativ}%
+\begin{equation*}
 A (B C) = (A B) C
-\end{equation}
+\end{equation*}
 und es gilt das Distributivgesetz
-\begin{equation}
+\index{Distributivgesetz}%
+\begin{equation*}
   A (B + C) = AB + AC.
-\end{equation}
+\end{equation*}
 
 
 \newcommand\equalhat{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
@@ -80,14 +88,12 @@ und es gilt das Distributivgesetz
 
 \subsection{Zusammenhang zwischen Multivektoren und komplexen Zahlen}
 Wir betrachten den Bivektor $\eone \wedge \etwo = \eot$ und quadrieren ihn:
-\begin{equation}
-  \begin{aligned}
+\begin{align*}
     \eot^2 &= \mathbf{e}_{1212} \\
     &= -\mathbf{e}_{1122} \\
     &= -\mathbf{e}_{11} \mathbf{e}_{22} \\
     &= -1.
-  \end{aligned}
-\end{equation}
+\end{align*}
 Das Quadrat ergibt also $(\eone \wedge \etwo)^2 = -1$. Der Bivektor
 $(\eone \wedge \etwo)$ entspricht also effektiv der imaginären Zahl $i$.
 

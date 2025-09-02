@@ -41,11 +41,11 @@ Angewendet auf das Schallschnellefeld $\mathbf{u}$ können wir dieses wie folgt 
 Wie bereits beschrieben, stellt die komplexe Schallintensität $\mathbf{I}_c$ den Energietransport in einem Schallfeld dar und lässt sich in zwei fundamentale Komponenten zerlegen:
  
 \begin{itemize}
-\item \textbf{Aktive Intensität} $\mathbf{I}$
-\item \textbf{Reaktive Intensität} $\mathbf{Q}$
+\item Aktive Intensität $\mathbf{I}$
+\item Reaktive Intensität $\mathbf{Q}$
 \end{itemize}
  
-Die komplexe Schallintensität ist definiert als:
+\noindent Die komplexe Schallintensität ist definiert als:
  
 \begin{equation}
 \mathbf{I}_c (\mathbf{r}) = \frac{1}{2} \: p(\mathbf{r}) \: \mathbf{u}^{*}(\mathbf{r}),
@@ -72,7 +72,8 @@ Bei näherer Betrachtung ist zu erkennen, dass die komplexe Schallintensität ei
 \item Der solenoidale Anteil der Schallschnelle korrespondiert mit der reaktiven Intensität.
 \end{itemize}
 
-\subsection{Energie-Interpretation der Zerlegung}
+\subsection{Energie-Interpretation der Zerlegung
+\label{helmholtz:Energie_Interpretation}}
  
 Die Helmholtz-Zerlegung ermöglicht eine tiefe physikalische Interpretation der Energieverteilung und -übertragung in akustischen Feldern:
  
@@ -107,9 +108,13 @@ Und steht in direkter Beziehung zur Differenz zwischen kinetischer Energie T und
 Diese Komponente ist mit dem solenoidalen Anteil des Schallschnellefeldes verknüpft und stellt die oszillierende, lokal gespeicherte Energie dar, die nicht zum Netto-Energietransport beiträgt.
 \end{itemize}
  
-Anhand von zwei Extremfällen lässt sich diese Interpretation besonders gut veranschaulichen:
+\noindent Anhand von zwei Extremfällen lässt sich diese Interpretation besonders gut veranschaulichen:
+
+\begin{itemize}
+
+
  
-\textbf{Ebene Welle ($\mathbf{Q} = 0$):}
+\item Ebene Welle ($\mathbf{Q} = 0$):
 Bei einer ebene Welle ist die Amplitude konstant $P(\mathbf{r}) = A = konst.$ bzw. $\nabla P = 0$, was dazu führt, dass die reaktive Intensität verschwindet. Schalldruck und Schallschnelle sind in Phase $\phi = 0^{\circ}$. Die komplexe Intensität reduziert sich zu:
  
 \begin{equation}
@@ -118,12 +123,14 @@ Bei einer ebene Welle ist die Amplitude konstant $P(\mathbf{r}) = A = konst.$ bz
  
 Die aktive Intensität ergibt sich zu: $\mathbf{I} = \frac{|\mathbf{A}|^2}{2 \rho_0 c_0}$ und zeigt in Richtung der Wellenausbreitung.
  
-\textbf{Stehende Welle ($\mathbf{I} = 0, \mathbf{Q} \neq 0$):}
+\item Stehende Welle ($\mathbf{I} = 0, \mathbf{Q} \neq 0$): 
 Bei einer stehenden Welle überlagern sich zwei gleiche ebene Wellen mit gleicher Amplitude in entgegengesetzter Richtung. An jedem Punkt ist entweder $P = maximal$ und $\mathbf{u} = 0$. Oder $P = 0$ und $\mathbf{u} = maximal$. Schalldruck und Schallschnelle sind um 90° phasenverschoben. Die komplexe Intensität reduziert sich zu:
  
 \begin{equation}
 \mathbf{I}_c (\mathbf{r}) = \cancel{\mathbf{I}(\mathbf{r})} + j\,\mathbf{Q}(\mathbf{r})
 \end{equation}
+
+\end{itemize}
  
 \noindent In diesem Fall gibt es keinen Netto-Energietransport, sondern nur lokale Energieoszillation.
 
@@ -137,14 +144,14 @@ Die Helmholtz-Zerlegung führt zu charakteristischen Feldmustern, die sich wie f
  
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{papers/helmholtz/images/Quelle.png}
+\includegraphics[width=0.8\textwidth]{papers/helmholtz/images/Quelle.png}
 \caption{Quellenmuster im irrotationalen Feldanteil}
 \label{fig:quelle}
 \end{figure}
  
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{papers/helmholtz/images/Senke.png}
+\includegraphics[width=0.8\textwidth]{papers/helmholtz/images/Senke.png}
 \caption{Senkenmuster im irrotationalen Feldanteil}
 \label{fig:senke}
 \end{figure}
@@ -154,19 +161,19 @@ Die Helmholtz-Zerlegung führt zu charakteristischen Feldmustern, die sich wie f
   
 \begin{figure}
 \centering
-\includegraphics[scale=0.4]{papers/helmholtz/images/aktiveSchallintensitaet.png}
+\includegraphics[scale=0.6]{papers/helmholtz/images/aktiveSchallintensitaet.png}
 \caption{Visualisierung des aktiven Schallintensitätsfeldes für eine Anordnung von drei Punktquellen. Die Pfeile stellen die Vektoren der aktiven Intensität dar und zeigen die Richtung des zeitgemittelten Netto-Energieflusses. In der Nähe der Quellen ist die radial wegführende Energie zu erkennen, während in den Interferenzzonen komplexe Muster, einschliesslich der Bildung von Schallintensitätswirbeln, sichtbar werden (Abbildung aus \cite{helmholtz:paper}).}
 \label{fig:aktive_intensitaet_3quellen}
 \end{figure}
  
-Die Visualisierung der Feldmuster erlaubt eine intuitive Interpretation von Schallfeldern:
+\noindent Die Visualisierung der Feldmuster erlaubt eine intuitive Interpretation von Schallfeldern:
  
 \begin{itemize}
 \item in Bereiche mit starker aktiver Intensität zeigen Energieausbreitung und -übertragung.
 \item in Bereiche mit starker reaktiver Intensität zeigen Energieoszillation ohne Nettotransport, wie sie typischerweise im Nahfeld von Schallquellen oder bei stehenden Wellen auftritt.
 \item Die räumliche Verteilung von Quellen, Senken und Wirbeln erlaubt Rückschlüsse auf die zugrundeliegenden Schallquellen und Reflexionsmuster. 
 
-Abbildung \ref{fig:aktive_intensitaet_3quellen} verdeutlicht eindrücklich, wie die Interferenz von nur drei Quellen ausreicht, um solche komplexen Wirbelmuster zu erzeugen.
+\noindent Abbildung \ref{fig:aktive_intensitaet_3quellen} verdeutlicht eindrücklich, wie die Interferenz von nur drei Quellen ausreicht, um solche komplexen Wirbelmuster zu erzeugen.
 \end{itemize}
  
 \noindent Diese Feldmuster sind besonders wichtig für die akustische Messtechnik, da sie eine visuelle Methode zur Identifikation von Schallquellen und zur Analyse von Energieflüssen in komplexen akustischen Feldern bieten.

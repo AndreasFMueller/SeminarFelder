@@ -8,13 +8,14 @@
 %
 \section{Potentialströmung\label{ueberschall:section:potentialstroemung}}
 \kopfrechts{Potentialströmung}
-Bei der Potentialströmung handelt es sich um eine 
+Bei der \emph{Potentialströmung} handelt es sich um eine 
+\index{Potentialströmung}%
 quellenfreie und wirbelfreie Strömung.
 Mathematisch wird dies durch die folgenden Bedingungen 
 an das Geschwindigkeitsfeld~$\vec{v}$ ausgedrückt:
 \begin{align*}
-    \mathrm{div} \vec{v} &= 0, \\
-    \mathrm{rot} \vec{v} &= 0,
+    \operatorname{div} \vec{v} &= 0, \\
+    \operatorname{rot} \vec{v} &= 0,
 \end{align*}
 wobei~$\vec{v}$ die Geschwindigkeit der Strömung bezeichnet.
 Diese Idealisierung stellt einen Spezialfall der
@@ -34,10 +35,11 @@ entspricht, also der Richtungsableitung in jeder
 Koordinatenrichtung:
 \begin{align*}
     \nabla \Phi =
+\renewcommand{\arraystretch}{1.9}
     \begin{pmatrix}
-        \frac{\partial \Phi}{\partial x} \\
-        \frac{\partial \Phi}{\partial y} \\
-        \frac{\partial \Phi}{\partial z}
+        \displaystyle\frac{\partial \Phi}{\partial x} \\
+        \displaystyle\frac{\partial \Phi}{\partial y} \\
+        \displaystyle\frac{\partial \Phi}{\partial z}
     \end{pmatrix}.
 \end{align*}
 Da es sich bei~$\Phi$ um eine skalare Funktion handelt, 
@@ -50,7 +52,7 @@ erfüllt sein:
 \begin{align*}
     \frac{\partial \rho}{\partial t}
     + 
-    \mathrm{div} \rho\vec{v} 
+    \operatorname{div} \rho\vec{v} 
     = 
     0.
 \end{align*}
@@ -64,7 +66,7 @@ da die Dichte zeitlich konstant bleibt:
 woraus folgt, dass das Geschwindigkeitsfeld 
 quellen- und senkenfrei ist, also
 \begin{align*}
-    \mathrm{div} \vec{v} 
+    \operatorname{div} \vec{v} 
     = 
     0.
 \end{align*}
@@ -72,7 +74,7 @@ Die Divergenz kann auch als Skalarprodukt
 des Nabla-Operators mit dem Geschwindigkeitsfeld 
 geschrieben werden:
 \begin{align*}
-    \mathrm{div} \vec{v}
+    \operatorname{div} \vec{v}
     = 
     \nabla \cdot \vec{v}
     = 
@@ -84,29 +86,30 @@ geschrieben werden:
 \end{align*}
 Sie ist ein Mass dafür, wie stark sich ein Feld lokal 
 wie eine Quelle oder eine Senke verhält.  
-Ist $\mathrm{div} \vec{v} = 0$, 
+Ist $\operatorname{div} \vec{v} = 0$, 
 so ist das Feld weder Quelle noch Senke.
 
 Das Kreuzprodukt des Nabla-Operators mit 
 dem Geschwindigkeitsfeld entspricht der Rotation 
 (auch Wirbel) des Feldes:
 \begin{align*}
-    \mathrm{rot} \vec{v} 
+    \operatorname{rot} \vec{v} 
     = 
     \nabla \times \vec{v}
     =
+\renewcommand{\arraystretch}{1.9}
     \begin{pmatrix}
-        \frac{\partial v_z}{\partial y} - \frac{\partial v_y}{\partial z} \\
-        \frac{\partial v_x}{\partial z} - \frac{\partial v_z}{\partial x} \\
-        \frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y}
+        \displaystyle\frac{\partial v_z}{\partial y} - \frac{\partial v_y}{\partial z} \\
+        \displaystyle\frac{\partial v_x}{\partial z} - \frac{\partial v_z}{\partial x} \\
+        \displaystyle\frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y}
     \end{pmatrix}.
 \end{align*}
 Diese Grösse beschreibt, wie ein Körper, 
 der sich im Strömungsfeld befindet, zu rotieren beginnt.  
 Ein wirbelfreies Feld erfüllt demnach
- $\mathrm{rot} \vec{v} = 0$,  
-woraus folgt, dass das Vektorfeld ein Gradientenfeld 
-ist – wie in Gleichung~\eqref{eq:potential} gezeigt.
+ $\operatorname{rot} \vec{v} = 0$,  
+woraus folgt, dass das Vektorfeld ein \emph{Gradientenfeld}
+ist --- wie in Gleichung~\eqref{eq:potential} gezeigt.
 
 Wenn nun in die Kontinuitätsgleichung des inkompressiblen 
 Falls, $\nabla \cdot \vec{v} = 0$, 

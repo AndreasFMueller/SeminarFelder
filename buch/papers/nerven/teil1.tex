@@ -1,58 +1,77 @@
-%
-% teil1.tex -- Beispiel-File für das Paper
-%
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
-%
-% !TEX root = ../../buch.tex
-% !TEX encoding = UTF-8
-%
-\section{Teil 1
-\label{nerven:section:teil1}}
-\kopfrechts{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
-\begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{nerven:equation1}
-\end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+\section{Hodgkin-Huxley-Modell}
+\subsection{Einleitung}
+Das Hodgkin-Huxley-Modell wurde 1952 von den britischen Physiologen Alan Hodgkin und Andrew Huxley entwickelt. Es beschreibt das elektrophysiologische Verhalten von Nervenzellen, genauer gesagt den Aktionspotentialverlauf entlang einer Nervenfaser. Das Modell basiert auf experimentellen Messungen am Riesenaxon des Tintenfisches und erklärt, wie sich die elektrische Spannung entlang einer Nervenzelle über die Zeit verändert. Dieses Modell wurde zum ersten Mal erfolgreich verwendet, um den komplexen Ionenfluss durch die Zellmembran quantitativ zu beschreiben. Es bildet die Grundlage für viele spätere Modelle wie das FitzHugh-Nagumo-Modell, welches in dieser Arbeit vertiefter behandelt wird 
+\cite{nerven:InaLammers.31.08.2015}.
+\index{Hodgkin-Huxley-Model}%
+\index{Hodgkin, Alan}%
+\index{Huxley, Andrew}%
+\index{Tintentfisch}%
+\index{FitzHugh-Nagumo-Modell}%
+\subsection{Nutzen}
+Der grösste Beitrag des Hodgkin-Huxley-Modells liegt in der mathematischen Beschreibung der biologischen Realität: Es verbindet biologische Prozesse wie Natrium- und Kaliumkanalbewegungen mit einem nichtlinearer Differentialgleichungssystem. Das Modell erklärt das Zustandekommen eines Aktionspotentials und erlaubt Simulationen und Vorhersagen für Nervenreaktionen auf Reize. Es ist bis heute in der Neuroinformatik, Biophysik und mathematischen Neurowissenschaft von zentraler Bedeutung und diente als Grundlage für realistische neuronale Netzwerke 
+\index{Neuroinformatik}%
+\index{Biophysik}%
+\index{Neurowissenschaften}%
+\cite{nerven:InaLammers.31.08.2015}.
+\subsection{Mathematische Grundlage}
+Das Hodgkin-Huxley-Modell basiert auf der elektrischen Leitfähigkeit der Membrane und stellt die Nervenmembran als ein elektrisches Schaltbild dar, welches eine Kapazität $C_m$ sowie mehrere stromleitende Kanäle für spezifische Ionen umfasst.
+\index{Leitfähigkeit}%
+\index{Kapazität}%
+Die fundamentale Gleichung ist der einzige Ausschnitt des
+Hodgkin-Huxley-Models, welcher aus natürlichen und biologischen
+Beobachtungen entstanden ist, die restlichen Gleichungen und
+Beobachtungen hängen nicht deutlich von molekularen Mechanismen ab.
+Das Membranpotential $V$ erfüllt beim Hodgkin-Huxley-Modell die
+Differentialgleichung:
+\[
+C_m \frac{dV}{dt} = I_{\text{ext}} - (I_{\text{Na}} + I_{\text{K}} + I_L).
+\] 
+Dabei ist:
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+\begin{itemize}
+	\item $V(t)$: Membranpotential (mV)
+	\item $C_m$: Membrankapazität pro Fläche ($\mu$F/cm$^2$)
+	\item $I_{\text{ext}}$: externer Reizstrom
+	\item $I_{\text{Na}}, I_{\text{K}}$: Natrium- und Kaliumströme
+	\item $I_L$: Leckstrom
+\end{itemize}
+\subsubsection{Ionenströme}
+Die Ionenströme sind spannungs- und zeitabhängig. Sie folgen jeweils einer eigenen Formel, nämlich:
+\[
+\begin{aligned}
+	I_{\text{Na}} &= \bar{g}_{\text{Na}} \cdot m^3 h \cdot (V - E_{\text{Na}}), \\
+	I_{\text{K}} &= \bar{g}_{\text{K}} \cdot n^4 \cdot (V - E_{\text{K}}), \\
+	I_L &= \bar{g}_L \cdot (V - E_L).
+\end{aligned}
+\]
+Dabei ist:
 
-\subsection{De finibus bonorum et malorum
-\label{nerven:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{nerven:equation1}.
+\begin{itemize}
+	\item $\bar{g}_{\text{Na}},\, \bar{g}_{\text{K}},\, \bar{g}_L$: maximale Leitfähigkeiten (Konstanten)
+	\item $E_{\text{Na}}, E_{\text{K}}, E_L$: Umkehrpotentiale der Ionen
+\index{Umkehrpotential}%
+	\item $m, h, n$: \emph{Torvariablen}, die zwischen 0 und 1 schwanken und die Öffnungswahrscheinlichkeit von Ionenkanälen angeben
+\index{Torvariable}%
+\end{itemize}
+Die Torvariablen $m$, $h$ und $n$ sind Variablen, die keine reine biologische Überlegungen haben, sondern durch vielen Testversuchen entstanden sind. Diese Torvariablen werden so angepasst, dass die Dynamik bei den Natrium- und Kaliumionenkanälen erklärt wird.
+\subsubsection{Dynamik der Torvariablen}
+Die Torvariablen folgen jeweils Differentialgleichungen erster Ordnung, z. B.:
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{nerven:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{nerven:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
-
+\begin{align}
+	\frac{dn}{dt} &= \alpha_n (1 - n) - \beta_n n,\\
+	\frac{dm}{dt} &= \alpha_m (1 - m) - \beta_m m,\\
+	\frac{dh}{dt} &= \alpha_h (1 - h) - \beta_h h.
+\end{align}
+Dabei sind $\alpha_m$ und $\beta_m$ spannungsgesteuerte Übergangsraten, die empirisch durch Hodgkin und Huxley bestimmt wurden.
+Diese Differentialgleichungen beschreiben wie $m$, $h$ und $n$ jeweils vom Membranpotential $V$ abhängig sind.
+\subsubsection{Mathematische Einordnung der Gleichung}
+Mathematisch handelt es sich beim Hodgkin-Huxley-Modell um ein System von vier gekoppelten nichtlinearen
+Differentialgleichungen:
+\begin{itemize}
+    \item Eine Gleichung für das Membranpotential $V(t)$
+    \item Drei Gleichungen für die Torvariablen $m(t)$, $h(t)$, $n(t)$
+\end{itemize}
+Es gehört zur Klasse der nichtlinearen dynamischen Systeme, genauer gesagt zu einem System von gewöhnlichen Differentialgleichungen. Die Nichtlinearität entsteht durch die Potenzen (z. B. $m^3$) und das Produkt der Torvariablen mit $V$.
+\subsubsection{Fazit}
+Das Hodgkin-Huxley-Modell ist nicht nur ein Meilenstein der Biologie, sondern auch ein Paradebeispiel dafür, wie mathematische Modellierung biologische Prozesse quantitativ erfassen kann. Die Gleichungen geben Verständnis über die Entstehung und Ausbreitung elektrischer Signale in Nervenzellen und sind bis heute unverzichtbar in der Neurophysik und mathematischen Biologie.
 

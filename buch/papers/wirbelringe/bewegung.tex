@@ -5,18 +5,19 @@
 % !TEX encoding = UTF-8
 %
 \section{Bewegung eines Wirbelrings\label{Wirbelringe:Bewegung}}
-
+\kopfrechts{Bewegung eines Wirbelrings}%
 Bisher wurde die Bewegung eines Wirbelrings noch nicht weiter betrachtet. 
 Doch wie man bereits bei Rauchringen beobachten kann, bleiben diese nicht an einem Ort stehen, sondern bewegen sich. 
-Um diese Verhalten zu begründen, kann das Biot-Savart-Gesetz \cite{Wirbelringe:FuehrerdurchdieStroemungslehre} angewandt werden, was im folgenden Abschnitt gemacht werden soll.
+Um diese Verhalten zu begründen, wird das Biot-Savart-Gesetz \cite{Wirbelringe:FuehrerdurchdieStroemungslehre} im folgenden Abschnitt angewandt.
 
 \subsection{Biot-Savart-Gesetz}
 
 Das Biot-Savart-Gesetz
+\index{Biot-Savart-Gesetz}%
 \[
 d \vec{B}
 =
-\frac{\mu_0}{4\pi}\frac{I \,d \vec{l} \times \vec{r}}{\left\lvert \vec{r}^{\,3}\right\rvert }
+\frac{\mu_0}{4\pi}\frac{I \,d \vec{l} \times \vec{r}}{\lvert \vec{r}^{\,3}\rvert }
 \]  % Note : diese Definition weicht von der Definiton 3.2 im ELT2 Skript ab da dort ein Richtungsvektor verwendet wird -> ein r (dort ein R) kürzt sich heraus
 wird typischerweise in der Elektrotechnik angewandt, um das Magnetfeld von bewegten Ladungen zu beschreiben (hier nur auf einen Strom durch einen Leiter vereinfacht).
 Es kann nur bei geschlossenen Stromkreisen verwendet werden. 
@@ -28,7 +29,7 @@ Die elektrodynamischen Grössen haben jeweils ein Gegenstück in der Strömungsm
     \begin{tabular}{lcl}
     stromdurchflossener Leiter          & \(\Leftrightarrow \) & Wirbelfaden \\
     Stromstärke \(I\)                   & \(\Leftrightarrow \) & Zirkulation \(\Gamma\) \\
-    Stromdichtevektor \(\hat{j}\)       & \(\Leftrightarrow \) & Wirbelstärkevektor \(\vec{\omega}\)\\
+    Stromdichtevektor \(\vec{\jmath}\)       & \(\Leftrightarrow \) & Wirbelstärkevektor \(\vec{\omega}\)\\
     magnetische Feldstärke \(\vec{H}\)  & \(\Leftrightarrow \) & Geschwindigkeit \(\vec{u}\) \\
     \end{tabular}
 \end{center}
@@ -43,21 +44,24 @@ Setzt man nun die entsprechenden Grössen in das Biot-Savart-Gesetz
 \[
 d\vec{u}
 =
-\frac{\Gamma}{4\pi}\frac{d\vec{l} \times \vec{r}}{\left\lvert \vec{r}^{\,3}\right\rvert }
+\frac{\Gamma}{4\pi}\frac{d\vec{l} \times \vec{r}}{\lvert \vec{r}^{\,3}\rvert }
 \]
 ein, lässt sich damit die Geschwindigkeitsänderung eines Punktes durch ein Wirbelfadenelement beschreiben.
-Um die Rechnung zu vereinfachen können wir annehmen, dass der Wirbelfaden vergleichsweise dünn ist in Bezug zum Durchmesser des Rings aus der Wirbellinie.
-Mit dem Integral über diesen Wirbelfaden
+Um die Rechnung zu vereinfachen, können wir annehmen, dass der Wirbelfaden  dünn ist im Vergleich zum Durchmesser des Rings aus der Wirbellinie.
+Mit dem Integral
 \begin{equation}
     \label{Wirbelringe:eq:WirbelSpeed}
     \vec{u}
     =
-    \int_{\text{Wirbellinie}} \frac{\Gamma}{4\pi}\frac{d\vec{l} \times \vec{r}}{\left\lvert \vec{r}^{\,3}\right\rvert}
+    \int_{\text{Wirbellinie}} \frac{\Gamma}{4\pi}\frac{d\vec{l} \times \vec{r}}{\lvert \vec{r}^{\,3}\rvert}
 \end{equation}
+über diesen Wirbelfaden
 erhalten wir die induzierte Geschwindigkeit, welche durch den Wirbelfaden entsteht.
 Da dieses Gesetz aus der Elektrotechnik stammt, spricht man in der Strömungsmechanik von einer induzierten Geschwindigkeit.
+\index{induzierte Geschwindigkeit}%
+\index{Geschwindigkeit, induziert}%
 
-Um die selbstinduzierte Geschwindigkeit zu berechnen, wählen wir einen in der \(X\)-\(Y\) Ebene liegenden Wirbelring mit Radius \(a\).
+Um die selbstinduzierte Geschwindigkeit zu berechnen, wählen wir einen in der \(x\)-\(y\)-Ebene liegenden Wirbelring mit Radius \(a\).
 Wie bereits erwähnt ist der Radius des Wirbelfadens vernachlässigbar klein.
 Uns interessiert irgendein Punkt, der auf der Wirbellinie liegt.
 Somit ist
@@ -135,5 +139,6 @@ Dies betrachten wir hier aber nicht weiter.
 
 Eine interessante Kurve zeichnet sich ab, wenn man ein einzelnes Teilchen beobachtet.
 Es bildet sich eine Zykloide.
+\index{Zykloide}%
 Die Grösse der Zykloide hängt von der Höhe der Zirkulation ab.
 Dies ist in Abbildung \ref{Wirbelringe:fig:ausbreitung_teilchen} dargestellt.

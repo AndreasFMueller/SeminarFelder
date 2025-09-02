@@ -5,9 +5,11 @@
 % !TEX encoding = UTF-8
 %
 \section{Helmholtzsche Wirbelsätze}
-
+\kopfrechts{Helmholtzsche Wirbelsätze}%
 Um das Verhalten von Wirbelringen besser zu verstehen, sind die sogenannten helmholtzschen Wirbelsätze sehr nützlich. 
 Mitte 19. Jahrhundert formulierte der deutsche Physiker Hermann von Helmholtz drei Wirbelsätze und veröffentlichte diese im Journal für die reine und angewandte Mathematik \cite{Wirbelringe:JournalHelmholtz}.
+\index{Wirbelsätze}%
+\index{Helmholtz, Hermann von}%
 In seinem veröffentlichten Paper definiert er auch die Begriffe Wirbellinie und Wirbelfaden, welche wir bereits kennen.
 
 \subsection{Wirbelsätze}
@@ -34,15 +36,16 @@ Siehe Abbildung \ref{Wirbelringe:fig:Helmholtz_2}:
 Alle in Rot dargestellten Teilchen bewegen sich nicht, da sich die Wirbellinie (relativ zum Beobachtungsraum) nicht bewegt und sie auf der Wirbellinie liegen.
 
 Um den nächsten Wirbelsatz zu verstehen, müssen wir zunächst die Zirkulation einführen.
-Die Zirkulation mit dem Formelzeichen \(\Gamma\) sagt aus, wie stark die Teilchen in einem Wirbelring rotieren.
+\index{Zirkulation}%
+Die \emph{Zirkulation} mit dem Formelzeichen \(\Gamma\) sagt aus, wie stark die Teilchen in einem Wirbelring rotieren.
 Die Zirkulation ist definiert als 
 \begin{equation}
     \label{Wirbelringe:eq:Zirkulation}
     \Gamma
     = 
-    \oint_{c} \vec{u} \cdot d \vec{l}.
+    \oint_{c} \vec{u} \cdot d \vec{l},
 \end{equation}
-Wobei \(c\) die Kontur des jeweiligen Flächenstücks, in dem der Wirbel liegt, ist und \(\vec{u}\) die Geschwindigkeit der rotierenden Partikel.
+wobei \(c\) die Kontur des jeweiligen Flächenstücks, in dem der Wirbel liegt, ist und \(\vec{u}\) die Geschwindigkeit der rotierenden Partikel.
 
 \begin{satz}[Dritter Wirbelsatz]
     \label{Wirbelringe:satz:wirbelsatz3}
@@ -78,10 +81,11 @@ also die Zirkulation.
 
 Mit den vorhergegangenen Regeln kann das Verhalten von Wirbelringen nun einfacher nachvollzogen werden.
 Allerdings haben wir Grenzflächen noch nicht betrachtet.
+\index{Grenzfläche}%
 Diese sind wichtig, da in der Realität immer solche Grenzflächen vorhanden sind.
 Grenzflächen entstehen immer dort, wo es Materialübergänge gibt oder am Rand des Betrachtungsraums.
 
-Aus der Identität der Quellenfreiheit von Wirbel (Gleichung \eqref{Wirbelringe:eq:wIdent}) lässt sich schliessen, dass Teilchen in einem Wirbelring Grenzflächen nicht durchqueren.
+Aus der Identität der Quellenfreiheit von Wirbeln (Gleichung \eqref{Wirbelringe:eq:wIdent}) lässt sich schliessen, dass Teilchen in einem Wirbelring Grenzflächen nicht durchqueren.
 Allerdings können Wirbellinien darauf enden, da die Teilchen zwar auf der Grenzfläche sind, diese aber nicht überschreiten.
 Dies macht auch dann Sinn, wenn eine Wirbellinie als Kreis geschlossen ist, da sonst Satz \ref{Wirbelringe:satz:wirbelsatz3} verletzt wird.
 

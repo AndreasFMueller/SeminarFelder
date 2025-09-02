@@ -1,0 +1,140 @@
+%
+% rnd.tex -- Rand eines zweidimensionalen simplizialen Komplexes
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\def\skala{1}
+\def\h{1}
+\pgfmathparse{sqrt(3)/2}
+\xdef\v{\pgfmathresult}
+\def\punkt#1#2#3{
+	\fill[color=white] #1 circle[radius=0.17];
+	\draw[color=#2] #1 circle[radius=0.17];
+	\node[color=#2] at ($#1+(0,-0.015)$) {$\scriptstyle #3\mathstrut$};
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function = {
+	f(\T) = 0.2 * (rand() - 0.5);
+}]
+
+\input{randpoints.tex}
+
+\fill[color=gray!20] (A0) -- (C0) -- (C4) -- (C5) -- (C6) -- (C3) -- (A4) -- (B3) -- (B6) -- (B5) -- (B4) -- (B0) -- cycle;
+\fill[color=white] (B1) -- (A2) -- (C2) -- (A3) -- (B2) -- cycle;
+
+\draw (A0) -- (A1);
+\draw[color=darkred,line width=1.4pt] (A0) -- (B0);
+\draw[color=darkred,line width=1.4pt] (A0) -- (C0);
+
+\draw (A1) -- (A2);
+\draw (A1) -- (B1);
+\draw (A1) -- (C1);
+
+%\draw (A2) -- (A3);
+%\draw (A2) -- (B2);
+\draw[color=darkred,line width=1.4pt] (A2) -- (C2);
+
+\draw (A3) -- (A4);
+\draw (A3) -- (B3);
+\draw (A3) -- (C3);
+
+\draw (B0) -- (B1);
+\draw (B0) -- (A1);
+\draw[color=darkred,line width=1.4pt] (B0) -- (B4);
+
+\draw[color=darkred,line width=1.4pt] (B1) -- (B2);
+\draw[color=darkred,line width=1.4pt] (B1) -- (A2);
+\draw (B1) -- (B5);
+
+\draw (B2) -- (B3);
+\draw[color=darkred,line width=1.4pt] (B2) -- (A3);
+\draw (B2) -- (B6);
+
+\draw[color=darkred,line width=1.4pt] (B3) -- (A4);
+
+\draw[color=darkred,line width=1.4pt] (B4) -- (B5);
+\draw (B4) -- (B1);
+
+\draw[color=darkred,line width=1.4pt] (B5) -- (B6);
+\draw (B5) -- (B2);
+
+\draw[color=darkred,line width=1.4pt] (B6) -- (B3);
+
+\draw (C0) -- (C1);
+\draw (C0) -- (A1);
+\draw[color=darkred,line width=1.4pt] (C0) -- (C4);
+
+\draw (C1) -- (C2);
+\draw (C1) -- (A2);
+\draw (C1) -- (C5);
+
+\draw (C2) -- (C3);
+\draw[color=darkred,line width=1.4pt] (C2) -- (A3);
+\draw (C2) -- (C6);
+
+\draw[color=darkred,line width=1.4pt] (C3) -- (A4);
+
+\draw[color=darkred,line width=1.4pt] (C4) -- (C5);
+\draw (C4) -- (C1);
+
+\draw[color=darkred,line width=1.4pt] (C5) -- (C6);
+\draw (C5) -- (C2);
+
+\draw[color=darkred,line width=1.4pt] (C6) -- (C3);
+
+\punkt{(A0)}{darkred}{7}
+\punkt{(A1)}{black}{8}
+\punkt{(A2)}{darkred}{9}
+\punkt{(A3)}{darkred}{10}
+\punkt{(A4)}{darkred}{11}
+
+\punkt{(B0)}{darkred}{3}
+\punkt{(B1)}{darkred}{4}
+\punkt{(B2)}{darkred}{5}
+\punkt{(B3)}{darkred}{6}
+\punkt{(B4)}{darkred}{0}
+\punkt{(B5)}{darkred}{1}
+\punkt{(B6)}{darkred}{2}
+
+\punkt{(C0)}{darkred}{12}
+\punkt{(C1)}{black}{13}
+\punkt{(C2)}{darkred}{14}
+\punkt{(C3)}{darkred}{15}
+\punkt{(C4)}{darkred}{16}
+\punkt{(C5)}{darkred}{17}
+\punkt{(C6)}{darkred}{18}
+
+%\fill[color=darkred] (A0) circle[radius=0.07];
+%\fill (A1) circle[radius=0.07];
+%\fill (A2) circle[radius=0.07];
+%\fill (A3) circle[radius=0.07];
+%\fill[color=darkred] (A4) circle[radius=0.07];
+%
+%\fill[color=darkred] (B0) circle[radius=0.07];
+%\fill (B1) circle[radius=0.07];
+%\fill (B2) circle[radius=0.07];
+%\fill[color=darkred] (B3) circle[radius=0.07];
+%\fill[color=darkred] (B4) circle[radius=0.07];
+%\fill[color=darkred] (B5) circle[radius=0.07];
+%\fill[color=darkred] (B6) circle[radius=0.07];
+%
+%\fill[color=darkred] (C0) circle[radius=0.07];
+%\fill (C1) circle[radius=0.07];
+%\fill (C2) circle[radius=0.07];
+%\fill[color=darkred] (C3) circle[radius=0.07];
+%\fill[color=darkred] (C4) circle[radius=0.07];
+%\fill[color=darkred] (C5) circle[radius=0.07];
+%\fill[color=darkred] (C6) circle[radius=0.07];
+
+\end{tikzpicture}
+\end{document}
+
