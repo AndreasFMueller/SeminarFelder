@@ -78,3 +78,8 @@ zyklus.pdf:	zyklus.tex zhomolog.jpg zyklus.jpg
 	magick -extract 1234x1080+288+0 2simplex.png 2simplex.jpg
 simplex.pdf:	simplex.tex 2simplex.jpg
 	pdflatex simplex.tex
+
+sphere.png:	sphere.pov sphere.inc
+	povray +A0.1 -W1920 -H1080 -Osphere.png sphere.pov
+sphere.inc:	sphere.m
+	octave sphere.m
