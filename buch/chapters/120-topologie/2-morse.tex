@@ -11,8 +11,6 @@ Die grössräumigen Eigenschaften einer Mannigfaltigkeit sind also
 in den Eigenschaften von Funktionen in einigen wenigen, isolierten
 Punkten einer Funktion codiert.
 
-
-
 %
 % Zerlegung einer zweidimensionalen Mannigfaltigkeit
 %
@@ -129,9 +127,9 @@ Der Wert $c=f(p)$ in einem kritischen Punkt $p$ heisst
 \end{definition}
 
 %
-% Der Index eines kritischen Punktes
+% Die hessesche Matrix
 %
-\subsubsection{Der Index eines kritischen Punktes}
+\subsubsection{Die hessesche Matrix}
 Sei $p$ ein kritischer Punkt der Funktion $f$ auf der Mannigfaltigkeit $M$
 mit dem kritischen Wert $c=f(p)$.
 In einem Koordinatensystem in der Umgebung des Punktes $p$ kann die Funktion
@@ -163,8 +161,27 @@ o(|x-p|^2)
 \label{buch:topologie:morse:eqn:quadratisch}
 \end{align}
 approximiert werden.
+Die Matrix der zweiten Ableitungen heisst auch die hessesche Matrix $H$
+an der Stelle $p$ mit den Einträgen
+\[
+h_{ik}
+=
+\frac{\partial^2 f}{\partial x^i\,\partial x^k}(p).
+\]
+
+In einer Dimension besteht die hessesche Matrix nur aus der zweiten
+Ableitung $f''(p)$ der Funktion.
+Wenn Sie nicht verschwindet lässt sich daraus ableiten, ob der
+kritische Punkt ein lokales Maximum oder Minimum ist.
+In höheren Dimensionen ist die Situation etwas komplizierter
+
+%
+% Nichtentartete quadratische Formen
+%
+\subsubsection{Nichtentartete quadratische Formen}
 Wir möchten sicherstellen, dass wir zuverlässige Aussagen über die
-Form der \emph{Niveaumengen} $H_c=\{p\in M\mid f(p)=c\}$ machen können.
+Form der \emph{Niveaumengen} $H_c=\{p\in M\mid f(p)=c\}$ in der
+Umgebung eines kritischen Punktes machen können.
 Dazu muss der quadratische Term in
 \eqref{buch:topologie:morse:eqn:quadratisch}
 immer gegenüber den Termen höherer Ordnung dominieren.
@@ -176,13 +193,91 @@ H(v)
 \frac{\partial^2 f}{\partial x^k\,\partial x^l}
 v^k v^l
 \]
-nicht entartet ist.
+nicht entartet im Sinne der folgenden Definition ist.
 
-\begin{definition}[entartete quadratische Form]
-XXX
+\begin{definition}[quadratische Form]
+Ist $H$ eine symmetrische Matrix, dann ist schreiben wir
+\[
+H(v)
+=
+v^tHv
+=
+\sum_{i,k=1}^n = h_{ik} v^iv^k
+\]
+und sagen, dass $H(v)$ eine \emph{quadratische Form} ist.
 \end{definition}
 
-Die Matrix $H$ mit den Einträgen
+Die \emph{Polarisationsformel} \cite[p.~347]{buch:linalg} ermöglicht,
+aus der quadratischen Form
+\index{Polarisierungsformel}
+$H(v)$ die Bilinearform
+\[
+\langle u,v\rangle_H
+=
+u^tHv
+\]
+zu rekonstruieren.
+Die Formel lautet
+\[
+\langle u,v\rangle_H
+=
+\frac14\bigl(H(u+v) - H(u-v)\bigr).
+\]
+Damit können jetzt auch die Matrixelemente
+$h_{ik} = \langle\vec{e}_i,\vec{e}_k\rangle_H$ von $H$
+wiedergewinnen.
+Man verliert also nichts, wenn man nur die quadratische Form kennt,
+wie sie in der Taylor-Reihe auftritt.
+
+\begin{definition}[entartete quadratische Form]
+\label{buch:topologie:morse:def:entartet}
+Eine quadratische Form mit Matrix $H$ heisst \emph{entartet}, wenn
+die Matrix $H$ singulär ist.
+\end{definition}
+
+Die Bedingung der Definition~\ref{buch:topologie:morse:def:entartet}
+bedeutet, dass es einen Vektor $v$ mit $Hv=0$ gibt.
+Für einen solchen Vektor gilt $\langle u,v\rangle_H=0$
+für alle Vektoren $u$.
+Die Bedingung verhindert nicht, dass es Vektoren gibt, für die
+$H(u)=0$.
+Die quadratische Form mit der Matrix
+\[
+H=
+\begin{pmatrix}
+1&0\\0&-1
+\end{pmatrix}
+\]
+ist sicher nicht entartet, aber wegen
+\[
+v^tHv
+=
+(v^1)^2-(v^2)^2
+\]
+gilt
+\[
+v=\begin{pmatrix}1\\1\end{pmatrix}
+\qquad\Rightarrow\qquad
+H(v) = 0.
+\]
+Es gibt also eine Richtung, für die die quadratische Form verschwindet.
+Für die Standardbasisvektoren gilt allerdings
+$ H(e_1)=1$ und $H(e_2)=-1$.
+Die Funktion $z=H(v^1,v^2)$ kann als Sattelfläche dargestellt werden.
+Auf einer Sattelfläche gibt es Richtungen, in denen sich $H$ nicht
+verändert und Richtungen, für die $H$ zu- bzw.~abnimmt.
+
+Die Bedingung, dass die hessesche Matrix $H$ nicht entartet sein darf,
+entspricht der Bedingung für Funktionen einer Variablen, dass die zweite
+Ableitung nicht verschwinden darf.
+Sie stellt sicher, dass der quadratische Term in der Nähe des kritischen
+Punktes in alle Richtungen das Vorhalten der Funktion dominiert.
+
+%
+% Der Index eines kritischen Punktes
+%
+\subsubsection{Der Index eines kritischen Punktes}
+Die hessesche Matrix $H$ mit den Einträgen
 \[
 h_{kl} = \frac{\partial^2 f}{\partial x^k\,\partial x^l}
 \]
@@ -222,18 +317,122 @@ bleibt erhalten.
 
 \begin{definition}[Index]
 \index{Index einer quadratischen Form}%
-Der \emph{Index} einer nicht entarteten quadratischen Form ist die
-Anzahl der negativen Eigenwerte.
+Der \emph{Index} einer nicht entarteten quadratischen Form $H$ ist die
+Anzahl $k$ der negativen Eigenwerte.
+Der Index wird mit $\operatorname{Ind}H$ bezeichnet.
 \end{definition}
 
+Der Index ist eine Grösse, die auf kleine Störungen der Funktion
+unempfindlich ist, solange der Punkt ein kritischer Punkt bleibt.
+
+%
+% Morse-Funktionen
+%
 \subsubsection{Morse-Funktionen}
+Wir betrachten die Funktion
+\[
+f_t(x)
+=
+x^3-tx
+=
+(x-\!\sqrt{t})x(x+\!\sqrt{t})
+\]
+mit dem Parameter $t$, wobei die Faktorisierung nur für $t\ge 0$ möglich
+ist.
+Die Ableitungen sind
+\begin{align*}
+f'_t(x)
+&=
+3x^2-t
+=
+(\!\sqrt{3}x-\!\sqrt{t})
+(\!\sqrt{3}x+\!\sqrt{t})
+\\
+f''_t(x)
+&=
+6x.
+\end{align*}
+Für $t> 0$ hat die Funktion zwei kritische Punkte bei $\pm\!\sqrt{t/3}$,
+die nicht entartet sind, weil die zweite Ableitung $\ne 0$ ist.
+Die beiden kritischen Punkte haben verschiedenen
+Index $0$ für $t=\!\sqrt{t/3}$
+und $1$ für $t=-\!\sqrt{t/3}$.
+Für $t<0$ gibt es keine kritischen Punkte.
+Für $t=0$ gibt es den kritischen Punkt $x=0$, der aber entartet ist.
+Die Differenz der Anzahl positiver und negativer zweiter Ableitungen
+bei den kritischen Punkten bleibt bei der Deformation der Funktion 
+mithilfe des Paramters $t$ gleich.
+Dies suggeriert, dass die Betrachtung der kritischen Punkte etwas
+über die topologischen Eigenschaften aussagt.
+Dies funktioniert aber nicht für den Fall $t=0$, weil der kritische
+Punkt dort entartet ist.
+Für die topologische Untersuchung sind daher nur Funktionen geeignet,
+die keine entarteten kritischen Punkte haben.
 
 \begin{definition}[Morse-Funktion]
 \index{Morse-Funktion}%
 Eine {\em Morse-Funktion} auf einer differenzierbaren Mannigfaltigkeit
 $M$ ist eine stetig differenzierbare Funktion $f\colon M\to\mathbb{R}$,
 deren kritische Punkte alle nicht entartet sind.
+Der Index $\operatorname{Ind}_pf$ des kritischen Punktes ist der Index
+der hesseschen Matrix im Punkt $f$:
+\[
+\operatorname{Ind}_pf
+=
+\operatorname{Ind}\biggl(
+\frac{\partial^2 f}{\partial x^i\,\partial x^k}(p)
+\biggr).
+\]
 \end{definition}
+
+Nach obiger Diskussion ist das Einführungsbeispiel $f_t(x)$ also für
+$t\ne0$ eine Morse-Funktion auf $\mathbb{R}$.
+
+Für Flächen $M$, die durch Einbettung in den dreidimensionalen Raum
+$\mathbb{R}^3$ gegeben sind, sind die Koordinatenfunktion
+$x(P)$, $y(P)$ und $z(P)$ natürlich Kandidaten für Morse-Funktionen.
+Die Einbettung der Kugel
+\[
+S^2
+=
+\{ (x,y,z)\mid x^2+y^2+z^2=1 \}
+\subset
+\mathbb{R}^3
+\]
+liefert so drei Morse-Funktionen auf der Kugeloberfläche, die jeweils
+genau zwei kritische Punkte mit Indizes 2 für das Maximum und
+0 für das Minimum haben.
+Man kann sich vorstellen, dass durch Deformation der Kugeln weitere
+kritische Punkt der Koordinatenfunktionen entstehen können.
+Ein zweites lokales Maximum wird aber immer mit einem Sattelpunkt
+verbunden sein, der Index $1$ hat.
+
+%\begin{definition}[Signatur eines kritischen Punktes]
+%Sei $p$ ein kritischer Punkt der Morse-Funktion $f$.
+%Die Signatur von $p$ ist
+%\[
+%\operatorname{sgn}_pf
+%=
+%n-2\operatorname{Ind}_pf
+%\]
+%Die Differenz der Anzahl der positiven bzw.~negativen Eigenwerte
+%der hesseschen Matrix.
+%\end{definition}
+%
+%Da die hessesche Matrix nicht entartet ist, ist die Anzahl der
+%postiven Eigenwerte $n-\operatorname{Ind}_pf$ und damit die
+%Differenz
+%$n-\operatorname{Ind}_pf-\operatorname{Ind}_pf=n-2\operatorname{Ind}_pf$.
+%Die Signatur ist positiv, wenn die hessische Matrix mehr positive als
+%negative Eigenwerte hat.
+%Die extremen Werte $\pm n$ werden erreicht, wenn alle Eigenwerte das
+%gleiche Vorzeichen haben.
+%
+%Für das eindimensionale Einführungsbeispiel $f_t$ folgt, dass der kritische
+%Punkt $\pm\!\sqrt{t/3}$ die Signatur $\mp 1$ hat.
+%Die Summe der Signaturen ist eine Invariante unter der Deformation.
+%
+%Auf einer Fläche entspricht der Signatur $1$ ein lokales Minimum,
 
 %
 % Rekonstruktion
@@ -251,8 +450,12 @@ ableiten.
 % Kugeln
 %
 \subsubsection{Kugeln}
+Der folgende Satz zeigt, dass die Eigenschaften einer Morse-Funktion
+tatsächlich bereits die topologischen Eigenschaften einer Mannigfaltigkeit
+festlegen können.
 
 \begin{satz}
+\label{buch:topologie:morse:satz:kugeln}
 Sei $M$ eine kompakte, $n$-dimensionale differenzierbare Mannigfaltigkeit
 und $f$ eine Morse-Funktion mit genau zwei kritischen Punkten, dann ist
 $M$ eine $n$-dimensionale Kugel.
@@ -305,9 +508,87 @@ Zu einem Einheitsvektor $\vec{v}$
 
 \end{proof}
 
+In diesem Zusammenhang ist auch der Satz von Poincaré-Bendixson,
+der in Kapitel~\ref{chapter:poinbendix} vorgestellt wird, zu beachten.
+Er besagt, dass ein Vektorfeld auf einer Kugeloberfläche $S^2$ nur
+ganz bestimmte Lösungskurven haben kann.
+Der Gradient einer Morse-Funktion wie in
+Satz~\ref{buch:topologie:morse:satz:kugeln}
+ist ein Vektorfeld mit nur zwei kritischen Punkten.
+Für diesen Fall sagt der Satz von Poincaré-Bendixson, dass die
+Lösungskurven Bahnen sind, die also $\omega$-Limesmengen die 
+Maximumstelle haben, und als $\alpha$-Limesmenge die Minimumstelle.
+
+%
+% Homotopietyp und Morse-Funktion
+%
 \subsubsection{Homotopietyp und Morse-Funktionen}
-Eine Morse-Funktion 
+Eine Morse-Funktion codiert in ihren kritischen Punkten Information
+über die Struktur der Mannigfaltigkeit.
+Auf einer kompakten Mannigfaltigkeit findet man immer einen kritischen
+Punkt mit Index $0$ für die Minimumstelle und einen mit Indes $n$ für
+das Maximum.
+Weitere kritische Punkte treten auf für Sattelpunkte.
 
+Abbildung~\ref{buch:topologie:fig:morse} zeigt einen zweidimensionalen
+Torus.
+Im ``Loch'' des Torus hat die $z$-Koordintenfunktion zwei kritische Punkte
+mit Index $1$.
+Die Abbildung zeigt auch, wie der Torus schrittweise aufgebaut werden
+kann.
+Man beginnt ganz unten mit einer Kreisscheibe.
+Der nächsthöhere kritische Punkt zeigt an, dass zwischen zwei Punkten
+des Randes eine Brücke gebaut werden muss.
+Es entsteht jetzt eine Fläche mit zwei kreisförmigen Rändern.
+Der nächste kritische Punkt zeigt an, dass die beiden Ränder mit
+einer weiteren Brücke verbunden werden müssen.
+Damit verschmelzen die beiden Randkreise wieder zu einem.
+Schliesslich kann der Randkreis mit einer ``Kappe'' aus einer
+zweidimensionalen Kreissscheibe geschlossen und damit eine
+Mannigfaltigkeit konstruiert werden, die bis auf Deformation mit dem
+Torus übereinstimmt.
+
+Man nennt einen topologischen Raum, der schrittweise aus einem Punkt
+durch Anfügen von $k$-dimensionaler Kreisscheiben aufgebaut werden kann,
+einen CW-Komplex.
+Die kritischen Punkte einer Morse-Funktion bestimmen einen solchen
+Komplex bis auf Deformation.
+
+%
+% Euler-Charakteristik
+%
 \subsubsection{Euler-Charakteristik}
+Die Diskussion kritischen Punkte auf dem Torus von
+Abbildung~\ref{buch:topologie:fig:morse} hat gezeigt,
+dass zum Index $0$ genau ein kritischer Punkt vorhanden ist,
+zum Index $1$ deren zwei und zum Index 2 wieder einen.
+Die Anzahl $n_k$ der kritischen Punkte mit Index $k$ stimmt in diesem Fall
+also genau mit den Betti-Zahlen $\beta_k$ in Dimension $k$ überein.
 
+Die Diskussion der kritischen Punkte auf der Kugeloberfläche
+hat gezeigt, dass zusätzliche Maxima mit Sattelpunkten erkauft werden
+können.
+In diesem Fall stimmt die Anzahl der kritischen Punkte nicht mehr
+mit den Betti-Zahlen überein.
+Zu einem zusätzlichen kritischen Punkt mit Index $2$ gehört auch
+ein zusätzlicher kritischer Punkt mit Index $1$ (der Sattelpunkt).
+Die Differenz bleibt also unter Deformation der Funktion unverändert.
+Dies gilt natürlich nicht nur für das Maximum, sondern für alle Indizes
+von kritischen Punkten.
+Man kann also vermuten, dass die alterniernde Summe der Anzahlen
+kritischer Punkte der verschiedenen Indizes eine Invariante ist.
+Für den Fall dass $n_k=\beta_k$ gilt, folgt der folgende Satz.
+
+\begin{satz}
+Für eine kompakte Mannigfaltigkeit ohne Rand ist die Euler-Charakteristik
+auch die alternierende Summe der Anzahlen $n_k$ der kritischen Punkte 
+mit Index $k$:
+\[
+\chi(M)
+=
+\sum_{k=0}^n (-1)^k n_k
+\]
+\end{satz}
+
+Einen Beweis kann man zum Beispiel in \cite{buch:hirsch} finden.
 
