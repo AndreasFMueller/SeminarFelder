@@ -10,20 +10,22 @@
 \label{mongekant:section:teil2}}
 \kopfrechts{Kantorowitch-Formulierung}
 
-Im vorangegangenen Abschnitt haben wir das klassische Monge‑Problem beschrieben.
+Im vorangegangenen Abschnitt haben wir das klassische Monge-Problem beschrieben.
 Dieses Modell ist intuitiv,
 aber die Forderung $T_{\#}\mu=\nu$ ist sehr streng.
 Wie wir bereits in Abschnitt~\ref{mongekant:subsection:monge_inexistence} gesehen haben,
-kann das Monge‑Problem bereits für sehr einfache Masse keine Lösung besitzen.
-
+kann das Monge-Problem bereits für sehr einfache Masse keine Lösung besitzen.
 Um dieses Existenzproblem zu umgehen,
 hat Leonid Witaljewitch~Kantorowitch das Modell relaxiert.
-Anstatt nach einer Abbildung $T\colon X\to Y$ zu suchen,
-wird ein \emph{Transportplan} $\gamma(x,y) \in \mathcal{P}(X \times Y)$ eingeführt.
-Ein Transportplan ist ein Wahrscheinlichkeitsmass,
-dass beschreibt,
-wie viel Masse von einem Punkt $x\in X$ zu jedem Punkt in $Y$ transportiert wird.
-Zudem muss ein Transportplan $\gamma$ die folgenden Randbedingungen erfüllen:
+
+\subsection{Transportpläne}
+Statt nach einer Abbildung $T\colon X\to Y$ zu suchen,
+führen wir einen \emph{Transportplan} $\gamma(x,y) \in \mathcal{P}(X \times Y)$ ein.
+Hierbei ist $\mathcal{P}(X \times Y)$ die Menge aller Wahrscheinlichkeitsmasse
+auf dem Produktraum $X \times Y$.
+Der Plan $\gamma(x,y)$ gibt an,
+wie viel Masse von $x \in X$ zu jedem Punkt $y \in Y$ transportiert wird.
+Ein zulässiger Plan muss die Randbedingungen
 \begin{align}
 \begin{aligned}
 \gamma(A \times Y)
@@ -35,11 +37,16 @@ Zudem muss ein Transportplan $\gamma$ die folgenden Randbedingungen erfüllen:
 &=
 \nu(B)
 ,\quad \forall B \subset Y
-.
 \end{aligned}
 \label{mongekant:eq:kantorowitch_marginals}
 \end{align}
-Somit ändert sich das Optimierungsproblem zu
+erfüllen.
+Die Menge aller zulässigen Transportpläne,
+welche die Randbedingungen \eqref{mongekant:eq:kantorowitch_marginals} erfüllen,
+bezeichnen wir mit $\Gamma(\mu, \nu)$.
+
+\subsection{Optimierungsproblem}
+Mit diesen Notationen lautet das Optimierungsproblem
 \begin{align}
 C_K(\mu, \nu)
 &:=
@@ -50,17 +57,21 @@ C_K(\mu, \nu)
 ,
 \label{mongekant:eq:kantorowitch_problem}
 \end{align}
-wobei $\Gamma(\mu, \nu)$ die Menge aller Transportpläne ist,
-die die Randbedingungen \eqref{mongekant:eq:kantorowitch_marginals} erfüllen.
-
-Die Kantorowitch‑Formulierung bringt zwei zentrale Vorteile mit sich,
-die wir im Folgenden ausnutzen werden:
+Diese Umformulierung hat drei wesentliche Vorteile:
 \begin{enumerate}
+\item \textbf{Linearität.}
+Das Problem \eqref{mongekant:eq:kantorowitch_problem}
+ist eine lineare Optimierung,
+da sowohl die Zielfunktion
+als auch die Randbedingungen \eqref{mongekant:eq:kantorowitch_marginals}
+linear in $\gamma$ sind.
+Hingegen ist das Monge-Problem \eqref{mongekant:eq:monge_problem}
+stark nichtlinear in $T$.
 \item \textbf{Existenz.}
 Durch die Relaxation zu einer linearen Optimierung
 über die konvexe Menge $\Gamma(\mu,\nu)$ kann man,
 gemäss \cite{mongekant:ethlecture},
-bereits unter sehr milden Annahmen
+bereits unter sehr schwachen Annahmen
 einen optimalen Plan $\gamma^{\ast}$ garantieren.
 \item \textbf{Dualität.}
 Das lineare Programm lässt sich in ein \emph{duales} Problem umformen,
@@ -71,7 +82,7 @@ wir das duale Problem herleiten.
 
 \subsection{Zusammenhang zu Monge-Formulierung%
 \label{mongekant:subsection:monge_kantorowitch_connection}}
-Nun stellt sich die Frage,
+Als nächstes wollen wir untersuchen,
 wie die Monge- und Kantorowitch-Formulierung zusammenhängen und
 ob sie ähnliche Ergebnisse liefern.
 Dafür nehmen wir an,
@@ -84,7 +95,8 @@ d\gamma(x,y)
 d\mu(x) \delta_{y=T(x)}
 \label{mongekant:eq:plan_from_map}
 \end{align}
-und setzen dies in die Randbedingungen \eqref{mongekant:eq:kantorowitch_marginals} ein,
+und setzen diesen Ausdruck
+in die Randbedingungen \eqref{mongekant:eq:kantorowitch_marginals} ein,
 \begin{align*}
 \gamma(A \times Y)
 &=
@@ -105,8 +117,9 @@ und setzen dies in die Randbedingungen \eqref{mongekant:eq:kantorowitch_marginal
 ,
 \end{align*}
 sehen wir,
-dass $\gamma$ diese erfüllt.
-Jetzt können wir also \eqref{mongekant:eq:plan_from_map} in \eqref{mongekant:eq:kantorowitch_problem} einsetzen:
+dass $\gamma(x,y)$ diese Bedingungen erfüllt.
+Jetzt können wir also \eqref{mongekant:eq:plan_from_map} in
+\eqref{mongekant:eq:kantorowitch_problem} einsetzen:
 \begin{align*}
 \int_{X \times Y} c(x,y)\, d\gamma(x,y)
 &=
@@ -125,7 +138,8 @@ C_M(\mu, \nu)
 .
 \end{align*}
 Somit liefert die Kantorowitch-Formulierung immer mindestens so gute Ergebnisse
-wie die Monge-Formulierung.
+wie die Monge-Formulierung,
+da jede Abbildung $T$ einen zulässigen Plan $\gamma$ definiert.
 Berücksichtigt man zudem,
 dass die Kantorowitch-Formulierung weniger strenge Anforderungen an das Problem stellt,
 ergibt sich,
@@ -138,30 +152,36 @@ Um das duale Problem herzuleiten,
 starten wir mit dem Kantorowitch-Problem \eqref{mongekant:eq:kantorowitch_problem}
 und versuchen die Randbedingungen \eqref{mongekant:eq:kantorowitch_marginals}
 mit Lagrangemultiplikatoren $\xi \colon X \to \mathbb{R}$ und
-$\eta \colon Y \to \mathbb{R}$ implizit zu berücksichtigen,
-so dass $\gamma$ nur noch durch die Nichtnegativitätsbedingung im Gebiet $X\times Y$
-eingeschränkt ist:
+$\eta \colon Y \to \mathbb{R}$ implizit in das Problem einzubauen,
+so dass $\gamma$ nur noch eine Wahrscheinlichkeitsmasse im Gebiet $X\times Y$ sein muss.
 \begin{align*}
-\inf_{\gamma \in \Gamma}
-\int_{X \times Y} c(x,y)\, d\gamma
-=&
-\inf_{\gamma \geq 0}
-\int_{X \times Y} c(x,y)\, d\gamma
+\begin{aligned}
+C_K(\mu, \nu)
+&=
+\inf_{\gamma \in \Gamma} \int_{X \times Y} c(x,y)\, d\gamma
 \\
- & + \sup_{\xi, \eta} \Biggl(
+&=
+\inf_{\gamma \geq 0} \int_{X \times Y} c(x,y)\, d\gamma
++ \sup_{\xi, \eta} L(\xi, \eta)
+\\
+&=
+\inf_{\gamma \geq 0} \int_{X \times Y} c(x,y)\, d\gamma
+\\
+&\quad
++ \sup_{\xi, \eta} \Biggl(
 \underbrace{
 \int_X \xi(x)\, d\mu(x) - \int_{X \times Y} \xi(x)\, d\gamma
 }_{\gamma(A \times Y) = \mu(A)}
-+
-\underbrace{
++ \underbrace{
 \int_Y \eta(x)\, d\nu(x) - \int_{X \times Y} \eta(x)\, d\gamma
 }_{\gamma(X \times B) = \nu(B)}
 \Biggr)
 .
+\end{aligned}
 \end{align*}
-Somit gilt für
+Schauen wir uns den Term $\sup_{\xi, \eta} L(\xi, \eta)$ genauer an,
 \begin{align*}
-\sup_{\xi, \eta} (\ldots)
+\sup_{\xi, \eta} L(\xi, \eta)
 &=
 \begin{cases}
 0,
@@ -171,38 +191,46 @@ Somit gilt für
 \end{cases}
 .
 \end{align*}
+sehen wir,
+dass dieser Term implizit die Randbedingungen
+\eqref{mongekant:eq:kantorowitch_marginals} wirklich erzwingt.
 Verschieben wir jetzt das Supremum nach aussen,
 was erlaubt ist,
 da das Supremum über $\xi$ und $\eta$ nicht von $\gamma$ abhängt,
 und fassen wir die Integrale zusammen,
 ergibt sich
 \begin{align*}
-\inf_{\gamma \in \Gamma}
-\int_{X \times Y} c(x,y)\, d\gamma
+C_K(\mu, \nu)
 &=
 \inf_{\gamma \geq 0}
 \sup_{\xi, \eta}
 \int_X \xi(x)\, d\mu(x)
 + \int_Y \eta(y)\, d\nu(y)
 + \int_{X \times Y} \bigl(c(x,y) - \xi(x) - \eta(y)\bigr)\, d\gamma
-\\
+.
+\end{align*}
+Vertauschen wir jetzt Infimum und Supremum,
+wobei die Bedigungen für die Vertauschung gemäss \cite{mongekant:villani} erfüllt sind,
+erhalten wir
+\begin{align*}
+C_K(\mu, \nu)
 &=
-\inf_{\gamma \geq 0}
 \sup_{\xi, \eta}
-\int_X \xi(x)\, d\mu(x)
+\inf_{\gamma \geq 0} \int_X \xi(x)\, d\mu(x)
 + \int_Y \eta(y)\, d\nu(y)
 + \int_{X \times Y} \bigl(c(x,y) - \xi(x) - \eta(y)\bigr)\, d\gamma
 \\
 &=
-\sup_{\xi, \eta}
-\int_X \xi(x)\, d\mu(x)
-\int_Y \eta(y)\, d\nu(y)
+\sup_{\xi, \eta} \int_X \xi(x)\, d\mu(x)
++ \int_Y \eta(y)\, d\nu(y)
 + \underbrace{
 \inf_{\gamma \geq 0} \int_{X \times Y} \bigl(c(x,y) - \xi(x) - \eta(y)\bigr)\, d\gamma
 }_{\Xi}
 .
 \end{align*}
-Dabei gilt
+Die Verschiebung des Infimums nach innen ist erlabut,
+da die ersten beiden Integrale nicht von $\gamma$ abhängen.
+Betrachten wir jetzt den Term
 \begin{align*}
 \Xi
 &=
@@ -214,51 +242,104 @@ Dabei gilt
 -\infty,
 & \text{sonst}
 \end{cases}
-.
+,
 \end{align*}
-Somit ergibt sich die duale Beziehung
-\begin{align}
-\inf_{\gamma \in \Gamma(\mu, \nu)}
-\int_{X \times Y} c(x,y)\, d\gamma
+sehen wir,
+dass dieser Term die Bedingung
+\begin{align*}
+\xi(x) + \eta(y) \leq c(x,y)
+,\quad
+\forall (x,y) \in X \times Y
+\end{align*}
+für eine optimale Lösung forciert.
+Somit erhalten wir nun die duale Beziehung
+\begin{align*}
+C_K(\mu, \nu)
 &=
 \sup_{\xi, \eta}
 \int_X \xi(x)\, d\mu(x)
 + \int_Y \eta(y)\, d\nu(y)
-,
+,\quad\text{wobei }
+\xi(x) + \eta(y) \leq c(x,y)
+.
 \label{mongekant:eq:kantorowitch_dual}
-\end{align}
-wobei $\xi + \eta \leq c$ gilt.
+\end{align*}
+Die Funktionen $\xi(x)$ und $\eta(y)$ können dabei als
+\emph{Abhol-} bzw. \emph{Lieferpreise} interpretiert werden.
 
-Allerdings ist jetzt fraglich,
-wie die Funktionen $\xi(x)$ und $\eta(y)$ zu interpretieren sind.
-Dafür möchten wir ein
-auf die heutige Zeit angepasstes Beispiel aus \cite{mongekant:villani} verwenden.
+\subsubsection{Interpretation des dualen Problems}
+Um die Interpretation des dualen Problems zu verdeutlichen,
+betrachten wir das folgende Beispiel:
 
-Jeden Morgen geniessen die Menschen zu Hause ihre Kaffeepause.
-Insgesamt kostet es Nespresso $c(x,y)$ Franken,
-um eine Schachtel der nötigen Espresso‑Kapseln von Ort $x$ zu Ort $y$ zu transportieren,
+Wir betrachten ein Unternehmen,
+dass Kaffekapseln herstellt und in.
+Insgesamt kostet es das Unternehmen $c(x,y)$ Franken,
+um eine Schachtel der nötigen Kaffekapseln von Ort $x$ zu Ort $y$ zu transportieren,
 also von den Lagern zu den Haushalten.
-Nespresso möchten diese teure Gewohnheit optimieren und
-dafür das passende Kantorovich‑Problem formulieren.
-Mathematiker kommen zu Nespresso und schlagen ein neues Zahlungsmodell vor.
+Das Unternehmen möchten diese teure Gewohnheit optimieren und
+dafür das passende Kantorowitch-Problem formulieren.
+Mathematiker kommen zum Unternehmen und schlagen ein neues Zahlungsmodell vor.
 Für jede Schachtel,
 die an Ort $x$ liegt,
-verlangen sie $\xi(x)$ Franken,
+verlangen sie $\xi(x)$ Franken für die Abholung,
 und für die Lieferung an Ort $y$ verlangen sie $\eta(y)$ Franken.
-Allerdings werden die Mathematiker die konkreten
-Versandrouten nicht preisgeben.
-Damit Nespresso dieses Angebot akzeptiert,
+Allerdings werden die Mathematiker die konkreten Versandrouten nicht preisgeben.
+Damit das Unternehmen dieses Angebot akzeptiert,
 muss selbstverständlich gelten $\xi(x)+\eta(y) \leq c(x,y)$.
 
 
 Die Idee ist:
 Wenn die Mathematiker klug genug sind,
 können sie die Sendung günstiger machen.
-Das wird durch den \emph{Kantorovich‑Dualitätssatz} garantiert.
+Das wird durch den \emph{Kantorowitch-Dualitätssatz} garantiert.
 
-\noindent
 \emph{Hinweis.}
 In manchen Fällen können die Mathematiker sogar \emph{negative} Preise ansetzen.
 Das bedeutet,
-sie erhalten für bestimmte Abhol‑ oder Lieferorte einen Zuschuss,
-um insgesamt die Gesamtkosten zu senken.
+dass sie dem Unternehmen Geld bezahlen,
+um die Sendung an einem bestimmten Ort abzuholen bzw. zu liefern.
+Damit können die Gesamtkosten gesenkt werden.
+
+\subsection{Lineare Programmierung%
+\label{mongekant:subsection:linear_programming}}
+
+Betrachten wir nun ein diskretes Transportproblem,
+bei dem
+\begin{align*}
+\mu
+&=
+\sum_{i=1}^m \alpha_i \delta_{x_i}
+,\quad\text{wobei }
+\sum_{i=1}^m \alpha_i = 1
+\text{ und }
+\alpha_i \geq 0
+\\
+\nu
+&=
+\sum_{j=1}^n \beta_j \delta_{y_j}
+,\quad\text{wobei }
+\sum_{i=1}^m \beta = 1
+\text{ und }
+\beta_j \geq 0
+.
+\end{align*}
+Zudem vereinfachen wir die Notation mit $c_{ij} = c(x_i, y_j)$ und
+$\gamma_{ij} = \gamma(x_i, y_j)$.
+Gehen wir davon aus,
+dass ein optimaler Plan $\gamma_{ij}$ existiert,
+dann können wir die Kantorowitch-Formulierung \eqref{mongekant:eq:kantorowitch_problem} schreiben als
+\begin{align*}
+C_K(\mu, \nu)
+&=
+\min_{\gamma_{ij}}
+\sum_{i=1}^m \sum_{j=1}^n c_{ij} \gamma_{ij}
+,\quad
+\text{wobei }
+\sum_{j=1}^n \gamma_{ij} = \alpha_i
+\text{ und }
+\sum_{i=1}^m \gamma_{ij} = \beta_j
+.
+\end{align*}
+Dies entspricht einem linearen Programm,
+wie man es aus der Optimierung kennt.
+Tatsächlich wird Kantorowitch als der Begründer der Linearen Programmierung angesehen.
