@@ -11,7 +11,8 @@ all:	unterteilung.pdf						\
 	torushomologie.pdf						\
 	rand.pdf							\
 	unterzyklen.pdf							\
-	zyklus.pdf
+	zyklus.pdf							\
+	simplex.pdf
 
 sphaere.png:	sphaere.pov
 	povray +A0.1 +W1920 -H1080 -Osphaere.png sphaere.pov
@@ -71,3 +72,9 @@ tetrapoints.inc:	tetra.m
 zyklus.pdf:	zyklus.tex zhomolog.jpg zyklus.jpg
 	pdflatex zyklus.tex
 
+2simplex.png:	2simplex.pov
+	povray +A0.1 -W1920 -H1080 -O2simplex.png 2simplex.pov
+2simplex.jpg:	2simplex.png Makefile
+	magick -extract 1234x1080+288+0 2simplex.png 2simplex.jpg
+simplex.pdf:	simplex.tex 2simplex.jpg
+	pdflatex simplex.tex
