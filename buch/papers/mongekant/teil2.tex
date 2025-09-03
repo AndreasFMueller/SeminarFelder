@@ -44,6 +44,24 @@ erfüllen.
 Die Menge aller zulässigen Transportpläne,
 welche die Randbedingungen \eqref{mongekant:eq:kantorowitch_marginals} erfüllen,
 bezeichnen wir mit $\Gamma(\mu, \nu)$.
+Beispiele,
+wie ein Transportplan aussehen kann,
+sind in Abbildung~\ref{mongekant:fig:transport_plans} dargestellt.
+
+\begin{figure}
+\centering
+\subfigure[Normal- zu Rayleigh-Verteilung\label{mongekant:fig:plan1}]{
+\includegraphics[width=0.48\textwidth]{papers/mongekant/code/ot_map_1}
+}\hfill
+\subfigure[Unimodal- zu Bimodalverteilung\label{mongekant:fig:plan2}]{
+\includegraphics[width=0.48\textwidth]{papers/mongekant/code/ot_map_2}
+}
+\caption{Beispiele für Transportpläne $\gamma(x,y)$,
+wobei hier die Helligkeit den Betrag von $\gamma(x,y)$ angibt.
+Der Transportplan wurde hier für die bessere Sichtbarkeit noch zusätzlich geglättet.
+}
+\label{mongekant:fig:transport_plans}
+\end{figure}
 
 \subsection{Optimierungsproblem}
 Mit diesen Notationen lautet das Optimierungsproblem
@@ -262,7 +280,6 @@ C_K(\mu, \nu)
 ,\quad\text{wobei }
 \xi(x) + \eta(y) \leq c(x,y)
 .
-\label{mongekant:eq:kantorowitch_dual}
 \end{align*}
 Die Funktionen $\xi(x)$ und $\eta(y)$ können dabei als
 \emph{Abhol-} bzw. \emph{Lieferpreise} interpretiert werden.
