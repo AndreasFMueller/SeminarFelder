@@ -27,11 +27,12 @@
 
   % Left Blob (Initial Distribution)
   \begin{scope}[scale=\drawscale,red]
-    \draw[black,fill=lightred] \pathA;
+    \fill[lightred] \pathA;
     \begin{scope}
       \clip \pathA;
       \fill (\Astart, 0.0) rectangle (\Aend, 1.5);
     \end{scope}
+    \draw[black] \pathA;
     \draw (\Astart, 0) -- (\Astart, -\tickheight) coordinate (A_start_tick);
     \draw (\Aend, 0) -- (\Aend, -\tickheight) coordinate (A_end_tick);
     \draw[black,decorate,decoration={brace,mirror}] (A_start_tick) -- (A_end_tick)
@@ -43,11 +44,12 @@
 
   % Right Blob (Transformed Distribution)
   \begin{scope}[xshift=\boffset,scale=\drawscale,anchor=south west,color=blue]
-    \draw[black,fill=lightblue] \pathB;
+    \fill[lightblue] \pathB;
     \begin{scope}
       \clip \pathB;
       \fill (\Bstart, 0.0) rectangle (\Bend, 1.5);
     \end{scope}
+    \draw[black] \pathB;
     \draw (\Bstart, 0) -- (\Bstart, -\tickheight) coordinate (B_start_tick);
     \draw (\Bend, 0) -- (\Bend, -\tickheight) coordinate (B_end_tick);
     \draw[black,decorate,decoration={brace,mirror}] (B_start_tick) -- (B_end_tick)
