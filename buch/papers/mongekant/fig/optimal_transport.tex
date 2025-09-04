@@ -1,4 +1,4 @@
-\begin{tikzpicture}
+\begin{tikzpicture}[>=latex]
   % Define some colors for consistency
   \def\intensity{0.6}
   \definecolor{lightblue}{rgb}{\intensity, \intensity, 1}
@@ -26,8 +26,8 @@
   \def\arrowoffset{0.8cm}
 
   % Left Blob (Initial Distribution)
-  \begin{scope}[scale=\drawscale,blue]
-    \draw[black,fill=lightblue] \pathA;
+  \begin{scope}[scale=\drawscale,red]
+    \draw[black,fill=lightred] \pathA;
     \begin{scope}
       \clip \pathA;
       \fill (\Astart, 0.0) rectangle (\Aend, 1.5);
@@ -42,8 +42,8 @@
   \end{scope}
 
   % Right Blob (Transformed Distribution)
-  \begin{scope}[xshift=\boffset,scale=\drawscale,anchor=south west,color=red]
-    \draw[black,fill=lightred] \pathB;
+  \begin{scope}[xshift=\boffset,scale=\drawscale,anchor=south west,color=blue]
+    \draw[black,fill=lightblue] \pathB;
     \begin{scope}
       \clip \pathB;
       \fill (\Bstart, 0.0) rectangle (\Bend, 1.5);
