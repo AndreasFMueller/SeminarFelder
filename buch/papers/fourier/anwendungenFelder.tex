@@ -11,24 +11,27 @@
 
 
 \section{Anwendung auf ein Feld\label{fourier:section:AnwendungAufFeld}}
-\kopfrechts{Anwendung auf Feld}
+\kopfrechts{Anwendung auf ein Feld}
 
 Eine gewöhnliche Differentialgleichung enthält Ableitungen nur nach einer unabhängigen Variable, während eine partielle Differentialgleichung Ableitungen nach mehreren unabhängigen Variablen enthält.  
-In diesem Abschnitt überführen wir eine partielle Differentialgleichung mittels Fourierreihe in eine gewöhnliche Differentialgleichung für die Zeitvariable.
+In diesem Abschnitt überführen wir eine partielle Differentialgleichung mittels Fourier-Reihe in eine gewöhnliche Differentialgleichung für die Zeitvariable.
 Als Beispiel betrachten wir die eindimensionale Wellengleichung  
+\index{Wellengleichung}
 \begin{equation}\label{eq:wellengleichung}
 	\frac{\partial^2 u(x,t)}{\partial t^2} = c^2 \frac{\partial^2 u(x,t)}{\partial x^2}
 \end{equation}  
 mit Ausbreitungsgeschwindigkeit $c$. Dieses Modell beschreibt unter anderem elektromagnetische Felder.  
-Unter der Annahme, dass $u(x, t)$ eine periodisch Funktion von $x$ ist, führen wir eine Fourierreihen-Entwicklung durch. 
+\index{elektromagnetisches Feld}%
+Unter der Annahme, dass $u(x, t)$ eine periodisch Funktion von $x$ ist, führen wir eine Fourier-Reihenentwicklung durch. 
 Neu besteht 
 \begin{equation}
 	u(x,t) = \frac{a_0(t)}{2} + \sum_{n=1}^{\infty} \left( a_n(t) \cos(n \omega x) + b_n(t) \sin(n \omega x) \right)
 \end{equation}
 aus einer unendlichen Anzahl von Schwingungen.
-Alle drei Arten von Fourier Koeffizienten erhält man durch die Integral-Rechnungen im Abschnitt~\ref{fourier:section:GrundlagenFourierAnalyse}. 
+Alle drei Arten von Fourier-Koeffizienten erhält man durch die Integralrechnungen im Abschnitt~\ref{fourier:section:GrundlagenFourierAnalyse}. 
 Da das Ziel ist, $x$ zu eliminieren, integriert man über eine Periode nach $x$.
 Somit entstehen Fourier-Koeffizienten, die von $t$ abhängig sind. 
+
 Nun wird $u(x,t)$ in seiner Summenform in die Wellengleichung eingesetzt. 
 Dazu muss $u(x,t)$ je zwei Mal nach $t$ und $x$ abgeleitet werden:
 
@@ -58,11 +61,12 @@ Formal entspricht die Gleichung
 \end{multline}
 der Wellengleichung, wobei sie hier in der Fourier-Reihendarstellung mit zeitabhängigen Koeffizienten formuliert ist.
 Diese Gleichung kann nun mithilfe eines Koeffizientenvergleichs gelöst werden.
+\index{Koeffizientenvergleich}%
 So entstehen folgende drei Gleichungen:
 
 \begin{equation}
 	\begin{alignedat}{2}
-		&\text{Konstanter Term:} 
+		&\text{konstanter Term:} 
 		&\quad \frac{1}{2} \frac{d^2 a_0(t)}{dt^2} &= 0 \\[0.8em]
 		&\text{Koeffizient von }\cos(n\omega x): 
 		&\quad \frac{d^2 a_n(t)}{dt^2} &= c^2 \cdot (-a_n(t))\,n^2\omega^2 \\[0.8em]
@@ -84,7 +88,7 @@ Es entstehen die folgenden zwei Arten von gewöhnlichen Differentialgleichungen:
 	  \quad   \text{und} \quad  \frac{d^2}{dt^2} b_n(t) + b_n(t) n^2 \omega^2 c^2 = 0.
 \end{equation}
 
-Die Struktur der Wellengleichungen aus~\eqref{eq:ODE_Wellengleichung} entsprechen formal der Bewegungsgleichung eines ungedämpften Federpendels: 
+Die Struktur der Differentialgleichungen aus~\eqref{eq:ODE_Wellengleichung} entsprechen formal der Bewegungsgleichung eines ungedämpften Federpendels: 
 \begin{equation}\label{eq:loesungFederpendel}
 	\frac{d^2}{dt^2}x(t) + \omega^2 x(t) = 0.
 \end{equation}

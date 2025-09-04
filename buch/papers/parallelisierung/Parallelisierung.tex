@@ -7,42 +7,111 @@
 % !TEX encoding = UTF-8
 %
 \section{Parallelisierung
-\label{parallelisierung:section:Parallelisierung}}
+	\label{parallelisierung:sec:Parallelisierung}}
 \kopfrechts{Parallelisierung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+Wir kennen nun numerische Verfahren, welche es einer Maschine erlaubt unsere Feldgleichungen zu berechnen.
+Wir wissen auch, wie wir unser Feld in Teilgebiete unterteilen können.
+Das gibt uns alle Werkzeuge, welche wir benötigen um die Berechnungen unserer Gleichungen auf mehrere Maschinen aufzuteilen.
 
-\subsection{Datenabhängigkeit an den Gebietsränder \label{parallelisierung:subsection:Gebietsränder}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
-
+Bei der Parallelisierung von Feldgleichungen in einem Multiprozessorsystem wird jedem Prozessor eines oder mehrere zusammenhängende Teilgebiete zugewiesen.
+Die Teilgebiete müssen theoretisch nicht zusammenhängend sein aber um die Kommunikation zwischen Prozessoren zu minimieren ist dieses Vorgehen sinnvoll und üblich.
+Da die Randzellen jedes Teilgebietes abhängig von den angrenzenden Zellen sind, siehe \ref{parallelisierung:sec:Gebietsunterteilung}, müssen die vorhandenen Informationen dieser Zellen zwischen Gebieten auf unterschiedlichen Prozessoren ausgetauscht werden.
+Dieser Austausch ist mit erheblichem zeitlichen Aufwand verbunden.
+Die Frage, wie fein ein Gitter in verschiedene Teilgebiete aufgeteilt werden soll, ist also immer eine optimierungs-Frage.
+Man muss ein Optimum finden, wo der zeitliche Gewinn der parallelen Berechnung die zeitlichen Verluste der Interprozess-Kommunikation überwiegen.
 
 \input{papers/parallelisierung/Interprozess.tex}
 \input{papers/parallelisierung/Synchronisation.tex}
 
-\subsection{Lösung der Teilgebiete \label{parallelisierung:subsection:Teilgebiete}}
+\subsection{Beispiel an der allgemeinen Wärmeleitungsgleichung
+	\label{parallelisierung:sub:BeispielParallelisierung}}
+Zum besseren Verständnis wollen wir mit OpenMP ein Konkretes Beispiel für die Parallelisierung der allgemeinen Wärmeleitungsgleichung realisieren.
+Zum Vergleich wird auch die Serielle Vorgehensweise präsentiert.
+Als Ausgangslage soll für ein Gitter von AxB Zellen C Updates durchgeführt werden.
+Für jedes Update wird die Formel \ref{parallelisierung:eq:update_formel} aus Abschnitt \ref{parallelisierung:sec:update_formel} verwendet.
+Links und Rechts der Zellen gibt es Reihen mit unveränderlicher Temperatur, welche einen Heiz- respektive Kühlkörper darstellen.
+Ober- und unterhalb der Zellen gibt es Zeilen mit unveränderlicher Temperatur, welche die Umgebungstemperatur darstellen.
+Diese Konstanten, wie auch $\lambda$ als Konstante für die Updateformel können alle im Main-File des Programms definiert werden und sind unveränderlich.
 
-\subsection{Zusammensetzen der Ergebnisse \label{parallelisierung:subsection:Ergebnisse}}
+Beide Lösungen verwenden Arrays zur Zwischenspeicherung der Zellen.
+Für Arrays werden gerne Vektoren aus der C++ Standar Library (STL) verwendet.
+Für ein zweidimensionales Array wird zum Beispiel
+\begin{lstlisting}
+	std::vector<std::vector<double>> grid;
+\end{lstlisting}
+benützt.
+Man muss sich allerdings bewusst sein, dass diese Variante keinen kontinuierlichen Bereich im Speicher reserviert.
+Diese Variante speichert zuerst ein äußeres Array (Zeilen), und jede Zeile allokiert separat ihren eigenen Speicher.
+Das verschlechtert enorm die Cache-Lokalität des Programms und damit die Performanz.
+Als elegantere Lösung verwendet man bei numerischen Verfahren für partielle Differentialgleichungen eindimensionale Arrays und rechnet die Indizes mittels inline-Funktion um.
+\begin{lstlisting}
+	std::vector<double> grid(nx * ny);
+	
+	inline double& at(int i, int j) {
+		return grid[i * nx + j];  // Row-major
+	}
+\end{lstlisting}
+Damit garantiert man eine kontinuierliche Speicherung der Daten.
+
+\subsubsection{Serielle Lösung}
+\label{parallelisierung:sub:serLoesung}
+Zur Vorbereitung werden Zwei Arrays der Grösse 
+\begin{equation}
+A+2 * B+2 
+\end{equation}
+angelegt. 
+
+\begin{lstlisting}
+std::vector<double> grid(A * B);
+std::vector<double> gridNew(A * B);
+\end{lstlisting}
+Die Addition von zwei ist notwendig, um die Umgebenden Temperaturen speichern zu können.
+In beiden Arrays wird nun die Umgebungstemperatur in die erste und letzte Zeile geschrieben.
+Die jeweilige Temperatur der Heiz-/Kühlkörper wird in die erste und letzte Spalte geschrieben.
+Das erste Array wird für die aktuellen Temperaturen der Zellen verwendet.
+Als Ausgangspunkt kann in dieses die Umgebungstemperatur eingetragen werden.
+Mit einer Schlaufe kann nun für alle A*B Zellen der neue Wert mit der Updateformel berechnet und in die entsprechende Zelle im zweiten Array geschrieben werden.
+\begin{lstlisting}[caption={Update-Schritt (seriell)},label={parallelisierung:code:updateSeriel}]
+for (int i = 1; i < B - 1; ++i) {     // ueberspringt erste und letzte Zeile
+	const int row = i * A;
+	for (int j = 1; j < A - 1; ++j) { // ueberspringt erste und letzte Spalte
+		const int idx   = row + j;
+		const int up    = idx - A;
+		const int down  = idx + A;
+		const int left  = idx - 1;
+		const int right = idx + 1;
+		
+		nextTemp[idx] = currentTemp[idx]
+		+ lambda * (src[up] + src[down] + src[left] + src[right]
+		- 4.0 * src[idx]);
+	}
+}
+\end{lstlisting}
+Im Beispiel ist src ein Pointer auf das Array mit den aktuellen Werten und dst ist ein Pointer auf das Array mit den neuen Werten.
+Bei der Verwendung von Vektoren erhält man die Adresse des ersten Eintrags mit der Funktion .data().
+\begin{lstlisting}
+double* src = grid.data();
+double* dst = gridNew.data();
+\end{lstlisting}
+
+Ist die For-Schleife durchgerechnet, kann man die beiden Array elegant austauschen, indem man die beiden Pointer tauscht.
+\begin{lstlisting}
+std::swap(src, dst);
+\end{lstlisting}
+Auf diese weise müssen keine Daten Verschoben werden was viel Zeit einspart.
+Dieses Verfahren nennt man passend einen Ping-Pong-Ansatz.
+
+In einer Schlaufe die C mal durchlaufen wird, und den Updatecode sowie den Swap aufruft kann das Array C mal aktualisiert und damit das fortschreiten der Zeit simuliert werden.
+
+\subsubsection{parallele Lösung 
+\label{parallelisierung:sub:parLoesung}}
+Die Vorgehensweise bei der parallelen Lösung ist sehr ähnlich.
+Es werden zwei Arrays verwendet, welche im Shared-Memory des Prozesses liegen.
+Jeder Thread kann auf das gesamte Array mit den aktuellen Werten zugreifen und kann daher auch die Randzellen problemlos berechnen.
+Jedem Thread wird ein Teilgebiet des gesamten Arrays zugewiesen.
+Der Thread berechnet darin jede Zelle mit den vorhandenen aktuellen Werten und schreibt das Ergebnis an der entsprechenden Stelle in das neue Array.
+Da auf dem alten Array keine Schreibaktionen getätigt werden gibt es keine Möglichkeit für Race conditions.
+Zur Synchronisation wird am ende der Updateschlaufe eine Barriere gesetzt, welche den Thread am weitermachen hindert, bis jeder andere Thread seine Arbeit verrichtet hat.
+Wird diese Barriere überschritten, hat ein Thread die Aufgabe, die Pointer der Arrays auszutauschen.
+Eine zweite Barriere sorgt dafür, dass die anderen Threads warten, bis dieser Pointer-Swap durchgeführt wurde.
+

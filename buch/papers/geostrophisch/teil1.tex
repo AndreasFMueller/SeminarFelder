@@ -13,16 +13,19 @@
 
 \subsection{Coriolis-Kraft
 \label{geostrophisch:subsection:coriolis}}
-Die Coriolis-Kraft, welche durch die Rotation der Erde entsteht, beeinflusst die Bewegung von Luftmassen und anderen frei beweglichen Körpern auf der Erdoberfläche. Sie ist eine Scheinkraft, die nur in einem rotierenden Bezugssystem wie dem der Erde auftritt. Die Stärke hängt von der geografischen Breite ab und nimmt in Richtung der Pole zu.
+Die \emph{Coriolis-Kraft}, welche durch die Rotation der Erde entsteht, beeinflusst die Bewegung von Luftmassen und anderen frei beweglichen Körpern auf der Erdoberfläche. Sie ist eine Scheinkraft, die nur in einem rotierenden Bezugssystem wie dem der Erde auftritt. Die Stärke hängt von der geografischen Breite ab und nimmt in Richtung der Pole zu.
+\index{Coriolis-Kraft}%
 Der Coriolis-Parameter $f$ beschreibt diese Abhängigkeit und ist definiert als 
+\index{Coriolis-Parameter}%
 \begin{equation}
 f\, 
 = 
-2\Omega\sin(\phi)
+2\Omega\sin(\varphi)
 \label{geostrophisch:equation1}.
 \end{equation}
-In dieser Gleichung steht $\Omega$ für die Winkelgeschwindigkeit der Erdrotation und $\phi$ für die geografische Breite auf der Erdoberfläche.
+In dieser Gleichung steht $\Omega$ für die Winkelgeschwindigkeit der Erdrotation und $\varphi$ für die geografische Breite auf der Erdoberfläche.
 Die Coriolis-Kraft wirkt immer senkrecht zur Bewegungsrichtung. In der Meteorologie betrachtet man sie in der Regel pro Masseneinheit, da sich die Masse eines Luftpakets nicht eindeutig festlegen lässt. Auf der Nordhalbkugel lenkt sie Bewegungen nach rechts ab, auf der Südhalbkugel nach links. Mathematisch lässt sie sich für eine Geschwindigkeit $\vec{v}_g $ mit Hilfe des Kreuzproduktes darstellen. 
+\index{Luftpaket}%
 Die Coriolis-Kraft pro Masseneinheit ergibt sich aus der Formel
 \begin{equation}
 \frac{\vec{F}_c} {m}
@@ -35,7 +38,8 @@ Das Kreuzprodukt von $\vec{k}$ mit  $\vec{v}_g $ sorgt dafür, dass die Coriolis
 
 \subsection{Gradientenkraft
 \label{geostrophisch:subsection:gradient}}
-Die Gradientenkraft ist die treibende Kraft pro Masseneinheit, die entsteht, wenn zwischen zwei Orten ein Druckunterschied besteht. Sie wirkt immer von Gebieten mit hohem Druck in Richtung niedrigen Drucks und ist die wichtigste antreibende Kraft für Luftbewegungen in der Atmosphäre. Je grösser der Druckunterschied über eine bestimmte Entfernung, desto stärker ist die Gradientenkraft.
+Die \emph{Gradientenkraft} ist die treibende Kraft pro Masseneinheit, die entsteht, wenn zwischen zwei Orten ein Druckunterschied besteht. Sie wirkt immer von Gebieten mit hohem Druck in Richtung niedrigen Drucks und ist die wichtigste antreibende Kraft für Luftbewegungen in der Atmosphäre. Je grösser der Druckunterschied über eine bestimmte Entfernung, desto stärker ist die Gradientenkraft.
+\index{Gradientkraft}%
 Mathematisch lässt sie sich wie folgt beschreiben:
 \begin{equation}
 \frac{\vec{F}_p} {m}
@@ -47,16 +51,20 @@ wobei $\rho$ die Luftdichte und $\nabla p$ der Druckgradient ist.
 Der negative Vorfaktor zeigt, dass die Kraft immer in Richtung des abnehmenden Drucks wirkt.
 
 Die Gradientenkraft setzt Luftmassen in Bewegung, da sie ein Ungleichgewicht im Druckfeld ausgleicht. Ohne weitere Kräfte wie die Coriolis-Kraft würde die Luft somit direkt vom Hochdruckgebiet in das Tiefdruckgebiet strömen.
+
 \subsection{Geostrophischer Wind}
 
-Der geostrophische Wind ist eine idealisierte Luftströmung, bei der sich die Druckgradientkraft und die Coriolis-Kraft im Gleichgewicht befinden. In diesem Fall bewegt sich die Luft parallel zu den Isobaren (Linien gleichen Drucks). Auf der Nordhalbkugel befindet sich das Tiefdruckgebiet dabei stets zur linken Seite der Strömungsrichtung, auf der Südhalbkugel ist es umgekehrt.
+Der \emph{geostrophische Wind} ist eine idealisierte Luftströmung, bei der sich die Druckgradientkraft und die Coriolis-Kraft im Gleichgewicht befinden. In diesem Fall bewegt sich die Luft parallel zu den \emph{Isobaren} (Linien gleichen Drucks). Auf der Nordhalbkugel befindet sich das Tiefdruckgebiet dabei stets zur linken Seite der Strömungsrichtung, auf der Südhalbkugel ist es umgekehrt.
+\index{geostrophischer Wind}%
+\index{Isobaren}%
 
 Diese Näherung gilt besonders gut in der freien Atmosphäre oberhalb der Reibungsschicht (ca. 1 km Höhe), wo Reibungskräfte vernachlässigbar sind. 
+\index{Reibungskräfte}%
 
 \begin{figure}
     	\centering
     	\includegraphics[scale=0.4]{ideal.jpeg}
-  	 \caption{Idealer geostrophischer Wind welcher parallel zu den Isobaren weht.}
+  	 \caption{Idealer geostrophischer Wind, welcher parallel zu den Isobaren weht.}
    	\label{bild:ideal}
 \end{figure}
 
@@ -70,13 +78,14 @@ Diese Näherung gilt besonders gut in der freien Atmosphäre oberhalb der Reibun
 \begin{figure}
     	\centering
     	\includegraphics[scale=0.4]{Reibung.jpg}
-  	 \caption{Eine grafische Darstellung, die den Einfluss von Reibung in Bodennähe zeigt. Die Einheit mb steht für Millibar. Heutzutage verwendet man hPa (Hektopascal). 1mb = 1hPa}
+  	 \caption{Eine grafische Darstellung, die den Einfluss von Reibung in Bodennähe zeigt. Die Einheit mb steht für Millibar. Heutzutage verwendet man hPa (Hektopascal), 1\,mb = 1\,hPa,}
    	\label{bild:reibung}
 \end{figure}
 
 
 Wichtiger Hinweis zur Idealisierung:
 Der geostrophische Wind ist ein nützliches Modell, um die grossskalige Strömung in der Atmosphäre zu beschreiben. In der Realität treten jedoch Abweichungen auf, insbesondere in Bodennähe, wo Reibung den Wind abbremst und in Richtung niedriger Drücke ablenkt. Auch komplexe Topografie und instationäre Wettersituationen können dazu führen, dass der Idealzustand nicht erreicht wird.
+\index{Topografie}%
 Diese Abweichungen werden in Abschnitt~\ref{geostrophisch:subsection:failedPrediction} (Grund der fehlerhaften Vorhersage) nochmals aufgegriffen.
 
 

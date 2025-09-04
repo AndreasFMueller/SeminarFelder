@@ -9,273 +9,160 @@
 %\usepackage{siunitx}
 %\usepackage{amsmath}
 %\usepackage[ngerman]{babel}
+\section{Beispiele aus der Bauingenieurspraxis}
+\label{elastomechanik:section:teil4}
+In den vorangegangenen Abschnitten
+(\ref{elastomechanik:section:Einleitung}--\ref{elastomechanik:section:herleitung2})
+haben wir die allgemeinen Grundlagen der Elastizitätstheorie entwickelt: 
+von der Definition der Verzerrungen über das Hookesche Gesetz bis hin zu den Gleichgewichtsbedingungen und der Formulierung der Navier-Cauchy-Gleichungen. 
+Diese theoretischen Resultate bilden die Grundlage, um reale Ingenieurprobleme zu beschreiben. 
+Im Folgenden wollen wir an zwei typischen Beispielen, einem Balken unter Mittellast und einem Oedometerversuch, aufzeigen, wie sich aus den allgemeinen Gleichungen praktische Berechnungen ableiten lassen. 
+Zur Erinnerung fassen wir die wesentlichen Zusammenhänge zusammen,
+die wir in Abschnitt
+%15.1–15.4
+\ref{elastomechanik:section:Einleitung}--\ref{elastomechanik:section:herleitung2})
+hergeleitet haben:
+die Kinematik
+\[
+  \varepsilon_{ij} = \tfrac12(\partial_i u_j + \partial_j u_i),
+\]
+das konstitutive Gesetz
+\[
+  \sigma_{ij} = \lambda\, \delta_{ij}\,\varepsilon_{kk} + 2\mu\, \varepsilon_{ij},
+\]
+und das Gleichgewicht
+\[
+  \partial_j \sigma_{ij} + f_i = 0,
+\]
+die zusammen zu den Navier-Cauchy-Gleichungen führen.
+Für schlanke Balken werden zusätzlich die Euler–Bernoulli-Annahmen getroffen. 
+Diese lauten:
+\begin{itemize}
+  \item Querschnitte bleiben bei Biegung eben und unverzerrt,
+  \item Querschnitte bleiben senkrecht zur Balkenachse,
+  \item die Einflüsse der Querkraftverzerrung werden vernachlässigt.
+\end{itemize}
+Unter diesen Voraussetzungen ergibt sich die Balkendifferentialgleichung. 
+Aus den allgemeinen Gleichgewichtsbedingungen der Elastizitätstheorie 
+(vgl. Abschnitt
+\ref{elastomechanik:math:subsection:gleichgewicht})
+%15.3.2)
+folgt zunächst, dass die Querkraft \(Q(x)\) mit der 
+Streckenlast \(q(x)\) verknüpft ist durch
+\[
+  Q'(x) + q(x) = 0.
+\]
+Das Moment \(M(x)\) hängt wiederum mit der Querkraft zusammen
+\[
+  M'(x) + Q(x) = 0.
+\]
+Kombiniert man diese Beziehungen, erhält man
+\[
+  M''(x) = q(x).
+\]
+Die Euler–Bernoulli-Hypothese verknüpft das Moment mit der 
+Krümmung des Balkens:
+\[
+  M(x) = EI\,w''(x),
+\]
+wobei \(E\) der Elastizitätsmodul und \(I\) das Flächenträgheitsmoment ist. 
+Ein Einsetzen liefert die Balkendifferentialgleichung
+\begin{equation}
+  EI\,w^{(4)}(x) = q(x).
+  \label{eq:beam_dgl}
+\end{equation}
+Diese fundamentale Gleichung bildet die Grundlage für die folgenden 
+Berechnungen von Momenten, Spannungen und Durchbiegungen.
+Für den Oedometerversuch gilt ein eindimensionaler Verzerrungszustand
+\(\varepsilon_x=\varepsilon_y=0\); daraus folgt
+\[
+  \sigma_z = M \,\varepsilon_z, \qquad
+  M=\frac{E(1-\nu)}{(1+\nu)(1-2\nu)},
+\]
+wobei \(M\) als eingeschränkter (oedometrischer) Modul bezeichnet wird.
 
-%\begin{document}
-	
-	\section*{Einführung in das Praxisbeispiel}
-	
-	In diesem Kapitel wird ein praxisnahes Beispiel vorgestellt, das insbesondere im Bauingenieurwesen von Bedeutung ist. 
-	Dazu betrachten wir ein einfaches statisches System, an dem grundlegende Konzepte der Elastizitätstheorie anschaulich demonstriert werden können.
-	
-	Im Mittelpunkt der Analyse stehen zwei unterschiedliche Materialien: \textbf{Holz} und \textbf{Stahl}. 
-	Diese beiden Werkstoffe unterscheiden sich deutlich in ihren mechanischen Eigenschaften, insbesondere in Bezug auf ihre Steifigkeit, Festigkeit und ihr Verformungsverhalten unter Belastung.
-	
-	Ziel der Untersuchung ist es, die Unterschiede zwischen diesen Materialien herauszuarbeiten. 
-	Wir zeigen, wie äussere Kräfte im Bauteil \textbf{Spannungen} erzeugen und wie sich daraus \textbf{Verformungen} ergeben.
-	
-	\subsection*{Berechnung des maximalen Biegemoments}
-	
-	Die Belastung von \SI{100}{\kilo\newton} erzeugt im Querschnitt des Trägers Schnittgrössen, insbesondere \textbf{Biegemomente} und \textbf{Querkraft}. Für dieses Beispiel sind vor allem die Biegemomente von Interesse, da sie massgeblich für die entstehenden Spannungen und Verformungen verantwortlich sind.
-	
-	Die Bestimmung des maximalen Moments erfolgt mithilfe einer einfachen Gleichgewichtsbedingung. 
-	Bei einem symmetrisch belasteten Einfeldträger mit einer mittig aufgebrachten Einzellast kann das Moment wie folgt berechnet werden:
-	
-	\[
-	M_\text{max} = \frac{F \cdot l}{4}
-	\]
-	
-	Dabei ist:
-	\begin{align}
-		F = \SI{100}{\kilo\newton} && \text{(aufgebrachte Kraft)} \\
-		l = \SI{5}{\meter} && \text{(Spannweite des Trägers)}
-	\end{align}
-	
-	Einsetzen ergibt:
-	\[
-	M_\text{max} = \frac{100\,000 \cdot 5}{4} = \SI{125000}{\newton\meter} = \SI{125}{\kilo\newton\meter}
-	\]
-	
-	Das maximale Biegemoment beträgt somit \(\boxed{\SI{125}{\kilo\newton\meter}}\).
-	
-	\section*{Berechnung der Biegespannung im Balkenquerschnitt}
-	
-	Die Kenntnis der Biegespannung ist im Bauingenieurwesen von zentraler Bedeutung, da sie Auskunft darüber gibt, wie stark ein Bauteil durch äussere Momente beansprucht wird. 
-	Eine Überschreitung zulässiger Spannungen kann zur Schädigung oder gar zum Versagen des Bauteils führen. 
-	Deshalb ist die Berechnung der maximalen Spannung ein wesentlicher Bestandteil der Tragwerksanalyse.
-	
-	\subsection*{Gegeben}
-	
-	Für das betrachtete Beispiel gelten die folgenden Angaben:
-	
-	\begin{itemize}
-		\item Biegemoment: $M = \SI{125000}{\newton\meter} = \SI{125000000}{\newton\milli\meter}$
-		\item Breite des Rechteckquerschnitts: $b = \SI{200}{\milli\meter}$
-		\item Höhe des Rechteckquerschnitts: $h = \SI{300}{\milli\meter}$
-	\end{itemize}
-	
-	\subsection*{1. Flächenträgheitsmoment $I$}
-	
-	Für einen rechteckigen Querschnitt berechnet sich das Flächenträgheitsmoment $I$ um die neutrale Achse mit:
-	
-	\[
-	I = \frac{b \cdot h^3}{12}
-	\]
-	
-	Einsetzen der Werte ergibt:
-	
-	\[
-	I = \frac{200 \cdot 300^3}{12} = \frac{200 \cdot 27\,000\,000}{12} = \SI{450000000}{\milli\meter^4}
-	\]
-	
-	\subsection*{2. Abstand $y$ zur äussersten Faser}
-	
-	Da die maximale Spannung am weitesten Punkt von der neutralen Faser auftritt, gilt:
-	
-	\[
-	y = \frac{h}{2} = \frac{300}{2} = \SI{150}{\milli\meter}
-	\]
-	
-	\subsection*{3. Biegespannung $\sigma$}
-	
-	Die Biegespannung wird mit der folgenden Formel berechnet:
-	
-	\[
-	\sigma = \frac{M \cdot y}{I}
-	\]
-	
-	Einsetzen der bekannten Grössen:
-	
-	\[
-	\sigma = \frac{125\,000\,000 \cdot 150}{450\,000\,000} = \SI{41.67}{\newton\per\milli\meter\squared}
-	\]
-	
-	\subsection*{Ergebnis}
-	
-	Die maximale Biegespannung im Balkenquerschnitt beträgt:
-	
-	\[
-	\boxed{\sigma = \SI{41.67}{\mega\pascal}}
-	\]
-	
-	
-	\section*{Berechnung der Durchbiegung in der Balkenmitte}
-	
-	Die Durchbiegung eines Balkens unter Belastung ist ein entscheidendes Kriterium für die Gebrauchstauglichkeit eines Bauteils. 
-	Sie beschreibt, wie stark sich der Balken unter der wirkenden Kraft verformt. 
-	Eine zu grosse Durchbiegung kann die Funktion beeinträchtigen oder Schäden verursachen. 
-	Daher ist die Berechnung der maximalen Durchbiegung von grosser Bedeutung.
-	
-	\subsection*{Gegebene Grössen}
-	
-	Für unser Einfeldträgersystem mit einer mittigen Einzellast gelten folgende Werte:
-	
-	\begin{itemize}
-		\item Länge des Balkens: \( l = \SI{5}{\meter} = \SI{5000}{\milli\meter} \)
-		\item Einzellast in der Mitte: \( F = \SI{100}{\kilo\newton} = \SI{100000}{\newton} \)
-		\item Flächenträgheitsmoment des Querschnitts: \( I = \SI{450000000}{\milli\meter^4} \) (berechnet im vorherigen Kapitel)
-		\item Elastizitätsmodul \( E \) (materialabhängig):
-		\begin{itemize}
-			\item Holz: \( E_{\text{Holz}} = \SI{12}{\giga\pascal} = \SI{12000}{\mega\pascal} \)
-			\item Stahl: \( E_{\text{Stahl}} = \SI{210}{\giga\pascal} = \SI{210000}{\mega\pascal} \)
-		\end{itemize}
-	\end{itemize}
-	
-	\subsection*{Formel zur Berechnung der Durchbiegung}
-	
-	Für einen Einfeldträger mit einer mittigen Einzellast \( F \) lautet die Formel für die maximale Durchbiegung \( w_{\text{max}} \) in der Balkenmitte:
-	
-	\[
-	w_{\text{max}} = \frac{F \cdot l^3}{48 \cdot E \cdot I}
-	\]
-	
-	\begin{itemize}
-		\item \( F \) ist die auf den Balken wirkende Kraft in Newton (N).
-		\item \( l \) ist die Spannweite des Balkens in Millimetern (mm).
-		\item \( E \) ist der Elastizitätsmodul des Materials in Megapascal (MPa).
-		\item \( I \) ist das Flächenträgheitsmoment des Querschnitts in \(\mathrm{mm}^4\).
-	\end{itemize}
-	
-	\subsection*{Schrittweise Berechnung}
-	
-	\paragraph{1. Berechnung der Durchbiegung für Holz:}
-	
-	\[
-	w_{\text{max, Holz}} = \frac{F \cdot l^3}{48 \cdot E_{\text{Holz}} \cdot I}
-	= \frac{100000 \cdot (5000)^3}{48 \cdot 12000 \cdot 450000000}
-	\]
-	
-	Berechnen wir zunächst den Zähler:
-	
-	\[
-	F \cdot l^3 = 100000 \times 125 \times 10^9 = 1.25 \times 10^{16}
-	\]
-	
-	Dann den Nenner:
-	
-	\[
-	48 \times 12000 \times 450000000 = 2.592 \times 10^{14}
-	\]
-	
-	Setzen wir ein:
-	
-	\[
-	w_{\text{max, Holz}} = \frac{1.25 \times 10^{16}}{2.592 \times 10^{14}} \approx 48.2\, \mathrm{mm}
-	\]
-	
-	\paragraph{2. Berechnung der Durchbiegung für Stahl:}
-	
-	\[
-	w_{\text{max, Stahl}} = \frac{F \cdot l^3}{48 \cdot E_{\text{Stahl}} \cdot I}
-	= \frac{100000 \cdot (5000)^3}{48 \cdot 210000 \cdot 450000000}
-	\]
-	
-	Zähler wie zuvor:
-	
-	\[
-	1.25 \times 10^{16}
-	\]
-	
-	Nenner:
-	
-	\[
-	48 \times 210000 \times 450000000 = 4.536 \times 10^{15}
-	\]
-	
-	Eingesetzt:
-	
-	\[
-	w_{\text{max, Stahl}} = \frac{1.25 \times 10^{16}}{4.536 \times 10^{15}} \approx 2.76\, \mathrm{mm}
-	\]
-	
-	\subsection*{Interpretation}
-	
-	Die Durchbiegung des Holzbalkens ist mit etwa \(\SI{48.2}{\milli\meter}\) deutlich grösser als die des Stahlbalkens mit \(\SI{2.76}{\milli\meter}\). 
-	Dies liegt an dem wesentlich kleineren Elastizitätsmodul von Holz, das weniger steif ist als Stahl.
-	
-	Diese Grössenordnung zeigt, wie wichtig das Material für das Verformungsverhalten eines Bauteils ist. 
-	Trotz gleicher Geometrie und Belastung führen unterschiedliche Werkstoffe zu sehr unterschiedlichen Durchbiegungen und somit zu unterschiedlicher Gebrauchstauglichkeit.
-	
-	\subsection*{Hinweis zur Materialanisotropie des Holzes}
-	
-	Holz ist ein anisotropes Material, das bedeutet, seine mechanischen Eigenschaften hängen von der Faserrichtung ab. 
-	In unserer Berechnung wurde der Elastizitätsmodul \( E_{\text{Holz}} = \SI{12}{\giga\pascal} \) parallel zur Faser verwendet, da dies die Hauptrichtung der Belastung im Balken ist.
-	
-	Der Elastizitätsmodul quer zur Faser ist deutlich geringer, etwa nur \(10\%\) des Moduls parallel zur Faser, also ungefähr \( E_{\text{Holz, quer}} \approx \SI{1.2}{\giga\pascal} \).
-	
-	Würde man diesen kleineren Wert für \( E \) einsetzen, ergäbe sich eine deutlich grössere Durchbiegung:
-	
-	\[
-	w_{\text{max, Holz quer}} \approx \frac{F \cdot l^3}{48 \cdot E_{\text{Holz, quer}} \cdot I} \approx 10 \times w_{\text{max, Holz parallel}}.
-	\]
-	
-	Dies verdeutlicht die starke Abhängigkeit der Verformung vom Elastizitätsmodul und die Bedeutung der Faserrichtung bei der Bemessung von Holzbauteilen.
-	
-	\section*{Anwendung der Elastizitätstheorie im Oedometerversuch}
-	
-	Der Oedometerversuch dient zur Bestimmung der Verformungseigenschaften von Böden unter einaxialer Belastung. 
-	Dabei wird eine zylindrische Bodenprobe in einer starren Form seitlich eingespannt, sodass keine laterale Dehnung stattfinden kann (\( \varepsilon_x = \varepsilon_y = 0 \)). 
-	Auf die Probe wird schrittweise eine vertikale Spannung \( \sigma_z \) aufgebracht, während die vertikale Verformung \( \Delta h \) gemessen wird.
-	
-	\subsection*{Theorie}
-	
-	Unter der Annahme linear-elastischen Verhaltens lässt sich der Zusammenhang zwischen Spannung und Dehnung über den sogenannten Oedometer-Modul \( E_o \) ausdrücken:
-	
-	\[
-	\varepsilon_z = \frac{\Delta h}{h_0} = \frac{\sigma_z}{E_o}
-	\quad \Rightarrow \quad
-	E_o = \frac{\sigma_z}{\varepsilon_z}
-	\]
-	
-	Dabei ist:
-	\begin{itemize}
-		\item \( \sigma_z \) — vertikale Spannung [\si{\kilo\pascal}]
-		\item \( \Delta h \) — gemessene Verkürzung der Probe [\si{\milli\meter}]
-		\item \( h_0 \) — Ausgangshöhe der Probe [\si{\milli\meter}]
-		\item \( \varepsilon_z \) — vertikale Dehnung [-]
-		\item \( E_o \) — Oedometer-Modul [\si{\kilo\pascal}]
-	\end{itemize}
-	
-	\subsection*{Beispielrechnung}
-	
-	Gegeben seien folgende Werte aus einem Oedometerversuch:
-	
-	\begin{itemize}
-		\item Anfangshöhe der Probe: \( h_0 = \SI{20}{\milli\meter} \)
-		\item Aufgebrachte Spannung: \( \sigma_z = \SI{100}{\kilo\pascal} \)
-		\item Vertikale Verformung: \( \Delta h = \SI{0.5}{\milli\meter} \)
-	\end{itemize}
-	
-	Berechnung der vertikalen Dehnung:
-	
-	\[
-	\varepsilon_z = \frac{\Delta h}{h_0} = \frac{0.5}{20} = 0.025
-	\]
-	
-	Berechnung des Oedometer-Moduls:
-	
-	\[
-	E_o = \frac{\sigma_z}{\varepsilon_z} = \frac{100}{0.025} = \SI{4000}{\kilo\pascal}
-	\]
-	
-	\subsection*{Interpretation}
-	
-	Der berechnete Oedometer-Modul beträgt:
-	
-	\[
-	\boxed{E_o = \SI{4000}{\kilo\pascal}}
-	\]
-	
-	Dieser Wert beschreibt die Steifigkeit des Bodens unter einaxialer Belastung. 
-	In der Praxis liegt \( E_o \) für Kiese im Bereich von \( 10^4 \)–\( 10^5 \,\si{\kilo\pascal} \), für Sande bei \( 10^3 \)–\( 10^4 \,\si{\kilo\pascal} \), und für Tone oft deutlich darunter. 
-	Das Ergebnis ist somit typisch für einen verdichteten sandigen Boden.
-%\end{document}
+\subsection{Balken unter Mittellast}
+Wir betrachten einen Einfeldträger der Länge \(l = 5\,\mathrm{m}\), der in der Mitte mit einer Einzellast \(F = 100\,\mathrm{kN}\) belastet wird. 
+Das System ist statisch bestimmt, sodass sich die Auflagerreaktionen unmittelbar aus den Gleichgewichtsbedingungen ergeben:
+\[
+  R_A = R_B = \frac{F}{2}.
+\]
+Das Moment an einer Stelle \(x\) zwischen dem linken Auflager und der Last ergibt sich zu
+\[
+  M(x) = R_A \, x = \frac{F}{2}\,x.
+\]
+Für \(x=l/2\), also an der Stelle der Belastung, nimmt das Moment seinen 
+maximalen Wert
+\begin{equation}
+  M_{\max} = \frac{F\,l}{4} = 125\,\mathrm{kN\,m}
+  \label{eq:Mmax}
+\end{equation}
+an. Für den Rechteckquerschnitt mit Breite \(b=200\,\mathrm{mm}\) 
+und Höhe \(h=300\,\mathrm{mm}\) ist das Flächenträgheitsmoment
+\[
+  I = \frac{b h^3}{12} = 4.5 \times 10^8\,\mathrm{mm^4}
+  \qquad 
+\]
+Der Abstand \(y\) gibt den maximalen Abstand der äussersten Faser von der neutralen Achse an. 
+Für einen rechteckigen Querschnitt liegt die neutrale Achse 
+in der Mitte, daher gilt:
+\[
+  y = \frac{h}{2}= 150\mathrm{mm}.
+\]
+Damit ergibt sich die maximale Biegespannung zu
+\begin{equation}
+  \sigma_{\max} = \frac{M_{\max}\,y}{I} = 41.7\,\mathrm{MPa}.
+  \label{eq:sigma_max}
+\end{equation}
+Die Durchbiegung in der Feldmitte erhält man schließlich aus der Balkendifferentialgleichung \(EI\,w''(x)=M(x)\). 
+Einmaliges Integrieren liefert die Querkraftlinie, zweimaliges Integrieren die Biegelinie. 
+Mit den Randbedingungen \(w(0)=w(l)=0\) ergibt sich für die 
+maximale Durchbiegung:
+\begin{equation}
+  w_{\max} = \frac{F\,l^3}{48\,E\,I}.
+  \label{eq:wmax}
+\end{equation}
+Eingesetzt ergeben sich 
+\(w_{\max} \approx 48.2\,\mathrm{mm}\) für 
+\(\,E_{\text{Holz}}=12\,\mathrm{GPa}\)
+und
+\(w_{\max} \approx 2.76\,\mathrm{mm}\) für 
+\(\,E_{\text{Stahl}}=210\,\mathrm{GPa}\).
+\subsection{Oedometerversuch}
+Im Oedometerversuch wird eine Bodenprobe so eingespannt, dass seitliche Dehnungen nicht auftreten können. 
+Belastet man die Probe mit einer vertikalen Spannung \(\sigma_z\), so kann sie sich ausschliesslich in vertikaler Richtung verkürzen.  
+Der Zusammenhang zwischen Spannung und Dehnung lässt sich aus dem isotropen hookeschen Gesetz ableiten (vgl. Abschnitt \ref{elastomechanik:section:teil})
+% 15.2). 
+Da die seitlichen Dehnungen unter den Oedometerversuchsbedingungen verschwinden, setzen wir
+\[
+  \varepsilon_x = \varepsilon_y = 0.
+\]
+Wenn wir diese Bedingung in das hookesche Gesetz einsetzen, zeigt sich, dass in horizontaler Richtung eine Spannung \(\sigma_h\) auftritt, die proportional zur vertikalen Spannung \(\sigma_z\) ist. 
+Diese Spannung lässt sich schreiben als:
+\[
+  \sigma_h = \frac{\nu}{1-\nu}\,\sigma_z,
+\]
+wobei \(\nu\) die Poissonzahl ist.  
+Sobald die seitliche Spannung berücksichtigt ist, können wir die vertikale Dehnung \(\varepsilon_z\) bestimmen. 
+Durch Einsetzen von \(\sigma_h\) in das hookesche Gesetz ergibt sich:
+\[
+  \varepsilon_z = \frac{\sigma_z}{E}\,\frac{1-\nu-2\nu^2}{1-\nu}.
+\]
+Aus der Definition des Oedometer-Moduls als Verhältnis von Spannung zu vertikaler Dehnung folgt dann direkt:
+\[
+  E_o = \frac{\sigma_z}{\varepsilon_z} = \frac{E(1-\nu)}{(1+\nu)(1-2\nu)}.
+\]
+\begin{beispiel}   
+Betrachten wir eine Probe mit einer Höhe von \(h_0 = 20\,\mathrm{mm}\), die unter einer Belastung von \(\sigma_z = 100\,\mathrm{kPa}\) um \(\Delta h = 0.5\,\mathrm{mm}\) verkürzt wird.  
+Zuerst berechnen wir die vertikale Dehnung:
+\[
+  \varepsilon_z = \frac{\Delta h}{h_0} = \frac{0.5}{20} = 0.025.
+\]
+Anschliessend ergibt sich der Oedometer-Modul direkt aus der Spannung geteilt durch die Dehnung:
+\[
+  E_o = \frac{\sigma_z}{\varepsilon_z} = \frac{100}{0.025} = 4000\,\mathrm{kPa}.
+\qedhere
+\]
+\end{beispiel}  
+Dieser Versuch verdeutlicht, dass der Oedometer-Modul \(E_o\) nicht mit dem dreidimensionalen Elastizitätsmodul \(E\) identisch ist. 
+Er hängt sowohl von \(E\) als auch von der Poissonzahl \(\nu\) ab und ergibt sich unmittelbar aus dem hookeschen Gesetz in Verbindung mit den speziellen Deformationsbedingungen des Oedometerversuchs.

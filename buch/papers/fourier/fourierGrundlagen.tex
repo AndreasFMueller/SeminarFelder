@@ -31,13 +31,13 @@ Der Summations- bzw. Frequenzindex wird mit $n$ bezeichnet, über den im Folgend
 	\begin{equation}
 		a_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \cos\left(n\omega t\right) dt.
 	\end{equation}
-	Die $a_n$ skalieren den geraden Anteil der Funktion, also die Cosinusanteile. 
+	Die $a_n$ skalieren den geraden Anteil der Funktion, also die Kosinusanteile. 
 	Eine gerade Funktion ist definiert durch die Eigenschaft $f_1(-t) = f_1(t)$. 
 	
 	
 	\item $b_n$ ist definieren mit 
 	\begin{equation}
-		b_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \sin\left(n\omega t\right) dt
+		b_n = \frac{2}{T} \int_{t_0}^{t_0 + T} f(t) \sin\left(n\omega t\right) dt.
 	\end{equation}
 	Die $b_n$ skalieren den ungeraden Anteil der Funktion, also die Sinusanteile. 
 	Eine ungerade Funktion ist definiert durch die Eigenschaft $f_1(-t) = -f_1(t)$. 
@@ -46,7 +46,7 @@ Der Summations- bzw. Frequenzindex wird mit $n$ bezeichnet, über den im Folgend
 
 
 Sind alle Koeffizienten bestimmt, lässt sich nahezu jede periodische Funktion beliebig genau approximieren.
-Die Koeffizienten $a_n$ und $b_n$ gewichten die Sinusanteile und Cosinusanteile der Schwingung für $n \ge 1$.
+Die Koeffizienten $a_n$ und $b_n$ gewichten die Sinusanteile und Kosinusanteile der Schwingung für $n \ge 1$.
 Je nach Ausgangsfunktion können die Abhängigkeiten der Koeffizienten von $n$ komplexe Formen annehmen.
 Im Allgemeinen nehmen die Amplituden mit wachsendem $n$ ab und das Abklingverhalten hängt von der Funktion ab und lässt sich nicht verallgemeinern.
 Mit jedem Summanden der Reihe erhöht sich die Frequenz des Terms proportional zum Index $n$.
@@ -60,6 +60,7 @@ f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\left( n\omega t \righ
 \begin{beispiel}
 
 Im Beispiel zur Dreiecksfunktion (Abbildung~\ref{fourier:fig:fourierdreieck}) entspricht  
+\index{Dreiecksfunktion}%
 \begin{equation}
 	f_1(t) = \sum_{\substack{n=1 \\ n\ \text{ungerade}}}^{5} \frac{-8}{\pi^2 n^2} \cos(n\pi t)
 \end{equation}
@@ -76,6 +77,8 @@ Während sich die Dreiecksfunktion aufgrund ihrer Stetigkeit beliebig genau durc
 \begin{beispiel}
 
 In der Rechtecksfunktion (Abbildung~\ref{fourier:fig:fourierrechteck}) mit Sprungstelle tritt das gibbssche Phänomen auf.  
+\index{Phänomen von Gibbs}%
+\index{Gibbs-Phänomen}%
 In der Nähe eines Sprungs entsteht ein charakteristischer Überschwinger, der selbst bei unendlich vielen Summanden nicht verschwindet.
 Das Gleichheitszeichen in \eqref{eq:fourier} gilt daher nur eingeschränkt.  
 Die Fourier-Reihe bis $n=5$ lautet
@@ -83,7 +86,7 @@ Die Fourier-Reihe bis $n=5$ lautet
 	f_2(t) = \frac{1}{2} + \sum_{\substack{n=1 \\ n\ \text{ungerade}}}^{5} \frac{2}{\pi n} \sin\left( \pi n t \right)
 \end{equation}
 und entspricht der roten Kurve.  
-Da die Rechteckfunktion um den Mittelwert $\frac{a_0}{2}=\frac{1}{2}$ ungerade ist, sind alle Cosinuskoeffizienten $a_n=0$ und die Sinuskoeffizienten bleiben nur für ungerade $n$ ungleich $0$.  
+Da die Rechteckfunktion um den Mittelwert $\frac{a_0}{2}=\frac{1}{2}$ ungerade ist, sind alle Kosinuskoeffizienten $a_n=0$ und die Sinuskoeffizienten bleiben nur für ungerade $n$ ungleich $0$.  
 \input{papers/fourier/fig/fig-fourier_Rechteck.tex}
 \end{beispiel}
 

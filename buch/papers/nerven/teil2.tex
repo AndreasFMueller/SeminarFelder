@@ -1,43 +1,119 @@
-%
-% teil2.tex -- Beispiel-File für teil2 
-%
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
-%
-% !TEX root = ../../buch.tex
-% !TEX encoding = UTF-8
-%
-\section{Teil 2 
-\label{nerven:section:teil2}}
-\kopfrechts{Teil 2}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+\section{FitzHugh-Nagumo-Modell}
+Das FitzHugh-Nagumo-Modell ist eine mathematische Vereinfachung des Hodgkin-Huxley-Modells. Entwickelt wurde es in den 1960er-Jahren von Richard FitzHugh und Jinichi Nagumo, um die komplexe Dynamik des neuronalen Aktionspotentials auf ein qualitativ ähnliches, aber mathematisch reduziertes System zurückzuführen.
+\index{FitzHugh-Nagumo-Modell}%
+\index{FitzHugh, Richard}%
+\index{Nagumo, Jinichi}%
+Das Modell vereinfacht die Nervenaktivität auf zwei Hauptvariablen, eines ist das Membranpotential $v(t)$ und eines die Erholungsvariable $w(t)$, die langsame Rückstellprozesse modelliert.
+\index{Erholungsvariable}%
+\index{Rückstellprozess}%
+Ziel war es, ein System zu formulieren, das zwar die fundamentalen Eigenschaften wie Reizantwort, Erregbarkeit und Rückkehr zum Ruhezustand bewahrt, aber deutlich einfacher zu analysieren ist 
+\index{Reizantwort}%
+\index{Erregbarkeit}%
+\cite{nerven:InaLammers.31.08.2015}.
+\subsubsection{Nutzen des FitzHugh-Nagumo-Modells}
+Das FitzHugh-Nagumo-Modell erlaubt eine qualitative Analyse neuronaler Aktivität mit einfachen Mitteln:
+\begin{itemize}
+    \item Simulation von Aktionspotentialen
+    \item Beschreibung von Refraktärzeiten
+    \item Untersuchung der Stabilität von Ruhezuständen
+    \item Analyse von Schwellwertverhalten bei Reizen
+    \item Einsatz in räumlich ausgedehnten Modellen (z.B. als Reaktions-Diffusions-System für Ausbreitung von Signalen im Gewebe)
+\end{itemize}
 
-\subsection{De finibus bonorum et malorum
-\label{nerven:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+Gerade in der Mathematik ist das Modell besonders beliebt, da es sich ideal für phasenraumanalytische Methoden eignet,
+insbesondere für die Betrachtung von Nullklinen, Fixpunkten und Grenzzyklen 
+\index{Nullkline}%
+\index{Fixpunkt}%
+\index{Grenzzyklus}%
+\cite{nerven:InaLammers.31.08.2015}.
+\subsubsection{Mathematische Beschreibung des Modells}
+Das FitzHugh-Nagumo-Modell besteht aus einem System zweier gekoppelter nichtlinearer Differentialgleichungen erster Ordnung:
+Diese Differentialgleichung wurden aus der fundamentalen Formel des Hodkin-Huxley-Modell hergeleitet, jedoch ist diese Herleitung sehr komplex und wird in dieser Arbeit nicht weiter erklärt. Aus der fundamentalen Formel vom Hodkin-Huxley-Modells werden die folgenden gekoppelten nichtlinearen Differentialgleichung erster Ordnung:
+\begin{align*}
+	\frac{dv}{dt} &= v - \frac{v^3}{3} - w + I_{\text{ext}} \\
+	\frac{dw}{dt} &= \varepsilon (v + a - b w).
+\end{align*}
+Dabei ist:
 
+\begin{itemize}
+	\item $v(t)$: Membranpotential (schnelle Variable)
+	\item $w(t)$: Erholungsvariable (langsame Variable)
+	\item $I_{\text{ext}}(t)$: externer Reizstrom
+	\item $\varepsilon \ll 1$: kleine Konstante, die die Zeitskalen trennt (Langsamkeit von $w$)
+	\item $a, b$: Systemparameter, die die Dynamik und Stabilität beeinflussen
+\end{itemize}
+Das ist ein zweidimensionales, also ebenes System von gewöhnlichen Differentialgleichungen. Dies veringert den mathematischen Aufwand und macht es uns sehr einfach, Eigenschaften mithilfe des Modells zu indentifizieren.
+Mit $w$ und $v$ als stetig und differenzierbaren Funktionen sind die Ergebnisse mithilfe von Nullklinien (welche in den nächsten Abschnitten erklärt werden) sehr leicht zu finden.
+
+Interpretation der beiden Gleichungen:
+\begin{itemize}
+    \item Die erste Gleichung beschreibt die schnelle Aktivierung des Neurons: sie enthält eine nichtlineare Rückkopplung durch den Term $v^3$, die für die typische ``Spike''-Form des Aktionspotentials sorgt.
+    \item Die zweite Gleichung reguliert die langsame Erholung und Rückführung zum Ruhezustand.
+\end{itemize}
+\subsubsection{Mathematische Einordnung}
+Das FitzHugh-Nagumo-Modell ist ein typisches Beispiel für ein Relaxationsoszillator-system, bei dem zwei Variablen auf unterschiedlichen Zeitskalen miteinander gekoppelt sind. Solche Systeme sind bekannt für:
+\index{Relaxationsoszillator}%
+\begin{itemize}
+	\item Sprunghaftes Verhalten (z. B. plötzlicher Aktionspotentialanstieg)
+	\item Rückkehr zum Ausgangszustand (Refraktärphase)
+	\item Nichtlineare Dynamik mit Sättigung und Schwellenwertverhalten
+\end{itemize}
+Mathematisch ist es ein nichtlineares System von gewöhnlichen Differentialgleichungen.
+\subsubsection{Analyse der Nullklinen}
+Die Nullklinen sind die geometrischen Orte im Phasenraum ($v$,$w$),
+an denen die jeweilige Zeitableitung einer Variable verschwindet
+(d. h. gleich null ist).
+Sie stellen somit die Punkte dar, in denen sich die entsprechende
+Variable nicht mehr ändert, und sind ein zentrales Werkzeug zur
+Analyse des Systems.
+\index{Phasenraum}%
+
+\begin{description}
+\item[\emph{v-Nullkline:}] $\dfrac{dv}{dt} = 0$.
+Setze:
+\[
+v - \frac{v^3}{3} - w + I_{\text{ext}} = 0.
+\]
+Nach $w$ umgestellt:
+\[
+w = v - \frac{v^3}{3} + I_{\text{ext}}.
+\]
+Dies ist eine \emph{kubische Kurve} im Phasenraum, typischerweise mit \emph{S-Form}.  
+\index{kubische Kurve}%
+Sie gibt an, wo das Membranpotential für festes $w$ im Gleichgewicht ist.
+
+\item[\emph{w-Nullkline:}] $\dfrac{dw}{dt} = 0$.
+Setze:
+\[
+\varepsilon (v + a - b w) = 0
+\quad\Rightarrow\quad
+v + a - b w = 0
+\quad\Rightarrow\quad
+w = \frac{v + a}{b}.
+\]
+Dies ist eine Gerade im Phasenraum.  
+\index{Gerade}%
+Sie gibt an, wo sich die Erholungsvariable für festes $v$ im
+Gleichgewicht befindet.
+Der Schnittpunkt beider Nullklinen ist ein Gleichgewichtspunkt des
+\index{Gleichgewichtspunkt}%
+Systems: Dort gilt sowohl $\frac{dv}{dt} = 0$ als
+auch $\frac{dw}{dt} = 0$.
+Dieser Punkt kann je nach Parametern stabil oder instabil sein.
+\end{description}
+
+\subsubsection{Bedeutung}
+Das Verhalten des Systems kann durch die Phasenporträtanalyse qualitativ vorhergesagt werden:
+\begin{itemize}
+	\item Wenn der Fixpunkt stabil ist, kehrt das System nach einem kleinen Reiz dorthin zurück → Ruhe.
+	\item Bei instabilem Fixpunkt (Sattel, Fokus) kommt es zu Grenzzyklen → rhythmisches Feuern.
+	\item Der Verlauf der Trajektorien im Phasenraum zeigt den zeitlichen Verlauf des Aktionspotentials.
+\end{itemize}
+Die S-Form der $v$-Nullkline erzeugt Sprungdynamik:
+\begin{itemize}
+	\item Linker Ast: Ruhe
+	\item Mittlerer Ast: instabil (Schwellwert)
+	\item Rechter Ast: Aktivierung („Spike“)
+\end{itemize}
+Das FitzHugh-Nagumo-Modell ist eine elegante und reduktive Darstellung neuronaler Erregung, das die komplexe Biologie auf zwei mathematisch gut fassbare Prozesse reduziert. Seine Stärke liegt in der Analyse der Dynamik im Phasenraum, insbesondere über die Nullklinen und Fixpunkte. Es eignet sich hervorragend zur Simulation, Theoriebildung, Lehre und bildet eine solide mathematische Brücke zwischen Biologie und dynamischer Systemtheorie.
 

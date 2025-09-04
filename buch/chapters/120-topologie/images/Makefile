@@ -7,7 +7,12 @@
 all:	unterteilung.pdf						\
 	sphaere.jpg							\
 	morse.pdf							\
-	toruspfade.pdf
+	toruspfade.pdf							\
+	torushomologie.pdf						\
+	rand.pdf							\
+	unterzyklen.pdf							\
+	zyklus.pdf							\
+	simplex.pdf
 
 sphaere.png:	sphaere.pov
 	povray +A0.1 +W1920 -H1080 -Osphaere.png sphaere.pov
@@ -33,3 +38,48 @@ torus-levels.jpg:	torus-levels.png Makefile
 
 toruspfade.pdf:	toruspfade.tex
 	pdflatex toruspfade.tex
+
+torushomologie.pdf:	torushomologie.tex
+	pdflatex torushomologie.tex
+
+rand.pdf:	rand.tex randpoints.tex
+	pdflatex rand.tex
+
+randpoints.tex:	randpoints.m
+	octave randpoints.m
+
+unterzyklen.pdf:	unterzyklen.tex u.tex
+	pdflatex unterzyklen.tex
+
+u.tex:	u.m
+	octave u.m
+
+zyklusgroesse = 1020x1080+450+0
+
+zhomolog.png:	zhomolog.pov tetra.inc tetrapoints.inc zyklusgitter.inc
+	povray +A0.1 -W1920 -H1080 -Ozhomolog.png zhomolog.pov
+zhomolog.jpg:	zhomolog.png Makefile
+	magick -extract $(zyklusgroesse) zhomolog.png zhomolog.jpg
+
+zyklus.png:	zyklus.pov tetra.inc tetrapoints.inc zyklusgitter.inc
+	povray +A0.1 -W1920 -H1080 -Ozyklus.png zyklus.pov
+zyklus.jpg:	zyklus.png Makefile
+	magick -extract $(zyklusgroesse) zyklus.png zyklus.jpg
+
+tetrapoints.inc:	tetra.m
+	octave tetra.m
+
+zyklus.pdf:	zyklus.tex zhomolog.jpg zyklus.jpg
+	pdflatex zyklus.tex
+
+2simplex.png:	2simplex.pov
+	povray +A0.1 -W1920 -H1080 -O2simplex.png 2simplex.pov
+2simplex.jpg:	2simplex.png Makefile
+	magick -extract 1234x1080+288+0 2simplex.png 2simplex.jpg
+simplex.pdf:	simplex.tex 2simplex.jpg
+	pdflatex simplex.tex
+
+sphere.png:	sphere.pov sphere.inc
+	povray +A0.1 -W1920 -H1080 -Osphere.png sphere.pov
+sphere.inc:	sphere.m
+	octave sphere.m

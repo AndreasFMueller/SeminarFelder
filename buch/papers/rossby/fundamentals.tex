@@ -2,8 +2,10 @@
 \subsection{Idealisiertes zonales und meridionales Windfeld}
 
 In der Meteorologie werden Windgeschwindigkeiten in ein rechtwinkliges
-Koordinatensystem zerlegt. Die {zonal}e Komponente \(u\) beschreibt die
-Geschwindigkeit in Ost-West-Richtung, die {meridional}e Komponente \(v\) jene
+Koordinatensystem zerlegt. Die \emph{zonal}e Komponente \(u\) beschreibt die
+\index{zonal}%
+Geschwindigkeit in Ost-West-Richtung, die \emph{meridional}e Komponente \(v\) jene
+\index{meridional}%
 in Nord-Süd-Richtung. Positive Werte von \(u\) stehen für eine Strömung nach
 Osten, positive Werte von \(v\) für eine Strömung nach Norden.
 
@@ -16,6 +18,7 @@ der Beziehung
 	\label{rossby:eq:zonal_wind}
 \end{equation}
 Ein Druckgradient oder eine vertikale Struktur sind nicht berücksichtigt, es handelt sich um ein rein theoretisches, horizontal homogenes Modell.
+\index{Druckgradient}%
 
 \begin{figure}
 	\centering
@@ -46,6 +49,8 @@ Die Erde rotiert einmal pro Tag um ihre eigene Achse. In einem rotierenden
 Bezugssystem wie der Erde treten dabei Scheinkräfte auf, die in der klassischen
 Mechanik berücksichtigt werden müssen. Eine davon ist die {Coriolis-Kraft},
 welche bewegte Luft- und Wassermassen auf der {Nordhalbkugel} nach rechts und
+\index{Luftmasse}%
+\index{Wassermasse}%
 auf der {Südhalbkugel} nach links ablenkt. Ihre Wirkung ist maximal an den
 Polen und verschwindet am Äquator. Die Coriolis-Kraft ist keine reale Kraft,
 sondern eine Folge der Drehung des Koordinatensystems.
@@ -70,7 +75,9 @@ Der Coriolis-Parameter ist definiert als
 	f(\varphi) = 2 \, \Omega \, \sin(\varphi),
 \end{equation}
 wobei \(\Omega\) die Erdrotationsrate bezeichnet.
+\index{Erdrotationsrate}%
 Die Breitenänderung von \(f\) mit der Nord–Süd-Koordinate \(y\) ergibt den \(\beta\)-Parameter
+\index{beta-Parameter@$\beta$-Parameter}%
 \begin{equation}
 	\beta = \frac{\partial f}{\partial y}
 	= \frac{\partial f}{\partial \varphi} \cdot \frac{\partial \varphi}{\partial y}.
@@ -89,25 +96,28 @@ folgt
 Damit ist klar: \(y\) ist die Nord–Süd-Koordinate auf der Erdoberfläche, direkt
 über \(y = a \varphi\) mit der geographischen Breite verknüpft.
 
-\begin{beispiel}
-	\paragraph{Rechenbeispiel: Velofahren in Zürich}
+\begin{beispiel}\textbf{Rechenbeispiel: Velofahren in Zürich}
+\index{Velofahren}%
 
-	Wir berechnen die Coriolis-Kraft auf einen Radfahrer in Zürich.
+\noindent
+Wir berechnen die Coriolis-Kraft auf einen Radfahrer in Zürich.
+\index{Radfahrer}%
 
-	\begin{description}
-		\item[Gegeben:] Geschwindigkeit \(v = 8.33\,\mathrm{m/s}\) (30\,km/h), Masse \(m =
-		      80\,\mathrm{kg}\), geographische Breite \(\varphi = 47^\circ\) (Zürich),
-		      Erdrotationsrate \(\Omega \approx 7.292 \times 10^{-5}\,\mathrm{rad/s}\).
-		\item[Formel:]
-		      \[
-			      F_C = 2\,m\,v\,\Omega\,\sin(\varphi)
-		      \]
-		\item[Einsetzen:]
-		      \[
-			      F_C \approx 2 \cdot 80 \cdot 8.33 \cdot 7.292 \times 10^{-5} \cdot \sin(47^\circ)
-			      \approx 0.070\,\mathrm{N}
-		      \]
-	\end{description}
+\begin{description}
+\item[Gegeben:] Geschwindigkeit \(v = 8.33\,\mathrm{m/s}\) (30\,km/h), Masse \(m =
+      80\,\mathrm{kg}\), geographische Breite \(\varphi = 47^\circ\) (Zürich),
+      Erdrotationsrate \(\Omega \approx 7.292 \times 10^{-5}\,\mathrm{rad/s}\).
+\item[Formel:]
+      \[
+	      F_C = 2mv\Omega\sin(\varphi)
+      \]
+\item[Einsetzen:]
+      \[
+	      F_C \approx 2 \cdot 80 \cdot 8.33 \cdot 7.292 \times 10^{-5} \cdot \sin(47^\circ)
+	      \approx 0.070\,\mathrm{N}
+\qedhere
+      \]
+\end{description}
 
 \end{beispiel}
 \noindent
@@ -122,6 +132,7 @@ einer bestimmten geographischen Breite~\(\varphi_0\)
 (Abbildung~\ref{fig:beta_plane}). Ziel dieser Vereinfachung ist es, die
 Breitenabhängigkeit der Coriolis-Kraft in mathematischen Modellen leichter
 handhabbar zu machen. Der \emph{Coriolis-Parameter} wird dazu in der Nähe der
+\index{Coriolis-Parameter}%
 Referenzbreite linear entwickelt:
 \begin{equation}
 	f(y) = f_0 + \beta y,
@@ -132,12 +143,12 @@ Referenzbreite ist und $y$ die meridionale Entfernung vom
 Referenzbreitenkreis bezeichnet.
 Der Term
 \begin{equation}
-	f_0 = 2\Omega \sin(\phi_0)
+	f_0 = 2\Omega \sin(\varphi_0)
 	\label{rossby:eq:coriolis_parameter_ref}
 \end{equation}
 bezeichnet den Coriolisparameter an der Referenzbreite, und
 \begin{equation}
-	\beta = \left.\frac{\partial f}{\partial y}\right|_{\phi_0} = \frac{2\Omega \cos(\phi_0)}{a}
+	\beta = \left.\frac{\partial f}{\partial y}\right|_{\varphi_0} = \frac{2\Omega \cos(\varphi_0)}{a}
 	\label{rossby:eq:beta_parameter_ref}
 \end{equation}
 beschreibt die Änderung von $f$ mit der geographischen Breite; $a$ ist der
