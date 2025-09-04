@@ -1,26 +1,157 @@
 //
-// sphere.pov -- distorted sphere
+// sphere.pov
 //
-// (c) 2023 Prof Dr Andreas Müller
+// (c) 2025 Prof Dr Andreas Müller
 //
-#include "../../../common/common.inc"
-
-place_camera(<-33, 20, 50>, <0, 0, 0>, 16/9, 0.04)
-lightsource(<10, 5, 40>, 1, White)
-
-arrow(-e1, e1, 0.01, White)
-arrow(-e2, e2, 0.01, White)
-arrow(-e3, e3, 0.01, White)
-
 #include "sphere.inc"
 
-mesh {
-	gitter()
+#macro grauekugel()
+sphere { <0, 0, 0>, 1
 	pigment {
-		color rgb<0.8,0.8,0.8>
+		color kartoffelfarbe
 	}
 	finish {
 		metallic
 		specular 0.9
 	}
 }
+#end
+
+#macro farbigekugel()
+intersection {
+	box { < -2, cos(radians(30)), -2 >, <2, 2, 2> }
+	sphere { <0, 0, 0>, 1 }
+	pigment {
+		color topfarbe
+	}
+	finish {
+		metallic
+		specular 0.9
+	}
+}
+
+intersection {
+	box { <-2, -2, -2>, <2, -cos(radians(30)), 2> }
+	sphere { <0, 0, 0>, 1 }
+	pigment {
+		color bottomfarbe
+	}
+	finish {
+		metallic
+		specular 0.9
+	}
+}
+
+intersection {
+	box { <-2, -cos(radians(30)), -2>, <2, cos(radians(30)), 2> }
+	sphere { <0, 0, 0>, 1 }
+	pigment {
+		color pfadfarbe
+	}
+	finish {
+		metallic
+		specular 0.9
+	}
+}
+#end
+
+grauekugel()
+
+#macro kugel(theta, phi)
+	< cos(phi) * sin(theta), cos(theta), sin(phi) * sin(theta) >
+#end
+
+union {
+	#declare phistep = pi / 180;
+	#declare phimin = 0;
+	#declare phimax = radians(360);
+	#declare thetastep = radians(10);
+	#declare thetamax = radians(170);
+	#declare thetamin = thetastep;
+	#declare theta = thetamin;
+	#while (theta < thetamax + thetastep/2)
+		#declare phi = phimin;
+		#declare p = kugel(theta, phi);
+		#while (phi < phimax - phistep/2)
+			#declare pold = p;
+			#declare phi = phi + phistep;
+			#declare p = kugel(theta, phi);
+			cylinder { pold, p, gitterradius }
+			sphere { p, gitterradius }
+		#end
+		#declare theta = theta + thetastep;
+	#end
+	pigment {
+		color kartoffelfarbe
+	}
+	finish {
+		metallic
+		specular 0.9
+	}
+}
+
+union {
+	sphere { kugel(0, 0), pfadradius }
+	#declare thetastep = radians(1);
+	#declare thetamin = 0;
+	#declare thetamax = radians(30);
+	#declare phistep = radians(10);
+	#declare phimax = radians(360);
+	#declare phimin = 0;
+	#declare phi = phimin;
+	#while (phi < phimax - phistep/2)
+		#declare theta = thetamin;
+		#declare p = kugel(theta, phi);
+		#while (theta < thetamax - thetastep/2)
+			#declare pold = p;
+			#declare theta = theta + thetastep;
+			#declare p = kugel(theta,phi);
+			cylinder { pold, p, pfadradius }
+			sphere { p, pfadradius }
+			cylinder { -pold, -p, pfadradius }
+			sphere { -p, pfadradius }
+		#end
+		#declare phi = phi + phistep;
+	#end
+	pigment {
+		color topfarbe
+	}
+	finish {
+		metallic
+		specular 0.9
+	}
+}
+
+
+union {
+	#declare thetastep = radians(1);
+	#declare thetamin = radians(30);
+	#declare thetamax = radians(90);
+	#declare phistep = radians(10);
+	#declare phimax = radians(360);
+	#declare phimin = 0;
+	#declare phi = phimin;
+	#while (phi < phimax - phistep/2)
+		#declare theta = thetamin;
+		#declare p = kugel(theta, phi);
+		#while (theta < thetamax - thetastep/2)
+			#declare pold = p;
+			#declare theta = theta + thetastep;
+			#declare p = kugel(theta,phi);
+			cylinder { pold, p, pfadradius }
+			sphere { p, pfadradius }
+			cylinder { -pold, -p, pfadradius }
+			sphere { -p, pfadradius }
+		#end
+		#declare phi = phi + phistep;
+	#end
+	pigment {
+		color pfadfarbe
+	}
+	finish {
+		metallic
+		specular 0.9
+	}
+}
+
+

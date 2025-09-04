@@ -12,7 +12,8 @@ all:	unterteilung.pdf						\
 	rand.pdf							\
 	unterzyklen.pdf							\
 	zyklus.pdf							\
-	simplex.pdf
+	simplex.pdf							\
+	sphere.pdf
 
 sphaere.png:	sphaere.pov
 	povray +A0.1 +W1920 -H1080 -Osphaere.png sphaere.pov
@@ -81,5 +82,14 @@ simplex.pdf:	simplex.tex 2simplex.jpg
 
 sphere.png:	sphere.pov sphere.inc
 	povray +A0.1 -W1920 -H1080 -Osphere.png sphere.pov
-sphere.inc:	sphere.m
-	octave sphere.m
+sphere.jpg:	sphere.png Makefile
+	magick -extract 1050x1080+434+0 sphere.png sphere.jpg
+kartoffel.png:	kartoffel.pov kartoffel.inc sphere.inc
+	povray +A0.1 -W1920 -H1080 -Okartoffel.png kartoffel.pov
+kartoffel.inc:	sphere.m
+	octave sphere.m 
+kartoffel.jpg:	kartoffel.png Makefile
+	magick -extract 1110x1080+414+0 kartoffel.png kartoffel.jpg
+sphere.pdf:	sphere.tex kartoffel.jpg sphere.jpg
+	pdflatex sphere.tex
+
