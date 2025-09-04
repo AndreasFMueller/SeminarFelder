@@ -57,7 +57,7 @@ sind in Abbildung~\ref{mongekant:fig:transport_plans} dargestellt.
 \includegraphics[width=0.48\textwidth]{papers/mongekant/code/ot_map_2}
 }
 \caption{Beispiele für Transportpläne $\gamma(x,y)$,
-wobei hier die Helligkeit den Betrag von $\gamma(x,y)$ angibt.
+wobei hier die Helligkeit an den Wert von $\gamma(x,y)$ gekoppelt ist.
 Der Transportplan wurde hier für die bessere Sichtbarkeit noch zusätzlich geglättet.
 }
 \label{mongekant:fig:transport_plans}
@@ -78,7 +78,7 @@ C_K(\mu, \nu)
 Diese Umformulierung hat drei wesentliche Vorteile:
 \begin{enumerate}
 \item \textbf{Linearität.}
-Das Problem \eqref{mongekant:eq:kantorowitch_problem}
+\eqref{mongekant:eq:kantorowitch_problem}
 ist eine lineare Optimierung,
 da sowohl die Zielfunktion
 als auch die Randbedingungen \eqref{mongekant:eq:kantorowitch_marginals}
@@ -119,20 +119,18 @@ in die Randbedingungen \eqref{mongekant:eq:kantorowitch_marginals} ein,
 \gamma(A \times Y)
 &=
 \int_A \delta_{T(x) \in Y}\, d\mu(x)
-\\
-&=
-\mu(A)
-\\
+&
 \gamma(X \times B)
 &=
 \int_X \delta_{T(x) \in B}\, d\mu(x)
 \\
 &=
+\mu(A)
+&&=
 \mu\left(T^{-1}[B]\right)
 \\
-&=
+&&&=
 \nu(B)
-,
 \end{align*}
 sehen wir,
 dass $\gamma(x,y)$ diese Bedingungen erfüllt.
@@ -171,7 +169,7 @@ starten wir mit dem Kantorowitch-Problem \eqref{mongekant:eq:kantorowitch_proble
 und versuchen die Randbedingungen \eqref{mongekant:eq:kantorowitch_marginals}
 mit Lagrangemultiplikatoren $\xi \colon X \to \mathbb{R}$ und
 $\eta \colon Y \to \mathbb{R}$ implizit in das Problem einzubauen,
-so dass $\gamma$ nur noch eine Wahrscheinlichkeitsmasse im Gebiet $X\times Y$ sein muss.
+so dass $\gamma$ nur noch eine Wahrscheinlichkeitsmass im Gebiet $X\times Y$ sein muss.
 \begin{align*}
 \begin{aligned}
 C_K(\mu, \nu)
@@ -210,8 +208,8 @@ Schauen wir uns den Term $\sup_{\xi, \eta} L(\xi, \eta)$ genauer an,
 .
 \end{align*}
 sehen wir,
-dass dieser Term implizit die Randbedingungen
-\eqref{mongekant:eq:kantorowitch_marginals} wirklich erzwingt.
+dass dieser Term,
+\eqref{mongekant:eq:kantorowitch_marginals} erzwingt.
 Verschieben wir jetzt das Supremum nach aussen,
 was erlaubt ist,
 da das Supremum über $\xi$ und $\eta$ nicht von $\gamma$ abhängt,
@@ -246,7 +244,7 @@ C_K(\mu, \nu)
 }_{\Xi}
 .
 \end{align*}
-Die Verschiebung des Infimums nach innen ist erlabut,
+Die Verschiebung des Infimums nach innen ist erlaubt,
 da die ersten beiden Integrale nicht von $\gamma$ abhängen.
 Betrachten wir jetzt den Term
 \begin{align*}
@@ -289,7 +287,7 @@ Um die Interpretation des dualen Problems zu verdeutlichen,
 betrachten wir das folgende Beispiel:
 
 Wir betrachten ein Unternehmen,
-dass Kaffekapseln herstellt und in.
+dass Kaffekapseln herstellt und zu ihren Kunden nach Hause liefert.
 Insgesamt kostet es das Unternehmen $c(x,y)$ Franken,
 um eine Schachtel der nötigen Kaffekapseln von Ort $x$ zu Ort $y$ zu transportieren,
 also von den Lagern zu den Haushalten.
@@ -316,6 +314,10 @@ Das bedeutet,
 dass sie dem Unternehmen Geld bezahlen,
 um die Sendung an einem bestimmten Ort abzuholen bzw. zu liefern.
 Damit können die Gesamtkosten gesenkt werden.
+Das funktioniert natürlich nur,
+wenn die genauen Mengen an Kaffekapseln,
+die von $x$ nach $y$ transportiert werden müssen,
+im Voraus bekannt und fixiert sind.
 
 \subsection{Lineare Programmierung%
 \label{mongekant:subsection:linear_programming}}
@@ -359,4 +361,4 @@ C_K(\mu, \nu)
 \end{align*}
 Dies entspricht einem linearen Programm,
 wie man es aus der Optimierung kennt.
-Tatsächlich wird Kantorowitch als der Begründer der Linearen Programmierung angesehen.
+Tatsächlich wird Kantorowitch als der Begründer der \emph{Linearen Programmierung} angesehen.

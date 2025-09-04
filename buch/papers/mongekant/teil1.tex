@@ -24,7 +24,7 @@ C_M(\mu, \nu)
 .
 \label{mongekant:eq:monge_problem}
 \end{align}
-Wir schreiben \emph{Infimum} und nicht \emph{Minimum},
+Wir verwenden das \emph{Infimum} und nicht das \emph{Minimum},
 weil es nicht immer eine Abbildung $T$ gibt,
 die das Infimum annimmt.
 Ein konkretes Gegenbeispiel sehen wir in
@@ -65,14 +65,14 @@ Diesen Zusammenhang erhält man,
 wenn man \eqref{mongekant:eq:absolute_continuity} ableitet und
 Gleichheit für alle möglichen Teilmengen $A$ und $B$ fordert.
 \end{itemize}
-Die Beweise für die Existenz eines optimalen Transportmaps in beiden Szenarien
+Die Beweise für die Existenz eines optimalen Transports $T$ in beiden Szenarien
 benötigen tiefere Resultate aus Topologie und Masstheorie und
 liegen ausserhalb des Umfangs dieses Seminars.
 
 \subsection{Zusammenhang mit der Monge-Ampère-Gleichung}
 Der interessierte Leser fragt sich vielleicht,
 ob die Monge-Ampère-Gleichung aus Kapitel~\ref{chapter:mongeampere}
-mit dem Monbe-Problem zusammenhängt.
+mit dem Monge-Problem zusammenhängt.
 Tatsächlich gibt es einen Zusammenhang,
 den wir nun kurz erläutern wollen.
 
@@ -86,9 +86,8 @@ also muss
 \int_{T(A)} g(y) \, dy
 \end{align*}
 für alle messbaren $A$ gelten.
-gelten.
 Setzt man $y = T(x)$,
-erhalten wir
+folgt
 \begin{align*}
 \int_{A} f(x) \, dx
 &=
@@ -106,14 +105,14 @@ ergibt sich
 .
 \end{align*}
 Da die Gleichheit für alle messbaren $A$ gelten muss,
-können wir die Integranden gleichsetzen und erhalten
+kann man die Integranden gleichsetzen und erhält
 \begin{align*}
 f(x)
 &=
 g\,\Bigl(\nabla \varphi(x)\Bigr) \det\Bigl(D^2 \varphi(x)\Bigr)
 .
 \end{align*}
-Lösen wir nach $\det(D^2 \varphi(x))$ auf,
+Löst man nach $\det(D^2 \varphi(x))$ auf,
 folgt die Monge-Ampère-Gleichung
 \begin{align*}
 \det\,\Bigl(D^2 \varphi(x)\Bigr)
@@ -124,12 +123,12 @@ folgt die Monge-Ampère-Gleichung
 In \cite{mongekant:brenier} wird eindrücklich gezeigt,
 dass die Abbildung $T = \nabla \varphi$
 die eindeutige Lösung des Monge-Problems \eqref{mongekant:eq:monge_problem} ist,
-wenn $c(x,y) = \left\lvert x - y\right\rvert^2$ ist.
+wenn $c(x,y) = \left\lvert x - y\right\rvert^2$ ist und die obigen Bedingungen gelten.
 
 \subsection{Fallbeispiel: Nichtexistenz einer Lösung%
 \label{mongekant:subsection:monge_inexistence}}
 Betrachten wir den Fall,
-in dem die Quellverteilung $\mu$ eine Punktmasse ist,
+in dem die Quellverteilung $\mu$ eine Punktmasse an Stelle $x_1$ ist,
 \begin{align*}
 \mu
 &=
@@ -142,6 +141,7 @@ und die Zielverteilung $\nu$ aus zwei unterschiedlichen Punkten besteht
 \frac{1}{2} \delta_{y_1} + \frac{1}{2} \delta_{y_2}
 ,\quad
 \text{wobei } y_1 \neq y_2
+.
 \end{align*}
 Dann gilt $\nu(\{y_1\}) = \frac{1}{2}$,
 aber für
@@ -164,6 +164,7 @@ x_1
 \end{cases}
 \end{align*}
 Somit kann kein Bildmass $T_{\#}\mu$ die Gleichung $T_{\#}\mu=\nu$ erfüllen --
-das Monge‑Problem \eqref{mongekant:eq:monge_problem} besitzt in diesem Beispiel keine Lösung.
+das Monge‑Problem \eqref{mongekant:eq:monge_problem}
+besitzt in diesem Beispiel keine Lösung.
 
 

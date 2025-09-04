@@ -27,7 +27,7 @@ diskutieren ihre mathematischen Eigenschaften
 (Abschnitt~\ref{mongekant:subsection:wasserstein}).
 \item \emph{Interpolation zwischen Verteilungen:}
 Mittels baryzentrischer Mittel interpolieren
-wir zwischen Wahrscheinlichkeits­verteiungen unterschiedlicher Dimensione
+wir zwischen ein- und zweidimensionalen Wahrscheinlichkeitsverteilungen
 (Abschnitt~\ref{mongekant:subsection:interpolation}).
 \item \emph{Farbadaption in der Bildverarbeitung}
 Wir zeigen,
@@ -48,6 +48,14 @@ wird hier die benötigte \glqq Arbeit\grqq gemessen,
 um eine Verteilung in die andere zu transformieren.
 Da wir genau diese Arbeit im Kantorowitch-Problem minimieren,
 erhalten wir als Nebenprodukt die Wasserstein-Metrik.
+Diese Idee wird in Abbildung~\ref{mongekant:fig:wasserstein} illustriert.
+
+\begin{figure}
+\centering
+\input{papers/mongekant/fig/wasserstein}
+\caption{Wasserstein-Metrik im Vergleich zu punktweiser euklidischer Distanz}
+\label{mongekant:fig:wasserstein}
+\end{figure}
 
 Seien $\mu, \nu \in \mathcal{P}(\Omega)$ Wahrscheinlichkeitsmasse
 auf einem metrischen Raum $(\Omega, d)$ und $p \in [1, \infty)$.
@@ -74,7 +82,8 @@ d.h. sie erfüllt die vier Axiome:
 \item $\wasserstein(\mu, \rho) \leq \wasserstein(\mu, \nu) + \wasserstein(\nu, \rho)$
 (Dreiecksungleichung)
 \end{itemize}
-Die Beweise für diese Eigenschaften sind allerdings ausserhalb des Umfangs dieses Seminars.
+Die Beweise für diese Eigenschaften sind allerdings
+ausserhalb des Umfangs dieses Seminars.
 Wer sich dafür interessiert,
 sei auf \cite{mongekant:villani} verwiesen.
 
@@ -82,7 +91,7 @@ sei auf \cite{mongekant:villani} verwiesen.
 \label{mongekant:subsection:interpolation}}
 
 In vielen Anwendungen
-(Bild‑ und Signalverarbeitung, Statistik, maschinelles Lernen) ist es nötig,
+(z,B. Bild‑ und Signalverarbeitung, Statistik, maschinelles Lernen) ist es nötig,
 zwei Wahrscheinlichkeitsverteilungen zu \emph{mischen}
 oder zu \emph{interpolieren}.
 Die naheliegende Idee ist die euklidische Interpolation
@@ -98,12 +107,11 @@ Falls $\alpha=0$,
 dann ist $\rho=\mu$,
 während für $\alpha=1$ gilt $\rho=\nu$.
 Diese Interpolation ist allerdings nur sinnvoll,
-wenn $\mu$ und $\nu$ auf dem gleichen Raum definiert sind.
+wenn $\mu$ und $\nu$ sehr ähnlich sind und an der selben geometrischen Lage liegen.
 Optimaler Transport bietet eine elegante Alternative,
-die auch für Verteilungen auf unterschiedlichen Räumen funktioniert.
 Die Idee ist,
 anstatt die Verteilungen direkt zu mischen,
-die \emph{Baryzentren} der Verteilungen zu berechnen.
+die gewichteten \emph{Baryzentren} der Verteilungen zu berechnen.
 Seien $\mu, \nu \in \mathcal{P}(\Omega)$ Wahrscheinlichkeitsmasse
 auf einem metrischen Raum $(\Omega, d)$
 und $p \in [1, \infty)$.
@@ -112,8 +120,8 @@ Dann ist das Wasserstein-Baryzentrum
 \rho_W(\alpha)
 &:=
 \underset{\rho \in \mathcal{P}(\Omega)}{\mathrm{arg\,min}}\;
-(1-\alpha) \wasserstein(\mu, \rho)^p
-+ \alpha \wasserstein(\nu, \rho)^p
+(1-\alpha) \wasserstein(\mu, \rho)
++ \alpha \wasserstein(\nu, \rho)
 \label{mongekant:eq:wasserstein_barycenter}
 .
 \end{align}
@@ -173,7 +181,7 @@ wobei wir $\wasserstein(\mu, \nu)$ mit $d(\mu, \nu) = (\mu - \nu)^2$ ersetzen:
 + \alpha (\nu - \rho)^2
 .
 \end{align*}
-Leiten wir diesen nach $\rho$ ab,
+Leiten wir diesen Ausdruck nach $\rho$ ab,
 und setzen die Ableitung auf $0$,
 erhalten wir
 \begin{align*}
