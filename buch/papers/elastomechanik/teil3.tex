@@ -29,6 +29,7 @@ Das hookesche Gesetz in tensorieller Form verknüpft Spannungen $\sigma_{ij}$ mi
 \begin{equation}
 	\sigma_{ij} = 
 	\lambda \delta_{ij} \varepsilon_{kk} + 2\mu \varepsilon_{ij}.
+\label{elastomechanik:math:eqn:materialgesetz}
 \end{equation}
 Hierbei sind $\lambda$ und $\mu$ (Lamé-Konstanten) materialabhängige Parameter. Für den Zusammenhang mit technischen Konstanten gilt:
 \begin{equation}
@@ -49,7 +50,13 @@ mit
 \end{equation}
 
 \subsection{Navier-Cauchy-Gleichungen (Feldgleichungen)}
-Durch Einsetzen des Materialgesetzes (15.31) in die Gleichgewichtsbedingungen (15.35) erhalten wir die fundamentalen Feldgleichungen:
+Durch Einsetzen des Materialgesetzes
+%(15.31)
+\eqref{elastomechanik:math:eqn:materialgesetz}
+in die Gleichgewichtsbedingungen
+%(15.35)
+\eqref{elastomechanik:math:eqn:gleichgewicht}
+erhalten wir die fundamentalen Feldgleichungen:
 \begin{equation}
 	\mu \nabla^2 u_i + (\lambda + \mu) \frac{\partial}{\partial x_i} (\nabla \cdot \vec{u}) + f_i =
 	0.
@@ -181,7 +188,8 @@ Zusätzlich kann das Problem über ein Energieprinzip formuliert werden:
 			= -\int_V \sigma_{ij,j} \, \delta u_i \, dV + \int_{\Gamma} \sigma_{ij} n_j \, \delta u_i \, dS.
 		\end{equation}
 		Auf $\Gamma_t$ gilt $\sigma_{ij} n_j = t_i$, auf $\Gamma_u$ gilt $\delta u_i = 0$. 
-		Damit reduziert sich (15.59) zu:
+		Damit reduziert sich \eqref{eq:pvw} % (15.59)
+		zu:
 		\begin{equation}
 			\int_V \left( -\sigma_{ij,j} - f_i \right) \delta u_i \, dV = 
 			0.

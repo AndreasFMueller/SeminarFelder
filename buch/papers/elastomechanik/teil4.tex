@@ -11,11 +11,17 @@
 %\usepackage[ngerman]{babel}
 \section{Beispiele aus der Bauingenieurspraxis}
 \label{elastomechanik:section:teil4}
-In den vorangegangenen Abschnitten (15.1–15.4) haben wir die allgemeinen Grundlagen der Elastizitätstheorie entwickelt: 
-von der Definition der Verzerrungen über das Hookesche Gesetz bis hin zu den Gleichgewichtsbedingungen und der Formulierung der Navier--Cauchy-Gleichungen. 
+In den vorangegangenen Abschnitten
+(\ref{elastomechanik:section:Einleitung}--\ref{elastomechanik:section:herleitung2})
+haben wir die allgemeinen Grundlagen der Elastizitätstheorie entwickelt: 
+von der Definition der Verzerrungen über das Hookesche Gesetz bis hin zu den Gleichgewichtsbedingungen und der Formulierung der Navier-Cauchy-Gleichungen. 
 Diese theoretischen Resultate bilden die Grundlage, um reale Ingenieurprobleme zu beschreiben. 
 Im Folgenden wollen wir an zwei typischen Beispielen, einem Balken unter Mittellast und einem Oedometerversuch, aufzeigen, wie sich aus den allgemeinen Gleichungen praktische Berechnungen ableiten lassen. 
-Zur Erinnerung fassen wir die wesentlichen Zusammenhänge zusammen, die wir in Abschnitt 15.1–15.4 hergeleitet haben:
+Zur Erinnerung fassen wir die wesentlichen Zusammenhänge zusammen,
+die wir in Abschnitt
+%15.1–15.4
+\ref{elastomechanik:section:Einleitung}--\ref{elastomechanik:section:herleitung2})
+hergeleitet haben:
 die Kinematik
 \[
   \varepsilon_{ij} = \tfrac12(\partial_i u_j + \partial_j u_i),
@@ -28,7 +34,7 @@ und das Gleichgewicht
 \[
   \partial_j \sigma_{ij} + f_i = 0,
 \]
-die zusammen zu den Navier--Cauchy-Gleichungen führen.
+die zusammen zu den Navier-Cauchy-Gleichungen führen.
 Für schlanke Balken werden zusätzlich die Euler–Bernoulli-Annahmen getroffen. 
 Diese lauten:
 \begin{itemize}
@@ -38,7 +44,10 @@ Diese lauten:
 \end{itemize}
 Unter diesen Voraussetzungen ergibt sich die Balkendifferentialgleichung. 
 Aus den allgemeinen Gleichgewichtsbedingungen der Elastizitätstheorie 
-(vgl. Abschnitt 15.3.2) folgt zunächst, dass die Querkraft \(Q(x)\) mit der 
+(vgl. Abschnitt
+\ref{elastomechanik:math:subsection:gleichgewicht})
+%15.3.2)
+folgt zunächst, dass die Querkraft \(Q(x)\) mit der 
 Streckenlast \(q(x)\) verknüpft ist durch
 \[
   Q'(x) + q(x) = 0.
@@ -122,7 +131,8 @@ und
 \subsection{Oedometerversuch}
 Im Oedometerversuch wird eine Bodenprobe so eingespannt, dass seitliche Dehnungen nicht auftreten können. 
 Belastet man die Probe mit einer vertikalen Spannung \(\sigma_z\), so kann sie sich ausschliesslich in vertikaler Richtung verkürzen.  
-Der Zusammenhang zwischen Spannung und Dehnung lässt sich aus dem isotropen hookeschen Gesetz ableiten (vgl. Abschnitt 15.2). 
+Der Zusammenhang zwischen Spannung und Dehnung lässt sich aus dem isotropen hookeschen Gesetz ableiten (vgl. Abschnitt \ref{elastomechanik:section:teil})
+% 15.2). 
 Da die seitlichen Dehnungen unter den Oedometerversuchsbedingungen verschwinden, setzen wir
 \[
   \varepsilon_x = \varepsilon_y = 0.
@@ -151,6 +161,7 @@ Zuerst berechnen wir die vertikale Dehnung:
 Anschliessend ergibt sich der Oedometer-Modul direkt aus der Spannung geteilt durch die Dehnung:
 \[
   E_o = \frac{\sigma_z}{\varepsilon_z} = \frac{100}{0.025} = 4000\,\mathrm{kPa}.
+\qedhere
 \]
 \end{beispiel}  
 Dieser Versuch verdeutlicht, dass der Oedometer-Modul \(E_o\) nicht mit dem dreidimensionalen Elastizitätsmodul \(E\) identisch ist. 

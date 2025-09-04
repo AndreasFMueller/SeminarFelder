@@ -6,13 +6,15 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Einführung in die mathematische Formulierung der Elastizitätstheorie}
+\section{Einführung in die mathematische Formulierung der Elastizitätstheorie
+\label{elastomechanik:section:math}}
 \subsection{Einleitung: Motivation und Ziel der Elastizitätstheorie}
 Die Elastizitätstheorie beschreibt das Verhalten fester Körper unter mechanischer Belastung. 
 Ziel ist es, aus bekannten Kräften oder Verschiebungen die Spannungs- und Dehnungsverteilung im Inneren eines Körpers zu berechnen. 
 Diese Beschreibung basiert auf der Kontinuumsmechanik und bildet die Grundlage für viele Anwendungen im Bauingenieurwesen, Maschinenbau und der Materialwissenschaft.
 
-\subsection{Spannungen und Gleichgewichtsbedingungen}
+\subsection{Spannungen und Gleichgewichtsbedingungen
+\label{elastomechanik:math:subsection:gleichgewicht}}
 Die Spannungsverteilung beschreibt, welche inneren Kräfte im Material auftreten, um äussere Belastungen auszugleichen. 
 Diese Kräfte werden durch den Cauchy-Spannungstensor $\sigma_{ij}$ dargestellt. 
 Das Indesxpaar $i$, $j$ gibt an, in welcher Richtung die Spannung wirkt ($i$) und auf welcher Flächenorientierung ($j$) sie angreift.
@@ -20,6 +22,7 @@ Damit ein Körper im mechanischen Gleichgewicht ist, muss an jedem Punkt die Imp
 \begin{equation}
 	\frac{\partial \sigma_{ij}}{\partial x_j} + f_i = 
 	0
+\label{elastomechanik:math:eqn:gleichgewicht}
 \end{equation}
 Hierbei gilt:
 \begin{itemize}
@@ -152,6 +155,7 @@ und steht über den Verzerrungsdeviator $e_{ij}$ in folgender Beziehung:
 \begin{equation}
 	s_{ij} = 
 	2\mu e_{ij}.
+\label{elastomechanik:math:eqn:sij}
 \end{equation}
 Hierbei gilt
 \begin{equation}
