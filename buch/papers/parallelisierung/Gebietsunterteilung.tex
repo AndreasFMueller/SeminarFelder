@@ -196,12 +196,30 @@ mit
 \subsubsection*{Bemerkung zur Gebietsunterteilung im stationären Fall.}  
 Im zeitabhängigen Fall werden Ghost-Zellen bei jedem Zeitschritt automatisch mit den Werten der Nachbargebiete gefüllt.  
 Im stationären Fall dagegen gibt es keine Iteration in der Zeit, sodass die Ghost-Werte nicht direkt verfügbar sind.  
-Um die Kopplung zwischen Subdomains herzustellen, gibt es zwei Ansätze:
+Um die Kopplung zwischen Subdomains herzustellen, gibt es zwei grundsätzliche Ansätze:
+
 \begin{itemize}
-	\item \emph{Algebraisch:} Das Gesamtsystem wird blockweise aufgestellt. Die inneren Unbekannten jedes Teilgebiets bilden Blöcke $A_{pp}$, die Kopplungen erscheinen in den Randblöcken $C_{pq}$. Verfahren wie das Schur-Komplement reduzieren die Lösung auf die Schnittkanten.
-	\item \emph{Iterativ:} Domain-Decomposition-Verfahren wie Schwarz- oder Neumann-Neumann-Methoden berechnen Teilgebiete mehrfach und tauschen dabei Interface-Werte, bis Konsistenz erreicht ist.
+	\item \emph{Algebraischer Ansatz:}  
+	Das Gesamtsystem wird blockweise aufgestellt.  
+	Die inneren Unbekannten jedes Teilgebiets bilden die Blöcke \(A_{pp}\), während die Kopplungen zu Nachbargebieten in den Randblöcken \(C_{pq}\) erscheinen.  
+	Durch Verfahren wie das Schur-Komplement kann die Lösung des Gesamtsystems auf die Schnittkanten reduziert werden, wodurch die Rechenlast deutlich sinkt.  
+	Weiterführende Details finden sich beispielsweise in \cite{Smith1996}.
+	
+	\item \emph{Iterative Ansätze:}  
+	Domain-Decomposition-Verfahren berechnen die Teilgebiete wiederholt und tauschen dabei nach jeder Iteration die Werte an den Schnittkanten aus, bis Konsistenz erreicht ist.  
+	
+	Ein klassisches Beispiel ist die \emph{Schwarz-Methode}.  
+	Hier werden an den künstlichen Rändern zwischen den Teilgebieten \emph{Dirichlet-Randbedingungen} vorgegeben, d.\,h.\ die benachbarten Teilgebiete liefern feste Temperaturwerte, die als Randwerte eingesetzt werden.  
+	Genau diese Art von Randbedingungen haben wir auch im obigen Beispiel mit festen Temperaturen an den Außenrändern des Gitters verwendet.  
+	Die Schwarz-Methode ist einfach und robust, kann jedoch bei vielen Teilgebieten langsam konvergieren.  
+	Eine ausführliche Darstellung findet sich in \cite{QuarteroniValli1999}.  
+	
+	Eine leistungsfähigere Alternative ist die \emph{Neumann--Neumann-Methode}.  
+	In diesem Verfahren werden an den Schnittkanten \emph{Neumann-Randbedingungen} eingesetzt, also Bedingungen für die Flüsse (z.\,B.\ Wärmeströme) über die Gebietsgrenzen hinweg.  
+	Die Subdomänen werden parallel berechnet, und die Flusswerte an den Interfaces werden iterativ korrigiert, bis Konsistenz erreicht ist.  
+	Dieser Ansatz eignet sich besonders für elliptische Probleme und skaliert gut auf parallelen Rechnerarchitekturen.  
+	Details hierzu finden sich in \cite{Gander2019}.
 \end{itemize}
-Damit zeigt sich: Auch im stationären Fall bleibt die Logik der Ghost-Zellen erhalten,sie müssen jedoch aktiv durch Kopplungsalgorithmen bestimmt werden.
 
 
 \subsection{Praktische Aspekte}
