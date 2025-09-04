@@ -53,7 +53,7 @@ Diese Idee wird in Abbildung~\ref{mongekant:fig:wasserstein} illustriert.
 \begin{figure}
 \centering
 \input{papers/mongekant/fig/wasserstein}
-\caption{Wasserstein-Metrik im Vergleich zu punktweiser euklidischer Distanz}
+\caption{Punktweise euklidische Distanz im Vergleich zu Wasserstein-Metrik.}
 \label{mongekant:fig:wasserstein}
 \end{figure}
 
@@ -148,7 +148,8 @@ deutlich aufwändiger ist als die euklidische Interpolation.
 \subfigure[Euklidische Interpolation\label{mongekant:fig:barycenter_ray_euclidean}]{
 \includegraphics[scale=0.8]{papers/mongekant/code/barycenter_ray_euclidean}
 }
-\subfigure[Wasserstein Interpolation\label{mongekant:fig:barycenter_ray_wasserstein}]{
+\subfigure[Wasserstein-Interpolation mit $d(x,y) = |x - y|^2$.%
+\label{mongekant:fig:barycenter_ray_wasserstein}]{
 \includegraphics[scale=0.8]{papers/mongekant/code/barycenter_ray_wasserstein}
 }
 \caption{Interpolation zwischen einer {\color{red}Normal-} und
@@ -162,7 +163,8 @@ einer {\color{blue}Rayleigh-}Verteilung}
 \subfigure[Euklidische Interpolation\label{mongekant:fig:euclidean2d}]{
 \includegraphics[scale=0.8]{papers/mongekant/code/euclidean2d}
 }
-\subfigure[Wasserstein Interpolation\label{mongekant:fig:wasserstein2d}]{
+\subfigure[Wasserstein-Interpolation mit $d(x,y) = |x - y|^2$.%
+\label{mongekant:fig:wasserstein2d}]{
 \includegraphics[scale=0.8]{papers/mongekant/code/wasserstein2d}
 }
 \caption{Interpolation zwischen zwei Bildern}
@@ -220,6 +222,7 @@ Ein Beispielresultat ist in Abbildung~\ref{mongekant:fig:adaption} dargestellt.
 \includegraphics[width=\textwidth]{papers/mongekant/code/adaption}
 \caption{Farbadaptierung zwischen Bildern.
 Dabei sind die orginalen Bilder in der Diagonalen angeordnet.
+Zudem wurde $c(x,y) = |x - y|^2$ als Kostenfunktion verwendet.
 }
 \label{mongekant:fig:adaption}
 \end{figure}
