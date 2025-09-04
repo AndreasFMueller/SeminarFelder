@@ -9,31 +9,42 @@
 \section{Einleitung}
 \label{elastomechanik:section:Einleitung}
 Wer schon einmal ein Stück Knetmasse in der Hand gedrückt hat, hat dabei ganz praktisch erlebt, wie sich Materialien unterschiedlich verhalten können. 
-Während die Knete seitlich ausweicht wenn man sie zusammendrückt gibt es andere Materialien die sich nur schwer verformen lassen und dabei ihr Volumen nahezu beibehalten. 
+Während die Knete seitlich ausweicht, wenn man sie zusammendrückt,
+gibt es andere Materialien, die sich nur schwer verformen lassen und
+dabei ihr Volumen nahezu beibehalten.
 Willkommen in der faszinierenden Welt der Elastizitätstheorie!
 In diesem Kapitel der Seminararbeit über Felder beschäftigen wir uns mit der mathematischen Beschreibung elastischer Materialien.
-Ziel ist es Deformationen also Formänderungen infolge äusserer Belastungen zu berechnen und zu verstehen wie sich Körper unter Krafteinwirkung verhalten.
-Ein zentrales Modell zur Beschreibung dieses Verhaltens ist das sogenannte Hookesche Gesetz.
+Ziel ist es, Deformationen, also Formänderungen infolge äusserer Belastungen,
+zu berechnen und zu verstehen, wie sich Körper unter Krafteinwirkung verhalten.
+Ein zentrales Modell zur Beschreibung dieses Verhaltens ist das sogenannte
+hookesche Gesetz.
 Es stellt in seiner einfachsten Form einen linearen Zusammenhang zwischen mechanischer Spannung $\sigma$ Kraft pro Fläche und Dehnung $\varepsilon$ relative Längenänderung her:
-	\begin{equation}
+	\begin{equation*}
 		\sigma = 
-		E \cdot \varepsilon
-	\end{equation}
+		E \cdot \varepsilon.
+	\end{equation*}
 Der Proportionalitätsfaktor $E$ ist der Elastizitätsmodul eines Materials.
-Er beschreibt wie steif ein Material ist je grösser $E$ desto weniger lässt es sich dehnen oder stauchen.
+Er beschreibt wie steif ein Material ist.
+Je grösser $E$ desto weniger lässt es sich dehnen oder stauchen.
 Für eine vollständige Beschreibung des Materialverhaltens insbesondere im dreidimensionalen Raum genügt diese einfache Beziehung jedoch nicht.
-In der Regel benötigt man zwei Materialkonstanten um das mechanische Verhalten realistisch zu modellieren.
+In der Regel benötigt man zwei Materialkonstanten,
+um das mechanische Verhalten realistisch zu modellieren.
 Hier lohnt sich ein Blick auf zwei extreme Beispiele:
 \begin{description}
-\item[\textbf{Inkompressible Materialien:}] Wie Gummi behalten ihr Volumen unter Belastung nahezu gleich.
+\item[\textbf{Inkompressible Materialien}] wie Gummi behalten ihr Volumen unter Belastung nahezu gleich.
 Wird Druck ausgeübt weichen sie zur Seite aus.
 Dies lässt sich physikalisch durch eine hohe Poissonzahl beschreiben.
-\item[\textbf{Kompressible Materialien:}]  Wie Schaumstoff reagieren hingegen stark auf Volumenänderung.
+\item[\textbf{Kompressible Materialien}] wie Schaumstoff reagieren hingegen stark auf Volumenänderung.
 Sie lassen sich leicht zusammendrücken wobei sich ihr Volumen deutlich reduziert.
 Dies lässt sich physikalisch durch das sogenannte Kompressionsmodul beschreiben.
 \end{description}
 
 Solche Beobachtungen aus dem Alltag lassen sich mithilfe der Mathematik analysieren.
-Im Verlauf dieser Arbeit werden wir dazu Felder einführen die die räumliche Verteilung von Kräften Spannungen und Verformungen beschreiben.
-Auf dieser Grundlage entwickeln wir mathematische Modelle insbesondere in Form partieller Differentialgleichungen die das elastische Verhalten von Körpern präzise abbilden.
-Mathematik trifft hier auf physikalische Intuition ein spannendes Zusammenspiel das nicht nur theoretisch herausfordernd sondern auch praktisch äusserst relevant ist.
+Im Verlauf dieser Arbeit werden wir dazu Felder einführen, die die
+räumliche Verteilung von Kräften, Spannungen und Verformungen beschreiben.
+Auf dieser Grundlage entwickeln wir mathematische Modelle insbesondere
+in Form partieller Differentialgleichungen die das elastische Verhalten
+von Körpern präzise abbilden.
+Mathematik trifft hier auf physikalische Intuition ein spannendes
+Zusammenspiel, das nicht nur theoretisch herausfordernd, sondern auch
+praktisch äusserst relevant ist.

@@ -42,10 +42,10 @@ Isotrope Annahmen vereinfachen die mathematische Modellierung deutlich und finde
 \item[\textbf{Kinematische Gleichungen (Verzerrungsdefinition):}] Die kinematischen Gleichungen beschreiben den Zusammenhang zwischen den Verschiebungen $u_i$ eines Punktes im Raum und den daraus resultierenden Verzerrungen $\varepsilon_{ij}$. 
 Sie sind die Grundlage für die geometrische Beschreibung der Deformation in der Elastizitätstheorie. 
 Für kleine Verformungen gilt \cite{elastomechanik:Technische_Mechanik_2:Elastostatik}:
-	\begin{equation}
+	\begin{equation*}
 		\varepsilon_{ij} = 
 		\frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right).
-	\end{equation}
+	\end{equation*}
 Dabei ist:
 	
 	$u_i$ = Verschiebung in Richtung $i$
@@ -57,10 +57,10 @@ Diese Gleichungen stellen sicher, dass die Verzerrungen aus einem stetigen Versc
 \item[\textbf{Lamé-Konstanten ($\lambda{,\mu}$):}] Die Lamé-Konstanten werden die Konstanten $\lambda$ und $\mu$ bezeichnet. 
 Die sind zwei materialabhängige Parameter, die das mechanische Verhalten eines isotropen elastischen Materials vollständig beschreiben.
 Die Lamé-Konstante ($\lambda$) lässt sich aus dem Elastizitätsmodul und der Poisson-Zahl wie folgt berechnen \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
-\begin{equation}
+\begin{equation*}
 	\lambda = 
 	\frac{E \cdot \nu}{(1 + \nu)(1 - 2\nu)}
-\end{equation}
+\end{equation*}
 $\mu$ = Schubmodul
 
 $\lambda$ = steht in Verbindung mit der Volumenverformung
@@ -73,10 +73,10 @@ Sie beschreibt den inneren Spannungszustand eines Materials bei Zug- oder Druckb
 	
 \item[\textbf{Poisson-Zahl ($\nu$):}] Die Poisson-Zahl, auch bekannt als Querkontraktionszahl, ist eine materialabhängige Konstante, die das Verhältnis zwischen der Querdehnung und der Längsdehnung eines Körpers unter Zug- oder Druckbelastung beschreibt.
 Sie ist definiert als
-	\begin{equation}
+	\begin{equation*}
 		\nu=
 		-\frac{\varepsilon_\text{quer}}{\varepsilon_\text{laengs}},
-	\end{equation}
+	\end{equation*}
 	$\varepsilon_\text{quer}$ = Dehnung senkrecht zur Belastungsrichtung
 	
 	$\varepsilon_\text{laengs}$ = Dehnung in Belastungsrichtung
@@ -84,39 +84,39 @@ Sie ist definiert als
 \item[\textbf{Schubmodul ($\mu$) oder ($G$):}] Der Schubmodul ist eine mechanische Materialkonstante, die beschreibt, wie steif ein Material gegenüber Scherkräften ist.
 Scherkräfte (auch Schubkräfte) sind Kräfte, die parallel zur Fläche eines Körpers wirken. 
 Bei isotropen Materialien wird er folgend berechnet:
-	\begin{equation}
+	\begin{equation*}
 		\mu = 
 		\frac{E}{2(1 + \nu)} =
 		G.
-	\end{equation}
+	\end{equation*}
 \item[\textbf{Spannung ($\sigma$):}] Die Spannung beschreibt die innere Kraftverteilung in einem Material, die infolge externer Belastungen wie Zug, Druck oder Scherung entsteht. 
 Sie gibt an, welche Kraft pro Flächeneinheit innerhalb eines Körpers wirkt.
 	
 \item[\textbf{Spannungtensor ($\sigma_{ij}$):}] Der Spannungstensor (auch Cauchy-Spannungstensor genannt) beschreibt die Verteilung der inneren Spannungen im Material. 
 Der erste Index	$i$ gibt die Richtung der Flächennormalen an, der zweite Index $j$ die Richtung der Spannungswirkung. 
 Er ist in der Regel symmetrisch und wird als 3×3-Matrix notiert \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
-	\begin{equation}
+	\begin{equation*}
 		\boldsymbol{\sigma} =
 		\begin{bmatrix}
 			\sigma_{xx} & \sigma_{xy} & \sigma_{xz} \\
 			\sigma_{yx} & \sigma_{yy} & \sigma_{yz} \\
 			\sigma_{zx} & \sigma_{zy} & \sigma_{zz}
 		\end{bmatrix}.
-	\end{equation}
+	\end{equation*}
 Da der Spannungstensor für reine Elastizität symmetrisch ist, gilt:
-	\begin{equation}
+	\begin{equation*}
 		\sigma_{ij} = 
 		\sigma_{ji}.
-	\end{equation}
+	\end{equation*}
 	
 \item[\textbf{Verschiebung ($u_i$):}] Die Verschiebung beschreibt die Ortsänderung eines Punktes im Körper infolge einer Belastung.
 
 Sei $\vec{x} = (x_1, x_2, x_3)$ der ursprüngliche Ort eines Materialpunktes im unbelasteten Zustand und $\vec{x}' = (x_1', x_2', x_3')$ der Ort desselben Punktes im belasteten Zustand.  
 Die \emph{Verschiebungsvektorkomponenten} $u_i$ ergeben sich aus:
-\begin{equation}
+\begin{equation*}
 	u_i(\vec{x}) = x_i' - x_i,
 	\quad i = 1,2,3.
-\end{equation}
+\end{equation*}
 
 In kartesischen Koordinaten gilt damit:
 \[
@@ -138,46 +138,46 @@ wobei $u, v, w$ die Verschiebungskomponenten in den Richtungen $x, y, z$ darstel
 Die Verschiebung bildet die Grundlage zur Definition der Verzerrung. 
 Aus den partiellen Ableitungen der Verschiebungskomponenten werden im nächsten Abschnitt die Verzerrungskomponenten $\varepsilon_{ij}$ bestimmt:
 
-\begin{equation}
+\begin{equation*}
 	\varepsilon_{ij} = \frac{1}{2}
 	\left(
 	\frac{\partial u_i}{\partial x_j}
 	+
 	\frac{\partial u_j}{\partial x_i}
 	\right).
-\end{equation}
+\end{equation*}
 
-Hierbei sind $i,j \in \{1,2,3\}$ und es gilt die \emph{Einstein’sche Summationskonvention}.
+Hierbei sind $i,j \in \{1,2,3\}$ und es gilt die \emph{einsteinsche Summationskonvention}.
 
 \item[\textbf{Verzerrung ($\varepsilon$):}] Die Verzerrung (auch Dehnung genannt) beschreibt die relative Änderung der Form oder Länge eines Körpers infolge einer äusseren Belastung. 
 Sie ist ein massloser Wert, da sie ein Verhältnis zweier Längen ist.
 Die Normalverrung wird berechnet mit
-	\begin{equation}
+	\begin{equation*}
 		\varepsilon 
 		= \frac{\Delta L}{L_0},
-	\end{equation}
+	\end{equation*}
 	$\varepsilon$ = Verzerrung
 	
 	$\Delta L$ = Längenänderung
 	
-	$\L_0$ = ursprüngliche Länge des Körpers
+	$L_0$ = ursprüngliche Länge des Körpers
 	
 \item[\textbf{Verzerrungstensor ($\varepsilon_{ij}$):}] Der Verzerrungstensor beschreibt die Verformung (Dehnung und Scherung) eines Körpers infolge äusserer Belastungen in drei Raumrichtungen. 
 Er erfasst nicht nur Längenänderungen (Normalverzerrungen), sondern auch Winkeländerungen (Schubverzerrungen) und stellt somit die vollständige lokale Verformung eines Materials im Raum dar.
 Die Verzerrungstensor wird über die Ableitungen des Verschiebungsfeldes definiert als
-	\begin{equation}
+	\begin{equation*}
 		\varepsilon_{ij} = 
 		\frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right),
-	\end{equation}
+	\end{equation*}
 	wobei er in drei Raumdimensionen die Form einer symmetrischen 3×3-Matrix annimmt:
-	\begin{equation}
+	\begin{equation*}
 		\boldsymbol{\varepsilon} =
 		\begin{bmatrix}
 			\varepsilon_{xx} & \varepsilon_{xy} & \varepsilon_{xz} \\
 			\varepsilon_{yx} & \varepsilon_{yy} & \varepsilon_{yz} \\
 			\varepsilon_{zx} & \varepsilon_{zy} & \varepsilon_{zz},
 		\end{bmatrix}.
-	\end{equation}
+	\end{equation*}
 \item[\textbf{Zugkraft:}] Die Zugkraft ist eine Kraft, die längs der Achse eines Körpers wirkt und diesen in Richtung Verlängerung belastet. 
 Sie verursacht Zugverformungen im Material.
 	
@@ -188,25 +188,25 @@ Sie wirkt senkrecht zur Querschnittsfläche des Körpers und beschreibt die Kraf
 \subsection{Materialgesetzlichkeiten}
 \begin{description}	
 \item[\textbf{Elastizitätsgesetz (hookesches Gesetz):}] Das hookesche Gesetz stellt im eindimensionalen Fall den linearen Zusammenhang zwischen Spannung $\sigma$ und Dehnung $\varepsilon$ durch die Beziehung 
-	\begin{equation}
+	\begin{equation*}
 		\sigma = 
 		E \cdot \varepsilon
-	\end{equation}
+	\end{equation*}
 her, wobei $E$ der Elastizitätsmodul des Materials ist \cite{elastomechanik:Kontinuumsmechanik}.
 \item[\textbf{Isotropes Materialverhalten:}] Für isotrope Materialien (die in alle Richtungen die gleichen mechanischen Eigenschaften haben) reicht die Beschreibung mit zwei Materialkonstanten $\lambda$ und $\mu$ aus.
-	\begin{equation}
+	\begin{equation*}
 		\sigma_{ij} = 
 		\lambda \cdot \delta_{ij} \cdot \varepsilon_{kk} + 2\mu \cdot \varepsilon_{ij},
-	\end{equation}
+	\end{equation*}
 	$\sigma_{ij}$ = Spannungstensor (Komponenten der Spannung in Richtung $i$ auf der Fläche senkrecht zu Richtung $j$)
 	
 	$\varepsilon_{ij}$ = Dehnungstensor (Komponenten der Verzerrung)
 	
 	$\varepsilon_{kk}$ = Spur des Verzerrungstensors, also
-	\begin{equation}
+	\begin{equation*}
 		\varepsilon_{kk} =
 		\varepsilon_{11} + \varepsilon_{22} + \varepsilon_{33},
-	\end{equation}
+	\end{equation*}
 	dies ist die Volumendehnung \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}.
 	
 	$\delta_{ij}$ = Kronecker-Delta 
@@ -232,17 +232,17 @@ Für unsere Arbeit wird die Herleitung des anisotropen Materialverhaltens nicht 
 		\item Es existiert eine eindeutige Beziehung zwischen Spannung und Dehnung
 	\end{enumerate}
 \item[\textbf{Reziproke Form (für Verzerrungen aus Spannungen):}] Die reziproke Form des hookeschen Gesetzes beschreibt den linearen Zusammenhang zwischen Spannung und Verzerrung bei isotropen Materialien durch die Gleichung
-	\begin{equation}
+	\begin{equation*}
 		\varepsilon_{ij} = 
 		\frac{1+\nu}{E} \cdot \sigma_{ij} - \frac{\nu}{E} \cdot \sigma_{kk} \cdot \delta_{ij}
-	\end{equation}
+	\end{equation*}
 wobei die Verzerrung aus der direkten Spannung und der Spur des Spannungstensors unter Berücksichtigung des Elastizitätsmoduls und der Poisson-Zahl berechnet wird \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}.
 
 \item[\textbf{Anisotropes Materialverhalten:}] Bei anisotropen Materialien hängen die mechanischen Eigenschaften von der Richtung ab. 
 Solche Materialien können nicht mehr durch zwei Konstanten beschrieben werden, sondern benötigen einen allgemeinen Elastizitätstensor vierter Stufe $C_{ijkl}$:
-\begin{equation}
+\begin{equation*}
 	\sigma_{ij} = C_{ijkl} \varepsilon_{kl}
-\end{equation}
+\end{equation*}
 Die Anzahl der unabhängigen Komponenten hängt von der Symmetrie ab (bis zu 81 bei vollanisotropem Verhalten). 
 Ein Beispiel ist Holz, dessen Steifigkeit stark von der Faserrichtung abhängt.
 

@@ -28,7 +28,7 @@ Hierbei gilt:
 \begin{itemize}
 	\item $\frac{\partial \sigma_{ij}}{\partial x_j}$ ist die Divergenz des Spannungstensors in Richtung $i$. 
 	Sie beschreibt die „Quellenstärke“ der Spannungen, d. h. wie sich Spannungen innerhalb eines infinitesimalen Volumenelements räumlich ändern.
-	\item $f_i$ ind die Komponenten der Volumenkraftdichte, z. B. durch Eigengewicht, elektromagnetische Kräfte oder Trägheitskräfte. Sie wirken direkt auf das Volumenelement.
+	\item $f_i$ sind die Komponenten der Volumenkraftdichte, z. B. durch Eigengewicht, elektromagnetische Kräfte oder Trägheitskräfte. Sie wirken direkt auf das Volumenelement.
 	\item Das Gleichheitszeichen zu null bedeutet, dass sich innere Spannungen und äussere Volumenkräfte genau ausgleichen – andernfalls würde der Punkt beschleunigt, und es läge kein statisches Gleichgewicht vor.
 \end{itemize}
 Diese Gleichung wird oft als lokale Gleichgewichtsbedingung bezeichnet. 
@@ -57,10 +57,10 @@ und
 \subsection{Cauchy-Spannungstensor}
 Der Cauchy-Spannungstensor erlaubt es, zu jeder beliebigen Schnittfläche den zugehörigen Spannungsvektor $t_i$ zu bestimmen, der auf dieser Fläche wirkt.
 Dieser Zusammenhang wird durch die Cauchy-Formel beschrieben:
-\begin{equation}
+\begin{equation*}
 	t_i = 
 	\sigma_{ij} \cdot n_j.
-\end{equation}
+\end{equation*}
 Der Spannungstensor ist aufgrund des Momentengleichgewichts an einem infinitesimalen Volumenelement symmetrisch. 
 Schubspannungen müssen sich dabei paarweise ausgleichen. 
 Er beschreibt vollständig den inneren Spannungszustand eines elastischen Körpers.
@@ -71,23 +71,22 @@ In der Tensorrechnung wird häufig die sogenannte einsteinsche Summationskonvent
 \medskip
 \begin{definition} 
 	Tritt ein Index in einem Term zweimal auf, so ist über diesen Index zu summieren – ohne dass das Summenzeichen explizit geschrieben wird.
-\begin{equation}
+\begin{equation*}
 	a_i b_i = 
 	\sum_{i=1}^3 a_i b_i.
-\end{equation}
+\end{equation*}
 \end{definition} 
 Diese Schreibweise ist besonders hilfreich bei der Darstellung tensoranalytischer Gleichungen wie der cauchy-Spannungsgleichung:
-\begin{equation}
+\begin{equation*}
 	t_i = 
 	\sigma_{ij} n_j.
-\end{equation}
-
+\end{equation*}
 Hier wird implizit über den Index $j$ summiert, wobei $i$ frei bleibt. Das bedeutet:
 
-\begin{equation}
+\begin{equation*}
 	t_i = 
 	\sum_{j=1}^{3} \sigma_{ij} n_j.
-\end{equation}
+\end{equation*}
 
 In der ursprünglichen Formulierung der Summationskonvention wird zwischen oberen und unteren Indizes unterschieden. 
 Diese Unterscheidung ist insbesondere in gekrümmten Koordinatensystemen (z.\,B. Kugelkoordinaten, Relativitätstheorie) wesentlich, da dort kovariante und kontravariante Tensoren transformiert werden müssen.
@@ -95,7 +94,7 @@ Diese Unterscheidung ist insbesondere in gekrümmten Koordinatensystemen (z.\,B.
 In dieser Arbeit wird ausschliesslich im kartesischen Koordinatensystem gearbeitet. Dort fallen die Unterschiede zwischen oberen und unteren Indizes weg, da die Metrik konstant und orthonormal ist ($\delta_{ij}$). 
 Daher schreiben wir konsequent alle Indizes tiefgestellt, ohne mathematische Korrektheit zu verlieren.
 
-Diese Konvention erlaubt eine prägnante Darstellung komplexer Gleichungen und wird in der gesamten weiteren Herleitung verwendet.
+%Diese Konvention erlaubt eine prägnante Darstellung komplexer Gleichungen und wird in der gesamten weiteren Herleitung verwendet.
 
 \subsection{Konstitutives Gesetz: Materialverhalten}
 Darüber hinaus gelten für ein ideal elastisches Material zusätzlich folgende mechanischen Annahmen:
@@ -120,46 +119,49 @@ Das konstitutive Gesetz verknüpft die Verzerrungen mit den Spannungen. Für iso
 
 \subsection{Elastizitätsgesetz und Materialkonstanten}
 Aus dem Hooke’schen Gesetz ist bekannt, dass im einachsigen, linearen Fall folgender Zusammenhang zwischen Spannung und Dehnung gilt:
-\begin{equation}
+\begin{equation*}
 	\sigma = 
 	E \cdot \varepsilon.
-\end{equation}
+\end{equation*}
 Im dreiachsigen Fall kann die lineare Beziehung zwischen den Spannungs- und Verzerrungskomponenten durch einen Elastizitätstensor 4. Stufe beschrieben werden:
-\begin{equation}
+\begin{equation*}
 	\sigma_{ij} = 
 	E_{ijkl} \cdot \varepsilon_{kl}.
-\end{equation}
+\end{equation*}
 Da wir den dreidimensionalen Fall unter der Annahme eines isotropen Materials betrachten, bei dem die mechanischen Eigenschaften in alle Richtungen gleich sind, reduziert sich die Form des Elastizitätstensors auf zwei unabhängige Konstanten: die sogenannten Lamé-Konstanten $\lambda$ und $\mu$. 
 Damit ergibt sich das Elastizitätsgesetz in kompakter Form:
-\begin{equation}
+\begin{equation*}
 	\sigma_{ij} = 
 	\lambda \cdot \delta_{ij} \cdot \varepsilon_{kk} + 2\mu \cdot \varepsilon_{ij}.
-\end{equation}
+\end{equation*}
 Die Lamé-Konstanten lassen sich durch die technischen Materialkonstanten $E$ (Elastizitätsmodul), $\nu$ (Poissonzahl) und $G$ (Schubmodul) wie folgt ausdrücken:
-\begin{equation}
+\begin{equation*}
 	E = 
 	\mu \cdot \frac{3\lambda + 2\mu}{\lambda + \mu}, \quad 
 	\nu = 
 	\frac{\lambda}{2(\lambda + \mu)}, \quad 
 	G = 
 	\mu.
-\end{equation}
+\end{equation*}
 Durch Einsetzen in die Spannungs-Verzerrungs-Beziehung kann das Elastizitätsgesetz auch in Form der Deviatorzerlegung dargestellt werden. 
-Dabei ergibt sich der Zusammenhang zwischen Spannungs- und Verzerrungsdeviator \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
-\begin{equation}
+Dabei ergibt sich der Zusammenhang zwischen Spannungs- und Verzerrungsdeviator
+\cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
+\begin{equation*}
 	s_{ij} = 
 	\sigma_{ij} - \frac{1}{3} \sigma_{kk} \delta_{ij} = 
 	2\mu e_{ij}
-\end{equation}
+\end{equation*}
 und steht über den Verzerrungsdeviator $e_{ij}$ in folgender Beziehung:
-\begin{equation}
+\begin{equation*}
 	s_{ij} = 
 	2\mu e_{ij}.
-\label{elastomechanik:math:eqn:sij}
-\end{equation}
+%\label{elastomechanik:math:eqn:sij}
+\end{equation*}
 Hierbei gilt
-\begin{equation}
+\begin{equation*}
 	e_{ij} = 
 	\sigma_{ij} - \frac{1}{3} \sigma_{kk} \delta_{ij}.
-\end{equation}
-Diese Formulierung wird in Abschnitt \ref{Konstitutives Gesetz für isotrope Materialien} benötigt, um den formändernden Spannungsanteil separat vom hydrostatischen Anteil zu betrachten und dient der Konsistenz mit den späteren Beispielen.
+\end{equation*}
+Diese Formulierung wird in
+Abschnitt~\ref{elastomechanik:math:subsection:isotrop}
+benötigt, um den formändernden Spannungsanteil separat vom hydrostatischen Anteil zu betrachten und dient der Konsistenz mit den späteren Beispielen.
