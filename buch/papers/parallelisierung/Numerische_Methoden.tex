@@ -17,7 +17,7 @@ Konkret bedeutet dies, dass wir die Feldgleichungen diskretisieren müssen.
 
 Ein prominentes Beispiel dafür ist das numerische Wettermodell des ECMWF (European Centre for Medium-Range Weather Forecasts), das auf Grundlage eines breiten Spektrums aktueller und vergangener Wetterdaten versucht, möglichst präzise Vorhersagen für die kommenden zehn Tage zu treffen.
 
-Als wichtigste und somit einflussreichste Parameter dieses Modells gelten der Luftdruck, die Lufttemperatur, die Windgeschwindigkeit bzw. -richtung, die Luftfeuchtigkeit sowie diverse Niederschlagsparameter \cite{ecmwf2023}.
+Als wichtigste und somit einflussreichste Parameter dieses Modells gelten der Luftdruck, die Lufttemperatur, die Windgeschwindigkeit bzw. -richtung, die Luftfeuchtigkeit sowie diverse Niederschlagsparameter \cite{parallelisierung:ecmwf2023}.
 Diese Messwerte liegen jedoch nur mit begrenzter zeitlicher und räumlicher Auflösung vor.
 
 Sie bestimmen somit die Feinheit des zugrunde liegenden Datenrasters --- ein Umstand, der sich später als entscheidend erweisen wird.
@@ -235,9 +235,9 @@ Dimensionen zusammen, wie sie aus einer Fourier-Analyse des Verstärkungsverhalt
 resultieren.  
 Aus Gründen der Lesbarkeit wird die vollständige Herleitung dieser Bedingungen an 
 dieser Stelle nicht wiedergegeben.
-eine historische Einführung findet sich bereits bei Fourier \cite{Fourier1822}, 
+eine historische Einführung findet sich bereits bei Fourier \cite{parallelisierung:fourier1822}, 
 während die systematische von-Neumann-Stabilitätsanalyse im klassischen Werk 
-\cite{VonNeumann1950} entwickelt wurde. 
+\cite{parallelisierung:vonneumann1950} entwickelt wurde. 
 Eine moderne und zugleich frei zugängliche Darstellung findet sich zudem in den 
 Vorlesungsunterlagen des Massachusetts Institute of Technology \cite{MITnotes}.
 
