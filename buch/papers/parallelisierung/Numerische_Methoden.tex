@@ -233,9 +233,13 @@ ob eine explizite FDM-Simulation stabil bleibt.
 Tabelle~\ref{parallelisierung:tab:stabilitaet_fdm} fasst die Stabilitätsbedingungen für Probleme verschiedener 
 Dimensionen zusammen, wie sie aus einer Fourier-Analyse des Verstärkungsverhaltens einzelner Fehlerkomponenten 
 resultieren.  
-Aus Gründen der Lesbarkeit wird die vollständige Herleitung dieser Bedingungen an dieser Stelle nicht wiedergegeben; 
-eine historische Einführung findet sich bereits bei Fourier \cite{Fourier1822}, während die systematische 
-von-Neumann-Stabilitätsanalyse in \cite{VonNeumann1950} beschrieben ist.
+Aus Gründen der Lesbarkeit wird die vollständige Herleitung dieser Bedingungen an 
+dieser Stelle nicht wiedergegeben.
+eine historische Einführung findet sich bereits bei Fourier \cite{Fourier1822}, 
+während die systematische von-Neumann-Stabilitätsanalyse im klassischen Werk 
+\cite{VonNeumann1950} entwickelt wurde. 
+Eine moderne und zugleich frei zugängliche Darstellung findet sich zudem in den 
+Vorlesungsunterlagen des Massachusetts Institute of Technology \cite{MITnotes}.
 
 \label{parallelisierung:sec:stabilitaetskriterien}
 
@@ -327,7 +331,7 @@ Die Simulation konvergiert auf der Basis von \eqref{parallelisierung:eq:update_f
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.6\textwidth]{{papers/parallelisierung/images/simulation_10x10_0.135.pdf}
+	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_10x10_0.135.pdf}
 	\caption{Temperaturverteilung für \(10\times 10\)-Gitter, \(\lambda = 0.135\), nach Konvergenz.}
 	\label{parallelisierung:fig:simulation_10x10_0.135}
 \end{figure}
@@ -343,14 +347,14 @@ Diese Parameter verletzen die aus \eqref{parallelisierung:eq:stabForExp} hervorg
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.6\textwidth]{{papers/parallelisierung/images/simulation_15x15_0.376_3it.pdf}
+	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.376_3it.pdf}
 	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.376\), nach 3 Iterationen.}
 	\label{parallelisierung:fig:simulation_15x15_0.376_3it}
 \end{figure}
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.6\textwidth]{{papers/parallelisierung/images/simulation_15x15_0.376_4it.pdf}
+	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.376_4it.pdf}
 	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.376\), nach 4 Iterationen: erste Instabilitätsartefakte.}
 	\label{parallelisierung:fig:simulation_15x15_0.376_4it}
 \end{figure}
@@ -372,7 +376,7 @@ Dies führt dazu, dass Unterschiede zwischen benachbarten Zellen nicht geglätte
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.6\textwidth]{{papers/parallelisierung/images/simulation_15x15_0.376_15it.pdf}
+	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.376_15it.pdf}
 	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.376\), nach 15 Iterationen: klare Instabilitätsartefakte.}
 	\label{parallelisierung:fig:simulation_15x15_0.376_15it}
 \end{figure}
@@ -390,7 +394,7 @@ wodurch die Simulation wieder stabil wird. Die Konvergenz wird nach 315 Iteratio
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.6\textwidth]{{papers/parallelisierung/images/simulation_15x15_0.188_konv.pdf}
+	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.188_konv.pdf}
 	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.188\), stabil nach Konvergenz.}
 	\label{parallelisierung:fig:simulation_15x15_0.188_konv}
 \end{figure}
