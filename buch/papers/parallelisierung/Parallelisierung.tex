@@ -128,7 +128,7 @@ Eine zweite Barriere sorgt dafür, dass die anderen Threads warten, bis dieser P
 		for (int iter = 0; iter < iterations; iter++) {
 			
 			// Jeder Thread berechnet seinen Bereich
-			// Direkte Pointer-Arithmetik für maximale Performance
+			// Direkte Pointer-Arithmetik fuer maximale Performance
 			for (int i = myStartRow; i < myEndRow; i++) {
 				int rowStart = i * nx;
 				for (int j = 1; j < nx - 1; j++) {
