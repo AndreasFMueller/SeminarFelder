@@ -9,32 +9,32 @@
 \section{Parallelisierung
 	\label{parallelisierung:sec:Parallelisierung}}
 \kopfrechts{Parallelisierung}
-Wir kennen nun numerische Verfahren, welche es einer Maschine erlaubt unsere Feldgleichungen zu berechnen.
+Wir kennen nun numerische Verfahren, welche es einer Maschine erlaubt, unsere Feldgleichungen zu lösen.
 Wir wissen auch, wie wir unser Feld in Teilgebiete unterteilen können.
 Das gibt uns alle Werkzeuge, welche wir benötigen um die Berechnungen unserer Gleichungen auf mehrere Maschinen aufzuteilen.
 
 Bei der Parallelisierung von Feldgleichungen in einem Multiprozessorsystem wird jedem Prozessor eines oder mehrere zusammenhängende Teilgebiete zugewiesen.
-Die Teilgebiete müssen theoretisch nicht zusammenhängend sein aber um die Kommunikation zwischen Prozessoren zu minimieren ist dieses Vorgehen sinnvoll und üblich.
+Die Teilgebiete müssen theoretisch nicht zusammenhängend sein aber um die Kommunikation zwischen Prozessoren zu minimieren, ist dieses Vorgehen sinnvoll und üblich.
 Da die Randzellen jedes Teilgebietes abhängig von den angrenzenden Zellen sind, siehe \ref{parallelisierung:sec:Gebietsunterteilung}, müssen die vorhandenen Informationen dieser Zellen zwischen Gebieten auf unterschiedlichen Prozessoren ausgetauscht werden.
 Dieser Austausch ist mit erheblichem zeitlichen Aufwand verbunden.
 Die Frage, wie fein ein Gitter in verschiedene Teilgebiete aufgeteilt werden soll, ist also immer eine optimierungs-Frage.
 Man muss ein Optimum finden, wo der zeitliche Gewinn der parallelen Berechnung die zeitlichen Verluste der Interprozess-Kommunikation überwiegen.
 
 \input{papers/parallelisierung/Interprozess.tex}
-\input{papers/parallelisierung/Synchronisation.tex}
+
 
 \subsection{Beispiel an der allgemeinen Wärmeleitungsgleichung
 	\label{parallelisierung:sub:BeispielParallelisierung}}
-Zum besseren Verständnis wollen wir mit OpenMP ein Konkretes Beispiel für die Parallelisierung der allgemeinen Wärmeleitungsgleichung realisieren.
+Zum besseren Verständnis wollen wir mit OpenMP ein konkretes Beispiel für die Parallelisierung der allgemeinen Wärmeleitungsgleichung realisieren.
 Zum Vergleich wird auch die Serielle Vorgehensweise präsentiert.
-Als Ausgangslage soll für ein Gitter von AxB Zellen C Updates durchgeführt werden.
+Als Ausgangslage soll für ein Gitter von $A \cdot B$ Zellen $C$ Updates durchgeführt werden.
 Für jedes Update wird die Formel \ref{parallelisierung:eq:update_formel} aus Abschnitt \ref{parallelisierung:sec:update_formel} verwendet.
 Links und Rechts der Zellen gibt es Reihen mit unveränderlicher Temperatur, welche einen Heiz- respektive Kühlkörper darstellen.
 Ober- und unterhalb der Zellen gibt es Zeilen mit unveränderlicher Temperatur, welche die Umgebungstemperatur darstellen.
 Diese Konstanten, wie auch $\lambda$ als Konstante für die Updateformel können alle im Main-File des Programms definiert werden und sind unveränderlich.
 
 Beide Lösungen verwenden Arrays zur Zwischenspeicherung der Zellen.
-Für Arrays werden gerne Vektoren aus der C++ Standar Library (STL) verwendet.
+Für Arrays werden gerne Vektoren aus der C++ Standard Library (STL) verwendet.
 Für ein zweidimensionales Array wird zum Beispiel
 \begin{lstlisting}
 	std::vector<std::vector<double>> grid;
@@ -55,9 +55,9 @@ Damit garantiert man eine kontinuierliche Speicherung der Daten.
 
 \subsubsection{Serielle Lösung}
 \label{parallelisierung:sub:serLoesung}
-Zur Vorbereitung werden Zwei Arrays der Grösse 
+Zur Vorbereitung werden zwei Arrays der Grösse 
 \begin{equation}
-A+2 * B+2 
+A+2 \cdot B+2 
 \end{equation}
 angelegt. 
 
@@ -65,12 +65,12 @@ angelegt.
 std::vector<double> grid(A * B);
 std::vector<double> gridNew(A * B);
 \end{lstlisting}
-Die Addition von zwei ist notwendig, um die Umgebenden Temperaturen speichern zu können.
+Die Addition von zwei ist notwendig, um die umgebenden Temperaturen speichern zu können.
 In beiden Arrays wird nun die Umgebungstemperatur in die erste und letzte Zeile geschrieben.
 Die jeweilige Temperatur der Heiz-/Kühlkörper wird in die erste und letzte Spalte geschrieben.
 Das erste Array wird für die aktuellen Temperaturen der Zellen verwendet.
-Als Ausgangspunkt kann in dieses die Umgebungstemperatur eingetragen werden.
-Mit einer Schlaufe kann nun für alle A*B Zellen der neue Wert mit der Updateformel berechnet und in die entsprechende Zelle im zweiten Array geschrieben werden.
+Als Ausgangspunkt kann in dieses Array die Umgebungstemperatur eingetragen werden.
+Mit einer Schleife kann nun für alle $A \cdot B$ Zellen der neue Wert mit der Updateformel berechnet und in die entsprechende Zelle im zweiten Array geschrieben werden.
 \begin{lstlisting}[caption={Update-Schritt (seriell)},label={parallelisierung:code:updateSeriel}]
 for (int i = 1; i < B - 1; ++i) {     // ueberspringt erste und letzte Zeile
 	const int row = i * A;
@@ -88,7 +88,7 @@ for (int i = 1; i < B - 1; ++i) {     // ueberspringt erste und letzte Zeile
 }
 \end{lstlisting}
 Im Beispiel ist src ein Pointer auf das Array mit den aktuellen Werten und dst ist ein Pointer auf das Array mit den neuen Werten.
-Bei der Verwendung von Vektoren erhält man die Adresse des ersten Eintrags mit der Funktion .data().
+Bei der Verwendung von Vektoren erhält man die Adresse des ersten Eintrags mit der Funktion \texttt{.data()}.
 \begin{lstlisting}
 double* src = grid.data();
 double* dst = gridNew.data();
@@ -98,12 +98,12 @@ Ist die For-Schleife durchgerechnet, kann man die beiden Array elegant austausch
 \begin{lstlisting}
 std::swap(src, dst);
 \end{lstlisting}
-Auf diese weise müssen keine Daten Verschoben werden was viel Zeit einspart.
+Auf diese weise müssen keine Daten verschoben werden, was viel Zeit einspart.
 Dieses Verfahren nennt man passend einen Ping-Pong-Ansatz.
 
-In einer Schlaufe die C mal durchlaufen wird, und den Updatecode sowie den Swap aufruft kann das Array C mal aktualisiert und damit das fortschreiten der Zeit simuliert werden.
+In einer Schleife die $C$ mal durchlaufen wird, und den Updatecode sowie den Swap aufruft kann das Array $C$ mal aktualisiert und damit das Fortschreiten der Zeit simuliert werden.
 
-\subsubsection{parallele Lösung 
+\subsubsection{Parallele Lösung 
 \label{parallelisierung:sub:parLoesung}}
 Die Vorgehensweise bei der parallelen Lösung ist sehr ähnlich.
 Es werden zwei Arrays verwendet, welche im Shared-Memory des Prozesses liegen.
@@ -114,4 +114,49 @@ Da auf dem alten Array keine Schreibaktionen getätigt werden gibt es keine Mög
 Zur Synchronisation wird am ende der Updateschlaufe eine Barriere gesetzt, welche den Thread am weitermachen hindert, bis jeder andere Thread seine Arbeit verrichtet hat.
 Wird diese Barriere überschritten, hat ein Thread die Aufgabe, die Pointer der Arrays auszutauschen.
 Eine zweite Barriere sorgt dafür, dass die anderen Threads warten, bis dieser Pointer-Swap durchgeführt wurde.
+
+\begin{lstlisting}
+	// Parallele Region
+	#pragma omp parallel num_threads(numThreads) default(none) \
+	shared(readGrid, writeGrid, grid, gridNew, threadRanges, iterations, nx, ny, lambda, std::cout)
+	{
+		int tid = omp_get_thread_num();
+		int myStartRow = threadRanges[tid].startRow;
+		int myEndRow = threadRanges[tid].endRow;
+		
+		// Hauptberechnungsschleife INNERHALB der parallelen Region
+		for (int iter = 0; iter < iterations; iter++) {
+			
+			// Jeder Thread berechnet seinen Bereich
+			// Direkte Pointer-Arithmetik fuer maximale Performance
+			for (int i = myStartRow; i < myEndRow; i++) {
+				int rowStart = i * nx;
+				for (int j = 1; j < nx - 1; j++) {
+					int center = rowStart + j;
+					int north = center - nx;
+					int south = center + nx;
+					int west = center - 1;
+					int east = center + 1;
+					
+					// Update-Formel mit direktem Speicherzugriff
+					writeGrid[center] = readGrid[center] +
+					lambda * (readGrid[north] + readGrid[south] +
+					readGrid[east] + readGrid[west] -
+					4.0 * readGrid[center]);
+				}
+			}
+			
+			// Synchronisation - warte bis alle Threads fertig sind
+			#pragma omp barrier
+			
+			// Pointer-Swap (nur ein Thread)
+			#pragma omp single
+			{
+				// Einfacher Pointer-Swap
+				std::swap(readGrid, writeGrid);
+			}
+			// Implizite Barriere nach omp single - alle Threads sehen die getauschten Pointer
+		}
+	} // Ende der parallelen Region
+\end{lstlisting}
 
