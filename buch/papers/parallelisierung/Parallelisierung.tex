@@ -9,19 +9,19 @@
 \section{Parallelisierung
 	\label{parallelisierung:sec:Parallelisierung}}
 \kopfrechts{Parallelisierung}
-Wir kennen nun numerische Verfahren, welche es einer Maschine erlaubt unsere Feldgleichungen zu berechnen.
+Wir kennen nun numerische Verfahren, welche es einer Maschine erlaubt, unsere Feldgleichungen zu lösen.
 Wir wissen auch, wie wir unser Feld in Teilgebiete unterteilen können.
 Das gibt uns alle Werkzeuge, welche wir benötigen um die Berechnungen unserer Gleichungen auf mehrere Maschinen aufzuteilen.
 
 Bei der Parallelisierung von Feldgleichungen in einem Multiprozessorsystem wird jedem Prozessor eines oder mehrere zusammenhängende Teilgebiete zugewiesen.
-Die Teilgebiete müssen theoretisch nicht zusammenhängend sein aber um die Kommunikation zwischen Prozessoren zu minimieren ist dieses Vorgehen sinnvoll und üblich.
+Die Teilgebiete müssen theoretisch nicht zusammenhängend sein aber um die Kommunikation zwischen Prozessoren zu minimieren, ist dieses Vorgehen sinnvoll und üblich.
 Da die Randzellen jedes Teilgebietes abhängig von den angrenzenden Zellen sind, siehe \ref{parallelisierung:sec:Gebietsunterteilung}, müssen die vorhandenen Informationen dieser Zellen zwischen Gebieten auf unterschiedlichen Prozessoren ausgetauscht werden.
 Dieser Austausch ist mit erheblichem zeitlichen Aufwand verbunden.
 Die Frage, wie fein ein Gitter in verschiedene Teilgebiete aufgeteilt werden soll, ist also immer eine optimierungs-Frage.
 Man muss ein Optimum finden, wo der zeitliche Gewinn der parallelen Berechnung die zeitlichen Verluste der Interprozess-Kommunikation überwiegen.
 
 \input{papers/parallelisierung/Interprozess.tex}
-\input{papers/parallelisierung/Synchronisation.tex}
+
 
 \subsection{Beispiel an der allgemeinen Wärmeleitungsgleichung
 	\label{parallelisierung:sub:BeispielParallelisierung}}
