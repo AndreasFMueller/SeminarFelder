@@ -115,3 +115,48 @@ Zur Synchronisation wird am ende der Updateschlaufe eine Barriere gesetzt, welch
 Wird diese Barriere überschritten, hat ein Thread die Aufgabe, die Pointer der Arrays auszutauschen.
 Eine zweite Barriere sorgt dafür, dass die anderen Threads warten, bis dieser Pointer-Swap durchgeführt wurde.
 
+\begin{lstlisting}
+	// Parallele Region
+	#pragma omp parallel num_threads(numThreads) default(none) \
+	shared(readGrid, writeGrid, grid, gridNew, threadRanges, iterations, nx, ny, lambda, std::cout)
+	{
+		int tid = omp_get_thread_num();
+		int myStartRow = threadRanges[tid].startRow;
+		int myEndRow = threadRanges[tid].endRow;
+		
+		// Hauptberechnungsschleife INNERHALB der parallelen Region
+		for (int iter = 0; iter < iterations; iter++) {
+			
+			// Jeder Thread berechnet seinen Bereich
+			// Direkte Pointer-Arithmetik für maximale Performance
+			for (int i = myStartRow; i < myEndRow; i++) {
+				int rowStart = i * nx;
+				for (int j = 1; j < nx - 1; j++) {
+					int center = rowStart + j;
+					int north = center - nx;
+					int south = center + nx;
+					int west = center - 1;
+					int east = center + 1;
+					
+					// Update-Formel mit direktem Speicherzugriff
+					writeGrid[center] = readGrid[center] +
+					lambda * (readGrid[north] + readGrid[south] +
+					readGrid[east] + readGrid[west] -
+					4.0 * readGrid[center]);
+				}
+			}
+			
+			// Synchronisation - warte bis alle Threads fertig sind
+			#pragma omp barrier
+			
+			// Pointer-Swap (nur ein Thread)
+			#pragma omp single
+			{
+				// Einfacher Pointer-Swap
+				std::swap(readGrid, writeGrid);
+			}
+			// Implizite Barriere nach omp single - alle Threads sehen die getauschten Pointer
+		}
+	} // Ende der parallelen Region
+\end{lstlisting}
+
