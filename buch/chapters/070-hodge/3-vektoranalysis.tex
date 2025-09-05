@@ -370,6 +370,216 @@ wobei beim zweiten Gleichheitszeichen die Involutionseigenschaft
 des Hodge-Operators und beim dritten die Nilpotenz der äusseren Ableitung
 verwendet wird.
 
+\subsubsection{Rotation einer Rotation}
+Die Verkettungen $\operatorname{rot}\operatorname{grad}$ und
+$\operatorname{div}\operatorname{rot}$ war einfach auszurechnen,
+weil in der Darstellung mit Hilfe der äusseren Ableitung und des
+Hodge-Operators jeweils zwei äussere Ableitungen verkettet werden,
+die zusammen die Nullabbildung ergeben.
+Die Verketten $\operatorname{rot}\operatorname{rot}$ wird in der
+Darstellung durch $p$-Formen zu
+\[
+\operatorname{rot}\operatorname{rot}
+=
+*{d}{*}d,
+\]
+die im Allgemeinen nicht verschwindet.
+
+In der Tat können wir sie in Vektorform sofort 
+\bgroup
+\renewcommand{\arraystretch}{1.9}
+\begin{align}
+\operatorname{rot}\operatorname{rot}\vec{f}
+&=
+\begin{pmatrix}
+\displaystyle
+\frac{\partial}{\partial x^1}\\
+\displaystyle
+\frac{\partial}{\partial x^2}\\
+\displaystyle
+\frac{\partial}{\partial x^3}
+\end{pmatrix}
+\begin{pmatrix}
+\displaystyle
+\frac{\partial f_3}{\partial x^2} - \frac{\partial f_2}{\partial x^3}\\
+\displaystyle
+\frac{\partial f_1}{\partial x^3} - \frac{\partial f_3}{\partial x^1}\\
+\displaystyle
+\frac{\partial f_2}{\partial x^1} - \frac{\partial f_1}{\partial x^2}
+\end{pmatrix}
+\notag
+\\
+&=
+\begin{pmatrix}
+\displaystyle
+\frac{\partial}{\partial x^2}
+\biggl(
+\frac{\partial f_2}{\partial x^1} - \frac{\partial f_1}{\partial x^2}
+\biggr)
+-
+\frac{\partial}{\partial x^3}
+\biggl(
+\frac{\partial f_1}{\partial x^3} - \frac{\partial f_3}{\partial x^1}
+\biggr)
+\\
+\displaystyle
+\frac{\partial}{\partial x^3}
+\biggl(
+\frac{\partial f_3}{\partial x^2} - \frac{\partial f_2}{\partial x^3}
+\biggr)
+-
+\frac{\partial}{\partial x^1}
+\biggl(
+\frac{\partial f_2}{\partial x^1} - \frac{\partial f_1}{\partial x^2}
+\biggr)
+\\
+\displaystyle
+\frac{\partial}{\partial x^1}
+\biggl(
+\frac{\partial f_1}{\partial x^3} - \frac{\partial f_3}{\partial x^1}
+\biggr)
+-
+\frac{\partial}{\partial x^2}
+\biggl(
+\frac{\partial f_3}{\partial x^2} - \frac{\partial f_2}{\partial x^3}
+\biggr)
+\end{pmatrix}
+\notag
+\\
+&=
+\begin{pmatrix}
+\displaystyle
+\frac{\partial^2 f_2}{\partial x^1\,\partial x^2}
+-
+\frac{\partial}{\partial x^2}
+\frac{\partial^2 f_1}{\partial (x^2)^2}
+-
+\frac{\partial^2 f_1}{\partial (x^3)^2}
++
+\frac{\partial^2 f_3}{\partial x^1\,\partial x^3}
+\\
+\displaystyle
+\frac{\partial^2 f_3}{\partial x^2\,\partial x^3}
+-
+\frac{\partial^2 f_2}{\partial (x^3)^2}
+-
+\frac{\partial^2 f_2}{\partial (x^1)^2}
++
+\frac{\partial^2 f_1}{\partial x^2\,\partial x^1}
+\\
+\displaystyle
+\frac{\partial^2 f_1}{\partial x^3\,\partial x^1}
+-
+\frac{\partial^2 f_3}{\partial (x^1)^2}
+-
+\frac{\partial^2 f_3}{\partial (x^2)^2}
++
+\frac{\partial^2 f_2}{\partial x^3\,\partial x^2}
+\end{pmatrix}
+\notag
+\\
+&=
+\begin{pmatrix}
+\displaystyle
+\frac{\partial}{\partial x^1} \biggl(
+{\color{darkred}\frac{\partial f_1}{\partial x^1}
++}
+\frac{\partial f_2}{\partial x^2}
++
+\frac{\partial f_3}{\partial x^3}
+\biggr)
+-
+\biggl(
+{\color{darkred}\frac{\partial^2 f_1}{\partial (x^1)^2}
++}
+\frac{\partial^2 f_1}{\partial (x^2)^2}
++
+\frac{\partial^2 f_1}{\partial (x^3)^2}
+\biggr)
+\\
+\displaystyle
+\frac{\partial}{\partial x^2} \biggl(
+\frac{\partial f_1}{\partial x^1}
+{\color{darkred}
++
+\frac{\partial f_2}{\partial x^2}
++
+\frac{\partial f_3}{\partial x^3}
+}
+\biggr)
+-
+\biggl(
+\frac{\partial^2 f_2}{\partial (x^1)^2}
+{\color{darkred}
++
+\frac{\partial^2 f_2}{\partial (x^2)^2}
+}
++
+\frac{\partial^2 f_2}{\partial (x^3)^2}
+\biggr)
+\\
+\displaystyle
+\frac{\partial}{\partial x^3} \biggl(
+\frac{\partial f_1}{\partial x^1}
++
+\frac{\partial f_2}{\partial x^2}
+{\color{darkred}
++
+\frac{\partial f_3}{\partial x^3}
+}
+\biggr)
+-
+\biggl(
+\frac{\partial^2 f_3}{\partial (x^1)^2}
++
+\frac{\partial^2 f_3}{\partial (x^2)^2}
+{\color{darkred}
++
+\frac{\partial^2 f_3}{\partial (x^3)^2}
+}
+\biggr)
+\end{pmatrix}
+\notag
+\\
+\operatorname{rot}\operatorname{rot}\vec{f}
+&=
+\begin{pmatrix}
+\displaystyle
+\frac{\partial}{\partial x^1} \operatorname{div}\vec{f}
+-
+\Delta f_1
+\\
+\displaystyle
+\frac{\partial}{\partial x^2} \operatorname{div}\vec{f}
+-
+\Delta f_2
+\\
+\displaystyle
+\frac{\partial}{\partial x^3} \operatorname{div}\vec{f}
+-
+\Delta f_3
+\end{pmatrix}
+=
+\operatorname{grad}\operatorname{div}\vec{f} - \Delta \vec{f}
+=
+\nabla(\nabla\cdot\vec{f}) - (\nabla\cdot\nabla)\vec{f}
+\label{buch:vektoranalysis:eqn:rotrot}
+\end{align}
+\egroup
+Darin ist $\Delta$ der Laplace-Operator
+\[
+\Delta
+=
+\nabla\cdot\nabla
+=
+\frac{\partial^2}{\partial (x^1)^2}
++
+\frac{\partial^2}{\partial (x^2)^2}
++
+\frac{\partial^2}{\partial (x^3)^2}
+\]
+Daraus 
+
 \subsubsection{Poincaré-Lemma in Vektoranalysis-Schreibweise}
 Das Poincaré-Lemma besagt, dass geschlossene Differentialformen auf
 $\mathbb{R}^n$ exakt ist.
