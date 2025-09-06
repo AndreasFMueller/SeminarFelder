@@ -200,9 +200,25 @@ Um die Kopplung zwischen Subdomains herzustellen, gibt es zwei grundsätzliche A
 
 \begin{itemize}
 	\item \emph{Algebraischer Ansatz:}  
-	Das Gesamtsystem wird blockweise aufgestellt.  
-	Die inneren Unbekannten jedes Teilgebiets bilden die Blöcke \(A_{pp}\), während die Kopplungen zu Nachbargebieten in den Randblöcken \(C_{pq}\) erscheinen.  
-	Durch Verfahren wie das Schur-Komplement kann die Lösung des Gesamtsystems auf die Schnittkanten reduziert werden, wodurch die Rechenlast deutlich sinkt.  
+	Das Gesamtsystem wird als große Blockmatrix aufgestellt.  
+	Jeder Hauptdiagonalblock \(A_{pp}\) beschreibt die inneren Zusammenhänge (die „Selbstkopplung“) innerhalb eines Teilgebiets~\(\Omega_p\).  
+	Die Nebendiagonalblöcke \(C_{pq}\) modellieren die Kopplungen zu den Nachbargebieten~\(\Omega_q\).  
+	
+	Zur Illustration nehmen wir ein Beispiel mit drei Teilgebieten.  
+	Das Gesamtsystem hat dann die Form
+	\[
+	\mathbf{A} =
+	\begin{bmatrix}
+		A_{11} & C_{12} & C_{13} \\
+		C_{21} & A_{22} & C_{23} \\
+		C_{31} & C_{32} & A_{33}
+	\end{bmatrix}
+	\]
+	Hier enthält jeder Block \(A_{pp}\) die Koeffizienten für die inneren Punkte von~\(\Omega_p\), 
+	während \(C_{pq}\) nur Einträge für die Schnittkanten trägt.  
+	
+	Durch Verfahren wie das Schur-Komplement kann die Lösung des Gesamtsystems auf die Werte an den Interfaces reduziert werden, 
+	wodurch die Rechenlast deutlich sinkt.  
 	Weiterführende Details finden sich beispielsweise in \cite{parallelisierung:smith1996}.
 	
 	\item \emph{Iterative Ansätze:}  
