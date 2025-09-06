@@ -12,15 +12,13 @@
 Bisher wurden Feldgleichungen und deren Lösungen aus einer theoretischen und abstrakten Perspektive betrachtet.
 Dies ist grundlegend für das Verständnis der zugrundeliegenden Konzepte.
 
-Um den praktischen Nutzen dieser mächtigen Theorie jedoch voll auszuschöpfen, ist ein Übergang von dieser idealisierten, kontinuierlichen und grenzenlosen Sichtweise hin zu einer realitätsnahen, diskreten und physikalisch eingeschränkten Betrachtung erforderlich.
+Um den praktischen Nutzen dieser mächtigen Theorie jedoch voll auszuschöpfen, ist ein Übergang von dieser idealisierten, kontinuierlichen und grenzenlosen Sichtweise hin zu einer diskreten und physikalisch eingeschränkten Betrachtung erforderlich.
 Konkret bedeutet dies, dass wir die Feldgleichungen diskretisieren müssen.
 
 Ein prominentes Beispiel dafür ist das numerische Wettermodell des ECMWF (European Centre for Medium-Range Weather Forecasts), das auf Grundlage eines breiten Spektrums aktueller und vergangener Wetterdaten versucht, möglichst präzise Vorhersagen für die kommenden zehn Tage zu treffen.
-
 Als wichtigste und somit einflussreichste Parameter dieses Modells gelten der Luftdruck, die Lufttemperatur, die Windgeschwindigkeit bzw. -richtung, die Luftfeuchtigkeit sowie diverse Niederschlagsparameter \cite{parallelisierung:ecmwf2023}.
 Diese Messwerte liegen jedoch nur mit begrenzter zeitlicher und räumlicher Auflösung vor.
-
-Sie bestimmen somit die Feinheit des zugrunde liegenden Datenrasters --- ein Umstand, der sich später als entscheidend erweisen wird.
+Sie bestimmen somit die Feinheit des zugrunde liegenden Datenrasters. Dies wird sich im verlaufe der Arbeit als wegweisender Umstand erweisen.
 
 \subsection{Diskretisierung statt Interpolation}
 
@@ -71,7 +69,7 @@ Sie ist weit verbreitet in der Computational Fluid Dynamics (CFD), insbesondere 
 
 \subsubsection{Wahl der Methode}
 
-Für das im Folgenden betrachtete Beispiel --- die eindimensionale Wärmeleitungsgleichung --- ist die Finite-Differenzen-Methode besonders geeignet.
+Für das im Folgenden betrachtete Beispiel, die zweidimensionale Wärmeleitungsgleichung, ist die Finite-Differenzen-Methode besonders geeignet.
 Die Geometrie ist einfach, und das Verfahren erlaubt eine direkte, transparente Umsetzung der zugrundeliegenden physikalischen Zusammenhänge in eine diskrete Form.
 Daher wird im nächsten Abschnitt die FDM im Detail erläutert und anhand eines konkreten Beispiels demonstriert.
 
@@ -100,8 +98,7 @@ Im Folgenden wird im 2D-Raum gearbeitet, also resultiert
 
 \subsubsection{Diskretisierung der Variablen}
 
-Als erstes müssen die Variablen diskretisiert werden. Dies tun wir, indem wir ein Gitter über den gesamten Bereich (zeitlich, sowie räumlich) legen, also
-Im Raum:
+Als erstes müssen die Variablen diskretisiert werden. Dies tun wir, indem wir ein Gitter über den gesamten Bereich (zeitlich, sowie räumlich) legen. Im Raum haben wir also:
 \begin{equation}
 	x_i
 	=
@@ -110,7 +107,7 @@ Im Raum:
 \begin{equation}
 	y_j
 	=
-	j \cdot \Delta y,
+	j \cdot \Delta y
 \end{equation}
 und in der Zeit:
 \begin{equation}
@@ -118,7 +115,6 @@ und in der Zeit:
 	=
 	n \cdot \Delta t.
 \end{equation}
-
 Somit wird unsere resultierende, diskrete Temperaturfunktion die Form
 \begin{equation}
 	T^n_{i,j}
@@ -130,31 +126,31 @@ haben.
 
 \subsubsection{Diskretisierung der Zeit}
 
-Die partielle Ableitung der Temperaturfunktion \( T \) nach der Zeit wird durch eine explizite Vorwärtsdifferenz approximiert:
+Die partielle Ableitung der Temperaturfunktion \( T \) nach der Zeit wird durch eine explizite Differenz zweier zeitlich benachbarter Punkte approximiert:
 
 \begin{equation}
 	\label{parallelisierung:eq:discrete_time_derivative}
-	\left. \frac{\partial T}{\partial t}\right|{(i,j,n)}
+	\left. \frac{\partial T}{\partial t}\right|{(i,j,n+\frac{1}{2})}
 	\approx
 	\frac{T_{i,j}^{n+1} - T_{i,j}^n}{\Delta t}.
 \end{equation}
-Dies entspricht der zeitlichen Änderungsrate von \( T \) am diskreten Gitterpunkt \( (x_i, y_j, t_n) \).
+Dies entspricht der zeitlichen Änderungsrate von T am diskreten Gitterpunkt \((x_i, y_j, t_{n+\frac{1}{2})}\)
 
 \subsubsection{Diskretisierung des Raums}
 Auch hier beginnen wir mit der einmaligen Anwendung des Differenzenquotienten (vorwärts), um die erste Ableitung, zunächst in $x$-Richtung zu approximieren:
 
 \begin{equation}
-	\left. \frac{\partial T}{\partial x} \right|{(i,j,n)}
-	\approx \frac{T_{i+1,j}^n - T_{i,j}^n}{\delta x}.
+	\left. \frac{\partial T}{\partial x} \right|{(i+\frac{1}{2},j,n)}
+	\approx \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x}.
 \end{equation}
 Zusätzlich bestimmen wir den Differenzenquotienten an einem vorangehenden Gitterpunkt
 \begin{equation}
-	\left. \frac{\partial T}{\partial x} \right|{(i-1,j,n)}
+	\left. \frac{\partial T}{\partial x} \right|{(i-\frac{1}{2},j,n)}
 	\approx \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x},
 \end{equation}
 um mittels einer letzten Anwendung des Differenzenquotienten die Änderung dieser beiden Änderungen, also genau das, was die zweite Ableitung beschreibt, diskret zu bestimmen
 \begin{equation}
-	\frac{\partial^2 T}{\partial x^2} \approx
+	\left. \frac{\partial^2 T}{\partial x^2} \right|{(i,j,n)} \approx
 	\frac{ \biggl( \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x} \biggr) - \biggl( \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x} \biggr) }{\Delta x}.
 \end{equation}
 Schlussendlich vereinfacht sich dies zu 
@@ -168,8 +164,7 @@ Für die y-Richtung folgt analog
 	\left. \frac{\partial^2 T}{\partial y^2} \right|{(i,j,n)} \approx \frac{T_{i,j+1}^n - 2T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}.
 \end{equation}
 
-
-Nun setzen wir die in den Formeln \eqref{parallelisierung:eq:discrete_time_derivative},  \eqref{parallelisierung:eq:discrete_x_derivative} und \eqref{parallelisierung:eq:discrete_y_derivative} gefundenen Gleichungen in die ursprüngliche zweidimensionale Wärmeleitungsgleichung Formel \eqref{parallelisierung:eq:Wärmeleitung_2D} ein.
+Nun setzen wir die in \eqref{parallelisierung:eq:discrete_time_derivative},  \eqref{parallelisierung:eq:discrete_x_derivative} und \eqref{parallelisierung:eq:discrete_y_derivative} gefundenen Gleichungen in die ursprüngliche zweidimensionale Wärmeleitungsgleichung Formel \eqref{parallelisierung:eq:Wärmeleitung_2D} ein.
 Somit erhalten wir 
 
 \begin{equation}
@@ -188,7 +183,7 @@ womit die Diskretisierung der Wärmeleitungsgleichung mittels der Finite-Differe
 \label{parallelisierung:sec:update_formel}
 
 
-Aufgrund der Lokalität und Kausalität der Feldgleichungen ist die Temperatur eines Gitterpunkts \( (x_i, y_j)\) zu einem bestimmten Zeitpunkt in der Zukunft \( (t_{n+1})\) sprich \(T_{i,j}^{n+1}\) nur von dem  vorangegangenen Zustand eben dieses Gitterpunkts und dessen direkten Nachbarn abhängig.
+Aufgrund der Lokalität der Feldgleichungen ist die Temperatur eines Gitterpunkts \( (x_i, y_j)\) zu einem bestimmten Zeitpunkt in der Zukunft \( (t_{n+1})\) sprich \(T_{i,j}^{n+1}\) nur von dem  vorangegangenen Zustand eben dieses Gitterpunkts und dessen direkten Nachbarn abhängig.
 Dies ist  in der nach \(T_{i,j}^{n+1}\) umgestellten Formel (\ref{parallelisierung:eq:update_formula_unsorted}) ersichtlich:
 \begin{equation}
 	\label{parallelisierung:eq:update_formula_sorted}
@@ -204,15 +199,14 @@ Dies ist  in der nach \(T_{i,j}^{n+1}\) umgestellten Formel (\ref{parallelisieru
 \end{equation}
 
 Aus Übersichtsgründen fassen wir alle Konstanten (\(\alpha, \Delta t, \Delta x, \Delta y) \) zu einer neuen Konstanten zusammen.
-Als praktische Vereinfachung dazu legen wir fest, dass wir mit einem quadratischen Raumgitter arbeiten. Somit setzen wir  \(\Delta l = \Delta x = \Delta y\) und
+Als praktische Vereinfachung legen wir fest, dass wir mit einem quadratischen Raumgitter arbeiten. Somit setzen wir  \(\Delta l = \Delta x = \Delta y\) und erhalten
 \begin{equation}
 	\label{parallelisierung:eq:lambda}
 	\lambda 
 	:= 
 	\frac{\alpha \Delta t}{(\Delta l)^2}.
 \end{equation}
-
-Nun sind wir in der Lage, Formel \eqref{parallelisierung:eq:update_formula_sorted} kompakt und übersichtlich zu schreiben:
+Nun sind wir in der Lage, Formel \eqref{parallelisierung:eq:update_formula_sorted} kompakt und übersichtlich zu schreiben als
 
 \begin{equation}
 	\label{parallelisierung:eq:update_formel}
@@ -229,7 +223,7 @@ Es ist nun klar ersichtlich, dass die Temperatur an einem Punkt (\(x_i, y_j\)) z
 
 \subsubsection{Stabilitätskriterien}
 
-Die in Gleichung~\eqref{parallelisierung:eq:lambda} eingeführte dimensionslose Konstante \(\lambda\) entscheidet, 
+Die in Gleichung~\eqref{parallelisierung:eq:lambda} eingeführte dimensionslose Konstante \(\lambda\) ist dafür verantwortlich, 
 ob eine explizite FDM-Simulation stabil bleibt.  
 Tabelle~\ref{parallelisierung:tab:stabilitaet_fdm} fasst die Stabilitätsbedingungen für Probleme verschiedener 
 Dimensionen zusammen, wie sie aus einer Fourier-Analyse des Verstärkungsverhaltens einzelner Fehlerkomponenten 
@@ -304,9 +298,9 @@ Auch eine Verfeinerung der räumlichen Auflösung \(\Delta x \) bzw. \(\Delta y\
 \subsubsection{Stabilitätsexperiment}
 
 Zur Demonstration der Stabilitätsbedingung wird folgendes Szenario betrachtet:
-Eine \(9 \times 9 \, \mathrm{cm}\) große Stahlplatte (ohne dritte Dimension) befindet sich in einer Umgebung mit konstanter Temperatur von \(0\,^{\circ}\mathrm{C}\).  
+Eine \(9 \times 9 \, \mathrm{cm}\) große Stahlplatte (mit vernachläsigter dritten Dimension) befindet sich in einer Umgebung mit konstanter Temperatur von \(0\,^{\circ}\mathrm{C}\).  
 Die linke und rechte Kante werden konstant auf \(100\,^{\circ}\mathrm{C}\) gehalten.  
-Das Material besitzt die Eigenschaften:
+Das Material besitzt die folgenden Eigenschaften:
 \begin{center}
 	\begin{tabular}{llrl}
 		Wärmeleitfähigkeit & \(\kappa\) & 50 &
@@ -333,10 +327,10 @@ Für \(\Delta t = 1\,\mathrm{s}\) ergibt sich
 \lambda =
 \alpha \cdot \frac{\Delta t}{(\Delta l)^2}
 =
-10^{-5} \cdot \frac{1}{0.01^2}
+1.355\cdot 10^{-5} \cdot \frac{1}{0.01^2}
 \approx 0.135 < \frac14.
 \]
-Die Simulation konvergiert auf der Basis von \eqref{parallelisierung:eq:update_formel} nach 234 Iterationen zum stabilen Endzustand (Abbildung~\ref{parallelisierung:fig:simulation_10x10_0.135}).
+Die Simulation konvergiert auf der Basis von \eqref{parallelisierung:eq:update_formel} nach 234 Iterationen zum stabilen Endzustand der in  Abbildung~\ref{parallelisierung:fig:simulation_10x10_0.135} ersichtlich ist.
 
 \begin{figure}[htbp]
 	\centering
@@ -349,43 +343,46 @@ Die Simulation konvergiert auf der Basis von \eqref{parallelisierung:eq:update_f
 Erhöhen wir die Auflösung auf \(15\times 15\) Messpunkte (\(\Delta l = 0.006\,\mathrm{m}\)), bei gleichem \(\Delta t = 1\,\mathrm{s}\), daraus folgt
 \[
 \lambda =
-10^{-5} \cdot \frac{1}{0.006^2}
+\alpha \cdot \frac{\Delta t}{(\Delta l)^2}
+=
+1.355\cdot 10^{-5} \cdot \frac{1}{0.006^2}
 \approx 0.376 > \frac14.
 \]
 Diese Parameter verletzen die aus \eqref{parallelisierung:eq:stabForExp} hervorgehende Stabilitätsbedingung. Somit ist nun mit einer Simulation zu rechnen, die nicht wie zuvor sauber konvergiert, sondern mit dem Fortschreiten der Zeit immer instabiler wird.
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.376_3it.pdf}
+	\includegraphics[width=0.8\textwidth]{papers/parallelisierung/images/simulation_15x15_0.376_3it.pdf}
 	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.376\), nach 3 Iterationen.}
 	\label{parallelisierung:fig:simulation_15x15_0.376_3it}
 \end{figure}
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.376_4it.pdf}
+	\includegraphics[width=0.8\textwidth]{papers/parallelisierung/images/simulation_15x15_0.376_4it.pdf}
 	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.376\), nach 4 Iterationen: erste Instabilitätsartefakte.}
 	\label{parallelisierung:fig:simulation_15x15_0.376_4it}
 \end{figure}
 
-Zunächst scheint die Simulation noch plausibel (Abbildung~\ref{parallelisierung:fig:simulation_15x15_0.376_3it}), doch bereits nach wenigen Iterationen erscheinen die ersten auffälligen Werte (orange Zahlen in Abbildung~\ref{parallelisierung:fig:simulation_15x15_0.376_4it}). Anhand der physikalischen Intuition sowie den Ergebnissen der stabilen Simulation ist bekannt, dass das Temperaturgefälle von jeder Zelle in der oberen bzw. unteren Hälfte der Metallplatte bei jedem weiteren Schritt nach oben respektive unten entlang der orangen Pfeile streng monoton fallend sein muss. Das heißt, es kann nicht plötzlich wieder heißer werden, obwohl wir näher an den Rand gehen. Daraus lässt sich schließen, dass die orange markierten Werte unphysikalisch und somit erste Instabilitäts-Artefakte sind.
+Zunächst scheint die Simulation noch plausibel (Abbildung~\ref{parallelisierung:fig:simulation_15x15_0.376_3it}), doch bereits nach wenigen weiteren Iterationen erscheinen die ersten auffälligen Werte (orange Zahlen in Abbildung~\ref{parallelisierung:fig:simulation_15x15_0.376_4it}). Anhand der physikalischen Intuition sowie den Ergebnissen der stabilen Simulation ist bekannt, dass das Temperaturgefälle von jeder Zelle in der oberen bzw. unteren Hälfte der Metallplatte bei jedem weiteren Schritt nach oben respektive unten entlang der orangen Pfeile streng monoton fallend sein muss. Das heißt, es kann nicht plötzlich wieder heißer werden, obwohl wir näher an den (kühlen) Rand gehen. Daraus lässt sich schließen, dass die orange markierten Werte unphysikalisch und somit erste Instabilitäts-Artefakte sind.
 
 
-Die Ursache lässt sich durch Umformung der Update-Formel verdeutlichen mit
+Die Ursache lässt sich gut durch Umformung der expliziten Update-Formel 
 \begin{equation}
 	T_{i,j}^{n+1}
 	=
 	(1-4\lambda)T_{i,j}^n +
 	\lambda \left(
 	T_{i+1,j}^n + T_{i-1,j}^n + T_{i,j+1}^n + T_{i,j-1}^n
-	\right).
+	\right)
 \end{equation}
+zeigen.
 Für \(\lambda > \tfrac14\) wird der Koeffizient \((1-4\lambda)\) negativ, was wiederum bedeutet, dass das Zentrum negativ gewichtet wird.  
 Dies führt dazu, dass Unterschiede zwischen benachbarten Zellen nicht geglättet, sondern verstärkt werden: es entstehen Über- und Unterschwinger, die sich mit jeder Iteration vergrößern.
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.376_15it.pdf}
+	\includegraphics[width=0.8\textwidth]{papers/parallelisierung/images/simulation_15x15_0.376_15it.pdf}
 	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.376\), nach 15 Iterationen: klare Instabilitätsartefakte.}
 	\label{parallelisierung:fig:simulation_15x15_0.376_15it}
 \end{figure}
@@ -396,14 +393,17 @@ Lediglich 10 Iterationen später zeigt sich das Verhalten gemäss Abbildung~\ref
 Durch Verringerung von \(\Delta t\) auf \(0.5\,\mathrm{s}\) ergibt sich
 \[
 \lambda =
-\frac{50}{7850 \cdot 470} \cdot \frac{0.5}{0.006^2}
-\approx 0.188 < \frac14,
+\alpha \cdot \frac{\Delta t}{(\Delta l)^2}
+=
+1.355\cdot 10^{-5} \cdot \frac{0.5}{0.006^2}
+\approx 0.188 < \frac14.
 \]
 wodurch die Simulation wieder stabil wird. Die Konvergenz wird nach 315 Iterationen erreicht (Abbildung~\ref{parallelisierung:fig:simulation_15x15_0.188_konv}).
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.188_konv.pdf}
+	\includegraphics[width=0.8\textwidth]{papers/parallelisierung/images/simulation_15x15_0.188_konv.pdf}
 	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.188\), stabil nach Konvergenz.}
 	\label{parallelisierung:fig:simulation_15x15_0.188_konv}
 \end{figure}
+
