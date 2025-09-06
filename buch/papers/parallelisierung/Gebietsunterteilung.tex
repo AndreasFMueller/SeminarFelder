@@ -9,18 +9,19 @@
 \label{parallelisierung:sec:Gebietsunterteilung}
 \kopfrechts{Gebietsunterteilung}
 
-\subsection{Motivation}
-Wie im Kapitel der numerischen Methoden gezeigt, führt eine Verfeinerung der Raum- und Zeitauflösung zwar zu genaueren Ergebnissen, jedoch auch zu einem erheblich höheren Rechenaufwand. 
-Mit zunehmender Gitterfeinheit steigt die Anzahl der Unbekannten quadratisch (in 2D) bzw. kubisch (in 3D).  
-Um diese steigende Komplexität effizient bewältigen zu können, bietet sich die Methode der Gebietsunterteilung an.
 
-Feldgleichungen wie die Wärmeleitungsgleichung besitzen eine lokale Struktur: 
-der Wert in einem Gitterpunkt hängt nur von seinen direkten Nachbarn (räumlich und zeitlich) ab.  
+\subsection{Motivation}
+Wie aus dem Kapitel der numerischen Methoden hervorgeht, führt eine Verfeinerung der Raum- und Zeitauflösung zwar zu genaueren Ergebnissen, jedoch auch zu mehr Datenpunkten und somit einem erheblich höheren Rechenaufwand. 
+Mit zunehmender Gitterfeinheit steigt die Anzahl der Unbekannten quadratisch (in 2D) bzw. kubisch (in 3D).  
+Um diese steigende Komplexität effizient bewältigen zu können, bietet sich die Gebietsunterteilung an.
+
+Feldgleichungen wie die Wärmeleitungsgleichung besitzen wie im ersten Kapitel dieser Arbeit erklärt eine lokale Struktur.
+Also hängt der Wert in einem Gitterpunkt hängt nur von seinen direkten Nachbarn (räumlich und zeitlich) ab.  
 Diese Eigenschaft erlaubt es, ein großes Problem in kleinere Teilprobleme zu zerlegen, sie getrennt zu berechnen und anschließend wieder zusammenzufügen.
 
 \subsection{Mathematische Zerlegung}
 Sei $\Omega \subset {R}^2$ das Gesamtgebiet, diskretisiert durch ein kartesisches Gitter.  
-Wir zerlegen $\Omega$ in $P$ disjunkte Teilgebiete $\Omega_p$:
+Nun zerlegen wir $\Omega$ in $P$ disjunkte Teilgebiete $\Omega_p$:
 \begin{equation}
 	\Omega = \bigcup_{p=1}^P \Omega_p,
 	\qquad 
@@ -57,14 +58,14 @@ Die Temperatur darf an den Schnittkanten keine Sprünge zeigen.
 Es darf keine künstliche Wärmequelle oder -senke entstehen: der aus einem Gebiet austretende Fluss tritt ins Nachbargebiet ein.
 
 \subsection{Diskrete Umsetzung mit Ghost-Zellen}
-Betrachten wir die zweidimensionale Wärmeleitungsgleichung
+Betrachten wir erneut die zweidimensionale Wärmeleitungsgleichung
 \begin{equation}
 	\frac{\partial T}{\partial t} = 
 	\alpha \left(
 	\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2}
 	\right).
 \end{equation}
-Mit FDM ergibt sich für ein quadratisches Gitter mit $\Delta x=\Delta y=\Delta l$ die Update-Formel:
+Zur widerholung: Mit FDM ergibt sich für ein quadratisches Gitter mit $\Delta l=\Delta x=\Delta y$ die Update-Formel
 \begin{equation}
 	T_{i,j}^{n+1}
 	=
@@ -80,18 +81,18 @@ Mit FDM ergibt sich für ein quadratisches Gitter mit $\Delta x=\Delta y=\Delta 
 
 Für innere Punkte eines Teilgebiets $\Omega_p$ kann \eqref{eq:update-dd} direkt berechnet werden.  
 An Schnittkanten hingegen benötigt man Werte aus Nachbargebieten.  
-Dazu führt man Ghost-Zellen ein:
+Dazu führt man sogenannte Ghost-Zellen ein:
 \begin{itemize}
 	\item Sie enthalten Kopien der Randwerte aus benachbarten Teilgebieten.
 	\item Nach jedem Zeitschritt werden sie synchronisiert.
 \end{itemize}
 So kann jedes Teilgebiet lokal weiterrechnen. Dies erlaubt eine effiziente Parallelisierung, da nur die Schnittkanten kommuniziert werden müssen.
 
-Abbildung \ref{parallelisierung:fig:ghostCells} illustriert beispielhaft diesen Datenaustausch über die Ränder verschiedener Teilgebiete mittels insgesamt 32 Ghost-Zellen an ausgewählten Stellen.
+Abbildung~\ref{parallelisierung:fig:ghostCells} zeigt exemplarisch, wie an den Rändern benachbarter Teilgebiete Daten ausgetauscht werden. Farblich Orange hervorgehoben sind die Ghost-Zellen.
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/ghostCells.pdf}
+	\includegraphics{papers/parallelisierung/images/ghostCells.pdf}
 	\caption{Funktionsweise Ghost-Zellen}
 	\label{parallelisierung:fig:ghostCells}
 \end{figure}
@@ -127,7 +128,7 @@ T=20^\circ\mathrm{C}\ \text{(unten)}.
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/stationaer.pdf}
+	\includegraphics{papers/parallelisierung/images/stationaer.pdf}
 	\caption{Beispiel Setup $5\times5$-Grid für stationären Grenzfall}
 	\label{parallelisierung:fig:stationaer}
 \end{figure}
@@ -194,7 +195,7 @@ mit
 \end{itemize}
 
 \subsubsection*{Bemerkung zur Gebietsunterteilung im stationären Fall.}  
-Im zeitabhängigen Fall werden Ghost-Zellen bei jedem Zeitschritt automatisch mit den Werten der Nachbargebiete gefüllt.  
+Im zeitabhängigen Fall werden Ghost-Zellen bei jedem Zeitschritt mit den Werten der Nachbargebiete gefüllt.  
 Im stationären Fall dagegen gibt es keine Iteration in der Zeit, sodass die Ghost-Werte nicht direkt verfügbar sind.  
 Um die Kopplung zwischen Subdomains herzustellen, gibt es zwei grundsätzliche Ansätze:
 
@@ -234,13 +235,13 @@ Um die Kopplung zwischen Subdomains herzustellen, gibt es zwei grundsätzliche A
 	In diesem Verfahren werden an den Schnittkanten \emph{Neumann-Randbedingungen} eingesetzt, also Bedingungen für die Flüsse (z.\,B.\ Wärmeströme) über die Gebietsgrenzen hinweg.  
 	Die Subdomänen werden parallel berechnet, und die Flusswerte an den Interfaces werden iterativ korrigiert, bis Konsistenz erreicht ist.  
 	Dieser Ansatz eignet sich besonders für elliptische Probleme und skaliert gut auf parallelen Rechnerarchitekturen.  
-	Details hierzu finden sich in \cite{parallelisierung:Gander}.
+	Details hierzu finden sich in \cite{parallelisierung:gander2019}.
 \end{itemize}
 
 
 \subsection{Praktische Aspekte}
 
-\subsubsection {Lastverteilung und Kommunikation.}
+\subsubsection {Lastverteilung und Kommunikation}
 Die Kosten pro Zeitschritt sind proportional zur Anzahl der Gitterpunkte im Teilgebiet 
 ($\mathcal{O}(|\Omega_p|)$).  
 Die Kommunikationskosten entstehen durch den Austausch von Ghost-Zellen und hängen von der Länge der Schnittkante ab.  
@@ -249,14 +250,12 @@ Umfang/Flächen-Verhältnis zu wählen.
 In 2D bedeutet dies, dass quadratische Teilgebiete günstiger sind als lange, schmale Streifen.
 Im 3D-Fall spricht man analog vom Oberflächen/Volumen-Verhältnis.  
 
-\subsubsection {Stabilität.}
+\subsubsection {Stabilität}
 Die Stabilitätskriterien der expliziten Finite-Differenzen-Methode gelten auch bei der Gebietsunterteilung unverändert.  
 Insbesondere muss in 2D für ein quadratisches Gitter stets
 \[
 \lambda = \frac{\alpha \Delta t}{(\Delta l)^2} \leq \tfrac{1}{4}
 \]
 gelten.  
-Diese Bedingung ist lokal in jedem Teilgebiet genauso einzuhalten wie global.  
-
-
+Diese Bedingung ist lokal in jedem Teilgebiet genauso einzuhalten wie global. 
 
