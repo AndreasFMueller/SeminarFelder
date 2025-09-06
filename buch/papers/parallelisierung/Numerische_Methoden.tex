@@ -235,11 +235,7 @@ Dimensionen zusammen, wie sie aus einer Fourier-Analyse des Verstärkungsverhalt
 resultieren.  
 Aus Gründen der Lesbarkeit wird die vollständige Herleitung dieser Bedingungen an 
 dieser Stelle nicht wiedergegeben.
-eine historische Einführung findet sich bereits bei Fourier \cite{parallelisierung:fourier1822}, 
-während die systematische von-Neumann-Stabilitätsanalyse im klassischen Werk 
-\cite{parallelisierung:vonneumann1950} entwickelt wurde. 
-Eine moderne und zugleich frei zugängliche Darstellung findet sich zudem in den 
-Vorlesungsunterlagen des Massachusetts Institute of Technology \cite{MITnotes}.
+Eine historische Einführung findet sich bereits bei Fourier \cite{parallelisierung:fourier1822}, während die systematische von-Neumann-Stabilitätsanalyse im Los-Alamos-Report \cite{parallelisierung:vonneumann1950} erstmals formuliert wurde. John von Neumann entwickelte diese Methode im Rahmen des Manhattan Project zur Simulation von Stoßwellen. Der Bericht war ursprünglich als streng geheim klassifiziert und wurde erst Jahre später deklassifiziert, womit die bis heute gebräuchliche Fourier-Fehleranalyse für Differenzenschemata der wissenschaftlichen Gemeinschaft zugänglich wurde. Eine moderne und zugleich frei verfügbare Darstellung findet sich zudem in den Vorlesungsunterlagen des Massachusetts Institute of Technology \cite{parallelisierung:MITnotes}.
 
 \label{parallelisierung:sec:stabilitaetskriterien}
 
@@ -286,11 +282,21 @@ Mit \(\Delta l = \Delta x = \Delta y\) folgt \(\lambda = \lambda_x = \lambda_y\)
 ergibt.
 
 \subsubsection{Physikalische Intuition}  
-Man kann sich die Wärmeausbreitung wie das Füllen mehrerer miteinander verbundener Wasserbehälter vorstellen.  
-Ist der Zeitabstand \(\Delta t\) zwischen den Kontrollpunkten zu groß, können sich die Pegel zwischen den Behältern stark über- oder unterschwingen, anstatt sich gleichmäßig auszugleichen.  
-Eine Erhöhung der thermischen Diffusivität \(\alpha\) wirkt ähnlich wie eine Verringerung der Viskosität einer Flüssigkeit: der Ausgleich erfolgt schneller, sodass kleinere Zeitintervalle notwendig werden.  
-Auch eine Verringerung von \(\Delta x\) (feinere räumliche Auflösung) erfordert kleinere Zeitschritte, da die Temperaturunterschiede über kürzere Distanzen schneller wirken.
-Im Folgenden soll anhand von drei Experimenten die Stabilität der Simulation, basierend auf der Updateformel  \eqref{parallelisierung:eq:update_formel}, genauer untersucht werden.
+Man kann sich die Wärmeausbreitung wie das ausbreiten des Wassers in mehreren, miteinander verbundener Wasserbehälter vorstellen.
+Jeder Gitterpunkt entspricht dabei einem Behälter, dessen „Wasserstand“ die Temperatur an dieser Stelle repräsentiert.
+Die Verbindungen zu den vier Nachbarpunkten wirken wie Rohre, durch die Wasser proportional zum Höhenunterschied fließt.
+
+In jedem Zeitschritt, bzw. nach jeder Iteration der Updateformel, wird der Pegel jedes Behälters neu berechnet, indem Wasser aus den Nachbarbehältern hinzukommt oder abgegeben wird.
+Damit bildet jeder Schritt die Wärmeleitung (Diffusion) nach: hohe Pegel (Temperaturen) geben Wasser ab, niedrige Pegel nehmen auf.
+
+Ist der Zeitschritt  \(\Delta t\), also die Zeit während der hohe Pegel Wasser abgeben, klein genug, gleichen sich die Pegel (Temperaturen) Schritt für Schritt langsam aus und das System verhält sich stabil.
+Ist \(\Delta t\) jedoch zu groß, reagiert jeder Behälter zu stark auf die Differenzen, sodass die Pegel zwischen den Behältern über- oder unterschwingen, anstatt sich gleichmäßig einzupendeln.
+Dies entspricht den Oszillationen und Instabilitäten, die später in den Stabilitätsexperimenten sichtbar werden, wenn die Stabilitätsbedingung verletzt ist.
+
+Eine Erhöhung der thermischen Diffusivität \(\alpha\) wirkt in dieser Analogie wie eine Verringerung der Viskosität der Flüssigkeit: die Strömung durch die Rohre wird schneller, und Unterschiede gleichen sich rascher aus.
+Damit sind kleinere Zeitschritte erforderlich, um die Simulation stabil zu halten.
+
+Auch eine Verfeinerung der räumlichen Auflösung \(\Delta x \) bzw. \(\Delta y\) hat einen direkten Einfluss: Die Behälter stehen dichter beieinander, sodass sich Pegelunterschiede über kürzere Distanzen bemerkbar machen. Dadurch wirkt der Ausgleich zwischen benachbarten Behältern intensiver. Um diese stärkeren Wechselwirkungen stabil zu erfassen, sind entsprechend kleinere Zeitschritte erforderlich.
 
 \subsubsection{Stabilitätsexperiment}
 
