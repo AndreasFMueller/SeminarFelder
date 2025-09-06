@@ -32,14 +32,15 @@ Ein erster wesentlicher Punkt ist, dass Interpolation ein rein mathematisches Ve
 In der Praxis führt dies dazu, dass verrauschte und durch das Abtasten bereits verfälschte Messwerte durch Interpolation weiter verfälscht werden können.
 
 Eine mögliche Lösung wäre, die Interpolation um ein physikalisches Modell zu erweitern, sprich ein Kalman-Filter, welches die Lücken auf möglichst plausible Weise schließt.
-Dabei würde jedoch ein weiteres physikalisches Modell entstehen, das letztlich nur dazu dient, Daten für das eigentliche Modell zu liefern --- was den methodischen Aufwand verdoppelt, ohne zwingend zusätzliche Erkenntnisse zu bringen.
+Dass ein solcher Ansatz in der Praxis zu deutlich robusteren Schätzungen führen kann, wurde beispielsweise im Kontext der LTE-Kanalschätzung gezeigt, wo ein Kalman-Interpolationsfilter klassische Methoden deutlich übertrifft \cite{parallelisierung:Dai2012}.
+Der Nachteil ist jedoch, dass wir mit dieser Methode eine Art Kaskadierung von Modellen erhalten, wodurch die Komplexität und der methodische Aufwand rasant ansteigen.
 
-Ein weiterer zentraler Vorteil numerischer Verfahren liegt in ihrer Fähigkeit, auch Gleichungen zu lösen, die keine geschlossene analytische Lösung besitzen.
+Ein zentraler Vorteil der Numerik liegt in ihrer Fähigkeit, auch Gleichungen zu lösen, die keine geschlossene analytische Lösung besitzen.
 Dies ist insbesondere in der Strömungsmechanik von Bedeutung.
 Ein Beispiel dafür ist die Navier-Stokes-Gleichung, welche die Bewegung von Flüssigkeiten und Gasen beschreibt.
 Für den allgemeinen dreidimensionalen Fall ist bis heute keine Lösung in geschlossener Form bekannt.
+Numerische Verfahren ermöglichen näherungsweise Lösungen mit vernachlässigbar kleinen Fehlern, sofern geeignete Diskretisierung und Randbedingungen gegeben sind.
 
-Numerische Verfahren ermöglichen jedoch näherungsweise Lösungen mit vernachlässigbar kleinen Fehlern, sofern geeignete Diskretisierung und Randbedingungen gegeben sind.
 Allen klassischen numerischen Methoden zur Lösung partieller Differentialgleichungen ist gemeinsam, dass sie das kontinuierliche, analytische Problem in ein algebraisches Gleichungssystem mit endlich vielen Unbekannten überführen.
 Dieses lässt sich anschließend mit numerischen Verfahren der linearen Algebra effizient auf dem Computer lösen.
 
