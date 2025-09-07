@@ -130,11 +130,19 @@ Die partielle Ableitung der Temperaturfunktion \( T \) nach der Zeit wird durch 
 
 \begin{equation}
 	\label{parallelisierung:eq:discrete_time_derivative}
-	\left. \frac{\partial T}{\partial t}\right|{(i,j,n+\frac{1}{2})}
+	\left. \frac{\partial T}{\partial t}\right|{(i,j,n)}
 	\approx
 	\frac{T_{i,j}^{n+1} - T_{i,j}^n}{\Delta t}.
 \end{equation}
-Dies entspricht der zeitlichen Änderungsrate von T am diskreten Gitterpunkt \((x_i, y_j, t_{n+\frac{1}{2})}\)
+Dies entspricht der zeitlichen Änderungsrate von T am diskreten Gitterpunkt \((x_i, y_j, t_n)\)
+
+Streng genommen wird in \eqref{parallelisierung:eq:discrete_time_derivative}
+die Zeitableitung im Zwischenzeitpunkt \(t_{n+\frac{1}{2}}\) approximiert. 
+In der Literatur ist es jedoch üblich, diese Approximation dem Zeitpunkt \(t_n\) zuzuordnen, 
+da die Diskretisierung so konsistenter mit den räumlichen Ableitungen notiert wird und die 
+Herleitung der Update-Formel übersichtlicher bleibt. 
+Aus diesem Grund wird der Halbschritt bewusst weggelassen.
+
 
 \subsubsection{Diskretisierung des Raums}
 Auch hier beginnen wir mit der einmaligen Anwendung des Differenzenquotienten (vorwärts), um die erste Ableitung, zunächst in $x$-Richtung zu approximieren:
@@ -151,7 +159,7 @@ Zusätzlich bestimmen wir den Differenzenquotienten an einem vorangehenden Gitte
 um mittels einer letzten Anwendung des Differenzenquotienten die Änderung dieser beiden Änderungen, also genau das, was die zweite Ableitung beschreibt, diskret zu bestimmen
 \begin{equation}
 	\displaystyle
-	\left. \frac{\partial^2 T}{\partial x^2} \right|_{(i,j,n)}
+	\left. \frac{\partial^2 T}{\partial x^2} \right|{(i,j,n)}
 	\approx
 	\frac{
 		\biggl( \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x} \biggr)
