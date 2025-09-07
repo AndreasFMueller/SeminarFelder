@@ -150,8 +150,13 @@ Zusätzlich bestimmen wir den Differenzenquotienten an einem vorangehenden Gitte
 \end{equation}
 um mittels einer letzten Anwendung des Differenzenquotienten die Änderung dieser beiden Änderungen, also genau das, was die zweite Ableitung beschreibt, diskret zu bestimmen
 \begin{equation}
-	\left. \frac{\partial^2 T}{\partial x^2} \right|{(i,j,n)} \approx
-	\frac{ \biggl( \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x} \biggr) - \biggl( \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x} \biggr) }{\Delta x}.
+	\displaystyle
+	\left. \frac{\partial^2 T}{\partial x^2} \right|_{(i,j,n)}
+	\approx
+	\frac{
+		\biggl( \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x} \biggr)
+		- \biggl( \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x} \biggr)
+	}{\Delta x}.
 \end{equation}
 Schlussendlich vereinfacht sich dies zu 
 \begin{equation}
