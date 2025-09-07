@@ -163,7 +163,7 @@ Schlussendlich vereinfacht sich dies zu
 	\label{parallelisierung:eq:discrete_x_derivative}
 	\left. \frac{\partial^2 T}{\partial x^2} \right|{(i,j,n)} \approx \frac{T_{i+1,j}^n - 2T_{i,j}^n + T_{i-1,j}^n}{(\Delta x)^2}.
 \end{equation}
-Für die y-Richtung folgt analog
+Für die $y$-Richtung folgt analog
 \begin{equation}
 	\label{parallelisierung:eq:discrete_y_derivative}
 	\left. \frac{\partial^2 T}{\partial y^2} \right|{(i,j,n)} \approx \frac{T_{i,j+1}^n - 2T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}.
@@ -272,7 +272,7 @@ Für den zweidimensionalen Fall gilt:
 	\frac{\alpha \, \Delta t}{(\Delta x)^2} +
 	\frac{\alpha \, \Delta t}{(\Delta y)^2} \leq \frac{1}{2}.
 \end{equation}
-Mit \(\Delta l = \Delta x = \Delta y\) folgt \(\lambda = \lambda_x = \lambda_y\), sodass sich die Formel zu
+Mit \(\Delta l = \Delta x = \Delta y\) folgt \(\lambda = \lambda_x = \lambda_y\), sodass sich die Formel
 \begin{equation}
 	\label{parallelisierung:eq:stabForExp}
 	2\lambda = 2 \frac{\alpha \, \Delta t}{(\Delta l)^2} \leq \frac{1}{2}
@@ -286,7 +286,7 @@ Im Folgenden soll diese auf den ersten Blick willkürlich und wenig intuitive St
 \subsubsection{Physikalische Intuition}  
 Man kann sich die Wärmeausbreitung wie das ausbreiten des Wassers in mehreren, miteinander verbundener Wasserbehälter vorstellen.
 Jeder Gitterpunkt entspricht dabei einem Behälter, dessen „Wasserstand“ die Temperatur an dieser Stelle repräsentiert.
-Die Verbindungen zu den vier Nachbarpunkten wirken wie Rohre, durch die Wasser proportional zum Höhenunterschied fließt.
+Die Verbindungen zu den vier Nachbarpunkten wirken wie Rohre, durch die Wasser proportional zum Höhenunterschied fliesst.
 
 In jedem Zeitschritt, bzw. nach jeder Iteration der Updateformel, wird der Pegel jedes Behälters neu berechnet, indem Wasser aus den Nachbarbehältern hinzukommt oder abgegeben wird.
 Damit bildet jeder Schritt die Wärmeleitung (Diffusion) nach: hohe Pegel (Temperaturen) geben Wasser ab, niedrige Pegel nehmen auf.
@@ -392,7 +392,7 @@ Dies führt dazu, dass Unterschiede zwischen benachbarten Zellen nicht geglätte
 	\label{parallelisierung:fig:simulation_15x15_0.376_15it}
 \end{figure}
 
-Lediglich 10 Iterationen später zeigt sich das Verhalten gemäss Abbildung~\ref{parallelisierung:fig:simulation_15x15_0.376_15it}, hier ist die Instabilität der Simulation aufgrund der Verletzung der 2D Stabilitätsbedingung mit \(\lambda = 0.376 > \frac{1}{4}\) deutlich Sichtbar.
+Lediglich 10 Iterationen später zeigt sich das Verhalten gemäss Abbildung~\ref{parallelisierung:fig:simulation_15x15_0.376_15it}, hier ist die Instabilität der Simulation aufgrund der Verletzung der 2D Stabilitätsbedingung mit \(\lambda = 0.376 > \frac{1}{4}\) deutlich sichtbar.
 
 \paragraph{Fall 3: Wiederherstellung der Stabilität}  
 Durch Verringerung von \(\Delta t\) auf \(0.5\,\mathrm{s}\) ergibt sich
