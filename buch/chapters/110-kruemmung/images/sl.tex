@@ -16,8 +16,10 @@
 \def\kegel#1#2{
 	\pgfmathparse{90-atan(1-1/#1)}
 	\xdef\w{\pgfmathresult}
-	\fill[color=blue!20] (#1,#2) -- ++(\w:0.2) -- ++({-2*0.2*cos(\w)},0) -- cycle;
-	\fill[color=blue!10] (#1,#2) -- ++(-\w:0.2) -- ++({-2*0.2*cos(\w)},0) -- cycle;
+	\fill[color=blue!20] (#1,#2) -- ++(\w:0.2) -- ++({-2*0.2*cos(\w)},0)
+		-- cycle;
+	\fill[color=blue!10] (#1,#2) -- ++(-\w:0.2) -- ++({-2*0.2*cos(\w)},0)
+		-- cycle;
 	\draw (#1,#2) -- ++(\w:0.2);
 	\draw (#1,#2) -- ++(-\w:0.2);
 	\draw (#1,#2) -- ++({180-\w}:0.2);
@@ -26,8 +28,10 @@
 \def\legek#1#2{
 	\pgfmathparse{90-atan(1-1/#1)}
 	\xdef\w{\pgfmathresult}
-	\fill[color=blue!20] (#1,#2) -- ++(\w:0.2) -- ++(0,{-2*0.2*sin(\w)}) -- cycle;
-	\fill[color=blue!10] (#1,#2) -- ++({\w-180}:0.2) -- ++(0,{2*0.2*sin(\w)}) -- cycle;
+	\fill[color=blue!20] (#1,#2) -- ++(\w:0.2) -- ++(0,{-2*0.2*sin(\w)})
+		-- cycle;
+	\fill[color=blue!10] (#1,#2) -- ++({\w-180}:0.2)
+		-- ++(0,{2*0.2*sin(\w)}) -- cycle;
 	\draw (#1,#2) -- ++(\w:0.2);
 	\draw (#1,#2) -- ++(-\w:0.2);
 	\draw (#1,#2) -- ++({180-\w}:0.2);
@@ -37,8 +41,8 @@
 
 \draw[color=darkred] (1,-0.1) -- (1,1);
 
-\draw[->] (-0.1,0) -- (3.9,0) coordinate[label={$r$}];
-\draw[->] (0,-0.1) -- (0,1) coordinate[label={right:$t$}];
+\draw[->] ({-0.1/\skala},0) -- (3.9,0) coordinate[label={$r$}];
+\draw[->] (0,{-0.1/\skala}) -- (0,1.1) coordinate[label={right:$ct$}];
 
 \node[color=darkred] at (1,0) [below right] {$r_s$};
 
