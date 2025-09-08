@@ -119,9 +119,10 @@ Dann ist das Wasserstein-Baryzentrum
 \begin{align}
 \rho_W(\alpha)
 &:=
-\underset{\rho \in \mathcal{P}(\Omega)}{\mathrm{arg\,min}}\;
+\underset{\rho \in \mathcal{P}(\Omega)}{\mathrm{arg\,min}}\left(
 (1-\alpha) \wasserstein(\mu, \rho)
 + \alpha \wasserstein(\nu, \rho)
+\right)
 \label{mongekant:eq:wasserstein_barycenter}
 .
 \end{align}
@@ -178,31 +179,58 @@ wobei wir $\wasserstein(\mu, \nu)$ mit $d(\mu, \nu) = (\mu - \nu)^2$ ersetzen:
 \begin{align*}
 \rho_E(\alpha)
 &=
-\underset{\rho \in \mathcal{P}(\Omega)}{\mathrm{arg\,min}}\;
+\underset{\rho \in \mathcal{P}(\Omega)}{\mathrm{arg\,min}}\left(
 (1-\alpha) (\mu - \rho)^2
 + \alpha (\nu - \rho)^2
+\right)
 .
 \end{align*}
-Leiten wir diesen Ausdruck nach $\rho$ ab,
-und setzen die Ableitung auf $0$,
-erhalten wir
+Da es sich hier um ein quadratisches Minimalproblem handelt,
+können wir das Problem in die Form
 \begin{align*}
-\frac{d}{d\rho}
-(1- \alpha) (\mu - \rho)^2 + \alpha (\nu - \rho)^2
+f(\rho)
 &=
-0
+a \rho^2 + b \rho + c
+,
+\end{align*}
+um den Scheitelpunkt der Parabel zu finden.
+Dann ergibt sich das Minimum an der Stelle
+\begin{align}
+\rho_E
+=
+-\frac{b}{2a}
+\label{mongekant:eq:qaud}
+.
+\end{align}
+Multiplizieren wir den Ausdruck aus und 
+arrangieren die Terme um,
+erhalten wir:
+\begin{align*}
+(1 - \alpha) (\mu - \rho)^2 
++ \alpha (\nu - \rho)^2
+&=
+(1 - \alpha) \left(\mu^2 - 2\mu\rho + \rho^2 \right)
++ \alpha \left(\nu^2 - 2\nu\rho + \rho^2 \right)
 \\
--2(1-\alpha)(\mu - \rho) - 2\alpha(\nu - \rho)
 &=
-0
+\mu^2 - 2\mu\rho + \rho^2 - \alpha \mu^2 + 2\alpha\mu\rho - \alpha\rho^2 
++ \alpha \nu^2 - 2\alpha\nu\rho + \alpha\rho^2
 \\
-\rho - (1-\alpha)\mu - \alpha \nu
 &=
-0
+\underbrace{1}_{\displaystyle a} \rho^2 
++ \underbrace{2 \bigl((\alpha - 1) \mu - \alpha\nu \bigr)}_{\displaystyle b} \rho
++ \underbrace{(1 - \alpha) \mu^2 + \alpha \nu^2}_{\displaystyle c}
+.
+\end{align*}
+Setzen die erhaltenen Parameter nun in \eqref{mongekant:eq:qaud} ein,
+resultiert
+\begin{align*}
+\rho_E
+&=
+-\frac{2 \bigl(\left(\alpha - 1\right) \mu - \alpha\nu \bigr)}{2 \cdot 1}
 \\
-\rho
 &=
-(1-\alpha)\mu + \alpha \nu
+(1 - \alpha) \mu + \alpha \nu
 ,
 \end{align*}
 was exakt \eqref{mongekant:eq:euclidean_barycenter} entspricht.
@@ -238,12 +266,12 @@ wobei $x_i, y_j \in \mathbb{R}^d$ Farbwerte und
 $\alpha_i, \beta_j$ deren zugehörige Gewichte sind.
 Die Kostenfunktion wird typischerweise als $c(x,y) = |x - y|^2$ gewählt.
 
-\subsubsection{Probleme der klassischen OT-Lösung}
+\subsubsection{Probleme der klassischen Lösung}
 In der Praxis weist die Farbverteilung von Bildern
 oft Unterschiede in der Dichte und Struktur auf.
 So kann z.B. ein Bild grosse einfarbige Flächen enthalten,
 während ein anderes viele feine Farbnuancen hat.
-Die klassische OT-Methode überträgt die Massen strikt 1:1,
+Die klassische Methode des optimalen Transports überträgt die Massen strikt 1:1,
 was zu unnatürlichen Ergebnissen führen kann:
 \begin{itemize}
 \item Geringe Farbanteile im Zielbild können
@@ -253,14 +281,14 @@ auf grosse Bereiche im Quellbild abgebildet werden.
 ohne Rücksicht auf die lokalen Bildstrukturen.
 \end{itemize}
 
-\subsubsection{Relaxierter und regularisierter OT}
+\subsubsection{Relaxierter und regularisierter optimaler Transport}
 Um diese Probleme zu vermeiden,
 schlägt \cite{mongekant:color} eine \emph{relaxierte und regularisierte}
-Variante des OT-Problems vor.
+Variante des optimalen Transports vor.
 Dabei wird einerseits die strikte Massenkonservierung gelockert,
 andererseits eine Glättung des Transportplans eingeführt.
 
-Die relaxierte OT-Formulierung erlaubt,
+Die relaxierte Formulierung erlaubt,
 dass nicht die gesamte Masse transportiert werden muss.
 Dies geschieht durch Einführung von Toleranzen $\tau_\alpha, \tau_\beta > 0$
 in den Randbedingungen
@@ -283,8 +311,8 @@ R(\gamma)
 \quad \text{oder} \quad
 \lambda \cdot |\nabla \gamma|^2,
 \end{align*}
-wobei $\mathrm{TV}(\gamma)$ die Total Variation
-auf einem Nachbarschaftsgraphen der Quellpunkte beschreibt,
+wobei $\mathrm{TV}(\gamma)$ die totale Variation \cite{mongekant:totvar}
+auf einem Nachbarschaftsgraphen der Quellpunkte beschreibt
 und $\nabla$ ein diskreter Gradientoperator ist.
 Die resultierende Optimierungsaufgabe lautet
 \begin{align*}
