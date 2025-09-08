@@ -302,9 +302,9 @@ Um die Interpretation des dualen Problems zu verdeutlichen,
 betrachten wir das folgende Beispiel:
 
 Wir betrachten ein Unternehmen,
-dass Kaffekapseln herstellt und zu ihren Kunden nach Hause liefert.
+dass Kaffeekapseln herstellt und zu ihren Kunden nach Hause liefert.
 Insgesamt kostet es das Unternehmen $c(x,y)$ Franken,
-um eine Schachtel der nötigen Kaffekapseln von Ort $x$ zu Ort $y$ zu transportieren,
+um eine Schachtel der nötigen Kaffeekapseln von Ort $x$ zu Ort $y$ zu transportieren,
 also von den Lagern zu den Haushalten.
 Das Unternehmen möchten diese teure Gewohnheit optimieren und
 dafür das passende Kantorowitch-Problem formulieren.
@@ -313,15 +313,28 @@ Für jede Schachtel,
 die an Ort $x$ liegt,
 verlangen sie $\xi(x)$ Franken für die Abholung,
 und für die Lieferung an Ort $y$ verlangen sie $\eta(y)$ Franken.
-Allerdings werden die Mathematiker die konkreten Versandrouten nicht preisgeben.
-Damit das Unternehmen dieses Angebot akzeptiert,
-muss selbstverständlich gelten $\xi(x)+\eta(y) \leq c(x,y)$.
-
+Allerdings werden die Mathematiker die konkreten Versandrouten und 
+die internen Kosten nicht preisgeben.
 
 Die Idee ist:
-Wenn die Mathematiker klug genug sind,
-können sie die Sendung günstiger machen.
-Das wird durch den \emph{Kantorowitch-Dualitätssatz} garantiert.
+Die Mathematiker versuchen ihren Ertrag zu \emph{maximieren}.
+Das heisst,
+sie versuchen möglichst hohe Preise anzusetzen,
+müssen dabei allerdings beachten,
+dass $\xi(x)+\eta(y) \leq c(x,y)$ gilt.
+Ansonsten wird das Unternehmen die Lieferung selbst übernehmen.
+Beim dualen Problem geht es also nicht mehr darum \emph{Kosten} zu \emph{minimieren},
+sondern \emph{Preise} zu \emph{maximieren}.
+$C_K(\mu,\nu)$ ist nun der Umsatz den die Mathematiker für die Lieferungen erhalten.
+Gemäss \emph{Dualitätsprinzip} ist dieser äquivalent zu den Kosten die das Unternehmen trägt,
+wenn es die Transporte selbst ausführt.
+Das sich dieses Unterfangen für die Mathematiker lohnt,
+müssen ihre internen Transportkosten geringer sein als der Ertrag.
+Da sie als Mathematiker allerdings das Prinzip des optimalen Transports verstanden haben,
+stehen die Chancen gut.
+% Und da die Mathematiker das Prinzip des optimalen Transport verstanden haben,
+% können sie mit ihrem Logistikunternehmen die Kaffeekapseln
+% viel günstiger transportieren als das Unternehmen.
 
 \emph{Hinweis.}
 In manchen Fällen können die Mathematiker sogar \emph{negative} Preise ansetzen.
@@ -330,7 +343,7 @@ dass sie dem Unternehmen Geld bezahlen,
 um die Sendung an einem bestimmten Ort abzuholen bzw. zu liefern.
 Damit können die Gesamtkosten gesenkt werden.
 Das funktioniert natürlich nur,
-wenn die genauen Mengen an Kaffekapseln,
+wenn die genauen Mengen an Kaffeekapseln,
 die von $x$ nach $y$ transportiert werden müssen,
 im Voraus bekannt und fixiert sind.
 
