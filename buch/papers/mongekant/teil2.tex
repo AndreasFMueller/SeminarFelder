@@ -65,7 +65,7 @@ Der Transportplan wurde hier für die bessere Sichtbarkeit noch zusätzlich gegl
 \end{figure}
 
 \subsection{Optimierungsproblem}
-Mit diesen Notationen lautet das Optimierungsproblem
+Mit diesen Transportplänen können wir das Optimierungsproblem zu 
 \begin{align}
 C_K(\mu, \nu)
 &:=
@@ -73,9 +73,9 @@ C_K(\mu, \nu)
 \int_{X \times Y} c(x,y)\, d\gamma(x,y)
 ,\quad
 \forall \gamma \in \Gamma(\mu, \nu)
-,
 \label{mongekant:eq:kantorowitch_problem}
 \end{align}
+umformulieren.
 Diese Umformulierung hat drei wesentliche Vorteile:
 \begin{enumerate}
 \item \textbf{Linearität.}
@@ -105,7 +105,7 @@ Als nächstes wollen wir untersuchen,
 wie die Monge- und Kantorowitch-Formulierung zusammenhängen und
 ob sie ähnliche Ergebnisse liefern.
 Dafür nehmen wir an,
-dass eine optimale Abbildung $T\colon X \to Y$ für das Monge-Problem existiert,
+dass eine Abbildung $T\colon X \to Y$ existiert,
 für die \eqref{mongekant:eq:monge_problem} minimal wird.
 Wählen wir jetzt
 \begin{align}
@@ -328,8 +328,9 @@ sondern \emph{Preise} zu \emph{maximieren}.
 $C_K(\mu,\nu)$ ist nun der Umsatz den die Mathematiker für die Lieferungen erhalten.
 Gemäss \emph{Dualitätsprinzip} ist dieser äquivalent zu den Kosten die das Unternehmen trägt,
 wenn es die Transporte selbst ausführt.
-Das sich dieses Unterfangen für die Mathematiker lohnt,
-müssen ihre internen Transportkosten geringer sein als der Ertrag.
+Dass sich dieses Unterfangen für die Mathematiker lohnt,
+müssen ihre internen Transportkosten geringer sein als der Umsatz,
+den sie damit machen.
 Da sie als Mathematiker allerdings das Prinzip des optimalen Transports verstanden haben,
 stehen die Chancen gut.
 % Und da die Mathematiker das Prinzip des optimalen Transport verstanden haben,
