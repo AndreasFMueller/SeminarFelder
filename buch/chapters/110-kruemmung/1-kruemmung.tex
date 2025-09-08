@@ -3,6 +3,7 @@
 %
 \section{Berechnung der Krümmung
 \label{buch:kruemmung:section:riemann}}
+\kopfrechts{Berechnung der Krümmung}
 Das eingangs am Beispiel des Paralleltransports entlang eines
 Dreiecksweges auf einer Kugeloberfläche illustrierte Phänomen
 der Drehung eines paralleltransportierten Vektors soll jetzt
@@ -283,6 +284,48 @@ Indizes.
 
 \begin{beispiel}
 Der riemannsche Krümmungstensor für die Ebene in Polarkoordinaten.
+
+In Polarkoordinaten $(r,\vartheta)$ wird die euklidische Metrik
+durch die Koeffizienten
+\[
+g_{11} = 1,\quad
+g_{22} = r^2,\qquad
+g
+=
+\begin{pmatrix}
+1&0\\
+0&r^2
+\end{pmatrix},
+\quad
+g^{-1}
+=
+\begin{pmatrix}
+1&0\\
+0&r^{-2}
+\end{pmatrix},
+\]
+gegeben.
+Daraus kann man die Christoffel-Symbole erster Art
+\begin{align*}
+\Gamma_{1,11}                 & =  0 &
+\Gamma_{1,12} = \Gamma^1_{21} & =  0 &
+\Gamma_{1,22}                 & = -r
+\\
+\Gamma_{2,11}                 & = 0 &
+\Gamma_{2,12} = \Gamma_{2,21} & = r &
+\Gamma_{2,22}                 & = 0
+\intertext{und zweiter Art}
+\Gamma^1_{11}                 & = 0  &
+\Gamma^1_{12} = \Gamma^1_{21} & =  0 &
+\Gamma^1_{22}                 & = -r
+\\
+\Gamma^2_{11}                 & = 0  &
+\Gamma^2_{12} = \Gamma_{2,21} & = \frac{1}{r} &
+\Gamma^2_{22}                 & = 0
+\end{align*}
+berechnen.
+Verwendet man diese Koeffizienten, um den riemannschen Krümmungstensor
+zu berechnen, erhält man $0$ für alle Komponenten.
 \end{beispiel}
 
 \begin{beispiel}
