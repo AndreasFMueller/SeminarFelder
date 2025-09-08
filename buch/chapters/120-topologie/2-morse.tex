@@ -205,6 +205,7 @@ v^tHv
 \sum_{i,k=1}^n = h_{ik} v^iv^k
 \]
 und sagen, dass $H(v)$ eine \emph{quadratische Form} ist.
+\index{quadratische Form}%
 \end{definition}
 
 Die \emph{Polarisationsformel} \cite[p.~347]{buch:linalg} ermöglicht,
@@ -233,6 +234,7 @@ wie sie in der Taylor-Reihe auftritt.
 \label{buch:topologie:morse:def:entartet}
 Eine quadratische Form mit Matrix $H$ heisst \emph{entartet}, wenn
 die Matrix $H$ singulär ist.
+\index{entartet}%
 \end{definition}
 
 Die Bedingung der Definition~\ref{buch:topologie:morse:def:entartet}
@@ -320,6 +322,7 @@ bleibt erhalten.
 Der \emph{Index} einer nicht entarteten quadratischen Form $H$ ist die
 Anzahl $k$ der negativen Eigenwerte.
 Der Index wird mit $\operatorname{Ind}H$ bezeichnet.
+\index{Index einer quadratischeN Form}%
 \end{definition}
 
 Der Index ist eine Grösse, die auf kleine Störungen der Funktion
@@ -374,7 +377,8 @@ die keine entarteten kritischen Punkte haben.
 Eine {\em Morse-Funktion} auf einer differenzierbaren Mannigfaltigkeit
 $M$ ist eine stetig differenzierbare Funktion $f\colon M\to\mathbb{R}$,
 deren kritische Punkte alle nicht entartet sind.
-Der Index $\operatorname{Ind}_pf$ des kritischen Punktes ist der Index
+Der \emph{Index} $\operatorname{Ind}_pf$ des kritischen Punktes ist der Index
+\index{Index eines kritischen Punktes}%
 der hesseschen Matrix im Punkt $f$:
 \[
 \operatorname{Ind}_pf
@@ -407,33 +411,6 @@ kritische Punkt der Koordinatenfunktionen entstehen können.
 Ein zweites lokales Maximum wird aber immer mit einem Sattelpunkt
 verbunden sein, der Index $1$ hat.
 
-%\begin{definition}[Signatur eines kritischen Punktes]
-%Sei $p$ ein kritischer Punkt der Morse-Funktion $f$.
-%Die Signatur von $p$ ist
-%\[
-%\operatorname{sgn}_pf
-%=
-%n-2\operatorname{Ind}_pf
-%\]
-%Die Differenz der Anzahl der positiven bzw.~negativen Eigenwerte
-%der hesseschen Matrix.
-%\end{definition}
-%
-%Da die hessesche Matrix nicht entartet ist, ist die Anzahl der
-%postiven Eigenwerte $n-\operatorname{Ind}_pf$ und damit die
-%Differenz
-%$n-\operatorname{Ind}_pf-\operatorname{Ind}_pf=n-2\operatorname{Ind}_pf$.
-%Die Signatur ist positiv, wenn die hessische Matrix mehr positive als
-%negative Eigenwerte hat.
-%Die extremen Werte $\pm n$ werden erreicht, wenn alle Eigenwerte das
-%gleiche Vorzeichen haben.
-%
-%Für das eindimensionale Einführungsbeispiel $f_t$ folgt, dass der kritische
-%Punkt $\pm\!\sqrt{t/3}$ die Signatur $\mp 1$ hat.
-%Die Summe der Signaturen ist eine Invariante unter der Deformation.
-%
-%Auf einer Fläche entspricht der Signatur $1$ ein lokales Minimum,
-
 %
 % Rekonstruktion
 %
@@ -461,17 +438,19 @@ und $f$ eine Morse-Funktion mit genau zwei kritischen Punkten, dann ist
 $M$ eine $n$-dimensionale Kugel.
 \end{satz}
 
-\begin{proof}
-Man muss aus der Funktion $f$ eine bijektive differenzierbare Abbildung
-von $M$ auf eine $n$-dimensionale Kugel konstruieren, deren Ableitung
-in jedem Punkt regulär ist.
+\begin{proof}[Beweisidee]
+\input{chapters/120-topologie/fig/fig-kartoffel.tex}%
+Man muss aus der Funktion $f$ eine bijektive stetige und Abbildung
+von $M$ auf eine $n$-dimensionale Kugel konstruieren, deren
+Umkehrungabbildung ebenfalls stetig ist.
 
 Da die Mannigfaltigkeit $M$ kompakt ist, nimmt $f$ auf $M$ mindestens
 ein Maximum und ein Minimum an.
 Diese sind automatisch kritische Punkte.
 Weil $f$ eine Morse-Funktion ist, sind sie auch nicht entartet.
 Wir bezeichnen den Punkt, in dem $f$ das Maximum annimmt, mit $N$,
-und den Punkt, in dem $f$ das Minimum annimt mit $S$.
+und den Punkt, in dem $f$ das Minimum annimt mit $S$
+(Abbildung~\ref{buch:topologie:morse:fig:kartoffel} links).
 Durch Skalarierung der Funktion $f$ kann man ohne Beschränkung der
 Allgemeinheit annehmen, dass $f(N)=1$ und $f(S) = -1$ ist.
 
@@ -481,32 +460,43 @@ Für die anderen Koordinatenfunktionen benutzen wir, dass wir annehmen
 dürfen, dass es auf $M$ eine riemannsche Metrik gibt.
 Mit ihre konstruieren wir das Vektorfeld $X$ des Gradienten der 1-Form $df$.
 
-Sei jetzt $\gamma(t)$ eine Bahnkurve des Vektorfeldes durch einen Punkt
-$p\in M$ mit der Eigenschaft $f(p)=0$.
-Nach Definition des Vektorfeldes ist für jeden Wert $t$ im Definitionsbereich
-von $\gamma$
-\[
-\frac{d}{dt}f\circ\gamma(t)
-=
-D_{\dot{\gamma}(t)} f
-=
-\langle df, \dot{\gamma}(t) \rangle.
-\]
-Durch Integration findet man, dass
-\[
-f(\gamma(t))
-=
-\int \langle df,\dot{\gamma}(t)\rangle \,dt
-\]
-ist.
+Da $M$ eine Mannigfaltigkeit ist, gibt es eine Karte um den Punkt $N$,
+so dass die Kartenabbildung ein Diffeomorphismus einer Umgebung von $N$
+mit einem $n$-dimensionalen Ball ist.
+Diese Abbildung kann verwendet werden, um einen Homöomorphismus 
+mit der Polkappe der $n$-Dimensionalen Kugeloberfläche in 
+Abbildung~\ref{buch:topologie:morse:fig:kartoffel} rechts zu
+konstruieren.
+Sie wird durch die hellblauen Radien symbolisiert.
+Dieselbe Konstruktion kann natürlich auch auf eine Umgebung von $S$
+angewendet werden.
 
+Zur Vervollständigung wird jetzt noch eine Abbildung der Umgebung des
+Äquators benötigt.
+Dazu konstruieren wir für jeden Punkt am Ende eines blauen Radius die
+hellrote eingezeichneten Kurven.
+Sie sind Lösungskurven des Gradienten der Funktion $f$.
+Die Bahnen können sich nicht schneiden und sie hängen stetig vom
+Anfangspunkt ab.
+Sie liefern daher einen Homöomorphismus mit den hellroten Kurven
+auf der Kugeloberfläche.
 
-
-Der Tangentialraum von $M$ im Punkt $N$ ist der
-$n$-dimensionale Vektorraum $T_NM\equiv \mathbb{R}^n$.
-Zu einem Einheitsvektor $\vec{v}$ 
-
+Zu jedem Anfangspunkt einer hellroten Kurve gibt es den Endpunkt wo
+die Kurve in den Rand des $n$-dimensionalen Balles in der Umgebung
+von $S$ eintritt.
+Dies ist die Kartenwechselabbildung für einen Atlas von $M$.
+Er zeigt, dass $M$ und $S^n$ homöomorph sind.
 \end{proof}
+
+Der Beweis von Satz~\ref{buch:topologie:morse:satz:kugeln} versucht
+nicht, einen Diffeomorphismus zu konstruieren.
+Dies äussert sich zum Beispiel in den ``Knicken'' der Meridiankurven
+in der Abbildung~\ref{buch:topologie:morse:fig:kartoffel}, die andeuten,
+dass die Kartenwechselabbildungen nicht differenzierbar zu sein brauchen.
+Diffeomorphie ist auch nicht zu erwarten, denn man kann zeigen, dass es
+Mannigfaltigkeiten gibt, die topologisch zwar $n$-dimensionale
+Sphären sind, aber nicht diffeomorph sind zur bekannten differenzierbaren
+Mannigfaltigkeit $S^n$.
 
 In diesem Zusammenhang ist auch der Satz von Poincaré-Bendixson,
 der in Kapitel~\ref{chapter:poinbendix} vorgestellt wird, zu beachten.
@@ -516,7 +506,10 @@ Der Gradient einer Morse-Funktion wie in
 Satz~\ref{buch:topologie:morse:satz:kugeln}
 ist ein Vektorfeld mit nur zwei kritischen Punkten.
 Für diesen Fall sagt der Satz von Poincaré-Bendixson, dass die
+\index{Poincare-Bendixson@Poincaré-Bendixson}%
 Lösungskurven Bahnen sind, die also $\omega$-Limesmengen die 
+\index{omega-Limesmenge@$\omega$-Limesmenge}%
+\index{alpha-Limesmenge@$\alpha$-Limesmenge}%
 Maximumstelle haben, und als $\alpha$-Limesmenge die Minimumstelle.
 
 %
@@ -528,6 +521,7 @@ Eine Morse-Funktion codiert in ihren kritischen Punkten Information
 Auf einer kompakten Mannigfaltigkeit findet man immer einen kritischen
 Punkt mit Index $0$ für die Minimumstelle und einen mit Indes $n$ für
 das Maximum.
+\index{Sattelpunkt}%
 Weitere kritische Punkte treten auf für Sattelpunkte.
 
 Abbildung~\ref{buch:topologie:fig:morse} zeigt einen zweidimensionalen
@@ -538,7 +532,7 @@ Die Abbildung zeigt auch, wie der Torus schrittweise aufgebaut werden
 kann.
 Man beginnt ganz unten mit einer Kreisscheibe.
 Der nächsthöhere kritische Punkt zeigt an, dass zwischen zwei Punkten
-des Randes eine Brücke gebaut werden muss.
+des Randes eine ``Brücke'' gebaut werden muss.
 Es entsteht jetzt eine Fläche mit zwei kreisförmigen Rändern.
 Der nächste kritische Punkt zeigt an, dass die beiden Ränder mit
 einer weiteren Brücke verbunden werden müssen.
@@ -551,8 +545,30 @@ Torus übereinstimmt.
 Man nennt einen topologischen Raum, der schrittweise aus einem Punkt
 durch Anfügen von $k$-dimensionaler Kreisscheiben aufgebaut werden kann,
 einen CW-Komplex.
-Die kritischen Punkte einer Morse-Funktion bestimmen einen solchen
-Komplex bis auf Deformation.
+\index{CW-Komplex}%
+Ein solcher codiert im Wesentlichen alle Informationen, die man braucht,
+um einen topologischen Raum bis auf Deformation zu charakterisieren.
+
+Die kritischen Punkte einer Morse-Funktion bestimmen bereits viele
+Aspekte eines CW-Komplexes.
+Allerdings ist die Information über die Indizes der kritischen Punkte
+nicht unbedingt ausreichend für eine exakte Rekonstruktion der
+Mannigfaltigkeit.
+Zum Beispiel gibt es auch im Beispiel des Torus die Möglichkeit,
+den zweiten kritischen Punkt mit Index $1$ durch eine Brücke zu
+realisieren, die zwei Punkte auf dem gleichen Randkreis verbindet.
+So würden drei Randkreise entstehen.
+Da die Morse-Funktion nur noch einen weiteren kritischen Punkt hat,
+könnte nur einer der Randkreise mit einer ``Kappe'' geschlossen
+werden.
+Im Nachhinein leiten wir daraus ab, dass der Schritt, zwei Punkte des
+gleichen Randkreises zu überbrücken, nicht aufgeht.
+Es ist allerdings nicht klar, wie eine solche Schlussfolgerung
+für eine grosse Zahl von kritischen Punkten möglich sein könnte.
+
+Die Information in den kritischen Punkten einer Morse-Funktion reicht
+aber aus, um wenigestens die Betti-Zahlen der Mannigfaltigkeit
+wenn nicht zu bestimmen, so doch mindestens einzuschränken.
 
 %
 % Euler-Charakteristik

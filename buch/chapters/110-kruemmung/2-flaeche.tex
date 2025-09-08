@@ -1,0 +1,565 @@
+%
+% Krümmungstensor einer Fläche
+%
+\section{Krümmungstensor einer Fläche
+\label{buch:kruemmung:section:flaeche}}
+Im Falle einer zweidimensionalen Mannigfaltigkeit enthält der
+riemannsche Krümmungstensor nur eine einzige unabhängige Komponente,
+wie in diesem Abschnitt gezeigt werden soll.
+Dies eröffnet die Möglichkeit, die Krümmung eines Raumes dadurch zu
+studieren, dass die Krümmung zweidimensionaler Untermannigfaltigkeiten
+untersucht wird.
+Dies wird in Abschnitt~\ref{buch:kruemmung:section:schnittkruemmung}
+mit der Schnittkrümmung durchgeführt.
+
+%
+% Symmetrien des Krümmungstensors
+%
+\subsection{Symmetrien des Krümmungstensors}
+Wir betrachten die kovarianten Komponenten des riemannschen
+Krümmungstensors $R_{hlik}$, wobei die Indizes nur die Werte 1 oder 2
+annehmen können.
+Er ist antisymmetrisch im ersten und letzten Indexpaar.
+Alle Komponenten mit $h=l$ oder $i=k$ verschwinden, es bleiben daher
+nur noch die Komponenten
+\[
+R_{1212}
+=
+-R_{2112}
+=
+R_{2121}
+=
+-R_{1221},
+\]
+die möglicherweise nicht verschwinden.
+
+\subsubsection{Bianchi-Identität}
+Für eine zweidimensionale Mannigfaltigkeit ist der Krümmungstensor also
+durch genau eine Funktion $R_{1212}(x)$ vollständig bestimmt.
+Der Krümmungstensor erfüllt aber zusätzlich noch die Bianchi-Identitäten,
+die in diesem Fall eine Aussage über die Grösse
+\[
+B
+=
+R_{1{\color{darkred}212}}
++
+R_{1{\color{darkred}122}}
++
+R_{1{\color{darkred}221}}
+\]
+ist.
+Die roten Indizes sind zyklisch permutiert worden.
+Der mittlere Term verschwindet wegen der Antisymmetrie in den ersten
+zwei und den letzten zwei Indizes.
+Der letzte Term ist aber $R_{1212}=-R_{1221}$, so dass die Summe zu
+\[
+B
+=
+R_{1212}+R_{1221}
+=
+R_{1212}-R_{1212}
+=
+0,
+\]
+die Bianchi-Identität ist daher immer erfüllt.
+
+\subsubsection{Die differentielle Bianchi-Identität}
+Ausserdem erfüllt der riemannsche Krümmungstensor die differentielle
+Bianchi-Identität, die in Komponenten
+\[
+R_{abik;l}
++
+R_{abkl;i}
++
+R_{abli;k}
+=
+0
+\]
+ist.
+Für eine zweidimensionale Mannigfaltigkeit können wir $a=1$ und $b=2$
+setzen.
+Ausserdem ist die Identität trivialerweise erfüllt, wenn die hinteren
+drei Indizes $i=k=l$ gleich sind, denn dann verschwindet jeder Term.
+Es müssen daher nur noch zwei Fälle untersucht werden, nämlich
+\begin{itemize}
+\item Fall $i=k=1$ und $l=2$:
+\[
+R_{1211;2} + R_{1212;1} + R_{1221;1} 
+=
+R_{1212;1}-R_{1212;1} = 0.
+\]
+\item Fall $i=k=2$ und $l=1$:
+\[
+R_{1222;1} + R_{1221;2} + R_{1212;2}  
+=
+R_{1221;2} - R_{1221;2}
+=
+0.
+\]
+\end{itemize}
+Auch die differentiellen Bianchi-Identitäten sind also automatisch
+erfüllt und liefern keine zusätzliche Information über den Krümmungstensor.
+
+%
+% Die Gauss-Krümmung
+%
+\subsection{Die Gauss-Krümmung}
+Für im dreidimensionalen Raum eingebettete Flächen wurde die Krümmung
+besonders von Gauss ausführlich untersucht.
+Die Fläche erbt von der Längenmessung in $\mathbb{R}^3$ eine
+Metrik, der riemannsche Krümmungstensor lässt sich daraus berechnen
+und führt auf die Komponente $R_{1212}$, die den Krümmungstensor vollständig
+beschreibt.
+Gauss konstruierte einen Krümmungsbegriff aus der Untersuchung der
+Krümmung von Kurven in der Fläche.
+Gauss konnte zeigen, dass einer der von ihm gefundenen Krümmungsbegriffe,
+der heute die Gauss-Krümmung $K$ genannt wird, nur von der Metrik selbst
+abhängt, nicht von weiteren Eigenschaften der Einbettung.
+Es stellt sich heraus, dass  $K$ im wesentlichen die Komponenten $R_{1212}$
+des riemannschen Krümmungstensors ist.
+
+\subsubsection{Untermannigfaltigkeiten von $\mathbb{R}^3$}
+Eine 2-dimensionale Untermannigfaltigkeit von $\mathbb{R}^3$ kann
+mindestens lokal durch eine Parametrisierung
+\[
+f\colon U\to \mathbb{R}^3
+:
+(u,v)\mapsto f(u,v)
+=
+\begin{pmatrix}
+x(u,v)\\
+y(u,v)\\
+z(u,v)
+\end{pmatrix}
+\]
+dargestellt werden, wobei die Funktionen $x(u,v)$, $y(u,v)$ und $z(u,v)$
+mindestens zweimal stetig differenzierbar sein sollen.
+
+Nicht jede Abbildung ist als Parametrisierung einer Fläche geeignet.
+Damit sich eine differenzierbare Mannigfaltigkeit ergibt, muss die die
+$f$ lokal ein Diffeomorphismus zwischen der $U$ und der Bildmenge $f(U)$
+sein.
+Dies ist genau dann möglich, wenn die Tangentialvektoren
+\[
+f_u
+=
+\frac{\partial f}{\partial u}
+\qquad\text{und}\qquad
+f_v
+=
+\frac{\partial f}{\partial v}
+\]
+in jedem Punkt linear unabhängig sind.
+Dies kann auch dadurch ausgedrückt werden, dass der Vektor
+\[
+\vec{n}
+=
+f_u\times f_v
+=
+\frac{\partial f}{\partial u}
+\times
+\frac{\partial f}{\partial v}
+\]
+nicht verschwindet.
+Der Vektor steht senkrecht auf der Mannigfaltigkeit.
+Für eine solche eingebettete Mannigfaltigkeit lässt sich also sofort
+ein wohldefinierter Normalenvektor angeben.
+
+\begin{beispiel}
+Ist $z(x,y)$ eine zweimal stetig differenzierbare Funktion der Variablen
+$x$ und $y$, dann ist
+\[
+f\colon
+U\to \mathbb{R}^3
+:
+(x,y) \mapsto \begin{pmatrix}x\\y\\z(x,y)\end{pmatrix}
+\]
+eine Abbildung dieser Art.
+Damit die Abbildung nicht entartet ist, müssen die Vektoren der partiellen
+Ableitungen linear unabhängig sein, diese sind
+\begin{equation}
+\frac{\partial f}{\partial x}
+=
+f_x
+=
+\begin{pmatrix}
+1\\0\\ \frac{\partial z}{\partial x}
+\end{pmatrix}
+\qquad\text{und}\qquad
+\frac{\partial f}{\partial y}
+=
+f_y
+=
+\begin{pmatrix}
+0\\1\\ \frac{\partial z}{\partial y}.
+\end{pmatrix}
+\label{buch:kruemmung:gausskruemmung:eqn:xytangential}
+\end{equation}
+Die Projektion dieser Vektoren in die $x$-$y$-Ebene ergibt die 
+Standarbasisvektoren in zwei Dimensionen, die natürlich linear
+unabhängig sind.
+Also sind auch die Vektoren $f_x$ und $f_y$ linear unabhängig.
+\end{beispiel}
+
+%
+% Metrik
+%
+\subsubsection{Metrik}
+Das Standardskalarprodukt auf $\mathbb{R}^3$ definiert auch ein
+Skalarprodukt auf der durch $f$ eingebetteten Mannigfaltigkeit $M$.
+Ein Tangentialvektor $X$ an die Mannigfaltigkeit $M$ ist eine
+Linearkombination
+\[
+X
+=
+\xi
+\frac{\partial f}{\partial u}
++
+\eta
+\frac{\partial f}{\partial v}
+\]
+der Tangentialvektoren der Koordinatenableitungen.
+Die Länge des Tangentialvektors kann daher mit dem Standardskalarprodukt
+in $\mathbb{R}^3$ ausgerechnet werden und ist
+\begin{align*}
+g(X,X)
+&=
+\langle
+\xi f_u + \eta f_v,
+\xi f_u + \eta f_v
+\rangle
+\\
+&=
+\xi^2 \langle f_u,f_u\rangle
++2
+\xi\eta \langle f_u,f_v\rangle
++
+\eta^2 \langle f_v,f_v\rangle.
+\intertext{Der letzte Ausdruck lässt sich auch in Matrixform als}
+&=
+\begin{pmatrix}\xi\\\eta\end{pmatrix}^t
+\begin{pmatrix}
+\langle f_u,f_u\rangle & \langle f_u,f_v\rangle \\
+\langle f_u,f_v\rangle & \langle f_v,f_v\rangle
+\end{pmatrix}
+\begin{pmatrix}\xi\\\eta\end{pmatrix}
+=
+\begin{pmatrix}\xi\\\eta\end{pmatrix}^t
+G
+\begin{pmatrix}\xi\\\eta\end{pmatrix}
+\end{align*}
+mit der Gram-Matrix
+\begin{equation}
+G
+=
+\begin{pmatrix}
+\langle f_u,f_u\rangle & \langle f_u,f_v\rangle \\
+\langle f_u,f_v\rangle & \langle f_v,f_v\rangle
+\end{pmatrix}
+\label{buch:kruemmung:gausskrümmung:eqn:gram}
+\end{equation}
+schreiben.
+Die Matrix $G$ beschreibt also die Metrik in den $u$-$v$-Koordinaten
+auf der Fläche.
+
+\begin{beispiel}
+Für den Fall des Graphen einer Funktion $z(x,y)$ ist die Gram-Matrix
+leicht auszurechnen.
+Aus \eqref{buch:kruemmung:gausskrümmung:eqn:gram} ergibt sich
+\begin{align*}
+G
+&=
+\begin{pmatrix}
+\langle f_x,f_x\rangle & \langle f_x,f_y\rangle \\
+\langle f_x,f_y\rangle & \langle f_y,f_y\rangle
+\end{pmatrix}
+\\
+&=
+\begin{pmatrix}
+1+z_x(x,y)^2 & z_x(x,y)z_y(x,y) \\
+z_x(x,y) z_y(x,y) & 1 + z_y(x,y)^2
+\end{pmatrix},
+\end{align*}
+wobei die Darstellung
+\eqref{buch:kruemmung:gausskruemmung:eqn:xytangential}
+der Tangentialvektoren verwendet wurde.
+\end{beispiel}
+
+Die durch die Matrix $G$ beschriebene Bilinearform wird auch die
+erste Fundamentalform der Fläche genannt.
+
+%
+% Krümmungsradius von Kurven auf der Fläche
+%
+\subsubsection{Krümmungsradius von Kurven auf der Fläche}
+Wir betrachten jetzt Kurven auf der eingebetteten Mannigfaltigkeit.
+Da die Mannigfaltigkeit lokal wie $\mathbb{R}^2$ aussieht, lassen sich
+darin Kurven mit beliebig kleinen Krümmungsradien finden.
+Andererseits gibt es zum Beispiel auf einer Kugeloberfläche keine 
+ungekrümmten Kurven.
+Die Krümmung der Fläche wird also dadurch charakterisiert,
+wie gross der Krümmungsradius maximal sein kann.
+Intuitiv erwartet man, dass von allen Kurven, die mit einem vorgegebenen
+Tangentialvektor durch den Punkt $P$ gehen, diejenige Kurve den grössen
+Krümmungsradius hat, die in der Ebene aufgespannt vom Tangentialvektor
+und der Normalen liegt.
+
+Sie die Fläche wieder durch die Abbildung $f\colon U\to\mathbb{R}^3$
+gegeben und die Kurve durch 
+$\gamma\colon I\to U : t\mapsto(u(t),v(t))$ im
+Parametergebiet $U$ derart, dass $f\circ\gamma(0)=P$.
+Wir können annehmen, dass $t$ ein Bogenlängenparameter ist, dass
+also der Tangentialvektor 
+\[
+\vec{v}
+=
+\frac{d}{dt} f\circ\gamma(t) 
+\bigg|_{t=0}
+\]
+die Länge 1 hat.
+
+Die Krümmung misst, wie schnell der normierte Normalenvektor seine
+Richtung ändert.
+Dabei spielt nur Komponente parallel zu $\vec{v}$ eine Rolle.
+Die Krümmung ist das Skalarprodukt
+\[
+\frac{1}{R}
+=
+\vec{v} \cdot \frac{d\vec{n}\circ\gamma}{dt}(0),
+\]
+wobei $R$ der Krümmungsradius ist.
+Die Krümmung ist also eine Funktion, die von der Richtung $\vec{v}$
+der Kurventangente abhängt.
+
+Die Normale steht natürlich senkrecht auf dem Tangentialvektor, 
+es ist also $\vec{v}\cdot\vec{n}=0$.
+Dies gilt auch entlang der Kurve, 
+\[
+\vec{n}\circ\gamma(t) \cdot \frac{d}{dt}f\circ\gamma(t)
+=
+0
+\]
+für alle $t\in I$.
+Die Ableitung nach $t$ ist
+\[
+\frac{d}{dt}
+\vec{n}\circ\gamma(t)
+\cdot
+\frac{d}{dt}f\circ\gamma(t)
++
+\vec{n}\circ\gamma(t)
+\cdot
+\frac{d^2}{dt^2}f\circ\gamma(t)
+=
+0
+\]
+was
+\begin{equation}
+\frac{d}{dt}\vec{n}\circ\gamma(t)\cdot \frac{d}{dt}f\circ\gamma(t)
+=
+-
+\vec{n}\circ\gamma(t)
+\cdot
+\frac{d^2}{dt^2}f\circ\gamma(t)
+\label{buch:kruemmung:flaeche:eqn:sk}
+\end{equation}
+zur Folge hat.
+Die Linke Seite von \eqref{buch:kruemmung:flaeche:eqn:sk}
+ist die Krümmung.
+
+%
+% Die zweite Fundamentalform
+%
+\subsubsection{Die zweite Fundamentalform}
+Für die rechte Seite von \eqref{buch:kruemmung:flaeche:eqn:sk}
+muss die zweite Ableitung bestimmt werden, sie ist
+\begin{align*}
+\frac{d^2}{dt^2}
+f\circ\gamma(t)
+&=
+\frac{d}{dt}
+\biggl(
+\frac{\partial f}{\partial u}(u(t),v(t)) \dot{u}(t)
++
+\frac{\partial f}{\partial v}(u(t),v(t)) \dot{v}(t)
+\biggr)
+\\
+&=
+\frac{\partial^2 f}{\partial u^2}(u(t),v(t)) \, \dot{u}(t)^2
++
+2\frac{\partial^2 f}{\partial u\,\partial v}(u(t),v(t)) \, \dot{u}(t) \dot{v}(t)
++
+\frac{\partial^2 f}{\partial v^2}(u(t),v(t)) \, \dot{v}(t)^2
+\\
+&\quad
++
+\frac{\partial f}{\partial u}(u(t),v(t)) \, \ddot{u}(t)
++
+\frac{\partial f}{\partial v}(u(t),v(t)) \, \ddot{v}(t).
+\end{align*}
+Die letzten zwei Term auf der rechten Seite bilden einen Vektor, der von $f_u$
+und $f_v$ aufgespannt wird, also einen Tangentialvektor.
+Dieser Vektor steht auf der Normalen $\vec{n}$ senkrecht, in der
+Formel \eqref{buch:kruemmung:flaeche:eqn:sk} kann er daher weggelassen
+werden.
+Es bleibt dann die Krümmung
+\begin{align*}
+\frac{1}{R}
+&=
+-\vec{n}\circ\gamma(t)
+\cdot 
+\biggl(
+\frac{\partial^2 f}{\partial u^2}(u(t),v(t)) \, \dot{u}(t)^2
++
+2\frac{\partial^2 f}{\partial u\,\partial v}(u(t),v(t)) \, \dot{u}(t) \dot{v}(t)
++
+\frac{\partial^2 f}{\partial v^2}(u(t),v(t)) \, \dot{v}(t)^2
+\biggr)
+\\
+&=
+\vec{n}\cdot\frac{\partial^2 f}{\partial u^2} \,
+\dot{u}(t)^2
++
+\vec{n}\cdot\frac{\partial^2 f}{\partial u\,\partial v} \,
+\dot{u}(t)\,\dot{v}(t)
++
+\vec{n}\cdot\frac{\partial^2 f}{\partial v^2} \,
+\dot{v}(t)^2
+\end{align*}
+Dies ist eine Bilinearform mit der Koeffizientenmatrix
+\[
+H
+=
+\begin{pmatrix}
+h_{11} & h_{12} \\
+h_{21} & h_{22}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\vec{n}\cdot f_{uu} & \vec{n}\cdot f_{uv} \\
+\vec{n}\cdot f_{vu} & \vec{n}\cdot f_{vv}
+\end{pmatrix}.
+\]
+Sie heisst die zweite Fundamentalform und wird auch
+\[
+II(\vec{w},\vec{q})
+=
+\vec{w}^t H \vec{q}
+\]
+geschrieben.
+Nach dem Satz von Schwarz kommt es auf die Reihenfolge der partiellen
+Ableitungen nicht an, also ist $f_{uv}=f_{vu}$, die Matrix $H$ ist daher
+symmetrisch.
+
+Die Polarisierungsformel zeigt, dass die bilineare Funktion
+$(\vec{w},\vec{q}) \mapsto II(\vec{w},\vec{q})$ vollständig
+bestimmt ist durch die Werte $II(\vec{w},\vec{w})$ bestimmt,
+denn aus der Symmetrie der zweiten Fundamentalform folgt
+\begin{align*}
+II(\vec{w}+\vec{q},\vec{w}+\vec{q})
+&=
+II(\vec{w},\vec{w}) + 2\,II(\vec{w},\vec{q}) + II(\vec{q},\vec{q})
+\\
+II(\vec{w}-\vec{q},\vec{w}-\vec{q})
+&=
+II(\vec{w},\vec{w}) - 2\,II(\vec{w},\vec{q}) + II(\vec{q},\vec{q})
+\intertext{mit der Differenz}
+II(\vec{w}+\vec{q},\vec{w}+\vec{q})
+-
+II(\vec{w}-\vec{q},\vec{w}-\vec{q})
+&=
+4\,II(\vec{w},\vec{q}),
+\intertext{die man nach nach}
+II(\vec{w},\vec{q})
+&=
+{\textstyle\frac14}\bigl(
+II(\vec{w}+\vec{q},\vec{w}+\vec{q})
+-
+II(\vec{w}-\vec{q},\vec{w}-\vec{q})
+\bigr).
+\end{align*}
+auflösen, dies ist die Polarisierungsformel.
+Die rechte Seite enthält wie versprochen nur Ausdrücke der Form
+$II(\vec{a},\vec{a})$.
+
+%
+% Hauptkrümmungen
+%
+\subsubsection{Hauptkrümmungen}
+Für jeden tangentialen Richtungsvektor $\vec{w}\in T_pM$ im Pumkt $p$
+liefert die zweite Fundamentalform die Krümmung $\vec{w}^t H\vec{v}$ 
+der Schnittkurve.
+Die tangentialen Vektoren $\vec{w}$ im Punkt $p$ mit Länge $1$ bilden
+eine kompakte Menge. 
+Da die Funktion $\vec{w}\mapsto II(\vec{w},\vec{w})$ ist eine stetige
+Funktion und nimmt daher auf dem Kreis ein Maximum und ein Minimum an.
+Nach der allgemeinen Eigenwerttheorie der symmetrischen Matrizen
+geschieht dies für Richtungen, die Eigenvektoren der Matrix $H$
+sind.
+Diese Richtungen heissen die \emph{Hauptkrümmungsrichtungen}.
+Die zugehörigen Eigenwerte heissen die \emph{Hauptkrümmungen}.
+
+%
+% Die Mittlere Krümmung
+%
+\subsubsection{Mittlere Krümmung}
+Die lineare Algebra liefert skalare Invarianten, die von der zweiten
+Fundamentalform abgeleitet werden können.
+Die Spur der Matrix ist
+\[
+\operatorname{Spur} H
+=
+h_{11}
++
+h_{22}
+=
+\vec{n}\cdot f_{uu}
++
+\vec{n}\cdot f_{vv}
+=
+\vec{n}\cdot(f_{uu}+f_{vv})
+=
+\vec{n}\cdot\Delta f.
+\]
+Sie heisst die \emph{mittlere Krümmung} der Fläche $M$.
+Man kann zeigen, dass Minimalflächen dadurch charakterisiert sind
+durch die Eigenschaft, dass die mittlere Krümmung verschwindet.
+
+%
+% Die Gauss-Krümmung
+%
+\subsubsection{Gauss-Krümmung}
+Eine weitere Invariante ist die Determinante der Matrix $H$, sie ist
+\[
+K
+=
+\det H
+=
+h_{11}h_{22}-h_{12}^2
+=
+\left|\,\begin{matrix}
+\vec{n}\cdot f_{uu} & \vec{n}\cdot f_{uv} \\
+\vec{n}\cdot f_{vu} & \vec{n}\cdot f_{vv}
+\end{matrix}\,\right|.
+\]
+Sie heisst die \emph{gausssche Krümmung}.
+Gauss hat gezeigt, dass die gaussche Krümmung eine intrinsische Eigenschaft
+der Fläche ist.
+Er nannte diese überraschende Eigenschaft das \emph{Theorema egregium}, 
+Die Gauss-Krümmung muss sich also auch allein aus den metrischen
+Koeffizienten $g_{ik}$ berechnen lassen.
+
+Da die vollständige intrinsische Krümmungsinformation bereits durch die
+Komponente $R_{1212}$ gegeben ist, muss es einen Zusammenhang zwischen
+$R_{1212}$ und der Gausskrümmung geben.
+Für ein Koordinatensystem, für weldhes im Punkt $p$  die Vektoren
+$\partial/\partial u$ und $\partial/\partial v$ orthonormiert sind,
+ist $R_{1212}=K$.
+Für ein beliebiges Koordinatensystem gilt
+\[
+R_{1212}
+=
+K(g_{11}g_{22}-g_{12}^2),
+\]
+wobei der Klammerfaktor die Koordinatentransformation auf dem 
+eindimensionalen Raum $\bigwedge^2 T_pM$ ausdrückt.

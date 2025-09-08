@@ -8,22 +8,42 @@
 %
 \section{Grundbegriffe der Baustatik und Mechanik}
 \label{elastomechanik:section:teil1}
-In diesem Abschnitt werden die zentralen Begriffe und Gesetzmässigkeiten der Elastizitätstheorie in kompakter Form zusammengetragen. 
-Dabei wird bewusst auf eine systematische Herleitung verzichtet, da angenommen wird, dass der Leser mit vielen der verwendeten Begriffe bereits vertraut ist.
-Eine vertiefte Behandlung und Illustration erfolgt in späteren Abschnitten, beispielsweise im Rahmen der Herleitung der Feldgleichungen.
+\kopfrechts{Grundbegriffe der Baustatik und Mechanik}%
+In diesem Abschnitt werden die zentralen Begriffe und Gesetzmässigkeiten
+der Elastizitätstheorie in kompakter Form zusammengetragen.
+Dabei wird bewusst auf eine systematische Herleitung verzichtet,
+da angenommen wird, dass der Leser mit vielen der verwendeten
+Begriffe bereits vertraut ist.
+Eine vertiefte Behandlung und Illustration erfolgt in späteren
+Abschnitten, beispielsweise im Rahmen der Herleitung der Feldgleichungen.
 
 \subsection{Begriffe}
 \begin{description}
-\item[\textbf{Druckkräfte:}] Druckkräfte sind Kräfte, die senkrecht auf die Oberfläche eines Körpers wirken und dabei eine Kompression bzw. Zusammenstauchung des Körpers verursachen. 
+\item[\textbf{Druckkräfte:}] Druckkräfte sind Kräfte, die senkrecht
+\index{Druckkraft}%
+auf die Oberfläche eines Körpers wirken und dabei eine Kompression
+bzw.~Zusammenstauchung des Körpers verursachen.
 Eine negative Normalkraft entspricht einer Druckkraft.
 	
-\item[\textbf{Druckspannungen:}] Druckspannungen sind Spannungen, die im Inneren eines Materials entstehen, wenn Druckkräfte senkrecht auf die Oberfläche eines Körpers ausgeübt werden. 
+\item[\textbf{Druckspannungen:}] Druckspannungen sind Spannungen,
+\index{Druckspannung}%
+die im Inneren eines Materials entstehen, wenn Druckkräfte senkrecht
+auf die Oberfläche eines Körpers ausgeübt werden.
 Sie bewirken eine Stauchung oder Kompression des Materials.
-Druckspannungen haben ein negatives Vorzeichen, da die Kräfte nach innen gerichtet sind.
+\index{Stauchung}%
+\index{Kompression}%
+Druckspannungen haben ein negatives Vorzeichen, da die Kräfte nach
+innen gerichtet sind.
 	
-\item[\textbf{Elastizitätsmodul ($E$):}] Der Elastizitätsmodul (E-Modul) ist eine Materialkonstante, die die Steifigkeit eines Werkstoffs beschreibt. 
-Er gibt an, wie stark ein Material auf eine mechanische Spannung mit Dehnung reagiert. 
-Je grösser der Elastizitätsmodul, desto weniger verformt sich das Material unter einer gegebenen Belastung.
+\item[\textbf{Elastizitätsmodul ($E$):}] Der Elastizitätsmodul
+(E-Modul) ist eine Materialkonstante, die die Steifigkeit eines
+Werkstoffs beschreibt.
+\index{E-Modul}%
+\index{Elastizitatsmodul@Elastizitätsmodul}%
+Er gibt an, wie stark ein Material auf eine mechanische Spannung
+mit Dehnung reagiert.
+Je grösser der Elastizitätsmodul, desto weniger verformt sich das
+Material unter einer gegebenen Belastung.
 Der Elastizitätsmodul wird definiert als:
 	\begin{equation}
 		E=
@@ -34,18 +54,41 @@ Der Elastizitätsmodul wird definiert als:
 	
 	$\varepsilon$ = Dehnung, siehe auch \eqref{elastomechanik:grundbegriffe:eqn:elastizitaetsmodul}
 	
-\item[\textbf{Isotropie:}] Isotropie beschreibt eine Materialeigenschaft, bei der die mechanischen Eigenschaften in allen Raumrichtungen identisch sind. 
-Ein isotropes Material reagiert auf Belastungen unabhängig von der Belastungsrichtung stets gleich.
-In der linearen Elastizitätstheorie bedeutet Isotropie, dass das Materialverhalten vollständig durch zwei unabhängige Materialkonstanten beschrieben werden kann, etwa den Elastizitätsmodul ($E$) und die Poisson-Zahl ($\nu$).  
-Isotrope Annahmen vereinfachen die mathematische Modellierung deutlich und finden in der technischen Mechanik insbesondere bei homogenen Metallen, Glas und einigen Kunststoffen Anwendung \cite{elastomechanik:Isotropie}.
+\item[\textbf{Isotropie:}] Isotropie beschreibt eine Materialeigenschaft,
+bei der die mechanischen Eigenschaften in allen Raumrichtungen
+identisch sind.
+\index{Isotropie}%
+Ein isotropes Material reagiert auf Belastungen unabhängig von der
+Belastungsrichtung stets gleich.
+\index{isotrop}%
+In der linearen Elastizitätstheorie bedeutet Isotropie, dass das
+Materialverhalten vollständig durch zwei unabhängige Materialkonstanten
+\index{Materialkonstante}%
+beschrieben werden kann, etwa den Elastizitätsmodul ($E$) und die
+Poisson-Zahl ($\nu$).
+\index{Poisson-Zahl}%
+Isotrope Annahmen vereinfachen die mathematische Modellierung
+deutlich und finden in der technischen Mechanik insbesondere bei
+homogenen Metallen, Glas und einigen Kunststoffen Anwendung
+\cite{elastomechanik:Isotropie}.
+\index{Metall}%
+\index{Glas}%
+\index{Kunststoff}%
 	
-\item[\textbf{Kinematische Gleichungen (Verzerrungsdefinition):}] Die kinematischen Gleichungen beschreiben den Zusammenhang zwischen den Verschiebungen $u_i$ eines Punktes im Raum und den daraus resultierenden Verzerrungen $\varepsilon_{ij}$. 
-Sie sind die Grundlage für die geometrische Beschreibung der Deformation in der Elastizitätstheorie. 
-Für kleine Verformungen gilt \cite{elastomechanik:Technische_Mechanik_2:Elastostatik}:
-	\begin{equation}
+\item[\textbf{Kinematische Gleichungen (Verzerrungsdefinition):}]
+Die kinematischen Gleichungen beschreiben den Zusammenhang zwischen
+\index{kinematische Gleichung}%
+den Verschiebungen $u_i$ eines Punktes im Raum und den daraus
+resultierenden Verzerrungen $\varepsilon_{ij}$.
+\index{Verschiebung}%
+Sie sind die Grundlage für die geometrische Beschreibung der
+Deformation in der Elastizitätstheorie.
+Für kleine Verformungen gilt
+\cite{elastomechanik:Technische_Mechanik_2:Elastostatik}:
+	\begin{equation*}
 		\varepsilon_{ij} = 
 		\frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right).
-	\end{equation}
+	\end{equation*}
 Dabei ist:
 	
 	$u_i$ = Verschiebung in Richtung $i$
@@ -54,172 +97,258 @@ Dabei ist:
 	
 Diese Gleichungen stellen sicher, dass die Verzerrungen aus einem stetigen Verschiebungsfeld berechnet werden können.
 
-\item[\textbf{Lamé-Konstanten ($\lambda{,\mu}$):}] Die Lamé-Konstanten werden die Konstanten $\lambda$ und $\mu$ bezeichnet. 
-Die sind zwei materialabhängige Parameter, die das mechanische Verhalten eines isotropen elastischen Materials vollständig beschreiben.
-Die Lamé-Konstante ($\lambda$) lässt sich aus dem Elastizitätsmodul und der Poisson-Zahl wie folgt berechnen \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
-\begin{equation}
+\item[\textbf{Lamé-Konstanten ($\lambda{,\mu}$):}] Die Lamé-Konstanten
+werden die Konstanten $\lambda$ und $\mu$ bezeichnet.
+\index{Lame-Konstante@Lamé-Konstante}%
+Die sind zwei materialabhängige Parameter, die das mechanische
+Verhalten eines isotropen elastischen Materials vollständig
+beschreiben.
+Die Lamé-Konstante ($\lambda$) lässt sich aus dem Elastizitätsmodul
+und der Poisson-Zahl wie folgt berechnen
+\cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
+\begin{equation*}
 	\lambda = 
 	\frac{E \cdot \nu}{(1 + \nu)(1 - 2\nu)}
-\end{equation}
+\end{equation*}
 $\mu$ = Schubmodul
 
 $\lambda$ = steht in Verbindung mit der Volumenverformung
 	
-\item[\textbf{Normalkraft ($N$):}] Die Normalkraft ist eine Kraft, die senkrecht (normal) zur Querschnittsfläche eines Körpers oder Bauteils wirkt. 
-Sie entsteht durch Zug oder Druck entlang der Längsachse des Körpers und ist eine der wichtigsten Grundkräfte in der technischen Mechanik und Statik.
+\item[\textbf{Normalkraft ($N$):}]
+Die Normalkraft ist eine Kraft, die senkrecht (normal) zur
+Querschnittsfläche eines Körpers oder Bauteils wirkt.
+\index{Normalkraft}%
+Sie entsteht durch Zug oder Druck entlang der Längsachse des Körpers
+und ist eine der wichtigsten Grundkräfte in der technischen Mechanik
+und Statik.
 	
-\item[\textbf{Normalspannungen ($\sigma_N$):}] Die Normalspannung ist eine Form der Spannung, die auftritt, wenn eine Kraft senkrecht (normal) zur Fläche eines Körpers wirkt. 
-Sie beschreibt den inneren Spannungszustand eines Materials bei Zug- oder Druckbelastung.
+\item[\textbf{Normalspannungen ($\sigma_N$):}]
+Die Normalspannung ist eine Form der Spannung, die auftritt, wenn
+eine Kraft senkrecht (normal) zur Fläche eines Körpers wirkt.
+\index{Normalspannung}%
+Sie beschreibt den inneren Spannungszustand eines Materials bei
+Zug- oder Druckbelastung.
 	
-\item[\textbf{Poisson-Zahl ($\nu$):}] Die Poisson-Zahl, auch bekannt als Querkontraktionszahl, ist eine materialabhängige Konstante, die das Verhältnis zwischen der Querdehnung und der Längsdehnung eines Körpers unter Zug- oder Druckbelastung beschreibt.
+\item[\textbf{Poisson-Zahl ($\nu$):}]
+Die Poisson-Zahl, auch bekannt als Querkontraktionszahl, ist eine
+\index{Poisson-Zahl}%
+\index{Querkontraktionszahl}%
+materialabhängige Konstante, die das Verhältnis zwischen der
+Querdehnung und der Längsdehnung eines Körpers unter Zug- oder
+\index{Querdehnung}%
+Druckbelastung beschreibt.
 Sie ist definiert als
-	\begin{equation}
+	\begin{equation*}
 		\nu=
 		-\frac{\varepsilon_\text{quer}}{\varepsilon_\text{laengs}},
-	\end{equation}
+	\end{equation*}
 	$\varepsilon_\text{quer}$ = Dehnung senkrecht zur Belastungsrichtung
 	
 	$\varepsilon_\text{laengs}$ = Dehnung in Belastungsrichtung
 	
-\item[\textbf{Schubmodul ($\mu$) oder ($G$):}] Der Schubmodul ist eine mechanische Materialkonstante, die beschreibt, wie steif ein Material gegenüber Scherkräften ist.
-Scherkräfte (auch Schubkräfte) sind Kräfte, die parallel zur Fläche eines Körpers wirken. 
+\item[\textbf{Schubmodul ($\mu$) oder ($G$):}]
+Der Schubmodul ist eine mechanische Materialkonstante, die beschreibt,
+wie steif ein Material gegenüber Scherkräften ist.
+\index{Schubmodul}%
+Scherkräfte (auch Schubkräfte) sind Kräfte, die parallel zur Fläche
+eines Körpers wirken.
+\index{Scherkraft}%
+\index{Schubkraft}%
 Bei isotropen Materialien wird er folgend berechnet:
-	\begin{equation}
+	\begin{equation*}
 		\mu = 
 		\frac{E}{2(1 + \nu)} =
 		G.
-	\end{equation}
-\item[\textbf{Spannung ($\sigma$):}] Die Spannung beschreibt die innere Kraftverteilung in einem Material, die infolge externer Belastungen wie Zug, Druck oder Scherung entsteht. 
+	\end{equation*}
+\item[\textbf{Spannung ($\sigma$):}]
+Die Spannung beschreibt die innere Kraftverteilung in einem Material,
+die infolge externer Belastungen wie Zug, Druck oder Scherung
+entsteht.
+\index{Scherung}%
 Sie gibt an, welche Kraft pro Flächeneinheit innerhalb eines Körpers wirkt.
 	
-\item[\textbf{Spannungtensor ($\sigma_{ij}$):}] Der Spannungstensor (auch Cauchy-Spannungstensor genannt) beschreibt die Verteilung der inneren Spannungen im Material. 
-Der erste Index	$i$ gibt die Richtung der Flächennormalen an, der zweite Index $j$ die Richtung der Spannungswirkung. 
-Er ist in der Regel symmetrisch und wird als 3×3-Matrix notiert \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
-	\begin{equation}
+\item[\textbf{Spannungtensor ($\sigma_{ij}$):}]
+Der Spannungstensor (auch Cauchy-Spannungstensor genannt) beschreibt
+\index{Spannungstensor}%
+die Verteilung der inneren Spannungen im Material.
+\index{Cauchy-Spannungstensor}%
+Der erste Index $i$ gibt die Richtung der Flächennormalen an, der
+zweite Index $j$ die Richtung der Spannungswirkung.
+Er ist in der Regel symmetrisch und wird als $3\times 3$-Matrix
+\cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
+	\begin{equation*}
 		\boldsymbol{\sigma} =
-		\begin{bmatrix}
+		\begin{pmatrix}
 			\sigma_{xx} & \sigma_{xy} & \sigma_{xz} \\
 			\sigma_{yx} & \sigma_{yy} & \sigma_{yz} \\
 			\sigma_{zx} & \sigma_{zy} & \sigma_{zz}
-		\end{bmatrix}.
-	\end{equation}
-Da der Spannungstensor für reine Elastizität symmetrisch ist, gilt:
-	\begin{equation}
+		\end{pmatrix}.
+	\end{equation*}
+notiert.
+Da der Spannungstensor für reine Elastizität symmetrisch ist, gilt
+	\begin{equation*}
 		\sigma_{ij} = 
 		\sigma_{ji}.
-	\end{equation}
+	\end{equation*}
 	
-\item[\textbf{Verschiebung ($u_i$):}] Die Verschiebung beschreibt die Ortsänderung eines Punktes im Körper infolge einer Belastung.
+\item[\textbf{Verschiebung ($u_i$):}]
+Die Verschiebung beschreibt die Ortsänderung eines Punktes im Körper
+infolge einer Belastung.
 
-Sei $\vec{x} = (x_1, x_2, x_3)$ der ursprüngliche Ort eines Materialpunktes im unbelasteten Zustand und $\vec{x}' = (x_1', x_2', x_3')$ der Ort desselben Punktes im belasteten Zustand.  
-Die \emph{Verschiebungsvektorkomponenten} $u_i$ ergeben sich aus:
-\begin{equation}
+Sei $\vec{x} = (x_1, x_2, x_3)$ der ursprüngliche Ort eines
+Materialpunktes im unbelasteten Zustand und $\vec{x}' = (x_1', x_2',
+x_3')$ der Ort desselben Punktes im belasteten Zustand.
+Die \emph{Verschiebungsvektorkomponenten} $u_i$ ergeben sich aus
+\index{Verschiebungsvektorkomponenten}%
+\begin{equation*}
 	u_i(\vec{x}) = x_i' - x_i,
 	\quad i = 1,2,3.
-\end{equation}
+\end{equation*}
 
 In kartesischen Koordinaten gilt damit:
 \[
 \vec{u}(\vec{x}) =
-\begin{bmatrix}
+\begin{pmatrix}
 	u_1(\vec{x}) \\
 	u_2(\vec{x}) \\
 	u_3(\vec{x})
-\end{bmatrix}
+\end{pmatrix}
 =
-\begin{bmatrix}
+\begin{pmatrix}
 	u(\vec{x}) \\
 	v(\vec{x}) \\
 	w(\vec{x})
-\end{bmatrix}
+\end{pmatrix},
 \]
-wobei $u, v, w$ die Verschiebungskomponenten in den Richtungen $x, y, z$ darstellen.
+wobei $u, v, w$ die Verschiebungskomponenten in den Richtungen $x$, $y$, $z$
+darstellen.
 
 Die Verschiebung bildet die Grundlage zur Definition der Verzerrung. 
-Aus den partiellen Ableitungen der Verschiebungskomponenten werden im nächsten Abschnitt die Verzerrungskomponenten $\varepsilon_{ij}$ bestimmt:
-
-\begin{equation}
+Aus den partiellen Ableitungen der Verschiebungskomponenten werden
+im nächsten Abschnitt die Verzerrungskomponenten $\varepsilon_{ij}$
+bestimmt:
+\begin{equation*}
 	\varepsilon_{ij} = \frac{1}{2}
 	\left(
 	\frac{\partial u_i}{\partial x_j}
 	+
 	\frac{\partial u_j}{\partial x_i}
 	\right).
-\end{equation}
+\end{equation*}
 
-Hierbei sind $i,j \in \{1,2,3\}$ und es gilt die \emph{Einstein’sche Summationskonvention}.
+Hierbei sind $i,j \in \{1,2,3\}$ und es gilt die
+\emph{einsteinsche Summationskonvention}.
+\index{einsteinsche Summationskonvention}%
 
-\item[\textbf{Verzerrung ($\varepsilon$):}] Die Verzerrung (auch Dehnung genannt) beschreibt die relative Änderung der Form oder Länge eines Körpers infolge einer äusseren Belastung. 
+\item[\textbf{Verzerrung ($\varepsilon$):}]
+Die Verzerrung (auch Dehnung genannt) beschreibt die relative
+\index{Verzerrung}%
+\index{Dehnung}%
+Änderung der Form oder Länge eines Körpers infolge einer äusseren
+Belastung.
 Sie ist ein massloser Wert, da sie ein Verhältnis zweier Längen ist.
-Die Normalverrung wird berechnet mit
-	\begin{equation}
+Die Normalverzerrung wird berechnet mit
+\index{Normalverzerrung}
+	\begin{equation*}
 		\varepsilon 
 		= \frac{\Delta L}{L_0},
-	\end{equation}
+	\end{equation*}
 	$\varepsilon$ = Verzerrung
 	
 	$\Delta L$ = Längenänderung
 	
-	$\L_0$ = ursprüngliche Länge des Körpers
+	$L_0$ = ursprüngliche Länge des Körpers
 	
-\item[\textbf{Verzerrungstensor ($\varepsilon_{ij}$):}] Der Verzerrungstensor beschreibt die Verformung (Dehnung und Scherung) eines Körpers infolge äusserer Belastungen in drei Raumrichtungen. 
-Er erfasst nicht nur Längenänderungen (Normalverzerrungen), sondern auch Winkeländerungen (Schubverzerrungen) und stellt somit die vollständige lokale Verformung eines Materials im Raum dar.
-Die Verzerrungstensor wird über die Ableitungen des Verschiebungsfeldes definiert als
-	\begin{equation}
+\item[\textbf{Verzerrungstensor ($\varepsilon_{ij}$):}]
+Der Verzerrungstensor beschreibt die Verformung (Dehnung und Scherung)
+eines Körpers infolge äusserer Belastungen in drei Raumrichtungen.
+\index{Verzerrungstensor}%
+Er erfasst nicht nur Längenänderungen (Normalverzerrungen), sondern
+auch Winkeländerungen (Schubverzerrungen) und stellt somit die
+\index{Schubverzerrung}%
+vollständige lokale Verformung eines Materials im Raum dar.
+Die Verzerrungstensor wird über die Ableitungen des Verschiebungsfeldes
+definiert als
+	\begin{equation*}
 		\varepsilon_{ij} = 
 		\frac{1}{2} \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right),
-	\end{equation}
-	wobei er in drei Raumdimensionen die Form einer symmetrischen 3×3-Matrix annimmt:
-	\begin{equation}
+	\end{equation*}
+	wobei er in drei Raumdimensionen die Form einer symmetrischen
+	$3\times 3$-Matrix annimmt:
+	\begin{equation*}
 		\boldsymbol{\varepsilon} =
-		\begin{bmatrix}
+		\begin{pmatrix}
 			\varepsilon_{xx} & \varepsilon_{xy} & \varepsilon_{xz} \\
 			\varepsilon_{yx} & \varepsilon_{yy} & \varepsilon_{yz} \\
 			\varepsilon_{zx} & \varepsilon_{zy} & \varepsilon_{zz},
-		\end{bmatrix}.
-	\end{equation}
-\item[\textbf{Zugkraft:}] Die Zugkraft ist eine Kraft, die längs der Achse eines Körpers wirkt und diesen in Richtung Verlängerung belastet. 
+		\end{pmatrix}.
+	\end{equation*}
+\item[\textbf{Zugkraft:}]
+Die Zugkraft ist eine Kraft, die längs der Achse eines Körpers wirkt
+\index{Zugkraft}%
+und diesen in Richtung Verlängerung belastet.
 Sie verursacht Zugverformungen im Material.
+\index{Zugverformung}%
 	
-\item[\textbf{Zugspannungen:}] Die Zugspannung ist die innere Spannung, die durch eine Zugkraft im Material erzeugt wird. 
-Sie wirkt senkrecht zur Querschnittsfläche des Körpers und beschreibt die Kraft pro Flächeneinheit, mit der das Material dem Zug widersteht.
+\item[\textbf{Zugspannungen:}]
+Die Zugspannung ist die innere Spannung, die durch eine Zugkraft
+\index{Zugspannung}%
+im Material erzeugt wird.
+Sie wirkt senkrecht zur Querschnittsfläche des Körpers und beschreibt
+die Kraft pro Flächeneinheit, mit der das Material dem Zug widersteht.
 \end{description}
 
 \subsection{Materialgesetzlichkeiten}
 \begin{description}	
-\item[\textbf{Elastizitätsgesetz (hookesches Gesetz):}] Das hookesche Gesetz stellt im eindimensionalen Fall den linearen Zusammenhang zwischen Spannung $\sigma$ und Dehnung $\varepsilon$ durch die Beziehung 
-	\begin{equation}
+\item[\textbf{Elastizitätsgesetz (hookesches Gesetz):}]
+Das hookesche Gesetz stellt im eindimensionalen Fall den linearen
+Zusammenhang zwischen Spannung $\sigma$ und Dehnung $\varepsilon$
+durch die Beziehung
+\index{hooksches Gesetz}%
+	\begin{equation*}
 		\sigma = 
 		E \cdot \varepsilon
-	\end{equation}
-her, wobei $E$ der Elastizitätsmodul des Materials ist \cite{elastomechanik:Kontinuumsmechanik}.
-\item[\textbf{Isotropes Materialverhalten:}] Für isotrope Materialien (die in alle Richtungen die gleichen mechanischen Eigenschaften haben) reicht die Beschreibung mit zwei Materialkonstanten $\lambda$ und $\mu$ aus.
-	\begin{equation}
+	\end{equation*}
+her, wobei $E$ der Elastizitätsmodul des Materials ist
+\cite{elastomechanik:Kontinuumsmechanik}.
+\item[\textbf{Isotropes Materialverhalten:}]
+Für isotrope Materialien (die in alle Richtungen die gleichen mechanischen
+Eigenschaften haben) reicht die Beschreibung mit zwei Materialkonstanten
+$\lambda$ und $\mu$ aus.
+	\begin{equation*}
 		\sigma_{ij} = 
 		\lambda \cdot \delta_{ij} \cdot \varepsilon_{kk} + 2\mu \cdot \varepsilon_{ij},
-	\end{equation}
-	$\sigma_{ij}$ = Spannungstensor (Komponenten der Spannung in Richtung $i$ auf der Fläche senkrecht zu Richtung $j$)
+	\end{equation*}
+	$\sigma_{ij}$ = Spannungstensor (Komponenten der Spannung
+	in Richtung $i$ auf der Fläche senkrecht zu Richtung $j$)
 	
 	$\varepsilon_{ij}$ = Dehnungstensor (Komponenten der Verzerrung)
 	
 	$\varepsilon_{kk}$ = Spur des Verzerrungstensors, also
-	\begin{equation}
+	\begin{equation*}
 		\varepsilon_{kk} =
 		\varepsilon_{11} + \varepsilon_{22} + \varepsilon_{33},
-	\end{equation}
-	dies ist die Volumendehnung \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}.
+	\end{equation*}
+	dies ist die Volumendehnung
+	\cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}.
 	
 	$\delta_{ij}$ = Kronecker-Delta 
 	
 	$\lambda{,\mu}$ = Lamé-Konstanten
 	
-\item[\textbf{Isotropes Verhalten:}] Wird durch zwei Konstanten ($E$, $u$) beschrieben. 
+\item[\textbf{Isotropes Verhalten:}]
+Wird durch zwei Konstanten ($E$, $u$) beschrieben. 
 Gilt für viele Metalle wie Stahl näherungsweise.
 	
-\item[\textbf{Anisotropes Verhalten}] Mechanische Eigenschaften sind richtungsabhängig. 
-Wird durch einen allgemeinen Elastizitätstensor vierter Stufe $C_{ijkl}$ beschrieben.
+\item[\textbf{Anisotropes Verhalten}]
+Mechanische Eigenschaften sind richtungsabhängig. 
+Wird durch einen allgemeinen Elastizitätstensor vierter Stufe
+\index{Elastizitatstensor@Elastizitätstensor}%
+$C_{ijkl}$ beschrieben.
 	
-Für unsere Arbeit wird die Herleitung des anisotropen Materialverhaltens nicht thematisiert, da sie den Rahmen dieser Seminararbeit sprengen würde.
+Für unsere Arbeit wird die Herleitung des anisotropen Materialverhaltens
+nicht thematisiert, da sie den Rahmen dieser Seminararbeit sprengen
+würde.
 	
 \item[\textbf{Materialverhaltenseigenschaften:}] Für ideal elastisches Verhalten gilt:
 	\begin{enumerate}
@@ -231,20 +360,35 @@ Für unsere Arbeit wird die Herleitung des anisotropen Materialverhaltens nicht 
 		
 		\item Es existiert eine eindeutige Beziehung zwischen Spannung und Dehnung
 	\end{enumerate}
-\item[\textbf{Reziproke Form (für Verzerrungen aus Spannungen):}] Die reziproke Form des hookeschen Gesetzes beschreibt den linearen Zusammenhang zwischen Spannung und Verzerrung bei isotropen Materialien durch die Gleichung
-	\begin{equation}
+\item[\textbf{Reziproke Form (für Verzerrungen aus Spannungen):}]
+Die reziproke Form des hookeschen Gesetzes beschreibt den linearen
+\index{reziproke Form}%
+Zusammenhang zwischen Spannung und Verzerrung bei isotropen Materialien
+durch die Gleichung
+	\begin{equation*}
 		\varepsilon_{ij} = 
 		\frac{1+\nu}{E} \cdot \sigma_{ij} - \frac{\nu}{E} \cdot \sigma_{kk} \cdot \delta_{ij}
-	\end{equation}
-wobei die Verzerrung aus der direkten Spannung und der Spur des Spannungstensors unter Berücksichtigung des Elastizitätsmoduls und der Poisson-Zahl berechnet wird \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}.
+	\end{equation*}
+wobei die Verzerrung aus der direkten Spannung und der Spur des
+Spannungstensors unter Berücksichtigung des Elastizitätsmoduls und
+der Poisson-Zahl berechnet wird
+\cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}.
 
-\item[\textbf{Anisotropes Materialverhalten:}] Bei anisotropen Materialien hängen die mechanischen Eigenschaften von der Richtung ab. 
-Solche Materialien können nicht mehr durch zwei Konstanten beschrieben werden, sondern benötigen einen allgemeinen Elastizitätstensor vierter Stufe $C_{ijkl}$:
-\begin{equation}
+\item[\textbf{Anisotropes Materialverhalten:}]
+Bei anisotropen Materialien hängen die mechanischen Eigenschaften
+von der Richtung ab.
+Solche Materialien können nicht mehr durch zwei Konstanten beschrieben
+werden, sondern benötigen einen allgemeinen Elastizitätstensor
+vierter Stufe $C_{ijkl}$:
+\begin{equation*}
 	\sigma_{ij} = C_{ijkl} \varepsilon_{kl}
-\end{equation}
-Die Anzahl der unabhängigen Komponenten hängt von der Symmetrie ab (bis zu 81 bei vollanisotropem Verhalten). 
-Ein Beispiel ist Holz, dessen Steifigkeit stark von der Faserrichtung abhängt.
+\end{equation*}
+Die Anzahl der unabhängigen Komponenten hängt von der Symmetrie ab
+(bis zu 81 bei vollanisotropem Verhalten).
+Ein Beispiel ist Holz, dessen Steifigkeit stark von der Faserrichtung
+abhängt.
+\index{Holz}%
+\index{Faserrichtung}%
 
 Für unsere Arbeit wird die Herleitung des anisotropen Verhaltens nicht weiter behandelt, da dies den Rahmen der Seminararbeit sprengen würde.
 \end{description}
