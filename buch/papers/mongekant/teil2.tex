@@ -168,9 +168,10 @@ ein klarer Vorteil für die Kantorowitch-Formulierung.
 Um das duale Problem herzuleiten,
 starten wir mit dem Kantorowitch-Problem \eqref{mongekant:eq:kantorowitch_problem}
 und versuchen die Randbedingungen \eqref{mongekant:eq:kantorowitch_marginals}
-mit Lagrangemultiplikatoren $\xi \colon X \to \mathbb{R}$ und
+mit Lagrange-Multiplikatoren $\xi \colon X \to \mathbb{R}$ und
 $\eta \colon Y \to \mathbb{R}$ implizit in das Problem einzubauen,
 so dass $\gamma$ nur noch eine Wahrscheinlichkeitsmass im Gebiet $X\times Y$ sein muss.
+Dazu führen wir einen Langrange-Multiplikatorenterm $L(\xi,\eta)$ ein:
 \begin{align*}
 \begin{aligned}
 C_K(\mu, \nu)
@@ -178,21 +179,24 @@ C_K(\mu, \nu)
 \inf_{\gamma \in \Gamma} \int_{X \times Y} c(x,y)\, d\gamma
 \\
 &=
-\inf_{\gamma \geq 0} \int_{X \times Y} c(x,y)\, d\gamma
+\inf_{\gamma \geq 0} \left(
+    \int_{X \times Y} c(x,y)\, d\gamma
 + \sup_{\xi, \eta} L(\xi, \eta)
+\right)
 \\
 &=
-\inf_{\gamma \geq 0} \int_{X \times Y} c(x,y)\, d\gamma
+\inf_{\gamma \geq 0} \Biggl(
+\int_{X \times Y} c(x,y)\, d\gamma
 \\
 &\quad
 + \sup_{\xi, \eta} \Biggl(
 \underbrace{
 \int_X \xi(x)\, d\mu(x) - \int_{X \times Y} \xi(x)\, d\gamma
-}_{\gamma(A \times Y) = \mu(A)}
+}_{\displaystyle \mu(A) = \gamma(A \times Y)}
 + \underbrace{
 \int_Y \eta(x)\, d\nu(x) - \int_{X \times Y} \eta(x)\, d\gamma
-}_{\gamma(X \times B) = \nu(B)}
-\Biggr)
+}_{\displaystyle \nu(B) = \gamma(X \times B)}
+\Biggr)\Biggr)
 .
 \end{aligned}
 \end{align*}
@@ -213,7 +217,7 @@ dass dieser Term,
 \eqref{mongekant:eq:kantorowitch_marginals} erzwingt.
 Verschieben wir jetzt das Supremum nach aussen,
 was erlaubt ist,
-da das Supremum über $\xi$ und $\eta$ nicht von $\gamma$ abhängt,
+da das Supremum über $\xi$ und $\eta$ nicht von $\gamma$ abhängt.
 und fassen wir die Integrale zusammen,
 ergibt sich
 \begin{align*}
@@ -221,9 +225,11 @@ C_K(\mu, \nu)
 &=
 \inf_{\gamma \geq 0}
 \sup_{\xi, \eta}
+\left(
 \int_X \xi(x)\, d\mu(x)
 + \int_Y \eta(y)\, d\nu(y)
 + \int_{X \times Y} \bigl(c(x,y) - \xi(x) - \eta(y)\bigr)\, d\gamma
+\right)
 .
 \end{align*}
 Vertauschen wir jetzt Infimum und Supremum,
@@ -233,16 +239,22 @@ erhalten wir
 C_K(\mu, \nu)
 &=
 \sup_{\xi, \eta}
-\inf_{\gamma \geq 0} \int_X \xi(x)\, d\mu(x)
+\inf_{\gamma \geq 0}
+\left(
+\int_X \xi(x)\, d\mu(x)
 + \int_Y \eta(y)\, d\nu(y)
 + \int_{X \times Y} \bigl(c(x,y) - \xi(x) - \eta(y)\bigr)\, d\gamma
+\right)
 \\
 &=
-\sup_{\xi, \eta} \int_X \xi(x)\, d\mu(x)
+\sup_{\xi, \eta} 
+\Biggl(
+\int_X \xi(x)\, d\mu(x)
 + \int_Y \eta(y)\, d\nu(y)
 + \underbrace{
 \inf_{\gamma \geq 0} \int_{X \times Y} \bigl(c(x,y) - \xi(x) - \eta(y)\bigr)\, d\gamma
-}_{\Xi}
+}_{\displaystyle\Xi}
+\Biggr)
 .
 \end{align*}
 Die Verschiebung des Infimums nach innen ist erlaubt,
@@ -274,8 +286,10 @@ Somit erhalten wir nun die duale Beziehung
 C_K(\mu, \nu)
 &=
 \sup_{\xi, \eta}
+\left(
 \int_X \xi(x)\, d\mu(x)
 + \int_Y \eta(y)\, d\nu(y)
+\right)
 ,\quad\text{wobei }
 \xi(x) + \eta(y) \leq c(x,y)
 .
