@@ -18,7 +18,7 @@ um die günstigsten Transportkosten zu berechnen:
 C_M(\mu, \nu)
 &:=
 \inf_{T}
-\int_X c\,\Bigl(x, T(x)\Bigr)\, d\mu(x)
+\int_X c\,\bigl(x, T(x)\bigr)\, d\mu(x)
 ,\quad
 \text{wobei } T_{\#}\mu=\nu
 .
@@ -92,7 +92,7 @@ folgt
 \begin{align*}
 \int_{A} f(x) \, dx
 &=
-\int_{A} g\,\Bigl(T(x)\Bigr) \det\Bigl(DT(x)\Bigr) \, dx
+\int_{A} g \bigl(T(x)\bigr) \det \bigl(DT(x)\bigr) \, dx
 .
 \end{align*}
 Wird nun $T = \nabla \varphi$ gewählt,
@@ -102,7 +102,7 @@ ergibt sich
 \begin{align*}
 \int_{A} f(x) \, dx
 &=
-\int_{T(A)} g\,\Bigl(\nabla \varphi(x)\Bigr) \det\Bigl(D^2 \varphi(x)\Bigr) \, dx
+\int_{T(A)} g\bigl(\nabla \varphi(x)\bigr) \det\bigl(D^2 \varphi(x)\bigr) \, dx
 .
 \end{align*}
 Da die Gleichheit für alle messbaren $A$ gelten muss,
@@ -110,15 +110,15 @@ kann man die Integranden gleichsetzen und erhält
 \begin{align*}
 f(x)
 &=
-g\,\Bigl(\nabla \varphi(x)\Bigr) \det\Bigl(D^2 \varphi(x)\Bigr)
+g\bigl(\nabla \varphi(x)\bigr) \det\bigl(D^2 \varphi(x)\bigr)
 .
 \end{align*}
 Löst man nach $\det(D^2 \varphi(x))$ auf,
 folgt die Monge-Ampère-Gleichung
 \begin{align*}
-\det\,\Bigl(D^2 \varphi(x)\Bigr)
+\det\bigl(D^2 \varphi(x)\bigr)
 &=
-\frac{f(x)}{g\,\Bigl(\nabla \varphi(x)\Bigr)}
+\frac{f(x)}{g\bigl(\nabla \varphi(x)\bigr)}
 .
 \end{align*}
 In \cite{mongekant:brenier} wird eindrücklich gezeigt,
@@ -147,7 +147,7 @@ und die Zielverteilung $\nu$ aus zwei unterschiedlichen Punkten besteht
 Dann gilt $\nu(\{y_1\}) = \frac{1}{2}$,
 aber für
 \begin{align*}
-\mu\left(\left\{T^{-1}(y_1)\right\}\right)
+T_{\#}\mu\left(\left\{y_1\right\}\right)
 =
 \begin{cases}
 0,
