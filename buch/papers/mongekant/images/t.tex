@@ -134,7 +134,7 @@ declare function = {
 	\draw[line width=0.2pt,color=darkred] plot[domain=-\l:\l,samples=100]
 		({\x},{density(\x)});
 	\draw[->] (-3,0) -- (3,0) coordinate[label={$x$}];
-	\node at (-2.0,2.7) {$\mu(x)\mathstrut$};
+	\node[darkred] at (-2.0,2.7) {$\mu(x)\mathstrut$};
 
 	\ifthenelse{\boolean{withT}}{}{
 		\node at (3,0) [below] {$A_k=\{x\mid T(x)\in B_k\}\mathstrut$};
@@ -172,10 +172,10 @@ declare function = {
 	\node[color=blueright] at ({0.5*(\ymin+\ymax)},0) [below] {$B_3$};
 	\node[color=white] at ({0.5*(\ymin+\ymax)},1) {$\nu(B_3)$};
 
-	\draw[line width=0.2pt,color=blue] plot[domain=-\l:\l,samples=100]
+	\draw[line width=0.2pt,color=darkblue] plot[domain=-\l:\l,samples=100]
 		({\x},{density(X(\x))*Xp(\x)});
 	\draw[->] (-3,0) -- (3,0) coordinate[label={$y$}];
-	\node at (2.4,2.7) {$\nu(y)\mathstrut$};
+	\node[darkblue] at (2.4,2.7) {$\nu(y)\mathstrut$};
 \end{scope}
 
 \end{tikzpicture}
