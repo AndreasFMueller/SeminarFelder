@@ -1,0 +1,526 @@
+%
+% Newtonsche Gravitation als Raumkrümmung
+%
+\section{Newtonsche Gravitation als Raumkrümmung
+\label{buch:kruemmung:section:newton}}
+\kopfrechts{Newtonsche Gravitation als Raumkrümmung}
+Es gehört schon fast zum Allgemeinwissen, dass die einsteinsche
+Relativitätstheorie die Gravitation als Raumkrümmung beschreibt.
+Tatsächlich erlaubt aber auch die newtonsche Theorie eine solche
+Interpretation, wie in diesem Abschnitt gezeigt werden soll.
+
+%
+% Koordinatensystem und newtonsche Gravitation
+%
+\subsection{Koordinatensystem und newtonsche Gravitation}
+Wir verwenden ein vierdimensionales Koordinatensystem mit
+den Koordinaten $x^0=ct$, $y^1=x$, $x^2=y$ und $x^3=z$.
+Die Bahn eines Teilchens im Gravitationsfeld eines Himmelskörpers
+der Masse $M$, der sich im Nullpunkt des Koordinatensystems befindet,
+ist dann durch die Funktion
+\[
+t\mapsto
+\begin{pmatrix}
+ct\\
+x(t)\\
+y(t)\\
+z(t)
+\end{pmatrix}
+\]
+gegeben, die die Differentialgleichung
+\begin{equation}
+\frac{d^2}{dt^2}
+\begin{pmatrix}
+ct\\
+x(t)\\
+y(t)\\
+z(t)
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\
+\ddot{x}(t)\\
+\ddot{y}(t)\\
+\ddot{z}(t)
+\end{pmatrix}
+=
+-
+\frac{GMm}{r(t)^3}
+\begin{pmatrix}
+0\\
+x(t)\\
+y(t)\\
+z(t)
+\end{pmatrix}
+\label{buch:kruemmung:newton:eqn:dgl}
+\end{equation}
+erfüllt, wobei
+\[
+r(t)
+=
+\sqrt{x(t)^2 + y(t)^2 + z(t)^2}
+\]
+ist.
+Es ist möglich, die Bahn im Gravitationsfeld eines einzelnen,
+ruhenden Himmelskörpers in geschlossener Form zu lösen.
+Sobald mehrere massereiche Himmelskörper die Bahn beeinflussen,
+wie dies im Sonnensystem mit dem Einfluss des Planeten Jupiter
+der Fall ist, sind nur noch numerische Lösungen möglich.
+Daher wird im folgenden nicht versucht, Lösungen direkt miteinander
+zu vergleichen.
+Stattdessen soll gezeigt werden, dass die Differentialgleichung
+\eqref{buch:kruemmung:newton:eqn:dgl}
+auch als Geodätengleichung einer geeigneten Metrik geschrieben
+werden kann.
+Zu diesem Zweck schreiben wir die Differentialgleichung noch in
+der Komponentenform
+\begin{equation}
+\begin{aligned}
+\ddot{x}^0(t) &= 0 \\
+\ddot{x}^i(t) &= - \frac{GM}{r(t)^2}\,x^i(t)\qquad \text{für $i>0$}.
+\end{aligned}
+\label{buch:kruemmung:newton:eqn:dglcomponents}
+\end{equation}
+Die erste Gleichung bedeutet nichts anderes, als dass es in der
+newtonschen Gravitationstheorie eine absolute Zeit gibt.
+
+%
+% Gravitationspotential
+%
+\subsection{Gravitationspotential}
+Das newtonsche Gravitationsfeld ist ein Potentialfeld.
+Das Potential der Masse $M$ im Nullpunkt des Koordinatensystems
+hat das Potential
+\[
+U(x) = \frac{GM}{r}.
+\]
+Tatsächlich ist der Gradient 
+\[
+\operatorname{grad}U
+=
+-\frac{GM}{r^2} \operatorname{grad}{r}
+=
+-\frac{GM}{r^2}
+\cdot
+\frac{1}{2r}
+\begin{pmatrix}
+2x(t)\\
+2y(t)\\
+2z(t)
+\end{pmatrix}
+=
+-\frac{GM}{r^3}
+\begin{pmatrix}
+x(t)\\
+y(t)\\
+z(t)
+\end{pmatrix}
+.
+\]
+Die rechte Seite stimmt mit der rechten Seite der Differentialgleichung
+\eqref{buch:kruemmung:newton:eqn:dgl}
+überein.
+
+Sind mehrere Massepunkte gegeben, kann ihr gemeinsames Potential 
+als Summe
+\[
+U(x)
+=
+\sum_{i=1}^n U_i(x)
+\]
+geschrieben werden, wobei
+\[
+U_i(x)
+=
+\frac{GM_i}{|x-x_i|}
+\]
+das Potential der Masse $M_i$ an der Stelle $x_i$ ist.
+
+Für die folgende Rechnung gehen wir von der Annahme aus, dass sich die
+Massen nicht bewegen, dass das Gravitationsfeld also statisch ist.
+Diese Annahme ist näherungsweise dadurch gerechtfertigt, dass die
+Geschwindigkeit der Massen in schwachen Gravitationsfeldern wie in
+unserem Sonnensystem viel kleiner sind als die Lichtgeschwindigkeit.
+
+%
+% Metrik
+%
+\subsection{Metrik}
+Wir verwenden die Metrik
+\begin{equation}
+\begin{aligned}
+g_{00} &= \phantom{-}1 + \frac{2U(x)}{c^2} \\
+g_{ii} &= -1\qquad &i&>0
+\end{aligned}
+\label{buch:kruemmung:newton:eqn:metrik}
+\end{equation}
+für die vierdimensionale Mannigfaltigkeit mit den Koordinaten
+$(x^0,x^1,x^2,x^3)$.
+Nur die Zeitkomponenten der Metrik weicht von der Minkowski-Metrik ab.
+
+Da das Potential im Vergleich zu $c^2$ klein ist, werden wir nur in
+erster Näherung arbeiten.
+Terme zweiter Ordnung in $U/c^2$ enthalten Quadrate von $U/c^2$ und sind
+noch viel kleiner, sie dürfen daher vernachlässigt werden.
+
+In den folgenden Abschnitten werden schrittweise die Christoffel-Symbole
+berechnet, mit denen dann in
+Abschnitt~\ref{buch:kruemmung:newtion:subsection:geodaeten}
+die Geodätengleichung aufgestellt werden soll.
+
+%
+% Die Inverse der Metrik
+%
+\subsubsection{Die Inverse der Metrik}
+Da die Metrik im gewählten Koordinatensystem eine Diagonalmatrix ist,
+ist auch die inverse Matrix diagonal mit den reziproken Diagonalelementen.
+Wir brauchen nur eine Approximation in erster Ordnung in $2U/c^2$
+für diese Elemente.
+
+Das Element $g_{00}$ ist von der Form $1+x$.
+Die geometrische Reihe
+\[
+1+q+q^2+q^3+\dots = \frac{1}{1-q}
+\]
+liefert für $q=-x$ die Approximation
+\[
+\frac{1}{1+x} = 1-x+x^2-x^3+o(x^3)
+\]
+für das reziproke Element.
+Angewendet auf den Tensor $g_{ik}$ ergeben sich in erster Ordnung
+die Diagonalelemente
+\begin{equation}
+\begin{aligned}
+g^{00}
+&=
+\frac{1}{\displaystyle 1+\frac{2U}{c^2}}
+=
+1-\frac{2U}{c^2}+o\biggl(\frac{2U}{c^2}\biggr)
+\\
+g^{ii}&= -1
+&&\text{für $i>0$.}
+\end{aligned}
+\end{equation}
+
+%
+% Ableitung der metrischen Koeffizienten
+%
+\subsubsection{Ableitungen der metrischen Koeffizienten}
+Da nur das Element $g_{00}$ nicht konstant ist, gibt es nur die eine
+nicht verschwindende Ableitung
+\[
+\frac{\partial g_{00}}{\partial x^k}
+=
+\begin{cases}
+0
+&\qquad\text{für $k=0$}\\[4pt]
+\displaystyle
+\frac{2}{c^2}
+\frac{\partial U}{\partial x^k}
+&\qquad\text{für $k>0$.}
+\end{cases}
+\]
+
+%
+% Christoffel-Symbole 1. Art
+%
+\subsubsection{Christoffel-Symbole erster Art}
+Die Christoffel-Symbole erster Art sind
+\[
+\Gamma_{l,ik}
+=
+\frac{1}{2}\biggl(
+\frac{\partial g_{lk}}{\partial x^i}
++
+\frac{\partial g_{li}}{\partial x^k}
+-
+\frac{\partial g_{ik}}{\partial x^l}
+\biggr).
+\]
+Es folgt, dass nur diejenigen Christoffel-Symboel von $0$ verschieden
+sind, die genau zwei $0$-Indizes haben.
+Diese sind
+\begin{align}
+\Gamma_{l,00}
+&=
+-\frac12 \frac{\partial g_{00}}{\partial x^l}
+=
+-
+\frac{1}{c^2}\frac{\partial U}{\partial x^l}
+\notag
+\\
+\Gamma_{0,l0}
+=
+\Gamma_{0,0l}
+&=
+\phantom{-}
+\frac{1}{2}\frac{g_{00}}{\partial x^l}
+=
+\frac{1}{c^2}\frac{\partial U}{\partial x^l},
+\label{buch:kruemmung:newton:eqn:bewegungsgleichung}
+\end{align}
+wobei $l>0$ ist.
+Alle anderen Christoffel-Symbole verschwinden.
+
+%
+% Christoffel-Symbole 2. Art
+%
+\subsubsection{Christoffel-Symbole zweiter Art}
+Die Christoffel-Symbole zweiter Art entstehen durch Multiplikation
+mit von $\Gamma_{l,ik}$ mit $g^{jl}$.
+Da nur die Elemente mit $j=l$ von Null verschieden sind, sind wieder
+nur die Christoffel-Symbole zweiter Art von Null verschieden, die zwei
+$0$-Indizes haben:
+\begin{align*}
+\Gamma^l_{00}
+&=
+(-1)\cdot\biggl(-\frac{1}{c^2}\frac{\partial U}{\partial x^l}\biggr)
+=
+\frac{1}{c^2}\frac{\partial U}{\partial x^l}
+\\
+\Gamma^0_{l0}
+=
+\Gamma^0_{0l}
+&=
+\biggl(1-\frac{2U}{c^2}\biggr)
+\frac{1}{c^2}\frac{\partial U}{\partial x^l}
+=
+\frac{1}{c^2}\frac{\partial U}{\partial x^l}
++
+o\biggl(
+\frac{2U}{c^2}
+\biggr)
+\end{align*}
+für $l>0$.
+Die nicht verschwindenden Christoffel-Symbole zweiter Art hängen nur
+vom Index $l$ ab.
+Abkürzend können wir
+\[
+\Gamma^l_{00}
+=
+\Gamma^0_{l0}
+=
+\Gamma^0_{0l}
+=
+\Gamma_l
+= 
+\frac{1}{c^2} \frac{\partial U}{\partial x^l}
+\]
+schreiben.
+
+%
+% Geodäten
+%
+\subsection{Geodäten
+\label{buch:kruemmung:newtion:subsection:geodaeten}}
+Die Geodätengleichung ist
+\[
+\frac{d^2 x^l}{ds^2}
+=
+-
+\Gamma^l_{ik} \frac{x^i}{ds}\frac{x^k}{ds}.
+\]
+Mit den oben berechneten Werten für die Christoffel-Symbole zweiter
+Art wird daraus für $l>0$ die Gleichung
+\begin{align}
+\frac{d^2x^l}{ds^2}
+&=
+-
+\Gamma^l_{00}\frac{dx^0}{ds}\frac{x^0}{ds}
+=
+-
+\frac{1}{c^2}
+\frac{\partial U}{\partial x^l}
+\frac{dx^0}{ds}
+\frac{dx^0}{ds}.
+\notag
+\intertext{
+Man möchte aber $t$ als Kurvenparameter verwenden, nicht $s$, was man
+durch Multiplikation mit $(ds/dt)^2$ und Anwendung der Kettenregel
+erreichen kann.
+Es entsteht}
+\frac{d^2x^l}{ds^2}
+\biggl(\frac{ds}{dt}\biggr)^2
+&=
+-
+\frac{1}{c^2}
+\frac{\partial U}{\partial x^l}
+\frac{dx^0}{ds}
+\frac{dx^0}{ds}
+\biggl(\frac{ds}{dt}\biggr)^2
+\notag
+\\
+\frac{d^2x^l}{dt^2}
+&=
+-
+\frac{1}{c^2}
+\frac{\partial U}{\partial x^l}
+\underbrace{
+\frac{dx^0}{dt}
+\frac{dx^0}{dt}
+}_{\displaystyle = c^2}
+=
+-\frac{\partial U}{\partial x^l}.
+\label{buch:kruemmung:newton:geodaeten:eqn:final}
+\end{align}
+Dabei wurde verwendet, dass wegen $x^0=ct$ auch $dx^0/dt=c$ gilt.
+\eqref{buch:kruemmung:newton:geodaeten:eqn:final}
+ist die Bewegungsgleichung für die Bewegung eines Teilchens
+im Gravitationspotential $U(x)$.
+
+Die Geodätengleichung für die $0$-Komponente ist
+\begin{align*}
+\frac{d^2x^0}{ds^2}
+&=
+-
+\Gamma^0_{ik}
+\frac{dx^i}{ds}
+\frac{dx^k}{ds}.
+\end{align*}
+Wegen $x^0=ct$ sagt diese Gleichung nur etwas über die Abhängigkeit 
+zwischen $s$ und $t$ aus, die nicht weiter interessiert,
+da in der
+Bewegungsgleichung~\eqref{buch:kruemmung:newton:eqn:bewegungsgleichung}
+der Parameter $s$ gar nicht mehr vorkommt.
+
+%
+% Raumkrümmung
+%
+\subsection{Raumkrümmung für die newtonsche Gravitation}
+Die Tatsache, dass aus der Metrik
+\eqref{buch:kruemmung:newton:eqn:metrik}
+die
+Bewegungsgleichungen~\eqref{buch:kruemmung:newton:eqn:bewegungsgleichung}
+der newtonschen Gravitation entstehen, rechtfertigt die 
+
+\subsubsection{Der riemannsche Krümmungstensor}
+Mit den Christoffel-Symbolen kann jetzt auch der riemannsche Krümmungstensor
+berechnet werden.
+Die Definition ist
+\begin{equation}
+R^{i}\mathstrut_{klm}
+=
+\frac{\partial \Gamma^i_{km}}{\partial x^l}
+-
+\frac{\partial \Gamma^i_{kl}}{\partial x^m}
++
+\Gamma^i_{nl}
+\Gamma^n_{km}
+-
+\Gamma^i_{nm}
+\Gamma^n_{kl}.
+\end{equation}
+Aus den Symmetrieeigenschaften des Krümmungstensors folgt, dass die
+Komponenten mit $i=k$ und $l=m$ verschwinden.
+Insbesondere müssen mindestens zwei der Indizes von Null verschieden sein.
+In den Produkten der Christoffel-Symbole kommen nur Terme höherer Ordnung
+vor, es reicht also, die Ableitungsterme zu berücksichtigen.
+
+Damit die partiellen Ableitungen in den ersten beiden Termen nicht
+verschwinden, muss nach einer Raumvariablen abgeleitet werden und von
+den anderen drei Indizes muss genau einer von Null verschieden sein.
+Für $i\ne 0\ne l$ ist
+\begin{align}
+R^i\mathstrut_{0l0}
+&=
+\frac{\partial \Gamma^i_{00}}{\partial x^l}
+-
+\frac{\partial \Gamma^i_{k0}}{\partial x^0}
+=
+\frac{\partial \Gamma^i_{00}}{\partial x^l}
+=
+\frac{1}{c^2}
+\frac{\partial^2 U}{\partial x^i\,\partial x^l}.
+\label{buch:kruemmung:newton:eqn:riemann}
+\end{align}
+Ist ein weiterer Index von 0 verschieden, sind in den Ableitungstermen
+mindestens zwei Indizes der Christoffel-Symboel von 0 verschieden.
+Somit verschwinden alle diese Komponenten.
+
+\subsubsection{Ricci-Krümmung}
+Die Ricci-Krümmung entsteht durch Kontraktion des riemannschen
+Krümmungstensors über den ersten und dritten Index.
+Die 0-Komponente ist
+\[
+R_{00}
+=
+R^l\mathstrut_{0l0}
+=
+\frac{1}{c^2}
+\sum_{l=1}^3
+\frac{\partial^2 U}{\partial (x^l)^2}
+=
+\frac{1}{c^2}\Delta U.
+\]
+Die newtonsche Gravitationstheorie besagt, dass es einen Zusammenhang
+zwischen der Materiedichte $\varrho$ und dem Potential gibt, es gilt
+nämlich die Differentialgleichung
+\[
+\Delta U = 4\pi \varrho.
+\]
+ersetzt man $\varrho$ durch die zugehörige Energiedichte
+$\varepsilon = \varrho c^2$, ergibt sich die Gleichung
+\[
+R_{00}
+=
+\frac{4\pi G}{c^4}\varepsilon.
+\]
+Damit ist die später abzuleitende einsteinsche Feldgleichung bereits
+angedeutet.
+
+Die anderen Komponenten des Ricci-Tensors sind
+\begin{align*}
+R_{0m}
+&=
+R^l\mathstrut_{0lm}
+=
+R^0\mathstrut_{00m}
+=
+0
+\\
+R_{km}
+&=
+R^l\mathstrut_{klm}
+=
+R^0\mathstrut_{k0m}
+=
+R^k\mathstrut_{0m0}
+=
+\frac{1}{c^2}
+\frac{\partial^2 U}{\partial x^k\,\partial x^m}
+\end{align*}
+Der Ricci-Tensor besteht also im Wesentlichen aus den zweiten
+partiellen Ableitungen des Potentials.
+Eine Feldgleichung für den Ricci-Tensor ist also ein lineare
+partielle Differentialgleichung zweiter Ordnung für das Potential.
+Die Einstein-Gleichungen werden sich als nichtlinear herausstellen,
+für die vorliegende newtonsche Näherung haben wir aber in linearer
+Näherung gearbeitet, so dass das verschwinden der nichtlinearen
+Terme nicht überrascht.
+
+\subsubsection{Der Krümmungsskalar}
+Da die Metrik $g_{ik}$ ebenso wie $g^{ik}$ diagonal sind, werden
+für den Krümmungsskalar nur die diagonalen Elemente des Ricci-Tensors
+benötigt.
+Da Elemente von $R_{ik}$ alle von erster Ordnung sind, kann der
+zusätzliche Term in $g_{00}$ bzw.~$g^{00}$ vernachlässigt werden.
+Damit ist 
+\begin{align*}
+R
+&=
+g^{ik}R_{ik}
+=
+g^{00}R_{00}
++
+\sum_{i=1}^3
+g^{ii}R_{ii}
+=
+\frac{1}{c^2}\Delta U
+-
+\frac{1}{c^2}
+\sum_{i=1}^3
+\frac{\partial^2 U}{\partial (x^i)^2}
+=
+0.
+\end{align*}
+Der Krümmungsskalar verschwindet also.
