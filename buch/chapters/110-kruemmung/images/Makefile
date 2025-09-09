@@ -3,7 +3,7 @@
 #
 # (c) 2025 Prof Dr Andreas Müller
 #
-all:	exzess.pdf drehung.pdf kruemmung.pdf
+all:	exzess.pdf drehung.pdf kruemmung.pdf sl.pdf
 
 exzess.jpg:	exzess.png
 	magick exzess.png exzess.jpg
@@ -56,3 +56,6 @@ kruemmungn.jpg:	kruemmungn.png Makefile
 
 kruemmung.pdf:	kruemmung.tex $(kruemmungsbilder)
 	pdflatex kruemmung.tex
+
+sl.pdf:	sl.tex
+	pdflatex sl.tex

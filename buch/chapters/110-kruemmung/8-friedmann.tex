@@ -1,0 +1,328 @@
+%
+% Die Friedmann-Gleichung und die Geschichte des Universums
+%
+\section{Die Friedmann-Gleichungen und die Geschichte des Universums
+\label{buch:kruemmung:section:friedmann}}
+\kopfrechts{Die Friedmann-Gleichungen}%
+Vor dem frühen 20.~Jahrhundert gab es weder theoretische noch experimentelle
+Hinweise darauf, dass das Universum sich über die Zeit verändern könnte.
+Es wurde daher allgemein angenommen, dass das Universum immer gleich
+ausgesehen hat.
+Es gab daher auch keine Möglichkeit und keinen Bedarf, eine Theorie der
+Geschichte des Universums zu entwickeln.
+Die allgemeine Relativitätstheorie ermöglichte erstmals, das ganze
+Universum mathematisch zu erfassen und damit seine Geschichte aus
+den aktuellen Beobachtungen zu extrapolieren.
+
+1923 konnte Edwin Hubble nachweisen, dass der Andromeda-Nebel, wie
+\index{Hubble, Edwin}%
+er damals genannt wurde, eine eigene Galaxie weit ausserhalb unserer
+eigenen ist.
+Dazu verwendete er den Zusammenhang zwischen absoluter Helligkeit
+und Periode gewisser veränderlicher Sterne, die er auch in der
+Andromeda-Galaxie fand.
+\index{Andromeda-Galaxie}%
+Die Methode ermöglicht erstmals, die Distanzmessung bis zu nahen Galaxien
+zu erstrecken.
+Messungen von Galaxienspektren durch Milton Humason 
+\index{Humason, Milton}%
+zeigte eine Rotverschiebung, entfernte Galaxien scheinen sich zu
+\index{Rotverschiebung}%
+entfernen.
+1929 postulierte Hubble aufgrund weiterer Messungen einen linearen
+Zusammenhang zwischen Rotverschiebung und Entfernung, die heute
+das hubblesche Gesetz genannt wird.
+\index{hubblesches Gesetz}%
+\index{Gesetz!von Hubble}%
+Sie liess den Schluss zu, dass sich das ganze Universum ausdehnt.
+Aus der Ausdehnungsgeschwindigkeit, der sogenannten 
+\emph{Hubble-Konstante} $H_0$
+\index{Hubble-Konstante}%
+lässt sich auch erstmals eine Schätzung für das Alter des Universums
+abgeben.
+
+%
+% Das kosmologische Prinzip
+%
+\subsection{Das kosmologische Prinzip}
+Die einsteinschen Feldgleichungen beschreiben die Metrik in Abhängigkeit
+von der Verteilung von Energie und Impuls im Universum.
+Doch wie soll man diese messen?
+Über kleine Distanzen zum Beispiel innerhalb unserer Galaxie ist die
+Massedichte extrem unterschiedlich:
+Neutronensterne haben extrem hohe Dichte, aber der grösste Teil des
+Universums ist ein sehr gutes Vakuum.
+Aber auch noch über die Distanzen zwischen Galaxien gibt es grosse
+Unterschiede: Materie im Universum scheint vor allem in Galaxien
+zusammengeklumpt zu sein, dazwischen findet man fast nichts.
+Über noch grössere Distanzen scheinen auch die Galaxien in Clustern
+mit grossen leeren Räumen genannt ``voids'' dazwischen organisiert
+zu sein.
+
+Andererseits gibt es keinen Grund, dass die Erde mit ihrer Sonne, ihrer
+eigenen Milchstrasse und den wenigen Galaxien der lokalen Gruppe in
+irgend einer Form speziell sein sollte.
+Daraus lässt sich das \emph{kosmologische Prinzip} ableiten.
+\index{kosmologisches Prinzip}%
+Es besagt, dass das Universum homogen und isotrop ist.
+\emph{Homogen} bedeutet, dass an jedem Punkt die gleichen Verhältnisse
+anzutreffen sind.
+\index{homogen}%
+\emph{Isotrop} bedeutet, dass keine Richtung im Universum speziell ist.
+Im Grossen ist daher das Universum gefüllt mit einem Gas konstanter
+Dichte.
+\index{isotrop}%
+Die rechte Seite der einsteinschen Feldgleichungen ist für die 
+Zwecke der relativistischen Kosmologie ein räumlich konstanter Tensor.
+
+%
+% Die Robertson-Walker-Metrik
+%
+\subsection{Die Friedmann-Lema\^\i tre-Robertson-Walker-Metrik}
+Auch die Lösung der einsteinschen Feldgleichungen muss die vom
+kosmologischen Prinzip geforderten Eigenschaften erfüllen.
+Die Metrik und die zugehörige Krümmung darf nicht vom Ort
+abhängen.
+Nur eine Zeitabhängigkeit darf übrig bleiben, die mit hubbleschen
+Gesetz der Ausdehnung des Universums kompatibel sein muss.
+
+Die homogenen und isotropen Räume können mit den Methoden der
+Riemannschen Geometrie untersucht und klassifiziert werden.
+Man kann zeigen, dass dreidimensionale Räume konstanter Krümmung 
+die Metrik
+\[
+ds^2
+=
+\frac{dr^2}{1-kr^2} + r^2\,(d\vartheta^2 + \sin\vartheta\,d\varphi^2)
+\]
+haben, wobei $k$ der sogenannte \emph{Krümmungsparameter} ist.
+Für $k=0$ entsteht die bekannte euklidische Metrik.
+
+Die Beobachtungen von Hubble zeigen, dass Distanzen zwischen
+den Galaxien mit der Zeit grösser werden.
+Diese Zeitabhängigkeit kann mit einer Funktion $a(t)$ beschrieben
+werden, die zum heutigen Zeitpunkt $t_0$ den Wert $a(t_0)=1$ hat.
+Die Metrik
+\begin{equation}
+ds^2
+=
+a(t)^2
+\biggl(
+\frac{dr^2}{1-kr^2} + r^2\,(d\vartheta^2 + \sin\vartheta\,d\varphi^2)
+\biggr)
+\label{buch:kruemmung:kosmologie:eqn:ads}
+\end{equation}
+beschreibt Abstände, die um den Faktor $a(t)$ grösser werden.
+
+Die Zeitabhängigkeit muss zu jedem Zeitpunkt eine Minkowski-Metrik
+ergeben, damit im Grenzfall ohne Gravitation die empirisch bestätigte
+spezielle Raum-Zeit-Struktur des Universums entsteht.
+Es resultiert die Metrik der folgenden Definition.
+
+\begin{definition}[Friedmann-Lema\^\i tre-Robertson-Walker-Metrik]
+Die \emph{Friedmann-Le\-ma\^\i tre-Robertson-Walker-Metrik} ist die Metrik
+\index{Friedmann-Lemaitre-Robertson-Walker-Metrik@Friedmann-Lema\^\i tre-Robertson-Walker-Metrik}%
+mit dem Linienelement
+\begin{equation}
+ds^2
+=
+c^2\,dt^2
+-
+a(t)^2\biggl(
+\frac{dr^2}{1-kr^2} + r^2\,(d\vartheta^2 + \sin\vartheta\,d\varphi^2)
+\biggr)
+\end{equation}
+Die Funktion $a(t)$ heisst der Skalenfaktor und hat den Wert $a(t_0)=1$
+zum aktuellen Zeitpunkt $t_0$.
+\index{Skalenfaktor}%
+\end{definition}
+
+Um die Geschichte des Universums zu ergründen müssen also sowohl der
+Krümmungsparameter $k$ wie auch die Funktion $a(t)$ bestimmt werden.
+Aus dem hubbleschen Gesetz ist ausserdem bekannt, wie schnell $a(t)$
+ändert, es ist $\dot{a}(t)=H_0$.
+Es würde also genügen, eine Differentialgleichung zweiter Ordnung
+für $a(t)$ zu finden.
+Eine solche müsste sich aus den einstenischen Feldgleichungen 
+gewinnen lassen.
+Dazu sind die Ricci-Krümmung und der Krümmungsskalar zu bestimmen,
+was eine ziemlich aufwendige Rechnung ist.
+Wir notieren daher hier nur die Resultate.
+Die Komponenten des Ricci-Tensors sind
+\begin{align*}
+R_{00}
+&=
+-3 \frac{\ddot{a}(t)}{a(t)}
+\\
+R_{ik}
+&=
+-
+\biggl(
+\frac{\ddot{a}(t)}{a(t)} + 2\frac{\dot{a}(t)^2}{a(t)^2}+\frac{2k}{a(t)^2}
+\biggr)
+g_{ik},
+\intertext{der Krümmungsskalar wird}
+R
+&=
+-6
+\biggl(
+\frac{\ddot{a}(t)}{a(t)} + \frac{\dot{a}(t)^2}{a(t)^2}+\frac{k}{a(t)^2}
+\biggr).
+\end{align*}
+Die Komponenten des Einstein-Tensors können daraus wie folgt
+ermittelt werden:
+\begin{equation}
+G_{\mu\nu}
+=
+R_{\mu\nu} - \frac12 g_{\mu\nu} R
+\qquad\Rightarrow\qquad
+\left\{
+\begin{aligned}
+G_{00}
+&=
+\frac{3}{2}
+\frac{\dot{a}(t)^2}{a(t)^2} 
++\frac{k}{a(t)^2}
+\\
+G_{ii}
+&=
+2
+\frac{\ddot{a}(t)}{a(t)}
++
+\frac{\dot{a}(t)^2}{a(t)}
++
+\frac{k}{a(t)^2}.
+\end{aligned}
+\right.
+\label{buch:kruemmung:kosmologie:eqn:G}
+\end{equation}
+
+%
+% Die Friedmann-Gleichung
+%
+\subsection{Die Friedmann-Gleichung}
+Mit Hilfe des Einstein-Tensors, der in \eqref{buch:kruemmung:kosmologie:eqn:G}
+berechnet wurde, kann man jetzt auch die Einstein-Gleichungen
+für das Universum aufstellen.
+Dazu braucht man aber auf der rechten Seite der Gleichung einen 
+Ausdruck für den Energie-Impuls-Tensor.
+Seine $00$-Komponente enthält die Massedichte, die anderen diagonalen
+Komponenten geben die Energie wieder, die von der Bewegung der
+Teilchen herrührt.
+Sie äussert sich im Druck $p$ des Gases.
+Die Komponenten von $T_{ik}$ sind daher
+\begin{equation}
+\begin{aligned}
+T_{00} &= c^2 \varrho 
+\\
+T_{ii} &= -p g_{ii}&&\text{für $i>0$}
+\end{aligned}
+\end{equation}
+Einsetzen in die einsteinsche Feldgleichung
+\eqref{buch:kruemmung:feldgleichung:eqn:feldgleichung}
+folgen die Gleichungen
+\begin{align*}
+6
+\frac{\dot{a}(t)^2}{a(t)^2} 
++\frac{k}{a(t)^2}
+&=
+\frac{8\pi G}{c^4}c^2\varrho
+&&\Rightarrow&
+\biggl(\frac{\dot{a}(t)}{a(t)}\biggr)^2
++
+\frac{k}{a(t)^2}
+&=\frac{4\pi G\varrho}{c^2}
+\\
+2
+\frac{\ddot{a}(t)}{a(t)}
++
+\frac{\dot{a}(t)^2}{a(t)}
++
+\frac{k}{a(t)^2}
+&=
+-\frac{8\pi G}{c^4}p.
+\end{align*}
+Diese beiden Gleichungen heissen auch die 
+\emph{Friedmann-Gleichungen}.
+\index{Friedmann-Gleichungen}
+Sie wurden von Aleksander Friedmann 1922 hergeleitet.
+Sie beschreiben, wie der Skalenfaktor $a(t)$ des Universums sich
+mit der Zeit verändern kann.
+
+Zur vollständigen Lösung der Friedmann-Gleichungen braucht man 
+zusätzliche Information über die Abhängigkeit von $\varrho$
+und $p$ vom Skalenfaktor.
+\begin{itemize}
+\item
+Ein gewöhnliches Gas wird die Dichte mit zunehmendem Skalenfaktor
+wie $a(t)^{-3}$ abnehmen.
+\item
+Für die im Universum vorhandene Strahlung gilt dies jedoch nicht.
+Bei der Ausdehnung wird die Wellenlänge der Strahlung ebenfalls um
+den Faktor $a(t)$ gestreckt, die Energie eines Photons wird daher
+um den Faktor $a(t)^{-1}$ geringer.
+Zusammen mit der Abnahme der Dichte der Photonen wird der
+Strahlungsdruck daher wie $a(t)^{-4}$ abnehmen.
+\item
+In den letzten Jahrzehnten hat sich gezeigt, dass die beobachtbare
+Materie (inklusive der dunklen Materie) und Strahlung nicht ausreicht,
+um das verhalten des Universums zu erklären.
+Die sogenannte \emph{dunkle Energie} füllt das Vakuum gleichmässig
+aus.
+Insbesondere hängt sie nicht von $a(t)$ ab.
+\index{dunkle Energie}%
+\end{itemize}
+Die Entwicklung des Radius des Universums hängt also auch vom Energiemix
+des Universums ab.
+
+%
+% Ds Alter des Universums
+%
+\subsection{Das Alter des Universums}
+Kennt man die Anteile der verschiedenen Komponenten im
+Energie-Impuls-Tensor, kann man aus den Friedmann-Gleichungen eine
+Formel für das Alter des Universums herleiten.
+Für
+\begin{itemize}
+\item
+$\Omega_r$: Anteil der Strahlung an der Energiedichte im heutigen
+Universum.
+Das heutige Universum ist sehr dunkel, der Strahlungsanteil ist
+nur etwa $5.5\cdot10^{-5}$.
+\item
+$\Omega_m$: Anteil der Materie (inklusive dunkler Materie) an der
+Energiedichte im heutigen Universum.
+\item
+$\Omega_k$: Beitrag des Krümmungsparameters.
+Beobachtungen der Inhomogeneitäten des kosmischen Mikrowellenhintergrundes
+haben gezeigt, dass dieser Beitrag sehr klein ist.
+\item
+$\Omega_\Lambda$: Anteil der dunklen Energie an der Energiedichte im 
+heutigen Universum.
+Nach aktuellem Wissen macht die dunkle Energie mehr als zwei Drittel
+der Energiedichte aus.
+\end{itemize}
+lautet die Formel
+\begin{equation}
+t_0
+=
+\frac{1}{H_0}
+\int_0^{a_0}
+\frac{da}{\!\sqrt{\Omega/a^2 + \Omega_m/a + \Omega_k + \Omega_\Lambda a^2}}.
+\label{buch:kruemmung:kosmologie:eqn:alter}
+\end{equation}
+Die Exponenten des Skalenfaktors reflektieren die Abhängigkeit 
+der Energiedichte der entsprechenden Komponente vom den Skalenfaktor.
+
+Mit der Formel
+\eqref{buch:kruemmung:kosmologie:eqn:alter}
+kann man für die experimentell von der Planck-Mission bestimmten Werte
+\begin{align*}
+H_0 &= 67.15\,\textrm{km/s/Mpc} &
+\Omega_m &= 0.315,&
+\Omega_r &= 5.5\cdot 10^{-5},&
+\Omega_\Lambda &= 0.685,&
+\Omega_k &< 0.005
+\end{align*}
+das Alter von $13.844\,\textrm{Gyr}$ finden.
+

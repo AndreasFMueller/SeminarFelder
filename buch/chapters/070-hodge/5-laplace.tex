@@ -8,7 +8,12 @@
 Das Kodifferential $\delta$ reduziert die Ordnung einer Differentialform,
 während $d$ die Ordnung erhöht.
 Die Zusammensetzung dieser beiden Operatoren ist ein Differentialoperator
-zweiter Ordnung, die die Ordnung einer Differentialform nicht ändert.
+zweiter Ordnung, die den Grad einer Differentialform nicht ändert.
+
+%
+% Das Zusammenspiel von $d$ und $\delta$
+%
+\subsection{Das Zusammenspiel von $d$ und $\delta$}
 Um diese Operatoren besser zu verstehen, berechnen wir $\delta d$ und
 $d\delta$ in einigen Beispielen.
 
@@ -200,9 +205,14 @@ der Laplace-Operator.
 
 Das Beispiel zeigt, dass der Laplace-Operator koordinatenunabhängig
 definiert werden kann.
-Man kann aber sogar nachrechnen, dass für eine beliebige Funktion
-auf $\mathbb{R}^n$ der Operator $\delta d$ der Laplace-Operator
-ist:
+
+%
+% Der Hodge-Laplace-Operator
+%
+\subsection{Der Hodge-Laplace-Operator}
+Man kann nachrechnen, dass für eine beliebige Funktion auf
+$\mathbb{R}^n$ mit der euklidischen Metrik der Operator $\delta d$
+der Laplace-Operator ist:
 \begin{align*}
 \delta d f
 &=
@@ -236,7 +246,13 @@ dx^1\wedge\dots\wedge dx^n
 wobei der Hut $\widehat{dx^k}$ bedeutet, dass diese 1-Form im
 Produkt weggelassen werden muss.
 
+Die Verkettung $\delta d$ allein ist aber kein gut definierter
+Operator auf $p$-Formen, da er auf $n$-Formen verschwindet.
+Für $n$-Formen ist dagegen $d\delta$ ein nicht trivialer Operator.
+Der sogenannte Hodge-Laplace-Operator wird daher wie folgt definiert.
+
 \begin{definition}
+\label{buch:hodge:laplace:def:hodgelaplace}
 Sei $M$ eine Mannigfaltigkeit mit einer Metrik, dann ist
 der {\em Hodge-Laplace-Operator} ist der Operator
 \index{Hodge-Laplace-Operator}%
@@ -249,6 +265,7 @@ Der Hodge-Laplace-Operator ist auf ganz $\Omega^*$ definiert.
 \begin{beispiel}
 Wir berechnen den Hodge-Laplace-Operator auf $\mathbb{R}^2$ in
 Polarkoordinaten.
+\index{Hodge-Laplace-Operator!in Polarkoordinaten}%
 Dazu verwenden wir die früher berechnete Darstellung des Hodge-Operators
 in Polarkoordinaten.
 \begin{align*}
@@ -312,6 +329,7 @@ Laplace-Operators in Polarkoordinaten
 \begin{beispiel}
 Der Hodge-Laplace-Operator auf $\mathbb{R}^3$ in
 Kugelkoordinaten.
+\index{Hodge-Laplace-Operator!in Kugelkoordinaten}%
 Die gleiche Art von Rechnung wie für den Hodge-Laplace-Operator in
 Polarikoordinaten, aber unter Verwendung der Resultate von
 Beispiel~\ref{buch:hodge:hodge:beispiel:r3}, ergibt 
@@ -393,5 +411,67 @@ d\delta +\delta d.
 
 An dieser Stelle wird klar, warum das Vorzeichen $(-1)^p$ in der
 Definition des Kodifferentials zweckmässig war.
+
+%
+% Rotation
+%
+\subsection{Rotation einer Rotation
+\label{buch:hodge:laplace:subsection:rotrot}}
+In \eqref{buch:vektoranalysis:eqn:rotrot} wurde bereits eine Formel
+für die Rotation einer Rotation gefunden, in der der Laplace-Operator
+eine prominente Rolle spielte.
+Dass dies nicht nur ein Zufall ist, zeigt die folgende allgemeine
+Überlegung.
+Der Hodge-Laplace-Opertor wird ist gemäss
+Definition~\ref{buch:hodge:laplace:def:hodgelaplace}
+definiert als 
+\[
+\Delta 
+=
+d\delta + \delta d.
+\]
+In drei Dimensionen kann ist das Kodifferential auf $p$-Formen durch
+die Definition~\ref{buch:hodge:kodifferential:def:delta} gegeben,
+die
+\[
+\Delta
+=
+(-1)^{p(3-p)+p}
+{*}d{*}
+=
+(-1)^{4p-p^2}
+{*}d{*}
+=
+(-1)^p
+{*}d{*}
+\]
+ergibt.
+Eingesetzt in die Definition des Laplace-Operators finden wir
+\[
+\Delta
+=
+(-1)^p
+d{*}d{*}
++
+(-1)^{p+1}
+{*}d{*}d
+\]
+Für $p=1$, also für 1-Formen, kann man nach dem letzten Term auflösen
+und erhält
+\begin{equation}
+{*}d{*}d
+=
+d{*}d{*}
++
+\Delta.
+\end{equation}
+Die linke Seite entspricht beim Übergang von Vektorfeldern zu 1-Formen
+mit der Abbildung $V$ der Formel \eqref{buch:vektoranalysis:eqn:rotrot}
+für die iterierte Rotation.
+Man kann daher die Definition des Hodge-Laplace-Opertors auch als
+eine Erweiterung der Identität~\eqref{buch:vektoranalysis:eqn:rotrot}
+der Vektoranalysis auf beliebige $p$-Formen ansehen.
+
+
 
 

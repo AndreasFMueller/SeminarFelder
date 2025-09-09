@@ -1,0 +1,165 @@
+%
+% Schnittkrümmung
+%
+\section{Schnittkrümmung
+\label{buch:kruemmung:section:schnittkruemmung}}
+\kopfrechts{Schnittkrümmung}
+
+\subsection{Geodätische Untermannigfaltigkeiten}
+
+\subsection{Schnittkrümmungen bestimmen den riemannschen Krümmungstensor}
+
+\begin{satz}
+Der riemannsche Krümmungstensor einer Mannigfaltigkeit $M$
+ist vollständig bestimmt durch die Schnittkrümmungen.
+\end{satz}
+
+Der Beweis wird zeigen, dass sich sogar eine konkrete Formel
+für die Werte des Krümmungstensors angeben lässt.
+
+\begin{proof}
+Die Komponenten $R_{lhik}$ des riemannsche Krümmungstensors ist
+antisymmetrisch im ersten und letzten Indexpaar.
+Es gilt also
+\[
+R_{lhik}
+-R_{hlik}
+=
+-R_{lhki}.
+\]
+Dies bedeutet, dass die 4-Linearform
+\[
+R(X,Y,Z,W)
+=
+\xi^l\eta^h\zeta^i\omega^k R_{lhik}
+\]
+nur von den 2-Vektoren $X\wedge Y$ bzw.~$Z\wedge W$ abhängt.
+Der Krümmungstensor kann daher auch als blineare Funktion
+\begin{equation}
+\wedge^2 TM\otimes\wedge^2 TM
+\to
+\mathbb{R}
+:
+(X\wedge Y,Z\wedge W)
+\mapsto
+R(X\wedge Y, Z\wedge W)
+=
+R(X,Y,Z,W)
+\label{buch:kruemmung:schnittkruemmung:eqn:Rbivektor}
+\end{equation}
+auf dem Vektorraum $\bigwedge^2 TM$ der 2-Vektoren von Tangentialvektoren
+geschrieben werden.
+
+Der Krümmungstensor ist ausserdem symmetrisch unter der Vertauschung
+der Indexpaare $lh$ und $ik$.
+Dies bedeutet, dass die
+in
+\eqref{buch:kruemmung:schnittkruemmung:eqn:Rbivektor}
+definierte Funktion $R$ auf den 2-Vektoren symmetrisch ist:
+\begin{align*}
+R(X\wedge Y,Z\wedge W)
+=
+R(Z\wedge W,X\wedge Y)
+\end{align*}
+für beliebige 2-Vektoren $X\wedge Y,Z\wedge W\in\bigwedge^2TM$.
+Wir schreiben die symmetrische, bilineare Funktion auch als $R(u,v)$ mit
+$u,v\in\bigwedge^2 TM$.
+
+Wir möchten zeigen, dass sich $R(u,v)$ aus den Werten $R(w,w)$ für beliebige
+2-Vektoren $w$ berechnen lässt.
+Um dies etwas prägnanter auszudrücken, schreiben wir
+\[
+Q(w) = R(w,w).
+\]
+Die Funktion $Q$ ist eine quadratische Form.
+
+Die Polarisationsformel \cite[p. 347]{buch:linalg} besagt, dass eine
+symmetrische, bilineare Funktion $R(u,v)$ vollständig durch die
+Werte $R(u,v)$ bestimmt ist.
+Wir führen die Rechnung 
+\begin{align}
+R(u+v,u+v)
+&=
+R(u,u) + R(u,v) + R(v,u) + R(v,v)
+\notag
+\\
+\Rightarrow\qquad
+Q(u+v)
+&=
+R(u,u) + 2R(u,v) + R(v,v)
+\notag
+\\
+R(u-v,u-v)
+&=
+R(u,u) - R(u,v) - R(v,u) + R(v,v)
+\notag
+\\
+\Rightarrow\qquad
+Q(u-v)
+&=
+R(u,u) - 2R(u,v) + R(v,v)
+\notag
+\intertext{mit der Differenz}
+Q(u+v)-Q(u-v)
+&=
+4 R(u,v),
+\notag
+\intertext{oder aufgelöst nach dem gemischten Term:}
+R(u,v)
+&=
+{\textstyle\frac14}\bigl( Q(u+v) - Q(u-v) \bigr).
+\label{buch:kruemmung:schnittkruemmung:eqn:RQQ}
+\end{align}
+Die Formel \eqref{buch:kruemmung:schnittkruemmung:eqn:RQQ}
+drückt $R(u,v)$ durch Werte der Form $R(w,w)$ mit $w\in\bigwedge^2 TM$ aus.
+\end{proof}
+
+\begin{satz}
+Der Krümmungstensor ist durch die Schnittkrümmungen vollständig
+bestimmt.
+\end{satz}
+
+\begin{proof}
+Die Schnittkrümmung zu den Vektoren $\vec{s}$ und $\vec{v}$ ist
+definiert durch
+\begin{align}
+K(\vec{s},\vec{v})
+&=
+\frac{
+R(\vec{v},\vec{s},\vec{v},\vec{s})
+}{
+|\vec{v}\wedge\vec{s}|^2
+}.
+\intertext{Für einen Basis-2-Vektor $\vec{e}_i\wedge\vec{e}_k$ wird dies zu}
+K(\vec{e}_i,\vec{e}_k)
+&=
+\frac{R(\vec{e}_i,\vec{e}_k,\vec{e}_i,\vec{e}_k)}{|\vec{e}_i\wedge\vec{e}_k|^2}
+\notag
+\\
+&=
+\frac{R_{ikik}}{g^{ii}g^{kk}-g^{ik}g^{ik}}.
+\label{buch:kruemmung:schnittkruemmung:eqn:Rgggg}
+\end{align}
+Da $g$ als Metrik definit ist, ist der Nenner von
+\eqref{buch:kruemmung:schnittkruemmung:eqn:Rgggg}
+niemals 0.
+Der Riemannsche Krümmungstensor kann also aus den Werten
+\[
+R(\vec{e}_i,\vec{e}_k,\vec{e}_i,\vec{e}_k)
+=
+R(\vec{e}_i\wedge\vec{e}_k,\vec{e}_i\wedge\vec{e}_k)
+=
+Q(\vec{e}_i\wedge\vec{e}_k)
+=
+(g^{ii}g^{kk}-g^{ik}g^{ik}) K(\vec{e}_i,\vec{e}_k)
+\]
+bestimmt werden.
+Sie können also aus den Schnittkrümmungen ermittelt werden.
+\end{proof}
+
+Der Satz besagt also, dass die vom riemannschen Krümmungstensor
+beschriebene Krümmung des Raumes vollständig ergründet werden kann,
+indem man Messungen in divergierenden Gedäten durchführt.
+Eine andere Art, dies auszudrücken, ist, dass der riemannsche
+Krümmungstensor keine zusätzliche Information erhält, die man nicht
+in der Funktion der Schnittkrümmungen gefunden werden kann.

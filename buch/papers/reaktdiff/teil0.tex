@@ -26,7 +26,7 @@ Die Gleichung \eqref{reaktdiff:equation:fkpp} ist auch als Fisher-KPP-Gleichung 
 \subsection{Stabilitätsanalyse mit Fourier-Theorie
 \label{reaktdiff:subsection:fkppmathe}}
 Aus der Gleichung können die stationären Lösungen abgeleitet werden.
-\index{stationäre Lösung}%
+\index{stationare Losung@stationäre Lösung}%
 Setzten wir \(\frac{\partial c}{\partial t} = 0\) und \(\Delta c = 0\) erhalten wir die stationäre Lösung
 \begin{equation}
 \label{reaktdiff:equation:stationaer}
@@ -78,7 +78,7 @@ sehen kann.
 Wir versuchen, diesen Mustern mit einem Fourier-Ansatz Rechnung zu tragen.
 \index{Fourier-Ansatz}%
 
-Um die Gleichung zu lösen setzen wir \(\varepsilon(x,t) = c_k(t)\, e^{ikx}\) ein.
+Um die Gleichung zu lösen setzen wir \(\varepsilon(x,t) = c_k(t) e^{ikx}\) ein.
 Die Ableitungen werden zu
 \begin{align*}
 \frac{\partial \varepsilon}{\partial t} &= \dot{c}_k(t) e^{ikx},\\
@@ -115,7 +115,7 @@ c_k(t) = c_k(0) e^{(-r - D k^2)t}.
 
 \subsubsection{Stabilität}
 Aus den beiden Gleichungen \eqref{reaktdiff:equation:störung0vereinfachk3} und \eqref{reaktdiff:equation:störung1vereinfachk2} können wir die Stabilität der stationären Lösungen \(c = 0\) und \(c = 1\) ablesen.
-\index{Stabilität}%
+\index{Stabilitat@Stabilität}%
 Unter der Annahmen dass \(D\) und \(r\) immmer positiv sind, ist die stationäre Lösung \(c = 1\) stabil.
 Die stationäre Lösung \(c = 0\) ist instabil wenn \(r-Dk^2 > 0\) und stabil wenn \(r-Dk^2 < 0\).
 Somit werden kleine Störungen um \(c = 0\) wachsen, wenn \(k < \!\sqrt{\frac{r}{D}}\), und abklingen, wenn \(k > \!\sqrt{\frac{r}{D}}\).

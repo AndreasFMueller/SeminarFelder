@@ -1,0 +1,189 @@
+%
+% stationaer.tex -- Diskretistion 5x5 für stationäre Lösung der Wärmeleitung
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\def\h{0.5cm}
+\def\punkt#1#2{ ({(#2)*\h},{(4-(#1))*\h}) }
+
+
+
+\def\knotenv#1#2#3{
+	\node[text=violet] at \punkt{#1}{#2} {\small $#3$};
+}
+\def\knotenb#1#2#3{
+		\node[text=blue] at \punkt{#1}{#2} {\small $#3$};
+	
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+
+% ul
+\foreach \x in {0,1,2,3}{
+	\draw[color=black,line width=0.8pt] \punkt{0}{\x} -- \punkt{4}{\x};
+	\draw[color=black,line width=0.8pt] \punkt{\x}{0} -- \punkt{\x}{4};
+}
+
+\draw[color=orange,line width=0.9pt] \punkt{0}{4} -- \punkt{4}{4};
+\draw[color=orange,line width=0.9pt] \punkt{0}{5} -- \punkt{4.07}{5};
+\foreach \x in {0,1,2,3,4}{
+	\draw[color=orange,line width=0.9pt] \punkt{\x}{4} -- \punkt{\x}{5};
+}
+
+\draw[color=orange,line width=0.9pt] \punkt{4}{0} -- \punkt{4}{4};
+\draw[color=orange,line width=0.9pt] \punkt{5}{0} -- \punkt{5}{4};
+\foreach \x in {0,1,2,3,4}{
+	\draw[color=orange,line width=0.9pt] \punkt{4}{\x} -- \punkt{5}{\x};
+}
+
+
+% ur
+\foreach \x in {8,9,10,11}{
+	\draw[color=black,line width=0.8pt] \punkt{0}{\x} -- \punkt{4}{\x};
+	
+}
+
+\foreach \x in {0,1,2,3}{
+	\draw[color=black,line width=0.8pt] \punkt{\x}{7} -- \punkt{\x}{11};
+}
+
+\draw[color=orange,line width=0.9pt] \punkt{0}{6} -- \punkt{4}{6};
+\draw[color=orange,line width=0.9pt] \punkt{0}{7} -- \punkt{4}{7};
+\foreach \x in {0,1,2,3,4}{
+	\draw[color=orange,line width=0.9pt] \punkt{\x}{6} -- \punkt{\x}{7};
+}
+
+\draw[color=orange,line width=0.9pt] \punkt{4}{7} -- \punkt{4}{11};
+\draw[color=orange,line width=0.9pt] \punkt{5}{7} -- \punkt{5}{11};
+\foreach \x in {7,8,9,10,11}{
+	\draw[color=orange,line width=0.9pt] \punkt{4}{\x} -- \punkt{5}{\x};
+}
+
+
+% ll
+\foreach \x in {0,1,2,3}{
+	\draw[color=black,line width=0.8pt] \punkt{7}{\x} -- \punkt{11}{\x};
+	
+}
+
+\foreach \x in {8,9,10,11}{
+	\draw[color=black,line width=0.8pt] \punkt{\x}{0} -- \punkt{\x}{4};
+}
+
+\draw[color=orange,line width=0.9pt] \punkt{7}{4} -- \punkt{11}{4};
+\draw[color=orange,line width=0.9pt] \punkt{7}{5} -- \punkt{11}{5};
+\foreach \x in {7,8,9,10,11}{
+	\draw[color=orange,line width=0.9pt] \punkt{\x}{4} -- \punkt{\x}{5};
+}
+
+\draw[color=orange,line width=0.9pt] \punkt{6}{0} -- \punkt{6}{4};
+\draw[color=orange,line width=0.9pt] \punkt{7}{0} -- \punkt{7}{4};
+\foreach \x in {0,1,2,3,4}{
+	\draw[color=orange,line width=0.9pt] \punkt{6}{\x} -- \punkt{7}{\x};
+}
+
+
+% lr
+\foreach \x in {8,9,10,11}{
+	\draw[color=black,line width=0.8pt] \punkt{7}{\x} -- \punkt{11}{\x};
+	
+}
+
+\foreach \x in {8,9,10,11}{
+	\draw[color=black,line width=0.8pt] \punkt{\x}{7} -- \punkt{\x}{11};
+}
+
+\draw[color=orange,line width=0.9pt] \punkt{7}{7} -- \punkt{7}{11};
+\draw[color=orange,line width=0.9pt] \punkt{6}{7} -- \punkt{6}{11};
+\foreach \x in {7,8,9,10,11}{
+	\draw[color=orange,line width=0.9pt] \punkt{\x}{6} -- \punkt{\x}{7};
+}
+
+\draw[color=orange,line width=0.9pt] \punkt{7}{6} -- \punkt{11}{6};
+\draw[color=orange,line width=0.9pt] \punkt{7}{7} -- \punkt{11}{7};
+\foreach \x in {7,8,9,10,11}{
+	\draw[color=orange,line width=0.9pt] \punkt{6}{\x} -- \punkt{7}{\x};
+}
+
+%arrows
+\foreach \x in {0.5,1.5}{
+	\draw[->,darkred,line width=1.2pt]\punkt{\x}{3.5} -- \punkt{\x}{6.5};
+}
+\foreach \x in {0.5,1.5}{
+	\fill[darkred] \punkt{\x}{3.5} circle (1.2pt);
+}
+
+\foreach \x in {9.5,10.5}{
+	\draw[<-,darkred,line width=1.2pt]\punkt{\x}{4.5} -- \punkt{\x}{7.5};
+}
+\foreach \x in {9.5,10.5}{
+	\fill[darkred] \punkt{\x}{7.5} circle (1.2pt);
+}
+
+\foreach \x in {7.5,8.5}{
+	\draw[<-,darkred,line width=1.2pt]\punkt{4.5}{\x} -- \punkt{7.5}{\x};
+}
+\foreach \x in {7.5,8.5}{
+	\fill[darkred] \punkt{7.5}{\x} circle (1.2pt);
+}
+
+\foreach \x in {9.5,10.5}{
+	\draw[->,darkred,line width=1.2pt] \punkt{3.5}{\x} -- \punkt{6.5}{\x};
+}
+\foreach \x in {9.5,10.5}{
+	\fill[darkred] \punkt{3.5}{\x} circle (1.2pt);
+}
+
+%Buchstaben
+\knotenb{2.5}{0.5}{A}
+\knotenb{2.5}{1.5}{B}
+\knotenb{2.5}{2.5}{C}
+\knotenb{2.5}{3.5}{D}
+
+\knotenb{3.5}{0.5}{E}
+\knotenb{3.5}{1.5}{F}
+\knotenb{3.5}{2.5}{G}
+\knotenb{3.5}{3.5}{H}
+
+\knotenb{7.5}{0.5}{I}
+\knotenb{7.5}{1.5}{J}
+\knotenb{7.5}{2.5}{K}
+\knotenb{7.5}{3.5}{L}
+
+\knotenb{8.5}{0.5}{M}
+\knotenb{8.5}{1.5}{N}
+\knotenb{8.5}{2.5}{O}
+\knotenb{8.5}{3.5}{P}
+
+\knotenv{4.5}{0.5}{I}
+\knotenv{4.5}{1.5}{J}
+\knotenv{4.5}{2.5}{K}
+\knotenv{4.5}{3.5}{L}
+
+\knotenv{6.5}{0.5}{E}
+\knotenv{6.5}{1.5}{F}
+\knotenv{6.5}{2.5}{G}
+\knotenv{6.5}{3.5}{H}
+
+\knotenv{7.5}{6.5}{L}
+\knotenv{8.5}{6.5}{P}
+
+\knotenv{2.5}{6.5}{D}
+\knotenv{3.5}{6.5}{H}
+
+
+
+\end{tikzpicture}
+\end{document}
+
