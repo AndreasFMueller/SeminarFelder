@@ -88,4 +88,8 @@ Einstein(1,1);
 Einstein(1,2);
 Einstein(2,2);
 
-
+r: Riemann2(1,2,1,2);
+r: subst(0, f(u, v), r);
+r: subst(0, f(u, v), r);
+r: subst(0, fu(u, v), r);
+r: subst(0, fv(u, v), r);

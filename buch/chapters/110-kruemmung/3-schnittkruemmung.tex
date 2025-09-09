@@ -108,6 +108,108 @@ geodätischen Untermannigfaltigkeit von $M$.
 \index{Schnittkrümmung}%
 \end{definition}
 
+\begin{beispiel}
+Wir betrauchten den Graphen einer Funktion $z=f(x,y)$.
+Die Metrik wird 
+durch die Gram-Matrix der Einbettung
+\[
+\vec{r}
+\colon
+\mathbb{R}^2 \to \mathbb{R}^3
+:
+(u,v)
+\mapsto 
+\begin{pmatrix} u \\ v \\ f(u,v) \end{pmatrix}
+\]
+beschrieben und wurde bereits in
+Beispiel~\ref{buch:kruemmung:flaeche:bsp:gram}
+als
+\[
+g
+=
+\begin{pmatrix}
+1 + f_u(u,v)^2    & f_u(u,v) f_v(u,v) \\
+f_u(u,v) f_v(u,v) & 1 + f_u(u,v)^2
+\end{pmatrix}
+\]
+berechnet.
+Daraus kann man mit einer ziemlich aufwendigen Rechnung, die man
+mit Vorteil von einem Computeralgebrasystem durchführen lässt
+(Maxima-Script \texttt{f.maxima} im Source-Code-Repository des Buches)
+den riemannschen Krümmungstensor berechnen kann.
+
+Um den Ausdruck besser zu verstehen beschränken wir uns auf eine Stelle,
+wo $f_u(u,v)=f_v(u,v)=0$ gilt.
+Die Rechnung liefert dann
+\[
+R_{1212} = f_{uu}(u,v) f_{vv}(u,v) - f_{uv}(u,v)^2.
+\]
+Für die Schnittkrümmung muss der Flächeninhalt des von den Tangentialvektoren
+\[
+\partial_u
+=
+\partial/\partial u
+=
+\begin{pmatrix}1\\0\\0\end{pmatrix}
+\qquad\text{und}\qquad
+\partial_v
+=
+\partial/\partial v
+=
+\begin{pmatrix}0\\1\\0\end{pmatrix}
+\]
+aufgespannten Parallelogramms berechnet werden.
+Die beiden Vektoren sind orthogonale Einheitsvektoren, also ist
+der Flächinhalt $|\partial_u\wedge\partial_v|=1$ und damit ist
+\[
+S
+=
+f_{uu}(u,v) f_{vv}(u,v) - f_{uv}(u,v)^2
+\]
+die Schnittkrümmung.
+Sie stimmt überein mit der früher gefundenen gaussschen Krümmung
+der Fläche.
+\end{beispiel}
+
+%
+% Abstand von Geodäten
+%
+\subsection{Abstand von Geodäten}
+\input{chapters/110-kruemmung/fig/fig-abstand.tex}
+Die Schnittkrümmung codiert auch, sich der Abstand von Geodäten,
+die in geringem Abstand aber mit paralleltransportierter Richtung
+beginnen.
+Dazu betrachten wir eine Geodäte mit Tangente $\vec{h}$ und
+vergleichen Sie mit einer Geodäte, deren Anfangspunkt infinitesimal
+in Richtung $\vec{k}$ verschoben ist.
+
+Ist die Schnittkrümmung $S(\vec{h},\vec{k})=0$, dann dreht sich der
+Tangentialvektor beim Paralleltransport nicht.
+In der Abbildung~\ref{buch:kruemmung:schnittkruemmung:fig:abstand}
+in der Mitte wird dies dadurch angezeigt, dass der Vektor $\vec{h}''$
+seine Richtung nicht geändert hat.
+
+Bei positiver Schnittkrümmung, dargestellt in
+Abbildung~\ref{buch:kruemmung:schnittkruemmung:fig:abstand}
+links, dreht sich der Tangentialvektor in positiver Richtung und der
+Abstand zwischen den Geodäten wird grösser.
+Umgekehrt dreht sich bei negativer Schnittkrümmung, dargestellt in
+Abbildung~\ref{buch:kruemmung:schnittkruemmung:fig:abstand} rechts,
+der Tangentialvektor $\vec{h}''$ im Uhrzeigersinn, der Abstand
+der Geodäten wird kleiner.
+
+Man kann die Abstandsänderung auch direkt aus den Rechenregeln für
+die kovariante Ableitung berechnen, für unsere Zwecke soll die
+intuitive graphische Erklärung von 
+Abbildung~\ref{buch:kruemmung:schnittkruemmung:fig:abstand}
+genügen.
+
+Später in Abschnitt~\ref{buch:kruemmung:section:newton} wird gezeigt,
+dass die Abstandsänderung als gravitative Wirkung interpretiert
+werden kann.
+Damit ist bereits angedeutet, was die allgemeine Relativitätstheorie
+beweist, dass nämlich Gravitation durch die Krümmung der Raum-Zeit
+beschrieben werden kann.
 
 %
 % Schnittkrümmungen bestimmen den riemannschen Krümmungstensor
