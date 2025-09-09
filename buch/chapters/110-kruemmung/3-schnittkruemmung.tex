@@ -4,9 +4,114 @@
 \section{Schnittkrümmung
 \label{buch:kruemmung:section:schnittkruemmung}}
 \kopfrechts{Schnittkrümmung}
+In Beispiel~\ref{buch:kruemmung:kruemmung:bsp:kugel} wurde der 
+riemannsche Krümmungstensor einer Kugeloberfläche berechnet.
+Es wurde gefunden, dass $R_{1212}=\sin^2\vartheta$ immer noch von der 
+Position auf der Kugeloberfläche abhängt.
+Wir erwarten aber auch eine Abhängigkeit der Krümmung von der umlaufenen
+Fläche.
+Der Flächeninhalt eines infinitesimalen Rechtecks mit Seitenlänge
+$d\vartheta$ und $d\varphi$ ist
+\[
+F
+=
+\sin\vartheta\, d\vartheta\,d\varphi.
+\]
+Die kovariante riemannsche Tensorkomponenten $R_{1212}$ hängt zweimal
+(einmal für jedes Indexpaar $12$) von diesem Flächeninhalt ab.
+Wir erwarten daher, dass
+\[
+K
+=
+\frac{R_{1212}}{\sin^2\vartheta}
+=
+1
+\]
+eine geometrische Invariante ist, die nicht von der Wahl des
+Koordinatensystems abhängt.
+Dies ist ein Beispiel der Schnittkrümmung, die in diesem Abschnitt
+eingeführt werden soll.
+Im Gegensatz zu den Komponenten des riemannschen Krümmungstensors ist
+die Schnittkrümmung eine geometrische Invariante.
+Einerseits lässt sie sich direkt aus dem riemannschen Krümmungstensor
+ablesen, der riemannsche Krümmungstensor lässt sich aber auch aus
+den Schnittkrümmungen wiedergewinnen.
 
-\subsection{Geodätische Untermannigfaltigkeiten}
+%
+% Geodätische Untermannigfaltigkeiten
+%
+\subsection{Geodätische Untermannigfaltigkeiten
+\label{buch:kruemmung:schnittkrüemmung:subsection:geodum}}
 
+%
+% Definitin der Schnittkrümmung
+%
+\subsection{Definition der Schnittkrümmung}
+Der riemannsche Krümmungstensor liefert zu einem Bivektor
+$\vec{h}\wedge\vec{k}$ eine lineare Abbildung, die die Drehung
+eines paralleltransportierten Vektors beschreibt.
+Die Abhängigkeit $\vec{h}\wedge\vec{k}\mapsto R(\vec{h}\wedge\vec{k})$
+ist bilinear in $\vec{h}$ und $\vec{k}$.
+Die Bivektoren aufgespannt von Tangentialvektoren in der
+$\vec{h}$-$\vec{k}$-Ebene bilden den eindimensionalen Vektorraum
+$\mathbb{R}\vec{h}\wedge\vec{k}$ mit der Basis $\vec{h}\wedge\vec{k}$.
+
+Aus der Theorie der geodätischen Untermannigfaltigkeiten von
+Abschnitt~\ref{buch:kruemmung:schnittkrüemmung:subsection:geodum}
+ergibt sich, dass Tangentialvektoren in der $\vec{h}$-$\vec{k}$-Ebene
+in dieser Ebene bleiben.
+Der Wert $R(\vec{h}\wedge\vec{k})$ beschreibt eine infinitesimale Drehung
+in der $\vec{h}\wedge\vec{k}$-Ebene.
+In einer orthonormierten Basis wird sie beschrieben durch eine
+antisymmetrische Matrix.
+Die Antisymmetrie bedeutet, dass der Wert $R(\vec{h}\wedge\vec{k})$ ist
+also wieder ein Vielfaches von $\vec{h}\wedge\vec{k}$, es gibt
+eine Zahl $s(\vec{h}\wedge\vec{h})$ mit der Eigenschaft
+\[
+R(\vec{h}\wedge\vec{k})
+=
+s(\vec{h}\wedge\vec{k})
+\vec{h}\wedge\vec{k}.
+\]
+Da $R(\vec{h}\wedge\vec{k})$ linear von $\vec{h}\wedge\vec{k}$ abhängt,
+muss auch $s(\vec{h}\wedge\vec{k})$ linear von $\vec{h}\wedge\vec{k}$
+abhängen.
+
+Der Bivektor $\vec{h}\wedge\vec{k}$ repräsentiert den Flächeninhalt
+des von $\vec{h}$ und $\vec{k}$ aufgespannten Parallelogramms. 
+In einer orthonormierten Basis wird es durch die Determinante wiedergegeben,
+die mit $|\vec{h}\wedge\vec{k}|$ geschrieben werden kann.
+es muss also ein Zahl $S$ geben derart, dass
+\[
+R(\vec{h}\wedge\vec{k})
+=
+s(\vec{h}\wedge\vec{k})
+\begin{pmatrix*}[r] 0&-1\\ 1&0\end{pmatrix*}
+|\vec{h}\wedge\vec{k}|
+=
+S |\vec{h}\wedge\vec{k}|^2
+\begin{pmatrix*}[r] 0&-1\\1&0\end{pmatrix*}.
+\]
+Der Faktor $S$ ist unabängig von der Basis in der $\vec{h}$-$\vec{k}$-Ebene
+und damit eine innere Eigenschaft der Mannigfaltigkeit.
+
+\begin{definition}[Schnittkrümmung]
+\label{buch:kruemmung:schnittkruemmung:def:schnittkruemmung}
+Sie $M$ eine riemannsche Mannigfaltigkeit mit dem kovarianten riemannschen
+Krümmungstensor $Rm(X,Y,Z,W)$.
+Die Grösse
+\[
+S(X\wedge Y) = \frac{Rm(X,Y,X,Y)}{|X\wedge Y|^2}.
+\]
+heisst die \emph{Schnittkrümmung} in der von $X$ und $Y$ aufgespannten
+geodätischen Untermannigfaltigkeit von $M$.
+\index{Schnittkrümmung}%
+\end{definition}
+
+
+%
+% Schnittkrümmungen bestimmen den riemannschen Krümmungstensor
+%
 \subsection{Schnittkrümmungen bestimmen den riemannschen Krümmungstensor}
 
 \begin{satz}
@@ -29,14 +134,14 @@ R_{lhik}
 \]
 Dies bedeutet, dass die 4-Linearform
 \[
-R(X,Y,Z,W)
+Rm(X,Y,Z,W)
 =
 \xi^l\eta^h\zeta^i\omega^k R_{lhik}
 \]
 nur von den 2-Vektoren $X\wedge Y$ bzw.~$Z\wedge W$ abhängt.
 Der Krümmungstensor kann daher auch als blineare Funktion
 \begin{equation}
-\wedge^2 TM\otimes\wedge^2 TM
+\bigwedge^2 TM\otimes\bigwedge^2 TM
 \to
 \mathbb{R}
 :
@@ -44,7 +149,7 @@ Der Krümmungstensor kann daher auch als blineare Funktion
 \mapsto
 R(X\wedge Y, Z\wedge W)
 =
-R(X,Y,Z,W)
+Rm(X,Y,Z,W)
 \label{buch:kruemmung:schnittkruemmung:eqn:Rbivektor}
 \end{equation}
 auf dem Vektorraum $\bigwedge^2 TM$ der 2-Vektoren von Tangentialvektoren
@@ -133,7 +238,7 @@ R(\vec{v},\vec{s},\vec{v},\vec{s})
 \intertext{Für einen Basis-2-Vektor $\vec{e}_i\wedge\vec{e}_k$ wird dies zu}
 K(\vec{e}_i,\vec{e}_k)
 &=
-\frac{R(\vec{e}_i,\vec{e}_k,\vec{e}_i,\vec{e}_k)}{|\vec{e}_i\wedge\vec{e}_k|^2}
+\frac{Rm(\vec{e}_i,\vec{e}_k,\vec{e}_i,\vec{e}_k)}{|\vec{e}_i\wedge\vec{e}_k|^2}
 \notag
 \\
 &=
@@ -145,7 +250,7 @@ Da $g$ als Metrik definit ist, ist der Nenner von
 niemals 0.
 Der Riemannsche Krümmungstensor kann also aus den Werten
 \[
-R(\vec{e}_i,\vec{e}_k,\vec{e}_i,\vec{e}_k)
+Rm(\vec{e}_i,\vec{e}_k,\vec{e}_i,\vec{e}_k)
 =
 R(\vec{e}_i\wedge\vec{e}_k,\vec{e}_i\wedge\vec{e}_k)
 =
