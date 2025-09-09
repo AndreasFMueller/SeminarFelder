@@ -98,8 +98,11 @@ declare function = {
 	\draw[line width=1.4pt] plot[domain=-\l:\l,samples=100]
 		({X(\x)},{\x});
 
-	\draw[line width=0.2pt] ({-\l+\rechts},-\l) -- ({\l+\rechts},\l);
+	\draw[line width=0.2pt] ({-\l+\rechts},-\l) -- 
+	    node[below=1.5cm,anchor=north west,xshift=-2mm]{$A_k = \left\{ x \mid T(x) \in B_k \right\}$} 
+		({\l+\rechts},\l);
 	\node at (\rechts,0) [below,rotate=45] {``$y = x$''};
+
 \end{scope}}{}
 
 \begin{scope}[xshift=-3.2cm]
