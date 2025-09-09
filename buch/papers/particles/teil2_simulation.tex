@@ -113,13 +113,8 @@ Die resultierende Wellengleichung lautet
 \]
 
 \subsection{Nichtlinearität}
-Die Nichtlinearität des Mediums wird durch die Formel
-\[
-    \text{stress} = a \cdot \text{strain} \cdot e^{b \cdot \text{strain}} % TODO: Tatsächliche Formel
-\]
-gegeben, wobei das nichtlineare Verhalten durch die Parameter $a$ und $b$ angepasst werden kann.
-Einige Beispiele der daraus resultierenden Spannungs-Deformations-Kurven sind in Abb.~\ref{particles:abb:nonlin} gezeigt. % TODO: Abbildung
-\mytodo{Beschreiben, wie der Simulator das einrechnet}
+Um die Nichtlinearität im Simulator umsetzen zu können, wird nach jedem Zeitschritt die Spannung im Feld ermittelt und anschliessend der Brechungsindex anhand einer Deformationskurve für jedes Pixel neu berechnet.
+Die Spannung ist dabei der Betrag der ersten örtlichen Ableitung, welche im zweidimensionalen Fall als Hypotenuse der beiden Ableitungen in $x$- und $y$-Richtung berechnet werden kann.
 
 \subsection{Szenendefinition}
 Zur Definition des Ausgangszustands des Feldes sowie der Eigenschaften des Mediums nimmt der Simulator ein RGB-Bild entgegen.
