@@ -98,14 +98,6 @@ declare function = {
 	\draw[line width=1.4pt] plot[domain=-\l:\l,samples=100]
 		({X(\x)},{\x});
 
-	\node at ({-\xmax-0.03},{-0.5*(\ymin+\ymax)}) [right]
-		{${\color{redleft}A_1}=\{x\mid T(x)\in {\color{blueleft}B_1}\}$};
-
-	\node at (-0.5,0) [right]
-		{${\color{redmiddle}A_2}=\{x\mid T(x)\in {\color{bluemiddle}B_2}\}$};
-
-	\node at ({\xmin-0.1},{0.5*(\ymin+\ymax)+0.28}) [right]
-		{${\color{redright}A_3}=\{x\mid T(x)\in {\color{blueright}B_3}\}$};
 	\draw[line width=0.2pt] ({-\l+\rechts},-\l) -- ({\l+\rechts},\l);
 	\node at (\rechts,0) [below,rotate=45] {``$y = x$''};
 \end{scope}}{}
