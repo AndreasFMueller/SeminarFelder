@@ -1,0 +1,77 @@
+%
+% sl.tex -- Schwarzes Loch
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{3}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\def\kegel#1#2{
+	\pgfmathparse{90-atan(1-1/#1)}
+	\xdef\w{\pgfmathresult}
+	\fill[color=blue!20] (#1,#2) -- ++(\w:0.2) -- ++({-2*0.2*cos(\w)},0)
+		-- cycle;
+	\fill[color=blue!10] (#1,#2) -- ++(-\w:0.2) -- ++({-2*0.2*cos(\w)},0)
+		-- cycle;
+	\draw (#1,#2) -- ++(\w:0.2);
+	\draw (#1,#2) -- ++(-\w:0.2);
+	\draw (#1,#2) -- ++({180-\w}:0.2);
+	\draw (#1,#2) -- ++({-180+\w}:0.2);
+}
+\def\legek#1#2{
+	\pgfmathparse{90-atan(1-1/#1)}
+	\xdef\w{\pgfmathresult}
+	\fill[color=blue!20] (#1,#2) -- ++(\w:0.2) -- ++(0,{-2*0.2*sin(\w)})
+		-- cycle;
+	\fill[color=blue!10] (#1,#2) -- ++({\w-180}:0.2)
+		-- ++(0,{2*0.2*sin(\w)}) -- cycle;
+	\draw (#1,#2) -- ++(\w:0.2);
+	\draw (#1,#2) -- ++(-\w:0.2);
+	\draw (#1,#2) -- ++({180-\w}:0.2);
+	\draw (#1,#2) -- ++({-180+\w}:0.2);
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[color=darkred] (1,-0.1) -- (1,1);
+
+\draw[->] ({-0.1/\skala},0) -- (3.9,0) coordinate[label={$r$}];
+\draw[->] (0,{-0.1/\skala}) -- (0,1.1) coordinate[label={right:$ct$}];
+
+\node[color=darkred] at (1,0) [below right] {$r_s$};
+
+\kegel{1.1}{0.75}
+\kegel{1.25}{0.75}
+\kegel{1.5}{0.75}
+\kegel{2.00}{0.75}
+\kegel{2.50}{0.75}
+\kegel{3.00}{0.75}
+\kegel{3.50}{0.75}
+
+\legek{0.9}{0.75}
+\legek{0.75}{0.75}
+\legek{0.5}{0.75}
+\legek{0.10}{0.75}
+
+\kegel{1.1}{0.25}
+\kegel{1.25}{0.25}
+\kegel{1.5}{0.25}
+\kegel{2.00}{0.25}
+\kegel{2.50}{0.25}
+\kegel{3.00}{0.25}
+\kegel{3.50}{0.25}
+
+\legek{0.9}{0.25}
+\legek{0.75}{0.25}
+\legek{0.5}{0.25}
+\legek{0.10}{0.25}
+
+\end{tikzpicture}
+\end{document}
+

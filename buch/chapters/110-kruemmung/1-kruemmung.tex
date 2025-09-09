@@ -1,0 +1,726 @@
+%
+% Der riemannsche Krümmungstensor
+%
+\section{Berechnung der Krümmung
+\label{buch:kruemmung:section:riemann}}
+\kopfrechts{Berechnung der Krümmung}
+Das eingangs am Beispiel des Paralleltransports entlang eines
+Dreiecksweges auf einer Kugeloberfläche illustrierte Phänomen
+der Drehung eines paralleltransportierten Vektors soll jetzt
+als Ausgangspunkt der Definition eines Krümmungsmasses sein.
+Im Geiste der früheren Kapitel muss die Krümmung als eine 2-Form
+beschrieben werden können, da die Krümmung offenbar durch Bewegung
+entlang des Randes eines Flächenstücks erkennbar wird.
+Allerdings können die Werte nicht nur skalare Werte sein, da
+sich die Drehung eines Vektors nur mit Hilfe einer Matrix
+beschreiben lässt.
+Wir erwarten daher einen Tensor vierter Stufe.
+Dieser Tensor ist der riemannsche Krümmungstensor.
+
+%
+% Der riemannsche Krümmungstensor
+%
+\subsection{Der riemannsche Krümmungstensor}
+Das Einführungsbeispiel der Winkeldrehung eines paralleltransportieren
+Vektors motiviert die Definition der Krümmung als die Abbildung 
+der Tangentialvektoren beim Paralleltransport.
+Ein Koordinatenparallelgramm mit den Ecken
+\begin{center}
+\begin{tikzpicture}[>=latex,thick]
+\begin{scope}[xshift=-6cm,yshift=-0cm]
+\node at (0,0) {$\displaystyle
+\begin{aligned}
+A &= x,\\
+B &= x+\vec{h},\\
+C &= x+\vec{h}+\vec{k}\\
+\text{und}\quad
+D &= x+\vec{k}
+\end{aligned}$};
+\end{scope}
+\begin{scope}
+\coordinate (A) at (-1.5,-1);
+\coordinate (B) at (1.0,-0.5);
+\coordinate (C) at (1.5,1);
+\coordinate (D) at (-1.0,0.5);
+\fill[color=gray!20] (A) -- (B) -- (C) -- (D) -- cycle;
+\node at ($0.25*(A)+0.25*(B)+0.25*(C)+0.25*(D)$) {$\vec{h}\wedge\vec{k}$};
+\draw[->] (A) -- (B);
+\draw[->] (B) -- (C);
+\draw[->] (C) -- (D);
+\draw[->] (D) -- (A);
+\fill (A) circle[radius=0.05];
+\fill (B) circle[radius=0.05];
+\fill (C) circle[radius=0.05];
+\fill (D) circle[radius=0.05];
+\node at (A) [below left] {$A$};
+\node at (B) [below right] {$B$};
+\node at (C) [above right] {$C$};
+\node at (D) [above left] {$D$};
+\node at ($0.5*(A)+0.5*(B)$) [below] {$\vec{h}$};
+\node at ($0.5*(A)+0.5*(D)$) [left] {$-\vec{k}$};
+\node at ($0.5*(B)+0.5*(C)$) [right] {$\vec{k}$};
+\node at ($0.5*(D)+0.5*(C)$) [above] {$-\vec{h}$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+hat als Rand einen geschlossen Pfad, entlang dem ein Vektor parallel
+transportiert werden soll.
+Ein Vektor $A$ mit den Komponenten $a^i$ wird beim Transport entlang
+des Weges linear abgebildet auf einen Vektor
+$R(\vec{h}\wedge\vec{k})\cdot A$ abgebildet, der in linearer Näherung
+nur vom 2-Vektor $\vec{h}\wedge\vec{k}$ und vom Vektor $A$ abhängt.
+Der {\em riemannsche Krümmungstensor} ist daher die lineare Abbildung
+\index{riemannscher Krummungstensor@riemannscher Krümmungstensor}%
+$R(\vec{h}\wedge\vec{k})$.
+
+\subsubsection{Tangentialvektoren der Drehgruppen}
+Der Krümmungstensor hängt antisymmetrisch von den Komponenten von
+$\vec{h}$ und $\vec{k}$ ab und liefert eine Matrix, die von einer
+Drehung herrührt.
+Sei also $D(t)\in\operatorname{SO}(n)$ ein Weg in der Gruppe
+der $n$-dimensionalen Drehmatrizen, die beim Parameterwert $t=0$
+durch die Einheitsmatrix $I\in \operatorname{SO}(n)$ geht.
+Er erfüllt
+\begin{align*}
+D(t)^tD(t) &= I
+&&\text{und}&
+\det D(t) &= 1.
+\intertext{Die Ableitung nach $t$ an der Stelle $t=0$ ist}
+\bigl(
+\dot{D}(t)^tD(t)
++
+D(t)^t\dot{D}^t
+\bigr)\Bigl|_{t=0}
+&=
+0
+&&\text{und}&
+\operatorname{Spur}\dot{D}(0)
+&=
+0.
+\end{align*}
+Aus der linken Gleichung wird mit $D(0)=I$ die Bedingung
+\[
+\dot{D}(0) + \dot{D}(0)^t
+\qquad\Rightarrow\qquad
+\dot{D}(0)^t
+=
+-\dot{D}(0).
+\]
+Die Tangentialvektoren an die Drehgruppe sind als antisymmetrische
+Matrizen mit verschwindender Spur.
+
+\begin{beispiel}
+Die Matrizen in der zweidimensionalen Drehmatrix sind
+\[
+D(t)
+=
+\begin{pmatrix}
+\cos kt &          - \sin kt\\
+\sin kt & \phantom{-}\cos kt
+\end{pmatrix}
+\]
+mit der Ableitung
+\[
+\dot{D}(0)
+=
+\begin{pmatrix}
+0 & -k\\
+k &\phantom{-}0
+\end{pmatrix}.
+\qedhere
+\]
+\end{beispiel}
+
+Die oben durchgeführten Rechnungen gelten nur in $\operatorname{SO}(n)$,
+die mit dem Standardskalarprodukt definiert wird.
+Auf einer beliebigen riemannschen Mannigfaltigkeit sind Drehmatrizen $D$
+durch die Eigenschaft gegeben, dass
+\[
+D^t(t)GD(t)
+=
+G
+\]
+gilt.
+Durch Ableitung nach $t$ an der Stelle $t=0$ folgt
+\[
+\dot{D}(0)^tG + G\dot{D}(0)
+=
+0
+\qquad\Rightarrow\qquad
+G\dot{D}(0)
+=
+-\dot{D}(0)^tG.
+\]
+Schreibt man die Komponenten von $\dot{D}(0)$ als $D^i\mathstrut_l$,
+dann bedeutet dies
+\[
+g_{uv}D^{v}\mathstrut_l
+=
+-
+\sum_{v}
+D^{u}\mathstrut_v
+g_{vl}
+\]
+Zieht man den oberen Index von $D^u\mathstrut_v$ mit herunter,
+entsteht ein symmetrischer Tensor
+\[
+D_{uv}
+=
+g_{ui} D^i\mathstrut_v
+\qquad\Rightarrow\qquad
+D_{uv}
+=
+-D_{vu}.
+\]
+
+\subsubsection{Symmetrien des Krümmungstensors}
+Der Krümmungstensor $R(\vec{h}\wedge\vec{k})$ hat als Wert eine Matrix,
+deren Komponenten wir mit $R^i\mathstrut_l$ bezeichnen können.
+Sie hängt antisymmetrisch von den Komponenten der beiden Vektoren
+$\vec{h}\wedge\vec{k}$ ab.
+In Komponenten ausgedrückt ist also
+\[
+R^i\mathstrut_l(\vec{h}\wedge\vec{k})
+=
+R^i\mathstrut_{luv} h^uk^v,
+\]
+wobei wie üblich nach der einsteinschen Summationskonvention über $u$
+$v$ summiert werden muss.
+Falls der metrische Tensor die Einheitsmatrix ist, muss $R^i\mathstrut_l$
+antisymmetrisch sein, doch dies ist keine Eigenschaft, die allgemein
+kovariant definiert ist.
+Aus den Resultaten des letzten Abschnitts folgt aber, dass nach
+Herunterziehen des oberen Index mithilfe von $g_{uv}$ eine
+antismmetrische Matrix entsteht.
+Für beliebige Vektoren $\vec{h}$ und $\vec{v}$ muss daher
+$g_{li}R^i\mathstrut_l(\vec{h}\wedge\vec{k})=R_{il}(\vec{h}\wedge\vec{k})$
+ein antisymmetrischer Tensor zweiter Stufe sein.
+In Komponenten muss für beliebige Indizes $u$ und $v$ muss
+$R_{jluv}=g_{ji}R^i\mathstrut_{luv}$ antisymmetrisch in den
+Indizes $j$ und $l$ sein.
+
+\subsubsection{Kovariante Ableitung und Krümmungstensor}
+Wir berechnen jetzt den Paralleltransport des Vektors mit den
+Komponenten $a^i$ entlang der Kantenpfade $ABC$ und $ADC$ 
+des von $\vec{h}$ und $\vec{k}$ aufgespannten Parallelogramms.
+Der Transport von $A$ nach $B$ ändert den Vektor um die Komponenten
+\[
+-\Gamma^l_{uv} a^u h^v 
+\]
+Der neue Vektor muss jetzt um den Vektor $\vec{k}$ transportiert
+werden, der transportierte Vektor ist
+\[
+b^l
+=
+a^l-\Gamma^l_{uv} a^u h^v.
+\]
+Dies ergibt
+\begin{align*}
+\biggl(
+\frac{\partial b^s}{\partial x^m}
++
+\Gamma^s_{nm} b^n
+\biggr)
+k^m
+&=
+\biggl(
+\frac{\partial \Gamma^s_{uv}}{\partial x^m}
+a^u
+h^v
+-
+\Gamma^s_{nm}
+a^n
++
+\Gamma^s_{nm} \Gamma^n_{uv}
+a^u
+h^v
+\biggr)
+k^m
+\\
+&=
+\biggl(
+\frac{\partial \Gamma^s_{uv}}{\partial x^m}
++
+\Gamma^s_{nm}\Gamma^n_{uv}
+\biggr)
+a^u
+h^v k^m
+-
+\Gamma^s_{nm}a^nk^m.
+\end{align*}
+Vertauschung von $v$ und $m$ führt auf den entsprechenden
+Ausdruck für den Weg $ADC$.
+Die Differenz ist der gesucht Krümmungstensor
+\begin{align*}
+R^s\mathstrut_{uvm}
+&=
+\frac{\partial\Gamma^s_{uv}}{\partial x^m}
+-
+\frac{\partial\Gamma^s_{um}}{\partial x^v}
+-
+\Gamma^s_{nm}\Gamma^n_{uv}
++
+\Gamma^s_{nv}\Gamma^n_{um}
+\end{align*}
+Dies sind die Komponenten des riemannschen Krümmungstensors.
+Durch herunterziehen des ersten Index erhält man die Komponenten
+\[
+R_{ruvm}
+=
+g_{rs}
+\biggl(
+\frac{\partial\Gamma^s_{uv}}{\partial x^m}
+-
+\frac{\partial\Gamma^s_{um}}{\partial x^v}
+-
+\Gamma^s_{nm}\Gamma^n_{uv}
++
+\Gamma^s_{nv}\Gamma^n_{um}
+\biggr)
+\]
+des kovarianten riemannschen Tensors.
+Er ist antisymmetrisch in den ersten zwei und den letzten zwei
+Indizes.
+
+\begin{beispiel}
+Der riemannsche Krümmungstensor für die Ebene in Polarkoordinaten.
+
+In Polarkoordinaten $(r,\vartheta)$ wird die euklidische Metrik
+durch die Koeffizienten
+\[
+g_{11} = 1,\quad
+g_{22} = r^2,\qquad
+g
+=
+\begin{pmatrix}
+1&0\\
+0&r^2
+\end{pmatrix},
+\quad
+g^{-1}
+=
+\begin{pmatrix}
+1&0\\
+0&r^{-2}
+\end{pmatrix},
+\]
+gegeben.
+Daraus kann man die Christoffel-Symbole erster Art
+\begin{align*}
+\Gamma_{1,11}                 & =  0 &
+\Gamma_{1,12} = \Gamma^1_{21} & =  0 &
+\Gamma_{1,22}                 & = -r
+\\
+\Gamma_{2,11}                 & = 0 &
+\Gamma_{2,12} = \Gamma_{2,21} & = r &
+\Gamma_{2,22}                 & = 0
+\intertext{und zweiter Art}
+\Gamma^1_{11}                 & = 0  &
+\Gamma^1_{12} = \Gamma^1_{21} & =  0 &
+\Gamma^1_{22}                 & = -r
+\\
+\Gamma^2_{11}                 & = 0  &
+\Gamma^2_{12} = \Gamma_{2,21} & = \frac{1}{r} &
+\Gamma^2_{22}                 & = 0
+\end{align*}
+berechnen.
+Verwendet man diese Koeffizienten, um den riemannschen Krümmungstensor
+zu berechnen, erhält man $0$ für alle Komponenten.
+\end{beispiel}
+
+\begin{beispiel}
+Der riemannsche Krümmungstensor für die Kugeloberfläche.
+\end{beispiel}
+
+\subsubsection{Herleitung mit Hilfe des Satzes von Green}
+Für die Berechnung des Krümmungstensors haben wir ein konkretes
+Parallelogramm verwendet und den Transport eines Vektors entlang
+seiner Kanten approximiert.
+Der Krümmungstensor ergab sich dann in linearer Näherung.
+Dieser Zugang hat aber den Nachteil, dass er einen speziellen, nicht
+differenzierbaren Weg und eine etwas holperig wirkende Approximation
+verwendet, der Zulässigkeit nicht nachgeprüft wurde.
+
+Der Satz von Green ermöglicht, ein Wegintegral über einen geschlossenen
+Weg direkt zu formulieren und in ein Flächenintegral umzuwandeln.
+Seien also $a^k$ die Komponenten eines Vektors $A$ und $\gamma(t)$ in
+Weg mit den Koordinaten $x^i(t)$.
+Der Vektor ändert beim Paralleltransport entlang der Kurve um den
+Betrag $\Delta a^k$.
+Die kovariante Ableitung $\nabla_{\dot{\gamma}} A$ gibt die infinitesimale
+Änderung.
+Die Änderung $\Delta a^k$ kann daher als das Integral
+\begin{align*}
+\Delta A
+&=
+\oint_{\gamma}
+\nabla_{\dot{\gamma}}
+A
+\,d\gamma(t)
+\intertext{über den Weg $\gamma$, oder in Komponenten}
+\Delta a^k
+&=
+\int 
+\biggl(
+\frac{\partial a^k}{\partial x^v}
++
+\Gamma^k_{uv} a^u
+\biggr)
+\dot{x}^v
+\,dt.
+\end{align*}
+Um den Satz von Green anwenden zu können, brauchen wir ein ebenes
+Kurvenintegral.
+Wir betrachten daher einen Weg in der $x^v$-$x^s$-Koordinaten-Ebene.
+Die Änderung entlang eines solchen Weges ist dann das Integral
+\begin{align}
+\Delta a^k
+&=
+\int
+\biggl(
+\frac{\partial a^k}{\partial x^v} + \Gamma^k_{uv}a^u
+\biggr)
+\,
+dx^v
++
+\biggl(
+\frac{\partial a^k}{\partial x^s} + \Gamma^k_{us}a^u
+\biggr)
+dx^s,
+\intertext{welches mit dem Satz von Green in das Integral}
+&=
+\int
+\frac{\partial}{\partial x^s}
+\biggl(
+\frac{\partial a^k}{\partial x^v} + \Gamma^k_{uv}a^u
+\biggr)
+-
+\frac{\partial}{\partial x^v}
+\biggl(
+\frac{\partial a^k}{\partial x^s} + \Gamma^k_{us}a^u
+\biggr)
+\,dx^u\,dx^s
+\notag
+\\
+&=
+\int
+\frac{\partial^2 a^k}{\partial x^s\,\partial x^v}
+-
+\frac{\partial^2 a^k}{\partial x^v\,\partial x^s}
++
+\frac{\partial \Gamma^k_{uv}}{\partial x^s} a^u
++
+\Gamma^k_{uv}\frac{\partial a^u}{\partial x^s}
+-
+\frac{\partial \Gamma^k_{us}}{\partial x^v} a^u
+-
+\Gamma^k_{us}\frac{\partial a^u}{\partial x^v}
+\,dx^v\,dx^s.
+\label{buch:kruemmung:eqn:greendelta1}
+\end{align}
+Die zweiten Ableitungen heben sich weg und müssen daher nicht weiter
+berücksichtigt werden.
+Für den paralleltransportierten Vektor verschwindet die kovariante
+Ableitung, so dass sie sich nach der partiellen Ableitung von $a^k$
+nach den Koordinaten auflössen lässt.
+Dies ergibt
+\[
+\frac{\partial a^u}{\partial x^s}
+=
+\Gamma^u_{sl}a^l.
+\]
+Eingesetzt in den Ausdruck
+\eqref{buch:kruemmung:eqn:greendelta1}
+ergibt sich
+\begin{align*}
+\Delta a^k
+&=
+\int
+\frac{\partial\Gamma^k_{uv}}{\partial x^s} a^u
+-
+\frac{\partial\Gamma^k_{us}}{\partial x^v} a^u
++
+\Gamma^k_{uv}\Gamma^u_{sl} a^l
+-
+\Gamma^k_{us}\Gamma^u_{vl} a^l
+\,dx^s\,dx^v
+\\
+&=
+\int
+\biggl(
+\frac{\partial\Gamma^k_{uv}}{\partial x^s}
+-
+\frac{\partial\Gamma^k_{us}}{\partial x^v}
++
+\Gamma^k_{lv}\Gamma^l_{su}
+-
+\Gamma^k_{ls}\Gamma^l_{vu}
+\biggr)
+a^u
+\,dx^s\,dx^v.
+\end{align*}
+Der Klammerausdruck im Integral ist wieder der riemannsche Krümmungstensor.
+
+%
+% Die Bianchi-Identitäten
+%
+\subsection{Die Bianchi-Identitäten}
+Im vorangegangenen Abschnitt wurde erkannt, dass der riemannsche 
+Krümmungstensor antisymmetrisch im ersten und letzten Indexpaar ist,
+und symmetrisch bei Vertauschung der beiden Indexpaare.
+Die Bianchi-Identitäten sind weitere Beziehungen der Komponenten
+des Krümmungstensors untereinander, so dass sich die Information 
+
+%
+% Die ersrte Bianchi-Identität
+%
+\subsubsection{Die algebraische Bianchi-Identität}
+Die algebraische Bianchi-Identität ist die Eigenschaft, dass die
+Summe der Werte des Krümmungstensors bei zyklischer Vertauschung
+dreier Vektoren verschwindet.
+Dies erinnert an die Jacobi-Identität von
+Satz~\ref{buch:koordinaten:diffop:satz}
+und tatsächlich wird der
+Beweis die Jacobi-Identität für die Lie-Ableitung wesentlich
+verwenden.
+
+\begin{satz}[algebraische Bianchi-Identität]
+Für den riemannschen Krümmungstensor $\textit{Rm}$ und für vier beliebige
+Vektorfelder $X$, $Y$, $Z$, $W$ gilt
+\[
+\textit{Rm}(X,Y,Z,W)
++
+\textit{Rm}(X,Z,W,Y)
++
+\textit{Rm}(X,W,Y,Z)
+=
+0.
+\]
+In Komponenten ausgedrückt lautet sie
+\[
+R_{abcd}
++
+R_{acdb}
++
+R_{adbc}
+=
+0.
+\]
+\end{satz}
+
+Die algebraische Bianchi-Identität wird traditionellerweise auch
+mit dem wenig deskriptiven Namen erste Bianchi-Identität bezeichnet.
+\index{Bianchi-Identitat@Bianchi-Identität!erste}%
+\index{erste Bianchi-Identitat@erste Bianchi-Identität}%
+
+\begin{proof}
+Wir zeigen durch direkte Rechnung dass der Ausdruck
+\[
+B
+=
+\textit{Rm}(X,Y,Z,W)
++
+\textit{Rm}(X,Z,W,Y)
++
+\textit{Rm}(X,W,Y,Z)
+\]
+verschwindet.
+Da
+\[
+\textit{Rm}(X,Y,Z,W)
+=
+R(Z,W)Y
+\]
+ist, ist das verschwinden von $B$ gleichbedeutend damit, dass
+\[
+C
+=
+R(Z,W)Y
++
+R(W,Y)Z
++
+R(Y,Z)W
+\]
+verschwindet.
+
+Um dies zu zeigen, expandieren wir die Terme in $C$ mit der Definition
+des Krümmungstensors 
+\begin{align*}
+C
+&=
+(\nabla_W\nabla_Z Y - \nabla_Z\nabla_W Y - \nabla_{[W,Z]}Y)
+\\
+&\qquad \mathstrut +
+(\nabla_Y\nabla_W Z - \nabla_W\nabla_Y Z - \nabla_{[Y,W]}Z)
+\\
+&\qquad \mathstrut +
+(\nabla_Z\nabla_Y W - \nabla_Y\nabla_Z W - \nabla_{[Z,Y]}W)
+\intertext{Wir gruppieren die zweiten Ableitungen nach dem gleichen Vektor}
+&=
+\nabla_W(\nabla_Z Y - \nabla_Y Z)
++
+\nabla_Z(\nabla_Y W - \nabla_W Y)
++
+\nabla_Y(\nabla_W Z - \nabla_Z W)
+\\
+&\qquad\mathstrut
+-
+\nabla_{[W,Z]}Y
+-
+\nabla_{[Y,W]}Z
+-
+\nabla_{[Z,Y]}W.
+\intertext{Mit der Symmetrie der kovarianten Ableitung können die ersten
+drei Terme vereinfacht werden zu}
+&=
+\nabla_W[Z,Y] + \nabla_Z[Y,W] + \nabla_Y[W,Z]
+-
+\nabla_{[W,Z]}Y
+-
+\nabla_{[Y,W]}Z
+-
+\nabla_{[Z,Y]}W.
+\intertext{Mit erneuter Verwendung der Symmetrie der kovarianten Ableitung
+folgt schliesslich}
+&=
+[W,[Z,Y]]
++
+[Z,[Y,W]]
++
+[Y,[W,Z]]
+=
+0
+\end{align*}
+aufgrund der Jacobi-Identität für die Lie-Klammer.
+\end{proof}
+
+%
+% Die Anzahl unabhängiger Komponenten des Krümmungstensors
+%
+\subsubsection{Die Anzahl unabhängiger Komponenten des Krümmungstensors}
+Wir werden im Abschnitt~\ref{buch:kruemmung:section:flaeche} für den Fall
+zweidimensionaler Mannigfaltigkeiten zeigen, dass der Krümmungstensor
+nur eine unabhängige Komponente hat.
+Dazu werden nur die früher diskutierten Symmetrieeigenschaften des
+Krümmungstensors benötigt, die Bianchi-Identität ist automatisch immer
+erfüllt.
+
+Für dreidimensionale Mannigfaltigkeiten ist dies nicht mehr der Fall.
+In diesem Abschnitt zählen wir die unabhängigen Komponenten des
+kovarianten Krümmungstensors im Falle $n=3$.
+Aus den grundlegenden Symmetrieeigenschaften folgt, dass nur die
+Komponenten $R_{abcd}$ mit $a<b$ und $c<d$ betrachtet werden müssen,
+die Komponenten mit $a=b$ oder $c=d$ verschwinden und die Fälle
+$a>b$ und $c>d$ können durch Indexvertauschung erhalten werden.
+Es gibt nur drei Indexpaare $(a,b)$, die die Bedingung $a<b$
+erfüllen, nämlich $(1,2)$, $(1,3)$ und $(2,3)$.
+Es verbleiben dann neun Komponenten, von denen aber wegen der
+Symmetrie bei Vertauschung der Indexpaare zwei übereinstimmen:
+\begin{equation}
+R_{1212},
+R_{1213} = R_{1312},
+R_{1223} = R_{2312},
+R_{1313},
+R_{1323} = R_{2313},
+R_{2323}.
+\label{buch:kruemmung:kruemmung:eqn:R3}
+\end{equation}
+Der Krümmungstensor hat nach dieser Rechnung sechs unabhängige Komponenten.
+Insbesondere kann man aus \eqref{buch:kruemmung:kruemmung:eqn:R3} ablesen,
+dass Komponenten mit mehr als zwei gleichen Indizes verschwinden.
+
+Die Bianchi-Identität auferlegt den Komponenten des Krümmungstensors
+weitere Einschränkungen.
+Da es nur drei verschiedene Indizes gibt, kommt ein Index notwendigerweise
+zweimal vor.
+Wir betrachten die folgenden zwei Fälle:
+\begin{itemize}
+\item
+Der erste Index kommt auch in der zyklisch permutierten
+Dreiergruppe vor.
+Wir schreiben die Bianchi-Identität mit den Indizes $aabc$,
+wobei $b\ne a$ und $c\ne a$ ist.
+Sie erhält so die Form
+\begin{align*}
+R_{aabc}
++
+R_{abca}
++
+R_{acab}
+&=
+0
+\quad
+\Rightarrow
+\quad
+R_{abca}
++
+R_{abac}
+=
+0
+\quad\Rightarrow\quad
+R_{abca} = -R_{abac}.
+\end{align*}
+Diese Beziehung ist aber wegen der grundlegenden Symmetrieeigenschaften
+immer erfüllt.
+\item
+Der erste Index kommt in der zyklisch permutierten Gruppe nicht mehr vor.
+In diesem Fall hat das Indexquadrupel die Form $abbc$, wobei $b\ne a$ und
+$c\ne a$.
+Damit bekommt die Bianchi-Identität die Form
+\begin{align*}
+R_{abbc}
++
+R_{abcb}
++
+R_{acbb}
+&=
+0
+\quad \Rightarrow\quad
+R_{abbc}
++
+R_{abcb}
+=
+0
+\quad\Rightarrow\quad
+R_{abbc} = -R_{abcb}.
+\end{align*}
+Auch dies ist eine der grundlegenden Symmetriebeziehungen.
+\end{itemize}
+Wir schliessen daher, dass die Bianchi-Identitäten keine weiteren
+Symmetrien zwischen den Komponenten des Krümmungstensors liefern
+können.
+
+Erst in Dimension $n\ge 4$ ergeben sich aus den Bianchi-Identitäten
+zusätzliche Einschränkungen an die Tensorkomponenten.
+Zum Beispiel ist die Beziehung
+\[
+R_{1234}
++
+R_{1342}
++
+R_{1423}
+=
+0
+\quad\Leftrightarrow\quad
+R_{1234}
+-
+R_{1324}
++
+R_{1423}
+=
+0
+\]
+nicht aus den grundlegenden Symmetrieeigenschaften abzuleiten.
+
+%
+% Die differentielle Bianchi-Identität
+%
+\subsubsection{Die differentielle Bianchi-Identität}
+Die zweite Bianchi-Identität stellt eine Symmetrie der kovarianten Ableitung
+des Krümmungstensors her.
+\index{Bianchi-Identitat@Bianchi-Identität!zweite}%
+\index{zweite Bianchi-Identitat@zweite Bianchi-Identität}%
+Sie heisst deshalb auch die \emph{differentielle Bianchi-Identität}.
+\index{Bianchi-Identitat@Bianchi-Identität!differentiell}%
+\index{differentielle Bianchi-Identitat@differentielle Bianchi-Identität}%
+

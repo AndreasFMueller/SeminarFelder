@@ -9,9 +9,9 @@
 \subsection{Kommunikation zwischen Gebieten
 \label{parallelisierung:sub:Interprozess}}
 Zuerst eine kurze Rekapitulation zu einigen Begrifflichkeiten, welche wichtig sind für die Welt der parallelen Programmierung.
-Ein Prozessor ist eine Physische Recheneinheit wie zum Beispiel eine CPU oder GPU.
+Ein Prozessor ist eine physische Recheneinheit wie zum Beispiel eine CPU oder GPU.
 Prozessoren sind meist aus mehreren Kernen aufgebaut.
-Jeder Kern ist eine eigenständige Recheneinheit und ist mit privatem wie auch mit anderen Kernen geteiltem Speicher verbunden.
+Jeder Kern ist eine eigenständige Recheneinheit und hat privaten wie auch mit anderen Kernen geteilten Speicher.
 Ein Prozess ist ein eigenständiges Programm, welches vom Betriebssystem alle nötigen Resourcen wie Speicher, Rechenzeit und Daten zugeteilt bekommt.
 Threads sind Teilaufgaben eines Prozesses, die gleichzeitig auf den verschiedenen Kernen des Prozessors arbeiten und sich die Daten und den Speicher dieses Prozesses teilen.
 
@@ -29,6 +29,23 @@ Dadurch benötigt es keine Kommunikation zwischen den Teilgebieten im engeren Si
 Für kleine Systeme ist OpenMP eine einfache und gute Lösung.
 Da es aber auf Shared-Memory basiert ist es schlecht skalierbar.
 Werden für grosse Berechnungen mehrere Prozessoren verwendet ist Shared-Memory oft nicht verfügbar.
+Grosse Berechnungen möchte man oft auch auf verschiedene Maschinen aufteilen, was mit OpenMP nicht möglich ist.
 Der einfache Aufbau für den Programmierer bedeutet außerdem weniger Kontrolle über die Datenverteilung.
 
 \subsubsection{MPI}
+MPI ist ein Message Passing Interface.
+Es dient nicht dazu Prozesse oder threads zu erzeugen.
+Diese Aufgabe muss vom Betriebssystem ausgeführt werden.
+
+MPI stellt Funktionen zur Verfügung für eine effiziente Kommunikation mittels Nachrichten zwischen den Prozessen.
+Diese Prozesse haben nicht zwingend einen Shared Memory bereich.
+Es wird daher als Distributed-Memory-Programmiermodell bezeichnet.
+Jedes Teilgebiet wird hier einem Prozess zugeteilt.
+Die Informationen über angrenzende Teilgebiete wird mittels Nachrichten oder auch Messages zwischen den Prozessen ausgetauscht.
+Der Programmierer muss explizit Datenverteilung und Kommunikation steuern, was zwar einiges mehr Programmieraufwand aber auch bessere Kontrolle über die Daten bedeutet.
+
+MPI zeichnet sich besonders über eine gute Skalierbarkeit aus.
+Da kein Shared Memory nötig ist, kann man über beliebig viele Knoten, zum Beispiel mehrere CPUs oder ganze Rechner, die Daten durch Messages austauschen.
+
+Man kann MPI auch für Systeme mit Shared Memory als eine Art Universallösung verwenden.
+In diesem Fall wird allerdings trotz einem geteiltem Speicherbereich erheblicher Overhead für Kommunikation produziert, welcher mit OpenMP vermieden werden könnte.

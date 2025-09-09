@@ -6,396 +6,319 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Numerische Methoden}
+\section{Parallelisierung
+	\label{parallelisierung:sec:Parallelisierung}}
+\kopfrechts{Parallelisierung}
+Wir kennen nun numerische Verfahren, welche es einer Maschine erlaubt, unsere Feldgleichungen zu lösen.
+Wir wissen auch, wie wir unser Feld in Teilgebiete unterteilen können.
+Das gibt uns alle Werkzeuge, welche wir benötigen um die Berechnungen unserer Gleichungen auf mehrere Maschinen aufzuteilen.
 
-Bisher wurden Feldgleichungen und deren Lösungen aus einer theoretischen und abstrakten Perspektive betrachtet.
-Dies ist grundlegend für das Verständnis der zugrundeliegenden Konzepte.
+Bei der Parallelisierung von Feldgleichungen in einem Multiprozessorsystem wird jedem Prozessor eines oder mehrere zusammenhängende Teilgebiete zugewiesen.
+Die Teilgebiete müssen theoretisch nicht zusammenhängend sein aber um die Kommunikation zwischen Prozessoren zu minimieren, ist dieses Vorgehen sinnvoll und üblich.
+Da die Randzellen jedes Teilgebietes abhängig von den angrenzenden Zellen sind, siehe \ref{parallelisierung:sec:Gebietsunterteilung}, müssen die vorhandenen Informationen dieser Zellen zwischen Gebieten auf unterschiedlichen Prozessoren ausgetauscht werden.
+Dieser Austausch ist mit erheblichem zeitlichen Aufwand verbunden.
+Die Frage, wie fein ein Gitter in verschiedene Teilgebiete aufgeteilt werden soll, ist also immer eine optimierungs-Frage.
+Man muss ein Optimum finden, wo der zeitliche Gewinn der parallelen Berechnung die zeitlichen Verluste der Interprozess-Kommunikation überwiegen.
 
-Um den praktischen Nutzen dieser mächtigen Theorie jedoch voll auszuschöpfen, ist ein Übergang von dieser idealisierten, kontinuierlichen und grenzenlosen Sichtweise hin zu einer realitätsnahen, diskreten und physikalisch eingeschränkten Betrachtung erforderlich.
-Konkret bedeutet dies, dass wir die Feldgleichungen diskretisieren müssen.
+\input{papers/parallelisierung/Interprozess.tex}
 
-Ein prominentes Beispiel dafür ist das numerische Wettermodell des ECMWF (European Centre for Medium-Range Weather Forecasts), das auf Grundlage eines breiten Spektrums aktueller und vergangener Wetterdaten versucht, möglichst präzise Vorhersagen für die kommenden zehn Tage zu treffen.
 
-Als wichtigste und somit einflussreichste Parameter dieses Modells gelten der Luftdruck, die Lufttemperatur, die Windgeschwindigkeit bzw. -richtung, die Luftfeuchtigkeit sowie diverse Niederschlagsparameter \cite{ecmwf2023}.
-Diese Messwerte liegen jedoch nur mit begrenzter zeitlicher und räumlicher Auflösung vor.
+\subsection{Beispiel an der allgemeinen Wärmeleitungsgleichung
+	\label{parallelisierung:sub:BeispielParallelisierung}}
+Zum besseren Verständnis wollen wir mit OpenMP ein konkretes Beispiel für die Parallelisierung der allgemeinen Wärmeleitungsgleichung realisieren.
+Zum Vergleich wird auch die Serielle Vorgehensweise präsentiert.
+Als Ausgangslage soll für ein Gitter von $A \cdot B$ Zellen $C$ Updates durchgeführt werden.
+Für jedes Update wird die Formel \ref{parallelisierung:eq:update_formel} aus Abschnitt \ref{parallelisierung:sec:update_formel} verwendet.
+Links und Rechts der Zellen gibt es Reihen mit unveränderlicher Temperatur, welche einen Heiz- respektive Kühlkörper darstellen.
+Ober- und unterhalb der Zellen gibt es Zeilen mit unveränderlicher Temperatur, welche die Umgebungstemperatur darstellen.
+Diese Konstanten, wie auch $\lambda$ als Konstante für die Updateformel können alle im Main-File des Programms definiert werden und sind unveränderlich.
 
-Sie bestimmen somit die Feinheit des zugrundeliegenden Datenrasters – ein Umstand, der sich später als entscheidend erweisen wird.
+Beide Lösungen verwenden Arrays zur Zwischenspeicherung der Zellen.
+Für Arrays werden gerne Vektoren aus der C++ Standard Library (STL) verwendet.
+Für ein zweidimensionales Array wird zum Beispiel
+\begin{lstlisting}
+	std::vector<std::vector<double>> grid;
+\end{lstlisting}
+benützt.
+Man muss sich allerdings bewusst sein, dass diese Variante keinen kontinuierlichen Bereich im Speicher reserviert.
+Diese Variante speichert zuerst ein äußeres Array (Zeilen), und jede Zeile allokiert separat ihren eigenen Speicher.
+Das verschlechtert enorm die Cache-Lokalität des Programms und damit die Performanz.
+Als elegantere Lösung verwendet man bei numerischen Verfahren für partielle Differentialgleichungen eindimensionale Arrays und rechnet die Indizes mittels inline-Funktion um.
+\begin{lstlisting}
+	std::vector<double> grid(nx * ny);
+	
+	inline double& at(int i, int j) {
+		return grid[i * nx + j];  // Row-major
+	}
+\end{lstlisting}
+Damit garantiert man eine kontinuierliche Speicherung der Daten.
 
-\subsection{Diskretisierung statt Interpolation}
-
-Angesichts der Tatsache, dass die Messwerte nur in diskreter Form vorliegen, stellt sich die Frage, warum man nicht versucht, diese durch geeignete Interpolation wieder in ein kontinuierliches Datenset zu überführen, um dann die bekannten kontinuierlichen Gleichungen analytisch auszuwerten.
-Diese Fragestellung allein könnte den Umfang dieses gesamten Papers einnehmen.
-Daher sollen im Folgenden nur einige ausgewählte, nicht abschließende Aspekte diskutiert werden.
-
-Ein erster wesentlicher Punkt ist, dass Interpolation ein rein mathematisches Verfahren darstellt, das keinerlei physikalische Gesetzmäßigkeiten berücksichtigt.
-In der Praxis führt dies dazu, dass verrauschte und durch das Abtasten bereits verfälschte Messwerte durch Interpolation weiter verfälscht werden können.
-
-Eine mögliche Lösung wäre, die Interpolation um ein physikalisches Modell zu erweitern, welches die Lücken auf plausible Weise schließt.
-Dabei würde jedoch ein weiteres physikalisches Modell entstehen, das letztlich nur dazu dient, Daten für das eigentliche Modell zu liefern – was den methodischen Aufwand verdoppelt, ohne zwingend zusätzliche Erkenntnisse zu bringen.
-
-Ein weiterer zentraler Vorteil numerischer Verfahren liegt in ihrer Fähigkeit, auch Gleichungen zu lösen, die keine geschlossene analytische Lösung besitzen.
-Dies ist insbesondere in der Strömungsmechanik von Bedeutung.
-Ein Beispiel dafür ist die Navier-Stokes-Gleichung, welche die Bewegung von Flüssigkeiten und Gasen beschreibt.
-Für den allgemeinen dreidimensionalen Fall ist bis heute keine Lösung in geschlossener Form bekannt.
-
-Numerische Verfahren ermöglichen jedoch näherungsweise Lösungen mit vernachlässigbar kleinen Fehlern, sofern geeignete Diskretisierung und Randbedingungen gegeben sind.
-Allen klassischen numerischen Methoden zur Lösung partieller Differentialgleichungen ist gemeinsam, dass sie das kontinuierliche, analytische Problem in ein algebraisches Gleichungssystem mit endlich vielen Unbekannten überführen.
-Dieses lässt sich anschließend mit numerischen Verfahren der linearen Algebra effizient auf dem Computer lösen.
-
-\subsection{Überblick über numerische Methoden zur Lösung von Feldgleichungen}
-
-Zur numerischen Lösung partieller Differentialgleichungen existieren verschiedene etablierte Methoden, die je nach Anwendungsgebiet unterschiedliche Vor- und Nachteile aufweisen.
-Drei der wichtigsten Verfahren werden im Folgenden kurz vorgestellt.
-
-\subsubsection{Finite-Differenzen-Methode (FDM)}
-\label{parallelisierung:section:fdm}
-
-Die Finite-Differenzen-Methode ersetzt Ableitungen durch Differenzenquotienten auf einem diskreten Gitter.
-
-Dadurch wird die ursprüngliche Differentialgleichung in ein algebraisches Gleichungssystem überführt, das die gesuchte Lösung an diskreten Gitterpunkten beschreibt.
-
-FDM ist insbesondere für einfache Geometrien und regelmäßige Gitter gut geeignet und vergleichsweise leicht zu implementieren.
-Sie wird häufig bei Wärmeleitungsproblemen, Diffusionsprozessen und einfachen Wellengleichungen verwendet.
-
-\subsubsection{Finite-Elemente-Methode (FEM)}
-
-Die Finite-Elemente-Methode basiert auf der schwachen Formulierung der Gleichung und verwendet eine Zerlegung des Lösungsgebiets in sogenannte Elemente (z.B. Dreiecke oder Tetraeder).
-
-Innerhalb dieser Elemente wird die Lösung durch geeignete Basisfunktionen approximiert.
-
-FEM ist besonders leistungsfähig für komplexe Geometrien, Materialinhomogenitäten und Randwertprobleme in der Elektrotechnik und Strömungsmechanik.
-
-\subsubsection{Finite-Volumen-Methode (FVM)}
-
-Die Finite-Volumen-Methode basiert auf der integralen Form der Erhaltungssätze (z.B. Massen-, Impuls- oder Energieerhaltung) und ist besonders geeignet für konservative Systeme, also Systeme, bei denen physikalische Erhaltungsgrößen wie Masse oder Energie nicht erzeugt oder vernichtet, sondern nur transportiert oder umgewandelt werden.
-
-Die Methode berechnet Flüsse über die Ränder sogenannter Kontrollvolumina.
-
-Sie ist weit verbreitet in der Computational Fluid Dynamics (CFD), insbesondere bei der Simulation von Strömungen, Gasdynamik und Transportprozessen.
-
-\subsubsection{Wahl der Methode}
-
-Für das im Folgenden betrachtete Beispiel – die eindimensionale Wärmeleitungsgleichung – ist die Finite-Differenzen-Methode besonders geeignet.
-
-Die Geometrie ist einfach, und das Verfahren erlaubt eine direkte, transparente Umsetzung der zugrundeliegenden physikalischen Zusammenhänge in eine diskrete Form.
-
-Daher wird im nächsten Abschnitt die FDM im Detail erläutert und anhand eines konkreten Beispiels demonstriert.
-
-\subsection{Beispiel FDM}
-
-Als Ausgangslage wird die allgemeine Wärmeleitungsgleichung betrachtet:
+\subsubsection{Serielle Lösung}
+\label{parallelisierung:sub:serLoesung}
+Zur Vorbereitung werden zwei Arrays der Grösse 
 \begin{equation}
-	\frac{\partial T}{\partial t}
-	=
-	\alpha \Delta T.
-	\label{parallelisierung:eq:Wärmeleitung_alg}
+A+2 \cdot B+2 
 \end{equation}
-Im folgenden wird im 2D-Raum gearbeitet also resultiert
-\begin{equation}
-	\frac{\partial T}{\partial t}
-	=
-	\alpha \left(
-	\frac{\partial^2 T}{\partial x^2}
-	+
-	\frac{\partial^2 T}{\partial y^2}
-	\right).
-	\label{parallelisierung:eq:Wärmeleitung_2D}
-\end{equation}
+angelegt. 
 
+\begin{lstlisting}
+std::vector<double> grid(A * B);
+std::vector<double> gridNew(A * B);
+\end{lstlisting}
+Die Addition von zwei ist notwendig, um die umgebenden Temperaturen speichern zu können.
+In beiden Arrays wird nun die Umgebungstemperatur in die erste und letzte Zeile geschrieben.
+Die jeweilige Temperatur der Heiz-/Kühlkörper wird in die erste und letzte Spalte geschrieben.
+Das erste Array wird für die aktuellen Temperaturen der Zellen verwendet.
+Als Ausgangspunkt kann in dieses Array die Umgebungstemperatur eingetragen werden.
+Mit einer Schleife kann nun für alle $A \cdot B$ Zellen der neue Wert mit der Updateformel berechnet und in die entsprechende Zelle im zweiten Array geschrieben werden.
+\begin{lstlisting}[caption={Update-Schritt (seriell)},label={parallelisierung:code:updateSeriel}]
+for (int i = 1; i < B - 1; ++i) {     // ueberspringt erste und letzte Zeile
+	const int row = i * A;
+	for (int j = 1; j < A - 1; ++j) { // ueberspringt erste und letzte Spalte
+		const int idx   = row + j;
+		const int up    = idx - A;
+		const int down  = idx + A;
+		const int left  = idx - 1;
+		const int right = idx + 1;
+		
+		nextTemp[idx] = currentTemp[idx]
+		+ lambda * (src[up] + src[down] + src[left] + src[right]
+		- 4.0 * src[idx]);
+	}
+}
+\end{lstlisting}
+Im Beispiel ist src ein Pointer auf das Array mit den aktuellen Werten und dst ist ein Pointer auf das Array mit den neuen Werten.
+Bei der Verwendung von Vektoren erhält man die Adresse des ersten Eintrags mit der Funktion \texttt{.data()}.
+\begin{lstlisting}
+double* src = grid.data();
+double* dst = gridNew.data();
+\end{lstlisting}
 
-\subsubsection{Diskretisierung der Variablen}
+Ist die For-Schleife durchgerechnet, kann man die beiden Array elegant austauschen, indem man die beiden Pointer tauscht.
+\begin{lstlisting}
+std::swap(src, dst);
+\end{lstlisting}
+Auf diese weise müssen keine Daten verschoben werden, was viel Zeit einspart.
+Dieses Verfahren nennt man passend einen Ping-Pong-Ansatz.
 
-Als erstes müssen die Variablen diskretisiert werden. Dies tun wir indem wir ein Gitter über den gesamten Bereich (zeitlich, sowie räumlich) legen, also
-Im Raum:
-\begin{equation}
-	x_i
-	=
-	i \cdot \Delta x,
-\end{equation}
+In einer Schleife die $C$ mal durchlaufen wird, und den Updatecode sowie den Swap aufruft kann das Array $C$ mal aktualisiert und damit das Fortschreiten der Zeit simuliert werden.
 
-\begin{equation}
-	y_j
-	=
-	j \cdot \Delta y,
-\end{equation}
-Und in der Zeit:
-\begin{equation}
-	t^n
-	=
-	n \cdot \Delta t.
-\end{equation}
+\subsubsection{Parallele Lösung 
+\label{parallelisierung:sub:parLoesung}}
+Die Vorgehensweise bei der parallelen Lösung ist sehr ähnlich.
+Es werden zwei Arrays verwendet, welche im Shared-Memory des Prozesses liegen.
+Jeder Thread kann auf das gesamte Array mit den aktuellen Werten zugreifen und kann daher auch die Randzellen problemlos berechnen.
+Jedem Thread wird ein Teilgebiet des gesamten Arrays zugewiesen.
+Der Thread berechnet darin jede Zelle mit den vorhandenen aktuellen Werten und schreibt das Ergebnis an der entsprechenden Stelle in das neue Array.
+Da auf dem alten Array keine Schreibaktionen getätigt werden gibt es keine Möglichkeit für Race conditions.
+Zur Synchronisation wird am ende der Updateschlaufe eine Barriere gesetzt, welche den Thread am weitermachen hindert, bis jeder andere Thread seine Arbeit verrichtet hat.
+Wird diese Barriere überschritten, hat ein Thread die Aufgabe, die Pointer der Arrays auszutauschen.
+Eine zweite Barriere sorgt dafür, dass die anderen Threads warten, bis dieser Pointer-Swap durchgeführt wurde.
 
-Somit wird unsere resultierende, diskrete Temperaturfunktion die Form
-\begin{equation}
-	T^n_{i,j}
-	=
-	T(x_i,y_j,t^n)
-\end{equation}
-haben.
+\begin{lstlisting}
+	// Parallele Region
+	#pragma omp parallel num_threads(numThreads) default(none) \
+	shared(readGrid, writeGrid, grid, gridNew, threadRanges, iterations, nx, ny, lambda, std::cout)
+	{
+		int tid = omp_get_thread_num();
+		int myStartRow = threadRanges[tid].startRow;
+		int myEndRow = threadRanges[tid].endRow;
+		
+		// Hauptberechnungsschleife INNERHALB der parallelen Region
+		for (int iter = 0; iter < iterations; iter++) {
+			
+			// Jeder Thread berechnet seinen Bereich
+			// Direkte Pointer-Arithmetik fuer maximale Performance
+			for (int i = myStartRow; i < myEndRow; i++) {
+				int rowStart = i * nx;
+				for (int j = 1; j < nx - 1; j++) {
+					int center = rowStart + j;
+					int north = center - nx;
+					int south = center + nx;
+					int west = center - 1;
+					int east = center + 1;
+					
+					// Update-Formel mit direktem Speicherzugriff
+					writeGrid[center] = readGrid[center] +
+					lambda * (readGrid[north] + readGrid[south] +
+					readGrid[east] + readGrid[west] -
+					4.0 * readGrid[center]);
+				}
+			}
+			
+			// Synchronisation - warte bis alle Threads fertig sind
+			#pragma omp barrier
+			
+			// Pointer-Swap (nur ein Thread)
+			#pragma omp single
+			{
+				// Einfacher Pointer-Swap
+				std::swap(readGrid, writeGrid);
+			}
+			// Implizite Barriere nach omp single - alle Threads sehen die getauschten Pointer
+		}
+	} // Ende der parallelen Region
+\end{lstlisting}
+	
+\subsection{Resultate des Test
+\label{parallelisierung:sub:Test}}
 
+Für den Vergleich der seriellen und parallelen Berechnung wurde bei beiden eine Zeitmessung bei Problemen unterschiedlicher Grösse durchgeführt.
+Der Speed-Up ist ein direkter Vergleich der benötigten Zeit für die parallele Berechnung zur seriellen.
+Der Rechner, welcher für den Test verwendet wurde hat 6 physische Kerne und 12 logische Kerne. 
+Sechs Threads können also echt parallel auf den verschiedenen Kernen laufen.
+Jeder Kern kann zwei Threads quasi-parallel verarbeiten wobei die Rechenzeit zwischen den beiden Threads aufgeteilt wird.
 
-\subsubsection{Diskretisierung der Zeit}
-
-Die partielle Ableitung der Temperaturfunktion \( T \) nach der Zeit wird durch eine explizite Vorwärtsdifferenz approximiert:
-
-\begin{equation}
-	\label{parallelisierung:eq:discrete_time_derivative}
-	\left. \frac{\partial T}{\partial t}\right|_{(i,j,n)}
-	\approx
-	\frac{T_{i,j}^{n+1} - T_{i,j}^n}{\Delta t}.
-\end{equation}
-Dies entspricht der zeitlichen Änderungsrate von \( T \) am diskreten Gitterpunkt \( (x_i, y_j, t^n) \).
-
-\subsubsection{Diskretisierung des Raums}
-Auch hier beginen wir mit der einmaligen Anwendungen des Diefferentielquotientsen (Vorwärts), um die erste Ableitung, zunächst in x-Richtung zu approximieren:
-
-\begin{equation}
-	\left. \frac{\partial T}{\partial x} \right|{(i,j,n)}
-	\approx \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x}.
-\end{equation}
-
-Zusätzlich bestimmen wir die Rückwärtsdifferenz
-
-\begin{equation}
-	\left. \frac{\partial T}{\partial x} \right|{(i,j,n)}
-	\approx \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x},
-\end{equation}
-um mittels einer letzen Anwendung des Differentialquotienten die Änderung dieser beiden Änderungen, also genau das was die zweite Ableitung beschreibt, diskret zu bestimmen
-\begin{equation}
-	\frac{\partial^2 T}{\partial x^2} \approx
-	\frac{ \left( \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x} \right) - \left( \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x} \right) }{\Delta x}.
-\end{equation}
-Schlussendlich vereinfacht sich dies zu 
-\begin{equation}
-	\label{parallelisierung:eq:discrete_x_derivative}
-	\left. \frac{\partial^2 T}{\partial x^2} \right|{(i,j,n)} \approx \frac{T_{i+1,j}^n - 2T_{i,j}^n + T_{i-1,j}^n}{(\Delta x)^2}.
-\end{equation}
-
-Für die y-Richtung folgt analog
-\begin{equation}
-	\label{parallelisierung:eq:discrete_y_derivative}
-	\left. \frac{\partial^2 T}{\partial y^2} \right|{(i,j,n)} \approx \frac{T_{i,j+1}^n - 2T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}.
-\end{equation}
-
-
-Nun setzen wir die in den Formeln \ref{parallelisierung:eq:discrete_time_derivative},  \ref{parallelisierung:eq:discrete_x_derivative} und \ref{parallelisierung:eq:discrete_y_derivative} gefundenen Gleichungen in die Ursprüngliche zweidimensionale Wärmeleitungsgleichung Formel \ref{parallelisierung:eq:Wärmeleitung_2D} ein.
-Somit erhalten wir 
-
-\begin{equation}
-	\label{parallelisierung:eq:update_formula_unsorted}
-	\frac{T_{i,j}^{n+1} - T_{i,j}^n}{\Delta t}
-	=
-	\alpha \left(
-	\frac{T_{i+1,j}^n - 2 T_{i,j}^n + T_{i-1,j}^n}{(\Delta x)^2}
-	+
-	\frac{T_{i,j+1}^n - 2 T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}
-	\right),
-\end{equation}
-womit die diskretisierung der Wärmeleitungsgleichung mittels der Finiten-Differenzen-Methode gezeigt ist.
-
-\subsubsection{Explizite Update Formel}
-\label{parallelisierung:sec:update_formel}
-
-
-Aufgrund der lokalität und kausalität der Feldgleichungen ist die Temperatur eines Gitterpunkts \( (x_i, y_j)\) zu einem bestimmten Zeitpunkt in der Zukunft \( (t^n)\) sprich \(T_{i,j}^{n+1}\) nur von dem  vergangenen Zustand eben dieses Gitterpunkts und desen direkten Nachbbaren abhängig.
-Dies ist  in der nach \(T_{i,j}^{n+1}\) umgestellten Formel (\ref{parallelisierung:eq:update_formula_unsorted}) ersichtlich:
-\begin{equation}
-	\label{parallelisierung:eq:update_formula_sorted}
-	T_{i,j}^{n+1}
-	=
-	T_{i,j}^n
-	+
-	\alpha \, \Delta t \left(
-	\frac{T_{i+1,j}^n - 2 T_{i,j}^n + T_{i-1,j}^n}{(\Delta x)^2}
-	+
-	\frac{T_{i,j+1}^n - 2 T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}
-	\right)
-\end{equation}
-
-Aus Übersichtsgründen fassen wir alle Konstanten (\(\alpha, \Delta t, \Delta x, \Delta y) \) zu einer neuen Konstanten zusammen.
-Als praktische vereinfachung dazu legen wir fest das wir mit einem quadratischen Raumgitter arbeiten. Somit setzen wir  \(\Delta l = \Delta x = \Delta y\) und
-\begin{equation}
-	\label{parallelisierung:eq:lambda}
-	\lambda 
-	:= 
-	\frac{\alpha \Delta t}{(\Delta l)^2}.
-\end{equation}
-
-Nun sind wir in der Lage Formel \ref{parallelisierung:eq:update_formula_sorted} kompakt und übersichtlich zu schreiben:
-
-\begin{equation}
-	\label{parallelisierung:eq:update_formel}
-	T_{i,j}^{n+1}
-	=
-	T_{i,j}^n +
-	\lambda \left(
-	T_{i+1,j}^n + T_{i-1,j}^n + T_{i,j+1}^n + T_{i,j-1}^n - 4 T_{i,j}^n
-	\right).
-\end{equation}
-Diese Formel wird als explizite update Formel bezeichent, da sie iterativ auf Grundlage von gemesenen Daten oder zuvor berechneten Datenpunkten den nächsten Zeitschritt auswertet.
-
-Es ist nun klar ersichtlich das die Temperatur an einem Punkt (\(x_i, y_j\)) zu einem gegebenen Zeitpunkt \(t^{n+1}\)  von der Temperatur an diesem Punkt zum Zeitpunkt \(t^n\) und der Wärmeflussbilanz zu den 4 direkten Nachbarquadraten abhängig ist.
-
-\subsubsection{Stabilitätskriterien}
-\label{parallelisierung:sec:stabilitaetskriterien}
 
 \begin{table}
 	\centering
-	\caption{Stabilitätsbedingungen der expliziten Finite-Differenzen-Methode}
-	\label{parallelisierung:tab:stabilitaet_fdm}
-	\begin{tabular}{|c|c|}
+	\begin{tabular}{r r c l}
+		Anzahl Zellen & Anzahl Iterationen & Anzahl Threads & Speed-Up \\
 		\hline
-		\textbf{Dimension} & \textbf{Stabilitätsbedingung} \\
-		\hline
-		1D & 
-		\( \displaystyle \lambda = \frac{\alpha \, \Delta t}{(\Delta x)^2} \leq \frac{1}{2} \) \\
-		\hline
-		2D & 
-		\( \displaystyle \lambda_x + \lambda_y =
-		\frac{\alpha \, \Delta t}{(\Delta x)^2} +
-		\frac{\alpha \, \Delta t}{(\Delta y)^2} \leq \frac{1}{2} \) \\
-		\hline
-		3D & 
-		\( \displaystyle \lambda_x + \lambda_y + \lambda_z =
-		\frac{\alpha \, \Delta t}{(\Delta x)^2} +
-		\frac{\alpha \, \Delta t}{(\Delta y)^2} +
-		\frac{\alpha \, \Delta t}{(\Delta z)^2} \leq \frac{1}{2} \) \\
-		\hline
+		$10e^6$ & 500 & 4 & 1.3\\
+		$10e^6$ & 500 & 6 & 1.25\\
+		$10e^6$ & 500 & 12 & 1.2\\
+		
+		$100e^6$ & 500 & 4 & 1.24\\
+		$100e^6$ & 500 & 6 & 1.23\\
+		$100e^6$ & 500 & 12 & 1.24\\
+		
+		$1000e^6$ & 500 & 4 & 1.18\\
+		$1000e^6$ & 500 & 6 & 1.23\\
+		$1000e^6$ & 500 & 12 & 1.22\\
+		
+		
+		$5e^6$ & 5000 & 4  & 1.4 \\
+		$5e^6$ & 5000 & 6  & 1.42 \\
+		$5e^6$ & 5000 & 12  & 1.31\\
+		
+		
+		$10e^6$ & 5000 & 4 & 1.24\\
+		$10e^6$ & 5000 & 6 & 1.22\\
+		$10e^6$ & 5000 & 12 & 1.27\\
+		
+		$100e^6$ & 5000 & 4 & 1.38\\
+		$100e^6$ & 5000 & 6 & 1.34\\
+		$100e^6$ & 5000 & 12 & 1.31\\
+		
+		$200e^6$ & 5000 & 4 & 1.38\\
+		$200e^6$ & 5000 & 6 & 1.41\\
+		$200e^6$ & 5000 & 12 & 1.36\\
+		
+		$1e^6$ & 10000 & 4  & 1.46 \\
+		$1e^6$ & 10000 & 6  & 1.42 \\
+		$1e^6$ & 10000 & 12  & 1.63\\
+		
+		$5e^6$ & 10000 & 4  & 1.35 \\
+		$5e^6$ & 10000 & 6  & 1.39 \\
+		$5e^6$ & 10000 & 12  & 1.33\\
+		
+		$10e^6$ & 10000 & 4  & 1.25 \\
+		$10e^6$ & 10000 & 6  & 1.28 \\
+		$10e^6$ & 10000 & 12  & 1.26\\
+		
 	\end{tabular}
+	\caption{Beispieltabelle mit Personen}
 \end{table}
 
-Die in Gleichung~\ref{parallelisierung:eq:lambda} eingeführte dimensionslose Konstante \(\lambda\) entscheidet, ob eine explizite FDM-Simulation stabil bleibt.  
-Tabelle~\ref{parallelisierung:tab:stabilitaet_fdm} fasst die Stabilitätsbedingungen für Probleme verschiedener Dimensionen zusammen, wie sie aus einer Fourier-Analyse des Verstärkungsverhaltens einzelner Fehlerkomponenten resultieren.
+Zur besseren Übersicht stellen wir die Tabelle in Grafiken dar, aufgeteilt auf die Anzahl Iterationen.
+	
+	% 1. Diagramm: 500 Iterationen
+	\begin{tikzpicture}
+		\begin{axis}[
+			title={500 Iterationen},
+			xlabel={Anzahl Zellen},
+			ylabel={Speed-Up},
+			xmode=log, % logarithmische Skala sinnvoll bei 1e6, 10e6, 100e6...
+			log basis x=10,
+			legend style={
+				at={(1.05,1)},
+				anchor=north west,
+				draw=none,
+				fill=none
+			},
+			grid=both
+			]
+			
+			\addplot coordinates {(1e7,1.3) (1e8,1.24) (1e9,1.18)};
+			\addlegendentry{4 Threads}
+			
+			\addplot coordinates {(1e7,1.25) (1e8,1.23) (1e9,1.23)};
+			\addlegendentry{6 Threads}
+			
+			\addplot coordinates {(1e7,1.2) (1e8,1.24) (1e9,1.22)};
+			\addlegendentry{12 Threads}
+			
+		\end{axis}
+	\end{tikzpicture}
+	
+	
+	% 2. Diagramm: 5000 Iterationen
+	\begin{tikzpicture}
+		\begin{axis}[
+			title={5000 Iterationen},
+			xlabel={Anzahl Zellen},
+			ylabel={Speed-Up},
+			xmode=log,
+			log basis x=10,
+			legend style={
+				at={(1.05,1)},
+				anchor=north west,
+				draw=none,
+				fill=none
+			},
+			grid=both
+			]
+			
+			\addplot coordinates {(5e6,1.4) (1e7,1.24) (1e8,1.38) (2e8,1.38)};
+			\addlegendentry{4 Threads}
+			
+			\addplot coordinates {(5e6,1.42) (1e7,1.22) (1e8,1.34) (2e8,1.41)};
+			\addlegendentry{6 Threads}
+			
+			\addplot coordinates {(5e6,1.31) (1e7,1.27) (1e8,1.31) (2e8,1.36)};
+			\addlegendentry{12 Threads}
+			
+		\end{axis}
+	\end{tikzpicture}
+	
+	
+	% 3. Diagramm: 10000 Iterationen
+	\begin{tikzpicture}
+		\begin{axis}[
+			title={10000 Iterationen},
+			xlabel={Anzahl Zellen},
+			ylabel={Speed-Up},
+			xmode=log,
+			log basis x=10,
+			legend style={
+				at={(1.05,1)},
+				anchor=north west,
+				draw=none,
+				fill=none
+			},
+			grid=both
+			]
+			
+			\addplot coordinates {(1e6,1.46) (5e6,1.35) (1e7,1.25)};
+			\addlegendentry{4 Threads}
+			
+			\addplot coordinates {(1e6,1.42) (5e6,1.39) (1e7,1.28)};
+			\addlegendentry{6 Threads}
+			
+			\addplot coordinates {(1e6,1.63) (5e6,1.33) (1e7,1.26)};
+			\addlegendentry{12 Threads}
+			
+		\end{axis}
+	\end{tikzpicture}
+	
 
-Aus Gründen der Lesbarkeit wird die vollständige Herleitung dieser Bedingungen an dieser Stelle nicht wiedergegeben.
-
-Für den zweidimensionalen Fall gilt:
-\begin{equation}
-	\lambda_x + \lambda_y =
-	\frac{\alpha \, \Delta t}{(\Delta x)^2} +
-	\frac{\alpha \, \Delta t}{(\Delta y)^2} \leq \frac{1}{2}.
-\end{equation}
-Mit \(\Delta l = \Delta x = \Delta y\) folgt \(\lambda = \lambda_x = \lambda_y\), sodass sich ergibt:
-\begin{equation}
-	2\lambda = 2 \frac{\alpha \, \Delta t}{(\Delta l)^2} \leq \frac{1}{2}
-	\quad \Rightarrow \quad
-	\lambda = \frac{\alpha \, \Delta t}{(\Delta l)^2} \leq \frac{1}{4}.
-\end{equation}
-
-\paragraph{Physikalische Intuition}  
-Man kann sich die Wärmeausbreitung wie das Füllen mehrerer miteinander verbundener Wasserbehälter vorstellen.  
-Ist der Zeitabstand \(\Delta t\) zwischen den „Kontrollpunkten“ zu groß, können sich die Pegel zwischen den Behältern stark über- oder unterschwingen, anstatt sich gleichmäßig auszugleichen.  
-Eine Erhöhung der thermischen Diffusivität \(\alpha\) wirkt ähnlich wie eine Verringerung der Viskosität einer Flüssigkeit: der Ausgleich erfolgt schneller, sodass kleinere Zeitintervalle notwendig werden.  
-Auch eine Verringerung von \(\Delta x\) (feinere räumliche Auflösung) erfordert kleinere Zeitschritte, da die Temperaturunterschiede über kürzere Distanzen schneller wirken.
-Im folgenden soll anhand von drei Experimenten die stabilität der Simulation, basierend auf der Update Formel  \eqref{parallelisierung:eq:update_formel}, genauer untersucht werden.
-
-\subsubsection{Stabilitätsexperiment}
-
-Zur Demonstration der Stabilitätsbedingung wird folgendes Szenario betrachtet:
-
-Eine \(9 \times 9 \, \mathrm{cm}\) große Stahlplatte (ohne dritte Dimension) befindet sich in einer Umgebung mit konstanter Temperatur von \(0\,^{\circ}\mathrm{C}\).  
-Die linke und rechte Kante werden konstant auf \(100\,^{\circ}\mathrm{C}\) gehalten.  
-Das Material besitzt die Eigenschaften:
-\begin{center}
-	\begin{tabular}{llll}
-		Wärmeleitfähigkeit & \(\kappa\) & 50 &
-		\(\mathrm{W/(m \cdot K)}\) \\
-		Dichte & \(\rho\)   &  7850 & \(\mathrm{kg/m^3}\) \\
-		spezifische Wärmekapazität & \(c\) &  470 & \(\mathrm{J/(kg \cdot K)}\)
-	\end{tabular}
-\end{center}
-Somit ergibt sich die thermische Diffusität wie folgt:
-
-
-\[
-\alpha =
-\frac{\kappa}{\rho c}
-=
-\frac{50}{7850 \cdot 470}
-= 1.355 \cdot 10^{-5}
-\]
-
-\paragraph{Fall 1: Stabile Simulation}  
-Mit \(100\) Messpunkten in einem \(10\times 10\)-Raster beträgt der Abstand \(\Delta l = 0.01\,\mathrm{m}\).  
-Für \(\Delta t = 1\,\mathrm{s}\) ergibt sich:
-\[
-\lambda =
-\alpha \cdot \frac{\Delta t}{(\Delta l)^2}
-=
-10^{-5} \cdot \frac{1}{0.01^2}
-\approx 0.135 < \frac14.
-\]
-Die Simulation konvergiert nach 234 Iterationen zum stabilen Endzustand (Abbildung~\ref{parallelisierung:fig:simulation_10x10_0.135}).
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_10x10_0.135.pdf}
-	\caption{Temperaturverteilung für \(10\times 10\)-Gitter, \(\lambda = 0.135\), nach Konvergenz.}
-	\label{parallelisierung:fig:simulation_10x10_0.135}
-\end{figure}
-
-\paragraph{Fall 2: Instabile Simulation}  
-Erhöhen wir die Auflösung auf \(15\times 15\) Messpunkte (\(\Delta l = 0.006\,\mathrm{m}\)), bei gleichem \(\Delta t = 1\,\mathrm{s}\), so folgt:
-\[
-\lambda =
-10^{-5} \cdot \frac{1}{0.006^2}
-\approx 0.376 > \frac14.
-\]
-
-Aus diesen Modellparameteren resultierende folgende Temperaturverteilungen.
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.376_3it.pdf}
-	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.376\), nach 3 Iterationen.}
-	\label{parallelisierung:fig:simulation_15x15_0.376_3it}
-\end{figure}
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.376_4it.pdf}
-	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.376\), nach 4 Iterationen: erste Instabilitätsartefakte.}
-	\label{parallelisierung:fig:simulation_15x15_0.376_4it}
-\end{figure}
-
-Zunächst scheint die Simulation noch plausibel (Abbildung~\ref{parallelisierung:fig:simulation_15x15_0.376_3it}), doch bereits nach wenigen Iterationen erscheinen die ersten auffälligen Werte (orange Zahlen in Abbildung~\ref{parallelisierung:fig:simulation_15x15_0.376_4it}). Anhand der physikalischen Intuition sowie den Ergebnissen der stabilen Simulation ist bekannt, dass das Temperaturgefälle von jeder Zelle in der oberen bzw. unteren Hälfte der Metallplatte bei jedem weiteren Schritt nach oben respektive unten (entlang der orangen Pfeile) streng monoton fallend sein muss. Das heißt, es kann nicht plötzlich wieder heißer werden, obwohl wir näher an den Rand gehen. Daraus lässt sich schließen, dass die orange markierten Werte unphysikalisch und somit erste Instabilitäts-Artefakte sind.
-
-
-Die Ursache lässt sich durch Umformung der Update-Formel verdeutlichen:
-\begin{equation}
-	T_{i,j}^{n+1}
-	=
-	(1-4\lambda)T_{i,j}^n +
-	\lambda \left(
-	T_{i+1,j}^n + T_{i-1,j}^n + T_{i,j+1}^n + T_{i,j-1}^n
-	\right).
-\end{equation}
-Für \(\lambda > \tfrac14\) wird der Koeffizient \((1-4\lambda)\) negativ was widerum bedeutet das das Zentrum negativ gewichtet wird.  
-Dies führt dazu, dass Unterschiede zwischen benachbarten Zellen nicht geglättet, sondern verstärkt werden: es entstehen Über- und Unterschwinger, die sich mit jeder Iteration vergrößern.
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.376_15it.pdf}
-	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.376\), nach 15 Iterationen: erste Instabilitätsartefakte.}
-	\label{parallelisierung:fig:simulation_15x15_0.376_15it}
-\end{figure}
-
-Lediglich 10 iterationen später zeigt sich das Verhalten gemäss Abbildung~\ref{parallelisierung:fig:simulation_15x15_0.376_15it}, hier ist die Instabilität ser SImulation aufgrund der Verletzung der 2D Stabilitätbedinung mit \(\lambda = 0.376 > \frac{1}{4}\).
-
-\paragraph{Fall 3: Wiederherstellung der Stabilität}  
-Durch Verringerung von \(\Delta t\) auf \(0.5\,\mathrm{s}\) ergibt sich:
-\[
-\lambda =
-\frac{50}{7850 \cdot 470} \cdot \frac{0.5}{0.006^2}
-\approx 0.188 < \frac14,
-\]
-wodurch die Simulation wieder stabil wird. Die Konvergenz wird nach 315 Iterationen erreicht (Abbildung~\ref{parallelisierung:fig:simulation_15x15_0.188_konv}).
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.6\textwidth]{papers/parallelisierung/images/simulation_15x15_0.188_konv.pdf}
-	\caption{\(15\times 15\)-Gitter, \(\lambda = 0.188\), stabil nach Konvergenz.}
-	\label{parallelisierung:fig:simulation_15x15_0.188_konv}
-\end{figure}
+Der Speed-Up ist in allen Beispielen ziemlich bescheiden.
+Dennoch lassen sich daraus einige Erkenntnisse ziehen.
+Interessanterweise scheint der Speedup schlechter zu werden, wenn mehr Zellen berechnet werden müssen, jedoch steigt die Effizienz, wenn mehr Iterationen durchgeführt werden.
+Bei kleineren Problemen ist der Speed-Up schlechter, wenn mehr Kerne verwendet werden.
+Das ist darauf zurückzuführen, dass der parallelisierungs Overhead mit der Anzahl Kerne unterproportional stark im Vergleich zum Gewinn steigt.
+Es ist anzunehmen, dass der Speed-Up mit der grösse des Problems steigt.
+Leider brauchten bereits diese Berechnungen bis zu 30 Minuten pro Rechnung, weshalb noch grössere Rechnungen schwierig durchzuführen waren.
 
 

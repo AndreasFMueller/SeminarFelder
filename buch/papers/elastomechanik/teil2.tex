@@ -6,41 +6,78 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Einführung in die mathematische Formulierung der Elastizitätstheorie}
-\subsection{Einleitung: Motivation und Ziel der Elastizitätstheorie}
-Die Elastizitätstheorie beschreibt das Verhalten fester Körper unter mechanischer Belastung. 
-Ziel ist es, aus bekannten Kräften oder Verschiebungen die Spannungs- und Dehnungsverteilung im Inneren eines Körpers zu berechnen. 
-Diese Beschreibung basiert auf der Kontinuumsmechanik und bildet die Grundlage für viele Anwendungen im Bauingenieurwesen, Maschinenbau und der Materialwissenschaft.
+\section{Einführung in die mathematische Formulierung der Elastizitätstheorie
+\label{elastomechanik:section:math}}
+\kopfrechts{Mathematische Formulierung der Elastizitätstheorie}
 
-\subsection{Spannungen und Gleichgewichtsbedingungen}
-Die Spannungsverteilung beschreibt, welche inneren Kräfte im Material auftreten, um äussere Belastungen auszugleichen. 
-Diese Kräfte werden durch den Cauchy-Spannungstensor $\sigma_{ij}$ dargestellt. 
-Das Indesxpaar $i$, $j$ gibt an, in welcher Richtung die Spannung wirkt ($i$) und auf welcher Flächenorientierung ($j$) sie angreift.
-Damit ein Körper im mechanischen Gleichgewicht ist, muss an jedem Punkt die Impulsbilanz erfüllt sein. In lokaler Form lautet diese Bedingung:
+\subsection{Einleitung: Motivation und Ziel der Elastizitätstheorie}
+Die Elastizitätstheorie beschreibt das Verhalten fester Körper unter
+mechanischer Belastung.
+Ziel ist es, aus bekannten Kräften oder Verschiebungen die Spannungs-
+und Dehnungsverteilung im Inneren eines Körpers zu berechnen.
+Diese Beschreibung basiert auf der Kontinuumsmechanik und bildet
+\index{Kontinuumsmechnik}%
+die Grundlage für viele Anwendungen im Bauingenieurwesen, Maschinenbau
+und der Materialwissenschaft.
+
+\subsection{Spannungen und Gleichgewichtsbedingungen
+\label{elastomechanik:math:subsection:gleichgewicht}}
+Die Spannungsverteilung beschreibt, welche inneren Kräfte im Material
+auftreten, um äussere Belastungen auszugleichen.
+Diese Kräfte werden durch den Cauchy-Spannungstensor $\sigma_{ij}$
+dargestellt.
+\index{Cauchy-Spannungstensor}%
+Das Indesxpaar $i$, $j$ gibt an, in welcher Richtung die Spannung
+wirkt ($i$) und auf welcher Flächenorientierung ($j$) sie angreift.
+Damit ein Körper im mechanischen Gleichgewicht ist, muss an jedem
+Punkt die Impulsbilanz erfüllt sein. In lokaler Form lautet diese
+Bedingung:
 \begin{equation}
 	\frac{\partial \sigma_{ij}}{\partial x_j} + f_i = 
 	0
+\label{elastomechanik:math:eqn:gleichgewicht}
 \end{equation}
 Hierbei gilt:
 \begin{itemize}
-	\item $\frac{\partial \sigma_{ij}}{\partial x_j}$ ist die Divergenz des Spannungstensors in Richtung $i$. 
-	Sie beschreibt die „Quellenstärke“ der Spannungen, d. h. wie sich Spannungen innerhalb eines infinitesimalen Volumenelements räumlich ändern.
-	\item $f_i$ ind die Komponenten der Volumenkraftdichte, z. B. durch Eigengewicht, elektromagnetische Kräfte oder Trägheitskräfte. Sie wirken direkt auf das Volumenelement.
-	\item Das Gleichheitszeichen zu null bedeutet, dass sich innere Spannungen und äussere Volumenkräfte genau ausgleichen – andernfalls würde der Punkt beschleunigt, und es läge kein statisches Gleichgewicht vor.
+\item $\frac{\partial \sigma_{ij}}{\partial x_j}$ ist die
+Divergenz des Spannungstensors in Richtung $i$.  Sie beschreibt die
+``Quellenstärke'' der Spannungen, d. h.  wie sich Spannungen innerhalb
+eines infinitesimalen Volumenelements räumlich ändern.
+\item $f_i$ sind die Komponenten der Volumenkraftdichte, z. B. durch
+Eigengewicht, elektromagnetische Kräfte oder Trägheitskräfte. Sie
+wirken direkt auf das Volumenelement.
+\item Das Gleichheitszeichen zu null bedeutet, dass sich innere
+Spannungen und äussere Volumenkräfte genau ausgleichen --- andernfalls
+würde der Punkt beschleunigt, und es läge kein statisches Gleichgewicht
+vor.
 \end{itemize}
 Diese Gleichung wird oft als lokale Gleichgewichtsbedingung bezeichnet. 
-Sie ist die Differentialform der globalen Gleichgewichtsformeln, die man aus der Integralform mit dem Satz von Gauss erhält.
+Sie ist die Differentialform der globalen Gleichgewichtsformeln,
+die man aus der Integralform mit dem Satz von Gauss erhält.
 
 \subsection{Kinematik: Deformation und Verschiebung}
-Die Grundlage jeder elastischen Analyse bildet die Beschreibung der Geometrieänderung. 
-Die Deformation wird über ein Verschiebungsfeld $u_i$ beschrieben, das angibt, wie sich Punkte im Inneren eines Körpers infolge einer Belastung verschieben. 
-Daraus ergibt sich der Verzerrungstensor $\varepsilon_{ij}$, welcher lokale Längen- und Winkeländerungen erfasst.
+Die Grundlage jeder elastischen Analyse bildet die Beschreibung der
+Geometrieänderung.
+Die Deformation wird über ein Verschiebungsfeld $u_i$ beschrieben,
+das angibt, wie sich Punkte im Inneren eines Körpers infolge einer
+Belastung verschieben.
+Daraus ergibt sich der Verzerrungstensor $\varepsilon_{ij}$, welcher
+lokale Längen- und Winkeländerungen erfasst.
+\index{Verzerrungstensor}%
 
-Die Deformation des Körpers wird durch den Verzerrungstensor beschrieben, welcher die lokalen Längen- und Winkeländerungen in allen drei Raumrichtungen erfasst.
-Zur Herleitung der linearen Verzerrungen im räumlichen Fall werden zunächst die Verschiebungsänderungen entlang der Koordinatenachsen untersucht. 
-Aus diesen Änderungen wird beispielsweise in $x$-Richtung die relative Längenänderung berechnet, was direkt zur Definition der Dehnung $\varepsilon_{xx}$ führt. 
-Dieses Vorgehen lässt sich analog auf die übrigen Normal- und Schubverzerrungen übertragen.
-Die einzelnen Komponenten des Verzerrungstensors lauten \cite{elastomechanik:Technische_Mechanik_2:Elastostatik}:
+Die Deformation des Körpers wird durch den Verzerrungstensor
+beschrieben, welcher die lokalen Längen- und Winkeländerungen in
+allen drei Raumrichtungen erfasst.
+Zur Herleitung der linearen Verzerrungen im räumlichen Fall werden
+zunächst die Verschiebungsänderungen entlang der Koordinatenachsen
+untersucht.
+Aus diesen Änderungen wird beispielsweise in $x$-Richtung die
+relative Längenänderung berechnet, was direkt zur Definition der
+Dehnung $\varepsilon_{xx}$ führt.
+Dieses Vorgehen lässt sich analog auf die übrigen Normal- und
+Schubverzerrungen übertragen.
+Die einzelnen Komponenten des Verzerrungstensors lauten
+\cite{elastomechanik:Technische_Mechanik_2:Elastostatik}:
 \begin{align}
 	\varepsilon_{xx} &=
 	\frac{\partial u}{\partial x}
@@ -52,110 +89,168 @@ und
 \end{align}
 
 \subsection{Cauchy-Spannungstensor}
-Der Cauchy-Spannungstensor erlaubt es, zu jeder beliebigen Schnittfläche den zugehörigen Spannungsvektor $t_i$ zu bestimmen, der auf dieser Fläche wirkt.
+Der Cauchy-Spannungstensor erlaubt es, zu jeder beliebigen Schnittfläche
+den zugehörigen Spannungsvektor $t_i$ zu bestimmen, der auf dieser
+Fläche wirkt.
 Dieser Zusammenhang wird durch die Cauchy-Formel beschrieben:
-\begin{equation}
+\begin{equation*}
 	t_i = 
 	\sigma_{ij} \cdot n_j.
-\end{equation}
-Der Spannungstensor ist aufgrund des Momentengleichgewichts an einem infinitesimalen Volumenelement symmetrisch. 
-Schubspannungen müssen sich dabei paarweise ausgleichen. 
-Er beschreibt vollständig den inneren Spannungszustand eines elastischen Körpers.
+\end{equation*}
+Der Spannungstensor ist aufgrund des Momentengleichgewichts an einem
+infinitesimalen Volumenelement symmetrisch.
+Schubspannungen müssen sich dabei paarweise ausgleichen.
+Er beschreibt vollständig den inneren Spannungszustand eines
+elastischen Körpers.
 
 \subsection{Einsteinsche Summationskonvention}
-In der Tensorrechnung wird häufig die sogenannte einsteinsche Summationskonvention verwendet. Sie dient dazu, mathematische Ausdrücke kompakt und elegant zu schreiben.
+In der Tensorrechnung wird häufig die sogenannte einsteinsche
+Summationskonvention verwendet. Sie dient dazu, mathematische
+Ausdrücke kompakt und elegant zu schreiben.
+\index{einsteinsche Summationskonvention}%
 
 \medskip
 \begin{definition} 
-	Tritt ein Index in einem Term zweimal auf, so ist über diesen Index zu summieren – ohne dass das Summenzeichen explizit geschrieben wird.
-\begin{equation}
+	Tritt ein Index in einem Term zweimal auf, so ist über
+	diesen Index zu summieren --- ohne dass das Summenzeichen
+	explizit geschrieben wird.
+\begin{equation*}
 	a_i b_i = 
 	\sum_{i=1}^3 a_i b_i.
-\end{equation}
+\end{equation*}
 \end{definition} 
-Diese Schreibweise ist besonders hilfreich bei der Darstellung tensoranalytischer Gleichungen wie der cauchy-Spannungsgleichung:
-\begin{equation}
+Diese Schreibweise ist besonders hilfreich bei der Darstellung
+tensoranalytischer Gleichungen wie der Cauchy-Spannungsgleichung:
+\begin{equation*}
 	t_i = 
 	\sigma_{ij} n_j.
-\end{equation}
-
-Hier wird implizit über den Index $j$ summiert, wobei $i$ frei bleibt. Das bedeutet:
-
-\begin{equation}
+\end{equation*}
+Hier wird implizit über den Index $j$ summiert, wobei $i$ frei
+bleibt.
+Das bedeutet:
+\begin{equation*}
 	t_i = 
 	\sum_{j=1}^{3} \sigma_{ij} n_j.
-\end{equation}
+\end{equation*}
 
-In der ursprünglichen Formulierung der Summationskonvention wird zwischen oberen und unteren Indizes unterschieden. 
-Diese Unterscheidung ist insbesondere in gekrümmten Koordinatensystemen (z.\,B. Kugelkoordinaten, Relativitätstheorie) wesentlich, da dort kovariante und kontravariante Tensoren transformiert werden müssen.
+In der ursprünglichen Formulierung der Summationskonvention wird
+zwischen oberen und unteren Indizes unterschieden.
+Diese Unterscheidung ist insbesondere in gekrümmten Koordinatensystemen
+(z.~B.~Kugelkoordinaten, Relativitätstheorie) wesentlich, da dort
+kovariante und kontravariante Tensoren transformiert werden müssen.
 
-In dieser Arbeit wird ausschliesslich im kartesischen Koordinatensystem gearbeitet. Dort fallen die Unterschiede zwischen oberen und unteren Indizes weg, da die Metrik konstant und orthonormal ist ($\delta_{ij}$). 
-Daher schreiben wir konsequent alle Indizes tiefgestellt, ohne mathematische Korrektheit zu verlieren.
+In dieser Arbeit wird ausschliesslich im kartesischen Koordinatensystem
+gearbeitet.
+Dort fallen die Unterschiede zwischen oberen und unteren Indizes
+weg, da die Metrik konstant und orthonormal ist ($\delta_{ij}$).
+Daher schreiben wir konsequent alle Indizes tiefgestellt, ohne
+mathematische Korrektheit zu verlieren.
 
-Diese Konvention erlaubt eine prägnante Darstellung komplexer Gleichungen und wird in der gesamten weiteren Herleitung verwendet.
+%Diese Konvention erlaubt eine prägnante Darstellung komplexer Gleichungen und wird in der gesamten weiteren Herleitung verwendet.
 
 \subsection{Konstitutives Gesetz: Materialverhalten}
-Darüber hinaus gelten für ein ideal elastisches Material zusätzlich folgende mechanischen Annahmen:
+Darüber hinaus gelten für ein ideal elastisches Material zusätzlich
+folgende mechanischen Annahmen:
 \begin{enumerate}
 	\item Die Dehnung verschwindet vollständig bei Entlastung.
 	\item Der Energieinhalt ist vollständig reversibel.
-	\item Das Materialverhalten ist unabhängig von der Geschwindigkeit der Belastung.
-	\item Es existiert ein eindeutiger Zusammenhang zwischen Spannung und Dehnung.
+	\item Das Materialverhalten ist unabhängig von der
+	Geschwindigkeit der Belastung.
+	\item Es existiert ein eindeutiger Zusammenhang zwischen
+	Spannung und Dehnung.
 \end{enumerate}
 Diese Annahmen ermöglichen eine vereinfachte mathematische Behandlung. 
-Für komplexere Materialien (z. B. Faserverbundstoffe) sind jedoch anisotrope Modelle notwendig.
+Für komplexere Materialien (z.~B.~Faserverbundstoffe) sind jedoch
+\index{Faserverbundstoffe}%
+anisotrope Modelle notwendig.
 
-Die Beziehung zwischen Spannung und Dehnung wird durch ein Materialgesetz beschrieben. Für die klassische Elastizitätstheorie werden dabei folgende idealisierte Eigenschaften angenommen:
+Die Beziehung zwischen Spannung und Dehnung wird durch ein
+Materialgesetz beschrieben.
+Für die klassische Elastizitätstheorie werden dabei folgende
+idealisierte Eigenschaften angenommen:
 \begin{itemize}
-	\item \textbf{Linearität:} Die Spannung ist proportional zur Dehnung (hookesches Gesetz).
-	\item \textbf{Reversibilität:} Nach Entlastung kehrt der Körper in seinen Ausgangszustand zurück.
-	\item \textbf{Homogenität:} Die Materialeigenschaften sind an jedem Punkt des Körpers gleich.
-	\item \textbf{Isotropie:} Die Materialeigenschaften sind in allen Raumrichtungen identisch.
+	\item \textbf{Linearität:} Die Spannung ist proportional
+	zur Dehnung (hookesches Gesetz).
+	\index{Linearitat@Linearität}%
+	\item \textbf{Reversibilität:} Nach Entlastung kehrt der
+	Körper in seinen Ausgangszustand zurück.
+	\index{Reversabilitat@Reversibilität}%
+	\item \textbf{Homogenität:} Die Materialeigenschaften sind
+	an jedem Punkt des Körpers gleich.
+	\index{Homogenitat@Homogenität}%
+	\item \textbf{Isotropie:} Die Materialeigenschaften sind
+	in allen Raumrichtungen identisch.
+	\index{Isotropie}%
 \end{itemize}
 
-Das konstitutive Gesetz verknüpft die Verzerrungen mit den Spannungen. Für isotrope, linear elastische Materialien ergibt sich dieser Zusammenhang aus dem hookeschen Gesetz. Dieses wird meist in Form der Lamé-Konstanten $\lambda$ und $\mu$ oder alternativ über $E$ und $\nu$ beschrieben.
+Das konstitutive Gesetz verknüpft die Verzerrungen mit den Spannungen.
+Für isotrope, linear elastische Materialien ergibt sich dieser
+Zusammenhang aus dem hookeschen Gesetz. Dieses wird meist in Form
+der Lamé-Konstanten $\lambda$ und $\mu$ oder alternativ über $E$
+und $\nu$ beschrieben.
 
 \subsection{Elastizitätsgesetz und Materialkonstanten}
-Aus dem Hooke’schen Gesetz ist bekannt, dass im einachsigen, linearen Fall folgender Zusammenhang zwischen Spannung und Dehnung gilt:
-\begin{equation}
+Aus dem hookeschen Gesetz ist bekannt, dass im einachsigen, linearen
+Fall der Zusammenhang
+\begin{equation*}
 	\sigma = 
-	E \cdot \varepsilon.
-\end{equation}
-Im dreiachsigen Fall kann die lineare Beziehung zwischen den Spannungs- und Verzerrungskomponenten durch einen Elastizitätstensor 4. Stufe beschrieben werden:
-\begin{equation}
+	E \cdot \varepsilon
+\end{equation*}
+zwischen Spannung und Dehnung gilt.
+Im dreiachsigen Fall kann die lineare Beziehung zwischen den
+Spannungs- und Verzerrungskomponenten durch einen Elastizitätstensor
+4.~Stufe beschrieben werden:
+\begin{equation*}
 	\sigma_{ij} = 
 	E_{ijkl} \cdot \varepsilon_{kl}.
-\end{equation}
-Da wir den dreidimensionalen Fall unter der Annahme eines isotropen Materials betrachten, bei dem die mechanischen Eigenschaften in alle Richtungen gleich sind, reduziert sich die Form des Elastizitätstensors auf zwei unabhängige Konstanten: die sogenannten Lamé-Konstanten $\lambda$ und $\mu$. 
+\end{equation*}
+Da wir den dreidimensionalen Fall unter der Annahme eines isotropen
+Materials betrachten, bei dem die mechanischen Eigenschaften in
+alle Richtungen gleich sind, reduziert sich die Form des
+Elastizitätstensors auf zwei unabhängige Konstanten: die sogenannten
+Lamé-Konstanten $\lambda$ und $\mu$.
 Damit ergibt sich das Elastizitätsgesetz in kompakter Form:
-\begin{equation}
+\begin{equation*}
 	\sigma_{ij} = 
 	\lambda \cdot \delta_{ij} \cdot \varepsilon_{kk} + 2\mu \cdot \varepsilon_{ij}.
-\end{equation}
-Die Lamé-Konstanten lassen sich durch die technischen Materialkonstanten $E$ (Elastizitätsmodul), $\nu$ (Poissonzahl) und $G$ (Schubmodul) wie folgt ausdrücken:
-\begin{equation}
+\end{equation*}
+Die Lamé-Konstanten lassen sich durch die technischen Materialkonstanten
+$E$ (Elastizitätsmodul), $\nu$ (Poisson-Zahl) und $G$ (Schubmodul)
+wie folgt ausdrücken:
+\begin{equation*}
 	E = 
 	\mu \cdot \frac{3\lambda + 2\mu}{\lambda + \mu}, \quad 
 	\nu = 
 	\frac{\lambda}{2(\lambda + \mu)}, \quad 
 	G = 
 	\mu.
-\end{equation}
-Durch Einsetzen in die Spannungs-Verzerrungs-Beziehung kann das Elastizitätsgesetz auch in Form der Deviatorzerlegung dargestellt werden. 
-Dabei ergibt sich der Zusammenhang zwischen Spannungs- und Verzerrungsdeviator \cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
-\begin{equation}
+\end{equation*}
+Durch Einsetzen in die Spannungs-Verzerrungs-Beziehung kann das
+Elastizitätsgesetz auch in Form der Deviatorzerlegung dargestellt
+werden.
+Dabei ergibt sich der Zusammenhang zwischen Spannungs- und
+Verzerrungsdeviator
+\index{Verzerrungsdeviator}%
+\cite{elastomechanik:Grundlagen_der_Elastizitaetstheorie}:
+\begin{equation*}
 	s_{ij} = 
 	\sigma_{ij} - \frac{1}{3} \sigma_{kk} \delta_{ij} = 
 	2\mu e_{ij}
-\end{equation}
+\end{equation*}
 und steht über den Verzerrungsdeviator $e_{ij}$ in folgender Beziehung:
-\begin{equation}
+\begin{equation*}
 	s_{ij} = 
 	2\mu e_{ij}.
-\end{equation}
+%\label{elastomechanik:math:eqn:sij}
+\end{equation*}
 Hierbei gilt
-\begin{equation}
+\begin{equation*}
 	e_{ij} = 
 	\sigma_{ij} - \frac{1}{3} \sigma_{kk} \delta_{ij}.
-\end{equation}
-Diese Formulierung wird in Abschnitt \ref{Konstitutives Gesetz für isotrope Materialien} benötigt, um den formändernden Spannungsanteil separat vom hydrostatischen Anteil zu betrachten und dient der Konsistenz mit den späteren Beispielen.
+\end{equation*}
+Diese Formulierung wird in
+Abschnitt~\ref{elastomechanik:math:subsection:isotrop}
+benötigt, um den formändernden Spannungsanteil separat vom
+hydrostatischen Anteil zu betrachten und dient der Konsistenz mit
+\index{hydrostatisch}%
+den späteren Beispielen.
