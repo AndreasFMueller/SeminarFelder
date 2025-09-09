@@ -14,15 +14,20 @@ Die monge-ampèresche Gleichung ist
   \label{mongeampere:eq:mongeampere}
 \end{equation}
 wobei $D$ die hessesche Matrix
-\begin{equation}
+\begin{equation*}
   D^2 u =
+\renewcommand{\arraystretch}{1.7}
   \begin{pmatrix}
-    \frac{\partial^2 u}{\partial x_1^2} & \dots &\frac{\partial^2 u}{\partial x_1 \,\partial x_n} \\
+    \displaystyle \frac{\partial^2 u}{\partial x_{1\mathstrut}^2\mathstrut}
+	& \dots
+		&\displaystyle \frac{\partial^2 u}{\partial x_{1\mathstrut}^{\phantom{2}} \,\partial x_{n\mathstrut}^{\phantom{2}}\mathstrut} \\[-2pt]
   \vdots & \ddots & \vdots \\
-  \frac{\partial u}{\partial x_n \,\partial x_1} & \dots &\frac{\partial^2 u}{\partial x_n^2} \\
+  \displaystyle \frac{\partial^2 u}{\partial x_{n\mathstrut}^{\phantom{2}} \,\partial x_{1\mathstrut}^{\phantom{2}}\mathstrut}
+	& \dots
+		&\displaystyle \frac{\partial^2 u}{\partial x_{n\mathstrut}^2\mathstrut} \\
   \end{pmatrix}
-  \label{mongeampere:eq:hess}
-\end{equation}
+  %\label{mongeampere:eq:hess}
+\end{equation*}
 ist.
 Wenn man die Gleichung ansieht, erkennt man, dass es sich bei ihr um eine partielle
 nicht-lineare Differentialgleichung handelt.
@@ -30,14 +35,18 @@ Das Lösen einer solchen Differentialgleichung ist im Allgemeinen ein anspruchvo
 Anhand von Bedingungen für $u$ und $f$ kann man \eqref{mongeampere:eq:mongeampere} 
 in einen bestimmten Typ Differentialgleichung bringen, was unterschiedliche Lösungsansätze ermöglicht.
 Setzt man voraus, dass $u$ eine glatte konvexe Function ist, und $f$ positiv, dann ist \eqref{mongeampere:eq:mongeampere}
-eine elliptische partielle Differnetialgleichung.
+eine elliptische partielle Differentialgleichung.
+\index{elliptische partielle Differentialgleichung}%
 Gemäss \cite{mongeampere:figalli2018mongeampereequation} gibt eine solche Form Hoffnung auf die Existenz einer regulären Lösung.
 Ein anderes Beispiel ist in \cite{mongeampere:figalli2022prescribednegativegausscurvature} zu finden, wo die 
 Gleichung linearisiert wird um lokale Lösungen zu finden.
 
 \subsection{Minkowski-Problem}
+\index{Minkowski-Problem}%
 Eine Anwendung, welche vom deutschen Mathematiker Hermann Minkwoski entdekt wurde, ist das Lösen des
-\emph{Prescribed Gaussian Curvature Problem} mit der Monge-Ampere Gleichung.
-Diese Anwendung befasst damit eine konvexe kompakte Fläche zu finden, deren Gaussche Krümmung 
+\index{Minkowski, Hermann}%
+\emph{Prescribed Gaussian Curvature Problem} mit der Monge-Ampère-Gleichung.
+\index{Prescribed Gaussian Curvature Problem}%
+Diese Anwendung befasst damit eine konvexe kompakte Fläche zu finden, deren gausssche Krümmung 
 an jedem Punkt gegeben ist.
 

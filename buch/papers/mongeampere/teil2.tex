@@ -8,20 +8,20 @@
 %
 \section{Vorgeschriebene gausssche Krümmung
 \label{mongeampere:section:teil2}}
-\kopfrechts{Teil 2}
-Mit der Definition der gausschen Krümmung können wir nun eine Differentialgleichung aufstellen,
-welche als Lösung eine Fläche mit einer gewünschten gausschen Krümmung hat.
+\kopfrechts{Vorgeschriebene gausssche Krümmung}
+Mit der Definition der gaussschen Krümmung können wir nun eine Differentialgleichung aufstellen,
+welche als Lösung eine Fläche mit einer gewünschten gaussschen Krümmung hat.
 Dafür nehmen wir die explizite Form einer Fläche $z = f(x,y)$.
 Die Variablen sind nun nicht mehr $u, v$ sondern $x, y$.
 Nun brauchen wir die Koeffizienten der Fundamentalformen, welche mit dem Radiusvektor $\vec r$ und seinen Ableitungen 
-beschrieben werden können
+beschrieben werden können:
 \begin{equation*}
 \begin{aligned}
   \vec r &= \begin{pmatrix}
    x \\
    y \\
    f(x, y)
- \end{pmatrix} \\
+ \end{pmatrix}, \\
     \vec r_x &= \begin{pmatrix}
       1 \\
       0 \\
@@ -32,7 +32,7 @@ beschrieben werden können
       0 \\
       1 \\
       \frac{\partial f}{\partial y}
-    \end{pmatrix}\\
+    \end{pmatrix},\\
       \vec r_{xx} &= \begin{pmatrix}
       0 \\
       0 \\
@@ -49,45 +49,47 @@ beschrieben werden können
       0 \\
       0 \\
       \frac{\partial^2 f}{\partial y^2}
-    \end{pmatrix}
+    \end{pmatrix}.
 \end{aligned}
 \end{equation*}
 Damit sind die Koeffizienten der ersten Fundamentalform 
 \begin{equation}
-  E = 1 + \left(\frac{\partial f}{\partial x}\right)^2, \quad
+  E = 1 + \biggl(\frac{\partial f}{\partial x}\biggr)^2, \quad
   F = \frac{\partial f}{\partial x} \cdot \frac{\partial f}{\partial y}, \quad
-  G = 1 + \left(\frac{\partial f}{\partial y}\right)^2
+  G = 1 + \biggl(\frac{\partial f}{\partial y}\biggr)^2.
   \label{mongeampere:fund1exp}
 \end{equation}
 Für die zweite Fundamentalform wird die Flächennormale benötigt, welche aus \eqref{mongeampere:norm} und \eqref{mongeampere:ds} 
-\begin{equation}
-  \vec m = \frac{\vec r_x \times \vec r_y}{\sqrt{EG-F^2}} = \begin{pmatrix}
-    \frac{\partial f}{\partial x} \\
-    \frac{\partial f}{\partial y} \\
+\begin{equation*}
+  \vec m =
+\renewcommand{\arraystretch}{1.3}
+\frac{\vec r_x \times \vec r_y}{\!\sqrt{EG-F^2}} = \begin{pmatrix}
+    -\frac{\partial f}{\partial x} \\
+    -\frac{\partial f}{\partial y} \\
     1
   \end{pmatrix}
-  \frac{1}{\sqrt{EG-F^2}}
-  \label{mongeampere:norm2}
-\end{equation}
+  \frac{1}{\!\sqrt{EG-F^2}}
+  %\label{mongeampere:norm2}
+\end{equation*}
 ist.
 Somit sind die Koeffizienten der zweiten Fundamentalform
 \begin{equation}
-  L = \frac{\displaystyle\frac{\partial^2 f}{\partial x^2}}{\sqrt{EG-F}}, \quad
-  M = \frac{\displaystyle\frac{\partial^2 f}{\partial x \, \partial y}}{\sqrt{EG-F}}, \quad
-  N = \frac{\displaystyle\frac{\partial^2 f}{\partial y^2}}{\sqrt{EG-F}}.
+  L = \frac{\displaystyle\frac{\partial^2 f}{\partial x^2}}{\!\sqrt{EG-F}}, \quad
+  M = \frac{\displaystyle\frac{\partial^2 f}{\partial x \, \partial y}}{\!\sqrt{EG-F}}, \quad
+  N = \frac{\displaystyle\frac{\partial^2 f}{\partial y^2}}{\!\sqrt{EG-F}}.
   \label{mongeampere:2fund22}
 \end{equation}
-Setzen wir die Koeffizienten aus \eqref{mongeampere:fund1exp} und \eqref{mongeampere:2fund22} in die Formel der gausschen Krümmung \eqref{mongeampere:gausskrumm}
+Setzen wir die Koeffizienten aus \eqref{mongeampere:fund1exp} und \eqref{mongeampere:2fund22} in die Formel der gaussschen Krümmung \eqref{mongeampere:gausskrumm}
 ein, erhalten wir
 \begin{equation}
   K = \frac{
-    \displaystyle\frac{\partial^2 f}{\partial x^2} \cdot \displaystyle\frac{\partial^2 f}{\partial y^2} - \left(\displaystyle\frac{\partial^2 f}{\partial x \, \partial y} \right)^2}
-    {\left[1 + 
-    \left(\displaystyle\frac{\partial f}{\partial x}\right)^2 +
-    \left(\displaystyle\frac{\partial f}{\partial y}\right)^2\right]^2}
+    \displaystyle\frac{\partial^2 f}{\partial x^2} \cdot \displaystyle\frac{\partial^2 f}{\partial y^2} - \biggl(\displaystyle\frac{\partial^2 f}{\partial x \, \partial y} \biggr)^2}
+    {\biggl[1 + 
+    \biggl(\displaystyle\frac{\partial f}{\partial x}\biggr)^2 +
+    \biggl(\displaystyle\frac{\partial f}{\partial y}\biggr)^2\biggr]^2}
 \qquad\Rightarrow\qquad
-    \det D^2 f = K \left[ 1 + 
-    \left(\nabla f\right)^2\right]^2.
+    \det D^2 f = K \bigl[ 1 + 
+    \bigl(\nabla f\bigr)^2\bigr]^2.
     \label{mongeampere:pd}
 \end{equation}
 Wie wir sehen können, ist der Zähler gleich der Determinante der hesseschen Matrix von $f(x,y)$.
