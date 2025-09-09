@@ -159,4 +159,166 @@ Eine zweite Barriere sorgt dafür, dass die anderen Threads warten, bis dieser P
 		}
 	} // Ende der parallelen Region
 \end{lstlisting}
+	
+\subsection{Resultate des Test
+\label{parallelisierung:sub:Test}}
+
+Für den Vergleich der seriellen und parallelen Berechnung wurde bei beiden eine Zeitmessung bei Problemen unterschiedlicher Grösse durchgeführt.
+Der Speed-Up ist ein direkter Vergleich der benötigten Zeit für die parallele Berechnung zur seriellen.
+Der Rechner, welcher für den Test verwendet wurde hat 6 physische Kerne und 12 logische Kerne. 
+Sechs Threads können also echt parallel auf den verschiedenen Kernen laufen.
+Jeder Kern kann zwei Threads quasi-parallel verarbeiten wobei die Rechenzeit zwischen den beiden Threads aufgeteilt wird.
+
+
+\begin{table}
+	\centering
+	\begin{tabular}{r r c l}
+		Anzahl Zellen & Anzahl Iterationen & Anzahl Threads & Speed-Up \\
+		\hline
+		$10e^6$ & 500 & 4 & 1.3\\
+		$10e^6$ & 500 & 6 & 1.25\\
+		$10e^6$ & 500 & 12 & 1.2\\
+		
+		$100e^6$ & 500 & 4 & 1.24\\
+		$100e^6$ & 500 & 6 & 1.23\\
+		$100e^6$ & 500 & 12 & 1.24\\
+		
+		$1000e^6$ & 500 & 4 & 1.18\\
+		$1000e^6$ & 500 & 6 & 1.23\\
+		$1000e^6$ & 500 & 12 & 1.22\\
+		
+		
+		$5e^6$ & 5000 & 4  & 1.4 \\
+		$5e^6$ & 5000 & 6  & 1.42 \\
+		$5e^6$ & 5000 & 12  & 1.31\\
+		
+		
+		$10e^6$ & 5000 & 4 & 1.24\\
+		$10e^6$ & 5000 & 6 & 1.22\\
+		$10e^6$ & 5000 & 12 & 1.27\\
+		
+		$100e^6$ & 5000 & 4 & 1.38\\
+		$100e^6$ & 5000 & 6 & 1.34\\
+		$100e^6$ & 5000 & 12 & 1.31\\
+		
+		$200e^6$ & 5000 & 4 & 1.38\\
+		$200e^6$ & 5000 & 6 & 1.41\\
+		$200e^6$ & 5000 & 12 & 1.36\\
+		
+		$1e^6$ & 10000 & 4  & 1.46 \\
+		$1e^6$ & 10000 & 6  & 1.42 \\
+		$1e^6$ & 10000 & 12  & 1.63\\
+		
+		$5e^6$ & 10000 & 4  & 1.35 \\
+		$5e^6$ & 10000 & 6  & 1.39 \\
+		$5e^6$ & 10000 & 12  & 1.33\\
+		
+		$10e^6$ & 10000 & 4  & 1.25 \\
+		$10e^6$ & 10000 & 6  & 1.28 \\
+		$10e^6$ & 10000 & 12  & 1.26\\
+		
+	\end{tabular}
+	\caption{Beispieltabelle mit Personen}
+\end{table}
+
+Zur besseren Übersicht stellen wir die Tabelle in Grafiken dar, aufgeteilt auf die Anzahl Iterationen.
+	
+	% 1. Diagramm: 500 Iterationen
+	\begin{tikzpicture}
+		\begin{axis}[
+			title={500 Iterationen},
+			xlabel={Anzahl Zellen},
+			ylabel={Speed-Up},
+			xmode=log, % logarithmische Skala sinnvoll bei 1e6, 10e6, 100e6...
+			log basis x=10,
+			legend style={
+				at={(1.05,1)},
+				anchor=north west,
+				draw=none,
+				fill=none
+			},
+			grid=both
+			]
+			
+			\addplot coordinates {(1e7,1.3) (1e8,1.24) (1e9,1.18)};
+			\addlegendentry{4 Threads}
+			
+			\addplot coordinates {(1e7,1.25) (1e8,1.23) (1e9,1.23)};
+			\addlegendentry{6 Threads}
+			
+			\addplot coordinates {(1e7,1.2) (1e8,1.24) (1e9,1.22)};
+			\addlegendentry{12 Threads}
+			
+		\end{axis}
+	\end{tikzpicture}
+	
+	
+	% 2. Diagramm: 5000 Iterationen
+	\begin{tikzpicture}
+		\begin{axis}[
+			title={5000 Iterationen},
+			xlabel={Anzahl Zellen},
+			ylabel={Speed-Up},
+			xmode=log,
+			log basis x=10,
+			legend style={
+				at={(1.05,1)},
+				anchor=north west,
+				draw=none,
+				fill=none
+			},
+			grid=both
+			]
+			
+			\addplot coordinates {(5e6,1.4) (1e7,1.24) (1e8,1.38) (2e8,1.38)};
+			\addlegendentry{4 Threads}
+			
+			\addplot coordinates {(5e6,1.42) (1e7,1.22) (1e8,1.34) (2e8,1.41)};
+			\addlegendentry{6 Threads}
+			
+			\addplot coordinates {(5e6,1.31) (1e7,1.27) (1e8,1.31) (2e8,1.36)};
+			\addlegendentry{12 Threads}
+			
+		\end{axis}
+	\end{tikzpicture}
+	
+	
+	% 3. Diagramm: 10000 Iterationen
+	\begin{tikzpicture}
+		\begin{axis}[
+			title={10000 Iterationen},
+			xlabel={Anzahl Zellen},
+			ylabel={Speed-Up},
+			xmode=log,
+			log basis x=10,
+			legend style={
+				at={(1.05,1)},
+				anchor=north west,
+				draw=none,
+				fill=none
+			},
+			grid=both
+			]
+			
+			\addplot coordinates {(1e6,1.46) (5e6,1.35) (1e7,1.25)};
+			\addlegendentry{4 Threads}
+			
+			\addplot coordinates {(1e6,1.42) (5e6,1.39) (1e7,1.28)};
+			\addlegendentry{6 Threads}
+			
+			\addplot coordinates {(1e6,1.63) (5e6,1.33) (1e7,1.26)};
+			\addlegendentry{12 Threads}
+			
+		\end{axis}
+	\end{tikzpicture}
+	
+
+Der Speed-Up ist in allen Beispielen ziemlich bescheiden.
+Dennoch lassen sich daraus einige Erkenntnisse ziehen.
+Interessanterweise scheint der Speedup schlechter zu werden, wenn mehr Zellen berechnet werden müssen, jedoch steigt die Effizienz, wenn mehr Iterationen durchgeführt werden.
+Bei kleineren Problemen ist der Speed-Up schlechter, wenn mehr Kerne verwendet werden.
+Das ist darauf zurückzuführen, dass der parallelisierungs Overhead mit der Anzahl Kerne unterproportional stark im Vergleich zum Gewinn steigt.
+Es ist anzunehmen, dass der Speed-Up mit der grösse des Problems steigt.
+Leider brauchten bereits diese Berechnungen bis zu 30 Minuten pro Rechnung, weshalb noch grössere Rechnungen schwierig durchzuführen waren.
+
 
