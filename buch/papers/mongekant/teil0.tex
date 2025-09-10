@@ -13,6 +13,7 @@ Um die Modelle des optimalen Transports zu verstehen,
 müssen wir uns zunächst mit einigen mathematischen Grundlagen vertraut machen.
 Damit die Konzepte klar werden,
 werden wir die Theorie anhand eines anschaulichen Beispiels mit Sandhaufen erläutern.
+\index{Sandhaufen}%
 
 \subsection{Transport von Masse\label{mongekant:subection:transport}}
 Stellen wir uns vor,
@@ -44,6 +45,7 @@ T_{\#}\mu(B)
 \end{align*}
 gelten.
 $T_{\#}\mu$ wird in der Literatur als \emph{Push-Forward} von $\mu$ nach $\nu$ durch $T$ bezeichnet.
+\index{Push-Forward}%
 In Abbildung~\ref{mongekant:fig:optimal_transport} ist der 1-dimensionale Fall dargestellt.
 
 \begin{figure}
@@ -63,7 +65,8 @@ also gilt
 1
 .
 \end{align*}
-Befindet sich $\mu$ (bzw. $\nu$) im absolut stetigen Fall,
+%Befindet sich $\mu$ (bzw. $\nu$) im
+Im sogenannt absolut stetigen Fall
 existieren Dichten $f,g\in L^{1}$ mit
 \begin{align}
 \begin{aligned}
@@ -78,14 +81,29 @@ existieren Dichten $f,g\in L^{1}$ mit
 \end{aligned}
 \label{mongekant:eq:absolute_continuity}
 \end{align}
+Ist $T$ differenzierbar, liefert die Variablensubstitutionsformel im Integral
+die Bedingung
+\[
+\int_B g(y)\,dy
+=
+\int_{T^{-1}(B)} g(T(x))\, T'(x)\,dx
+=
+\int_A f(x)\,dx
+\qquad\Rightarrow\qquad
+g(T(x))\, T'(x) = f(x)
+\]
+in Form einer nichtlinearen Differentialgleichung für die Funktion $T$.
 
 \subsection{Kosten des Transports\label{mongekant:subsection:transport_cost}}
 Nun stellt sich die Frage,
-wie \glqq teuer\grqq{} der Transport von $A$ nach $B$ ist.
+wie ``teuer'' der Transport von $A$ nach $B$ ist.
 Dazu führen wir eine Kostenfunktion $c : X \times Y \to [0, +\infty]$ ein,
+\index{Kostenfunktion}%
 die die Kosten $c(x,y)$ für den Transport eines Sandkorns
 von $x \in X$ nach $y \in Y$ angibt.
+\index{Sandkorn}%
 Die Gesamtkosten $C$ für den Transport $T$ von $X$ nach $Y$ sind dann
+\index{Gesamtkosten}%
 \begin{align}
 C(T)
 &=
@@ -95,11 +113,12 @@ C(T)
 \end{align}
 Die Schreibweise $d\mu(x)$ ist die übliche Formulierung des
 Lebesgue-Integrals über ein beliebiges Mass.
-Man kann sich $d\mu(x)$ als \glqq infinitesimale Masse\grqq{} vorstellen,
+\index{Lebesgue-Integral}%
+Man kann sich $d\mu(x)$ als ``infinitesimale Masse'' vorstellen,
 die an der Stelle $x$ liegt.
 Oder um unsere Sandhaufen-Analogie zu verwenden,
 die Masse eines einzelnen Sandkorns.
-In der Literatur wird manchaml die alternative Schreibweise $\mu(dx)$ verwendet,
-diese suggeriert jedoch fälschlicherweise dass die Masse unabhängig vom Ort ist,
+In der Literatur wird manchmal die alternative Schreibweise $\mu(dx)$ verwendet,
+diese suggeriert jedoch fälschlicherweise, dass die Masse unabhängig vom Ort ist,
 was im Allgemeinen nicht der Fall ist.
 Deshalb benutzen wir ausschliesslich die Schreibweise $d\mu(x)$.

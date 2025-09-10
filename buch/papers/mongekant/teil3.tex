@@ -22,29 +22,36 @@ fokussieren wir uns auf visuelle Anwendungen.
 Wir werden die folgenden drei Anwendungen diskutieren:
 \begin{enumerate}
 \item \emph{Wasserstein-Metrik:}
+\index{Wasserstein-Metrik}%
 Wir definieren die wichtigsten Abstände zwischen Verteilungen und
 diskutieren ihre mathematischen Eigenschaften
 (Abschnitt~\ref{mongekant:subsection:wasserstein}).
 \item \emph{Interpolation zwischen Verteilungen:}
+\index{Interpolation zwischen Verteilungen}%
 Mittels baryzentrischer Mittel interpolieren
+\index{baryzentrisches Mittel}%
 wir zwischen ein- und zweidimensionalen Wahrscheinlichkeitsverteilungen
 (Abschnitt~\ref{mongekant:subsection:interpolation}).
 \item \emph{Farbadaption in der Bildverarbeitung}
+\index{Farbadaption}%
 Wir zeigen,
 wie optimaler Transport zur Angleichung von Farbpaletten
+\index{Farbpalette}%
 zwischen zwei Bildern genutzt werden kann
-(Abschnitt~\ref{mongekant:subsection:farbadaption}).
+(Abschnitt \ref{mongekant:subsection:farbadaption}).
 \end{enumerate}
 
 \subsection{Wasserstein-Metrik%
 \label{mongekant:subsection:wasserstein}}
 
 Die Wasserstein-Metrik (auch Kantorowitch-Rubinstein-Metrik genannt)
+\index{Kantorowitch-Rubinstien-Metrik}%
 ist ein Mass für den Abstand zwischen zwei Wahrscheinlichkeitsverteilungen.
+\index{Abstand zwischen Wahrscheinlichkeitsverteilungen}%
 Anstatt,
 wie z.B. im euklidischen Fall,
 punktweise Differenzen zu betrachten,
-wird hier die benötigte \glqq Arbeit\grqq gemessen,
+wird hier die benötigte ``Arbeit'' gemessen,
 um eine Verteilung in die andere zu transformieren.
 Da wir genau diese Arbeit im Kantorowitch-Problem minimieren,
 erhalten wir als Nebenprodukt die Wasserstein-Metrik.
@@ -72,6 +79,7 @@ Dann ist die $p$-Wasserstein-Metrik
 \end{align}
 Wenn $p=1$,
 dann wird $\wasserstein[1]$ auch häufig Earth-Mover-Distance genannt,
+\index{Earth-Mover-Distance}%
 wobei der Namen vom ursprünglichen Problem mit Sandhaufen herrührt.
 Die Wasserstein-Metrik ist tatsächlich eine Metrik,
 d.h. sie erfüllt die vier Axiome:
@@ -91,10 +99,12 @@ sei auf \cite{mongekant:villani} verwiesen.
 \label{mongekant:subsection:interpolation}}
 
 In vielen Anwendungen
-(z,B. Bild- und Signalverarbeitung, Statistik, maschinelles Lernen) ist es nötig,
+(z.~B. Bild- und Signalverarbeitung, Statistik, maschinelles Lernen) ist es nötig,
 zwei Wahrscheinlichkeitsverteilungen zu \emph{mischen}
 oder zu \emph{interpolieren}.
 Die naheliegende Idee ist die euklidische Interpolation
+\index{euklidische Interpolation}%
+\index{Interpolation!euklidisch}%
 \begin{align}
 \rho_E(\alpha)
 &=
@@ -112,6 +122,7 @@ Optimaler Transport bietet eine elegante Alternative,
 Die Idee ist,
 anstatt die Verteilungen direkt zu mischen,
 die gewichteten \emph{Baryzentren} der Verteilungen zu berechnen.
+\index{Baryzentrum}%
 Seien $\mu, \nu \in \mathcal{P}(\Omega)$ Wahrscheinlichkeitsmasse
 auf einem metrischen Raum $(\Omega, d)$
 und $p \in [1, \infty)$.
@@ -139,6 +150,8 @@ Es ist klar ersichtlich,
 dass die euklidische Interpolation
 zu unnatürlichen Mischungen führt,
 während die Wasserstein-Interpolation
+\index{Wasserstein-Interpolation}%
+\index{Interpolation!Wasserstein-}%
 intuitive Resultate liefert.
 Dabei sollte man allerdings beachten,
 dass die Berechnung der Wasserstein-Interpolation
@@ -154,7 +167,9 @@ deutlich aufwändiger ist als die euklidische Interpolation.
 \includegraphics[scale=0.8]{papers/mongekant/code/barycenter_ray_wasserstein}
 }
 \caption{Interpolation zwischen einer {\color{red}Normal-} und
+\index{Normalverteilung}%
 einer {\color{blue}Rayleigh-}Verteilung}
+\index{Rayleigh-Verteilung}%
 \label{mongekant:fig:barycenter1d}
 \end{figure}
 
@@ -239,10 +254,14 @@ was exakt \eqref{mongekant:eq:euclidean_barycenter} entspricht.
 \subsection{Farbadaption\label{mongekant:subsection:farbadaption}}
 
 Die Farbadaptierung ist eine Technik in der Bildverarbeitung,
+\index{Farbadaption}%
+\index{Bildverarbeitung}
 bei der die Farbverteilung eines Quellbildes an die eines Zielbildes angepasst wird.
+\index{Farbverteilung}%
 Ziel ist es,
 dass das Quellbild nach der Transformation
 die farbliche Atmosphäre des Zielbildes widerspiegelt,
+\index{farbliche Atmosphare@farbliche Atmosphäre}%
 während seine geometrische Struktur (Kanten, Formen, Texturen) erhalten bleibt.
 Ein Beispielresultat ist in Abbildung~\ref{mongekant:fig:adaption} dargestellt.
 
@@ -284,7 +303,9 @@ ohne Rücksicht auf die lokalen Bildstrukturen.
 
 \subsubsection{Relaxierter und regularisierter optimaler Transport}
 Um diese Probleme zu vermeiden,
-schlägt \cite{mongekant:color} eine \emph{relaxierte und regularisierte}
+schlägt \cite{mongekant:color} eine \emph{relaxierte} und \emph{regularisierte}
+\index{relaxiert}%
+\index{regularisiert}%
 Variante des optimalen Transports vor.
 Dabei wird einerseits die strikte Massenkonservierung gelockert,
 andererseits eine Glättung des Transportplans eingeführt.
@@ -327,10 +348,10 @@ mit $\gamma_{ij} \geq 0$ und relaxierten Randbedingungen.
 Da eine exakte Berechnung auf allen Bildpunkten sehr rechenintensiv wäre,
 wird typischerweise eine \emph{Subsampling}-Strategie genutzt.
 Hierbei werden Farben beider Bilder auf jeweils $n$ Cluster
-(z.B. mittels $k$-Means) reduziert.
+(z.~B. mittels $k$-Means) reduziert.
 Auf diesen Clustern wird das Transportproblem gelöst.
 Anschliessend wird das Ergebnis auf die Originalpixel zurückprojiziert,
-z.B. mithilfe baryzentrischer Interpolation
+z.~B. mithilfe baryzentrischer Interpolation
 \begin{align*}
 T(x_i)
 =
