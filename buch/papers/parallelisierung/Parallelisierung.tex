@@ -175,47 +175,48 @@ Jeder Kern kann zwei Threads quasi-parallel verarbeiten wobei die Rechenzeit zwi
 	\begin{tabular}{r r c l}
 		Anzahl Zellen & Anzahl Iterationen & Anzahl Threads & Speed-Up \\
 		\hline
-		$10e^6$ & 500 & 4 & 1.3\\
-		$10e^6$ & 500 & 6 & 1.25\\
-		$10e^6$ & 500 & 12 & 1.2\\
+		$10 \cdot 10^6$ & 500 & 4 & 1.3\\
+		$10 \cdot 10^6$ & 500 & 6 & 1.25\\
+		$10 \cdot 10^6$ & 500 & 12 & 1.2\\
 		
-		$100e^6$ & 500 & 4 & 1.24\\
-		$100e^6$ & 500 & 6 & 1.23\\
-		$100e^6$ & 500 & 12 & 1.24\\
+		$100 \cdot 10^6$ & 500 & 4 & 1.24\\
+		$100 \cdot 10^6$ & 500 & 6 & 1.23\\
+		$100 \cdot 10^6$ & 500 & 12 & 1.24\\
 		
-		$1000e^6$ & 500 & 4 & 1.18\\
-		$1000e^6$ & 500 & 6 & 1.23\\
-		$1000e^6$ & 500 & 12 & 1.22\\
-		
-		
-		$5e^6$ & 5000 & 4  & 1.4 \\
-		$5e^6$ & 5000 & 6  & 1.42 \\
-		$5e^6$ & 5000 & 12  & 1.31\\
+		$1000 \cdot 10^6$ & 500 & 4 & 1.18\\
+		$1000 \cdot 10^6$ & 500 & 6 & 1.23\\
+		$1000 \cdot 10^6$ & 500 & 12 & 1.22\\
 		
 		
-		$10e^6$ & 5000 & 4 & 1.24\\
-		$10e^6$ & 5000 & 6 & 1.22\\
-		$10e^6$ & 5000 & 12 & 1.27\\
+		$5 \cdot 10^6$ & 5000 & 4  & 1.4 \\
+		$5 \cdot 10^6$ & 5000 & 6  & 1.42 \\
+		$5 \cdot 10^6$ & 5000 & 12  & 1.31\\
 		
-		$100e^6$ & 5000 & 4 & 1.38\\
-		$100e^6$ & 5000 & 6 & 1.34\\
-		$100e^6$ & 5000 & 12 & 1.31\\
 		
-		$200e^6$ & 5000 & 4 & 1.38\\
-		$200e^6$ & 5000 & 6 & 1.41\\
-		$200e^6$ & 5000 & 12 & 1.36\\
+		$10 \cdot 10^6$ & 5000 & 4 & 1.24\\
+		$10 \cdot 10^6$ & 5000 & 6 & 1.22\\
+		$10 \cdot 10^6$ & 5000 & 12 & 1.27\\
 		
-		$1e^6$ & 10000 & 4  & 1.46 \\
-		$1e^6$ & 10000 & 6  & 1.42 \\
-		$1e^6$ & 10000 & 12  & 1.63\\
+		$100 \cdot 10^6$ & 5000 & 4 & 1.38\\
+		$100 \cdot 10^6$ & 5000 & 6 & 1.34\\
+		$100 \cdot 10^6$ & 5000 & 12 & 1.31\\
 		
-		$5e^6$ & 10000 & 4  & 1.35 \\
-		$5e^6$ & 10000 & 6  & 1.39 \\
-		$5e^6$ & 10000 & 12  & 1.33\\
+		$200 \cdot 10^6$ & 5000 & 4 & 1.38\\
+		$200 \cdot 10^6$ & 5000 & 6 & 1.41\\
+		$200 \cdot 10^6$ & 5000 & 12 & 1.36\\
 		
-		$10e^6$ & 10000 & 4  & 1.25 \\
-		$10e^6$ & 10000 & 6  & 1.28 \\
-		$10e^6$ & 10000 & 12  & 1.26\\
+		$1 \cdot 10^6$ & 10000 & 4  & 1.46 \\
+		$1 \cdot 10^6$ & 10000 & 6  & 1.42 \\
+		$1 \cdot 10^6$ & 10000 & 12  & 1.63\\
+		
+		$5 \cdot 10^6$ & 10000 & 4  & 1.35 \\
+		$5 \cdot 10^6$ & 10000 & 6  & 1.39 \\
+		$5 \cdot 10^6$ & 10000 & 12  & 1.33\\
+		
+		$10 \cdot 10^6$ & 10000 & 4  & 1.25 \\
+		$10 \cdot 10^6$ & 10000 & 6  & 1.28 \\
+		$10 \cdot 10^6$ & 10000 & 12  & 1.26\\
+		
 		
 	\end{tabular}
 	\caption{Beispieltabelle mit Personen}
@@ -224,101 +225,66 @@ Jeder Kern kann zwei Threads quasi-parallel verarbeiten wobei die Rechenzeit zwi
 Zur besseren Übersicht stellen wir die Tabelle in Grafiken dar, aufgeteilt auf die Anzahl Iterationen.
 	
 	% 1. Diagramm: 500 Iterationen
-	\begin{tikzpicture}
-		\begin{axis}[
-			title={500 Iterationen},
-			xlabel={Anzahl Zellen},
-			ylabel={Speed-Up},
-			xmode=log, % logarithmische Skala sinnvoll bei 1e6, 10e6, 100e6...
-			log basis x=10,
-			legend style={
-				at={(1.05,1)},
-				anchor=north west,
-				draw=none,
-				fill=none
-			},
-			grid=both
-			]
-			
-			\addplot coordinates {(1e7,1.3) (1e8,1.24) (1e9,1.18)};
-			\addlegendentry{4 Threads}
-			
-			\addplot coordinates {(1e7,1.25) (1e8,1.23) (1e9,1.23)};
-			\addlegendentry{6 Threads}
-			
-			\addplot coordinates {(1e7,1.2) (1e8,1.24) (1e9,1.22)};
-			\addlegendentry{12 Threads}
-			
-		\end{axis}
-	\end{tikzpicture}
+	\begin{figure}
+		\centering
+		\includegraphics{papers/parallelisierung/images/speedup500.pdf}
+		\caption{500 Iterationen}
+		\label{parallelisierung:fig:Speedup500}
+	\end{figure}
 	
 	
 	% 2. Diagramm: 5000 Iterationen
-	\begin{tikzpicture}
-		\begin{axis}[
-			title={5000 Iterationen},
-			xlabel={Anzahl Zellen},
-			ylabel={Speed-Up},
-			xmode=log,
-			log basis x=10,
-			legend style={
-				at={(1.05,1)},
-				anchor=north west,
-				draw=none,
-				fill=none
-			},
-			grid=both
-			]
-			
-			\addplot coordinates {(5e6,1.4) (1e7,1.24) (1e8,1.38) (2e8,1.38)};
-			\addlegendentry{4 Threads}
-			
-			\addplot coordinates {(5e6,1.42) (1e7,1.22) (1e8,1.34) (2e8,1.41)};
-			\addlegendentry{6 Threads}
-			
-			\addplot coordinates {(5e6,1.31) (1e7,1.27) (1e8,1.31) (2e8,1.36)};
-			\addlegendentry{12 Threads}
-			
-		\end{axis}
-	\end{tikzpicture}
+	\begin{figure}
+		\centering
+		\includegraphics{papers/parallelisierung/images/speedup5000.pdf}
+		\caption{5000 Iterationen}
+		\label{parallelisierung:fig:Speedup5000}
+	\end{figure}
 	
 	
 	% 3. Diagramm: 10000 Iterationen
-	\begin{tikzpicture}
-		\begin{axis}[
-			title={10000 Iterationen},
-			xlabel={Anzahl Zellen},
-			ylabel={Speed-Up},
-			xmode=log,
-			log basis x=10,
-			legend style={
-				at={(1.05,1)},
-				anchor=north west,
-				draw=none,
-				fill=none
-			},
-			grid=both
-			]
-			
-			\addplot coordinates {(1e6,1.46) (5e6,1.35) (1e7,1.25)};
-			\addlegendentry{4 Threads}
-			
-			\addplot coordinates {(1e6,1.42) (5e6,1.39) (1e7,1.28)};
-			\addlegendentry{6 Threads}
-			
-			\addplot coordinates {(1e6,1.63) (5e6,1.33) (1e7,1.26)};
-			\addlegendentry{12 Threads}
-			
-		\end{axis}
-	\end{tikzpicture}
+	\begin{figure}
+		\centering
+		\includegraphics{papers/parallelisierung/images/speedup10000.pdf}
+		\caption{10000 Iterationen}
+		\label{parallelisierung:fig:Speedup10000}
+	\end{figure}
 	
 
 Der Speed-Up ist in allen Beispielen ziemlich bescheiden.
 Dennoch lassen sich daraus einige Erkenntnisse ziehen.
 Interessanterweise scheint der Speedup schlechter zu werden, wenn mehr Zellen berechnet werden müssen, jedoch steigt die Effizienz, wenn mehr Iterationen durchgeführt werden.
+Eine logische Erklärung hierfür ist, dass das Programm Memory Bound ist.
+Die durchgeführten Operationen sind sehr simpel wodurch das Auslesen der Daten das Programm ausbremst.
+Dadurch kann kein höherer Speedup erreicht werden, da mehr Rechenleistung nichts nützt. 
 Bei kleineren Problemen ist der Speed-Up schlechter, wenn mehr Kerne verwendet werden.
 Das ist darauf zurückzuführen, dass der parallelisierungs Overhead mit der Anzahl Kerne unterproportional stark im Vergleich zum Gewinn steigt.
 Es ist anzunehmen, dass der Speed-Up mit der grösse des Problems steigt.
 Leider brauchten bereits diese Berechnungen bis zu 30 Minuten pro Rechnung, weshalb noch grössere Rechnungen schwierig durchzuführen waren.
+In Abbildung \ref{parallelisierung:fig:Speedup5000} ist ist gut zu erkennen, wie der Speedup bei $10 \cdot 10^6$ im Vergleich zu $5 \cdot 10^6$ sinkt.
+Eine Naheliegende Erklärung ist, dass ab $10^7$ Einträge die Datenmenge zu gross wird für den Level 3 Cache des Prozessors und damit die Daten im Hauptspeicher abgelegt werden.
+Die Zugriffe auf den Hauptspeicher sind bedeutend langsamer, was das memory bound Programm weiter ausbremst.
+Für einen besseren Speed-Up müssen die Operationen der einzelnen Iterationen komplex genug sein, damit das Programm durch die Berechnung und nicht durch die Datenzugriffe begrenzt ist.
+Die Parallelisierung ist daher für dieses Problem nicht geeignet.
+Zur Überprüfung haben wir die Berechnungen künstlich komplexer gemacht.
 
+\begin{lstlisting}
+writeGrid[center] = readGrid[center]*readGrid[center]*readGrid[center]*6.2 +
+					lambda * (readGrid[north]*9.11 + readGrid[south]*9.11 +
+					readGrid[east]*5.3 + readGrid[west]*3.7 -
+					4.0 * readGrid[center]);	
+\end{lstlisting}
 
+Mit 4 Threads, $10^6$ Einträgen und $10^5$ Iterationen erhält man 
+
+\begin{lstlisting}
+	================================================
+	PERFORMANCE VERGLEICH
+	================================================
+	Serielle Zeit:   52.5121 Sekunden
+	Parallele Zeit:  15.6462 Sekunden
+	------------------------------------------------
+	SPEEDUP:         3.36x
+	EFFIZIENZ:       83.9%
+	------------------------------------------------
+\end{lstlisting}
