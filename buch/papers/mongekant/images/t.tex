@@ -9,15 +9,21 @@
 \usepackage{txfonts}
 \usepackage{pgfplots}
 \usepackage{csvsimple}
+\usepackage{ifthen}
 \usetikzlibrary{arrows,intersections,math,calc}
 \definecolor{darkred}{rgb}{0.8,0,0}
-\definecolor{redleft}{rgb}{1.0,0.4,0.4}
+\definecolor{redleft}{rgb}{1.0,0.2,0.4}
 \definecolor{redmiddle}{rgb}{0.8,0.0,0.4}
-\definecolor{redright}{rgb}{1.0,0.4,1.0}
-\definecolor{blueleft}{rgb}{0.4,0.4,1.0}
+\definecolor{redright}{rgb}{1.0,0.4,0.2}
+\definecolor{darkblue}{rgb}{0,0,0.8}
+\definecolor{blueleft}{rgb}{0.5,0.3,1.0}
 \definecolor{bluemiddle}{rgb}{0.4,0.0,0.8}
-\definecolor{blueright}{rgb}{0.4,1.0,1.0}
+\definecolor{blueright}{rgb}{0.3,0.5,1.0}
 \begin{document}
+\newboolean{withT}
+\setboolean{withT}{true}
+\newboolean{withSpace}
+\setboolean{withSpace}{true}
 \def\skala{1}
 \def\l{2.8}
 \def\xmin{0.1}
@@ -38,35 +44,109 @@ declare function = {
 \xdef\ymax{\pgfmathresult}
 \pgfmathparse{Yp(\xmin)}
 \xdef\ymin{\pgfmathresult}
+\def\oben{3.8}
+\def\rechts{6.4}
+
+\ifthenelse{\boolean{withT}}{
+\begin{scope}[xshift=-3.2cm,yshift=-3.8cm]
+	\draw[->] ({-\l-0.1},-\l) -- ({\l+0.4},-\l)
+		coordinate[label={$x$}];
+	\draw[->] (-\l,{-\l-0.1}) -- (-\l,{\l+0.4})
+		coordinate[label={right:$y=T(x)$}];
+
+	\fill[color=blueleft!40,opacity=0.5] (-\xmax,-\ymax)
+		-- ({-\ymax+\rechts},-\ymax) 
+		-- ({-\ymin+\rechts},-\ymin)
+		-- (-\xmax,-\ymin)
+		-- cycle;
+	\fill[color=blueleft!40,opacity=0.5] ({-\ymax+\rechts},-\ymax) 
+		-- ({-\ymin+\rechts},-\ymin)
+		-- ({-\ymin+\rechts},\oben)
+		-- ({-\ymax+\rechts},\oben)
+		-- cycle;
+
+	\fill[color=bluemiddle!40,opacity=0.5] (-\xmin,-\ymin)
+		-- ({-\ymin+\rechts},-\ymin) 
+		-- ({\ymin+\rechts},\ymin)
+		-- (-\xmin,\ymin)
+		-- cycle;
+	\fill[color=bluemiddle!40,opacity=0.5] ({-\ymin+\rechts},-\ymin) 
+		-- ({\ymin+\rechts},\ymin)
+		-- ({\ymin+\rechts},\oben)
+		-- ({-\ymin+\rechts},\oben)
+		-- cycle;
+
+	\fill[color=blueright!40,opacity=0.5] (\xmin,\ymin)
+		-- ({\ymin+\rechts},\ymin) 
+		-- ({\ymax+\rechts},\ymax)
+		-- (\xmin,\ymax)
+		-- cycle;
+	\fill[color=blueright!40,opacity=0.5] ({\ymin+\rechts},\ymin) 
+		-- ({\ymax+\rechts},\ymax)
+		-- ({\ymax+\rechts},\oben)
+		-- ({\ymin+\rechts},\oben)
+		-- cycle;
+
+	\fill[color=redleft!20] (-\xmax,\oben)
+		-- plot[domain=-\ymax:-\ymin,samples=40] ({X(\x)},{\x})
+		-- (-\xmin,\oben) -- cycle;
+	\fill[color=redmiddle!20] (-\xmin,\oben)
+		-- plot[domain=-\ymin:\ymin,samples=40] ({X(\x)},{\x})
+		-- (\xmin,\oben) -- cycle;
+	\fill[color=redright!20] (\xmin,\oben)
+		-- plot[domain=\ymin:\ymax,samples=40] ({X(\x)},{\x})
+		-- (\xmax,\oben) -- cycle;
+
+	\draw[line width=1.4pt] plot[domain=-\l:\l,samples=100]
+		({X(\x)},{\x});
+
+	\draw[line width=0.2pt] ({-\l+\rechts},-\l) -- 
+	    node[below=1.5cm,anchor=north west,xshift=-2mm]{$A_k = \left\{ x \mid T(x) \in B_k \right\}$} 
+		({\l+\rechts},\l);
+	\node at (\rechts,0) [below,rotate=45] {``$y = x$''};
+
+\end{scope}}{}
 
 \begin{scope}[xshift=-3.2cm]
-\fill[color=darkred!10] plot[domain=-\l:\l,samples=100]
-	({\x},{density(\x)});
-\fill[color=redleft] (-\xmax,0)
-	-- plot[domain=-\xmax:-\xmin,samples=40] ({\x},{density(\x)})
-	-- (-\xmin,0) -- cycle;
-\node[color=redleft] at ({-0.5*(\xmin+\xmax)},0) [below] {$A_1$};
-\node[color=white] at ({-0.5*(\xmin+\xmax)},1.0) {$\mu(A_1)$};
-\fill[color=redmiddle] (-\xmin,0)
-	-- plot[domain=-\xmin:\xmin,samples=40] ({\x},{density(\x)})
-	-- (\xmin,0) -- cycle;
-\node[color=redmiddle] at (0,0) [below] {$A_2$};
-\fill[color=redright] (\xmin,0)
-	-- plot[domain=\xmin:\xmax,samples=40] ({\x},{density(\x)})
-	-- (\xmax,0) -- cycle;
-\node[color=redright] at ({0.5*(\xmin+\xmax)},0) [below] {$A_3$};
-\node[color=white] at ({0.5*(\xmin+\xmax)},1.0) {$\mu(A_3)$};
-\draw[line width=0.2pt,color=darkred] plot[domain=-\l:\l,samples=100]
-	({\x},{density(\x)});
-\draw[->] (-3,0) -- (3,0) coordinate[label={$x$}];
-\node at (0,-0.4) [below] {$A_k=\{x\mid T(x)\in B_k\}$};
-\node at (-2.0,2.7) {$\mu(x)\mathstrut$};
+	\ifthenelse{\boolean{withSpace}}{
+		\fill[color=gray!20] (-2.9,0) rectangle (2.9,3.2);
+		\node[color=white] at (-2.3,2.5) [scale=3] {$X$};
+	}{}
+	\fill[color=darkred!10] plot[domain=-\l:\l,samples=100]
+		({\x},{density(\x)});
+
+	\fill[color=redleft] (-\xmax,0)
+		-- plot[domain=-\xmax:-\xmin,samples=40] ({\x},{density(\x)})
+		-- (-\xmin,0) -- cycle;
+	\node[color=redleft] at ({-0.5*(\xmin+\xmax)},0) [below] {$A_1$};
+	\node[color=white] at ({-0.5*(\xmin+\xmax)},1.0) {$\mu(A_1)$};
+
+	\fill[color=redmiddle] (-\xmin,0)
+		-- plot[domain=-\xmin:\xmin,samples=40] ({\x},{density(\x)})
+		-- (\xmin,0) -- cycle;
+	\node[color=redmiddle] at (0,0) [below] {$A_2$};
+
+	\fill[color=redright] (\xmin,0)
+		-- plot[domain=\xmin:\xmax,samples=40] ({\x},{density(\x)})
+		-- (\xmax,0) -- cycle;
+	\node[color=redright] at ({0.5*(\xmin+\xmax)},0) [below] {$A_3$};
+	\node[color=white] at ({0.5*(\xmin+\xmax)},1.0) {$\mu(A_3)$};
+
+	\draw[line width=0.2pt,color=darkred] plot[domain=-\l:\l,samples=100]
+		({\x},{density(\x)});
+	\draw[->] (-3,0) -- (3,0) coordinate[label={$x$}];
+	\node[darkred] at (-1.7,1.4) {$\mu(x)\mathstrut$};
+
+	\ifthenelse{\boolean{withT}}{}{
+		\node at (3,0) [below] {$A_k=\{x\mid T(x)\in B_k\}\mathstrut$};
+	}
 \end{scope}
 
-\draw[->] ($(-0.8,0)+(110:2)$) arc (110:70:3);
-\node at (-0.4,2.1) [above] {$T$};
-
 \begin{scope}[xshift=3.2cm]
+	\ifthenelse{\boolean{withSpace}}{
+		\fill[color=gray!20] (-2.9,0) rectangle (2.9,3.2);
+		\node[color=white] at (0,2.5) [scale=3] {$Y$};
+	}{}
 	\fill[color=blue!10] plot[domain=-\l:\l,samples=100]
 		({\x},{density(X(\x))*Xp(\x)});
 
@@ -94,11 +174,14 @@ declare function = {
 	\node[color=blueright] at ({0.5*(\ymin+\ymax)},0) [below] {$B_3$};
 	\node[color=white] at ({0.5*(\ymin+\ymax)},1) {$\nu(B_3)$};
 
-	\draw[line width=0.2pt,color=blue] plot[domain=-\l:\l,samples=100]
+	\draw[line width=0.2pt,color=darkblue] plot[domain=-\l:\l,samples=100]
 		({\x},{density(X(\x))*Xp(\x)});
 	\draw[->] (-3,0) -- (3,0) coordinate[label={$y$}];
-	\node at (2.4,2.7) {$\nu(y)\mathstrut$};
+	\node[darkblue] at (2.4,2.7) {$\nu(y)\mathstrut$};
 \end{scope}
+
+\draw[->] ($(-0.8,0)+(110:2)$) arc (110:70:3);
+\node at (-0.4,2.1) [above] {$T$};
 
 \end{tikzpicture}
 \end{document}

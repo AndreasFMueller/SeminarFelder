@@ -284,7 +284,7 @@ Indizes.
 
 \begin{beispiel}
 Der riemannsche Krümmungstensor für die Ebene in Polarkoordinaten.
-
+\\[5pt]
 In Polarkoordinaten $(r,\vartheta)$ wird die euklidische Metrik
 durch die Koeffizienten
 \[
@@ -308,7 +308,7 @@ gegeben.
 Daraus kann man die Christoffel-Symbole erster Art
 \begin{align*}
 \Gamma_{1,11}                 & =  0 &
-\Gamma_{1,12} = \Gamma^1_{21} & =  0 &
+\Gamma_{1,12} = \Gamma_{1,21} & =  0 &
 \Gamma_{1,22}                 & = -r
 \\
 \Gamma_{2,11}                 & = 0 &
@@ -320,7 +320,7 @@ Daraus kann man die Christoffel-Symbole erster Art
 \Gamma^1_{22}                 & = -r
 \\
 \Gamma^2_{11}                 & = 0  &
-\Gamma^2_{12} = \Gamma_{2,21} & = \frac{1}{r} &
+\Gamma^2_{12} = \Gamma^2_{21} & = \frac{1}{r} &
 \Gamma^2_{22}                 & = 0
 \end{align*}
 berechnen.
@@ -329,8 +329,86 @@ zu berechnen, erhält man $0$ für alle Komponenten.
 \end{beispiel}
 
 \begin{beispiel}
+\label{buch:kruemmung:kruemmung:bsp:kugel}
 Der riemannsche Krümmungstensor für die Kugeloberfläche.
+\\[5pt]
+Auf der Oberfläche einer Einheitskugel hat die Metrik in Kugelkoordinaten
+$(\vartheta,\varphi)$
+die metrischen Koeffizienten
+\[
+g_{11} = 1,\quad
+g_{22} = \sin^2\vartheta
+\qquad
+\Rightarrow
+\qquad
+g
+=
+\begin{pmatrix}
+1&0\\0&\sin^2\vartheta
+\end{pmatrix},
+\quad
+g^{-1}
+=
+\begin{pmatrix}
+1&0\\0&\frac{1}{\sin^2\vartheta}
+\end{pmatrix}.
+\]
+Aus den Christoffel-Symbolen
+\begin{align*}
+\Gamma_{1,11}                 &= 0 & 
+\Gamma_{1,12} = \Gamma_{1,21} &= 0 &
+\Gamma_{1,22}                 &= -\cos\vartheta\sin\vartheta
+\\
+\Gamma_{2,11}                 &= 0 & 
+\Gamma_{2,12} = \Gamma_{2,21} &= \cos\vartheta\sin\vartheta &
+\Gamma_{2,22}                 &= 0 
+\intertext{erster Art erhält man jene zweiter Art:}
+\Gamma^1_{11}                 &= 0 & 
+\Gamma^1_{12} = \Gamma^1_{21} &= 0 &
+\Gamma^1_{22}                 &= -\cos\vartheta\sin\vartheta
+\\
+\Gamma^2_{11}                 &= 0 & 
+\Gamma^2_{12} = \Gamma^2_{21} &= \frac{\cos\vartheta}{\sin\vartheta} &
+\Gamma^2_{22}                 &= 0.
+\end{align*}
+Die Berechnung des riemannschen Krümmungstensors ergibt jetzt die folgenden
+Komponenten
+\begin{align*}
+R^1\mathstrut_{212} &= \phantom{-}\sin^2\vartheta &
+R^2\mathstrut_{112} &= -1 \\
+R^1\mathstrut_{221} &= -\sin^2\vartheta &
+R^2\mathstrut_{121} &= \phantom{-}1.
+\end{align*}
+Alle anderen Komponenten verschwinden.
+Die etwas verwirrenden Komponenten werden etwas klarer, 
+\begin{align*}
+R_{1212} &= \phantom{-}\sin^2\vartheta &
+R_{2112} &=          - \sin^2\vartheta
+\\
+R_{1221} &=          - \sin^2\vartheta &
+R_{2121} &= \phantom{-}\sin^2\vartheta
+\end{align*}
+Die wechselnden Vorzeichen werden sich später als konsistent mit
+den Symmetrieeigenschaften des kovarianten riemnnschen Krümmungstensors
+herausstellen.
 \end{beispiel}
+
+Intuitiv würde man erwarten, dass die Krümmung einer Kugeloberfläche
+an jeder Stelle gleich ist.
+Der Wert von $R_{1212}$ hängt aber immer noch von $\vartheta$ ab.
+Die Komponenten des riemannschen Krümmungstensors sind nicht überraschend
+immer noch vom Koordinatensystem abhängig.
+Der tiefere Grund dafür ist, dass der Flächeninhalt eines Koordintenquadrats
+für Werte der geographischen Breite nahe der beiden Pole bei
+$\vartheta \in \{0,\pi\}$ kleiner wird.
+In der Einleitung wurde jedoch illustriert, wie die Drehung eines
+paralleltransportierten Vektors von der umlaufenen Fläche abhängt.
+
+In Abschnitt~\ref{buch:kruemmung:section:schnittkruemmung}
+werden wir zeigen, dass die sogenannte Schnittkrümmung die
+Abhängigkeit vom Koordinatensystem eliminiert und so ein
+rein geometrisches Krümmungsmass definiert.
+Die Schnittkrümmung einer Kugel wird sich als konstant herausstellen.
 
 \subsubsection{Herleitung mit Hilfe des Satzes von Green}
 Für die Berechnung des Krümmungstensors haben wir ein konkretes

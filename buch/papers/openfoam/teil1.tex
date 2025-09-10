@@ -33,7 +33,7 @@ Bei der Strömungsmechanik wird zuerst unterschieden, ob es sich um eine station
 \index{zeitabhangig@zeitabhängig}%
 Das heisst es ist entweder der Fall, dass an jedem Ort im Raum die Geschwindigkeit, der sich dort befindenden Flüssigkeit  konstant ist oder dass sich diese Grösse dauernd ändert.
 
-Wenn die Resultate kaum mehr ändern, ist der Stationäre Zustand erreicht und es können keine neuen Resultate mehr erwartet werden.
+Wenn die Resultate kaum mehr ändern, ist der stationäre Zustand erreicht und es können keine neuen Resultate mehr erwartet werden.
 Dadurch kann man sich Simulationsaufwand sparen.
 
 \subsection{Modellierung der Flüssigkeit}
@@ -91,12 +91,12 @@ Bei dieser Gleichung kann man nun auf der linken Seite mit dem gaussschen Integr
 \[\int_{V}\nabla\cdot(\rho\mathbf{u}) \, dV
 =
 \int_{V}\frac{\partial \rho}{\partial t}  \, dV .\]
-Mit dem Ändern der Flussrichtung und Umschreiben der Gleichung kann man die rechte Seite auf null setzen, wodurch 
+Ändert man nun die Flussrichtung des Massenstromes, indem man das Vorzeichen der rechten Seite wechselt, lässt sich die Gleichung umstellen.
+Man erhält so
 \[\int_{V}\nabla\cdot(\rho\mathbf{u})  \, dV + \int_{V}\frac{\partial \rho}{\partial t}  \, dV 
 = 
-0\] 
-folgt.
-Dadurch können die Integrale zu einem Integral
+0.\] 
+Davon ausgehend können die Integrale zu einem Integral
 \[\int_{V} \frac{\partial \rho}{\partial t} + \nabla\cdot(\rho\mathbf{u})  \, dV 
 = 
 0\]
@@ -161,7 +161,7 @@ erhalten.
 Die normalisierte Volumenkraft ist dabei zum Beispiel die Schwerkraft, die das gesamte Volumen wirkt. 
 Sie wird noch auf die Masse normalisiert, man erhält also eine Beschleunigung.
 
-Nun können wir die Impulsänderung des Volumens gleich der Summe der darauf wirkenden Kräfte setzen und die Integrale in einem Integral zusammenfassen. Daraus erhalten wir, mit der Bedingung die Masse im Volumen sei konstant, die Gleichung 
+Nun können wir die Impulsänderung des Volumens gleich der Summe der darauf wirkenden Kräfte setzen und die Integrale in einem Integral zusammenfassen. Daraus erhalten wir mit der Bedingung, die Masse im Volumen sei konstant, die Gleichung 
 \[\int_{V} \rho \frac{D\mathbf{u}}{Dt} - \nabla \cdot \mathbf{\sigma} -\rho \mathbf{b}\, dV
 =
 0.
@@ -193,10 +193,10 @@ Eingesetzt in die Differentialgleichung erhalten wir so
 \end{equation}
 Diese Form erleichtert die Berechnung, da sie nicht mehr die Impulsänderung einer sich bewegenden Menge Flüssigkeit beschreibt, sondern die Impulsänderung der sich momentan an einem Ort befindenden Masse. 
 Man kann also anstelle ein sich durch den Raum bewegendes Masseteilchen ein festes Volumenelement simulieren, welches bei der Fluid-dynamik-Simulation die bevorzugte Methode ist.
-Auch zu sehen ist hier das dyadische Produkt das mit $\mathbf{u}\otimes \mathbf{u}$ gebildet wird.
+Auch zu sehen ist hier das dyadische Produkt, das mit $\mathbf{u}\otimes \mathbf{u}$ gebildet wird.
 \index{dyadisches Produkt}%
 Es wird verwendet, um mit dem Term $\nabla \cdot(\rho\mathbf{u}\otimes \mathbf{u})$, eine Advektion zu beschreiben.
-Das dyadische Produkt, auch Tensorprodukt genannt, beschreibt eine Matrix aller Komponenten der Vektoren miteinander Multipliziert.
+Das dyadische Produkt, auch Tensorprodukt genannt, beschreibt eine Matrix aller Komponenten der Vektoren miteinander multipliziert.
 \index{Tensorprodukt}%
 Wendet man es auf den Geschwindigkeitsvektor $\mathbf{u}$ an, erhält man
 \begin{equation}
@@ -343,8 +343,8 @@ Das führt dazu dass die Flüssigkeit frei aus der Lösungs-Domain fliessen kann
 
 \subsubsection{Wände}
 Zudem benötigen wir jeweils noch Bedingungen, wie die Flüssigkeit mit dem Objekt selbst und mit den Grenzen der simulierten Region interagiert.
-Dazu nutzt man im Falle einer undurchlässigen Wand die sogenannte No-Slip Bedingung. 
-Diese setzt die Geschwindigkeitskomponente der Flüssigkeit an der Wand in normaler Richtung auf null und die Komponenten parallel zur Wand auf die Geschwindigkeit.
+Dazu nutzt man im Falle einer undurchlässigen Wand die sogenannte No-Slip-Bedingung. 
+Diese setzt die Geschwindigkeitskomponente der Flüssigkeit an der Wand in normaler Richtung auf null und die Komponenten parallel zur Wand auf die Geschwindigkeit dieser.
 Dadurch kann die Grenzschicht modelliert werden. Diese besagt, dass die Luft, die an einer Oberfläche entlang fliesst, in der Nähe der Fläche die gleiche Geschwindigkeit dieser Oberfläche hat.
 Dabei ist die Dicke dieser unbewegten Luftschicht abhängig von der Luftgeschwindigkeit und der kinematischen Viskosität.
 Mathematisch beschreibt man dies mit den Bedingungen
@@ -387,7 +387,7 @@ Auf die Oberfläche dieses Modells, die den Rand aus dem Abschnitt~\ref{openfoam
 \end{figure}
 
 In Bild \ref{openfoam:fig:sim_grid} ist zudem ein Beispiel für die Unterteilung der Geometrie in Zellen zu sehen.
-Darauf ist zu sehen wie \textbf{snappyHexMesh} das Gitter skaliert.
+Darauf sieht man wie \textbf{snappyHexMesh} das Gitter skaliert.
 So besteht in der Umgebung des Objektes das Gitter aus kleinen Zellen und weiter entfernt davon aus grösseren.
 Der Grund dafür ist, dass an Orten weiter entfernt von einer Oberfläche die Zellengrösse einen kleineren Einfluss auf die Genauigkeit des Resultates hat.
 Man kann so also Rechenaufwand einsparen, indem man nur an Orten kleine Zellen verwendet, an denen der Einfluss der Objekte auf die Flüssigkeit gross ist.
