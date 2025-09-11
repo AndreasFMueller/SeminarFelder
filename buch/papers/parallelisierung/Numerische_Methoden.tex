@@ -148,12 +148,12 @@ Aus diesem Grund wird der Halbschritt hier bewusst weggelassen.
 Auch hier beginnen wir mit der einmaligen Anwendung des Differenzenquotienten (vorwärts), um die erste Ableitung, zunächst in $x$-Richtung zu approximieren:
 
 \begin{equation}
-	\left. \frac{\partial T}{\partial x} \right|{(i+\frac{1}{2},j,n)}
+	\left. \frac{\partial T}{\partial x} \right|{(i+{\textstyle\frac{1}{2}},j,n)}
 	\approx \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x}.
 \end{equation}
 Zusätzlich bestimmen wir den Differenzenquotienten an einem vorangehenden Gitterpunkt
 \begin{equation}
-	\left. \frac{\partial T}{\partial x} \right|{(i-\frac{1}{2},j,n)}
+	\left. \frac{\partial T}{\partial x} \right|{(i-{\textstyle\frac{1}{2}},j,n)}
 	\approx \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x},
 \end{equation}
 um mittels einer letzten Anwendung des Differenzenquotienten die Änderung dieser beiden Änderungen, also genau das, was die zweite Ableitung beschreibt, diskret zu bestimmen
@@ -161,9 +161,14 @@ um mittels einer letzten Anwendung des Differenzenquotienten die Änderung diese
 	\displaystyle
 	\left. \frac{\partial^2 T}{\partial x^2} \right|{(i,j,n)}
 	\approx
-	\frac{
-		\biggl( \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x} \biggr)
-		- \biggl( \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x} \biggr)
+	\frac{\displaystyle
+		\raisebox{2pt}{$\displaystyle
+		\Biggl(\raisebox{-2pt}{$\displaystyle \frac{T_{i+1,j}^n - T_{i,j}^n}{\Delta x}$} \Biggr)
+		$}
+		-
+		\raisebox{2pt}{$\displaystyle
+		\Biggl(\raisebox{-2pt}{$\displaystyle \frac{T_{i,j}^n - T_{i-1,j}^n}{\Delta x}$} \Biggr)
+		$}
 	}{\Delta x}.
 \end{equation}
 Schlussendlich vereinfacht sich dies zu 
@@ -184,11 +189,17 @@ Somit erhalten wir
 	\label{parallelisierung:eq:update_formula_unsorted}
 	\frac{T_{i,j}^{n+1} - T_{i,j}^n}{\Delta t}
 	=
-	\alpha \biggl(
+	\alpha
+	\raisebox{1.5pt}{$\displaystyle
+	\Biggl(
+	\raisebox{-1.5pt}{$\displaystyle
 	\frac{T_{i+1,j}^n - 2 T_{i,j}^n + T_{i-1,j}^n}{(\Delta x)^2}
 	+
 	\frac{T_{i,j+1}^n - 2 T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}
-	\biggr),
+	$}
+	\Biggr)
+	$}
+	,
 \end{equation}
 womit die Diskretisierung der Wärmeleitungsgleichung mittels der Finite-Differenzen-Methode gezeigt ist.
 
@@ -204,11 +215,17 @@ Dies ist  in der nach \(T_{i,j}^{n+1}\) umgestellten Formel (\ref{parallelisieru
 	=
 	T_{i,j}^n
 	+
-	\alpha \, \Delta t \biggl(
+	\alpha \, \Delta t
+	\raisebox{1.5pt}{$\displaystyle
+	\Biggl(
+	\raisebox{-1.5pt}{$\displaystyle
 	\frac{T_{i+1,j}^n - 2 T_{i,j}^n + T_{i-1,j}^n}{(\Delta x)^2}
 	+
 	\frac{T_{i,j+1}^n - 2 T_{i,j}^n + T_{i,j-1}^n}{(\Delta y)^2}
-	\biggr).
+	$}
+	\Biggr)
+	$}
+	.
 \end{equation}
 
 Aus Übersichtsgründen fassen wir alle Konstanten (\(\alpha, \Delta t, \Delta x, \Delta y) \) zu einer neuen Konstanten zusammen.
@@ -243,7 +260,7 @@ Dimensionen zusammen, wie sie aus einer Fourier-Analyse des Verstärkungsverhalt
 resultieren.  
 Aus Gründen der Lesbarkeit wird die vollständige Herleitung dieser Bedingungen an 
 dieser Stelle nicht wiedergegeben.
-Eine historische Einführung findet sich bereits bei Fourier \cite{parallelisierung:fourier1822}, während die systematische von-Neumann-Stabilitätsanalyse im Los-Alamos-Report \cite{parallelisierung:vonneumann1950} erstmals formuliert wurde. John von Neumann entwickelte diese Methode im Rahmen des Manhattan Project zur Simulation von Stoßwellen. Der Bericht war ursprünglich als streng geheim klassifiziert und wurde erst Jahre später deklassifiziert, womit die bis heute gebräuchliche Fourier-Fehleranalyse für Differenzenschemata der wissenschaftlichen Gemeinschaft zugänglich wurde. Eine moderne und zugleich frei verfügbare Darstellung findet sich zudem in den Vorlesungsunterlagen des Massachusetts Institute of Technology \cite{parallelisierung:MITnotes}.
+Eine historische Einführung findet sich bereits bei Fourier \cite{parallelisierung:fourier1822}, während die systematische von-Neumann-Stabilitätsanalyse im Los-Alamos-Report \cite{parallelisierung:vonneumann1950} erstmals formuliert wurde. John von Neumann entwickelte diese Methode im Rahmen des Manhattan Project zur Simulation von Stoßwellen. Der Bericht war ursprünglich als streng geheim klassifiziert und wurde erst Jahre später deklassifiziert, womit die bis heute gebräuchliche Fourier-Fehleranalyse für Differenzenschemata der wissenschaftlichen Gemeinschaft zugänglich wurde. Eine moderne und zugleich frei verfügbare Darstellung findet sich zudem in den Vorlesungsunterlagen des Massachusetts Institute of Technology \cite{parallelisierung:MITnotes2022}.
 
 \label{parallelisierung:sec:stabilitaetskriterien}
 
