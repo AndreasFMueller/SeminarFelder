@@ -1,0 +1,543 @@
+%
+% 4-zusammenhang.tex
+%
+% (c) 2025 Prof Dr Andreas Müller
+%
+
+%
+% Zusammenhang
+%
+\section{Zusammenhang
+\label{buch:zusammenhang:section:zusammenhang}}
+In der bisherigen Entwicklung wurde die kovariante Ableitung vor allem
+aus der Darstellung~\eqref{buch:zusammenhang:paralleltransport:eqn:kovabl}
+durch Berechnung der Christoffel-Symbole und das Studium ihrer
+Eigenschaften entwickelt.
+Damit lassen sich weitere Abstraktionen vermeiden.
+Es ist aber auch möglich, die kovariante Ableitung als ein Operator
+mit geeigneten Eigenschaften axiomatisch zu beschreiben und dann zu
+zeigen, dass es genau einen solchen Operator gibt.
+Dies verlangt etwas abstraktere Konstruktionen, ermöglicht aber
+die Verallgmeinerung auf beliebige Tensorfelder.
+Diese Vorgehensweise soll in diesem Abschnitt durchgeführt werden.
+
+\subsection{Vektorbündel}
+Das Tangentialbündel $TM$ einer differenzierbaren Mannigfaltigkeit
+bestand für jeden Punkt $p\in M$ aus einem Vektorraum $T_pM$, dessen
+Elemente wir mit Differentialoperatoren identifiziert haben, die
+auf Funktionen auf der Mannigfaltigkeit wirken.
+Diese letzte Eigenschaft ist nur für Tangentialvektoren sinnvoll.
+Um zum Beispiel ein Kraftfeld auf einer Mannigfaltigkeit zu beschreiben,
+möchten wir ebenfalls jedem Punkt der Mannigfaltigkeit Vektoren
+zuordnen können, aber diese Vektoren haben nichts mit den Funktionen
+auf der Mannigfaltigkeit zu tun.
+Wir müssen also das Konzept des Tangentialbündels noch etwas
+erweitern, so dass in jedem Punkt Vektoren aus einem beliebigen
+Vektorraum ausgewählt werden können.
+
+Auch aus rein mathematischer Motivation ist es nötig, die Idee des
+Tangentialbündels zu erweitern.
+Zum Beispiel bilden die $k$-Formen in einem Punkt einen
+$\binom{n}{k}$-dimensionalen, reellen Vektorraum.
+Eine Verallgemeinerung des Konzepts des Tangentialbündels ist also
+bereits aufgetreten, wir haben es nur nicht abstrakt definiert.
+Dies soll jetzt nachgeholt werden.
+
+Das Tangentialbündel ist nicht einfach nur eine Menge von Vektoren.
+In jedem Punkt $p\in M$ gibt es den Vektorraum $T_pM$ der Tangentialvektoren.
+Es gibt aber auch ein Konzept der Stetigkeit für Tangentialvektorfelder.
+Ein solches ist eine Funktion $X\colon M\mapsto TM$ derart, dass 
+$X(p)\in T_pM$ ist.
+Ausserdem sollen Vektoren $X(p)$ und $X(q)$ in zwei Punkten $p,q\in M$,
+die nahe beeinander liegen, ebenfalls nahe beeinander sein.
+Weiter möchten wir mit Koordinaten arbeiten können, so wie das für $M$
+selbst auch möglich ist.
+Schliesslich möchten wir die Vektorraumstruktur in verschiedenen
+Punkten miteinander vergleichen können.
+Für das Tangentialbündel ist jeder Tangentialraum $T_pM$ ein
+$n$-dimensionaler reeller Vektorraum, also $T_pM \equiv \mathbb{R}^n$.
+Alle diese Forderungen führen auf die folgende Definition.
+
+\begin{definition}[Vektorraumbündel]
+Sei $M$ eine differenzierbare Mannigfaltigkeit und $V$ ein reeller
+Vektorraum.
+Ein \emph{differenzierbares Vektorraumbündel} über $M$ mit Faser $V$
+ist eine differenzierbare Mannigfaltigkeit $E$ mit einer Abbildung
+$\pi\colon E\to M$ mit folgenden Eigenschaften.
+Jeder Punkt $p\in M$ hat eine offene Umgebung $U\subset M$ mit einem
+Diffeomorphismus
+\[
+\varphi\colon \pi^{-1}(U) \to U \times V
+\]
+derart, dass $\operatorname{pr}_1\circ\varphi =\pi$, d.~h.
+$\varphi(e)$ kann in der Form $\varphi(e) = (\pi(e), v)$ mit $v\in V$
+geschrieben werden.
+Eine solche Abbildung $\varphi$ heisst eine \emph{Bündelkarte}.
+Für zwei Bündelkarten $\varphi_\alpha$ und $\varphi_\beta$ mit
+Kartengebieten $U_\alpha$ und $U_\beta$ ist die Kartenwechselabbildung
+\[
+\varphi_\beta
+\circ
+\varphi_\alpha^{-1}
+\colon
+U_\alpha\cap U_\beta \times V
+\to
+U_\alpha\cap U_\beta \times V
+\]
+$E$ heisst \emph{Totalraum} des Bündels, $M$ heisst die \emph{Basis}
+und $\pi$ ist die \emph{Bündelprojektion}.
+Die Punkte von $E$, die auf den Punkt $p\in M$ abgebildet werden,
+heisst die \emph{Faser} $E_p=\pi^{-1}(p)\subset E$ über dem Punkt $p$.
+\end{definition}
+
+\begin{beispiel}
+Zu jeder Mannigfaltigkeit $M$ und jedem endlichdimensionalen
+reellen Vektorraum $V$ gibt es das Bündel $M\times V$ mit
+der Bündelprojektion
+\[
+\operatorname{pr}_1
+\colon
+M\times V \to M
+:
+(p,v) \mapsto p.
+\]
+Dieses Vektorraumbündel über $M$ heisst das \emph{triviale Bündel}
+mit Faser $V$.
+\end{beispiel}
+
+\begin{beispiel}
+\label{buch:zusammenhang:kovabl:beispiel:0d}
+Die identische Abbildung $M\to M:p\mapsto p$ ist ein Vektorraumbündel
+mit dem 0-dimensionalen Vektorraum $\{0\}$ als Faser.
+\end{beispiel}
+
+Wenn man Mannigfaltigkeiten miteinander vergleichen will, konstruiert
+man Abbildungen zwischen diesen Mannigfaltigkeiten.
+Da Vektorraumbündel aus zwei Mannigfaltigkeiten bestehen, die durch
+die Bündelprojektion $\pi$ miteinander verbunden sind, müssen
+Bündelabbildungen aus Abbildungen der Totalräume und der
+Basismannigfaltigkeiten zusammengesetzt sein.
+Ausserdem muss innerhalb der Fasern die Vektorraumstruktur zum
+Ausdruck kommen.
+Die folgende Definition erreicht dies.
+
+\begin{definition}[Bündelabbildung]
+Seien $\pi\colon E \to M$ und $\psi\colon F\to N$ zwei Vektorraumbündel
+mit Fasern $V$ und $W$.
+Eine \emph{Bündelabbildung} ist eine Abbildung $f\colon E\to F$ und
+eine Abbildung $g\colon M\to N$ derart, dass
+dass es eine Abbildung $g\colon M\to N$ gibt, derart dass 
+$g\circ\pi=\psi\circ f$.
+Ausserdem ist für jeden Punkt $p\in M$ die Einschränkung von $f$ auf
+$\pi^{-1}(p)$ eine lineare Abbildung
+\[
+f_{|\pi^{-1}(p)}
+\colon
+\pi^{-1}(p)
+\to
+\pi^{-1}(g(p)).
+\]
+Sie heisst die \emph{Faserabbildung}.
+\end{definition}
+
+\begin{beispiel}
+Beispiel~\ref{buch:zusammenhang:kovabl:beispiel:0d} hat gezeigt, dass
+man die Mannigfaltigkeit $M$ als ein Vektorraumbündel mit Faser $\{0\}$
+betrachten kann.
+Die Definition einer Bündelabbildung $M\to E$ besagt dann, dass 
+$f$ jedem Punkt $p$ genau ein Vektor in der Faser $E_p$ zuordnet.
+\end{beispiel}
+
+\begin{definition}
+Sei $\pi\colon E\to M$ ein Vektorraumbündel.
+Eine Bündelabbildung $f\colon M\to E$ hat die Eigenschaft
+$\pi\circ f=\operatorname{id}_M$ und heisst ein \emph{Schnitt}
+des Bündels.
+Die Menge der Schnitte eines Vektorraumbündels wird mit $\Gamma(E)$
+bezeichnet.
+\end{definition}
+
+In einer Bündelkarte $\varphi_\alpha:\pi^{-1}(U_\alpha) \to U_\alpha\times V$
+ist ein Schnitt der Graph einer Funktion $U_\alpha\to V$.
+
+\begin{beispiel}
+Sei $\pi\colon E\to M$ ein Vektorraumbündel und 
+\end{beispiel}
+
+\subsection{Zusammenhang}
+Der Begriff des Zusammenhangs soll die Eigenschaften einer Ableitung 
+eines Vektors entlang einer Kurve in einer Mannigfaltigkeit beschreiben.
+Wir brauchen daher ein Vektorraumbündel $\pi\colon E\to M$, welches
+die Vektoren enthält, die abgeleitet werden sollen.
+Ein differenzierbarer Schnitt von $E$ ist eine vektorwertige
+Funktion, die Werte in der jeweils ``richtigen'' Faser annimmt.
+Es müssen also Schnitte abgeleitet werden.
+Die Richtung der Ableitung wird durch ein Feld von Tangentialvektoren
+an die Mannigfaltigkeit gegeben.
+
+\begin{definition}
+Ein \emph{Zusammenhang} ist eine Abbildung
+\index{Zusammenhang}%
+\[
+\nabla 
+\colon
+\Gamma(TM)\times \Gamma(E) \to \Gamma(E)
+:
+(X,Y) \mapsto \nabla_X Y
+\]
+mit folgenden Eigenschaften:
+\begin{enumerate}
+\item $\nabla_X Y$ ist $C^\infty(M)$-linear in $X$, d.~h. für 
+$f_1,f_2\in C^{\infty}(M)$, $X_1,X_2\in \Gamma(TM)$ und $Y\in\Gamma(E)$ gilt
+\[
+\nabla_{f_1X_1+f_2X_2}Y
+=
+f_1\nabla_{X_1}Y + f_2\nabla_{X_2}F.
+\]
+\item $\nabla_X Y$ ist linear in $Y$, d.~h. für $a_1,a_2\in\mathbb{R}$
+und $Y_1,Y_2\in \Gamma(E)$ gilt
+\[
+\nabla_X(a_1Y_1+a_2Y_2)
+=
+a_1\nabla_XY_1
++
+a_2\nabla_XY_2
+\]
+für jedes $X\in\Gamma(TM)$.
+\item
+$\nabla$ erfüllt die Produktregel: für $f\in C^\infty(M)$ gilt
+\index{Produktregel fur Zusammenhang@Produktregel für Zusammenhang}%
+\[
+\nabla_X (fY)
+=
+(X\cdot f)Y + f\nabla_X Y
+\]
+für $X\in\Gamma(TM)$ und $Y\in\Gamma(E)$.
+\end{enumerate}
+\end{definition}
+
+Die Produktregel-Bedingung hat die interessante Konsequenz, dass der
+Wert von $\nabla_XY$ in einem Punkt $p\in M$ nur vom Vektor $X(p)$ und
+von den Werten von $Y$ in einer beliebig kleinen Umgebung des Punktes
+$p$ in $M$ abhängt.
+Wir beweisen dies nicht vollständig, sondern überlegen uns nur die
+folgende Eigenschaft, mit deren Hilfe ein volständiger Beweis geführt
+werden kann \cite[Proposition 4.5]{buch:leerm}.
+
+\begin{lemma}
+Sei $\nabla$ ein Zusammenhang im Vektorraumbündel $\pi\colon E\to M$,
+$X\in \Gamma(TM)$, $Y\in \Gamma(E)$ und $p\in M$.
+Dann hängt die kovariante Ableitung $\nabla_XY$ im Punkt $p$ nur von
+den Werten von $X$ und $Y$ in einer beliebig kleinen Umgebung von $p$
+ab.
+Genauer: wenn $X=\tilde{X}$ und $Y=\tilde{Y}$ in einer Umgebung von
+$p$ ist, dann ist $\nabla_{\tilde{X}}\tilde{Y} = \nabla_XY$ im Punkt $p$.
+\end{lemma}
+
+\begin{proof}
+Wir müssen zeigen, dass $\nabla_X(Y-\tilde{Y})=0$ ist im Punkt $p$.
+Die Differenz $Y-\tilde{Y}$ ist $=0$ in einer Umgebung von $p$.
+Es genügt also zu zeigen, dass $\nabla_XY=0$ im Punkt $p$, wenn $Y=0$
+ist in einer Umgebung $U$ des Punktes $p$.
+Sei $\varphi\in C^\infty(M)$ derart, dass $\varphi(p)=1$ und 
+$\varphi$ ist verschieden von $0$ nur innerhalb von $U$.
+Dann ist das Produkt $\varphi Y=0$, innerhalb von $U$ weil $Y$ verschwindet
+und ausserhalb von $U$ weil dort $\varphi$ verschwindet.
+Wendet man $\nabla_X$ darauf an, folgt aus den Rechenregeln:
+\[
+0
+=
+\nabla X(\varphi Y)
+=
+(X\cdot \varphi)Y
++
+\varphi\nabla_X Y
+\qquad\Rightarrow\qquad
+\varphi\nabla_X Y
+=
+-(X\cdot\varphi)Y.
+\]
+An der Stelle $p$ wird die linke Seite zu $\nabla_XY$ und die rechte
+Seite verschwindet.
+Es folgt, dass $\nabla_XY=0$ ist im Punkt $p$.
+
+Ähnlich müssen wir jetzt auch noch zeigen, dass $\nabla_XY=0$ ist,
+wenn $X=0$ ist in einer Umgebung von $p$.
+Für eine Funktion $\varphi\in C^\infty(M)$ wie im ersten Teil des Beweises
+folgt diesmal
+\[
+0
+=
+\nabla_{\varphi X}Y
+=
+\varphi\nabla_XY.
+\]
+Im Punkt $p$ ist $\varphi(p)=1$ und damit folgt für die rechte Seite
+$\nabla_XY=0$.
+\end{proof}
+
+%
+% Tensorbündel
+%
+\subsection{Tensorbündel}
+Aus einem Vektorraumbündel $\pi\colon E\to M$ lässt sich ein neues
+Vektorraumbündel konstruieren, dessen Faser beliebige Tensorprodukte
+der Fasern des ursprünglichen Bündels sind.
+Dazu muss nur gezeigt werden, wie lokal im Bündel Tensorprodukte
+konstruiert werden sollen.
+Wir bezeichnen daher den Faserraum wieder mit $V$ und betrachten
+lokal das Bündel als triviales Bündel mit Hilfe einer Bündelkarte
+\[
+\varphi_\alpha
+\colon
+\pi^{-1}(U_\alpha)
+\to
+U_\alpha\times V 
+\]
+beschreiben können.
+
+Zur Beschreibung des Tensorproduktes verwenden wir die Darstellung
+mit Hilfe einer Basis.
+Sei also $v_1,\dots,v_m\in V$ eine Basis des Faservektorraums.
+Dann ist das $p$-fache Tensorprodukt von $V$ der Vektorraum aufgespannt
+von der Basis aus Tensoren der Form
+\[
+v_{i_1}\otimes \cdots\otimes v_{i_p}
+\]
+mit $i_1,\dots,i_p\in \{1,\dots,m\}$.
+Der Vektorraum des $p$-fachen Tensorproduktes ist also
+\[
+V^{p\otimes}
+=
+\underbrace{ V\otimes\cdots\otimes V }_{\displaystyle p}
+=
+\langle
+v_{i_1}\otimes\cdots\otimes v_{i_p}
+\mid
+1\le
+i_1,\dots,i_p 
+\le m
+\rangle.
+\]
+Durch Auswahl nur der antisymmetrischen Tensoren lässt sich auch
+der Vektorraum der $k$-Vektoren aufgespannt von den Vektoren
+\[
+v_{i_1}\wedge\cdots\wedge v_{i_p}
+\]
+mit $1\le i_1 < \dots < i_p\le m$.
+So entsteht der Vektorraum 
+\[
+V^{\wedge p}
+=
+\underbrace{V\wedge\dots\wedge V}_{\displaystyle p}
+=
+\langle
+v_{i_1}\wedge\cdots\wedge v_{i_p}
+\mid
+1\le i_1 < \dots < i_p\le m
+\rangle
+\]
+der $k$-Vektoren.
+
+Diese Konstruktion kann jetzt auch für ein Vektorraumbündel
+durchgeführt werden.
+Dazu wählt man wie vorhin eine Basis in $V$. 
+Die Abbildungen
+\[
+V_i
+\colon
+U_\alpha \to U_\alpha\times V
+:
+p\mapsto (p,v_i)
+\]
+sind $C^\infty(U_\alpha)$-linear unabhängige Schnitte des trivialen
+Bündels $U_\alpha\times F$.
+Zusammensetzung mit der Abbildung $\varphi_\alpha^{-1}$ macht aus den
+Schnitten $V_i$ $C^\infty(M)$-linear unabhängige Schnitte
+\[
+E_i
+\colon
+U_\alpha \to \pi^{-1}(U_\alpha)
+:
+p \mapsto \varphi_\alpha^{-1}(p,v_i).
+\]
+Das $p$-fache Tensorprodukt $E^{p\otimes}=E\otimes\dots\otimes E$ von $E$ 
+ist das Vektorraumbündel mit Faser $V^{p\otimes}$, welches lokal über der
+offenen Menge $U_\alpha\subset M$ durch die Schnitte 
+\[
+E_{i_1}\otimes \dots \otimes E_{i_p}
+\]
+mit
+$i_1,\dots,i_p\in\{1,\dots,m\}$
+aufgespannt wird.
+
+Nach dem gleichen Muster können auch Vektorraumbündel von
+antisymmetrischen $k$-Vektoren konstruiert werden.
+Ebenso ist es möglich, die verschiedenen Tensorpotenz oder
+äusseren Potenzen mit Hilfe der direkten Summe zu einer Algebra
+von Tensoren oder einer äusseren Algebra zusammenzubauen.
+
+Zum Vektorraum $V$ ist $V^*$ der duale Vektorraum der Linearformen
+auf $V$, also der linearen Abbildung von $V$ nach $\mathbb{R}$.
+Zu einer Basis $\{v_i\mid i=1,\dots,m\}$ von $V$ lässt sich dann
+die {\em duale Basis} aus den Linearformen $\beta_i$ konstruieren, die
+\index{duale Basis}%
+durch die Werte
+\[
+\langle \beta_i,v_k\rangle
+=
+\beta_i (v_k)
+=
+\delta_{ik}
+\]
+auf den Basisvektoren definiert ist.
+Damit lässt sich auch das Vektorraumbünden $E^*$ der Linearformen
+auf $E$ konstruieren.
+Wendet man die Konstruktion des Tensorprodukts oder des Wedge-Produkts
+auf das Bündel $E^*$ an, entsteht das Bündel der 
+$p$-Formen.
+
+Die Konstruktionen, die in früheren Kapiteln für Tangentialvektoren
+und Differentialformen aufgebaut wurden, sind also auf 
+Vektorraumbündel mit beliebigen Fasern verallgemeinerungsfähig.
+Die früheren Konstruktionen sind Spezialfälle für das Tangentialbündel
+$TM$.
+
+%
+% Kovariante Ableitung von Tensorfeldern
+%
+\subsection{Kovariante Ableitung von Tensorfeldern}
+Ein Zusammenhang auf einem Vektorraumbündel $\pi\colon E\to M$ lässt
+sich zu einem Zusammenhang auf dem Tensorbündel erweitern.
+Da ein Zusammenhang linear ist, muss nur definiert werden, wie
+der Zusammenhang auf Tensorprodukten von Vektoren wirkt.
+Dies führt auf den folgenden Satz.
+
+\begin{satz}
+Sei $\pi\colon E\to M$ eine Vektorraumbündel und 
+$\nabla \colon TM\times \Gamma(E)\to\Gamma(E)$
+ein Zusammenhang.
+Dann gibt es genau einen Zusammenhang
+$\nabla \colon TM \times \Gamma(E^{\otimes p})\to\Gamma(E^{\otimes p})$
+auf $E^{\otimes p}$, der
+\[
+\nabla_X(Y_1\otimes\dots\otimes Y_p)
+=
+(\nabla_XY_1) \otimes\dots\otimes Y_p
++
+\dots
++
+Y_1\otimes\dots\otimes (\nabla_XY_p)
+\]
+erfüllt.
+Es gibt genau einen Zusammenhang auf $E^{\wedge p}$, der
+\[
+\nabla_X(Y_1\wedge\dots\wedge Y_p)
+=
+(\nabla_XY_1)\wedge\dots\wedge Y_p
++
+\dots
++
+Y_1\wedge\dots\wedge(\nabla_XY_p)
+\]
+erfüllt.
+\end{satz}
+
+Auch auf dem dualen Vektorraumbündel $E^*$ lässt sich ein Zusammenhang
+definieren.
+Dazu beachte man, dass sich aus einer Linearform $\beta\in\Gamma(E^*)$
+und einem Vektorfeld $Y\in \Gamma(E)$ die Funktion
+$\langle\beta,Y\rangle$ definieren lässt.
+Für Funktionen stimmt die kovariante Ableitung mit der Wirkung des
+Vektors $X$ überein.
+Da die Abbildung $(\beta,Y)\to\langle\beta,Y\rangle$ bilinear ist,
+muss die Ableitung die Form einer Produktregel annehmen, also
+\[
+\nabla_X\langle \beta,Y\rangle
+=
+X\cdot \langle \beta,Y\rangle
+=
+\langle \nabla_X\beta,Y\rangle
++
+\langle \beta,\nabla_X Y\rangle.
+\]
+Aufgelöst nach $\nabla_X\beta$ wird dies zu
+\begin{equation}
+\langle \nabla_X\beta,Y\rangle
+=
+X\cdot \langle \beta,Y\rangle
+-
+\langle \beta,\nabla_X Y\rangle.
+\label{buch:zusammenhang:kovarianteableitung:eqn:dual}
+\end{equation}
+Indem man für $Y$ die Schnitte einer Basis einsetzt, 
+legt
+\eqref{buch:zusammenhang:kovarianteableitung:eqn:dual}
+die Werte der Linearform $\nabla_X\beta$ auf allen Basisvektoren
+fest.
+
+Wir verzichten für die Konstruktion der kovarianten Ableitung auf $E^*$
+auf einen formellen Beweis und beschränken uns darauf, eine Schwierigkeit
+der Definition \eqref{buch:zusammenhang:kovarianteableitung:eqn:dual}
+zu adressieren.
+Der Wert von $\nabla_X\beta$ im Punkt $p\in M$ ist festgelegt durch
+die Werte auf den Vektoren $Y(p)$.
+Multipliziert man $Y$ mit einer Funktion, die an der Stelle $p$ den Wert
+$1$ hat, dann ändert sich der Wert auf der linken Seite nicht, aber
+auf der rechten Seite treten zusätzlich Ableitungen von $f$ auf.
+Sei also $f$ eine Funktion auf $M$ mit $f(p)=1$.
+Setzt man $fY$ anstelle von $Y$ in die Definition
+\eqref{buch:koordinaten:tangentialvektoren:def:einsteinschesummenkonvention}
+ein, erhält man
+\begin{align*}
+\langle
+\nabla_X \beta,fY
+\rangle
+&=
+X\cdot\langle \beta,fY\rangle
+-
+\langle \beta,\nabla_X(fY)\rangle
+\\
+&=
+X\cdot(f\langle \beta,Y\rangle)
+-
+\langle \beta,
+(X\cdot f)Y
++
+f\nabla_XY
+\rangle
+\\
+&=
+(X\cdot f)\langle \beta,Y\rangle
++
+fX\cdot \langle \beta,Y\rangle
+-
+\langle \beta,
+(X\cdot f)Y
+\rangle
+-
+\langle \beta,
+f\nabla_XY
+\rangle
+\\
+&=
+(X\cdot f)
+\langle \beta,Y\rangle
++
+f X\cdot \langle \beta,Y\rangle
+-
+(X\cdot f) \langle \beta, Y \rangle
+-
+f\langle \beta, \nabla_XY \rangle
+\\
+&=
+f X\cdot \langle \beta,Y\rangle
+-
+f\langle \beta, \nabla_XY \rangle
+\\
+&=
+\langle \nabla_X\beta,Y\rangle.
+\end{align*}
+Der Faktor $f$ hat also keinen Einfluss auf den Wert von
+\eqref{buch:zusammenhang:kovarianteableitung:eqn:dual}.
+
