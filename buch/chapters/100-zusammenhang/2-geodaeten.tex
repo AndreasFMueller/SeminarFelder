@@ -623,7 +623,8 @@ $\gamma(t)$ gibt mit $\gamma(0)=p$ und $\dot{\gamma}(t)=\vec{v}$.
 
 \begin{definition}[Exponentialabbildung]
 \label{buch:zusammenhang:geodaeten:def:exponentialabbildung}
-Die Exponentialabbildung im Punkt $p$ einer riemannschen
+Die \emph{Exponentialabbildung} im Punkt $p$ einer riemannschen
+\index{Exponentialabbildung}%
 Mannigfaltigkeit $M$ ist diejenige Abbildung einer Umgebung $U\subset T_pM$
 nach $M$ mit der Eigenschaft, dass $\exp_p(t\vec{v})$ eine Geodäte
 durch $p$ mit Tangentialvektor
@@ -642,5 +643,74 @@ ist die folgende Konstruktion.
 Um das Bild $\exp_p(\vec{v})$ zu finden, konstruiert man die
 Geodäte $\gamma(t)$ durch $p$ mit Richtungsvektor $\dot{\gamma}(0)=\vec{v}$.
 Dann ist $\exp_p(\vec{v})=\gamma(1)$.
+Diese Definition verlangt aber, dass die Kurve $\gamma(t)$ auch tatsächlich
+für beliebige Zeit $t$ definiert ist.
+Die üblichen Sätze über gewöhnliche Differentialgleichungen wie der
+Satz von Picard-Lindelöf garantieren die Existenz einer Lösung nur
+\index{Satz von Picard-Lindelöf}%
+für eine offene Umgebung von $t=0$.
 
+Der Satz von Picard-Lindelöf gilt für eine Differentialgleichung
+in der Form $\dot{x} = f(t,x)$ mit einer Funktion
+$f\colon\mathbb{R}\times\mathbb{R}^n \to \mathbb{R}^n$, die im zweiten
+Argument eine Lipschitz-Bedingung erfüllt.
+\index{Lipschitz-Bedingung}%
+Diese garantiert, dass die Ableitung $\dot{x}$ nicht zu gross wird und
+damit die Lösung $x(t)$ divergiert.
+Es ist wohlbekannt, dass für stärkere Bedingungen an die die Funktion $f$ 
+die Lösung für beliebige Zeit $t$ existiert.
+Zum Beispiel ist die Lösung der linearen Differentialgleichung
+$\dot{x}=Ax$ mit einer Matrix $A\in M_{n\times n}(\mathbb{R})$
+durch die Matrixexponentialfunktion $x(t) = e^{At}x_0$ gegeben, die
+für beliebige $t\in\mathbb{R}$ definiert ist.
+Sogar wenn die Matrix $A$ in einem Intervall $I\subset\mathbb{R}$
+auf glatte Art von $t$ abhängt lässt sich zeigen, dass sich eine
+Lösung immer auf das ganze Intervall ausdehnen lässt.
+Ein Beweis wird in \cite[Theorem 4.31]{buch:leerm} gegeben.
+
+Die Differentialgleichung der Geodäten erfüllt aber eine noch 
+stärkere Bedingung.
+Entlang einer Lösung wird der Tangentialvektor $\dot{\gamma}(t)$ 
+für alle Zeiten, für die die Lösung definiert ist, parallel transportiert.
+Insbesondere bleibt seine Länge immer gleich gross, es besteht gar
+nicht die Gefahr, dass $\dot{\gamma}(t)$ divergiert.
+Was hingegen geschehen könnte ist, dass $\gamma(t)$ in $M$ nicht
+mehr definiert werden kann.
+
+Es gibt natürlich Fälle, wo es unvermeidlich ist, dass $\gamma(t)$
+nur für ein Intervall $(a,b)$ definiert sein kann.
+In einer beschränkten offenen Menge in $\mathbb{R}^n$ sind die Geodäten
+Geraden.
+Sie sind nur solange definiert, als $\gamma(t)$ die Menge
+nicht verlässt.
+Auf einer kompakten Mannigfaltigkeit kann dies nicht passieren,
+wir dürfen annehmen, dass der Grenzwert $\gamma(t)$ für $t\to b$
+wieder in $M$ liegt.
+Das Argument zeigt also, dass eine Geodäte nicht irgendwo im inneren
+einer riemannschen Mannigfaltigkeit enden kann.
+Wenn der Grenzwert $\gamma(t)$ für $t\to b$ in $M$ existiert, dann
+lässt sich die Geodäte auch darüber hinaus fortsetzen.
+
+Wenn sich die Geodäte auf beliebige Parameter $t\in\mathbb{R}$
+ausdehen lässt, nennen wir die Mannigfaltigkeit geodätisch vollständig.
+Als formale Definition verwenden wir die folgende.
+
+\begin{definition}[geodätisch vollständig]
+\label{buch:zusammenhang:geodaeten:def:vollst}
+Eine riemannsche Mannigfaltigkeit $M$ heisst \emph{geodätisch vollständig},
+wenn die Exponentialabbildung auf ganz $TM$ definiert ist.
+\index{geodätisch vollständig}%
+\end{definition}
+
+In vielen Fällen ist die Voraussetzung der geodätischen Vollständigkeit
+nicht nötig.
+Die allgemeine Relativitätstheorie beschreibt zum Beispiel die Bahnen
+von Teilchen oder Lichtstrahlen als Geodäten in einer pseudoriemannschen
+Mannigfaltigkeit.
+\index{Universum}%
+Wir wissen nicht, ob das Universum geodätisch vollständig ist im
+mathematischen Sinn der
+Definition~\ref{buch:zusammenhang:geodaeten:def:vollst}.
+Wir dürfen aber davon ausgehen, dass die Exponentialabbildung für alle
+praktisch sinnvollen Tangentialvektoren definiert ist.
 
