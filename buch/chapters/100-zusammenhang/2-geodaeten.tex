@@ -868,6 +868,40 @@ g_{is}\Gamma^s_{lk}
 da die Christoffelsymbole verschwinden.
 \end{proof}
 
+Auch die Ableitungen von $g^{ik}$ verschwinden im Punkt $0$.
+Dies lässt sich noch viel allgemeiner beweisen.
+Sind $A(t)$ und $B(t)$ inverse Matrizen mit $A(0)=B(0)=I$, die von einem
+Parameter $t$ abhängen.
+Ausserdem sei $\dot{A}(0)=0$
+Dann ist die Ableitung des Produktes $A(t)B(t)=I$
+\begin{align*}
+\frac{d}{dt}I\bigg|_{t=0}
+&=
+\biggl(
+\frac{dA}{dt}(t) B(t)
++
+A(t)
+\frac{dB}{dt}(t)
+\biggr)\bigg|_{t=0}
+\\
+&=
+\dot{A}(0)
+B(0)
++
+A(0)
+\dot{B}(0)
+=
+\dot{A}(0)
++
+\dot{B}(0)
+=
+\dot{B}(0).
+\end{align*}
+Somit verschwindet auch die erste Ableitung der inversen Matrix von $A$.
+Angwendet auf $A=g_{ik}$ und $B=g^{ik}$ und eine der Koordinaten als
+Parameter folgt, dass die partiellen ersten Ableitungen von $g^{ik}$
+an der Stelle $p$ ebenfalls verschwinden.
+
 Die speziell einfache Form der Christoffelsymbole in Normalkoordinaten
 wird später ermöglichen, auch den riemannschen Krümmungstensor an der
 Stelle zu berechnen.
