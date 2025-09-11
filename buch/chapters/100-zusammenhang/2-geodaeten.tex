@@ -714,3 +714,163 @@ Definition~\ref{buch:zusammenhang:geodaeten:def:vollst}.
 Wir dürfen aber davon ausgehen, dass die Exponentialabbildung für alle
 praktisch sinnvollen Tangentialvektoren definiert ist.
 
+Die Definition der Exponentialabbildung verlangt, dass man entlang einer
+Geodäten vom Ausgangspunkt $p$ zum Endpunkt $\exp_p(\vec{v})$ gelangen
+kann.
+Der Definitionsbereich der Exponentialabbildung muss also die Eigenschaft
+haben, dass mit jedem Vektor $\vec{v}$ auch die Strecke zwischen dem Nullpunkt
+und $\vec{v}$ im Definitionsbereich enthalten ist.
+Solche Mengen heissen \emph{sternförmig}.
+
+\begin{definition}[sternförmig]
+\label{buch:zusammenhang:geodaeten:def:sternfoermig}
+Eine Teilmenge $U\subset V$ eines Vektorraumes heisst \emph{sternförmig},
+wenn mit jedem Punkt $u\in U$ auch alle skalierten Vektoren $tu\in U$
+mit $t\in [0,1]$ in $U$ sind.
+\index{sternformig@sternförmig}%
+\end{definition}
+
+%
+% Normalkoordinaten
+%
+\subsection{Normalkoordinaten}
+Die Exponentialabbildung kann dazu verwendet werden, in der
+Umgebung eines Punktes der Mannigfaltigkeit ein Koordinatensystem
+zu definieren, in dem die Christoffel-Symbole besonders einfache
+Form annehmen.
+
+\begin{definition}[Normale Umgebung]
+Eine \emph{normale Umgebung} eines Punktes $p$ in einer 
+riemannschen Mannigfaltigkeit ist eine offene Menge $U\subset M$,
+die diffeomorphes Bild einer sternförmigen Menge in $T_pM$ ist.
+\end{definition}
+
+In einer normalen Umgebung kann man jetzt Koordinaten einführen,
+indem man in $T_pM$ eine Basis wählt.
+Bilden die Vektoren $b_1,\dots,b_n$ eine Basis, dann gibt es reelle
+Zahlen $\xi^1,\dots,\xi^n$ mit 
+\[
+\exp_p(\xi^1b_1+\dots+\xi^nb_n)=u.
+\]
+Diese Abbildung ist die Zusammensetzung der 
+Abbildung
+\[
+B
+\colon
+\mathbb{R}^n \to T_pM
+:
+(\xi^1,\dots,\xi^n)
+\mapsto
+\xi^1b_1+\dots+\xi^nb_n
+\]
+mit der Exponentialabbildung.
+Sie ist definiert, solange $B\xi$ im Definitionsbereich von $\exp_p$
+enthalten ist.
+Die Umkehrung $B^{-1}\circ\exp_p^{-1}$ ist eine Karte auf $U$.
+
+Wählt man für $b_1,\dots,b_n$ eine orthonormale Basis von $T_pM$,
+dann entsteht eine Karte mit sogenannten \emph{Normalkoordinaten}
+zentriert im Punkt $p$,
+die sich durch besondere Eigenschaften auszeichnen.
+Zunächst sind nach Konstruktion die zur Basis gehörigen Tangentialvektoren
+orthonormiert, so dass der metrische Tensor durch $g_{ik}=\delta_{ik}$
+gegeben ist.
+
+\begin{satz}[Eigenschaften von Normalkoordinaten]
+\label{zusammenhang:geodaeten:satz:normalkoordinaten}
+Sei $M$ eine $n$-dimensionale riemannsche Mannigfaltigkeit und $(U,x^i)$
+ein Normalkoordinatensystem im Punkt $p\in M$.
+Dann gilt
+\begin{enumerate}
+\item Die Koordinaten von $p$  sind $(0,\dots,0)$.
+\item Die Komponenten des metrischen Tensors in $p$ sind $g_{ik}=\delta_{ik}$.
+\item Für jeden Tangentialvektor $v=v^i\partial_i$ ist die Geodäte mit
+Richtung $v$ in Normalkoordinaten gegeben durch $(tv^1,\dots,tv^n)$.
+\item Die Christoffelsymbole $\Gamma^i_{kl}$ verschwinden im Punkt $p$.
+\item Alle ersten partiellen Ableitungen der metrischen Koeffizienten
+verschwinden im Punkt $p$.
+\end{enumerate}
+\end{satz}
+
+\begin{proof}
+Die ersten drei Eigenshaften ergeben sich unmittelbar aus der Definition
+der Normalkoordinaten.
+Da die Geodäten Geraden sind, verschwinden die zweiten Ableitungen
+der Koordinaten eines Geodätenpunkts.
+Die Geodätengleichungen reduzieren sich damit auf
+\[
+\Gamma^i_{kl} v^kv^l = 0
+\]
+im Punkt $p$.
+Durch Einsetzen der Basisvektoren $b_a$ mit Koordinaten $\delta_a^i$
+bekommt man daraus zunächst
+\begin{equation}
+0
+=
+\Gamma^i_{kl}v^kv^l
+=
+\Gamma^i_{kl}\delta_a^k\delta_a^l
+=
+\Gamma^i_{aa}.
+\label{buch:zusammenhang:geodaeten:eqn:Giaa}
+\end{equation}
+Setzt man Linearkombinationen $b_a\pm b_b$ mit den Koordinaten
+$\delta_a^i\pm \delta_b^i$ für $v$ ein, erhält man
+\begin{align*}
+0
+&=
+\Gamma^i_{kl} (\delta_a^k \pm \delta_b^k)(\delta_a^l \pm t\delta_b^l)
+\\
+&=
+\Gamma^i_{kl}(\delta_a^k\delta_a^l
+\pm \delta_a^k\delta_b^l
+\pm \delta_b^k\delta_a^l
++ \delta_b^k\delta_b^l)
+\\
+&=
+\Gamma^i_{aa}
+\pm
+\Gamma^i_{ab}
+\pm
+\Gamma^i_{ba}
++
+\Gamma^i_{bb}
+\\
+&=
+\pm
+2
+\Gamma^i_{ab},
+\end{align*}
+wobei sowohl
+\eqref{buch:zusammenhang:geodaeten:eqn:Giaa}
+als auch die Symmetrie der Christoffelsymbole verwendet wurden.
+
+Die Christoffelsymbole des Levi-Cività-Zusammenhangs ergaben sich
+als Lösungen des Gleichungssystems~\ref{buch:zusammenhang:kovabl:eqn:gGamma}.
+Im Punkt $p$ vereinfachen Sie sich wegen $g_{ik}=\delta_{ik}$ zu
+\[
+\frac{\partial g_{il}}{\partial x_k}
+=
+g_{sl}\Gamma^s_{ik}
++
+g_{is}\Gamma^s_{lk}
+=
+\delta_{sl}\Gamma^s_{ik}
++
+\delta_{is}\Gamma^s_{lk}
+=
+\Gamma^l_{ik}
++
+\Gamma^i_{lk}
+=
+0,
+\]
+da die Christoffelsymbole verschwinden.
+\end{proof}
+
+Die speziell einfache Form der Christoffelsymbole in Normalkoordinaten
+wird später ermöglichen, auch den riemannschen Krümmungstensor an der
+Stelle zu berechnen.
+
+
+
