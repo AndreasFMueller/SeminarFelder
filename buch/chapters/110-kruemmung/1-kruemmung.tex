@@ -1090,7 +1090,7 @@ Sie heisst deshalb auch die \emph{differentielle Bianchi-Identität}.
 \begin{satz}[Differentielle Bianchi-Identität]
 Für den riemannschen Krümmungstensor $Rm$ auf einer riemannschen
 Mannigfaltigkeit
-\[
+\begin{equation}
 \nabla_W Rm(X,Y,U,V)
 +
 \nabla_U Rm(X,Y,V,W)
@@ -1098,7 +1098,8 @@ Mannigfaltigkeit
 \nabla_V Rm(X,Y,W,U)
 =
 0
-\]
+\label{buch:kruemmung:kruemmung:eqn:diffbianchi}
+\end{equation}
 oder in Komponenten
 \begin{equation}
 R_{ikuv;w}
@@ -1259,7 +1260,7 @@ R_{ikuv;w}
 R_{ikvw;u}
 +
 R_{ikwu;v}
-&=0
+&=0.
 \label{buch:kruemmung:kruemmung:eqn:diffbianchiproof}
 \end{align}
 \egroup
@@ -1271,3 +1272,125 @@ Wenn aber ein Tensor in Normalkoordinaten verschwindet, dann
 verschwindet er auch in allen anderen Koordinatensystemen.
 Damit ist die differentielle Bianchi-Identität bewiesen.
 \end{proof}
+
+Man kann den Beweis auch etwas ``koordinatenfreier'' formulieren.
+Dazu betrachten wir nur die Vektoren $\partial_i=\partial/\partial x^i$ in
+Normalkoordinaten.
+Die Symbole $X$, $Y$, $U$, $V$ und $W$ stehen für einen dieser
+Vektoren.
+Da die Komponenten von $\partial_i = \delta_{i}^k \partial_k$ konstant
+sind, verschwinden alle kovarianten Ableitungen aller dieser Vektoren.
+Ausserdem ist $[X,Y]=0$ für zwei beliebige solche Vektoren.
+
+Dazu schreibt man
+\begin{align*}
+\nabla_W Rm(X,Y,U,V)
+&=
+\nabla_W
+\langle R(U,V)Y,X\rangle
+\\
+&=
+\nabla_W
+\langle
+\nabla_U\nabla_V Y - \nabla_V\nabla_U +\nabla_{[U,V]}
+,X
+\rangle.
+\intertext{Der dritte Term fällt wegen $[U,V]=0$ weg.
+Den Operator $\nabla_W$ kann man in das Skalarprodukt
+nehmen, was auf}
+&=
+\langle
+\nabla_W \nabla_U \nabla_V Y
+-
+\nabla_W \nabla_V \nabla_U
+,X
+\rangle
++
+\langle
+\nabla_U \nabla_V Y
+-
+\nabla_V \nabla_V
+,\nabla_W X
+\rangle
+\intertext{führt.
+Wegen $\nabla_W X=0$ blebit nur das erste Skalarprodukt, es bleibt daher}
+\nabla_W Rm(X,Y,U,V)
+&=
+\langle
+\nabla_W \nabla_U \nabla_V Y
+-
+\nabla_W \nabla_V \nabla_U Y
+,X
+\rangle
+\end{align*}
+Um die differentielle Bianchi-Identität zu bekommen, schreiben wir
+diesen Ausdruck drei mal mit zyklisch permutierten Vektoren $U$, $V$ und $W$
+und erhalten
+\begin{align*}
+\eqref{buch:kruemmung:kruemmung:eqn:diffbianchi}
+&=
+\nabla_W Rm(X,Y,U,V)
++
+\nabla_U Rm(X,Y,V,W)
++
+\nabla_V Rm(X,Y,W,U)
+\\
+&=
+\langle
+\nabla_W \nabla_U \nabla_V Y
+-
+\nabla_W \nabla_V \nabla_U Y
+,X
+\rangle
++
+\langle
+\nabla_U \nabla_V \nabla_W Y
+-
+\nabla_U \nabla_W \nabla_V Y
+,X
+\rangle
+\\
+&\qquad
++
+\langle
+\nabla_V \nabla_W \nabla_U Y
+-
+\nabla_V \nabla_U \nabla_W Y
+,X
+\rangle
+\intertext{Wir gruppieren die dreifachen kovarianten Ableitungen
+nach dem Operator ganz rechts und erhalten}
+&=
+\langle
+(\nabla_W \nabla_U 
+-
+\nabla_U \nabla_W)\nabla_V Y
++
+(\nabla_U \nabla_V
+-
+\nabla_V \nabla_U)\nabla_W Y
++
+(\nabla_V \nabla_W
+-
+\nabla_W \nabla_V) \nabla_U Y
+,X
+\rangle.
+\intertext{Dies können wir wieder mit der Abbildung $R$ als}
+&=
+\langle
+R(W,U)\nabla_VY
++
+R(U,V)\nabla_WY
++
+R(V,W)\nabla_UY
+,X\rangle
+\intertext{schreiben.
+Darin verschwinden aber die kovarianten Ableitungen $\nabla_VY=0$
+wegen der speziellen Wahl der Vektoren und es bleibt}
+&=0.
+\end{align*}
+Da sich jedes Vektorfeld als Linearkombination der Basisvektoren
+schreiben lässt, gilt die differentielle Bianchi-Identät allgemein.
+
+
+
