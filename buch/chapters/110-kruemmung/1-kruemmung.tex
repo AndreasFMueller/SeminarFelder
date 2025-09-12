@@ -574,9 +574,9 @@ R_{ruvm}
 \subsubsection{Ableitungen der Christoffelsymbole}
 Die Christoffelsymbole können mittels
 \eqref{buch:zusammenhang:kovabl:eqn:Gamma}
-durch die ersten Ableitungen der metrischen Koeffizienten ausgedrückt,
+durch die ersten Ableitungen der metrischen Koeffizienten ausgedrückt.
 wir berechnen an der Stelle $p$
-\begin{align*}
+\begin{align}
 \frac{\partial \Gamma^r_{uv}}{\partial x^m}
 &=
 \frac{\partial}{\partial x^m}\biggl(
@@ -589,6 +589,7 @@ wir berechnen an der Stelle $p$
 \frac{\partial g_{uv}}{\partial x^l}
 \biggr)
 \biggr)
+\notag
 \\
 &=
 \frac12\frac{\partial g^{rl}}{\partial x^m}
@@ -609,6 +610,7 @@ wir berechnen an der Stelle $p$
 -
 \frac{\partial g_{uv}}{\partial x^l}
 \biggr)
+\notag
 \\
 &=
 \frac12
@@ -631,6 +633,7 @@ wir berechnen an der Stelle $p$
 -
 \frac{\partial^2 g_{uv}}{\partial x^m\,\partial x^l}
 \biggr)
+\notag
 \\
 &=
 \frac12\biggl(
@@ -640,9 +643,19 @@ wir berechnen an der Stelle $p$
 -
 \frac{\partial^2 g_{uv}}{\partial x^m\,\partial x^r}
 \biggr).
-\end{align*}
+\label{buch:kruemmung:kruemmung:eqn:RGamma2}
+\end{align}
+Die Ableitungen der Christoffelsymbole im Punkt $p$ können also
+ausschliesslich durch zweite Ableitungen der metrischen Koeffizienten
+ausgedrückt werden.
 
 \subsubsection{Riemannscher Krümmungstensor}
+Die nicht abgeleiteten Christoffelsymbole in
+\eqref{buch:kruemmung:kruemmung:eqn:Rruvm}
+verschwinden an der Stelle $p$,
+Es müssen also nur noch die Ableitungen der $\Gamma$ unter Verwendung
+von \eqref{buch:kruemmung:kruemmung:eqn:RGamma2}
+dargestellt werden.
 Durch Vertauschung der Indizes $v$ und $m$ entsteht der zweite
 Term in \eqref{buch:kruemmung:kruemmung:eqn:Rruvm} und damit
 wird der Krümmungstensor zu
@@ -714,6 +727,8 @@ R_{rumv}
 =
 -R_{ruvm}.
 \end{align*}
+
+\subsubsection{Bianchi-Identität}
 Man kann aber noch eine weitere Eigenschaft ablesen, die im nächsten
 Abschnitt noch ausführlicher studiert werden soll.
 Sie lautet
@@ -801,7 +816,9 @@ R_{rmuv}
 \end{align}
 \egroup
 Die gleichfarbigen Terme heben sich gegenseitig weg.
-Diese Identität heisst die algebraische Bianchi-Identität.
+Diese Identität heisst die \emph{algebraische Bianchi-Identität}.
+Die hier gegebene Herleitung basiert jedoch auf der speziellen
+Art der Koordinaten.
 
 %
 % Die Bianchi-Identitäten
@@ -1069,3 +1086,9 @@ Sie heisst deshalb auch die \emph{differentielle Bianchi-Identität}.
 \index{Bianchi-Identitat@Bianchi-Identität!differentiell}%
 \index{differentielle Bianchi-Identitat@differentielle Bianchi-Identität}%
 
+
+\begin{satz}[Differentielle Bianchi-Identität]
+\end{satz}
+
+\begin{proof}
+\end{proof}

@@ -5,12 +5,15 @@
 # (c) 2020 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
 ./chapters --auxfile=../build/buch.aux <<EOF
+#
 # Kapitel  1
 chapter=1
 2
 6
+#
 # Kapitel  2
 chapter=2
+#
 # Kapitel  3
 chapter=3
 2
@@ -24,6 +27,7 @@ chapter=3
 27
 29
 30
+#
 # Kapitel  4
 chapter=4
 13
@@ -32,6 +36,7 @@ chapter=4
 26
 29
 34
+#
 # Kapitel  5
 chapter=5
 2
@@ -45,42 +50,52 @@ chapter=5
 25
 29
 33
+#
 # Kapitel  6
 chapter=6
 5
 7
 10
 11
+#
 # Kapitel  7
 chapter=7
 13
 14
+#
 # Kapitel  8
 chapter=8
 5
 6
 22
+#
 # Kapitel  9
 chapter=9
 4
 6
+#
 # Kapitel 10
 chapter=10
 2
 3
 7
+#
 # Kapitel 11
 chapter=11
 2
 5
 15
-# Kapitel 12: Krümmung
+#
+# Kapitel 12
 chapter=12
 2
-18
-21
-31
-# Kapitel 13: Topologie
+9
+12
+20
+23
+33
+#
+# Kapitel 13
 chapter=13
 2
 4
@@ -94,6 +109,7 @@ chapter=13
 25
 32
 33
+#
 # Kapitel 14 geoalgebra
 chapter=geoalgebra
 4
@@ -103,6 +119,7 @@ chapter=geoalgebra
 13
 14
 15
+#
 # Kapitel 15 nerven
 chapter=nerven
 2
@@ -113,6 +130,7 @@ chapter=nerven
 12
 13
 14
+#
 # Kapitel 16 poinbendix
 chapter=poinbendix
 4
@@ -120,20 +138,26 @@ chapter=poinbendix
 7
 8
 10
+#
 # Kapitel 17 elastomechanik
 chapter=elastomechanik
+#
 # Kapitel 18 maxwell
 chapter=maxwell
+#
 # Kapitel 19 diffortho
 chapter=diffortho
 2
 5
+#
 # Kapitel 20 helmholtz
 chapter=helmholtz
 11
 12
+#
 # Kapitel 21 schall
 chapter=schall
+#
 # Kapitel 22 reaktdiff
 chapter=reaktdiff
 5
@@ -142,10 +166,12 @@ chapter=reaktdiff
 12
 14
 15
+#
 # Kapitel 23 mongeampere
 chapter=mongeampere
 4
 5
+#
 # Kapitel 24 mongekant
 chapter=mongekant
 2
@@ -153,6 +179,7 @@ chapter=mongekant
 10
 12
 14
+#
 # Kapitel 25 neuronal
 chapter=neuronal
 3
@@ -164,6 +191,7 @@ chapter=neuronal
 13
 14
 15
+#
 # Kapitel 26 parallelisierung
 chapter=parallelisierung
 8
@@ -177,6 +205,7 @@ chapter=parallelisierung
 20
 21
 23
+#
 # Kapitel 27 openfoam
 chapter=openfoam
 10
@@ -184,10 +213,12 @@ chapter=openfoam
 13
 15
 18
+#
 # Kapitel 28 reynolds
 chapter=reynolds
 7
 9
+#
 # Kapitel 29 ueberschall
 chapter=ueberschall
 5
@@ -197,6 +228,7 @@ chapter=ueberschall
 11
 13
 14
+#
 # Kapitel 30 wirbelringe
 chapter=wirbelringe
 2
@@ -205,6 +237,7 @@ chapter=wirbelringe
 8
 12
 16
+#
 # Kapitel 31 geostrophisch
 chapter=geostrophisch
 4
@@ -215,6 +248,7 @@ chapter=geostrophisch
 13
 14
 15
+#
 # Kapitel 32 rossby
 chapter=rossby
 3
@@ -225,6 +259,7 @@ chapter=rossby
 9
 13
 14
+#
 # Kapitel 33 fourier
 chapter=fourier
 3
@@ -232,6 +267,7 @@ chapter=fourier
 7
 8
 9
+#
 # Kapitel 34 particles
 chapter=particles
 EOF
