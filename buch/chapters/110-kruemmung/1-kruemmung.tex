@@ -1088,7 +1088,186 @@ Sie heisst deshalb auch die \emph{differentielle Bianchi-Identität}.
 
 
 \begin{satz}[Differentielle Bianchi-Identität]
+Für den riemannschen Krümmungstensor $Rm$ auf einer riemannschen
+Mannigfaltigkeit
+\[
+\nabla_W Rm(X,Y,U,V)
++
+\nabla_U Rm(X,Y,V,W)
++
+\nabla_V Rm(X,Y,W,U)
+=
+0
+\]
+oder in Komponenten
+\begin{equation}
+R_{ikuv;w}
++
+R_{ikvw;u}
++
+R_{ikwu;v}
+=
+0.
+\label{buch:kruemmung:kruemmung:eqn:diffbianchikomp}
+\end{equation}
 \end{satz}
 
 \begin{proof}
+Unter Verwendung von Normalkoordinaten lässt sich die kovariante
+Ableitung sehr einfach berechnen.
+Wir verwenden die aus 
+\ref{buch:kruemmung:kruemmung:eqn:Rmkovariant}
+abgeleitete Formel
+\[
+R_{ikuv}
+=
+\frac12
+\biggl(
+\frac{\partial^2 g_{iv}}{\partial x^u\,\partial x^k}
+-
+\frac{\partial^2 g_{kv}}{\partial x^u\,\partial x^i}
+-
+\frac{\partial^2 g_{iu}}{\partial x^v\,\partial x^k}
++
+\frac{\partial^2 g_{ku}}{\partial x^v\,\partial x^i}
+\biggr)
+\]
+für die Komponenten des Riemannschen Krümmungstensors.
+Die kovariante Ableitung an der Stelle $p$ stimmt mit der gewöhnlichen
+partiellen Ableitung überein, daher wird die
+Summe~\eqref{buch:kruemmung:kruemmung:eqn:diffbianchikomp}
+\bgroup
+\definecolor{farbeeins}{rgb}{0.4,0.4,0.8}
+\definecolor{farbezwei}{rgb}{1.0,0.2,0.6}
+\definecolor{farbedrei}{rgb}{0.6,0.2,1.0}
+\definecolor{farbevier}{rgb}{0.2,0.6,1.0}
+\definecolor{farbefuenf}{rgb}{0,0.4,0.2}
+\definecolor{farbesechs}{rgb}{1.0,0.8,0}
+\begin{align}
+R_{ikuv;w}
++
+R_{ikvw;u}
++
+R_{ikwu;v}
+&=\phantom{+}
+\frac12
+\frac{\partial}{\partial x^w}
+\biggl(
+\frac{\partial^2 g_{iv}}{\partial x^u\,\partial x^k}
+-
+\frac{\partial^2 g_{kv}}{\partial x^u\,\partial x^i}
+-
+\frac{\partial^2 g_{iu}}{\partial x^v\,\partial x^k}
++
+\frac{\partial^2 g_{ku}}{\partial x^v\,\partial x^i}
+\biggr)
+\notag
+\\
+&\phantom{=}\,+
+\frac12
+\frac{\partial}{\partial x^u}
+\biggl(
+\frac{\partial^2 g_{iw}}{\partial x^v\,\partial x^k}
+-
+\frac{\partial^2 g_{kw}}{\partial x^v\,\partial x^i}
+-
+\frac{\partial^2 g_{iv}}{\partial x^w\,\partial x^k}
++
+\frac{\partial^2 g_{kv}}{\partial x^w\,\partial x^i}
+\biggr)
+\notag
+\\
+&\phantom{=}\,+
+\frac12
+\frac{\partial}{\partial x^v}
+\biggl(
+\frac{\partial^2 g_{iu}}{\partial x^w\,\partial x^k}
+-
+\frac{\partial^2 g_{ku}}{\partial x^w\,\partial x^i}
+-
+\frac{\partial^2 g_{iw}}{\partial x^u\,\partial x^k}
++
+\frac{\partial^2 g_{kw}}{\partial x^u\,\partial x^i}
+\biggr)
+\notag
+\\
+&=\phantom{+}
+\frac12
+\biggl(
+{\color{farbeeins}
+\frac{\partial^3 g_{iv}}{\partial x^w\,\partial x^u\,\partial x^k}
+}
+-
+{\color{farbezwei}
+\frac{\partial^3 g_{kv}}{\partial x^w\,\partial x^u\,\partial x^i}
+}
+-
+{\color{farbedrei}
+\frac{\partial^3 g_{iu}}{\partial x^w\,\partial x^v\,\partial x^k}
+}
++
+{\color{farbevier}
+\frac{\partial^3 g_{ku}}{\partial x^w\,\partial x^v\,\partial x^i}
+}
+\biggr)
+\notag
+\\
+&\phantom{=}\,+
+\frac12
+\biggl(
+{\color{farbefuenf}
+\frac{\partial^3 g_{iw}}{\partial x^u\,\partial x^v\,\partial x^k}
+}
+-
+{\color{farbesechs}
+\frac{\partial^3 g_{kw}}{\partial x^u\,\partial x^v\,\partial x^i}
+}
+-
+{\color{farbeeins}
+\frac{\partial^3 g_{iv}}{\partial x^u\,\partial x^w\,\partial x^k}
+}
++
+{\color{farbezwei}
+\frac{\partial^3 g_{kv}}{\partial x^u\,\partial x^w\,\partial x^i}
+}
+\biggr)
+\notag
+\\
+&\phantom{=}\,+
+\frac12
+\biggl(
+{\color{farbedrei}
+\frac{\partial^3 g_{iu}}{\partial x^v\,\partial x^w\,\partial x^k}
+}
+-
+{\color{farbevier}
+\frac{\partial^3 g_{ku}}{\partial x^v\,\partial x^w\,\partial x^i}
+}
+-
+{\color{farbefuenf}
+\frac{\partial^3 g_{iw}}{\partial x^v\,\partial x^u\,\partial x^k}
+}
++
+{\color{farbesechs}
+\frac{\partial^3 g_{kw}}{\partial x^v\,\partial x^u\,\partial x^i}
+}
+\biggr)
+\notag
+\\
+R_{ikuv;w}
++
+R_{ikvw;u}
++
+R_{ikwu;v}
+&=0
+\label{buch:kruemmung:kruemmung:eqn:diffbianchiproof}
+\end{align}
+\egroup
+Die Terme gleicher Farbe heben sich weg.
+Die Gleichung~\eqref{buch:kruemmung:kruemmung:eqn:diffbianchiproof}
+besagt, dass alle Komponenten eines Tensors in Normalkoordinaten
+an der Stelle $p$ verschwinden.
+Wenn aber ein Tensor in Normalkoordinaten verschwindet, dann 
+verschwindet er auch in allen anderen Koordinatensystemen.
+Damit ist die differentielle Bianchi-Identität bewiesen.
 \end{proof}

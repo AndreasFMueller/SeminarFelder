@@ -109,9 +109,11 @@ in Richtung eines Vektors $X$ mit den Komponenten $\xi^k$ ist
 =
 \sum_{i,k=1}^n
 \biggl(
+\underbrace{
 \frac{\partial A^i}{\partial x^k}
 +
 \Gamma^{i}_{lk} A^l
+}_{\displaystyle = A^i\mathstrut_{;k}}
 \biggr)
 \,
 \xi^k
@@ -121,11 +123,15 @@ in Richtung eines Vektors $X$ mit den Komponenten $\xi^k$ ist
 \end{equation}
 Die Koeffizienten $\Gamma^i_{lk}$ heissen die {\em Christoffel-Symbole}.
 \index{Christoffel-Symbole}%
+Die Komponenten der kovarianten Ableitung werden auch mit $A^i\mathstrut_{;k}$
+bezeichnet.
 \end{definition}
 
 Für die Richtung $\vec{e}_k$ der $k$-ten Koordinaten $x^k$, kann man die
 kovariante Ableitung
 \[
+A^i\mathstrut_{;k}
+=
 \frac{\partial A^i}{\partial x^k}
 +
 \sum_{l=1}^n
@@ -427,7 +433,7 @@ für jeden oberen und unteren Index, aber es kommt noch ein Term mit
 den zweiten Ableitungen der Jacobi-Matrix hinzu.
 
 %
-% Kovariante Ableitung für $p$-Vektoren
+% Kovariante Ableitung für kontravariante Tensoren
 %
 \subsubsection{Kovariante Ableitung für kontravariante Tensoren}
 Die kovariante Ableitung ist in
@@ -438,6 +444,7 @@ Es gibt nur eine Art, sie auf kontravariante Tensoren beliebiger Stufe
 auszudehnen, so dass die Produktregel gilt.
 
 \begin{definition}
+\label{buch:zusammenhang:parallel:def:kovablvektor}
 Die kovariante Ableitung eines $p$-Vektors $X_1\otimes\dots\otimes X_p$
 ist
 \[
@@ -507,6 +514,8 @@ a^{i_1\dots i_p}
 \end{align*}
 Die Koeffizienten von $\nabla_{\vec{e}_k}\cdot a$ sind
 \begin{equation}
+a^{i_1\dots i_p}\mathstrut_{;k}
+=
 \frac{\partial a^{i_1\dots i_p}}{\partial x^k}
 +
 a^{li_2\dots i_p}
@@ -611,6 +620,7 @@ a_i
 Da dies für alle Vektoren $A$ und $X$ gelten muss, 
 
 \begin{definition}[kovariante Ableitung von 1-Formen]
+\label{buch:zusammenhang:parallel:definition:kovabl1form}
 Ist $\nabla_X$ die kovariante Ableitung von kontravarianten
 Tensoren erster Stufe in Richtung des Vektors $X$ mit den
 Christoffel-Symbolen $\Gamma^i_{kl}$,
@@ -627,10 +637,14 @@ der 1-Form $\alpha$ eine 1-Form
 \]
 mit den Komponenten
 \[
+a_{r;k}
+=
 (\nabla_k\cdot\alpha)_r
 =
-\frac{\partial a_r}{\partial x^k} - \Gamma^i_{rk}a_i
+\frac{\partial a_r}{\partial x^k} - \Gamma^i_{rk}a_i.
 \]
+Die Komponenten der kovarianten Ableitung einer $1$-Form
+können mit der Notation $a_{r;k}$ bezeichnet werden.
 \end{definition}
 
 Ganz ähnlich wie bei der kovarianten Ableitung von kontravarianten

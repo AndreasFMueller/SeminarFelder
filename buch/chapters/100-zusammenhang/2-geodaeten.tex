@@ -100,6 +100,9 @@ nur noch die Gleichungen
 übrig, welche als Lösungen alle Geraden im $n$-dimensionalen
 Raum haben.
 
+%
+% Polarkoordinaten
+%
 \subsubsection{Polarkoordinaten}
 Für Polarkoordinaten wurden die Christoffel-Symbole bereits
 in Beispiel~\ref{buch:zusammenhang:paralleltransport:bsp:polar}
@@ -288,6 +291,9 @@ kann jetzt durch Integration auch die explizite Formel
 \]
 für $\varphi(t)$ gefunden werden.
 
+%
+% Geodäten auf einer Kugeloberfläche
+%
 \subsubsection{Geodäten auf einer Kugeloberfläche}
 In Beispiel~\ref{buch:zusammenhang:paralleltransport:bsp:kugel}
 wurden die Christoffel-Symbole für Kugelkoordinaten auf einer
@@ -910,6 +916,64 @@ an der Stelle $p$ ebenfalls verschwinden.
 Die speziell einfache Form der Christoffelsymbole in Normalkoordinaten
 wird später ermöglichen, auch den riemannschen Krümmungstensor an der
 Stelle zu berechnen.
+
+%
+% Kovariante Ableitung in Normalkoordinaten
+%
+\subsubsection{Kovariante Ableitung in Normalkoordinaten}
+In Normalkoordinaten verschwinden die Christoffelsymbole im Punkt $p$.
+Dies macht die Berechnung der kovarianten Ableitung besonders einfach.
+Ist $A$ in kontravarianter Tensor mit den Komponenten $A_i$, dann ist
+die kovariante Ableitung in Richtung des Vektors $V$ mit den Komponenten
+$v^i$ an der Stelle $p$
+\begin{align}
+\nabla_X A
+&=
+\biggl(
+\frac{\partial A^i}{\partial x^k}
++
+\Gamma^i_{kl} A^l
+\biggr)
+v^k
+\frac{\partial}{\partial x^i}
+=
+\frac{\partial A^i}{\partial x^k}
+v^k
+\frac{\partial}{\partial x^i}
+&&\text{oder}
+&
+A^i_{;k}
+&=
+\frac{\partial A^i}{\partial x^k}
+.
+\label{buch:zusammenhang:geodaeten:eqn:kovablnormalkontravariant}
+\intertext{Für einen kovarianten Tensor $B$ mit Komponenten $B_i$ wird
+die kovariante Ableitung
+nach Definition~\ref{buch:zusammenhang:parallel:definition:kovabl1form}
+zu}
+\nabla_X B
+&=
+\biggl(
+\frac{\partial B_i}{\partial x^k}
+-
+\Gamma^l_{ik} B_l
+\biggr)
+v^k
+\,dx^i
+=
+\frac{\partial B_i}{\partial x^k}
+v^k
+\,dx^i
+&&\text{oder}
+&
+B_{i;k}
+&=
+\frac{\partial B_i}{\partial x^k}
+\label{buch:zusammenhang:geodaeten:eqn:kovablnormalkovariant}
+\end{align}
+In Normalkoordinaten an der Stelle $p$ fällt die kovariante Ableitung
+mit der Richtungsableitung zusammen.
+
 
 
 
