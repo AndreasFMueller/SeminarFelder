@@ -9,6 +9,7 @@
 %
 \section{Geodäten
 \label{buch:zusammenhang:section:geodaeten}}
+\kopfrechts{Geodäten}
 Die kovariante Ableitung war motiviert als ein Kriterium, mit
 dem man erkennen kann, ob ein Vektor parallel transportiert
 worden ist.
@@ -538,7 +539,7 @@ g_{lk}\ddot{x}^k
 \frac{\partial g_{il}}{\partial x^s}\dot{x}^s\dot{x}^i
 +
 g_{il}\ddot{x}^i
-\biggr)
+\biggr).
 \end{align*}
 Damit wird die Euler-Lagrange-Differentialgleichung
 \begin{align*}
@@ -594,7 +595,7 @@ g_{lk}\ddot{x}^k
 &=
 -\Gamma_{l,ik} \dot{x}^i\dot{x}^k
 -
-g_{lk} \ddot{x}^k
+g_{lk} \ddot{x}^k.
 \end{align*}
 Multipliziert man dies mit den Einträgen $g^{jl}$ der inversen
 Matrix von $g$ und summiert über $l$, ergibt sich
@@ -683,8 +684,8 @@ In einer beschränkten offenen Menge in $\mathbb{R}^n$ sind die Geodäten
 Geraden.
 Sie sind nur solange definiert, als $\gamma(t)$ die Menge
 nicht verlässt.
-Auf einer kompakten Mannigfaltigkeit kann dies nicht passieren,
-wir dürfen annehmen, dass der Grenzwert $\gamma(t)$ für $t\to b$
+Auf einer kompakten Mannigfaltigkeit ohne Rand kann dies nicht passieren,
+dort dürfen wir annehmen, dass der Grenzwert $\gamma(t)$ für $t\to b$
 wieder in $M$ liegt.
 Das Argument zeigt also, dass eine Geodäte nicht irgendwo im inneren
 einer riemannschen Mannigfaltigkeit enden kann.
@@ -698,7 +699,8 @@ Als formale Definition verwenden wir die folgende.
 \begin{definition}[geodätisch vollständig]
 \label{buch:zusammenhang:geodaeten:def:vollst}
 Eine riemannsche Mannigfaltigkeit $M$ heisst \emph{geodätisch vollständig},
-wenn die Exponentialabbildung auf ganz $TM$ definiert ist.
+wenn die Exponentialabbildung $\exp_p$ für jeden Punkt $p\in M$
+auf ganz $T_pM$ definiert ist.
 \index{geodätisch vollständig}%
 \end{definition}
 
@@ -748,9 +750,9 @@ die diffeomorphes Bild einer sternförmigen Menge in $T_pM$ ist.
 In einer normalen Umgebung kann man jetzt Koordinaten einführen,
 indem man in $T_pM$ eine Basis wählt.
 Bilden die Vektoren $b_1,\dots,b_n$ eine Basis, dann gibt es reelle
-Zahlen $\xi^1,\dots,\xi^n$ mit 
+Zahlen $v^1,\dots,v^n$ mit 
 \[
-\exp_p(\xi^1b_1+\dots+\xi^nb_n)=u.
+\exp_p(v^1b_1+\dots+v^nb_n)=u.
 \]
 Diese Abbildung ist die Zusammensetzung der 
 Abbildung
@@ -759,9 +761,9 @@ B
 \colon
 \mathbb{R}^n \to T_pM
 :
-(\xi^1,\dots,\xi^n)
+(v^1,\dots,v^n)
 \mapsto
-\xi^1b_1+\dots+\xi^nb_n
+v^1b_1+\dots+v^nb_n
 \]
 mit der Exponentialabbildung.
 Sie ist definiert, solange $B\xi$ im Definitionsbereich von $\exp_p$
@@ -820,13 +822,15 @@ $\delta_a^i\pm \delta_b^i$ für $v$ ein, erhält man
 \begin{align*}
 0
 &=
-\Gamma^i_{kl} (\delta_a^k \pm \delta_b^k)(\delta_a^l \pm t\delta_b^l)
+\Gamma^i_{kl} (\delta_a^k \pm \delta_b^k)(\delta_a^l \pm \delta_b^l)
 \\
 &=
-\Gamma^i_{kl}(\delta_a^k\delta_a^l
+\Gamma^i_{kl}(
+    \delta_a^k\delta_a^l
 \pm \delta_a^k\delta_b^l
 \pm \delta_b^k\delta_a^l
-+ \delta_b^k\delta_b^l)
+  + \delta_b^k\delta_b^l
+)
 \\
 &=
 \Gamma^i_{aa}
@@ -870,7 +874,7 @@ da die Christoffelsymbole verschwinden.
 
 Auch die Ableitungen von $g^{ik}$ verschwinden im Punkt $0$.
 Dies lässt sich noch viel allgemeiner beweisen.
-Sind $A(t)$ und $B(t)$ inverse Matrizen mit $A(0)=B(0)=I$, die von einem
+Seien $A(t)$ und $B(t)$ inverse Matrizen mit $A(0)=B(0)=I$, die von einem
 Parameter $t$ abhängen.
 Ausserdem sei $\dot{A}(0)=0$
 Dann ist die Ableitung des Produktes $A(t)B(t)=I$
@@ -898,7 +902,7 @@ A(0)
 \dot{B}(0).
 \end{align*}
 Somit verschwindet auch die erste Ableitung der inversen Matrix von $A$.
-Angwendet auf $A=g_{ik}$ und $B=g^{ik}$ und eine der Koordinaten als
+Angewendet auf $A=g_{ik}$ und $B=g^{ik}$ und eine der Koordinaten als
 Parameter folgt, dass die partiellen ersten Ableitungen von $g^{ik}$
 an der Stelle $p$ ebenfalls verschwinden.
 \end{proof}
