@@ -22,7 +22,23 @@ Dies verlangt etwas abstraktere Konstruktionen, ermöglicht aber
 die Verallgmeinerung auf beliebige Tensorfelder.
 Diese Vorgehensweise soll in diesem Abschnitt durchgeführt werden.
 
-\subsection{Vektorbündel}
+Die Verallgemeinerung ermöglicht ausserdem, beliebige Arten von
+vektorwertigen Funktionen abzuleiten, nicht nur Vektoren, die sich
+unmittelbar aus Tangentialvektoren konstruieren lassen.
+Die Theorie der $p$-Formen ging jeweils davon aus, dass die
+Werte der $p$-Formen reelle Zahlen sind.
+Setzt man einen $p$-Vektor in eine solche Form ein, entsteht ein
+reellwertige Funktion, die sich beliebig ableiten lässt, weil
+sich Werte an nahe beeinander liegenden Punkten problemlos
+vergleichen lassen.
+Damit dies auch möglich wird, wenn die Werte in einem Vektorraum
+liegen, der von Punkt zu Punkt der Mannigfaltigkeit ändert, muss
+die kovariante Ableitung zum Vergleich hinzugezogen werden.
+
+%
+% Vektorraumbündel
+%
+\subsection{Vektorraumbündel}
 Das Tangentialbündel $TM$ einer differenzierbaren Mannigfaltigkeit
 bestand für jeden Punkt $p\in M$ aus einem Vektorraum $T_pM$, dessen
 Elemente wir mit Differentialoperatoren identifiziert haben, die
@@ -537,8 +553,261 @@ f X\cdot \langle \beta,Y\rangle
 f\langle \beta, \nabla_XY \rangle
 \\
 &=
+f
 \langle \nabla_X\beta,Y\rangle.
 \end{align*}
 Der Faktor $f$ hat also keinen Einfluss auf den Wert von
-\eqref{buch:zusammenhang:kovarianteableitung:eqn:dual}.
+\eqref{buch:zusammenhang:kovarianteableitung:eqn:dual} an der Stelle $p$.
+
+%
+% Koordinatendarstellung
+%
+\subsection{Koordinatendarstellung}
+Aus den Axiomen eines Zusammenhangs lässt sich auch herleiten, wie
+der Zusammenhang in Koordinaten formuliert werden muss.
+Um diese Formulierung zu finden, reduzieren wir wie üblich mit Hilfe
+einer Karte auf eine offene Menge $U\subset\mathbb{R}^n$, in der das
+$m$-dimensionale Vektorraumbündel $E$ die Form $U\times V$ erhält.
+Für die Tangentialvektoren von $TU$ können wir die Operatoren
+$\partial_i$, $i=1,\dots,n$, verwenden.
+Ausserdem verwenden wir eine Basis $v_1,\dots,v_m$ von $E$.
+
+Der Zusammenhang ist dann eine Abbildung
+\[
+\nabla
+\colon
+\Gamma(TM) \times \Gamma(E)
+\to
+\Gamma(E),
+\]
+daher sei $X(x)$ ein Vektorfeld von Tangentialvektoren mit den
+Komponenten $\xi^i$, also $X(x)=\xi^i\partial_i$.
+Weiter sei $Y(x)$ ein Vektorfeld mit Werten in $E$, in der Basis
+$v_k$ ist es durch die Komponenten $y^k$, $k=1,\dots,m$, mit $Y(x)=y^k v_k$
+festgelegt.
+Die Linearität und Produktregel für den Zusammenhang liefern jetzt
+\begin{align*}
+\nabla_XY
+&=
+\nabla_{\xi^1\partial_1+\dots+\xi^n\partial_n} (y^1v_1+\dots+y^mv_m)
+\\
+&=
+\xi^i\nabla_{\partial_i}(y^kv_k)
+\\
+&=
+\xi^i\bigl((\partial_i y^k)v_k + y^k\nabla_{\partial_i} v_k\bigr).
+\intertext{Der Vektor $\nabla_{\partial_i}v_k$ ist ein Vektor in $V$,
+er lässt sich also als Linearkombination der Vektoren $v_k$ schreiben.
+Wir bezeichnen die dazu nötigen Koeffizienten mit $\Gamma^l_{ik}$ und
+erhalten}
+&=
+\xi^i\biggl(
+\frac{\partial y^k}{\partial x^i} v_k
++
+y^k\Gamma^l_{ik} v_l
+\biggr)
+\intertext{oder durch Umbenennung der Summationsindizes}
+&=
+\xi^i
+\biggl(
+\frac{\partial y^l}{\partial x^i}
++
+y^k\Gamma^l_{ik}
+\biggr)v_l
+\end{align*}
+Daraus können wir ablesen, dass die $l$-te Komponenten von
+$\nabla_{\partial_i}Y$ in der Basis $v_1,\dots,v_m$ durch
+\[
+\frac{\partial y^l}{\partial x^i}
++
+\Gamma^l_{ik}y^k
+\]
+gegeben ist.
+Man beachte, dass der Index $i$ von $1$ bis $n$ läuft, während der
+Index $k$ von $1$ bis $m$ läuft.
+
+Nimmt man für $E$ das Tangentialbündel $TM$ der Mannigfaltigkeit, kann
+als Basis von $V$ die Menge der Vektoren $\partial_i$ verwendet werden.
+Die Koeffizienten $\Gamma^l_{ik}$ haben dann die gleiche Bedeutung
+wie in
+Definition~\ref{buch:zusammenhang:paralleltransport:kovabl:def:kovabl}.
+
+%
+% Kovariante äussere Ableitung
+%
+\subsection{Kovariante äussere Ableitung}
+Ist $f$ eine reelle Funktion auf der Mannigfaltigkeit, dann ist
+$df$ eine $1$-Form, mit der die Richtungsableitung in Richtung
+des Vektorfeldes $X$ durch
+\[
+X\cdot f
+=
+\langle df,X\rangle
+\]
+berechnet werden kann.
+
+Die Abbildung $X\mapsto \nabla_XY$ ist linear, man könnte sie
+also als eine Linearform $\boldsymbol{\alpha}$ mit Werten im Vektorraumbündel $E$
+betrachten, welche auf $X$ den Wert
+\[
+\langle \boldsymbol{\alpha},X\rangle
+=
+\nabla_X Y
+\]
+annimmt.
+Offenbar ist diese $E$-wertige $1$-Form aus der $E$-wertigen
+Funktion $Y$ dadurch Anwendung von $\nabla_X$ entstanden.
+Anscheinend kann man also die äussere Ableitung von $p$-Formen
+dadurch auf $E$-wertige $p$-Formen erweitern, in dem man
+wo nötig die Richtungsableitung $X\cdot\mathstrut$ durch
+die kovariante Ableitung $\nabla_X$ ersetzt.
+
+Wir möchten diese Analogie dazu verwenden, die äussere Ableitung
+für beliebige $E$-wertige $p$-Formen zu definieren.
+Um Verwechslungen mit der äusseren Ableitung für 
+reellwertige $p$-Formen zu verwechseln schreiben wir sie
+mit einem fetten $\boldsymbol{d}$.
+
+%
+% Kovariante äussere Ableitung einer 1-Form
+%
+\subsubsection{Kovariante äussere Ableitung einer $1$-Form}
+Wir illustrieren diese Idee für den Fall einer $E$-wertigen $1$-Form
+$\boldsymbol{\alpha}$.
+Für eine reellwertige $1$-Form $\alpha$ ist die äussere Ableitung
+\[
+\langle
+d\alpha
+,
+X\wedge Y
+\rangle
+=
+X\cdot\langle \alpha,Y\rangle
+-
+Y\cdot\langle \alpha,X\rangle
+-
+\langle \alpha,[X,Y]\rangle.
+\]
+Für eine $E$-wertige $1$-Form muss dies also ersetzt werden durch
+\begin{equation}
+\langle 
+\boldsymbol{d}\boldsymbol{\alpha},
+X\wedge Y
+\rangle
+=
+\nabla_X \langle\boldsymbol{\alpha},Y\rangle
+-
+\nabla_Y \langle\boldsymbol{\alpha},X\rangle
+-
+\langle \boldsymbol{\alpha},[X,Y]\rangle.
+\label{buch:zusammenhang:zusammenhang:eqn:d1form}
+\end{equation}
+Um zu zeigen, dass dies tatsächlich funktioniert, müssen wir nachweisen,
+dass der Ausdruck \eqref{buch:zusammenhang:zusammenhang:eqn:d1form}
+tatsächlich eine $2$-Form definiert, also bilinear und antisymmetrisch
+in $X$ und $Y$ ist.
+Dazu müssen wir $X$ bzw.~$Y$ mit einer glatten Funktion $f$ multiplizieren
+und zeigen, dass die rechte Seite von
+\eqref{buch:zusammenhang:zusammenhang:eqn:d1form}
+ebenfalls nur mit $f$ multipliziert wird.
+Dazu berechnen wird den zweiten Term
+\begin{align*}
+\nabla Y\langle\boldsymbol{\alpha}, fX\rangle
+&=
+\nabla Y(f\langle\boldsymbol{\alpha}, X\rangle)
+=
+(Y\cdot f)\langle\boldsymbol{\alpha}, X\rangle
++
+f\nabla_X\langle \boldsymbol{\alpha},Y\rangle
+\intertext{und den dritten}
+\langle\boldsymbol{\alpha},[fX,Y]\rangle
+&=
+\langle\boldsymbol{\alpha},f[X,Y] - (Y\cdot f) X\rangle
+=
+f\langle\boldsymbol{\alpha},[X,Y]\rangle
+-
+(Y\cdot f) \langle\boldsymbol{\alpha}, X\rangle.
+\intertext{In der Summe heben sich die Terme mit $Y\cdot f$ weg und ergeben}
+\nabla Y\langle\boldsymbol{\alpha}, fY\rangle
++
+\langle\boldsymbol{\alpha},[fX,Y]\rangle
+&=
+f\nabla_X\langle \boldsymbol{\alpha},Y\rangle
++
+f\langle\boldsymbol{\alpha},[X,Y]\rangle.
+\intertext{Aus \eqref{buch:zusammenhang:zusammenhang:eqn:d1form} wird daher}
+\langle 
+d\boldsymbol{\alpha},
+fX\wedge Y
+\rangle
+&=
+f\nabla_X \langle\boldsymbol{\alpha},Y\rangle
+-
+f\nabla_Y \langle\boldsymbol{\alpha},X\rangle
+-
+f\langle \boldsymbol{\alpha},[X,Y]\rangle
+=
+f
+\langle 
+d\boldsymbol{\alpha},
+X\wedge Y
+\rangle.
+\end{align*}
+Dies zeigt, dass die rechte Seite von
+\eqref{buch:zusammenhang:zusammenhang:eqn:d1form}
+tatsächlich eine 2-Form definiert.
+
+%
+% Kovariante äussere Ableitung von p-Formen
+%
+\subsubsection{Kovariante äussere Ableitung von $p$-Formen}
+Für eine reellwertige $p$-Form $\omega$ war die äussere Ableitung
+durch
+\begin{align*}
+\langle d\omega,X_0\wedge\dots\wedge X_p\rangle
+&=
+\sum_{k=0}^p
+(-1)^k
+X_k\cdot\langle \omega,X_0\wedge\dots\wedge \widehat{X_k}\wedge\dots\wedge X_p\rangle
+\\
+&\quad+
+\sum_{0\le k<l\le p}
+(-1)^{k+l}\langle\omega,
+[X_k,X_l]\wedge X_0\wedge\dots\wedge\widehat{X_k}\wedge\dots\wedge\widehat{X_l}\wedge\dots\wedge X_p\rangle
+\end{align*}
+gegeben.
+Die Konstruktion kann auf eine beliebige $E$-wertige $p$-Form $\omega$
+erweitert werden.
+Die $E$-wertige $p+1$-Form $d\omega$ wird definiert durch
+\begin{align*}
+\langle \boldsymbol{d}\boldsymbol{\omega}, X_0\wedge\dots\wedge X_{p}\rangle
+&=
+\sum_{k=0}^p
+(-1)^k\nabla_{X_k}\langle\boldsymbol{\omega},X_0\wedge\dots\wedge\widehat{X_k}\wedge\dots\wedge X_p)
+\\
+&\quad+
+\sum_{0\le k < l\le p}(-1)^{k+l}
+\langle \boldsymbol{\omega},
+[X_k,X_l]\wedge X_0\wedge\dots\wedge\widehat{X_k}\wedge\dots\wedge\widehat{X_l}\wedge\dots\wedge X_p\rangle.
+\end{align*}
+Der Beweis, dass dieser Ausdruck tatsächlich eine $p+1$-Form definiert
+gestaltet sich analog zum Falle $p=1$.
+
+%
+% Die kovariante äussere Ableitung ist nicht nilpotent
+%
+\subsubsection{Die zweite kovariante äussere Ableitung verschwindet nicht}
+Die Analogie der Konstruktion der kovarianten äusseren Ableitung
+zur Konstruktion der äusseren Ableitungen kann einen dazu verführen
+anzunehmen, dass auch die kovariante äussere Ableitung
+$\boldsymbol{d} \boldsymbol{d}=0$ erfüllt.
+Bei der äusseren Ableitung von reellwertigen Funktion hat diese
+im Satz~\ref{buch:section:pformen:satz:zweiteableitung} bewiesene
+Eigenschaft letztendlich darauf beruht, dass partielle Ableitungen,
+also die Operatoren $\partial_i$, nach dem Satz von Schwarz vertauschen.
+Wie wir im nächsten Kapitel~\ref{chapter:kruemmung} sehen werden, trifft
+dies für die Operatoren $\nabla_i$ im Allgemeinen nicht zu und gibt
+Anlass zum Begriff der Krümmung.
+
+
 

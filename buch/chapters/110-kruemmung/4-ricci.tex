@@ -17,151 +17,416 @@ Beschleunigung und damit als Anziehungs- oder Abstossungskraft
 interpretieren können.
 
 %
-% Schnittkrümmung
+% Der Ricci-Tensor
 %
-\subsection{Schnittkrümmung}
-Wir betrachten zwei Geodäten mit initialem Tangentialvektor
-$\vec{v}$, deren Anfangspunkte sich um eine kleine Verschiebung
-in Richtung des Tangentialvektors $\vec{s}$ unterscheiden.
-
-\begin{lemma}
-Für die kovariante Ableitung zum Levi-Cività-Zusammenhang gilt
+\subsection{Der Ricci-Tensor}
+Der riemannsche Krümmungstensor wurde mit der linearen Abbildung
+$R(X,Y)$ definiert, die ihrerseits durch
 \[
-\nabla_{\vec{v}}\nabla_{\vec{s}}\vec{v}
+R(X,Y)Z
 =
-\nabla_{\vec{v}}\nabla_{\vec{v}}\vec{s}.
+\nabla_X\nabla_YZ - \nabla_Y\nabla_XZ-\nabla_{[X,Y]}Z
 \]
-\end{lemma}
+definiert war.
+Hält man $Y$ und $Z$ fest, ist $f:X\mapsto R(X,Y)Z$ eine lineare Abbildung.
+Die Abbildung hängt ausserdem linear von den Vektoren $Y$ und $Z$ ab.
 
-\begin{proof}
-Wir berechnen in Komponenten
-Die Komponenten der Ableitungen der ersten kovarianten Ableitungen
-sind
-\begin{align*}
-(\nabla_{\vec{s}}\vec{v})^i
-&=
-\biggl(
-\frac{\partial v^i}{\partial x^k}
--
-\Gamma^i_{kl} v^l
-\biggr)
-s^k
-\\
-(\nabla_{\vec{v}}\vec{s})^i
-&=
-\biggl(
-\frac{\partial s^i}{\partial x^k}
--
-\Gamma^i_{kl} s^l
-\biggr)
-v^k
-\end{align*}
-
-\end{proof}
-
-\begin{align*}
-\nabla_{\vec{v}}\nabla_{\vec{v}}\vec{s}
-&=
--R(\vec{s}\wedge\vec{v})\cdot \vec{v}
-\end{align*}
-d.~h.~der Krümmungstensor gibt an, wie sich der
-Verschiebungsvektor $\vec{s}$ zwischen den Geodäten ändert.
-
-%
-% Ricci-Krümmung
-%
-\subsection{Ricci-Krümmung}
-Das Skalarprodukt
-\begin{equation}
-R(\vec{v},\vec{s})(\vec{v})\cdot\vec{s}
-=
+In einem Koordinatensystem $x^i$ ist die
+Abbildung für $Y=\partial_k$ und $Z=\partial_l$  gegeben durch
+\[
+\partial_i
+\mapsto
+R(\partial_i,\partial_k)\partial_l
+\]
+Die Matrixelemente können daraus mithilfe des Skalarprodukts mit
+einem Basisvektor ermittelt werden.
+Die Basisvektoren werden gemäss
+\[
+\partial_i
+\mapsto
 \langle
-R(\vec{v}\wedge\vec{s})(\vec{v}) ,\vec{s}
-\rangle_g
-\label{buch:kruemmung:ricci:eqn:Rvsvs}
-\end{equation}
-ist ein Mass für die Änderung des Abstandes der Geodäten.
-Es ist linear in allen Vektoren.
-Aus den Symmetrieeigenschaften des riemannschen Krümmungstensors folgt
-auch, dass es nur von $\vec{v}\wedge\vec{s}$ abhängt.
-Multipliziert man $\vec{v}$ oder $\vec{s}$ mit einem Faktor $\lambda$,
-wird  der Ausdruck \eqref{buch:kruemmung:ricci:eqn:Rvsvs} mit
-$\lambda^2$, multipliziert.
-Insbesondere ist
-\[
-K(\vec{s},\vec{v})
+R(\partial_i,\partial_k)\partial_l,
+\partial_m
+\rangle
 =
-\frac{R(\vec{v}\wedge\vec{s})(\vec{v})\cdot\vec{s}}{|\vec{v}\wedge\vec{s}|^2}
+R^{m}\mathstrut_{lik}\partial_m
 \]
-unabhängig von der Länge von $\vec{v}$ und $\vec{s}$.
-Sie heisst die Schnittkrümmung.
-Sie ist postiiv, wenn sich die Geodäten nähern und negativ, wenn sie
-sich entfernen.
-
-Ist $X$ ein Vektor mit den Komponenten $X^i$, dann ist
+abgebildet.
+Für die genannte spezielle Wahl von $Y$ und $Z$ sind also die 
+die Matrixelemente von der Abbildung durch Komponenten des
+riemannschen Krümmungstensors gegeben sind.
+Die Matrix der Abbildung ist
 \[
-R(\vec{e}_j\wedge X)(X)\cdot e_l
+A^m\mathstrut_i
 =
-R^l\mathstrut_{ijk}X^iX^k.
+\begin{pmatrix}
+R^1\mathstrut_{l1k} & R^1\mathstrut_{l2k} & \dots  & R^1\mathstrut_{lnk} \\
+R^2\mathstrut_{l1k} & R^2\mathstrut_{l2k} & \dots  & R^2\mathstrut_{lnk} \\
+\vdots              & \vdots              & \ddots & \vdots              \\
+R^n\mathstrut_{l1k} & R^n\mathstrut_{l2k} & \dots  & R^n\mathstrut_{lnk} 
+\end{pmatrix}.
 \]
-Für $l=j$ ergibt sich die Schnittkrümmung in der $\vec{e}_j$-$X$-Ebene.
-Sie gibt die Änderung des Abstandes der Geodäten mit
-Anfangsvektor $X$ an, wenn man den Anfangspunkt infinitesmal in
-$\vec{e}_j$-Richtung verschiebt.
-
-Die Summe
-\begin{equation}
-\sum_{j=1}^n
-R(\vec{e}_j\wedge X)(X)\cdot \vec{e}_j
-=
-R^j\mathstrut_{ijk} X^iY^k
-\label{buch:kruemmung:ricci:eqn:ricci}
-\end{equation}
-ist bis auf den Faktor $\frac1n$ der Mittelwert der Schnittkrümmungen
-für die verschiedenen Differenzvektoren $\vec{s}=\vec{e}_j$.
-
-\begin{definition}[Ricci-Krümmung]
-\label{buch:kruemmung:ricci:def:ricci-kruemmung}
-Der Tensor mit den Komponenten $R_{ik}=R^j\mathstrut_{ijk}$ heisst
-der {\em Ricci-Krümmungstensor}.
-Die Ricci-Krümmung zum Vektor $X$ ist
+Um mehr über diese Abbildung zu erfahren, kann man bekannte
+Invarianten linearer Abbildungen studieren.
+Die Spur einer linearen Abbildung ist die Summe der Diagonalelemente,
+also
 \[
-\operatorname{Ric}(X,X)
+\operatorname{tr} A^m\mathstrut_i
 =
-\sum_{i,k=1}^n
-\operatorname{Ric}(e_i,e_k)X^iX^k
-=
-R_{ik}X^iX^k.
+\sum_{i=1}^n A^i\mathstrut_i.
 \]
-Sie ist eine quadratischer Form von $X$.
+Es ist ein bekanntes Resultat der linearen Algebra, dass die Spur
+unabhängig ist von der Wahl des Koordinatensystems.
+Es folgt aus der Tatsache, dass ein Basiswechsel durch ein
+Transformationsmatrix $T$ gegeben wird, mit der die Matrix der
+Abbildung in der neuen Basis durch $A'=TAT^{-1}$ berechnet
+werden kann.
+Der Wert der Spur ist dann
+\[
+\operatorname{tr} A'
+=
+\operatorname{tr}(TAT^{-1})
+=
+\operatorname{tr}(A\underbrace{T^{-1}T}_{\displaystyle=I})
+=
+\operatorname{tr}A.
+\]
+Der Wert der Spur hängt also nicht von der Wahl der Basis ab.
+Die Spur ist somit eine von der Wahl des Koordinatensystems
+unabhängige Grösse, die bilinear von den Vektoren $Y$ und $Z$
+abhängt.
+
+\begin{definition}[Ricci-Tensor]
+Der \emph{Ricci-Tensor} $Ric(Y,Z)$ ist die Spur der linearen Abbildung
+\[
+X \mapsto R(X,Y)Z = (\nabla_X\nabla_YZ-\nabla_Y\nabla_XZ-\nabla_{[X,Y]}Z.
+\]
+Für $Y=y^l\partial_l$ und $Z=z^k\partial_k$ ist der Wert der Spur
+durch die Bilinearform
+\[
+Ric(Y,Z)
+=
+R^m\mathstrut_{lmk} y^lz^k
+=
+g^{im}
+R_{ilmk}y^lz^k
+\]
+gegeben.
+Die Komponenten des Ricci-Tensors sind also
+\[
+Ric(\partial_l,\partial_k)
+=
+R_{lk}
+=
+R^m\mathstrut_{lmk}
+=
+g^{im}
+R_{ilmk}.
+\]
 \end{definition}
 
-Aus den Symmetrieeigenschaften des riemannschen Krümmungstensors folgt,
-dass der Ricci-Tensor symmetrisch ist.
+%
+% Symmetrie
+%
+\subsubsection{Symmetrie}
+Der Ricci-Tensor ist ein symmetrischer Tensor, wie man zum Beispiel
+durch Anwendung der Symmetrieeigenschaften des riemannschen Krümmungstensors
+in
+\[
+R_{kl}
+=
+g^{im}R_{ilmk}
+=
+g^{im}R_{mkil}
+=
+g^{im}R_{mkil}
+=
+g^{im}R_{ikml}
+\]
+sehen kann.
+Im zweiten Schritt wurde die Symmetrie unter Vertauschung der beiden
+Indexpaare verwendet, im dritten die Symmetrie des metrischen Tensors
+und im letzten wurden die summierten Indizes umbenannt.
 
-Die Konstruktion von $\operatorname{Ric}(X,X)$ als Summe über alle
-Basisrichtungen ist ein richtungsunabhängiges Mass für die
-Krümmung.
-Positive Krümmung bedeutet, dass sich Geodäten im Mittel annähern.
-Wir werden dies als gravitationelle Anziehungskraft interpretieren.
-Wenn der Ricci-Tensor verschwindet, gibt es auch keine Gravitationskräfte.
-Wir erwarten daher, dass es eine Feldgleichung gibt, die Masse und
-Energie im Universum mit dem etwas spezielleren Ricci-Tensor verknüpft,
-nicht mit dem ganz allgemeinen riemannschen Tensor.
+%%
+%% Darstellung des Ricci-Tensors mit Christoffel-Symbolen
+%%
+%\subsubsection{Darstellung des Ricci-Tensors mit Christoffel-Symbolen}
+
+
+%
+% Ricci-Tensor in Normalkoordinaten
+%
+\subsection{Ricci-Tensor in Normalkoordinaten}
+In Normalkoordinaten kann man die Komponenten des Ricci-Tensors
+nach \eqref{buch:kruemmung:kruemmung:eqn:Rruvm} im Punkt $p$ durch
+\begin{align*}
+R_{lk}
+&=
+g^{im}
+R_{ilmk} 
+\\
+&=
+\delta^{im}
+\biggl(
+\frac{\partial \Gamma^i_{lm}}{\partial x^k}
+-
+\frac{\partial \Gamma^i_{lk}}{\partial x^m}
+\biggr)
+\\
+&=
+\frac{\partial \Gamma^m_{lm}}{\partial x^k}
+-
+\frac{\partial \Gamma^m_{lk}}{\partial x^m}
+\intertext{berechnen.
+Da man ausserdem die Ableitungen der Christoffel-Symbole durch zweite
+Ableitungen der metrischen Koeffizienten ausdrückenkann, kann man
+den Ricci-Tensor mithilfe von \eqref{buch:kruemmung:kruemmung:eqn:Rddg}
+auch als}
+R_{lk}
+&=
+g^{im}
+R_{ilmk} 
+\\
+&=
+\delta^{im}
+\frac12
+\biggl(
+\frac{\partial^2 g_{im}}{\partial x^k\,\partial x^l}
+-
+\frac{\partial^2 g_{lm}}{\partial x^k\,\partial x^i}
+-
+\frac{\partial^2 g_{ik}}{\partial x^m\,\partial x^l}
++
+\frac{\partial^2 g_{lk}}{\partial x^m\,\partial x^i}
+\biggr)
+\\
+&=
+\frac12
+\sum_{m=1}^n
+\biggl(
+\frac{\partial^2 g_{mm}}{\partial x^k\,\partial x^l}
+-
+\frac{\partial^2 g_{lm}}{\partial x^k\,\partial x^m}
+-
+\frac{\partial^2 g_{mk}}{\partial x^m\,\partial x^l}
++
+\frac{\partial^2 g_{lk}}{\partial (x^m)^2}
+\biggr)
+\end{align*}
+schreiben.
+Der letzte Term dieses Ausdrucks erinnert an den Laplace-Operator,
+angewendet auf alle Komponenten.
+
+Tatsächlich ist eine Anwendung des Ricci-Tensors die Definition einer
+Differentialgleichung für den metrischen Tensor auf einer riemannsche
+Mannigfaltigkeit, die der Wärmeleitung ähnlich ist.
+Die Zeitentwicklung der Lösung, der sogenannte Ricci-Fluss, deformiert
+die Krümmung derart, dass die Krümmung reduziert wird, so wie die
+Wärmeleitungsgleichung die Temperaturverteilung glättet.
+Mit diesem Werkzeug wurde es möglich, die Poincaré-Vermutung, eines
+der berühmten Millenniumsprobleme zu lösen.
+
 
 %
 % Krümmungsskalar
 %
 \subsection{Krümmungsskalar}
-Die Spur des Ricci-Tensors
+Die Spur des Ricci-Tensors 
 \[
-R
+S
 =
 g^{ik}R_{ik}
 =
 R^i_k
 \]
+ist ebenfalls eine koordinatensystemunabhängige Grösse, sie
 heisst der {\em Krümmungsskalar}.
 \index{Krummungsskalar@Krümmungsskalar}
-Der Krümmungsskalar ist also Tensor nullter Stufe eine weitere Invariante,
+Der Krümmungsskalar ist als Tensor nullter Stufe eine weitere Invariante,
 die in einer Feldgleichung für die Gravitation vorkommen könnte.
+
+Der Tensor $Sg$ mit den Komponenten $Sg_{ik}$ hat die Spur
+\[
+\operatorname{tr} Sg
+=
+Sg^{ik}g_{ik}
+=
+nS.
+\]
+Daher ist $\frac1n Sg$ ein symmetrischer Tensor mit der gleichen
+Spur wie der Ricci-Tensor. 
+Wir bezeichnen mit
+\[
+\overset{\circ}{Ric}
+=
+Ric - \frac1n Sg
+\]
+den \emph{spurlosen Ricci-Tensor}.
+
+Die besondere Bedeutung des Krümmungsskalars ist, dass die Zerlegung
+\begin{equation}
+Ric
+=
+\overset{\circ}{Ric} + \frac1n Sg
+\label{buch:kruemmung:ricci:eqn:Riczerlegung}
+\end{equation}
+orthogonal ist.
+
+\begin{satz}
+Die Zerlegung \eqref{buch:kruemmung:ricci:eqn:Riczerlegung} ist
+orthogonal, d.~h.~der spurlose Ricci-Tensor $\overset{\circ}{Ric}$
+und $\frac1nSg$ sind orthogonal.
+\end{satz}
+
+\begin{proof}
+Sei $h$ ein beliebiger symmetrischer Tensor mit Komponenten $h_{ik}$,
+dann ist das Skalarprodukt mit dem metrischen Tensor mit den 
+Komponenten $g_{lm}$ durch
+\begin{align*}
+\langle h,g\rangle
+&=
+h_{ik}g_{lm}
+g^{il}g^{km}
+=
+h_{ik}\delta_m^i
+g^{km}
+=
+h_{ik}g^{ik}
+=
+\operatorname{tr} h
+\end{align*}
+gegeben.
+Daher ist das Skalarprodukt
+\[
+\langle \overset{\circ}{Ric},\frac{1}n Sg \rangle
+=
+\frac1nS\langle\overset{\circ}{Ric},g\rangle
+=
+\frac1nS\operatorname{tr}\overset{\circ}{Ric}
+=
+0,
+\]
+die Tensoren $\overset{\circ}{Ric}$ und $\frac1nSg$ sind orthogonal.
+\end{proof}
+
+%
+% Kovariante äussere Ableitung
+%
+\subsection{Kovariante äussere Ableitung}
+
+%
+% Kontrahierte Bianchi-Identitäten
+%
+\subsection{Kontrahierte Bianchi-Identitäten}
+Der Ricci-Tensor entsteht durch Kontraktion zweier Indizes aus dem
+riemannschen Krümmungstensor gewonnen.
+Die Bianchi-Identitäten müssen sich daher auch in Identitäten
+für den Ricci-Tensor äussern.
+Wir berechnen diese Identitäten zunächst in Komponenten, bevor wir
+eine koordinatenfreie Beschreibung geben.
+
+%
+% Kontrahierte algebraische Bianchi-Identität
+%
+\subsubsection{Kontrahierte algebraische Bianchi-Identität}
+Die algebraische Bianchi-Identität besagt, dass
+\[
+0
+=
+R_{iklm}
++
+R_{ilmk}
++
+R_{imkl}
+\]
+Multiplikation mit $g^{il}$ wird daraus
+\begin{align*}
+0
+&=
+R_{km}
++
+g^{il}R_{ilmk}
++
+g^{il}R_{imkl}.
+\intertext{Der mittlere Term verschwindet, weil der riemannsche
+Krümmungstensor in den ersten beiden Indizes $il$ antisymmetrisch ist,
+während $g^{il}$ symmetrisch ist.
+Im letzten Term können wir die letzten zwei Indizes vertauschen, was
+das Vorzeichen kehrt.
+So entsteht}
+&=
+R_{km}
+-
+g^{il}R_{imlk}
+\\
+&=
+R_{km}-R_{mk}.
+\end{align*}
+Die erste Bianchi-Identität liefert also nichts anderes als die
+Symmetrie des Ricci-Tensors, die wir bereits kennen.
+
+%
+% Kontrahierte differentielle Bianchi-Identität
+%
+\subsubsection{Kontrahierte differentielle Bianchi-Identität}
+Wir wenden die Kontraktion auch auf die differentielle Bianchi-Identität
+\[
+0
+=
+R_{abik;l}
++
+R_{abkl;i}
++
+R_{abli;k}
+\]
+an und erhalten
+\begin{align*}
+0
+&=
+g^{ai}
+(
+R_{abik;l}
++
+R_{abkl;i}
++
+R_{abli;k}
+)
+\\
+&=
+R_{bk;l}
++
+g^{ai}
+R_{abkl;i}
++
+g^{ai}
+R_{abli;k}
+\\
+&=
+R_{bk;l}
++
+g^{ai}
+R_{abkl;i}
+-
+g^{ai}
+R_{abil;k}
+\\
+&=
+R_{bk;l}
++
+g^{ai}
+R_{abkl;i}
+-
+R_{bl;k}
+\\
+R^i\mathstrut_{bkl;i}
+&=
+-(
+R_{bk;l}
+-
+R_{bl;k}
+)
+\end{align*}
+
+
+
