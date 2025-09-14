@@ -1394,5 +1394,53 @@ wegen der speziellen Wahl der Vektoren und es bleibt}
 Da sich jedes Vektorfeld als Linearkombination der Basisvektoren
 schreiben lässt, gilt die differentielle Bianchi-Identät allgemein.
 
+%
+% Krümmung und kovariante äussere Ableitung
+%
+\subsection{Krümmung und kovariante äussere Ableitung}
+In Abschnitt~\ref{buch:kruemmung:zusammenhang:subsection:kovd}
+wurde die kovariante äussere Ableitung für $p$-Formen mit Werten
+in einem Vektorraumbündel eingeführt.
+Sie setze voraus, dass es auf dem Vektorraumbündel einen Zusammenhang
+$\nabla$ gab.
+Die kovariante Ableitung auf dem Tangentialbündel ist so eine
+kovariante Ableitung.
+Die kovariante äussere Ableitung kann also für beliebige Vektoren
+definiert werden.
+
+Ein Vektorfeld $Z$ ist eine Funktion mit Werten im Tangentialbündel $TM$.
+Die kovariante äussere Ableitung $\boldsymbol{d}Z$ ist eine 1-Form
+$\boldsymbol{\alpha}$ mit Werten in $TM$, die auf dem Vektor $Y$ den
+Wert $\langle\boldsymbol{\alpha},Y\rangle=\nabla_YZ$ annimmt.
+Nach \eqref{buch:zusammenhang:zusammenhang:eqn:d1form} lässt jetzt
+auch die zweite kovariante äussere Ableitung berechnen.
+Wir erhalten
+\begin{align*}
+\langle
+\boldsymbol{d} \boldsymbol{d} Z
+,
+X\wedge Y\rangle
+&=
+\nabla_X\langle\boldsymbol{d}Z,Y\rangle
+-
+\nabla_Y\langle\boldsymbol{d}Z,X\rangle
+-
+\langle \boldsymbol{d}Z, [X,Y]\rangle
+\\
+&=
+\nabla_X\nabla_YZ
+-
+\nabla_Y\nabla_XZ
+-
+\nabla_{[X,Y]}Z
+=
+R(X,Y)Z.
+\end{align*}
+Die zweite kovariante äussere Ableitung ist also genau der riemannsche
+Krümmungstensor.
+Sie verschwindet genau dann, wenn der riemannsche Krümmungstensor
+verschwindet.
+
+
 
 

@@ -148,12 +148,6 @@ Im zweiten Schritt wurde die Symmetrie unter Vertauschung der beiden
 Indexpaare verwendet, im dritten die Symmetrie des metrischen Tensors
 und im letzten wurden die summierten Indizes umbenannt.
 
-%%
-%% Darstellung des Ricci-Tensors mit Christoffel-Symbolen
-%%
-%\subsubsection{Darstellung des Ricci-Tensors mit Christoffel-Symbolen}
-
-
 %
 % Ricci-Tensor in Normalkoordinaten
 %
@@ -310,10 +304,8 @@ Daher ist das Skalarprodukt
 die Tensoren $\overset{\circ}{Ric}$ und $\frac1nSg$ sind orthogonal.
 \end{proof}
 
-%
-% Kovariante äussere Ableitung
-%
-\subsection{Kovariante äussere Ableitung}
+Die äussere Ableitung des Krümmungsskalars kann durch Kontraktion
+der kovarianten Ableitung des Ricci-Tensors gewonnen werden.
 
 %
 % Kontrahierte Bianchi-Identitäten
@@ -381,7 +373,7 @@ R_{abkl;i}
 R_{abli;k}
 \]
 an und erhalten
-\begin{align*}
+\begin{align}
 0
 &=
 g^{ai}
@@ -392,6 +384,7 @@ R_{abkl;i}
 +
 R_{abli;k}
 )
+\notag
 \\
 &=
 R_{bk;l}
@@ -401,6 +394,7 @@ R_{abkl;i}
 +
 g^{ai}
 R_{abli;k}
+\notag
 \\
 &=
 R_{bk;l}
@@ -410,6 +404,7 @@ R_{abkl;i}
 -
 g^{ai}
 R_{abil;k}
+\notag
 \\
 &=
 R_{bk;l}
@@ -418,6 +413,7 @@ g^{ai}
 R_{abkl;i}
 -
 R_{bl;k}
+\notag
 \\
 R^i\mathstrut_{bkl;i}
 &=
@@ -426,7 +422,61 @@ R_{bk;l}
 -
 R_{bl;k}
 )
+\label{buch:kruemmung:ricci:eqn:kontrdbianchi}
+\end{align}
+Die Formel \eqref{buch:kruemmung:ricci:eqn:kontrdbianchi} kann
+man noch in eine koordinatenfreie Form bringen und damit besser
+verstehen.
+Hält man in $\overset{\circ}{Ric}(X,Y)$ einen der Vektor fest,
+entsteht eine $1$-Form.
+Der Ricci-Tensor kann also als eine 1-Form mit Werten in 
+1-Formen betrachten.
+Wir schreiben $\boldsymbol{\alpha}$ für die 1-Form $X\mapsto R(X,Y)$
+und berechnen die kovariante äussere Ableitung.
+Sie erfüllt
+\begin{align*}
+\langle \boldsymbol{d}\boldsymbol{\alpha}, Y\wedge Z\rangle
+&=
+\nabla_Y\langle\boldsymbol{\alpha},Z\rangle
+-
+\nabla_Z\langle\boldsymbol{\alpha},Y\rangle
+-
+\langle \boldsymbol{\alpha}, [Y,Z] \rangle
+\intertext{Auf dem Vektor $X$ hat diese 1-Form den Wert}
+\langle\boldsymbol{d}\boldsymbol{\alpha},Y\wedge Z\rangle (X)
+&=
+\nabla_Y {Ric}(X,Z)
+-
+\nabla_Z {Ric}(X,Y)
+-
+{Ric}(X,[Y,Z])
 \end{align*}
+Setzt man für die Vektoren $X$, $Y$ und $Z$ die Standardbasisvektoren
+$\partial_b$, $\partial_k$ und $\partial_l$ ein, wird daraus
+\begin{align*}
+\langle\boldsymbol{d}\boldsymbol{\alpha},\partial_k\wedge \partial_l\rangle
+(\partial_b)
+&=
+\nabla_k {Ric}(\partial_b,\partial_l)
+-
+\nabla_l {Ric}(\partial_b,\partial_k)
+-
+{Ric}(\partial_b,[\partial_k,\partial_l]).
+\intertext{Weil die Basisoperatoren $\partial_i$ vertauschen ist
+$[\partial_k,\partial_l])=0$ und der letzte Term fällt weg.
+Es bleibt}
+&=
+\nabla_k {Ric}(\partial_b,\partial_l)
+-
+\nabla_l {Ric}(\partial_b,\partial_k)
+=
+R_{bl;k}
+-
+R_{bk;l}
+\end{align*}
+Die kontrahierte differentielle Bianchi-Identität sagt also, dass
+die Spur der kovarianten Ableitung des riemannschen Krümmungstensors
+die kovariante äussere Ableitung des Ricci-Tensors ist.
 
 
 
