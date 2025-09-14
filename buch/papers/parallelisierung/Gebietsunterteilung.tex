@@ -11,13 +11,13 @@
 
 
 \subsection{Motivation}
-Wie aus dem Kapitel der numerischen Methoden hervorgeht, führt eine Verfeinerung der Raum- und Zeitauflösung zwar zu genaueren Ergebnissen, jedoch auch zu mehr Datenpunkten und somit einem erheblich höheren Rechenaufwand. 
+Wie aus dem Abschnitt der numerischen Methoden hervorgeht, führt eine Verfeinerung der Raum- und Zeitauflösung zwar zu genaueren Ergebnissen, jedoch auch zu mehr Datenpunkten und somit einem erheblich höheren Rechenaufwand. 
 Mit zunehmender Gitterfeinheit steigt die Anzahl der Unbekannten quadratisch (in 2D) bzw. kubisch (in 3D).  
 Um diese steigende Komplexität effizient bewältigen zu können, bietet sich die Gebietsunterteilung an.
 
-Feldgleichungen wie die Wärmeleitungsgleichung besitzen wie im ersten Kapitel dieser Arbeit erklärt eine lokale Struktur.
-Also hängt der Wert in einem Gitterpunkt hängt nur von seinen direkten Nachbarn (räumlich und zeitlich) ab.  
-Diese Eigenschaft erlaubt es, ein großes Problem in kleinere Teilprobleme zu zerlegen, sie getrennt zu berechnen und anschließend wieder zusammenzufügen.
+Feldgleichungen wie die Wärmeleitungsgleichung besitzen wie im ersten Abschnitt dieser Arbeit erklärt eine lokale Struktur.
+Also hängt der Wert in einem Gitterpunkt nur von seinen direkten Nachbarn (räumlich und zeitlich) ab.  
+Diese Eigenschaft erlaubt es, ein grosses Problem in kleinere Teilprobleme zu zerlegen, sie getrennt zu berechnen und anschliessend wieder zusammenzufügen.
 
 \subsection{Mathematische Zerlegung}
 Sei $\Omega \subset {R}^2$ das Gesamtgebiet, diskretisiert durch ein kartesisches Gitter.  
@@ -65,7 +65,7 @@ Betrachten wir erneut die zweidimensionale Wärmeleitungsgleichung
 	\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2}
 	\right).
 \end{equation}
-Zur widerholung: Mit FDM ergibt sich für ein quadratisches Gitter mit $\Delta l=\Delta x=\Delta y$ die Update-Formel
+Zur Wiederholung: Mit FDM ergibt sich für ein quadratisches Gitter mit $\Delta l=\Delta x=\Delta y$ die Update-Formel
 \begin{equation}
 	T_{i,j}^{n+1}
 	=
@@ -88,7 +88,7 @@ Dazu führt man sogenannte Ghost-Zellen ein:
 \end{itemize}
 So kann jedes Teilgebiet lokal weiterrechnen. Dies erlaubt eine effiziente Parallelisierung, da nur die Schnittkanten kommuniziert werden müssen.
 
-Abbildung~\ref{parallelisierung:fig:ghostCells} zeigt exemplarisch, wie an den Rändern benachbarter Teilgebiete Daten ausgetauscht werden. Farblich Orange hervorgehoben sind die Ghost-Zellen.
+Abbildung~\ref{parallelisierung:fig:ghostCells} zeigt exemplarisch, wie an den Rändern benachbarter Teilgebiete Daten ausgetauscht werden. Farblich orange hervorgehoben sind die Ghost-Zellen.
 
 \begin{figure}[htbp]
 	\centering
@@ -137,7 +137,7 @@ Zusätzlich entfernen wir aus Gründen der Übersicht die Randzellen ohne Einflu
 
 
 \subsubsection*{Diskretisierung}
-Wenden wir nun die zuvor hergeleitete Explizite Updateformel \eqref{eq:update-dd} auf dieses Gitter an, resultieren die folgenden 9 Gleichungen:
+Wenden wir nun die zuvor hergeleitete explizite Updateformel \eqref{eq:update-dd} auf dieses Gitter an, resultieren die folgenden 9 Gleichungen:
 \begin{alignat*}{6}
 	-4\color{darkred}{T_{2,2}} &+ T_{3,2} &+ 80 &+ T_{2,3} &+ 100 &= 0, \\
 	-4\color{darkred}{T_{2,3}} &+ T_{3,3} &+ 80 &+ T_{2,4} &+ T_{2,2} &= 0, \\
@@ -227,7 +227,7 @@ Um die Kopplung zwischen Subdomains herzustellen, gibt es zwei grundsätzliche A
 	
 	Ein klassisches Beispiel ist die \emph{Schwarz-Methode}.  
 	Hier werden an den künstlichen Rändern zwischen den Teilgebieten \emph{Dirichlet-Randbedingungen} vorgegeben, d.\,h.\ die benachbarten Teilgebiete liefern feste Temperaturwerte, die als Randwerte eingesetzt werden.  
-	Genau diese Art von Randbedingungen haben wir auch im obigen Beispiel mit festen Temperaturen an den Außenrändern des Gitters verwendet.  
+	Genau diese Art von Randbedingungen haben wir auch im obigen Beispiel mit festen Temperaturen an den Aussenrändern des Gitters verwendet.  
 	Die Schwarz-Methode ist einfach und robust, kann jedoch bei vielen Teilgebieten langsam konvergieren.  
 	Eine ausführliche Darstellung findet sich in \cite{parallelisierung:quarteroniValli1999}.  
 	

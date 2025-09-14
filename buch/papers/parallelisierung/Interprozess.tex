@@ -15,11 +15,11 @@ Jeder Kern ist eine eigenständige Recheneinheit und hat privaten wie auch mit a
 Ein Prozess ist ein eigenständiges Programm, welches vom Betriebssystem alle nötigen Resourcen wie Speicher, Rechenzeit und Daten zugeteilt bekommt.
 Threads sind Teilaufgaben eines Prozesses, die gleichzeitig auf den verschiedenen Kernen des Prozessors arbeiten und sich die Daten und den Speicher dieses Prozesses teilen.
 
-Für das Austauschen von Daten zwischen Teilgebieten gibt es zwei häufig verwendete Parallele Programmier- und Kommunikationsschnittstellen, OpenMP und MPI.
-Im folgen werden beide kurz vorgestellt.
+Für das Austauschen von Daten zwischen Teilgebieten gibt es zwei häufig verwendete parallele Programmier- und Kommunikationsschnittstellen, OpenMP und MPI.
+Im Folgenden werden beide kurz vorgestellt.
 
 \subsubsection{OpenMP}
-OpenMP ist eine API, welche sehr einfach das erzeugen von Threads und die Kommunikation zwischen diesen ermöglicht.
+OpenMP ist eine API, welche sehr einfach das Erzeugen von Threads und die Kommunikation zwischen diesen ermöglicht.
 Jedes Teilgebiet wird hier einem Thread zugeteilt. 
 Da sich diese Threads den Speicher des Prozesses teilen, nutzt OpenMP Shared-Memory für den Austausch von Daten.
 Bei OpenMP gibt es keinen Thread-eigenen Speicher.
@@ -28,7 +28,7 @@ Dadurch benötigt es keine Kommunikation zwischen den Teilgebieten im engeren Si
 
 Für kleine Systeme ist OpenMP eine einfache und gute Lösung.
 Da es aber auf Shared-Memory basiert ist es schlecht skalierbar.
-Werden für grosse Berechnungen mehrere Prozessoren verwendet ist Shared-Memory oft nicht verfügbar.
+Werden für grosse Berechnungen mehrere Prozessoren verwendet, ist Shared-Memory oft nicht verfügbar.
 Grosse Berechnungen möchte man oft auch auf verschiedene Maschinen aufteilen, was mit OpenMP nicht möglich ist.
 Der einfache Aufbau für den Programmierer bedeutet außerdem weniger Kontrolle über die Datenverteilung.
 
