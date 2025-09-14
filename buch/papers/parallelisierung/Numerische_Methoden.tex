@@ -18,7 +18,7 @@ Konkret bedeutet dies, dass wir die Feldgleichungen diskretisieren müssen.
 Ein prominentes Beispiel dafür ist das numerische Wettermodell des ECMWF (European Centre for Medium-Range Weather Forecasts), das auf Grundlage eines breiten Spektrums aktueller und vergangener Wetterdaten versucht, möglichst präzise Vorhersagen für die kommenden zehn Tage zu treffen.
 Als wichtigste und somit einflussreichste Parameter dieses Modells gelten der Luftdruck, die Lufttemperatur, die Windgeschwindigkeit bzw. -richtung, die Luftfeuchtigkeit sowie diverse Niederschlagsparameter \cite{parallelisierung:ecmwf2023}.
 Diese Messwerte liegen jedoch nur mit begrenzter zeitlicher und räumlicher Auflösung vor.
-Sie bestimmen somit die Feinheit des zugrunde liegenden Datenrasters. Dies wird sich im verlaufe der Arbeit als wegweisender Umstand erweisen.
+Sie bestimmen somit die Feinheit des zugrunde liegenden Datenrasters. Dies wird sich im Verlaufe der Arbeit als wegweisender Umstand erweisen.
 
 \subsection{Diskretisierung statt Interpolation}
 
@@ -309,7 +309,7 @@ ergibt.
 Im Folgenden soll diese auf den ersten Blick willkürlich und wenig intuitive Stabilitätsbedingung anhand einer Analogie sowie mehrerer numerischer Experimente untersucht werden, um ihre Eigenschaften und Auswirkungen besser zu verstehen.
 
 \subsubsection{Physikalische Intuition}  
-Man kann sich die Wärmeausbreitung wie das ausbreiten des Wassers in mehreren, miteinander verbundener Wasserbehälter vorstellen.
+Man kann sich die Wärmeausbreitung wie das Ausbreiten des Wassers in mehreren, miteinander verbundener Wasserbehälter vorstellen.
 Jeder Gitterpunkt entspricht dabei einem Behälter, dessen „Wasserstand“ die Temperatur an dieser Stelle repräsentiert.
 Die Verbindungen zu den vier Nachbarpunkten wirken wie Rohre, durch die Wasser proportional zum Höhenunterschied fliesst.
 
@@ -339,7 +339,7 @@ Das Material besitzt die folgenden Eigenschaften:
 		spezifische Wärmekapazität & \(c\) &  470 & \(\mathrm{J/(kg \cdot K)}\)
 	\end{tabular}
 \end{center}
-Somit ergibt sich die thermische Diffusität zu
+Somit ergibt sich die thermische Diffusivität zu
 
 
 \[
@@ -360,7 +360,7 @@ Für \(\Delta t = 1\,\mathrm{s}\) ergibt sich
 1.355\cdot 10^{-5} \cdot \frac{1}{0.01^2}
 \approx 0.135 < \frac14.
 \]
-Die Simulation konvergiert auf der Basis von \eqref{parallelisierung:eq:update_formel} nach 234 Iterationen zum stabilen Endzustand der in  Abbildung~\ref{parallelisierung:fig:simulation_10x10_0.135} ersichtlich ist.
+Die Simulation konvergiert auf der Basis von \eqref{parallelisierung:eq:update_formel} nach 234 Iterationen zum stabilen Endzustand, der in  Abbildung~\ref{parallelisierung:fig:simulation_10x10_0.135} ersichtlich ist.
 
 \begin{figure}[htbp]
 	\centering

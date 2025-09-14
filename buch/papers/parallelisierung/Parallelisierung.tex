@@ -14,11 +14,11 @@ Wir wissen auch, wie wir unser Feld in Teilgebiete unterteilen können.
 Das gibt uns alle Werkzeuge, welche wir benötigen um die Berechnungen unserer Gleichungen auf mehrere Maschinen aufzuteilen.
 
 Bei der Parallelisierung von Feldgleichungen in einem Multiprozessorsystem wird jedem Prozessor eines oder mehrere zusammenhängende Teilgebiete zugewiesen.
-Die Teilgebiete müssen theoretisch nicht zusammenhängend sein aber um die Kommunikation zwischen Prozessoren zu minimieren, ist dieses Vorgehen sinnvoll und üblich.
-Da die Randzellen jedes Teilgebietes abhängig von den angrenzenden Zellen sind, siehe \ref{parallelisierung:sec:Gebietsunterteilung}, müssen die vorhandenen Informationen dieser Zellen zwischen Gebieten auf unterschiedlichen Prozessoren ausgetauscht werden.
+Die Teilgebiete müssen theoretisch nicht zusammenhängend sein, aber um die Kommunikation zwischen Prozessoren zu minimieren, ist dieses Vorgehen sinnvoll und üblich.
+Da die Randzellen jedes Teilgebietes abhängig von den angrenzenden Zellen sind, siehe Abschnitt \ref{parallelisierung:sec:Gebietsunterteilung}, müssen die vorhandenen Informationen dieser Zellen zwischen Gebieten auf unterschiedlichen Prozessoren ausgetauscht werden.
 Dieser Austausch ist mit erheblichem zeitlichen Aufwand verbunden.
-Die Frage, wie fein ein Gitter in verschiedene Teilgebiete aufgeteilt werden soll, ist also immer eine optimierungs-Frage.
-Man muss ein Optimum finden, wo der zeitliche Gewinn der parallelen Berechnung die zeitlichen Verluste der Interprozess-Kommunikation überwiegen.
+Die Frage, wie fein ein Gitter in verschiedene Teilgebiete aufgeteilt werden soll, ist also immer eine Optimierungs-Frage.
+Man muss ein Optimum finden, wo der zeitliche Gewinn der parallelen Berechnung die zeitlichen Verluste der Interprozess-Kommunikation überwiegt.
 
 \input{papers/parallelisierung/Interprozess.tex}
 
@@ -26,10 +26,10 @@ Man muss ein Optimum finden, wo der zeitliche Gewinn der parallelen Berechnung d
 \subsection{Beispiel an der allgemeinen Wärmeleitungsgleichung
 	\label{parallelisierung:sub:BeispielParallelisierung}}
 Zum besseren Verständnis wollen wir mit OpenMP ein konkretes Beispiel für die Parallelisierung der allgemeinen Wärmeleitungsgleichung realisieren.
-Zum Vergleich wird auch die Serielle Vorgehensweise präsentiert.
+Zum Vergleich wird auch die serielle Vorgehensweise präsentiert.
 Als Ausgangslage soll für ein Gitter von $A \cdot B$ Zellen $C$ Updates durchgeführt werden.
-Für jedes Update wird die Formel \ref{parallelisierung:eq:update_formel} aus Abschnitt \ref{parallelisierung:sec:update_formel} verwendet.
-Links und Rechts der Zellen gibt es Reihen mit unveränderlicher Temperatur, welche einen Heiz- respektive Kühlkörper darstellen.
+Für jedes Update wird die Formel \eqref{parallelisierung:eq:update_formel} aus Abschnitt \ref{parallelisierung:sec:update_formel} verwendet.
+Links und rechts der Zellen gibt es Reihen mit unveränderlicher Temperatur, welche einen Heiz- respektive Kühlkörper darstellen.
 Ober- und unterhalb der Zellen gibt es Zeilen mit unveränderlicher Temperatur, welche die Umgebungstemperatur darstellen.
 Diese Konstanten, wie auch $\lambda$ als Konstante für die Updateformel können alle im Main-File des Programms definiert werden und sind unveränderlich.
 
@@ -57,6 +57,7 @@ Damit garantiert man eine kontinuierliche Speicherung der Daten.
 \label{parallelisierung:sub:serLoesung}
 Zur Vorbereitung werden zwei Arrays der Grösse 
 \begin{equation}
+\label{parallelisierung:eq:Arrays}
 A+2 \cdot B+2 
 \end{equation}
 angelegt. 
@@ -65,7 +66,7 @@ angelegt.
 std::vector<double> grid(A * B);
 std::vector<double> gridNew(A * B);
 \end{lstlisting}
-Die Addition von zwei ist notwendig, um die umgebenden Temperaturen speichern zu können.
+Die Addition von 2 in \eqref{parallelisierung:eq:Arrays} ist notwendig, um die umgebenden Temperaturen speichern zu können.
 In beiden Arrays wird nun die Umgebungstemperatur in die erste und letzte Zeile geschrieben.
 Die jeweilige Temperatur der Heiz-/Kühlkörper wird in die erste und letzte Spalte geschrieben.
 Das erste Array wird für die aktuellen Temperaturen der Zellen verwendet.
@@ -87,7 +88,7 @@ for (int i = 1; i < B - 1; ++i) {     // ueberspringt erste und letzte Zeile
 	}
 }
 \end{lstlisting}
-Im Beispiel ist src ein Pointer auf das Array mit den aktuellen Werten und dst ist ein Pointer auf das Array mit den neuen Werten.
+Im Beispiel ist \texttt{src} ein Pointer auf das Array mit den aktuellen Werten und \texttt{dst} ist ein Pointer auf das Array mit den neuen Werten.
 Bei der Verwendung von Vektoren erhält man die Adresse des ersten Eintrags mit der Funktion \texttt{.data()}.
 \begin{lstlisting}
 double* src = grid.data();
@@ -98,10 +99,10 @@ Ist die For-Schleife durchgerechnet, kann man die beiden Array elegant austausch
 \begin{lstlisting}
 std::swap(src, dst);
 \end{lstlisting}
-Auf diese weise müssen keine Daten verschoben werden, was viel Zeit einspart.
+Auf diese Weise müssen keine Daten verschoben werden, was viel Zeit einspart.
 Dieses Verfahren nennt man passend einen Ping-Pong-Ansatz.
 
-In einer Schleife die $C$ mal durchlaufen wird, und den Updatecode sowie den Swap aufruft kann das Array $C$ mal aktualisiert und damit das Fortschreiten der Zeit simuliert werden.
+In einer Schleife, die $C$ mal durchlaufen wird, und den Updatecode sowie den Swap aufruft, kann das Array $C$ mal aktualisiert und damit das Fortschreiten der Zeit simuliert werden.
 
 \subsubsection{Parallele Lösung 
 \label{parallelisierung:sub:parLoesung}}
@@ -110,8 +111,8 @@ Es werden zwei Arrays verwendet, welche im Shared-Memory des Prozesses liegen.
 Jeder Thread kann auf das gesamte Array mit den aktuellen Werten zugreifen und kann daher auch die Randzellen problemlos berechnen.
 Jedem Thread wird ein Teilgebiet des gesamten Arrays zugewiesen.
 Der Thread berechnet darin jede Zelle mit den vorhandenen aktuellen Werten und schreibt das Ergebnis an der entsprechenden Stelle in das neue Array.
-Da auf dem alten Array keine Schreibaktionen getätigt werden gibt es keine Möglichkeit für Race conditions.
-Zur Synchronisation wird am ende der Updateschlaufe eine Barriere gesetzt, welche den Thread am weitermachen hindert, bis jeder andere Thread seine Arbeit verrichtet hat.
+Da auf dem alten Array keine Schreibaktionen getätigt werden, gibt es keine Möglichkeit für Race conditions.
+Zur Synchronisation wird am Ende der Updateschlaufe eine Barriere gesetzt, welche den Thread am Weitermachen hindert, bis jeder andere Thread seine Arbeit verrichtet hat.
 Wird diese Barriere überschritten, hat ein Thread die Aufgabe, die Pointer der Arrays auszutauschen.
 Eine zweite Barriere sorgt dafür, dass die anderen Threads warten, bis dieser Pointer-Swap durchgeführt wurde.
 
@@ -165,7 +166,7 @@ Eine zweite Barriere sorgt dafür, dass die anderen Threads warten, bis dieser P
 
 Für den Vergleich der seriellen und parallelen Berechnung wurde bei beiden eine Zeitmessung bei Problemen unterschiedlicher Grösse durchgeführt.
 Der Speed-Up ist ein direkter Vergleich der benötigten Zeit für die parallele Berechnung zur seriellen.
-Der Rechner, welcher für den Test verwendet wurde hat 6 physische Kerne und 12 logische Kerne. 
+Der Rechner, welcher für den Test verwendet wurde, hat 6 physische Kerne und 12 logische Kerne. 
 Sechs Threads können also echt parallel auf den verschiedenen Kernen laufen.
 Jeder Kern kann zwei Threads quasi-parallel verarbeiten wobei die Rechenzeit zwischen den beiden Threads aufgeteilt wird.
 
@@ -253,20 +254,25 @@ Zur besseren Übersicht stellen wir die Tabelle in Grafiken dar, aufgeteilt auf 
 
 Der Speed-Up ist in allen Beispielen ziemlich bescheiden.
 Dennoch lassen sich daraus einige Erkenntnisse ziehen.
+
+Bei kleineren Problemen ist der Speed-Up schlechter, wenn mehr Kerne verwendet werden.
+Das ist darauf zurückzuführen, dass der Parallelisierungsoverhead mit der Anzahl Kerne unterproportional stark im Vergleich zum Gewinn steigt.
+Es ist anzunehmen, dass der Speed-Up mit der Grösse des Problems steigt.
+Leider brauchten bereits diese Berechnungen bis zu 30 Minuten pro Rechnung, weshalb noch grössere Rechnungen schwierig durchzuführen waren.
+
 Interessanterweise scheint der Speedup schlechter zu werden, wenn mehr Zellen berechnet werden müssen, jedoch steigt die Effizienz, wenn mehr Iterationen durchgeführt werden.
 Eine logische Erklärung hierfür ist, dass das Programm Memory Bound ist.
-Die durchgeführten Operationen sind sehr simpel wodurch das Auslesen der Daten das Programm ausbremst.
-Dadurch kann kein höherer Speedup erreicht werden, da mehr Rechenleistung nichts nützt. 
-Bei kleineren Problemen ist der Speed-Up schlechter, wenn mehr Kerne verwendet werden.
-Das ist darauf zurückzuführen, dass der parallelisierungs Overhead mit der Anzahl Kerne unterproportional stark im Vergleich zum Gewinn steigt.
-Es ist anzunehmen, dass der Speed-Up mit der grösse des Problems steigt.
-Leider brauchten bereits diese Berechnungen bis zu 30 Minuten pro Rechnung, weshalb noch grössere Rechnungen schwierig durchzuführen waren.
+Die durchgeführten Operationen sind sehr einfach, wodurch das Auslesen der Daten das Programm ausbremst.
+Dadurch kann kein höherer Speedup erreicht werden, da mehr Rechenleistung nichts nützt.
+
 In Abbildung \ref{parallelisierung:fig:Speedup5000} ist ist gut zu erkennen, wie der Speedup bei $10 \cdot 10^6$ im Vergleich zu $5 \cdot 10^6$ sinkt.
-Eine Naheliegende Erklärung ist, dass ab $10^7$ Einträge die Datenmenge zu gross wird für den Level 3 Cache des Prozessors und damit die Daten im Hauptspeicher abgelegt werden.
+Eine naheliegende Erklärung ist, dass ab $10^7$ Einträge die Datenmenge zu gross wird für den Level 3 Cache des Prozessors und damit die Daten im Hauptspeicher abgelegt werden.
 Die Zugriffe auf den Hauptspeicher sind bedeutend langsamer, was das memory bound Programm weiter ausbremst.
+
 Für einen besseren Speed-Up müssen die Operationen der einzelnen Iterationen komplex genug sein, damit das Programm durch die Berechnung und nicht durch die Datenzugriffe begrenzt ist.
 Die Parallelisierung ist daher für dieses Problem nicht geeignet.
 Zur Überprüfung haben wir die Berechnungen künstlich komplexer gemacht.
+Diese im Codeabschnitt gezeigte Berechnung hat keinen physikalischen oder mathematischen Hintergrund und dient rein zur Überprüfung dieser These
 
 \begin{lstlisting}
 writeGrid[center] = readGrid[center]*readGrid[center]*readGrid[center]*6.2 +
@@ -288,3 +294,6 @@ Mit 4 Threads, $10^6$ Einträgen und $10^5$ Iterationen erhält man
 	EFFIZIENZ:       83.9%
 	------------------------------------------------
 \end{lstlisting}
+
+Man sieht, dass mit dieser Anpassung der Speedup bedeutend besser wird.
+Das Programm ist demnach tatsächlich Memory Bound.
