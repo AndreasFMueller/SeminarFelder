@@ -18,13 +18,13 @@ Entsprechend wurde in der Hinsicht darauf,
 dass schliesslich auch nichtlineare Medien simuliert werden können, 
 ein numerischer Ansatz gewählt.
 
-So wurde für die Simulationen eine von Huygens Optics angepasste Version~\cite{particles:huygens_wavesim2d} des Open-Source Wellensimulators WaveSimulator2D~\cite{repo:wavesim2d} verwendet.
+So wurde für die Simulationen eine von \emph{Dr. Jeroen Vleggaar} angepasste Version des Open-Source Wellensimulators WaveSimulator2D~\cite{particles:repo-wavesim2d} verwendet.
 Dieser simuliert eine zweidimensionale Szene, indem er die Wellengleichung für einen diskreten Zeitschritt simuliert und das resultierende Feld anzeigt.
 Die Szene wird dabei ebenfalls örtlich diskretisiert, indem sie in Pixel aufgeteilt wird.
 
 \subsection{Wellengleichung\label{particles:section:simulation:wellengleichung}}
 Die Diskretisierung der Raumdimensionen erlaubt die Berechnung von $\nabla^2 u$ als Faltung des Felds $u$ mit einem Laplace Kernel.
-WaveSim2D verwendet dazu den Kernel
+WaveSimulator2D verwendet dazu den Kernel
 \[
     \mathbf{D}^2_{xy} = 
     \begin{pmatrix}
