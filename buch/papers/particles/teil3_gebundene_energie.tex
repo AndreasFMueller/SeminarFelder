@@ -25,7 +25,7 @@ zu
 \]
 abändert. 
 Wie dieser Proportionalitätsfaktor genau von der Kraft abhängt, ist je nach Medium unterschiedlich.
-Ein Beispiel davon wird im Video~\ref{particles:huygens-optics} von Huygens Optics gezeigt, wobei für $D$ die Formel 
+Ein Beispiel davon wird im Video~\cite{particles:huygens-optics} von Huygens Optics gezeigt, wobei für $D$ die Formel 
 \[
     D(F)
     =
@@ -41,16 +41,37 @@ eingesetzt wird. Ein Beispiel der daraus resultierenden Graphen ist in \autoref{
     \caption{Deformation~(a) und Elastizitätsmodul~(b) eines nichtlinearen Mediums mit $D_0 = 1$, $\alpha = 0.005$ und $n = 1.5$.}
 \end{figure}
 
-Wiederholen wir nun wieder die Simulation aus Abschnitt~\ref{particles:section:lin-medium:superposition}, so fällt zunächst kein Unterschied auf.
-Abbildung~\mytodo{Abbildung mit nichtlinearem Medium und Referenz dazu einfügen} zeigt einen Vergleich der beiden Resultate.
+Wiederholen wir nun wieder die Simulation aus \autoref{particles:section:lin-medium:superposition}, so fällt zunächst kein Unterschied auf.
+\autoref{particles:fig:nichtlin-medium:beams} zeigt einen Vergleich der beiden Resultate.
 % TODO: Grafik mit gleichem Aufbau wie in "lineares Medium", aber mit nichtlinearem medium (Zwei Lichtwellen)
 Damit die Auswirkung der nichtlinearen Effekte erkannt werden können, müssen die Feldstärken scheinbar bedeutend grösser sein.
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/beams_nonlin_1_10.png}}\label{particles:fig:nichtlin-medium:beams-1}\hfill
+    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/beams_nonlin_3_20.png}}\label{particles:fig:nichtlin-medium:beams-2}\hfill
+    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/beams_nonlin_4_32.png}}\label{particles:fig:nichtlin-medium:beams-3}
+    \caption{Strahlen im nichtlinearen Medium zu Beginn~(a), während sie sich kreuzen~(b) und danach~(c).}\label{particles:fig:nichtlin-medium:beams}
+\end{figure}
+
 
 \subsection{Selbstfokussierung -- Confined Energy}
 % TODO: Was für Bedingungen müssen erfüllt sein, damit dies geschieht? 
 %       Kann man das überhaupt so einfach klassifizieren?
 %       Allenfalls Analogie zu Schwingkreisen herstellen?
-Der in Abbildung~\mytodo{Abbildung Anfangszustand} gezeigte Anfangszustand kann durch das Aufeinandertreffen der Wellen im Zentrum besonders grosse Feldstärken hervorrufen.
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_00.png}}\label{particles:fig:nichtlin-medium:particle-anfang}\hfill
+    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_02.png}}\hfill
+    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_04.png}}\hfill
+    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_06.png}}\hfill
+    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_12.png}}\hfill
+    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_14.png}}\hfill
+    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_16.png}}\hfill
+    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_17.png}}\hfill
+    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_18.png}}
+    \caption{Verlauf eines Partikels im nichtlinearen Medium.}\label{particles:fig:nichtlin-medium:particle}
+\end{figure}
+Der in Abbildung~\ref{particles:fig:nichtlin-medium:particle-anfang} gezeigte Anfangszustand kann durch das Aufeinandertreffen der Wellen im Zentrum besonders grosse Feldstärken hervorrufen.
 Wird die Simulation nun abgespielt, so geschieht etwas Unerwartetes: Die Energie im Feld scheint sich im Zentrum zu sammeln.
 Die besondere Region inmitten des Simulationsfelds wächst, bis die im Ausgangszustand definierten Wellen entweder gegen den Rand der Simulation verschwinden oder ihre Energie in die Region im Zentrum gesteckt haben.
 Dieser Prozess wird in den Abbildungen~\mytodo{Bilder des wachsenden Partikels} veranschaulicht.

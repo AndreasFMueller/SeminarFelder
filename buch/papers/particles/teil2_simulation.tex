@@ -118,7 +118,7 @@ Die Nichtlinearität des Mediums wird durch die Formel
     \text{stress} = a \cdot \text{strain} \cdot e^{b \cdot \text{strain}} % TODO: Tatsächliche Formel
 \]
 gegeben, wobei das nichtlineare Verhalten durch die Parameter $a$ und $b$ angepasst werden kann.
-Einige Beispiele der daraus resultierenden Spannungs-Deformations-Kurven sind in Abb.~\ref{particles:abb:nonlin} gezeigt. % TODO: Abbildung
+Einige Beispiele der daraus resultierenden Spannungs-Deformations-Kurven sind in Abbildung~\ref{particles:abb:nonlin} gezeigt. % TODO: Abbildung
 \mytodo{Beschreiben, wie der Simulator das einrechnet}
 
 \subsection{Szenendefinition}
@@ -126,7 +126,7 @@ Zur Definition des Ausgangszustands des Feldes sowie der Eigenschaften des Mediu
 Den drei Farbkanälen wird jeweils eine Funktion zugeteilt.
 Der rote Kanal bestimmt den Brechungsindex des jeweiligen Pixels, während über den blauen Kanal die Dämpfung bestimmt werden kann.
 Über den grünen Kanal können im unveränderten Simulator Quellen dargestellt werden, wobei der Farbwert die Frequenz der Quelle darstellt.
-Damit die in der Simulation enthaltene Energie nicht fortlaufend ansteigt, wurde die Funktion des grünen Kanals durch \textbf{insert name} angepasst. % TODO: Echter Name von Huygens einfügen
+Damit die in der Simulation enthaltene Energie nicht fortlaufend ansteigt, wurde die Funktion des grünen Kanals durch \emph{Dr. Jeroen Vleggaar} angepasst. % TODO: Echter Name von Huygens einfügen
 Der grüne Kanal diktiert nun das Spannungsfeld zu Beginn der Simulation. % CHECK: ist es die Spannung oder die Deformation?
 % TODO: Beispielszene
 
