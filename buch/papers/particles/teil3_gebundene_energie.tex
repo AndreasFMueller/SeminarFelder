@@ -51,20 +51,24 @@ Damit die Auswirkung der nichtlinearen Effekte erkannt werden können, müssen d
 %       Kann man das überhaupt so einfach klassifizieren?
 %       Allenfalls Analogie zu Schwingkreisen herstellen?
 \input{papers/particles/figures/wavesim/particle_initial_state.tex}
+\input{papers/particles/figures/wavesim/particle_growing.tex}
 Der in Abbildung~\ref{particles:fig:particle:ausgangszustand} gezeigte Anfangszustand kann durch das Aufeinandertreffen der Wellen im Zentrum besonders grosse Feldstärken hervorrufen.
 Wird die Simulation nun abgespielt, so geschieht etwas Unerwartetes: Die Energie im Feld scheint sich im Zentrum zu sammeln.
 Die besondere Region inmitten des Simulationsfelds wächst, bis die im Ausgangszustand definierten Wellen entweder gegen den Rand der Simulation verschwinden oder ihre Energie in die Region im Zentrum gesteckt haben.
 Dieser Prozess wird in den Abbildungen~\ref{particles:fig:partikel:wachsen} veranschaulicht.
 
+\input{papers/particles/figures/wavesim/particle_decay_symmetrical.tex}
 Die nächste Phase zeichnet sich durch Oszillieren der symmetrischen Feldanordnung aus. 
 Weiter sind einige schwache Wellen zu erkennen, welche die Region der konzentrierten Energie verlassen.
 So schrumpft die gefangene Energie wie auch die Grösse der Feldanordnung fortlaufend.
-Einige Bilder sind in Abbildung~\mytodo{particles:fig:partikel:abnehmen:symmetrisch} gezeigt.
+Einige Bilder sind in Abbildung~\ref{particles:fig:partikel:abnehmen:symmetrisch} gezeigt.
 
+\input{papers/particles/figures/wavesim/particle_decay_asymmetrical.tex}
 In einer nächsten Phase wird die Symmetrie der Feldanordnung gebrochen, vermutlich da die gespeicherte Energie und so die Grösse der Anordnung zu klein wird.
 Aufgrund des Längenelements der ortsdiskreten Simulation sind wohl ab einer gewissen Grösse keine symmetrischen Anordnungen mehr möglich, welche stabil sind.
 Die konzentrierte Energie bleibt jedoch einen weiteren Moment bestehen, wie die Abbildung~\ref{particles:fig:partikel:abnehmen:asymmetrisch} zeigt.
 
+\input{papers/particles/figures/wavesim/particle_decay.tex}
 In der letzten Phase wird die Energie zu klein, um die Anordnung aufrechtzuerhalten. 
 Sie verfällt schliesslich in eine konzentrische, sehr hochfrequente Welle. 
 Dessen Wellenlänge ist die in der Simulation kleinstmögliche, sprich zweimal das Längenelement.
