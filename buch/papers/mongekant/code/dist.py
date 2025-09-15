@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+import matplotlib.patches as mpatch
 import ot
 import scipy.stats
 import plotting
@@ -73,6 +74,7 @@ def compute_barycenters(ab, dist, alphas, reg=1e-3):
 
 def plot_ot(x, a, b, dist, index, reg=1e-3, figsize=(2.8, 2.8)):
     ot_map = ot.sinkhorn(a, b, dist, reg=reg, numItermax=1000)
+    ot_map *= -1
 
     fig, axs = plt.subplots(
         2,
@@ -86,29 +88,45 @@ def plot_ot(x, a, b, dist, index, reg=1e-3, figsize=(2.8, 2.8)):
     for _ax in axs.flatten():
         _ax.axis("off")
     axs[0, 1].fill_between(x, b, color="blue", alpha=0.5)
-    axs[0, 1].plot(x, b, color="blue", label="$\\boldsymbol\\nu$")
-    axs[0, 1].legend(
-        frameon=False,
-        handlelength=0,
+    axs[0, 1].plot(x, b, color="blue")
+    axs[0, 1].text(
+        0.9,
+        0.5,
+        "$\\bm{\\nu}$",
+        color="blue",
+        horizontalalignment="center",
         fontsize="x-large",
-        labelcolor="blue",
-        loc="upper center",
+        transform=axs[0, 1].transAxes,
     )
     axs[1, 0].fill_betweenx(x, -a, color="red", alpha=0.5)
-    axs[1, 0].plot(-a, x, color="red", label="$\\boldsymbol\\mu$")
-    axs[1, 0].legend(
-        frameon=False,
-        handlelength=0,
+    axs[1, 0].plot(-a, x, color="red")
+    axs[1, 0].text(
+        0.5,
+        0.9,
+        "$\\bm{\\mu}$",
+        color="red",
+        horizontalalignment="center",
+        verticalalignment="center",
         fontsize="x-large",
-        labelcolor="red",
-        loc="center",
+        transform=axs[1, 0].transAxes,
     )
     axs[1, 1].imshow(ot_map, cmap="gray", interpolation="nearest", label="$\\gamma")
+    artist = mpatch.Rectangle(
+        (0, 0),
+        1,
+        1,
+        facecolor=(0, 0, 0, 0),
+        edgecolor="k",
+        transform=axs[1, 1].transAxes,
+    )
+    axs[1, 1].add_artist(artist)
     axs[1, 1].text(
         0.9,
         0.9,
-        "$\\boldsymbol\\gamma$",
-        color="white",
+        "$\\bm{\\gamma}$",
+        color="black",
+        horizontalalignment="center",
+        verticalalignment="center",
         fontsize="x-large",
         transform=axs[1, 1].transAxes,
     )

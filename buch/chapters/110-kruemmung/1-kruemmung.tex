@@ -251,7 +251,7 @@ h^v k^m
 Vertauschung von $v$ und $m$ führt auf den entsprechenden
 Ausdruck für den Weg $ADC$.
 Die Differenz ist der gesucht Krümmungstensor
-\begin{align*}
+\begin{align}
 R^s\mathstrut_{uvm}
 &=
 \frac{\partial\Gamma^s_{uv}}{\partial x^m}
@@ -261,10 +261,11 @@ R^s\mathstrut_{uvm}
 \Gamma^s_{nm}\Gamma^n_{uv}
 +
 \Gamma^s_{nv}\Gamma^n_{um}
-\end{align*}
+\label{buch:kruemmung:kruemmung:eqn:Rm}
+\end{align}
 Dies sind die Komponenten des riemannschen Krümmungstensors.
 Durch herunterziehen des ersten Index erhält man die Komponenten
-\[
+\begin{equation}
 R_{ruvm}
 =
 g_{rs}
@@ -277,14 +278,15 @@ g_{rs}
 +
 \Gamma^s_{nv}\Gamma^n_{um}
 \biggr)
-\]
+\label{buch:kruemmung:kruemmung:eqn:Rmkovariant}
+\end{equation}
 des kovarianten riemannschen Tensors.
 Er ist antisymmetrisch in den ersten zwei und den letzten zwei
 Indizes.
 
 \begin{beispiel}
 Der riemannsche Krümmungstensor für die Ebene in Polarkoordinaten.
-
+\\[5pt]
 In Polarkoordinaten $(r,\vartheta)$ wird die euklidische Metrik
 durch die Koeffizienten
 \[
@@ -308,7 +310,7 @@ gegeben.
 Daraus kann man die Christoffel-Symbole erster Art
 \begin{align*}
 \Gamma_{1,11}                 & =  0 &
-\Gamma_{1,12} = \Gamma^1_{21} & =  0 &
+\Gamma_{1,12} = \Gamma_{1,21} & =  0 &
 \Gamma_{1,22}                 & = -r
 \\
 \Gamma_{2,11}                 & = 0 &
@@ -320,7 +322,7 @@ Daraus kann man die Christoffel-Symbole erster Art
 \Gamma^1_{22}                 & = -r
 \\
 \Gamma^2_{11}                 & = 0  &
-\Gamma^2_{12} = \Gamma_{2,21} & = \frac{1}{r} &
+\Gamma^2_{12} = \Gamma^2_{21} & = \frac{1}{r} &
 \Gamma^2_{22}                 & = 0
 \end{align*}
 berechnen.
@@ -329,8 +331,86 @@ zu berechnen, erhält man $0$ für alle Komponenten.
 \end{beispiel}
 
 \begin{beispiel}
+\label{buch:kruemmung:kruemmung:bsp:kugel}
 Der riemannsche Krümmungstensor für die Kugeloberfläche.
+\\[5pt]
+Auf der Oberfläche einer Einheitskugel hat die Metrik in Kugelkoordinaten
+$(\vartheta,\varphi)$
+die metrischen Koeffizienten
+\[
+g_{11} = 1,\quad
+g_{22} = \sin^2\vartheta
+\qquad
+\Rightarrow
+\qquad
+g
+=
+\begin{pmatrix}
+1&0\\0&\sin^2\vartheta
+\end{pmatrix},
+\quad
+g^{-1}
+=
+\begin{pmatrix}
+1&0\\0&\frac{1}{\sin^2\vartheta}
+\end{pmatrix}.
+\]
+Aus den Christoffel-Symbolen
+\begin{align*}
+\Gamma_{1,11}                 &= 0 & 
+\Gamma_{1,12} = \Gamma_{1,21} &= 0 &
+\Gamma_{1,22}                 &= -\cos\vartheta\sin\vartheta
+\\
+\Gamma_{2,11}                 &= 0 & 
+\Gamma_{2,12} = \Gamma_{2,21} &= \cos\vartheta\sin\vartheta &
+\Gamma_{2,22}                 &= 0 
+\intertext{erster Art erhält man jene zweiter Art:}
+\Gamma^1_{11}                 &= 0 & 
+\Gamma^1_{12} = \Gamma^1_{21} &= 0 &
+\Gamma^1_{22}                 &= -\cos\vartheta\sin\vartheta
+\\
+\Gamma^2_{11}                 &= 0 & 
+\Gamma^2_{12} = \Gamma^2_{21} &= \frac{\cos\vartheta}{\sin\vartheta} &
+\Gamma^2_{22}                 &= 0.
+\end{align*}
+Die Berechnung des riemannschen Krümmungstensors ergibt jetzt die folgenden
+Komponenten
+\begin{align*}
+R^1\mathstrut_{212} &= \phantom{-}\sin^2\vartheta &
+R^2\mathstrut_{112} &= -1 \\
+R^1\mathstrut_{221} &= -\sin^2\vartheta &
+R^2\mathstrut_{121} &= \phantom{-}1.
+\end{align*}
+Alle anderen Komponenten verschwinden.
+Die etwas verwirrenden Komponenten werden etwas klarer, 
+\begin{align*}
+R_{1212} &= \phantom{-}\sin^2\vartheta &
+R_{2112} &=          - \sin^2\vartheta
+\\
+R_{1221} &=          - \sin^2\vartheta &
+R_{2121} &= \phantom{-}\sin^2\vartheta
+\end{align*}
+Die wechselnden Vorzeichen werden sich später als konsistent mit
+den Symmetrieeigenschaften des kovarianten riemnnschen Krümmungstensors
+herausstellen.
 \end{beispiel}
+
+Intuitiv würde man erwarten, dass die Krümmung einer Kugeloberfläche
+an jeder Stelle gleich ist.
+Der Wert von $R_{1212}$ hängt aber immer noch von $\vartheta$ ab.
+Die Komponenten des riemannschen Krümmungstensors sind nicht überraschend
+immer noch vom Koordinatensystem abhängig.
+Der tiefere Grund dafür ist, dass der Flächeninhalt eines Koordintenquadrats
+für Werte der geographischen Breite nahe der beiden Pole bei
+$\vartheta \in \{0,\pi\}$ kleiner wird.
+In der Einleitung wurde jedoch illustriert, wie die Drehung eines
+paralleltransportierten Vektors von der umlaufenen Fläche abhängt.
+
+In Abschnitt~\ref{buch:kruemmung:section:schnittkruemmung}
+werden wir zeigen, dass die sogenannte Schnittkrümmung die
+Abhängigkeit vom Koordinatensystem eliminiert und so ein
+rein geometrisches Krümmungsmass definiert.
+Die Schnittkrümmung einer Kugel wird sich als konstant herausstellen.
 
 \subsubsection{Herleitung mit Hilfe des Satzes von Green}
 Für die Berechnung des Krümmungstensors haben wir ein konkretes
@@ -462,6 +542,287 @@ a^u
 Der Klammerausdruck im Integral ist wieder der riemannsche Krümmungstensor.
 
 %
+% Berechnung der Krümmung in Normalkoordinaten
+%
+\subsection{Berechnung in Normalkoordinaten}
+In Normalkoordinaten zentriert in einem Punkt $p$ ist die Berechnung
+des riemannschen Krümmungstensors besonders einfach, weil in $p$
+nach Satz~\ref{zusammenhang:geodaeten:satz:normalkoordinaten} die
+metrischen Koeffizienten $g_{ik}=\delta_{ik}$ besonders einfach sind
+und die Christoffelsymbole alle verschwinden.
+Aus der Definition~\eqref{buch:kruemmung:kruemmung:eqn:Rmkovariant}
+des kovarianten Krümmungstensors folgt dann
+\begin{align}
+R_{ruvm}
+&=
+\delta_{rs}
+\biggl(
+\frac{\partial \Gamma^s_{uv}}{\partial x^m}
+-
+\frac{\partial \Gamma^s_{um}}{\partial x^v}
+\biggr)
+=
+\frac{\partial \Gamma^r_{uv}}{\partial x^m}
+-
+\frac{\partial \Gamma^r_{um}}{\partial x^v}.
+\label{buch:kruemmung:kruemmung:eqn:Rruvm}
+\end{align}
+
+%
+% Ableitungen der Christoffelsymbole
+%
+\subsubsection{Ableitungen der Christoffelsymbole}
+Die Christoffelsymbole können mittels
+\eqref{buch:zusammenhang:kovabl:eqn:Gamma}
+durch die ersten Ableitungen der metrischen Koeffizienten ausgedrückt.
+wir berechnen an der Stelle $p$
+\begin{align}
+\frac{\partial \Gamma^r_{uv}}{\partial x^m}
+&=
+\frac{\partial}{\partial x^m}\biggl(
+\frac12g^{rl}
+\biggl(
+\frac{\partial g_{ul}}{\partial x^v}
++
+\frac{\partial g_{lv}}{\partial x^u}
+-
+\frac{\partial g_{uv}}{\partial x^l}
+\biggr)
+\biggr)
+\notag
+\\
+&=
+\frac12\frac{\partial g^{rl}}{\partial x^m}
+\biggl(
+\frac{\partial g_{ul}}{\partial x^v}
++
+\frac{\partial g_{lv}}{\partial x^u}
+-
+\frac{\partial g_{uv}}{\partial x^l}
+\biggr)
++
+\frac12 g^{rl}
+\frac{\partial}{\partial x^m}
+\biggl(
+\frac{\partial g_{ul}}{\partial x^v}
++
+\frac{\partial g_{lv}}{\partial x^u}
+-
+\frac{\partial g_{uv}}{\partial x^l}
+\biggr)
+\notag
+\\
+&=
+\frac12
+\delta_{rl}
+\biggl(
+\underbrace{
+\frac{\partial g_{ul}}{\partial x^v}
++
+\frac{\partial g_{lv}}{\partial x^u}
+-
+\frac{\partial g_{uv}}{\partial x^l}
+}_{\displaystyle=0}
+\biggr)
++
+\frac12\delta^{rl}
+\biggl(
+\frac{\partial^2 g_{ul}}{\partial x^m\,\partial x^v}
++
+\frac{\partial^2 g_{lv}}{\partial x^m\,\partial x^u}
+-
+\frac{\partial^2 g_{uv}}{\partial x^m\,\partial x^l}
+\biggr)
+\notag
+\\
+&=
+\frac12\biggl(
+\frac{\partial^2 g_{ur}}{\partial x^m\,\partial x^v}
++
+\frac{\partial^2 g_{rv}}{\partial x^m\,\partial x^u}
+-
+\frac{\partial^2 g_{uv}}{\partial x^m\,\partial x^r}
+\biggr).
+\label{buch:kruemmung:kruemmung:eqn:RGamma2}
+\end{align}
+Die Ableitungen der Christoffelsymbole im Punkt $p$ können also
+ausschliesslich durch zweite Ableitungen der metrischen Koeffizienten
+ausgedrückt werden.
+
+\subsubsection{Riemannscher Krümmungstensor}
+Die nicht abgeleiteten Christoffelsymbole in
+\eqref{buch:kruemmung:kruemmung:eqn:Rruvm}
+verschwinden an der Stelle $p$,
+Es müssen also nur noch die Ableitungen der $\Gamma$ unter Verwendung
+von \eqref{buch:kruemmung:kruemmung:eqn:RGamma2}
+dargestellt werden.
+Durch Vertauschung der Indizes $v$ und $m$ entsteht der zweite
+Term in \eqref{buch:kruemmung:kruemmung:eqn:Rruvm} und damit
+wird der Krümmungstensor zu
+\begin{align}
+R_{ruvm}
+&=
+\frac12
+\biggl(
+\frac{\partial^2 g_{ur}}{\partial x^m\,\partial x^v}
++
+\frac{\partial^2 g_{rv}}{\partial x^m\,\partial x^u}
+-
+\frac{\partial^2 g_{uv}}{\partial x^m\,\partial x^r}
+\biggr)
+-
+\frac12
+\biggl(
+\frac{\partial^2 g_{ur}}{\partial x^v\,\partial x^m}
++
+\frac{\partial^2 g_{rm}}{\partial x^v\,\partial x^u}
+-
+\frac{\partial^2 g_{um}}{\partial x^v\,\partial x^r}
+\biggr)
+\notag
+\\
+&=
+\frac12
+\biggl(
+\frac{\partial^2 g_{rv}}{\partial x^m\,\partial x^u}
+-
+\frac{\partial^2 g_{uv}}{\partial x^m\,\partial x^r}
+-
+\frac{\partial^2 g_{rm}}{\partial x^v\,\partial x^u}
++
+\frac{\partial^2 g_{um}}{\partial x^v\,\partial x^r}
+\biggr)
+.
+\label{buch:kruemmung:kruemmung:eqn:Rddg}
+\end{align}
+Auch aus dieser Form kann man sofort die Symmetrieeigenschaften
+des Krümmungstensors ablesen:
+\begin{align*}
+R_{urvm}
+&=
+\frac12
+\biggl(
+\frac{\partial^2 g_{uv}}{\partial x^m\,\partial x^r}
+-
+\frac{\partial^2 g_{rv}}{\partial x^m\,\partial x^u}
+-
+\frac{\partial^2 g_{um}}{\partial x^v\,\partial x^r}
++
+\frac{\partial^2 g_{rm}}{\partial x^v\,\partial x^u}
+\biggr)
+=
+-
+R_{ruvm}
+\intertext{und}
+R_{rumv}
+&=
+\frac12
+\biggl(
+\frac{\partial^2 g_{rm}}{\partial x^v\,\partial x^u}
+-
+\frac{\partial^2 g_{um}}{\partial x^v\,\partial x^r}
+-
+\frac{\partial^2 g_{rv}}{\partial x^m\,\partial x^u}
++
+\frac{\partial^2 g_{uv}}{\partial x^m\,\partial x^r}
+\biggr)
+=
+-R_{ruvm}.
+\end{align*}
+
+\subsubsection{Bianchi-Identität}
+Man kann aber noch eine weitere Eigenschaft ablesen, die im nächsten
+Abschnitt noch ausführlicher studiert werden soll.
+Sie lautet
+\bgroup
+\definecolor{farbeeins}{rgb}{0.4,0.4,0.8}
+\definecolor{farbezwei}{rgb}{1.0,0.2,0.6}
+\definecolor{farbedrei}{rgb}{0.6,0.2,1.0}
+\definecolor{farbevier}{rgb}{0.2,0.6,1.0}
+\definecolor{farbefuenf}{rgb}{0,0.4,0.2}
+\definecolor{farbesechs}{rgb}{1.0,0.8,0}
+\begin{align}
+R_{ruvm}
++
+R_{rvmu}
++
+R_{rmuv}
+&=\phantom{+}
+\frac12
+\biggl(
+{\color{farbeeins}
+\frac{\partial^2 g_{rv}}{\partial x^m\,\partial x^u}
+}
+-
+{\color{farbezwei}
+\frac{\partial^2 g_{uv}}{\partial x^m\,\partial x^r}
+}
+-
+{\color{farbedrei}
+\frac{\partial^2 g_{rm}}{\partial x^v\,\partial x^u}
+}
++
+{\color{farbevier}
+\frac{\partial^2 g_{um}}{\partial x^v\,\partial x^r}
+}
+\biggr)
+\notag
+\\
+&\phantom{=}
+\,
++
+\frac12
+\biggl(
+{\color{farbedrei}
+\frac{\partial^2 g_{rm}}{\partial x^u\,\partial x^v}
+}
+-
+{\color{farbefuenf}
+\frac{\partial^2 g_{vm}}{\partial x^u\,\partial x^r}
+}
+-
+{\color{farbesechs}
+\frac{\partial^2 g_{ru}}{\partial x^m\,\partial x^v}
+}
++
+{\color{farbezwei}
+\frac{\partial^2 g_{vu}}{\partial x^m\,\partial x^r}
+}
+\biggr)
+\notag
+\\
+&\phantom{=}
+\,
++
+\frac12
+\biggl(
+{\color{farbesechs}
+\frac{\partial^2 g_{ru}}{\partial x^v\,\partial x^m}
+}
+-
+{\color{farbevier}
+\frac{\partial^2 g_{mu}}{\partial x^v\,\partial x^r}
+}
+-
+{\color{farbeeins}
+\frac{\partial^2 g_{rv}}{\partial x^u\,\partial x^m}
+}
++
+{\color{farbefuenf}
+\frac{\partial^2 g_{mv}}{\partial x^u\,\partial x^r}
+}
+\biggr)
+=
+0.
+\label{buch:kruemmgun:kruemmung:eqn:normalbianchi}
+\end{align}
+\egroup
+Die gleichfarbigen Terme heben sich gegenseitig weg.
+Diese Identität heisst die \emph{algebraische Bianchi-Identität}.
+Die hier gegebene Herleitung basiert jedoch auf der speziellen
+Art der Koordinaten.
+
+%
 % Die Bianchi-Identitäten
 %
 \subsection{Die Bianchi-Identitäten}
@@ -478,7 +839,10 @@ des Krümmungstensors untereinander, so dass sich die Information
 Die algebraische Bianchi-Identität ist die Eigenschaft, dass die
 Summe der Werte des Krümmungstensors bei zyklischer Vertauschung
 dreier Vektoren verschwindet.
-Dies erinnert an die Jacobi-Identität von
+Wir haben Sie in \eqref{buch:kruemmgun:kruemmung:eqn:normalbianchi}
+bereits in Normalkoordinaten nachgerechnet, wollen dies hier aber
+noch auf koordinatenfreie Art verstehen.
+Die Identität erinnert an die Jacobi-Identität von
 Satz~\ref{buch:koordinaten:diffop:satz}
 und tatsächlich wird der
 Beweis die Jacobi-Identität für die Lie-Ableitung wesentlich
@@ -723,4 +1087,360 @@ des Krümmungstensors her.
 Sie heisst deshalb auch die \emph{differentielle Bianchi-Identität}.
 \index{Bianchi-Identitat@Bianchi-Identität!differentiell}%
 \index{differentielle Bianchi-Identitat@differentielle Bianchi-Identität}%
+
+
+\begin{satz}[Differentielle Bianchi-Identität]
+Für den riemannschen Krümmungstensor $Rm$ auf einer riemannschen
+Mannigfaltigkeit
+\begin{equation}
+\nabla_W Rm(X,Y,U,V)
++
+\nabla_U Rm(X,Y,V,W)
++
+\nabla_V Rm(X,Y,W,U)
+=
+0
+\label{buch:kruemmung:kruemmung:eqn:diffbianchi}
+\end{equation}
+oder in Komponenten
+\begin{equation}
+R_{ikuv;w}
++
+R_{ikvw;u}
++
+R_{ikwu;v}
+=
+0.
+\label{buch:kruemmung:kruemmung:eqn:diffbianchikomp}
+\end{equation}
+\end{satz}
+
+\begin{proof}
+Unter Verwendung von Normalkoordinaten lässt sich die kovariante
+Ableitung sehr einfach berechnen.
+Wir verwenden die aus 
+\ref{buch:kruemmung:kruemmung:eqn:Rmkovariant}
+abgeleitete Formel
+\[
+R_{ikuv}
+=
+\frac12
+\biggl(
+\frac{\partial^2 g_{iv}}{\partial x^u\,\partial x^k}
+-
+\frac{\partial^2 g_{kv}}{\partial x^u\,\partial x^i}
+-
+\frac{\partial^2 g_{iu}}{\partial x^v\,\partial x^k}
++
+\frac{\partial^2 g_{ku}}{\partial x^v\,\partial x^i}
+\biggr)
+\]
+für die Komponenten des Riemannschen Krümmungstensors.
+Die kovariante Ableitung an der Stelle $p$ stimmt mit der gewöhnlichen
+partiellen Ableitung überein, daher wird die
+Summe~\eqref{buch:kruemmung:kruemmung:eqn:diffbianchikomp}
+\bgroup
+\definecolor{farbeeins}{rgb}{0.4,0.4,0.8}
+\definecolor{farbezwei}{rgb}{1.0,0.2,0.6}
+\definecolor{farbedrei}{rgb}{0.6,0.2,1.0}
+\definecolor{farbevier}{rgb}{0.2,0.6,1.0}
+\definecolor{farbefuenf}{rgb}{0,0.4,0.2}
+\definecolor{farbesechs}{rgb}{1.0,0.8,0}
+\begin{align}
+R_{ikuv;w}
++
+R_{ikvw;u}
++
+R_{ikwu;v}
+&=\phantom{+}
+\frac12
+\frac{\partial}{\partial x^w}
+\biggl(
+\frac{\partial^2 g_{iv}}{\partial x^u\,\partial x^k}
+-
+\frac{\partial^2 g_{kv}}{\partial x^u\,\partial x^i}
+-
+\frac{\partial^2 g_{iu}}{\partial x^v\,\partial x^k}
++
+\frac{\partial^2 g_{ku}}{\partial x^v\,\partial x^i}
+\biggr)
+\notag
+\\
+&\phantom{=}\,+
+\frac12
+\frac{\partial}{\partial x^u}
+\biggl(
+\frac{\partial^2 g_{iw}}{\partial x^v\,\partial x^k}
+-
+\frac{\partial^2 g_{kw}}{\partial x^v\,\partial x^i}
+-
+\frac{\partial^2 g_{iv}}{\partial x^w\,\partial x^k}
++
+\frac{\partial^2 g_{kv}}{\partial x^w\,\partial x^i}
+\biggr)
+\notag
+\\
+&\phantom{=}\,+
+\frac12
+\frac{\partial}{\partial x^v}
+\biggl(
+\frac{\partial^2 g_{iu}}{\partial x^w\,\partial x^k}
+-
+\frac{\partial^2 g_{ku}}{\partial x^w\,\partial x^i}
+-
+\frac{\partial^2 g_{iw}}{\partial x^u\,\partial x^k}
++
+\frac{\partial^2 g_{kw}}{\partial x^u\,\partial x^i}
+\biggr)
+\notag
+\\
+&=\phantom{+}
+\frac12
+\biggl(
+{\color{farbeeins}
+\frac{\partial^3 g_{iv}}{\partial x^w\,\partial x^u\,\partial x^k}
+}
+-
+{\color{farbezwei}
+\frac{\partial^3 g_{kv}}{\partial x^w\,\partial x^u\,\partial x^i}
+}
+-
+{\color{farbedrei}
+\frac{\partial^3 g_{iu}}{\partial x^w\,\partial x^v\,\partial x^k}
+}
++
+{\color{farbevier}
+\frac{\partial^3 g_{ku}}{\partial x^w\,\partial x^v\,\partial x^i}
+}
+\biggr)
+\notag
+\\
+&\phantom{=}\,+
+\frac12
+\biggl(
+{\color{farbefuenf}
+\frac{\partial^3 g_{iw}}{\partial x^u\,\partial x^v\,\partial x^k}
+}
+-
+{\color{farbesechs}
+\frac{\partial^3 g_{kw}}{\partial x^u\,\partial x^v\,\partial x^i}
+}
+-
+{\color{farbeeins}
+\frac{\partial^3 g_{iv}}{\partial x^u\,\partial x^w\,\partial x^k}
+}
++
+{\color{farbezwei}
+\frac{\partial^3 g_{kv}}{\partial x^u\,\partial x^w\,\partial x^i}
+}
+\biggr)
+\notag
+\\
+&\phantom{=}\,+
+\frac12
+\biggl(
+{\color{farbedrei}
+\frac{\partial^3 g_{iu}}{\partial x^v\,\partial x^w\,\partial x^k}
+}
+-
+{\color{farbevier}
+\frac{\partial^3 g_{ku}}{\partial x^v\,\partial x^w\,\partial x^i}
+}
+-
+{\color{farbefuenf}
+\frac{\partial^3 g_{iw}}{\partial x^v\,\partial x^u\,\partial x^k}
+}
++
+{\color{farbesechs}
+\frac{\partial^3 g_{kw}}{\partial x^v\,\partial x^u\,\partial x^i}
+}
+\biggr)
+\notag
+\\
+R_{ikuv;w}
++
+R_{ikvw;u}
++
+R_{ikwu;v}
+&=0.
+\label{buch:kruemmung:kruemmung:eqn:diffbianchiproof}
+\end{align}
+\egroup
+Die Terme gleicher Farbe heben sich weg.
+Die Gleichung~\eqref{buch:kruemmung:kruemmung:eqn:diffbianchiproof}
+besagt, dass alle Komponenten eines Tensors in Normalkoordinaten
+an der Stelle $p$ verschwinden.
+Wenn aber ein Tensor in Normalkoordinaten verschwindet, dann 
+verschwindet er auch in allen anderen Koordinatensystemen.
+Damit ist die differentielle Bianchi-Identität bewiesen.
+\end{proof}
+
+Man kann den Beweis auch etwas ``koordinatenfreier'' formulieren.
+Dazu betrachten wir nur die Vektoren $\partial_i=\partial/\partial x^i$ in
+Normalkoordinaten.
+Die Symbole $X$, $Y$, $U$, $V$ und $W$ stehen für einen dieser
+Vektoren.
+Da die Komponenten von $\partial_i = \delta_{i}^k \partial_k$ konstant
+sind, verschwinden alle kovarianten Ableitungen aller dieser Vektoren.
+Ausserdem ist $[X,Y]=0$ für zwei beliebige solche Vektoren.
+
+Dazu schreibt man
+\begin{align*}
+\nabla_W Rm(X,Y,U,V)
+&=
+\nabla_W
+\langle R(U,V)Y,X\rangle
+\\
+&=
+\nabla_W
+\langle
+\nabla_U\nabla_V Y - \nabla_V\nabla_U +\nabla_{[U,V]}
+,X
+\rangle.
+\intertext{Der dritte Term fällt wegen $[U,V]=0$ weg.
+Den Operator $\nabla_W$ kann man in das Skalarprodukt
+nehmen, was auf}
+&=
+\langle
+\nabla_W \nabla_U \nabla_V Y
+-
+\nabla_W \nabla_V \nabla_U
+,X
+\rangle
++
+\langle
+\nabla_U \nabla_V Y
+-
+\nabla_V \nabla_V
+,\nabla_W X
+\rangle
+\intertext{führt.
+Wegen $\nabla_W X=0$ blebit nur das erste Skalarprodukt, es bleibt daher}
+\nabla_W Rm(X,Y,U,V)
+&=
+\langle
+\nabla_W \nabla_U \nabla_V Y
+-
+\nabla_W \nabla_V \nabla_U Y
+,X
+\rangle
+\end{align*}
+Um die differentielle Bianchi-Identität zu bekommen, schreiben wir
+diesen Ausdruck drei mal mit zyklisch permutierten Vektoren $U$, $V$ und $W$
+und erhalten
+\begin{align*}
+\eqref{buch:kruemmung:kruemmung:eqn:diffbianchi}
+&=
+\nabla_W Rm(X,Y,U,V)
++
+\nabla_U Rm(X,Y,V,W)
++
+\nabla_V Rm(X,Y,W,U)
+\\
+&=
+\langle
+\nabla_W \nabla_U \nabla_V Y
+-
+\nabla_W \nabla_V \nabla_U Y
+,X
+\rangle
++
+\langle
+\nabla_U \nabla_V \nabla_W Y
+-
+\nabla_U \nabla_W \nabla_V Y
+,X
+\rangle
+\\
+&\qquad
++
+\langle
+\nabla_V \nabla_W \nabla_U Y
+-
+\nabla_V \nabla_U \nabla_W Y
+,X
+\rangle
+\intertext{Wir gruppieren die dreifachen kovarianten Ableitungen
+nach dem Operator ganz rechts und erhalten}
+&=
+\langle
+(\nabla_W \nabla_U 
+-
+\nabla_U \nabla_W)\nabla_V Y
++
+(\nabla_U \nabla_V
+-
+\nabla_V \nabla_U)\nabla_W Y
++
+(\nabla_V \nabla_W
+-
+\nabla_W \nabla_V) \nabla_U Y
+,X
+\rangle.
+\intertext{Dies können wir wieder mit der Abbildung $R$ als}
+&=
+\langle
+R(W,U)\nabla_VY
++
+R(U,V)\nabla_WY
++
+R(V,W)\nabla_UY
+,X\rangle
+\intertext{schreiben.
+Darin verschwinden aber die kovarianten Ableitungen $\nabla_VY=0$
+wegen der speziellen Wahl der Vektoren und es bleibt}
+&=0.
+\end{align*}
+Da sich jedes Vektorfeld als Linearkombination der Basisvektoren
+schreiben lässt, gilt die differentielle Bianchi-Identät allgemein.
+
+%
+% Krümmung und kovariante äussere Ableitung
+%
+\subsection{Krümmung und kovariante äussere Ableitung}
+In Abschnitt~\ref{buch:kruemmung:zusammenhang:subsection:kovd}
+wurde die kovariante äussere Ableitung für $p$-Formen mit Werten
+in einem Vektorraumbündel eingeführt.
+Sie setze voraus, dass es auf dem Vektorraumbündel einen Zusammenhang
+$\nabla$ gab.
+Die kovariante Ableitung auf dem Tangentialbündel ist so eine
+kovariante Ableitung.
+Die kovariante äussere Ableitung kann also für beliebige Vektoren
+definiert werden.
+
+Ein Vektorfeld $Z$ ist eine Funktion mit Werten im Tangentialbündel $TM$.
+Die kovariante äussere Ableitung $\boldsymbol{d}Z$ ist eine 1-Form
+$\boldsymbol{\alpha}$ mit Werten in $TM$, die auf dem Vektor $Y$ den
+Wert $\langle\boldsymbol{\alpha},Y\rangle=\nabla_YZ$ annimmt.
+Nach \eqref{buch:zusammenhang:zusammenhang:eqn:d1form} lässt jetzt
+auch die zweite kovariante äussere Ableitung berechnen.
+Wir erhalten
+\begin{align*}
+\langle
+\boldsymbol{d} \boldsymbol{d} Z
+,
+X\wedge Y\rangle
+&=
+\nabla_X\langle\boldsymbol{d}Z,Y\rangle
+-
+\nabla_Y\langle\boldsymbol{d}Z,X\rangle
+-
+\langle \boldsymbol{d}Z, [X,Y]\rangle
+\\
+&=
+\nabla_X\nabla_YZ
+-
+\nabla_Y\nabla_XZ
+-
+\nabla_{[X,Y]}Z
+=
+R(X,Y)Z.
+\end{align*}
+Die zweite kovariante äussere Ableitung ist also genau der riemannsche
+Krümmungstensor.
+Sie verschwindet genau dann, wenn der riemannsche Krümmungstensor
+verschwindet.
+
+
+
 
