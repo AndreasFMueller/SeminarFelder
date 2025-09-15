@@ -14,6 +14,7 @@ Wir wissen auch, wie wir unser Feld in Teilgebiete unterteilen können.
 Das gibt uns alle Werkzeuge, welche wir benötigen um die Berechnungen unserer Gleichungen auf mehrere Maschinen aufzuteilen.
 
 Bei der Parallelisierung von Feldgleichungen in einem Multiprozessorsystem wird jedem Prozessor eines oder mehrere zusammenhängende Teilgebiete zugewiesen.
+\index{Multiprozessorsystem}%
 Die Teilgebiete müssen theoretisch nicht zusammenhängend sein, aber um die Kommunikation zwischen Prozessoren zu minimieren, ist dieses Vorgehen sinnvoll und üblich.
 Da die Randzellen jedes Teilgebietes abhängig von den angrenzenden Zellen sind, siehe Abschnitt \ref{parallelisierung:sec:Gebietsunterteilung}, müssen die vorhandenen Informationen dieser Zellen zwischen Gebieten auf unterschiedlichen Prozessoren ausgetauscht werden.
 Dieser Austausch ist mit erheblichem zeitlichen Aufwand verbunden.
@@ -30,8 +31,12 @@ Zum Vergleich wird auch die serielle Vorgehensweise präsentiert.
 Als Ausgangslage soll für ein Gitter von $A \cdot B$ Zellen $C$ Updates durchgeführt werden.
 Für jedes Update wird die Formel \eqref{parallelisierung:eq:update_formel} aus Abschnitt \ref{parallelisierung:sec:update_formel} verwendet.
 Links und rechts der Zellen gibt es Reihen mit unveränderlicher Temperatur, welche einen Heiz- respektive Kühlkörper darstellen.
+\index{Heizkorper@Heizkörper}%
+\index{Kuhlkorper@Kühlkörper}
 Ober- und unterhalb der Zellen gibt es Zeilen mit unveränderlicher Temperatur, welche die Umgebungstemperatur darstellen.
 Diese Konstanten, wie auch $\lambda$ als Konstante für die Updateformel können alle im Main-File des Programms definiert werden und sind unveränderlich.
+\index{Standard Library}%
+\index{STL}%
 
 Beide Lösungen verwenden Arrays zur Zwischenspeicherung der Zellen.
 Für Arrays werden gerne Vektoren aus der C++ Standard Library (STL) verwendet.
@@ -41,8 +46,10 @@ Für ein zweidimensionales Array wird zum Beispiel
 \end{lstlisting}
 benützt.
 Man muss sich allerdings bewusst sein, dass diese Variante keinen kontinuierlichen Bereich im Speicher reserviert.
-Diese Variante speichert zuerst ein äußeres Array (Zeilen), und jede Zeile allokiert separat ihren eigenen Speicher.
+Diese Variante speichert zuerst ein äusseres Array (Zeilen), und jede Zeile allokiert separat ihren eigenen Speicher.
 Das verschlechtert enorm die Cache-Lokalität des Programms und damit die Performanz.
+\index{Cache-Lokalität}%
+\index{Performanz}%
 Als elegantere Lösung verwendet man bei numerischen Verfahren für partielle Differentialgleichungen eindimensionale Arrays und rechnet die Indizes mittels inline-Funktion um.
 \begin{lstlisting}
 	std::vector<double> grid(nx * ny);
@@ -72,7 +79,9 @@ Die jeweilige Temperatur der Heiz-/Kühlkörper wird in die erste und letzte Spa
 Das erste Array wird für die aktuellen Temperaturen der Zellen verwendet.
 Als Ausgangspunkt kann in dieses Array die Umgebungstemperatur eingetragen werden.
 Mit einer Schleife kann nun für alle $A \cdot B$ Zellen der neue Wert mit der Updateformel berechnet und in die entsprechende Zelle im zweiten Array geschrieben werden.
-\begin{lstlisting}[caption={Update-Schritt (seriell)},label={parallelisierung:code:updateSeriel}]
+\begin{lstfloat}
+\lstset{frame=none}
+\begin{lstlisting}
 for (int i = 1; i < B - 1; ++i) {     // ueberspringt erste und letzte Zeile
 	const int row = i * A;
 	for (int j = 1; j < A - 1; ++j) { // ueberspringt erste und letzte Spalte
@@ -88,7 +97,10 @@ for (int i = 1; i < B - 1; ++i) {     // ueberspringt erste und letzte Zeile
 	}
 }
 \end{lstlisting}
-Im Beispiel ist \texttt{src} ein Pointer auf das Array mit den aktuellen Werten und \texttt{dst} ist ein Pointer auf das Array mit den neuen Werten.
+\caption{Update-Schritt (seriell)
+\label{parallelisierung:code:updateSeriel}}
+\end{lstfloat}
+Im Beispiel in Listing~\ref{parallelisierung:code:updateSeriel} ist \texttt{src} ein Pointer auf das Array mit den aktuellen Werten und \texttt{dst} ist ein Pointer auf das Array mit den neuen Werten.
 Bei der Verwendung von Vektoren erhält man die Adresse des ersten Eintrags mit der Funktion \texttt{.data()}.
 \begin{lstlisting}
 double* src = grid.data();
@@ -106,7 +118,8 @@ In einer Schleife, die $C$ mal durchlaufen wird, und den Updatecode sowie den Sw
 
 \subsubsection{Parallele Lösung 
 \label{parallelisierung:sub:parLoesung}}
-Die Vorgehensweise bei der parallelen Lösung ist sehr ähnlich.
+Die Vorgehensweise bei der parallelen Lösung ist sehr ähnlich und ist in Listing~\ref{parallelisierung:code:parallel}
+dargestellt.
 Es werden zwei Arrays verwendet, welche im Shared-Memory des Prozesses liegen.
 Jeder Thread kann auf das gesamte Array mit den aktuellen Werten zugreifen und kann daher auch die Randzellen problemlos berechnen.
 Jedem Thread wird ein Teilgebiet des gesamten Arrays zugewiesen.
@@ -116,6 +129,8 @@ Zur Synchronisation wird am Ende der Updateschlaufe eine Barriere gesetzt, welch
 Wird diese Barriere überschritten, hat ein Thread die Aufgabe, die Pointer der Arrays auszutauschen.
 Eine zweite Barriere sorgt dafür, dass die anderen Threads warten, bis dieser Pointer-Swap durchgeführt wurde.
 
+\begin{lstfloat}
+\lstset{frame=none}
 \begin{lstlisting}
 	// Parallele Region
 	#pragma omp parallel num_threads(numThreads) default(none) \
@@ -160,6 +175,9 @@ Eine zweite Barriere sorgt dafür, dass die anderen Threads warten, bis dieser P
 		}
 	} // Ende der parallelen Region
 \end{lstlisting}
+\caption{Parallele Lösung der Wellengleichung
+\label{parallelisierung:code:parallel}}
+\end{lstfloat}
 	
 \subsection{Resultate des Test
 \label{parallelisierung:sub:Test}}
@@ -173,57 +191,60 @@ Jeder Kern kann zwei Threads quasi-parallel verarbeiten wobei die Rechenzeit zwi
 
 \begin{table}
 	\centering
-	\begin{tabular}{r r c l}
+	\begin{tabular}{c c c c}
 		Anzahl Zellen & Anzahl Iterationen & Anzahl Threads & Speed-Up \\
 		\hline
-		$10 \cdot 10^6$ & 500 & 4 & 1.3\\
-		$10 \cdot 10^6$ & 500 & 6 & 1.25\\
-		$10 \cdot 10^6$ & 500 & 12 & 1.2\\
+		$\phantom{00}10 \cdot 10^6$ & \phantom{00}500 & \phantom{0}4 & 1.3\phantom{0}\\
+		$\phantom{00}10 \cdot 10^6$ & \phantom{00}500 & \phantom{0}6 & 1.25\\
+		$\phantom{00}10 \cdot 10^6$ & \phantom{00}500 & 12           & 1.2\phantom{0}\\
 		
-		$100 \cdot 10^6$ & 500 & 4 & 1.24\\
-		$100 \cdot 10^6$ & 500 & 6 & 1.23\\
-		$100 \cdot 10^6$ & 500 & 12 & 1.24\\
+		$\phantom{0}100 \cdot 10^6$ & \phantom{00}500 & \phantom{0}4 & 1.24\\
+		$\phantom{0}100 \cdot 10^6$ & \phantom{00}500 & \phantom{0}6 & 1.23\\
+		$\phantom{0}100 \cdot 10^6$ & \phantom{00}500 & 12           & 1.24\\
 		
-		$1000 \cdot 10^6$ & 500 & 4 & 1.18\\
-		$1000 \cdot 10^6$ & 500 & 6 & 1.23\\
-		$1000 \cdot 10^6$ & 500 & 12 & 1.22\\
-		
-		
-		$5 \cdot 10^6$ & 5000 & 4  & 1.4 \\
-		$5 \cdot 10^6$ & 5000 & 6  & 1.42 \\
-		$5 \cdot 10^6$ & 5000 & 12  & 1.31\\
+		$1000 \cdot 10^6$           & \phantom{00}500 & \phantom{0}4 & 1.18\\
+		$1000 \cdot 10^6$           & \phantom{00}500 & \phantom{0}6 & 1.23\\
+		$1000 \cdot 10^6$           & \phantom{00}500 & 12           & 1.22\\
 		
 		
-		$10 \cdot 10^6$ & 5000 & 4 & 1.24\\
-		$10 \cdot 10^6$ & 5000 & 6 & 1.22\\
-		$10 \cdot 10^6$ & 5000 & 12 & 1.27\\
+		$\phantom{000}5 \cdot 10^6$ & \phantom{0}5000 & \phantom{0}4  & 1.4\phantom{0}\\
+		$\phantom{000}5 \cdot 10^6$ & \phantom{0}5000 & \phantom{0}6  & 1.42 \\
+		$\phantom{000}5 \cdot 10^6$ & \phantom{0}5000 & 12            & 1.31\\
 		
-		$100 \cdot 10^6$ & 5000 & 4 & 1.38\\
-		$100 \cdot 10^6$ & 5000 & 6 & 1.34\\
-		$100 \cdot 10^6$ & 5000 & 12 & 1.31\\
 		
-		$200 \cdot 10^6$ & 5000 & 4 & 1.38\\
-		$200 \cdot 10^6$ & 5000 & 6 & 1.41\\
-		$200 \cdot 10^6$ & 5000 & 12 & 1.36\\
+		$\phantom{00}10 \cdot 10^6$ & \phantom{0}5000 & \phantom{0}4 & 1.24\\
+		$\phantom{00}10 \cdot 10^6$ & \phantom{0}5000 & \phantom{0}6 & 1.22\\
+		$\phantom{00}10 \cdot 10^6$ & \phantom{0}5000 & 12           & 1.27\\
 		
-		$1 \cdot 10^6$ & 10000 & 4  & 1.46 \\
-		$1 \cdot 10^6$ & 10000 & 6  & 1.42 \\
-		$1 \cdot 10^6$ & 10000 & 12  & 1.63\\
+		$\phantom{0}100 \cdot 10^6$ & \phantom{0}5000 & \phantom{0}4 & 1.38\\
+		$\phantom{0}100 \cdot 10^6$ & \phantom{0}5000 & \phantom{0}6 & 1.34\\
+		$\phantom{0}100 \cdot 10^6$ & \phantom{0}5000 & 12           & 1.31\\
 		
-		$5 \cdot 10^6$ & 10000 & 4  & 1.35 \\
-		$5 \cdot 10^6$ & 10000 & 6  & 1.39 \\
-		$5 \cdot 10^6$ & 10000 & 12  & 1.33\\
+		$\phantom{0}200 \cdot 10^6$ & \phantom{0}5000 & \phantom{0}4 & 1.38\\
+		$\phantom{0}200 \cdot 10^6$ & \phantom{0}5000 & \phantom{0}6 & 1.41\\
+		$\phantom{0}200 \cdot 10^6$ & \phantom{0}5000 & 12           & 1.36\\
 		
-		$10 \cdot 10^6$ & 10000 & 4  & 1.25 \\
-		$10 \cdot 10^6$ & 10000 & 6  & 1.28 \\
-		$10 \cdot 10^6$ & 10000 & 12  & 1.26\\
+		$\phantom{000}1 \cdot 10^6$ &           10000 & \phantom{0}4  & 1.46 \\
+		$\phantom{000}1 \cdot 10^6$ &           10000 & \phantom{0}6  & 1.42 \\
+		$\phantom{000}1 \cdot 10^6$ &           10000 & 12            & 1.63\\
+		
+		$\phantom{000}5 \cdot 10^6$ &           10000 & \phantom{0}4  & 1.35 \\
+		$\phantom{000}5 \cdot 10^6$ &           10000 & \phantom{0}6  & 1.39 \\
+		$\phantom{000}5 \cdot 10^6$ &           10000 & 12            & 1.33\\
+		
+		$\phantom{00}10 \cdot 10^6$ &           10000 & \phantom{0}4  & 1.25 \\
+		$\phantom{00}10 \cdot 10^6$ &           10000 & \phantom{0}6  & 1.28 \\
+		$\phantom{00}10 \cdot 10^6$ &           10000 & 12            & 1.26\\
 		
 		
 	\end{tabular}
-	\caption{Beispieltabelle mit Personen}
+	\caption{Speedup in Abhängigkeit von Problemgrösse (Anzahl Zellen) und Anzahl Threads.}
+	\label{parallelisierung:table:speedup}
 \end{table}
 
-Zur besseren Übersicht stellen wir die Tabelle in Grafiken dar, aufgeteilt auf die Anzahl Iterationen.
+Zur besseren Übersicht stellen wir die Tabelle
+\ref{parallelisierung:table:speedup}
+in Grafiken dar, aufgeteilt auf die Anzahl Iterationen.
 	
 	% 1. Diagramm: 500 Iterationen
 	\begin{figure}
@@ -261,7 +282,7 @@ Es ist anzunehmen, dass der Speed-Up mit der Grösse des Problems steigt.
 Leider brauchten bereits diese Berechnungen bis zu 30 Minuten pro Rechnung, weshalb noch grössere Rechnungen schwierig durchzuführen waren.
 
 Interessanterweise scheint der Speedup schlechter zu werden, wenn mehr Zellen berechnet werden müssen, jedoch steigt die Effizienz, wenn mehr Iterationen durchgeführt werden.
-Eine logische Erklärung hierfür ist, dass das Programm Memory Bound ist.
+Eine logische Erklärung hierfür ist, dass das Programm memory bound ist.
 Die durchgeführten Operationen sind sehr einfach, wodurch das Auslesen der Daten das Programm ausbremst.
 Dadurch kann kein höherer Speedup erreicht werden, da mehr Rechenleistung nichts nützt.
 
@@ -272,7 +293,7 @@ Die Zugriffe auf den Hauptspeicher sind bedeutend langsamer, was das memory boun
 Für einen besseren Speed-Up müssen die Operationen der einzelnen Iterationen komplex genug sein, damit das Programm durch die Berechnung und nicht durch die Datenzugriffe begrenzt ist.
 Die Parallelisierung ist daher für dieses Problem nicht geeignet.
 Zur Überprüfung haben wir die Berechnungen künstlich komplexer gemacht.
-Diese im Codeabschnitt gezeigte Berechnung hat keinen physikalischen oder mathematischen Hintergrund und dient rein zur Überprüfung dieser These
+Diese im Codeabschnitt gezeigte Berechnung hat keinen physikalischen oder mathematischen Hintergrund und dient rein zur Überprüfung dieser These.
 
 \begin{lstlisting}
 writeGrid[center] = readGrid[center]*readGrid[center]*readGrid[center]*6.2 +
@@ -282,18 +303,19 @@ writeGrid[center] = readGrid[center]*readGrid[center]*readGrid[center]*6.2 +
 \end{lstlisting}
 
 Mit 4 Threads, $10^6$ Einträgen und $10^5$ Iterationen erhält man 
-
-\begin{lstlisting}
-	================================================
-	PERFORMANCE VERGLEICH
-	================================================
-	Serielle Zeit:   52.5121 Sekunden
-	Parallele Zeit:  15.6462 Sekunden
-	------------------------------------------------
-	SPEEDUP:         3.36x
-	EFFIZIENZ:       83.9%
-	------------------------------------------------
-\end{lstlisting}
-
+\bgroup
+\small
+\begin{verbatim}
+================================================
+PERFORMANCE VERGLEICH
+================================================
+Serielle Zeit:   52.5121 Sekunden
+Parallele Zeit:  15.6462 Sekunden
+------------------------------------------------
+SPEEDUP:         3.36x
+EFFIZIENZ:       83.9%
+------------------------------------------------
+\end{verbatim}
+\egroup
 Man sieht, dass mit dieser Anpassung der Speedup bedeutend besser wird.
-Das Programm ist demnach tatsächlich Memory Bound.
+Das Programm ist demnach tatsächlich memory bound.

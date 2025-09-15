@@ -42,6 +42,7 @@ jedes Teilgebiet ist ein Puzzlestück, das nahtlos mit den Nachbarstücken zusam
 Damit die Zerlegung konsistent bleibt, müssen an den Schnittstellen (Rändern) bestimmte Bedingungen erfüllt sein:
 
 \paragraph{Stetigkeit der Lösung.}
+\index{Stetigkeit der Lösung}%
 \begin{equation}
 	T_{\Omega_p}(x,y,t) = T_{\Omega_q}(x,y,t)
 	\qquad \forall (x,y) \in \partial \Omega_p \cap \partial \Omega_q.
@@ -49,6 +50,7 @@ Damit die Zerlegung konsistent bleibt, müssen an den Schnittstellen (Rändern) 
 Die Temperatur darf an den Schnittkanten keine Sprünge zeigen.
 
 \paragraph{Stetigkeit des Flusses.}
+\index{Stetigkeit des Flusses}%
 \begin{equation}
 	- \kappa \, \nabla T_{\Omega_p} \cdot n
 	=
@@ -90,7 +92,7 @@ So kann jedes Teilgebiet lokal weiterrechnen. Dies erlaubt eine effiziente Paral
 
 Abbildung~\ref{parallelisierung:fig:ghostCells} zeigt exemplarisch, wie an den Rändern benachbarter Teilgebiete Daten ausgetauscht werden. Farblich orange hervorgehoben sind die Ghost-Zellen.
 
-\begin{figure}[htbp]
+\begin{figure}
 	\centering
 	\includegraphics{papers/parallelisierung/images/ghostCells.pdf}
 	\caption{Funktionsweise der Ghost-Zellen}
@@ -125,8 +127,7 @@ T=0^\circ\mathrm{C}\ \text{(rechts)},\quad
 T=80^\circ\mathrm{C}\ \text{(oben)},\quad
 T=20^\circ\mathrm{C}\ \text{(unten)}.
 \]
-
-\begin{figure}[htbp]
+\begin{figure}
 	\centering
 	\includegraphics{papers/parallelisierung/images/stationaer.pdf}
 	\caption{Beispiel-Setup $5\times5$-Grid für den stationären Grenzfall}
@@ -138,27 +139,30 @@ Zusätzlich entfernen wir aus Gründen der Übersicht die Randzellen ohne Einflu
 
 \subsubsection*{Diskretisierung}
 Wenden wir nun die zuvor hergeleitete explizite Updateformel \eqref{eq:update-dd} auf dieses Gitter an, resultieren die folgenden 9 Gleichungen:
-\begin{alignat*}{6}
-	-4\color{darkred}{T_{2,2}} &+ T_{3,2} &+ 80 &+ T_{2,3} &+ 100 &= 0, \\
-	-4\color{darkred}{T_{2,3}} &+ T_{3,3} &+ 80 &+ T_{2,4} &+ T_{2,2} &= 0, \\
-	-4\color{darkred}{T_{2,4}} &+ T_{3,4} &+ 80 &+ 0 &+ T_{2,3} &= 0, \\
-	-4\color{darkred}{T_{3,2}} &+ T_{4,2} &+ T_{2,2} &+ T_{3,3} &+ 100 &= 0, \\
-	-4\color{darkred}{T_{3,3}} &+ T_{4,3} &+ T_{2,3} &+ T_{3,4} &+ T_{3,2} &= 0, \\
-	-4\color{darkred}{T_{3,4}} &+ T_{4,4} &+ T_{2,4} &+ 0 &+ T_{3,3} &= 0, \\
-	-4\color{darkred}{T_{4,2}} &+ 20 &+ T_{3,2} &+ T_{4,3} &+ 100 &= 0, \\
-	-4\color{darkred}{T_{4,3}} &+ 20 &+ T_{3,3} &+ T_{4,4} &+ T_{4,2} &= 0, \\
-	-4\color{darkred}{T_{4,4}} &+ 20 &+ T_{3,4} &+ 0 &+ T_{4,3} &= 0.
-\end{alignat*}
+\begin{equation*}
+\renewcommand{\arraycolsep}{3pt}
+\begin{array}{cclclclclcl}
+	-4\color{darkred}{T_{2,2}} &+& T_{3,2} &+& 80      &+& T_{2,3} &+& 100     &=& 0, \\
+	-4\color{darkred}{T_{2,3}} &+& T_{3,3} &+& 80      &+& T_{2,4} &+& T_{2,2} &=& 0, \\
+	-4\color{darkred}{T_{2,4}} &+& T_{3,4} &+& 80      &+& 0       &+& T_{2,3} &=& 0, \\
+	-4\color{darkred}{T_{3,2}} &+& T_{4,2} &+& T_{2,2} &+& T_{3,3} &+& 100     &=& 0, \\
+	-4\color{darkred}{T_{3,3}} &+& T_{4,3} &+& T_{2,3} &+& T_{3,4} &+& T_{3,2} &=& 0, \\
+	-4\color{darkred}{T_{3,4}} &+& T_{4,4} &+& T_{2,4} &+& 0       &+& T_{3,3} &=& 0, \\
+	-4\color{darkred}{T_{4,2}} &+& 20      &+& T_{3,2} &+& T_{4,3} &+& 100     &=& 0, \\
+	-4\color{darkred}{T_{4,3}} &+& 20      &+& T_{3,3} &+& T_{4,4} &+& T_{4,2} &=& 0, \\
+	-4\color{darkred}{T_{4,4}} &+& 20      &+& T_{3,4} &+& 0       &+& T_{4,3} &=& 0.
+\end{array}
+\end{equation*}
 
 \subsubsection*{Matrixformulierung}
 Wir ordnen die Unbekannten zeilenweise:
 \[
 \vec{u} =
-\begin{bmatrix}
+\begin{pmatrix}
 	T_{2,2}\\T_{2,3}\\T_{2,4}\\
 	T_{3,2}\\T_{3,3}\\T_{3,4}\\
 	T_{4,2}\\T_{4,3}\\T_{4,4}
-\end{bmatrix}.
+\end{pmatrix}.
 \]
 Dann gilt:
 \[
@@ -167,7 +171,7 @@ Dann gilt:
 mit
 \[
 \mathbf{A}=
-\begin{bmatrix}
+\begin{pmatrix*}[r]
 	-4& 1& 0& 1& 0& 0& 0& 0& 0\\
 	1&-4& 1& 0& 1& 0& 0& 0& 0\\
 	0& 1&-4& 0& 0& 1& 0& 0& 0\\
@@ -177,14 +181,14 @@ mit
 	0& 0& 0& 1& 0& 0&-4& 1& 0\\
 	0& 0& 0& 0& 1& 0& 1&-4& 1\\
 	0& 0& 0& 0& 0& 1& 0& 1&-4
-\end{bmatrix},
+\end{pmatrix*},
 \quad
 \vec{b}=
-\begin{bmatrix}
+\begin{pmatrix*}[r]
 	-180\\-80\\-80\\
 	-100\\0\\0\\
 	-120\\-20\\-20
-\end{bmatrix}.
+\end{pmatrix*}.
 \]
 
 \subsubsection*{Interpretation und Lösung}
@@ -201,8 +205,11 @@ Um die Kopplung zwischen Subdomains herzustellen, gibt es zwei grundsätzliche A
 
 \begin{itemize}
 	\item \emph{Algebraischer Ansatz:}  
-	Das Gesamtsystem wird als große Blockmatrix aufgestellt.  
-	Jeder Hauptdiagonalblock \(A_{pp}\) beschreibt die inneren Zusammenhänge (die „Selbstkopplung“) innerhalb eines Teilgebiets~\(\Omega_p\).  
+	Das Gesamtsystem wird als grosse Blockmatrix aufgestellt.  
+\index{Blockmatrix}%
+	Jeder Hauptdiagonalblock \(A_{pp}\) beschreibt die inneren Zusammenhänge (die ``Selbstkopplung'') innerhalb eines Teilgebiets~\(\Omega_p\).  
+\index{Hauptdiagonalblock}%
+\index{Nebendiagonalblock}%
 	Die Nebendiagonalblöcke \(C_{pq}\) modellieren die Kopplungen zu den Nachbargebieten~\(\Omega_q\).  
 	
 	Zur Illustration nehmen wir ein Beispiel mit drei Teilgebieten.  
@@ -219,6 +226,7 @@ Um die Kopplung zwischen Subdomains herzustellen, gibt es zwei grundsätzliche A
 	während \(C_{pq}\) nur Einträge für die Schnittkanten trägt.  
 	
 	Durch Verfahren wie das Schur-Komplement kann die Lösung des Gesamtsystems auf die Werte an den Interfaces reduziert werden, 
+\index{Schur-Komplement}%
 	wodurch die Rechenlast deutlich sinkt.  
 	Weiterführende Details finden sich beispielsweise in \cite{parallelisierung:smith1996}.
 	
@@ -226,13 +234,16 @@ Um die Kopplung zwischen Subdomains herzustellen, gibt es zwei grundsätzliche A
 	Domain-Decomposition-Verfahren berechnen die Teilgebiete wiederholt und tauschen dabei nach jeder Iteration die Werte an den Schnittkanten aus, bis Konsistenz erreicht ist.  
 	
 	Ein klassisches Beispiel ist die \emph{Schwarz-Methode}.  
+\index{Schwarz-Methode}%
 	Hier werden an den künstlichen Rändern zwischen den Teilgebieten \emph{Dirichlet-Randbedingungen} vorgegeben, d.\,h.\ die benachbarten Teilgebiete liefern feste Temperaturwerte, die als Randwerte eingesetzt werden.  
+\index{Dirichlet-Randbedingungen}%
 	Genau diese Art von Randbedingungen haben wir auch im obigen Beispiel mit festen Temperaturen an den Aussenrändern des Gitters verwendet.  
 	Die Schwarz-Methode ist einfach und robust, kann jedoch bei vielen Teilgebieten langsam konvergieren.  
 	Eine ausführliche Darstellung findet sich in \cite{parallelisierung:quarteroniValli1999}.  
 	
 	Eine leistungsfähigere Alternative ist die \emph{Neumann--Neumann-Methode}.  
 	In diesem Verfahren werden an den Schnittkanten \emph{Neumann-Randbedingungen} eingesetzt, also Bedingungen für die Flüsse (z.\,B.\ Wärmeströme) über die Gebietsgrenzen hinweg.  
+\index{Neumann-Randbedingungen}%
 	Die Subdomänen werden parallel berechnet, und die Flusswerte an den Interfaces werden iterativ korrigiert, bis Konsistenz erreicht ist.  
 	Dieser Ansatz eignet sich besonders für elliptische Probleme und skaliert gut auf parallelen Rechnerarchitekturen.  
 	Details hierzu finden sich in \cite{parallelisierung:gander2019}.
@@ -245,6 +256,7 @@ Um die Kopplung zwischen Subdomains herzustellen, gibt es zwei grundsätzliche A
 Die Kosten pro Zeitschritt sind proportional zur Anzahl der Gitterpunkte im Teilgebiet 
 ($\mathcal{O}(|\Omega_p|)$).  
 Die Kommunikationskosten entstehen durch den Austausch von Ghost-Zellen und hängen von der Länge der Schnittkante ab.  
+\index{Kommunikationskosten}%
 Für eine effiziente Parallelisierung ist es daher vorteilhaft, Teilgebiete mit möglichst kleinem 
 Umfang/Flächen-Verhältnis zu wählen.  
 In 2D bedeutet dies, dass quadratische Teilgebiete günstiger sind als lange, schmale Streifen.
