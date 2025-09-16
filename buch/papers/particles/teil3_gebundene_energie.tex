@@ -43,7 +43,6 @@ eingesetzt wird. Ein Beispiel der daraus resultierenden Graphen ist in \autoref{
 
 Wiederholen wir nun wieder die Simulation aus \autoref{particles:section:lin-medium:superposition}, so fällt zunächst kein Unterschied auf.
 \autoref{particles:fig:nichtlin-medium:beams} zeigt einen Vergleich der beiden Resultate.
-% TODO: Grafik mit gleichem Aufbau wie in "lineares Medium", aber mit nichtlinearem medium (Zwei Lichtwellen)
 Damit die Auswirkung der nichtlinearen Effekte erkannt werden können, müssen die Feldstärken scheinbar bedeutend grösser sein.
 \begin{figure}
     \centering
@@ -61,23 +60,10 @@ Damit die Auswirkung der nichtlinearen Effekte erkannt werden können, müssen d
 \input{papers/particles/figures/wavesim/particle_initial_state.tex}
 \input{papers/particles/figures/wavesim/particle_growing.tex}
 Der in Abbildung~\ref{particles:fig:partikel:ausgangszustand} gezeigte Anfangszustand kann durch das Aufeinandertreffen der Wellen im Zentrum besonders grosse Feldstärken hervorrufen.
-% \begin{figure}
-%     \centering
-%     \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_00.png}}\label{particles:fig:nichtlin-medium:particle-anfang}\hfill
-%     \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_02.png}}\hfill
-%     \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_04.png}}\hfill
-%     \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_06.png}}\hfill
-%     \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_12.png}}\hfill
-%     \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_14.png}}\hfill
-%     \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_16.png}}\hfill
-%     \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_17.png}}\hfill
-%     \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/particle_frames/frame_18.png}}
-%     \caption{Verlauf eines Partikels im nichtlinearen Medium.}\label{particles:fig:nichtlin-medium:particle}
-% \end{figure}
-% Der in Abbildung~\ref{particles:fig:nichtlin-medium:particle-anfang} gezeigte Anfangszustand kann durch das Aufeinandertreffen der Wellen im Zentrum besonders grosse Feldstärken hervorrufen.
 Wird die Simulation nun abgespielt, so geschieht etwas Unerwartetes: Die Energie im Feld scheint sich im Zentrum zu sammeln.
-Die besondere Region inmitten des Simulationsfelds wächst, bis die im Ausgangszustand definierten Wellen entweder gegen den Rand der Simulation verschwinden oder ihre Energie in die Region im Zentrum gesteckt haben.
-Dieser Prozess wird in den Abbildungen~\ref{particles:fig:partikel:wachsen} veranschaulicht.
+Die besondere Region inmitten des Simulationsfelds wächst, 
+bis die im Ausgangszustand definierten Wellen entweder gegen den Rand der Simulation verschwinden oder ihre Energie in die Region im Zentrum gesteckt haben.
+Dieser Prozess wird in den Abbildungen~\ref{particles:fig:partikel:wachsen-1} und~\ref{particles:fig:partikel:wachsen-2} veranschaulicht.
 
 \input{papers/particles/figures/wavesim/particle_decay_symmetrical.tex}
 Die nächste Phase zeichnet sich durch Oszillieren der symmetrischen Feldanordnung aus. 
@@ -86,9 +72,11 @@ So schrumpft die gefangene Energie wie auch die Grösse der Feldanordnung fortla
 Einige Bilder sind in Abbildung~\ref{particles:fig:partikel:abnehmen:symmetrisch} gezeigt.
 
 \input{papers/particles/figures/wavesim/particle_decay_asymmetrical.tex}
-In einer nächsten Phase wird die Symmetrie der Feldanordnung gebrochen, vermutlich da die gespeicherte Energie und so die Grösse der Anordnung zu klein wird.
+In einer nächsten Phase wird die Symmetrie der Feldanordnung gebrochen, 
+vermutlich da die gespeicherte Energie und somit die Grösse der Anordnung zu klein wird.
 Aufgrund des Längenelements der ortsdiskreten Simulation sind wohl ab einer gewissen Grösse keine symmetrischen Anordnungen mehr möglich, welche stabil sind.
-Die konzentrierte Energie bleibt jedoch einen weiteren Moment bestehen, wie die Abbildung~\ref{particles:fig:partikel:abnehmen:asymmetrisch} zeigt.
+Die konzentrierte Energie bleibt jedoch einen weiteren Moment bestehen, 
+wie die Abbildung~\ref{particles:fig:partikel:abnehmen:asymmetrisch} zeigt.
 
 \input{papers/particles/figures/wavesim/particle_decay.tex}
 In der letzten Phase wird die Energie zu klein, um die Anordnung aufrechtzuerhalten. 
