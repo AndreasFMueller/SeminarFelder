@@ -116,6 +116,13 @@ Die resultierende Wellengleichung lautet
 \subsection{Nichtlinearität}
 Um die Nichtlinearität im Simulator umsetzen zu können, wird nach jedem Zeitschritt die Spannung im Feld ermittelt und anschliessend der Brechungsindex anhand einer Deformationskurve für jedes Pixel neu berechnet.
 Die Spannung ist dabei der Betrag der ersten örtlichen Ableitung, welche im zweidimensionalen Fall als Hypotenuse der beiden Ableitungen in $x$- und $y$-Richtung berechnet werden kann.
+% Die Nichtlinearität des Mediums wird durch die Formel
+% \[
+%     \text{stress} = a \cdot \text{strain} \cdot e^{b \cdot \text{strain}} % TODO: Tatsächliche Formel
+% \]
+% gegeben, wobei das nichtlineare Verhalten durch die Parameter $a$ und $b$ angepasst werden kann.
+% Einige Beispiele der daraus resultierenden Spannungs-Deformations-Kurven sind in Abbildung~\ref{particles:abb:nonlin} gezeigt. % TODO: Abbildung
+% \mytodo{Beschreiben, wie der Simulator das einrechnet}
 
 \subsection{Szenendefinition}
 Zur Definition des Ausgangszustands des Feldes sowie der Eigenschaften des Mediums nimmt der Simulator ein RGB-Bild entgegen.
@@ -124,6 +131,8 @@ Der rote Kanal bestimmt den Brechungsindex des jeweiligen Pixels, während über
 Über den grünen Kanal können im unveränderten Simulator Quellen dargestellt werden, wobei der Farbwert die Frequenz der Quelle darstellt.
 Damit die in der Simulation enthaltene Energie nicht fortlaufend ansteigt, wurde die Funktion des grünen Kanals durch Huygens Optics angepasst.
 Der grüne Kanal diktiert nun das Deformationsfeld zu Beginn der Simulation.
+% Damit die in der Simulation enthaltene Energie nicht fortlaufend ansteigt, wurde die Funktion des grünen Kanals durch \emph{Dr. Jeroen Vleggaar} angepasst. % TODO: Echter Name von Huygens einfügen
+% Der grüne Kanal diktiert nun das Spannungsfeld zu Beginn der Simulation. % CHECK: ist es die Spannung oder die Deformation?
 % TODO: Beispielszene
 
 \subsection{Performance}
