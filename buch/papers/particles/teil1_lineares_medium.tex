@@ -42,7 +42,7 @@ Diese Elastizität eines Mediums lässt sich durch das \emph{hookesche Gesetz}
     \label{particles:eq:hookesches-gesetz},
 \]
 welches bereits in \autoref{chapter:elastomechanik} verwendet wurde, beschreiben.
-Dabei beschreibt $\Delta l$ die Distanzänderung zweier Punkte,
+Dabei beschreibt $\Delta l$ die Veränderung der Distanz zwischen zwei Punkten,
 $F$ die dazwischen wirkende Kraft und $D$ einen Proportionalitätsfaktor, 
 welcher für den simplen Fall konstant ist. Also gilt 
 \[
@@ -100,7 +100,7 @@ Zur Herleitung der Wellengleichung im Elektrischen Feld ist die Identität
     \nabla \times \nabla \times \mathbf{U} = \nabla(\nabla \cdot \mathbf{U}) - \nabla^2 \mathbf{U}\label{particles:eq:rot-identity}
 \end{equation}
 notwendig. 
-Diese wurde in Abschnitt \mytodo{Wurde diese schon vorgestellt?} bereits hergeleitet und gilt für sämtliche Vektorfelder.
+Diese wurde in Abschnitt~\ref{buch:vektoranalysis:subsection:rotrot} als Gleichung~\ref{buch:vektoranalysis:eqn:rotrot} bereits hergeleitet und gilt für sämtliche Vektorfelder.
 
 Als erster Schritt der Herleitung wird $\rho = 0$, also ein Medium ohne freie Ladungsträger, angenommen.
 Das gausssche Gesetz
@@ -163,20 +163,30 @@ und schliesslich entsteht mit $\mathbf{D} = \varepsilon \mathbf{E}$
 was der Wellengleichung entspricht.
 Durch ähnliches Vorgehen kann diese auch für die magnetische Feldstärke $\mathbf{B}$ hergeleitet werden.
 
-Dabei wird durch Parametervergleich mit der Wellengleichung aus~\eqref{particles:eq:wellengleichung} klar, dass die Ausbreitungsgeschwindigkeit
+Durch Parametervergleich mit der Wellengleichung aus~\eqref{particles:eq:wellengleichung} wird klar, dass die Ausbreitungsgeschwindigkeit
 \[
     c = \frac{1}{\sqrt{\mu\varepsilon}}\label{particles:eq:lichtgeschwindigkeit}
 \]
 beträgt.
+Damit die Gleichung gut analytisch lösbar ist, sollten die beiden Faktoren $\mu$ und $\varepsilon$ also über verschiedene Feldstärken konstant sein.
+Ansonsten wird aus der linearen parziellen Differenzialgleichung eine nichtlineare parzielle Differentialgleichung.
 
 
 \subsection{Schwinger-Limit}\label{particles:section:lin-medium:schwinger}
-Bei extrem hohen Feldstärken tritt ein Phänomen auf, wobei das Vakuum selbst nichtlinear wird.
-Dieser Übergang zur Nichtlinearität des Vakuums nennt man das \emph{Schwinger-Limit}~\cite{particles:schwinger-limit}, benannt nach Julian Schwinger, welcher 1951 dieses Phänomen erstmals theoretisierte.
-Da es sich hierbei um elektrische und magnetische Feldstärken im Bereich von $10^{18}\,\frac{\text{V}}{\text{m}}$ und $10^9\,\text{T}$ handelt, konnte dieses Limit bisher noch nicht konkret nachgewiesen oder gemessen werden.
-Es ist entsprechend noch immer Bestandteil aktueller Forschungen, 
-jedoch eher als Nebenprodukt anderer Experimente, 
-welche mit Feldern solch enormer Grösse zu tun haben~\cite{particles:atlas-experiment}.
+Es wird erwartet, dass bei extrem hohen Feldstärken selbst das Vakuum nichtlinear wird.
+Dieser Übergang zur Nichtlinearität des Vakuums wurde erstmals im Jahre 1951 in~\cite{particles:fritz_sauter} von Fritz Sauter theoretisiert.
+Julian Schwinger arbeitete diese Idee in~\cite{particles:schwinger-limit} weiter ausgearbeitet, weshalb die Grenze schliesslich nach ihm benannt wurde.
+Da es sich hierbei um elektrische und magnetische Feldstärken im Bereich von $10^{18}\,\frac{\text{V}}{\text{m}}$ und $10^9\,\text{T}$ handelt, konnte dieses Limit bisher noch nicht gemessen werden.
+Entsprechend ist das Schwinger-Limit noch immer Bestandteil aktueller Forschungen, wie das Paper~\cite{particles:photon_photon_scattering} zeigt.
+Es wird darin beobachtet die Photonen-Photonen-Streuung beobachtet, was ein starkes Indiz dafür ist, dass das Schwinger-Limit tatsächlich existiert.
+Zudem taucht das Limit bei weiteren Experimenten wie zum Beispiel das ATLAS-Experiment \cite{particles:atlas-experiment}, welche sich mit extrem starken Feldstärken beafassen, öfters als Nebenprodukt auf.
+
+% Bei extrem hohen Feldstärken tritt ein Phänomen auf, wobei das Vakuum selbst nichtlinear wird.
+% Dieser Übergang zur Nichtlinearität des Vakuums nennt man das \emph{Schwinger-Limit}~\cite{particles:schwinger-limit}, benannt nach Julian Schwinger, welcher 1951 dieses Phänomen erstmals theoretisierte.
+% Da es sich hierbei um elektrische und magnetische Feldstärken im Bereich von $10^{18}\,\frac{\text{V}}{\text{m}}$ und $10^9\,\text{T}$ handelt, konnte dieses Limit bisher noch nicht konkret nachgewiesen oder gemessen werden.
+% Es ist entsprechend noch immer Bestandteil aktueller Forschungen, 
+% jedoch eher als Nebenprodukt anderer Experimente, 
+% welche mit Feldern solch enormer Grösse zu tun haben~\cite{particles:atlas-experiment}.
 
 Beschränkt man sich jedoch nicht nur auf das Vakuum, so findet man Medien, welche bereits bei deutlich kleineren Feldstärken nichtlineare Eigenschaften aufweisen.
 Ein Beispiel von solchen nichtlinearen Werkstoffen sind, wie~\cite{particles:frequenzverdopplung} demonstriert, Kristalle zur Frequenzverdoppelung.

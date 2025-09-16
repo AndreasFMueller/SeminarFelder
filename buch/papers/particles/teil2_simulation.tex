@@ -23,7 +23,7 @@ Dieser simuliert eine zweidimensionale Szene, indem er die Wellengleichung für 
 Die Szene wird dabei ebenfalls örtlich diskretisiert, indem sie in Pixel aufgeteilt wird.
 
 \subsection{Wellengleichung\label{particles:section:simulation:wellengleichung}}
-Die Diskretisierung der Raumdimensionen erlaubt die Berechnung von $\nabla^2 u$ als Faltung des Felds $u$ mit einem Laplace kernel.
+Die Diskretisierung der Raumdimensionen erlaubt die Berechnung von $\nabla^2 u$ als Faltung des Felds $u$ mit einem Laplace Kernel.
 WaveSimulator2D verwendet dazu den Kernel
 \[
     \mathbf{D}^2_{xy} = 
@@ -64,7 +64,7 @@ kann nun nach $u(t+T)$, also nach dem Wert von $u$ einen Zeitschritt in der Zuku
         c^2 \cdot (\mathbf{D}^2_{xy} * u)   % Equation part 2
     }_{%
         \textstyle
-        \nabla^2 u                          % Description
+        c^2 \nabla^2 u                      % Description
         \vphantom{\frac{\d^2 u(t)}{\d t^2}} % Adjust height
     }
 \]
@@ -72,8 +72,9 @@ resultiert.
 Diese Gleichung kann verwendet werden, um ungedämpfte Wellen in linearen Medien zu simulieren.
 
 \subsection{Dämpfung}
-Damit der später erwähnte Farbkanal zur Dämpfung des Mediums realisiert werden kann, 
-wird die Wellengleichung durch einen Dämpfungsterm erweitert.
+Ohne Dämpfung kann keine Energie die Simulation verlassen. 
+Abstrakt betrachtet würden die Wellen an den Rändern der Simulation reflektiert. 
+Um solche Reflexionen abzudämpfen wird die Wellengleichung durch einen Dämpfungsterm erweitert.
 Die angepasste Wellengleichung 
 \[
     \frac{\d^2 u}{\d t^2} + d \frac{\d u}{\d t}= c^2 \cdot \nabla^2 u
@@ -99,7 +100,7 @@ Die resultierende Wellengleichung lautet
         c^2 \cdot (\mathbf{D}^2_{xy} * u)   % Equation part 2
     }_{%
         \textstyle
-        \nabla^2 u                          % Description
+        c^2 \nabla^2 u                      % Description
         \vphantom{\frac{\d^2 u(t)}{\d t^2}} % Adjust height
     }
      - 
@@ -113,23 +114,28 @@ Die resultierende Wellengleichung lautet
 \]
 
 \subsection{Nichtlinearität}
-Die Nichtlinearität des Mediums wird durch die Formel
-\[
-    \text{stress} = a \cdot \text{strain} \cdot e^{b \cdot \text{strain}} % TODO: Tatsächliche Formel
-\]
-gegeben, wobei das nichtlineare Verhalten durch die Parameter $a$ und $b$ angepasst werden kann.
-Einige Beispiele der daraus resultierenden Spannungs-Deformations-Kurven sind in Abbildung~\ref{particles:abb:nonlin} gezeigt. % TODO: Abbildung
-\mytodo{Beschreiben, wie der Simulator das einrechnet}
+Um die Nichtlinearität im Simulator umsetzen zu können, wird nach jedem Zeitschritt die Spannung im Feld ermittelt und anschliessend der Brechungsindex anhand einer Deformationskurve für jedes Pixel neu berechnet.
+Die Spannung ist dabei der Betrag der ersten örtlichen Ableitung, welche im zweidimensionalen Fall als Hypotenuse der beiden Ableitungen in $x$- und $y$-Richtung berechnet werden kann.
+% Die Nichtlinearität des Mediums wird durch die Formel
+% \[
+%     \text{stress} = a \cdot \text{strain} \cdot e^{b \cdot \text{strain}} % TODO: Tatsächliche Formel
+% \]
+% gegeben, wobei das nichtlineare Verhalten durch die Parameter $a$ und $b$ angepasst werden kann.
+% Einige Beispiele der daraus resultierenden Spannungs-Deformations-Kurven sind in Abbildung~\ref{particles:abb:nonlin} gezeigt. % TODO: Abbildung
+% \mytodo{Beschreiben, wie der Simulator das einrechnet}
 
 \subsection{Szenendefinition}
 Zur Definition des Ausgangszustands des Feldes sowie der Eigenschaften des Mediums nimmt der Simulator ein RGB-Bild entgegen.
 Den drei Farbkanälen wird jeweils eine Funktion zugeteilt.
 Der rote Kanal bestimmt den Brechungsindex des jeweiligen Pixels, während über den blauen Kanal die Dämpfung bestimmt werden kann.
 Über den grünen Kanal können im unveränderten Simulator Quellen dargestellt werden, wobei der Farbwert die Frequenz der Quelle darstellt.
-Damit die in der Simulation enthaltene Energie nicht fortlaufend ansteigt, wurde die Funktion des grünen Kanals durch \emph{Dr. Jeroen Vleggaar} angepasst. % TODO: Echter Name von Huygens einfügen
-Der grüne Kanal diktiert nun das Spannungsfeld zu Beginn der Simulation. % CHECK: ist es die Spannung oder die Deformation?
+Damit die in der Simulation enthaltene Energie nicht fortlaufend ansteigt, wurde die Funktion des grünen Kanals durch Huygens Optics angepasst.
+Der grüne Kanal diktiert nun das Deformationsfeld zu Beginn der Simulation.
+% Damit die in der Simulation enthaltene Energie nicht fortlaufend ansteigt, wurde die Funktion des grünen Kanals durch \emph{Dr. Jeroen Vleggaar} angepasst. % TODO: Echter Name von Huygens einfügen
+% Der grüne Kanal diktiert nun das Spannungsfeld zu Beginn der Simulation. % CHECK: ist es die Spannung oder die Deformation?
 % TODO: Beispielszene
 
-\subsection{Performance} % TODO: Evtl. weg lassen...
+\subsection{Performance}
 Die Simulation ist trotz relativ tiefer Auflösung nicht trivial. 
-Der WaveSimulator2D zieht Nutzen aus der \texttt{CuPy} Bibliothek um die Faltung des Laplace Kernels mit den aktuellen Feldwerten auf der Grafikkarte laufen zu lassen.
+Der WaveSimulator2D zieht Nutzen aus der \texttt{CuPy} Bibliothek, um die Faltung des Laplace Kernels mit den aktuellen Feldwerten auf der Grafikkarte laufen zu lassen.
+Dies reduziert die Laufzeit auf modernen Rechnern erheblich.
