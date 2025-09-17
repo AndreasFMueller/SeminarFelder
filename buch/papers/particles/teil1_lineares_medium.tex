@@ -39,19 +39,19 @@ Diese Elastizität eines Mediums lässt sich durch das \emph{hookesche Gesetz}
     \Delta l
     = 
     \frac{F}{D}
-    \quad
-    \left(D = \text{const.} 
-    \Rightarrow 
+    \label{particles:eq:hookesches-gesetz},
+\]
+welches bereits in \autoref{chapter:elastomechanik} verwendet wurde, beschreiben.
+Dabei beschreibt $\Delta l$ die Veränderung der Distanz zwischen zwei Punkten,
+$F$ die dazwischen wirkende Kraft und $D$ einen Proportionalitätsfaktor, 
+welcher für den simplen Fall konstant ist. Also gilt 
+\[
     \frac{\partial D}{\partial F} 
     \overset{!}{=} 
     0 
     \quad 
-    \forall F \right)
-    \label{particles:eq:hookesches-gesetz},
+    \forall F.
 \]
-welches bereits in abschnitt \mytodo{Verweis Elastizitätstheorie} verwendet wurde, beschreiben.
-Dabei beschreibt $\Delta l$ die Distanzänderung zweier Punkte,
-$F$ die dazwischen wirkende Kraft und $D$ einen Proportionalitätsfaktor.
 Mittels Substitution kann man nun darauf schliessen, 
 dass es sich hierbei tatsächlich um eine lineare Funktion handeln muss.
 
@@ -59,7 +59,7 @@ dass es sich hierbei tatsächlich um eine lineare Funktion handeln muss.
     \centering
     \subfigure[]{\includegraphics{./papers/particles/figures/out/lineares_medium_deformation.pdf}\label{particles:fig:lin-medium:deform}}\hfill
     \subfigure[]{\includegraphics{./papers/particles/figures/out/lineares_medium_elast_modul.pdf}\label{particles:fig:lin-medium:elast-modul}}
-    \caption{Deformation~(a) und Elastisches Modul~(b) eines linearen Mediums mit konstantem Faktor $D = 1$.}
+    \caption{Deformation~(a) und Elastizitätsmodul~(b) eines linearen Mediums mit konstantem Faktor $D = 1$.}
 \end{figure}
 
 \subsection{Superpositionsprinzip}\label{particles:section:lin-medium:superposition} % TODO: Subsection umschreiben
@@ -72,9 +72,19 @@ nämlich
     + 
     \mu T(y).
 \]
-Blickt man wieder auf die Wellentheorie, so bedeutet dies, dass sich Wellen in linearen Medien überlagern, sich aber nicht gegenseitig beeinflussen.
-Dies kann man schön anhand zweier sich kreuzende Laserstrahlen im Vakuum veranschaulichen, wie sie in Abbildung \mytodo{Abbildung zweier Laserstrahlen, die sich kreuzen, lokal interferieren, jedoch den weiteren Verlauf nicht verändern.} gezeigt werden.
-Lokal interferieren diese Laserstrahlen zwar, stören jedoch nicht ihren weiteren Verlauf.
+Blickt man wieder auf die Wellentheorie, so bedeutet dies, 
+dass sich Wellen in linearen Medien überlagern, 
+sich aber nicht gegenseitig beeinflussen.
+Dies kann man schön anhand zweier sich kreuzende Strahlen im Vakuum veranschaulichen, 
+wie sie in \autoref{particles:fig:lin-medium:beams} gezeigt werden.
+Lokal interferieren diese Strahlen zwar, stören jedoch nicht wirklich ihren weiteren Verlauf.
+\begin{figure}
+    \centering
+    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/beams_lin_1_10.png}}\label{particles:fig:lin-medium:beams-1}\hfill
+    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/beams_lin_3_20.png}}\label{particles:fig:lin-medium:beams-2}\hfill
+    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/beams_lin_4_32.png}}\label{particles:fig:lin-medium:beams-3}
+    \caption{Strahlen im linearen Medium zu Beginn~(a), während sie sich kreuzen~(b), und danach~(c).}\label{particles:fig:lin-medium:beams}
+\end{figure}
 
 
 \subsection{Wellengleichung}\label{particles:section:lin-medium:wellengleichung}
@@ -87,13 +97,14 @@ Dabei steht auf der linken Seite die zweite Ableitung nach der Zeit und auf der 
 Eine massgebende Annahme ist dabei die Linearität des Mediums.
 Dies wird ersichtlicher, wenn man die Herleitung der Wellengleichung beispielsweise aus den Maxwell-Gleichungen betrachtet.
 
+
 \subsubsection{Herleitung}
 Zur Herleitung der Wellengleichung im Elektrischen Feld ist die Identität
 \begin{equation}
-    \nabla \times \nabla \times \mathbf{U} = \nabla(\nabla \cdot \mathbf{U}) - \nabla^2 \mathbf{U}\label{particles:eq:curl-identity}
+    \nabla \times \nabla \times \mathbf{U} = \nabla(\nabla \cdot \mathbf{U}) - \nabla^2 \mathbf{U}\label{particles:eq:rot-identity}
 \end{equation}
 notwendig. 
-Diese wurde in Abschnitt \mytodo{Wurde diese schon vorgestellt?} bereits hergeleitet und gilt für sämtliche Vektorfelder.
+Diese wurde in Abschnitt~\ref{buch:vektoranalysis:subsection:rotrot} als Gleichung~\ref{buch:vektoranalysis:eqn:rotrot} bereits hergeleitet und gilt für sämtliche Vektorfelder.
 
 Als erster Schritt der Herleitung wird $\rho = 0$, also ein Medium ohne freie Ladungsträger, angenommen.
 Das gausssche Gesetz
@@ -118,7 +129,8 @@ Das Induktionsgesetz
 \end{equation}
 wird ebenfalls benötigt.
 
-Um die elektrische Flussdichte $\mathbf{D}$ mit dem elektrischen Feld $\mathbf{E}$ in Relation zu bringen, wird die Permittivität $\varepsilon$ beigezogen.
+Um die elektrische Flussdichte $\mathbf{D}$ mit dem elektrischen Feld $\mathbf{E}$ in Relation zu bringen, 
+wird die Permittivität $\varepsilon$ beigezogen.
 Die Permittivität ist abhängig vom Medium. 
 $\mathbf{D}$ und $\mathbf{E}$ stehen also im Verhältnis
 \[
@@ -129,21 +141,21 @@ Ein ähnliches Verhältnis stellt sich zwischen der magnetischen Flussdichte $\m
     \mathbf{B} = \mu \mathbf{H} \quad \text{bzw.} \quad \mathbf{H} = \frac{\mathbf{B}}{\mu}
 \]
 gegeben wird.
-Auch die Permeabilität ist mediumabhängig.
+Auch die Permeabilität ist abhängig vom Medium.
 
-Zunächst wird das Induktionsgesetz~\ref{particles:eq:induktionsgesetz} durch den curl zu
+Zunächst wird das Induktionsgesetz~\eqref{particles:eq:induktionsgesetz} durch den $\mathrm{rot}$ zu
 \begin{align}
     \nabla \times \nabla \times \mathbf{E} 
         &= - \nabla \times \frac{\d\mathbf{B}}{\d t} \\
         &= - \frac{\d}{\d t} \nabla \times \mathbf{B}
 \end{align}
 erweitert.
-Durch die Identität~\ref{particles:eq:curl-identity} und der Permeabilität kann das Resultat zu
+Durch die Identität~\eqref{particles:eq:rot-identity} und der Permeabilität kann das Resultat zu
 \[
     \nabla(\nabla \cdot \mathbf{E}) - \nabla^2 \mathbf{E} = -\mu \frac{\d}{\d t} \nabla \times \mathbf{H}
 \]
 umgeformt werden.
-Durch Einsetzen des gaussschen Gesetzes~\ref{particles:eq:gauss} und dem Durchflutungssatz~\ref{particles:eq:durchflutungssatz} entsteht
+Durch Einsetzen des gaussschen Gesetzes~\eqref{particles:eq:gauss} und dem Durchflutungssatz~\eqref{particles:eq:durchflutungssatz} entsteht
 \[
     - \nabla^2 \mathbf{E} = -\mu \frac{\d}{\d t} \frac{\d \mathbf{D}}{\d t}
 \]
@@ -156,19 +168,32 @@ und schliesslich entsteht mit $\mathbf{D} = \varepsilon \mathbf{E}$
 was der Wellengleichung entspricht.
 Durch ähnliches Vorgehen kann diese auch für die magnetische Feldstärke $\mathbf{B}$ hergeleitet werden.
 
-Dabei wird durch Parametervergleich mit der Wellengleichung aus~\ref{particles:eq:wellengleichung} klar, dass die Ausbreitungsgeschwindigkeit
+Durch Parametervergleich mit der Wellengleichung aus~\eqref{particles:eq:wellengleichung} wird klar, dass die Ausbreitungsgeschwindigkeit
 \[
     c = \frac{1}{\sqrt{\mu\varepsilon}}\label{particles:eq:lichtgeschwindigkeit}
 \]
 beträgt.
+Damit die Gleichung gut analytisch lösbar ist, sollten die beiden Faktoren $\mu$ und $\varepsilon$ also über verschiedene Feldstärken konstant sein.
+Ansonsten wird aus der linearen partiellen Differenzialgleichung eine nichtlineare partielle Differentialgleichung.
 
 
 \subsection{Schwinger-Limit}\label{particles:section:lin-medium:schwinger}
-Bei extrem hohen Feldstärken tritt ein Phänomen auf, wobei das Vakuum selbst nichtlinear wird.
-Dieser Übergang zur Nichtlinearität des Vakuums nennt man das \emph{Schwinger-Limit}\mytodo{Quellenangabe}, benannt nach Julian Schwinger, welcher 1951 dieses Phänomen erstmals theoretisierte.
-Da es sich hierbei um elektrische und magnetische Feldstärken im Bereich von $10^{18}\,\frac{\text{V}}{\text{m}}$ und $10^9\,\text{T}$ handelt, konnte dieses Limit bisher noch nicht konkret nachgewiesen oder gemessen werden.
-Es ist entsprechend noch immer Bestandteil aktueller Forschungen. \mytodo{Quelle hierfür angeben}
+Es wird erwartet, dass bei extrem hohen Feldstärken selbst das Vakuum nichtlinear wird.
+Dieser Übergang zur Nichtlinearität des Vakuums wurde erstmals im Jahre 1951 von Fritz Sauter in der \emph{Zeitschrift für Physik}~\cite{particles:fritz_sauter} theoretisiert.
+Julian Schwinger arbeitete diese Idee im Paper \emph{On Gauge Invariance and Vacuum Polarization}~\cite{particles:schwinger-limit} weiter aus, 
+weshalb die Grenze schliesslich nach ihm benannt wurde.
+Da es sich hierbei um elektrische und magnetische Feldstärken im Bereich von $10^{18}\,\frac{\text{V}}{\text{m}}$ und $10^9\,\text{T}$ handelt, 
+konnte dieses Limit bisher noch nicht gemessen werden.
+Entsprechend ist das Schwinger-Limit noch immer Bestandteil aktueller Forschungen, 
+wie das Paper \emph{Observing Light-by-Light Scattering at the Large Hadron Collider}~\cite{particles:photon_photon_scattering} zeigt.
+Es wird darin die Photonen-Photonen-Streuung beobachtet, was ein starkes Indiz dafür ist, 
+dass das Schwinger-Limit tatsächlich existiert.
+Zudem taucht das Limit bei weiteren Experimenten wie zum Beispiel dem ATLAS-Experiment~\cite{particles:atlas-experiment}, 
+welche sich mit extrem starken Feldstärken befassen, öfters als Nebenprodukt auf.
 
-Beschränkt man sich jedoch nicht nur auf das Vakuum, so findet man Medien, welche bereits bei deutlich kleineren Feldstärken nichtlineare Eigenschaften aufweisen.
-Ein Beispiel von solchen nichtlinearen Werkstoffen sind, wie~\ref{particles:frequenzverdopplung} demonstriert, Kristalle zur Frequenzverdoppelung.
-Diese werden beispielsweise in grünen Laserpointern eingesetzt, was die Verwendung von preiswerteren Infrarot-Laserdioden anstelle der teureren grünen Ausführung erlaubt.
+Beschränkt man sich jedoch nicht nur auf das Vakuum, so findet man Medien, 
+welche bereits bei deutlich kleineren Feldstärken nichtlineare Eigenschaften aufweisen.
+Ein Beispiel von solchen nichtlinearen Werkstoffen sind, 
+wie~\cite{particles:frequenzverdopplung} demonstriert, Kristalle zur Frequenzverdoppelung.
+Diese werden beispielsweise in grünen Laserpointern eingesetzt, 
+was die Verwendung von preiswerteren Infrarot-Laserdioden anstelle der teureren grünen Ausführung erlaubt.

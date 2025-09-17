@@ -39,5 +39,15 @@ Es soll der theoretische Hintergrund zu linearen und nichtlinearen Medien erklä
 % - Diskretisierung
 % - Verbindung zur Simulation (?)
 \input{papers/particles/teil4_fazit.tex} % TODO: Fazit: Was könnten wir hier beobachtet haben?
+
+% save current state of biburlnumpenalty in temp varialbe, in case it has already been overwritten somewhere
+\newcounter{oldbiburlnumpenalty}
+\setcounter{oldbiburlnumpenalty}{\value{biburlnumpenalty}}
+
+% change biburlnumpenalty, allowing linebreaks within urls in bibliography
+\setcounter{biburlnumpenalty}{7000}
 \printbibliography[heading=subbibliography]
+
+% reset biburlnumpenalty to its original state
+\setcounter{biburlnumpenalty}{\value{oldbiburlnumpenalty}}
 \end{refsection}
