@@ -31,7 +31,7 @@ als auch \emph{homogen}
 ist.
 
 In der Wellentheorie bedeutet dies, 
-dass die Materialeigenschaften -- beispielsweise die Elastizität -- nicht von der Amplitude der Welle abhängen.
+dass die Materialeigenschaften --- beispielsweise die Elastizität --- nicht von der Amplitude der Welle abhängen.
 Diese Elastizität eines Mediums lässt sich durch das \emph{hookesche Gesetz}
 \[
     \Delta l
@@ -98,19 +98,19 @@ Die dafür verwendeten Maxwell-Gelichungen wurden im Abschnitt~\ref{maxwell:sect
 
 
 \subsubsection{Herleitung}
-Zur Herleitung der Wellengleichung im Elektrischen Feld ist die Identität
+Zur Herleitung der Wellengleichung im elektrischen Feld ist die Identität
 \begin{equation}
     \nabla \times \nabla \times \boldsymbol{U} = \nabla(\nabla \cdot \boldsymbol{U}) - \nabla^2 \boldsymbol{U}\label{particles:eq:rot-identity}
 \end{equation}
 notwendig. 
-Diese wurde in Abschnitt~\ref{buch:vektoranalysis:subsection:rotrot} als Gleichung~\ref{buch:vektoranalysis:eqn:rotrot} bereits hergeleitet und gilt für sämtliche Vektorfelder.
+Diese wurde in Abschnitt~\ref{buch:vektoranalysis:subsection:rotrot} als Gleichung~\eqref{buch:vektoranalysis:eqn:rotrot} bereits hergeleitet und gilt für beliebige Vektorfelder.
 
 Als erster Schritt der Herleitung wird $\rho = 0$, also ein Medium ohne freie Ladungsträger, angenommen.
 Das gausssche Gesetz
 \[
     \nabla \cdot \boldsymbol{D} = \rho_\text{frei},
 \]
-wie es in Gleichung~\ref{maxwell:equation:gauss} gezeigt wurde, wird unter dieser Annahme zu
+wie es in Gleichung~\eqref{maxwell:equation:gauss} gezeigt wurde, wird unter dieser Annahme zu
 \begin{equation}
     \nabla \cdot \boldsymbol{D} = 0.\label{particles:eq:gauss}
 \end{equation}
@@ -118,16 +118,16 @@ Weiter wird der erweiterte Durchflutungssatz
 \[
     \nabla \times \boldsymbol{H} = \boldsymbol{j}_\text{frei} + \frac{\d \boldsymbol{D}}{dt}
 \]
-aus Gleichung~\ref{maxwell:equation:durchflutungssatz} durch Annahme einer Stromdichte von $\boldsymbol{j}_\text{frei} = 0$ zu
+aus Gleichung~\eqref{maxwell:equation:durchflutungssatz} durch Annahme einer Stromdichte von $\boldsymbol{j}_\text{frei} = 0$ zu
 \begin{equation}
     \nabla \times \boldsymbol{H} = \frac{\d \boldsymbol{D}}{dt}.\label{particles:eq:durchflutungssatz}
 \end{equation}
-Es ist anzumerken, dass in Gleichung~\ref{maxwell:equation:durchflutungssatz} bereits die weiter unten in den Gleichungen~\ref{particles:eq:de} und~\ref{particles:eq:bh} gezeigten Verhältnisse eingesetzt wurden.
+Es ist anzumerken, dass in Gleichung~\eqref{maxwell:equation:durchflutungssatz} bereits die weiter unten in den Gleichungen~\ref{particles:eq:de} und~\ref{particles:eq:bh} gezeigten Verhältnisse eingesetzt wurden.
 Das Induktionsgesetz
 \begin{equation}
     \nabla \times \boldsymbol{E} = -\frac{\d \boldsymbol{B}}{\d t}\label{particles:eq:induktionsgesetz},
 \end{equation}
-das als Gleichung~\ref{maxwell:equation:induktionsgesetz} vorgestellt wurde, wird ebenfalls benötigt.
+das als Gleichung~\eqref{maxwell:equation:induktionsgesetz} vorgestellt wurde, wird ebenfalls benötigt.
 
 Um die elektrische Flussdichte $\boldsymbol{D}$ mit dem elektrischen Feld $\boldsymbol{E}$ in Relation zu bringen, 
 wird die Permittivität $\varepsilon$ beigezogen.
@@ -145,14 +145,14 @@ Ein ähnliches Verhältnis stellt sich zwischen der magnetischen Flussdichte $\b
 gegeben wird.
 Auch die Permeabilität ist abhängig vom Medium.
 
-Zunächst wird das Induktionsgesetz~\eqref{particles:eq:induktionsgesetz} durch den $\operatorname{rot}$ zu
+Zunächst wird das Induktionsgesetz~\eqref{particles:eq:induktionsgesetz} durch die Rotation zu
 \begin{align}
     \nabla \times \nabla \times \boldsymbol{E} 
         &= - \nabla \times \frac{\d\boldsymbol{B}}{\d t} \\
         &= - \frac{\d}{\d t} \nabla \times \boldsymbol{B}
 \end{align}
 erweitert.
-Durch die Identität~\eqref{particles:eq:rot-identity} und der Permeabilität kann das Resultat zu
+Mit der Identität~\eqref{particles:eq:rot-identity} und der Permeabilität kann das Resultat zu
 \[
     \nabla(\nabla \cdot \boldsymbol{E}) - \nabla^2 \boldsymbol{E} = -\mu \frac{\d}{\d t} \nabla \times \boldsymbol{H}
 \]
@@ -176,7 +176,7 @@ Durch Parametervergleich mit der Wellengleichung aus~\eqref{particles:eq:welleng
 \]
 beträgt.
 Damit die Gleichung gut analytisch lösbar ist, sollten die beiden Faktoren $\mu$ und $\varepsilon$ also über verschiedene Feldstärken konstant sein.
-Ansonsten wird aus der linearen partiellen Differenzialgleichung eine nichtlineare partielle Differentialgleichung.
+Ansonsten wird aus der linearen partiellen Differenzialgleichung eine nichtlineare.
 
 
 \subsection{Schwinger-Limit}\label{particles:section:lin-medium:schwinger}
