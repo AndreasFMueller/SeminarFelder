@@ -95,6 +95,8 @@ Dabei steht auf der linken Seite die zweite Ableitung nach der Zeit und auf der 
 Eine massgebende Annahme ist dabei die Linearität des Mediums.
 Dies wird ersichtlicher, wenn man die Herleitung der Wellengleichung beispielsweise aus den Maxwell-Gleichungen betrachtet.
 
+Die dafür verwendeten Maxwell-Gelichungen wurden im Abschnitt~\ref{maxwell:section:teil0} bereits vorgestellt.
+
 
 \subsubsection{Herleitung}
 Zur Herleitung der Wellengleichung im Elektrischen Feld ist die Identität
@@ -107,9 +109,9 @@ Diese wurde in Abschnitt~\ref{buch:vektoranalysis:subsection:rotrot} als Gleichu
 Als erster Schritt der Herleitung wird $\rho = 0$, also ein Medium ohne freie Ladungsträger, angenommen.
 Das gausssche Gesetz
 \[
-    \nabla \cdot \boldsymbol{D} = \rho_\text{frei}
+    \nabla \cdot \boldsymbol{D} = \rho_\text{frei},
 \]
-wird unter dieser Annahme zu
+wie es in Gleichung~\ref{maxwell:equation:gauss} gezeigt wurde, wird unter dieser Annahme zu
 \begin{equation}
     \nabla \cdot \boldsymbol{D} = 0.\label{particles:eq:gauss}
 \end{equation}
@@ -117,15 +119,16 @@ Weiter wird der erweiterte Durchflutungssatz
 \[
     \nabla \times \boldsymbol{H} = \boldsymbol{j}_\text{frei} + \frac{\d \boldsymbol{D}}{dt}
 \]
-durch Annahme einer Stromdichte von $\boldsymbol{j}_\text{frei} = 0$ zu
+aus Gleichung~\ref{maxwell:equation:durchflutungssatz} durch Annahme einer Stromdichte von $\boldsymbol{j}_\text{frei} = 0$ zu
 \begin{equation}
     \nabla \times \boldsymbol{H} = \frac{\d \boldsymbol{D}}{dt}.\label{particles:eq:durchflutungssatz}
 \end{equation}
+Es ist anzumerken, dass in Gleichung~\ref{maxwell:equation:durchflutungssatz} bereits die weiter unten in den Gleichungen~\ref{particles:eq:de} und~\ref{particles:eq:bh} gezeigten Verhältnisse eingesetzt wurden.
 Das Induktionsgesetz
 \begin{equation}
-    \nabla \times \boldsymbol{E} = -\frac{\d \boldsymbol{B}}{\d t}\label{particles:eq:induktionsgesetz}
+    \nabla \times \boldsymbol{E} = -\frac{\d \boldsymbol{B}}{\d t}\label{particles:eq:induktionsgesetz},
 \end{equation}
-wird ebenfalls benötigt.
+der als Gleichung~\ref{maxwell:equation:induktionsgesetz} vorgestellt wurde, wird ebenfalls benötigt.
 
 Um die elektrische Flussdichte $\boldsymbol{D}$ mit dem elektrischen Feld $\boldsymbol{E}$ in Relation zu bringen, 
 wird die Permittivität $\varepsilon$ beigezogen.
@@ -133,10 +136,12 @@ Die Permittivität ist abhängig vom Medium.
 $\boldsymbol{D}$ und $\boldsymbol{E}$ stehen also im Verhältnis
 \[
     \boldsymbol{D} = \varepsilon \boldsymbol{E}.
+    \label{particles:eq:de}
 \]
 Ein ähnliches Verhältnis stellt sich zwischen der magnetischen Flussdichte $\boldsymbol{B}$ und der magnetischen Feldstärke $\boldsymbol{H}$ ein, wobei das Verhältnis durch die Permeabilität $\mu$ als
 \[
     \boldsymbol{B} = \mu \boldsymbol{H} \quad \text{bzw.} \quad \boldsymbol{H} = \frac{\boldsymbol{B}}{\mu}
+    \label{particles:eq:bh}
 \]
 gegeben wird.
 Auch die Permeabilität ist abhängig vom Medium.
