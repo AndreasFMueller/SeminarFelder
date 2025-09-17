@@ -29,11 +29,9 @@ als auch \emph{homogen}
     \lambda f(x_{1}, \ldots, x_{n})
 \]
 ist.
-Hierbei ist angemerkt, dass $x_{k}$, $y_{k}$ und $\lambda$ nicht rein reell sein müssen, 
-sondern einem beliebigen Vektorraum angehören können, was für den zweidimensionalen Fall wichtig ist.
 
 In der Wellentheorie bedeutet dies, 
-dass die Materialeigenschaften -- beispielsweise die Elastizität -- nicht von der Amplitude der Welle abhängen.
+dass die Materialeigenschaften --- beispielsweise die Elastizität --- nicht von der Amplitude der Welle abhängen.
 Diese Elastizität eines Mediums lässt sich durch das \emph{hookesche Gesetz}
 \[
     \Delta l
@@ -44,7 +42,7 @@ Diese Elastizität eines Mediums lässt sich durch das \emph{hookesche Gesetz}
 welches bereits in \autoref{chapter:elastomechanik} verwendet wurde, beschreiben.
 Dabei beschreibt $\Delta l$ die Veränderung der Distanz zwischen zwei Punkten,
 $F$ die dazwischen wirkende Kraft und $D$ einen Proportionalitätsfaktor, 
-welcher für den simplen Fall konstant ist. Also gilt 
+welcher für den einfachen Fall konstant ist. Also gilt 
 \[
     \frac{\partial D}{\partial F} 
     \overset{!}{=} 
@@ -96,77 +94,81 @@ hat in vielen Feldern Anwendung.
 Dabei steht auf der linken Seite die zweite Ableitung nach der Zeit und auf der rechten die räumliche Ableitung sowie die Konstante $c^2$.
 Eine massgebende Annahme ist dabei die Linearität des Mediums.
 Dies wird ersichtlicher, wenn man die Herleitung der Wellengleichung beispielsweise aus den Maxwell-Gleichungen betrachtet.
+Die dafür verwendeten Maxwell-Gelichungen wurden im Abschnitt~\ref{maxwell:section:teil0} bereits vorgestellt.
 
 
 \subsubsection{Herleitung}
-Zur Herleitung der Wellengleichung im Elektrischen Feld ist die Identität
+Zur Herleitung der Wellengleichung im elektrischen Feld ist die Identität
 \begin{equation}
-    \nabla \times \nabla \times \mathbf{U} = \nabla(\nabla \cdot \mathbf{U}) - \nabla^2 \mathbf{U}\label{particles:eq:rot-identity}
+    \nabla \times \nabla \times \boldsymbol{U} = \nabla(\nabla \cdot \boldsymbol{U}) - \nabla^2 \boldsymbol{U}\label{particles:eq:rot-identity}
 \end{equation}
 notwendig. 
-Diese wurde in Abschnitt~\ref{buch:vektoranalysis:subsection:rotrot} als Gleichung~\ref{buch:vektoranalysis:eqn:rotrot} bereits hergeleitet und gilt für sämtliche Vektorfelder.
+Diese wurde in Abschnitt~\ref{buch:vektoranalysis:subsection:rotrot} als Gleichung~\eqref{buch:vektoranalysis:eqn:rotrot} bereits hergeleitet und gilt für beliebige Vektorfelder.
 
 Als erster Schritt der Herleitung wird $\rho = 0$, also ein Medium ohne freie Ladungsträger, angenommen.
 Das gausssche Gesetz
 \[
-    \nabla \cdot \mathbf{D} = \rho_\text{frei}
+    \nabla \cdot \boldsymbol{D} = \rho_\text{frei},
 \]
-wird unter dieser Annahme zu
+wie es in Gleichung~\eqref{maxwell:equation:gauss} gezeigt wurde, wird unter dieser Annahme zu
 \begin{equation}
-    \nabla \cdot \mathbf{D} = 0.\label{particles:eq:gauss}
+    \nabla \cdot \boldsymbol{D} = 0.\label{particles:eq:gauss}
 \end{equation}
 Weiter wird der erweiterte Durchflutungssatz
 \[
-    \nabla \times \mathbf{H} = \mathbf{j}_\text{frei} + \frac{\d \mathbf{D}}{dt}
+    \nabla \times \boldsymbol{H} = \boldsymbol{j}_\text{frei} + \frac{\d \boldsymbol{D}}{dt}
 \]
-durch Annahme einer Stromdichte von $\mathbf{j}_\text{frei} = 0$ zu
+aus Gleichung~\eqref{maxwell:equation:durchflutungssatz} durch Annahme einer Stromdichte von $\boldsymbol{j}_\text{frei} = 0$ zu
 \begin{equation}
-    \nabla \times \mathbf{H} = \frac{\d \mathbf{D}}{dt}.\label{particles:eq:durchflutungssatz}
+    \nabla \times \boldsymbol{H} = \frac{\d \boldsymbol{D}}{dt}.\label{particles:eq:durchflutungssatz}
 \end{equation}
+Es ist anzumerken, dass in Gleichung~\eqref{maxwell:equation:durchflutungssatz} bereits die weiter unten in den Gleichungen~\ref{particles:eq:de} und~\ref{particles:eq:bh} gezeigten Verhältnisse eingesetzt wurden.
 Das Induktionsgesetz
 \begin{equation}
-    \nabla \times \mathbf{E} = -\frac{\d \mathbf{B}}{\d t}\label{particles:eq:induktionsgesetz}
+    \nabla \times \boldsymbol{E} = -\frac{\d \boldsymbol{B}}{\d t}\label{particles:eq:induktionsgesetz},
 \end{equation}
-wird ebenfalls benötigt.
+das als Gleichung~\eqref{maxwell:equation:induktionsgesetz} vorgestellt wurde, wird ebenfalls benötigt.
 
-Um die elektrische Flussdichte $\mathbf{D}$ mit dem elektrischen Feld $\mathbf{E}$ in Relation zu bringen, 
+Um die elektrische Flussdichte $\boldsymbol{D}$ mit dem elektrischen Feld $\boldsymbol{E}$ in Relation zu bringen, 
 wird die Permittivität $\varepsilon$ beigezogen.
 Die Permittivität ist abhängig vom Medium. 
-$\mathbf{D}$ und $\mathbf{E}$ stehen also im Verhältnis
-\[
-    \mathbf{D} = \varepsilon \mathbf{E}.
-\]
-Ein ähnliches Verhältnis stellt sich zwischen der magnetischen Flussdichte $\mathbf{B}$ und der magnetischen Feldstärke $\mathbf{H}$ ein, wobei das Verhältnis durch die Permeabilität $\mu$ als
-\[
-    \mathbf{B} = \mu \mathbf{H} \quad \text{bzw.} \quad \mathbf{H} = \frac{\mathbf{B}}{\mu}
-\]
+$\boldsymbol{D}$ und $\boldsymbol{E}$ stehen also im Verhältnis
+\begin{equation}
+    \boldsymbol{D} = \varepsilon \boldsymbol{E}.
+    \label{particles:eq:de}
+\end{equation}
+Ein ähnliches Verhältnis stellt sich zwischen der magnetischen Flussdichte $\boldsymbol{B}$ und der magnetischen Feldstärke $\boldsymbol{H}$ ein, wobei das Verhältnis durch die Permeabilität $\mu$ als
+\begin{equation}
+    \boldsymbol{B} = \mu \boldsymbol{H} \quad \text{bzw.} \quad \boldsymbol{H} = \frac{\boldsymbol{B}}{\mu}
+    \label{particles:eq:bh}
+\end{equation}
 gegeben wird.
 Auch die Permeabilität ist abhängig vom Medium.
 
-Zunächst wird das Induktionsgesetz~\eqref{particles:eq:induktionsgesetz} durch den $\mathrm{rot}$ zu
+Zunächst wird das Induktionsgesetz~\eqref{particles:eq:induktionsgesetz} durch die Rotation zu
 \begin{align}
-    \nabla \times \nabla \times \mathbf{E} 
-        &= - \nabla \times \frac{\d\mathbf{B}}{\d t} \\
-        &= - \frac{\d}{\d t} \nabla \times \mathbf{B}
+    \nabla \times \nabla \times \boldsymbol{E} 
+        &= - \nabla \times \frac{\d\boldsymbol{B}}{\d t} \\
+        &= - \frac{\d}{\d t} \nabla \times \boldsymbol{B}
 \end{align}
 erweitert.
-Durch die Identität~\eqref{particles:eq:rot-identity} und der Permeabilität kann das Resultat zu
+Mit der Identität~\eqref{particles:eq:rot-identity} und der Permeabilität kann das Resultat zu
 \[
-    \nabla(\nabla \cdot \mathbf{E}) - \nabla^2 \mathbf{E} = -\mu \frac{\d}{\d t} \nabla \times \mathbf{H}
+    \nabla(\nabla \cdot \boldsymbol{E}) - \nabla^2 \boldsymbol{E} = -\mu \frac{\d}{\d t} \nabla \times \boldsymbol{H}
 \]
 umgeformt werden.
 Durch Einsetzen des gaussschen Gesetzes~\eqref{particles:eq:gauss} und dem Durchflutungssatz~\eqref{particles:eq:durchflutungssatz} entsteht
 \[
-    - \nabla^2 \mathbf{E} = -\mu \frac{\d}{\d t} \frac{\d \mathbf{D}}{\d t}
+    - \nabla^2 \boldsymbol{E} = -\mu \frac{\d}{\d t} \frac{\d \boldsymbol{D}}{\d t}
 \]
-und schliesslich entsteht mit $\mathbf{D} = \varepsilon \mathbf{E}$
+und schliesslich entsteht mit $\boldsymbol{D} = \varepsilon \boldsymbol{E}$
 \[
-    \nabla^2 \mathbf{E} = \mu\varepsilon \frac{\d^2 \mathbf{E}}{\d t^2} 
+    \nabla^2 \boldsymbol{E} = \mu\varepsilon \frac{\d^2 \boldsymbol{E}}{\d t^2} 
     \quad \text{bzw.} \quad
-    \frac{\d^2 \mathbf{E}}{\d t^2} = \frac{1}{\mu \varepsilon} \nabla^2 \mathbf{E},
+    \frac{\d^2 \boldsymbol{E}}{\d t^2} = \frac{1}{\mu \varepsilon} \nabla^2 \boldsymbol{E},
 \]
 was der Wellengleichung entspricht.
-Durch ähnliches Vorgehen kann diese auch für die magnetische Feldstärke $\mathbf{B}$ hergeleitet werden.
+Durch ähnliches Vorgehen kann diese auch für die magnetische Feldstärke $\boldsymbol{B}$ hergeleitet werden.
 
 Durch Parametervergleich mit der Wellengleichung aus~\eqref{particles:eq:wellengleichung} wird klar, dass die Ausbreitungsgeschwindigkeit
 \[
@@ -174,7 +176,7 @@ Durch Parametervergleich mit der Wellengleichung aus~\eqref{particles:eq:welleng
 \]
 beträgt.
 Damit die Gleichung gut analytisch lösbar ist, sollten die beiden Faktoren $\mu$ und $\varepsilon$ also über verschiedene Feldstärken konstant sein.
-Ansonsten wird aus der linearen partiellen Differenzialgleichung eine nichtlineare partielle Differentialgleichung.
+Ansonsten wird aus der linearen partiellen Differenzialgleichung eine nichtlineare.
 
 
 \subsection{Schwinger-Limit}\label{particles:section:lin-medium:schwinger}
