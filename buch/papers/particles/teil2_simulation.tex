@@ -24,8 +24,8 @@ Die Szene wird dabei ebenfalls örtlich diskretisiert, indem sie in Pixel aufget
 
 \subsection{Wellengleichung\label{particles:section:simulation:wellengleichung}}
 Die Diskretisierung der Raumdimensionen erlaubt die Berechnung von $\nabla^2 u$ als Faltung des Felds $u$ mit einem Laplace Kernel.
-Dies ist ähnlich der Updateformel~\eqref{parallelisierung:eq:update_formel} aus Kapitel~\ref{chapter:parallelisierung}, 
-welche auch mit dem Kernel
+Damit wird nach dem in Abschnitt~\ref{parallelisierung:section:numerik} gezeigten Schema die Wellengleichung zu einer Update-Formel analog zu Gleichung~\eqref{parallelisierung:eq:update_formel} umgeformt.
+Im genannten Abschnitt wird dabei mit dem Kernel
 \[
     \boldsymbol{D}_{xy}^2
     =
@@ -35,21 +35,21 @@ welche auch mit dem Kernel
         0.00 &  0.25 & 0.00\\
     \end{pmatrix}
 \]
-geschrieben werden könnte.
-Hier werden jedoch die diagonalen Terme vernachlässigt, 
-da nur die direkt benachbarten Zellen aufgrund der Lokalität der Feldgleichung berücksichtigt werden müssen.
-Für den WaveSimulator2D können die diagonalen Terme jedoch nicht einfach vernachlässigt werden, 
-da diese einen signifikanten Einfluss auf das Resultat haben.
-Es wird daher der für unseren Fall verfeinerte Kernel
+gearbeitet.
+Auf die diagonalen Terme des Laplace-Kernels wird dabei verzichtet. 
+Da die in Abschnitt~\ref{parallelisierung:section:numerik} gelöste Wärmeleitungsgleichung parabolisch ist, werden die dadurch resultierenden, hochfrequenten Quantisierungsfehler stark gedämpft.
+Für den WaveSimulator2D können die diagonalen Terme jedoch nicht einfach vernachlässigt werden, da es sich bei der Wellengleichung um eine hyperbolische Differenzialgleichung handelt.
+Hyperbolische Differenzialgleichungen schaukeln derartige hochfrequente Fehler eher auf, als sie zu dämpfen.
+Wir verwenden daher den verfeinerten Kernel
 \[
     \boldsymbol{D}^2_{xy} = 
     \begin{pmatrix}
         0.066 &  0.184 & 0.066\\
         0.184 & -1.000 & 0.184\\
         0.066 &  0.184 & 0.066\\
-    \end{pmatrix}
+    \end{pmatrix},
 \]
-verwendet, was zu der angepassten Wellengleichung 
+was zu der angepassten Wellengleichung 
 \[
     \frac{\d^2 u}{\d t^2} = c^2 \cdot (\boldsymbol{D}^2_{xy} * u)
 \]
