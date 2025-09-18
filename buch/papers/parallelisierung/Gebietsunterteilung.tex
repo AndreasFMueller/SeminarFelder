@@ -115,7 +115,7 @@ Diskretisiert mit FDM erhält man für jeden inneren Gitterpunkt eine lineare Be
 
 Alle diese Gleichungen zusammen bilden ein lineares System
 \[
-\mathbf{A}\vec{u} = \vec{b}.
+\boldsymbol{A}\vec{u} = \vec{b}.
 \]
 
 \subsubsection{Beispiel: $5\times 5$-Gitter}
@@ -166,11 +166,11 @@ Wir ordnen die Unbekannten zeilenweise:
 \]
 Dann gilt:
 \[
-\mathbf{A}\vec{u}=\vec{b},
+\boldsymbol{A}\vec{u}=\vec{b},
 \]
 mit
 \[
-\mathbf{A}=
+\boldsymbol{A}=
 \begin{pmatrix*}[r]
 	-4& 1& 0& 1& 0& 0& 0& 0& 0\\
 	1&-4& 1& 0& 1& 0& 0& 0& 0\\
@@ -193,7 +193,7 @@ mit
 
 \subsubsection*{Interpretation und Lösung}
 \begin{itemize}
-	\item $\mathbf{A}$ ist dünnbesetzt und spiegelt die 5-Punkt-Nachbarschaft wider.
+	\item $\boldsymbol{A}$ ist dünnbesetzt und spiegelt die 5-Punkt-Nachbarschaft wider.
 	\item $\vec{b}$ enthält die Beiträge der Randwerte (verschieden je nach Position).
 	\item Das System besitzt eine eindeutige Lösung: es liefert eine schräg verlaufende Temperaturverteilung zwischen den warmen und kalten Rändern.
 \end{itemize}
@@ -215,7 +215,7 @@ Um die Kopplung zwischen Subdomains herzustellen, gibt es zwei grundsätzliche A
 	Zur Illustration nehmen wir ein Beispiel mit drei Teilgebieten.  
 	Das Gesamtsystem hat dann die Form
 	\[
-	\mathbf{A} =
+	\boldsymbol{A} =
 	\begin{bmatrix}
 		A_{11} & C_{12} & C_{13} \\
 		C_{21} & A_{22} & C_{23} \\
