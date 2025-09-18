@@ -10,4 +10,5 @@ CHAPTERFILES +=								\
 	chapters/070-hodge/3-vektoranalysis.tex				\
 	chapters/070-hodge/4-kodifferential.tex				\
 	chapters/070-hodge/5-laplace.tex				\
+	chapters/070-hodge/uebungsaufgaben/701.tex			\
 	chapters/070-hodge/chapter.tex

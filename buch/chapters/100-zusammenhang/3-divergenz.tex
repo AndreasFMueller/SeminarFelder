@@ -1,0 +1,144 @@
+%
+% 3-divergenz.tex
+%
+% (c) 2025 Prof Dr Andreas Müller
+%
+
+%
+% Kovariante Ableitung von Tensoren
+%
+\section{Divergenz und Erhaltungssätze
+\label{buch:zusammenhang:section:divergenz}}
+\kopfrechts{Divergenz und Erhaltungssätze}
+In Abschnitt~\ref{buch:gauss:section:erhaltungssatz} wurde gezeigt,
+wie Erhaltungssätze mit Hilfe der Divergenz formuliert werden können.
+Beschreibt man den Fluss eines Feldes durch die $n-1$-dimensionale
+Volumenelemente durch eine $n-1$-Form $\omega\in \Omega^{n-1}(M)$,
+dann ist die äussere Ableitung $d\omega\in \Omega^n(M)$ eine $n$-Form.
+Der Satz von Gauss sagt dann, dass für ein $n$-dimensionales $V$
+mit dem geschlossenen, $n-1$-dimensionalen Rand $\partial V$
+\[
+\int_{V}d\omega
+=
+\int_{\partial V}\omega
+\]
+gilt.
+Die $n$-Form $d\omega$ beschreibt die Quelldichte für das Feld im
+Gebiet $V$.
+Da man $d\omega$ in der Form
+\[
+d\omega
+=
+\varrho(x^1,\dots,x^n)
+\,
+dx^1\wedge\dots\wedge dx^n
+\]
+schreiben kann, betrachtet man $\varrho(x^1,\dots,x^n)$ als die
+Dichte der erhaltenen Grösse.
+Die Dichtefunktion $\varrho(x^1,\dots,x^n)$  ist aber abhängig
+von der Wahl des Koordinatensystems, sie kann also nicht direkt 
+mit einer physikalischen Grösse identifiziert werden.
+
+Die äussere Ableitung $d\omega$ wurde mit der Divergenz des Vektorfeldes
+identifiziert, dessen Komponenten die Koeffizienten der $n$ Basis-$n-1$-Formen
+$dx^{i_1}\wedge\dots\wedge dx^{i_{n-1}}$, $1\le i_1<\dots<i_{n-1}\le n$, in
+einem gewählten Koordinatensystem sind.
+Die Kontinuitätsgleichung wurde in Abschnitt
+\ref{buch:zusammenhang:erhaltungssatz:subsection:kontinuitaetsgleichung}
+als der Ausdruck eines Erhaltungssatzes.
+Die Komponenten des Vektorfeldes bilden den zur Dichte $\varrho$ gehörigen
+erhaltenen Strom.
+Auch dieses Vektorfeld hängt, genau wie die Dichtefunktion
+$\varrho(x^1,\dots,x^n)$, von der Wahl des Koordinatensystems ab.
+
+%
+% Metrik und Dichte
+%
+\subsection{Metrik und Dichte
+\label{buch:zusammenhang:divergenz:subsection:metrik}}
+Die Dichtefunktion $\varrho(x^1,\dots,x^n)$ liess sich nicht 
+unabhängig vom Koordinatensystem definieren, weil es keine vom
+Koorinatensystem unabhängig Wahl einer Volumenform
+\[
+v(x^1,\dots,x^n)\,dx^1\wedge\dots\wedge dx^n
+\]
+gibt.
+Eine Orientierung der Mannigfaltigkeit verlang zwar, dass auf
+jedem Kartengebiet eine solche Form ausgezeichnet wird.
+Von den Kartenwechseln wird aber nur verlangt, dass sie das Vorzeichen
+der $n$-Form nicht ändern.
+Es wird nichts über die Werte der $n$-Formen verlangt.
+
+Mit einer Metrik wird es möglich, eine koordinatenunabhängige Volumenform
+\[
+\sqrt{\det g}
+\,dx^1\wedge\dots\wedge dx^n
+\]
+zu definieren.
+Eine beliebige $n$-Form $\omega$ kann dann in der Form
+\[
+\varrho(x^1,\dots,x^n)
+\sqrt{\det g}
+\,dx^1\wedge \dots \wedge dx^n
+\]
+geschrieben werden.
+Die Dichtefunktion $\varrho(x^1,\dots,x^n)$ ist jetzt eine von der
+Wahl des Koordinatensystems unabhängige Grösse.
+
+Eine entsprechende ``Referenzform'' lässt sich auch für $p$-Formen mit
+$p<n$ finden, die auf einer eingebetteten $p$-Mannifaltigkeit
+definiert sind.
+Ein $p$-dimensionale Untermannigfaltigkeit $N\subset M$ einer
+riemannschen Mannigfaltigkeit $M$ mit der Metrik $g$ erbt die Metrik
+von $M$.
+Wegen $N\subset M$ folgt $T_xN\subset T_xM$ für jeden Punkt $x\in N$
+und daher sind Tangentialvektoren von $N$ im Punkt $x$ auch
+Tangentialvektoren von $M$ im selben Punkt.
+Die Metrik von $M$ definiert daher auch ein Skalarprodukt von
+Tangentialvektoren von $N$ und damit eine Metrik auf $N$.
+Die Länge einer Kurve in $N$ wird natürlich nicht verändert.
+
+Eine $p$-dimensionale Untermannigfaltigkeit hat daher eine $p$-dimensionale
+Volumenform, die mit der gleichen Metrik definiert ist.
+Auf dem $p-1$-dimensionalen Rand eines $p$-dimensionalen Gebietes definiert
+die Metrik eine $p-1$-Form, die mit der $p$-Form auf dem Gebiet kompatibel
+ist.
+
+%
+% Symmetrien und Erhaltungssätze
+%
+\subsection{Symmetrien und Erhaltungssätze
+\label{buch:zusammenhang:divergenz:subsection:noether}}
+Aus der Variationsrechnung \cite[Abschnitt 10.2]{buch:seminarvariation}
+ist bekannt, dass zu jeder Symmetrie der Lagrange-Funktion eines
+Variationsproblems ein Erhaltungssatz gehört.
+
+XXX Divergenzform des Erhaltungssatzes
+
+%
+% Kovariante Ableitung und erhaltene Ströme
+%
+\subsection{Kovariante Ableitung und erhaltene Ströme
+\label{buch:zusammenhang:divergenz:subsetion:kovariant}}
+Die Divergenzform ermöglicht, Erhaltungssätze in Form einer 
+Differentialgleichung zu formulieren.
+Die Koeffizienten der Basis-$p$-Formen sind aber koordinatenabhängig,
+wir können also nicht erwarten, damit einen koordinatenunabhängig
+formulierten Erhaltungssatz zu konstruieren.
+
+Die Divergenzform des Satzes von Nöther zeigt uns aber die Richtung,
+in die wir gehen müssen.
+Da die $n$-Form $v=\sqrt{g} dx^1\wedge \dots\wedge dx^n$
+koordinatenunabhängig ist, sind Grössen, die als Dichtefunktionen
+relativ zu $v$ definiert sind, Kandidaten für Grössen, für die
+ein Erhaltungssatz in Divergenzform formuliert werden kann.
+
+Etwas formaler betrachten wir jetzt eine Grösse mit Komponenten $A^i$
+derart, dass $\sqrt{g}A^i$ ein Vektor ist.
+Wir bezeichnen eine solche Grösse als eine Vektordichte.
+In Divergenzform lautet ein Erhaltungssatz für diese Grösse
+\[
+\sum_{i=1}^n \frac{\partial}{\partial x^i} (\!\sqrt{g}A^i)
+=
+0.
+\]

@@ -1,0 +1,76 @@
+%
+% 1d.tex -- eindimensionale Diskretisierung
+%
+% (c) 2025 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\def\punkt#1{
+	\fill[color=white] #1 circle[radius=0.07];
+	\draw[color=darkred,line width=1.2pt] #1 circle[radius=0.07];
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function = {
+	f(\X) = 0.7*(2*sin(50*\X) - 0.1*(\X-4) * (\X-4) + 0.6*\X + 2);
+}]
+
+\draw[->] (-0.1,0) -- (11.4,0) coordinate[label={above left:$x\mathstrut$}];
+\draw[->] (0,-0.1) -- (0,5.4) coordinate[label={right:$y$}];
+
+\node at (0,0) [below] {$a\mathstrut$};
+\node at (0.5,0) [above] {$h\mathstrut$};
+\node at (1,0) [below] {$x_1\mathstrut$};
+\node at (1.5,0) [above] {$h\mathstrut$};
+\node at (2,0) [below] {$x_2\mathstrut$};
+
+\node at (4,0) [below] {$x_{k-2}\mathstrut$};
+\node at (5,0) [below] {$x_{k-1}\mathstrut$};
+\node at (6,0) [below] {$x_k\mathstrut$};
+\node at (7,0) [below] {$x_{k+1}\mathstrut$};
+\node at (8,0) [below] {$x_{k+2}\mathstrut$};
+\node at (9,0) [below] {$x_{k+3}\mathstrut$};
+
+\node at (4.5,0) [above] {$h\mathstrut$};
+\node at (5.5,0) [above] {$h\mathstrut$};
+\node at (6.5,0) [above] {$h\mathstrut$};
+\node at (7.5,0) [above] {$h\mathstrut$};
+
+\node at (10,0) [below] {$x_{n-1}\mathstrut$};
+\node at (10.5,0) [above] {$h\mathstrut$};
+\node at (11,0) [below] {$b\mathstrut$};
+
+\draw[color=darkred,line width=1.2pt]
+	plot[domain=-0.1:11.1,smooth] ({\x},{f(\x)});
+
+\draw[color=blue,line width=1.4pt] (5,{f(5)}) -- (6,{f(6)}) -- (7,{f(7)});
+
+\node[color=blue] at (6.35,{0.5*f(6)+0.5*f(7)}) [below right] {$y'_k$};
+\node[color=blue] at (5.1,{0.8*f(5)+0.2*f(6)}) [below right] {$y'_{k-1}$};
+
+\foreach \x in {0,1,2,4,5,6,7,8,10,11}{
+	\draw[color=red,line width=0.2pt] (\x,0) -- (\x,{f(\x)});
+	\punkt{(\x,{f(\x)})}
+	\draw (\x,-0.05) -- (\x,0.05);
+}
+
+\node[color=darkred] at (1,{f(1)}) [above left] {$y_1$};
+\node[color=darkred] at (2,{f(2)}) [above left] {$y_2$};
+\node[color=darkred] at (4,{f(4)}) [above right] {$y_{k-2}$};
+\node[color=darkred] at (5,{f(5)}) [above] {$y_{k-1}$};
+\node[color=darkred] at (6,{f(6)}) [above] {$y_k$};
+\node[color=darkred] at (7,{f(7)}) [above left] {$y_{k+1}$};
+\node[color=darkred] at (8,{f(8)}) [above left] {$y_{k+2}$};
+\node[color=darkred] at (10,{f(10)}) [above right] {$y_{n-1}$};
+\node[color=darkred] at (11,{f(11)}) [above right] {$y_{n}$};
+
+\end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,261 @@
+Wir betrachten die Koordinatentransformation
+\[
+\renewcommand{\arraycolsep}{2pt}
+\left.
+\begin{array}{rcrcr}
+y^1 &=&  x^1 &+& 2x^2 \\
+y^2 &=& 3x^1 &+& 5x^2
+\end{array}
+\right\}
+\qquad\text{mit der inversen Transformation}\qquad
+\left\{
+\begin{array}{rcrcr}
+x^1 &=& -5y^1 &+& 2y^2\phantom{.} \\
+x^2 &=&  3y^1 &-&  y^2.
+\end{array}
+\right.
+\]
+\begin{teilaufgaben}
+\item
+Drücken Sie die Ableitungen nach den $x^i$ durch die Ableitungen nach
+$y^k$ aus.
+\item
+Drücken Sie den Laplace-Operator in den Koordinaten $x^i$, also 
+\[
+\delta =
+\frac{\partial^2}{\partial (x^1)^2}
++
+\frac{\partial^2}{\partial (x^2)^2}
+\]
+in $y^k$-Koordinaten aus.
+\item
+Drücken sie die Differentiale $dx^i$ durch durch $dy^k$ aus.
+\item
+Die euklidische Metrik in den $x_i$-Koordinaten ist gegeben durch
+den Tensor
+\[
+g
+=
+dx^1\otimes dx^1
++
+dx^2\otimes dx^2
+=
+\sum_{i,k=1}^2
+\delta_{ik}dx^i\otimes dx^k
+\]
+zweiter Stufe.
+Drücken Sie ihn durch die Differentiale $dy^1$ und $dy^2$ aus.
+\item
+Vergleichen Sie die Koeffizienten der zweiten Ableitungen des
+Laplace-Operators in den $y^k$-Koordinaten mit den metrischen
+Koeffizienten von Teilafugabe d).
+\end{teilaufgaben}
+
+\begin{loesung}
+Wir schreiben die Transformationen in Matrixform als
+\[
+\begin{pmatrix}
+y^1\\y^2
+\end{pmatrix}
+=
+\underbrace{
+\begin{pmatrix}
+1&2\\ 3&5
+\end{pmatrix}
+}_{\displaystyle = A}
+\begin{pmatrix}
+x^1\\x^2
+\end{pmatrix}
+\qquad\text{und}\qquad
+\begin{pmatrix}
+x^1\\x^2
+\end{pmatrix}
+=
+\underbrace{
+\begin{pmatrix*}[r]
+-5&2\\ 3&-1
+\end{pmatrix*}
+}_{\displaystyle = A^{-1}}
+\begin{pmatrix}
+y^1\\y^2
+\end{pmatrix}.
+\]
+\begin{teilaufgaben}
+\item Die Ableitung einer Funktion $f$ nach $x^i$ ist mit der
+Kettenregel
+\begin{align*}
+\frac{\partial f}{\partial x^i}
+&=
+\frac{\partial f}{\partial y^1}\frac{\partial y^1}{\partial x^i}
++
+\frac{\partial f}{\partial y^2}\frac{\partial y^2}{\partial x^i}
+=
+\sum_{k=1}^2
+\frac{\partial y^k}{\partial x^i}
+\frac{\partial f}{\partial y^k}.
+\end{align*}
+In Matrixschreibweise ist dies
+\begin{equation}
+\renewcommand{\arraystretch}{1.8}
+\begin{pmatrix}
+\displaystyle \frac{\partial f}{\partial x^1}\\
+\displaystyle \frac{\partial f}{\partial x^2}
+\end{pmatrix}
+=
+A
+\begin{pmatrix}
+\displaystyle \frac{\partial f}{\partial y^1}\\
+\displaystyle \frac{\partial f}{\partial y^2}
+\end{pmatrix}
+\qquad\Rightarrow\qquad
+\begin{pmatrix}
+\displaystyle \frac{\partial }{\partial x^1}\\
+\displaystyle \frac{\partial }{\partial x^2}
+\end{pmatrix}
+=
+A
+\begin{pmatrix}
+\displaystyle \frac{\partial }{\partial y^1}\\
+\displaystyle \frac{\partial }{\partial y^2}
+\end{pmatrix}.
+\label{701:eqn:gradoperator}
+\end{equation}
+\item
+Der Laplace-Operator entsteht als das Skalarprodukt
+\[
+\Delta
+=
+\renewcommand{\arraystretch}{1.8}
+\begin{pmatrix}
+\displaystyle \frac{\partial }{\partial x^1}\\
+\displaystyle \frac{\partial }{\partial x^2}
+\end{pmatrix}^t
+\begin{pmatrix}
+\displaystyle \frac{\partial }{\partial x^1}\\
+\displaystyle \frac{\partial }{\partial x^2}
+\end{pmatrix}.
+\]
+Unter Verwendung von \eqref{701:eqn:gradoperator} erhalten wir
+\begin{align*}
+\Delta
+&=
+\left( A
+\bgroup
+\renewcommand{\arraystretch}{1.8}
+\begin{pmatrix}
+\displaystyle \frac{\partial }{\partial y^1}\\
+\displaystyle \frac{\partial }{\partial y^2}
+\end{pmatrix}
+\egroup
+\right)^t
+A
+\bgroup
+\renewcommand{\arraystretch}{1.8}
+\begin{pmatrix}
+\displaystyle \frac{\partial }{\partial y^1}\\
+\displaystyle \frac{\partial }{\partial y^2}
+\end{pmatrix}
+\egroup
+=
+\bgroup
+\renewcommand{\arraystretch}{1.8}
+\begin{pmatrix}
+\displaystyle \frac{\partial }{\partial y^1}\\
+\displaystyle \frac{\partial }{\partial y^2}
+\end{pmatrix}^t
+\egroup
+A^tA
+\bgroup
+\renewcommand{\arraystretch}{1.8}
+\begin{pmatrix}
+\displaystyle \frac{\partial }{\partial y^1}\\
+\displaystyle \frac{\partial }{\partial y^2}
+\end{pmatrix}
+\egroup
+=
+\bgroup
+\renewcommand{\arraystretch}{1.8}
+\begin{pmatrix}
+\displaystyle \frac{\partial }{\partial y^1}\\
+\displaystyle \frac{\partial }{\partial y^2}
+\end{pmatrix}^t
+\egroup
+\begin{pmatrix}
+10&17\\
+17&29
+\end{pmatrix}
+\bgroup
+\renewcommand{\arraystretch}{1.8}
+\begin{pmatrix}
+\displaystyle \frac{\partial }{\partial y^1}\\
+\displaystyle \frac{\partial }{\partial y^2}
+\end{pmatrix}
+\egroup
+\\
+&=
+10\frac{\partial^2}{\partial (y^1)^2}
++
+34\frac{\partial^2}{\partial y^1\,\partial y^2}
++
+29\frac{\partial^2}{\partial (y^2)^2}.
+\end{align*}
+\item
+Aus den Formeln für die Variablentransformation folgt
+\begin{equation}
+x^i = \sum_{k=1}^2 a^i\mathstrut_k y^k
+\qquad\Rightarrow\qquad
+dx^i
+=
+\sum_{k=1}^n a^i\mathstrut_k dy^k
+\quad
+\Leftrightarrow
+\quad
+\begin{pmatrix}dx^1\\dx^2\end{pmatrix}
+=
+A
+\begin{pmatrix}dy^1\\dy^2\end{pmatrix}
+\label{701:eqn:differentialformentransformation}
+\end{equation}
+Darin sind die Koeffizienten $a^i\mathstrut_k$ die Einträge der Matrix $A$.
+\item
+Der metrische Tensor entsteht als ``Skalarprodukt'' 
+\[
+g
+=
+\sum_{i=1}^2\, dx^i\otimes dx^i.
+\]
+Mithilfe der Transformationsformeln
+\eqref{701:eqn:differentialformentransformation}
+wird daraus
+\begin{align*}
+g
+&=
+\sum_{i=1}^n
+\biggl(\sum_{k=1} a^i\mathstrut_k\,dx^k\biggr)
+\otimes
+\biggl(\sum_{l=1} a^i\mathstrut_l\,dx^l\biggr)
+=
+\sum_{k,l=1}^2
+\biggl(
+\sum_{i=1}^2
+a^i\mathstrut_k
+a^i\mathstrut_l
+\biggr)
+\,
+dx^k\otimes dx^l.
+\end{align*}
+Die Koeffizienten in der grossen Klammer sind die Einträge der Matrix
+\begin{align*}
+A^tA
+&=
+\begin{pmatrix}
+10&17\\
+17&29
+\end{pmatrix}.
+\end{align*}
+\item
+Die Koeffizienten der partiellen Ableitungen des Laplace-Operators
+in den $y^k$-Koor\-dinaten sind also genau die metrischen Koeffizienten.
+\qedhere
+\end{teilaufgaben}
+\end{loesung}

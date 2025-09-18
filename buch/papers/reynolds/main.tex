@@ -6,34 +6,60 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\chapter{Thema\label{chapter:reynolds}}
-\kopflinks{Thema}
+\chapter{Reynolds Averaged Navier Stokes \label{chapter:reynolds}}
+\kopflinks{Reynolds-Averaged-Navier-Stokes}
 \begin{refsection}
-\chapterauthor{Hans Muster}
+\chapterauthor{Damian Birchler und Sebastian Eggli}
+\index{Damian Birchler}%
+\index{Birchler, Damian}%
+\index{Sebastian Eggli}%
+\index{Eggli, Sebastian}%
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+\section{Einleitung}
+\kopfrechts{Einleitung}%
+
+\subsection{Warum CFD-Simulation?}
+
+Für kostspielige Bauteile oder Bauteile, die ein grosses Optimierungspotenzial haben,
+\index{Optimierungspotential}%
+lohnt es sich, deren Funktionstüchtigkeit vorgängig mittels CFD-Simulation zu überprüfen.
+\index{CFD-Simulation}%
+Ein Beispiel dafür könnte das Turbinenrad einer Wasserkraftanlage sein,
+\index{Turbinenrad}%
+\index{Wasserkraftanlage}%
+da dieses einerseits ein sehr kostspieliges Bauteil ist (meistens mehrere Mio. CHF)
+und andererseits Möglichkeiten für parametrisierte Optimierung bietet.
+\index{Optimierung}%
+
+\subsection{Das Problem der Turbulenz}
+
+Fluide---also Gase oder Flüssigkeiten---verhalten sich je nach Gegebenheit---Strömungs\-ge\-schwindigkeit, Temperatur, Druck, uvm.---
+\index{Turbulenz}%
+\index{Fluid}%
+\index{Gas}%
+\index{Flussigkeit@Flüssigkeit}%
+``laminar'' oder ``turbulent''. Verhält sich ein fluid laminar, bewegen sich die Teilchen des Fluids in mehr oder weniger
+\index{laminar}%
+\index{turbulent}%
+parallelen Bahnen. In turbulenten Strömungen entstehen Wirbel, englisch ``eddies''. Für eingehende Erläuterungen zu laminaren
+\index{Wirbel}%
+\index{eddy}%
+und turbulenten Strömungen wird auf die Standardwerke wie z.B. \cite{reynolds:oertel} verwiesen.
+
+Und genau da liegen die Herausforderungen von Simulationen turbulenter Strömungen,
+denn um alle diese Wirbel zu simulieren, müsste man eine Simulation mit beliebig feinem Mesh und beliebig kleinem Zeitschritt durchführen.
+\index{Zeitschritt}%
+\index{Mesh}%
+Dies ist auch mit modernen Rechenressourcen nicht zu bewerkstelligen.
+Daraus lässt sich auch schliessen, dass Simulationen von turbulenten Strömungen per se immer nur eine Näherung an die Realität sind.
+Denn es wird immer kleine und/oder kurzlebige Wirbel geben, die durch die Simulation nicht aufgelöst werden können.
+Da diese nicht aufgelösten Wirbel in Realität auch Energie umwandeln, kann eine turbulente Strömung numerisch nicht exakt simuliert werden.
+
 
 \input{papers/reynolds/teil0.tex}
 \input{papers/reynolds/teil1.tex}
-\input{papers/reynolds/teil2.tex}
-\input{papers/reynolds/teil3.tex}
+
+
 
 \printbibliography[heading=subbibliography]
 \end{refsection}

@@ -7,9 +7,51 @@
 \label{chapter:pdenumerik}}
 \kopflinks{Numerik der partiellen Differentialgleichungen}
 
-\section{Finite Differenzen}
+\noindent
+Feldgleichungen sind typischerweise partielle Differentialgleichungen,
+die nur in den seltensten Fällen in geschlossener Form lösbar sind.
+Die allgemeine Theorie der partiellen Differentialgleichungen kann
+zwar Antwort geben auf die Frage nach den Anforderungen an die
+Randbedingungen erforderlich sind, damit
+die Lösungen eindeutig bestimmt sind. 
+Um die Lösung zu bestimmen, bleiben somit nur numerische Methoden.
+In diesem Kapitel sollen ein paar Grundideen vermittelt werden, die
+auf alle Arten von partiellen Differentialgleichungen anwendbar sind.
+Die Kapitel~\ref{chapter:neuronal},
+\ref{chapter:openfoam},
+\ref{chapter:parallelisierung}
+und
+\ref{chapter:reynolds}
+geben einen Einblick in die vielfältigen Techniken, die zur Lösung
+von speziellen Feldgleichungen entwickelt wurden.
 
-\section{Finite Volumina}
+Allen Verfahren gemeinsam ist die Notwendigkeit einer Diskretisierung.
+Statt die gesuchten Funktion in ihrer Gesamtheit zu bestimmen, wird sie
+durch Zahlenwerte angenährt, die für einen einzelnen Punkt
+(finite Differenzen, Abschnitt~\ref{buch:pdenumerik:section:fdm}),
+für einzelne Teilgebiete des Definitionsbereichs
+(finite Volumina, Abschnitt~\ref{buch:pdenumerik:section:fvm})
+oder für eine Frequenz oder Wellenzahl (Spektrale Methoden,
+Abschnitt~\ref{buch:pdenumerik:section:spektral})
+repräsentativ sind.
+Die in Abschnitt~\ref{buch:pdenumerik:section:fem} skizzierte
+Methode der finiten Elemente ersetzt die Funktion teilgebietweise
+durch Polynome oder andere einfach auswertbare Funktionen.
 
-\section{Spektrale Methoden}
+Das Resultat der Diskretisierung ist eine Menge von algebraischen
+Gleichungen für eine typischerweise sehr grosse Zahl von Unbekannten.
+Für lineare Differentialgleichungen sind die algeraischen Gleichungen
+ebenfalls linear.
+Die Anzahl der Variablen ist leider meistens so gross, dass der
+wohlbekannte gausssche Eliminationsalgorithmus mit seiner
+$O(n^3)$-Komplexität viel zu langsam ist.
+Es müssen daher auch neue Algorithmen zur Lösung der linearen
+Gleichungssysteme gefunden werden, die die speziellen Eigenschaften
+der durch Diskretisation entstandenen Gleichungen ausnützen können.
+
+\input{chapters/090-pdenumerik/1-fdm.tex}
+\input{chapters/090-pdenumerik/2-fvm.tex}
+\input{chapters/090-pdenumerik/3-fem.tex}
+\input{chapters/090-pdenumerik/4-spektral.tex}
+\input{chapters/090-pdenumerik/5-linear.tex}
 

@@ -1,0 +1,229 @@
+%
+% teil4.tex -- Beispiel-File für Teil 4
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+%\usepackage{siunitx}
+%\usepackage{amsmath}
+%\usepackage[ngerman]{babel}
+\section{Beispiele aus der Bauingenieurspraxis}
+\label{elastomechanik:section:teil4}
+\kopfrechts{Beispiele aus der Bauingenieurpraxis}
+In den vorangegangenen Abschnitten
+(\ref{elastomechanik:section:Einleitung}--\ref{elastomechanik:section:herleitung2})
+haben wir die allgemeinen Grundlagen der Elastizitätstheorie entwickelt: 
+von der Definition der Verzerrungen über das hookesche Gesetz bis
+hin zu den Gleichgewichtsbedingungen und der Formulierung der
+Navier-Cauchy-Gleichungen.
+Diese theoretischen Resultate bilden die Grundlage, um reale
+Ingenieurprobleme zu beschreiben. 
+Im Folgenden wollen wir an zwei typischen Beispielen, einem Balken
+unter Mittellast und einem Oedometerversuch, aufzeigen, wie sich
+\index{Oedometerversuch}%
+aus den allgemeinen Gleichungen praktische Berechnungen ableiten
+lassen.
+Zur Erinnerung fassen wir die wesentlichen Zusammenhänge zusammen,
+die wir in Abschnitt
+%15.1–15.4
+\ref{elastomechanik:section:Einleitung}--\ref{elastomechanik:section:herleitung2}
+hergeleitet haben:
+die Kinematik
+\[
+  \varepsilon_{ij} = \tfrac12(\partial_i u_j + \partial_j u_i),
+\]
+das konstitutive Gesetz
+\[
+  \sigma_{ij} = \lambda\, \delta_{ij}\,\varepsilon_{kk} + 2\mu\, \varepsilon_{ij},
+\]
+und das Gleichgewicht
+\[
+  \partial_j \sigma_{ij} + f_i = 0,
+\]
+die zusammen zu den Navier-Cauchy-Gleichungen führen.
+Für schlanke Balken werden zusätzlich die Euler-Bernoulli-Annahmen getroffen. 
+\index{Euler-Bernoulli-Annahmen}%
+Diese lauten:
+\begin{itemize}
+  \item Querschnitte bleiben bei Biegung eben und unverzerrt,
+  \item Querschnitte bleiben senkrecht zur Balkenachse,
+  \item die Einflüsse der Querkraftverzerrung werden vernachlässigt.
+\end{itemize}
+Unter diesen Voraussetzungen ergibt sich die Balkendifferentialgleichung. 
+Aus den allgemeinen Gleichgewichtsbedingungen der Elastizitätstheorie 
+(vgl.~Abschnitt~\ref{elastomechanik:math:subsection:gleichgewicht})
+folgt zunächst, dass die Querkraft \(Q(x)\) mit der 
+Streckenlast \(q(x)\) durch
+\[
+  Q'(x) + q(x) = 0
+\]
+verknüpft ist.
+Das Moment \(M(x)\) hängt wiederum mit der Querkraft nach
+\[
+  M'(x) + Q(x) = 0
+\]
+zusammen.
+Kombiniert man diese Beziehungen, erhält man
+\begin{equation*}
+  M''(x) = q(x).
+\label{elastomechanik:eqn:Mpp}
+\end{equation*}
+
+Die Euler-Bernoulli-Hypothese verknüpft das Moment mit der 
+Krümmung des Balkens:
+\begin{equation*}
+  M(x) = EIw''(x),
+\label{elastomechanik:eqn:kruemmung}
+\end{equation*}
+wobei \(E\) der Elastizitätsmodul und \(I\) das Flächenträgheitsmoment ist. 
+Einsetzen
+von
+\eqref{elastomechanik:eqn:kruemmung}
+in
+\eqref{elastomechanik:eqn:Mpp}
+liefert die Balkendifferentialgleichung
+\begin{equation*}
+  EIw^{(4)}(x) = q(x).
+  \label{eq:beam_dgl}
+\end{equation*}
+Die fundamentale Gleichung \eqref{eq:beam_dgl}
+bildet die Grundlage für die folgenden 
+Berechnungen von Momenten, Spannungen und Durchbiegungen.
+
+%Für den Oedometerversuch gilt ein eindimensionaler Verzerrungszustand
+%\(\varepsilon_x=\varepsilon_y=0\); daraus folgt
+%\[
+%  \sigma_z = M \,\varepsilon_z, \qquad
+%  M=\frac{E(1-\nu)}{(1+\nu)(1-2\nu)},
+%\]
+%wobei \(M\) als eingeschränkter (oedometrischer) Modul bezeichnet wird.
+
+\subsection{Balken unter Mittellast}
+\index{Balken}%
+\index{Mittellast}%
+Wir betrachten einen Einfeldträger der Länge \(l = 5\,\mathrm{m}\),
+der in der Mitte mit einer Einzellast \(F = 100\,\mathrm{kN}\)
+belastet wird.
+Das System ist statisch bestimmt, sodass sich die Auflagerreaktionen
+unmittelbar aus den Gleichgewichtsbedingungen ergeben:
+\[
+  R_A = R_B = \frac{F}{2}.
+\]
+Das Moment an einer Stelle \(x\) zwischen dem linken Auflager und
+der Last ergibt sich zu
+\[
+  M(x) = R_A   x = \frac{F}{2} x.
+\]
+Für \(x=l/2\), also an der Stelle der Belastung, nimmt das Moment seinen 
+maximalen Wert
+\begin{equation*}
+  M_{\max} = \frac{F l}{4} = 125\,\mathrm{kN\,m}
+  \label{eq:Mmax}
+\end{equation*}
+an. Für den Rechteckquerschnitt mit Breite \(b=200\,\mathrm{mm}\) 
+und Höhe \(h=300\,\mathrm{mm}\) ist das Flächenträgheitsmoment
+\[
+  I = \frac{b h^3}{12} = 4.5 \times 10^8\,\mathrm{mm^4}
+  \qquad 
+\]
+Der Abstand \(y\) gibt den maximalen Abstand der äussersten Faser
+von der neutralen Achse an.
+Für einen rechteckigen Querschnitt liegt die neutrale Achse 
+in der Mitte, daher gilt:
+\[
+  y = \frac{h}{2}= 150\,\mathrm{mm}.
+\]
+Damit ergibt sich die maximale Biegespannung zu
+\begin{equation*}
+  \sigma_{\max} = \frac{M_{\max} y}{I} = 41.7\,\mathrm{MPa}.
+  \label{eq:sigma_max}
+\end{equation*}
+Die Durchbiegung in der Feldmitte erhält man schließlich aus der
+Balkendifferentialgleichung \(EI\,w''(x)=M(x)\).
+Einmaliges Integrieren liefert die Querkraftlinie, zweimaliges
+Integrieren die Biegelinie.
+Mit den Randbedingungen \(w(0)=w(l)=0\) ergibt sich für die 
+maximale Durchbiegung:
+\begin{equation*}
+  w_{\max} = \frac{F l^3}{48 E I}.
+  \label{eq:wmax}
+\end{equation*}
+Eingesetzt ergeben sich 
+\(w_{\max} \approx 48.2\,\mathrm{mm}\) für 
+\(\,E_{\text{Holz}}=12\,\mathrm{GPa}\)
+und
+\(w_{\max} \approx 2.76\,\mathrm{mm}\) für 
+\(\,E_{\text{Stahl}}=210\,\mathrm{GPa}\).
+
+\subsection{Oedometerversuch}
+Im Oedometerversuch wird eine Bodenprobe so eingespannt, dass
+\index{Oedometerversuch}%
+seitliche Dehnungen nicht auftreten können.
+Belastet man die Probe mit einer vertikalen Spannung \(\sigma_z\),
+so kann sie sich ausschliesslich in vertikaler Richtung verkürzen.
+Der Zusammenhang zwischen Spannung und Dehnung lässt sich aus dem
+isotropen hookeschen Gesetz ableiten
+(vgl. Abschnitt \ref{elastomechanik:section:teil1})
+Da die seitlichen Dehnungen unter den Oedometerversuchsbedingungen
+verschwinden, setzen wir
+\[
+  \varepsilon_x = \varepsilon_y = 0.
+\]
+Es gilt immer noch ein linearer Zusammenhang
+\[
+  \sigma_z = E_o \varepsilon_z,% \qquad
+  %E_{o}=\frac{E(1-\nu)}{(1+\nu)(1-2\nu)},
+\]
+wobei \(E_{o}\) als eingeschränkter (oedometrischer) Modul
+bezeichnet wird.
+\index{oedometrischer Modul}%
+\index{eingeschrankter Modul@eingeschränkter Modul}%
+Im Folgenden soll \(E_{o}\) bestimmt werden.
+
+Wenn wir die genannten Bedingung in das hookesche Gesetz einsetzen,
+zeigt sich, dass in horizontaler Richtung eine Spannung \(\sigma_h\)
+auftritt, die proportional zur vertikalen Spannung \(\sigma_z\)
+ist.
+Diese Spannung lässt sich schreiben als:
+\[
+  \sigma_h = \frac{\nu}{1-\nu}\,\sigma_z,
+\]
+wobei \(\nu\) die Poisson-Zahl ist.  
+Sobald die seitliche Spannung berücksichtigt ist, können wir die
+vertikale Dehnung \(\varepsilon_z\) bestimmen.
+Durch Einsetzen von \(\sigma_h\) in das hookesche Gesetz ergibt sich:
+\[
+  \varepsilon_z = \frac{\sigma_z}{E}\,\frac{1-\nu-2\nu^2}{1-\nu}.
+\]
+Aus der Definition des Oedometermoduls als Verhältnis von Spannung
+zu vertikaler Dehnung folgt dann direkt:
+\[
+  E_o = \frac{\sigma_z}{\varepsilon_z} = \frac{E(1-\nu)}{(1+\nu)(1-2\nu)}.
+\]
+
+\begin{beispiel}   
+Betrachten wir eine Probe mit einer Höhe von \(h_0 = 20\,\mathrm{mm}\),
+die unter einer Belastung von \(\sigma_z = 100\,\mathrm{kPa}\) um
+\(\Delta h = 0.5\,\mathrm{mm}\) verkürzt wird.
+Zuerst berechnen wir die vertikale Dehnung:
+\[
+  \varepsilon_z
+= \frac{\Delta h}{h_0}
+= \frac{0.5\,\mathrm{mm}}{20\,\mathrm{mm}} = 0.025.
+\]
+Anschliessend ergibt sich der Oedometermodul direkt aus der Spannung
+geteilt durch die Dehnung:
+\[
+  E_o = \frac{\sigma_z}{\varepsilon_z}
+=
+\frac{100\,\mathrm{kPa}}{0.025} = 4000\,\mathrm{kPa}.
+\qedhere
+\]
+\end{beispiel}  
+Dieser Versuch verdeutlicht, dass der Oedometermodul \(E_o\) nicht
+mit dem dreidimensionalen Elastizitätsmodul \(E\) identisch ist.
+Er hängt sowohl von \(E\) als auch von der Poisson-Zahl \(\nu\) ab
+und ergibt sich unmittelbar aus dem hookeschen Gesetz in Verbindung
+mit den speziellen Deformationsbedingungen des Oedometerversuchs.

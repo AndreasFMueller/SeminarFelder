@@ -4,194 +4,270 @@
 #
 # (c) 2020 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
 #
-awk 'BEGIN {
-	result = ""
-	counter = 0
-} 
-/^#/ {
-	next
-}
-{
-	if (length(result) == 0) {
-		result = $1
-	} else {
-		result = sprintf("%s,%d", result, $1)
-	}
-	counter++
-}
-END {
-	printf("%s\n", result)
-	printf("Anzahl Farbseiten: %d\n", counter)
-}' <<EOF
-# Kapitel  0
+./chapters --auxfile=../build/buch.aux <<EOF
+#
 # Kapitel  1
-17
-20
+chapter=1
+2
+6
+#
 # Kapitel  2
-35
-36
-37
-38
-39
-41
+chapter=2
+#
 # Kapitel  3
-48
-49
-51
-62
-63
-66
-68
-69
-71
-75
-76
+chapter=3
+2
+3
+8
+11
+18
+24
+25
+26
+27
+29
+30
+#
 # Kapitel  4
-88
-91
-92
-99
-101
-107
-117
-119
+chapter=4
+13
+19
+20
+26
+29
+34
+#
 # Kapitel  5
-139
-140
-161
+chapter=5
+2
+4
+11
+14
+15
+20
+21
+22
+25
+29
+33
+#
 # Kapitel  6
-165
-186
+chapter=6
+5
+7
+10
+11
+#
 # Kapitel  7
-198
-200
-201
-204
-205
-215
-236
+chapter=7
+13
+14
+#
 # Kapitel  8
-243
-246
-249
-250
-256
-258
-260
-261
-264
+chapter=8
+5
+6
+22
+#
 # Kapitel  9
-282
+chapter=9
+4
+6
+#
 # Kapitel 10
+chapter=10
+2
+3
+7
+#
 # Kapitel 11
-301
-306
-309
-312
-313
-314
-317
-319
-325
-326
-327
-330
-332
-334
-335
-338
-341
-342
-346
-# Kapitel 12: Verfolgungskurven
-356
-361
-368
-# Kapitel 13: FM
-372
-373
-374
-375
-381
-382
-383
-384
-# Kapitel 14 parzyl
-386
-390
-392
-# Kapitel 15 fresnel
-396
-397
-398
-399
-401
-# Kapitel 16 kreismembran
-410
-417
-418
-419
-# Kapitel 17 sturmliouville
-# Kapitel 18 laguerre
-437
-443
-444
-445
-446
-447
-448
-449
-# Kapitel 19 zeta
-452
-454
-455
-460
-# Kapitel 20 0f1
-463
-465
-467
-468
-469
-470
-# Kapitel 21 nav
-474
-475
-476
-480
-482
-483
-485
-486
-487
-488
-# Kapitel 22 transfer
-492
-493
-494
-495
-496
-498
-# Kapitel 23 kra
-505
-507
-# Kapitel 24 kugel
-515
-517
-519
-522
-532
-533
-535
-543
-# Kapitel 25 elliptisch
-550
-552
-553
-554
-556
-557
-558
-559
-560
-# Kapitel 26
+chapter=11
+2
+5
+15
+#
+# Kapitel 12
+chapter=12
+2
+9
+12
+20
+23
+33
+#
+# Kapitel 13
+chapter=13
+2
+4
+6
+7
+13
+15
+19
+20
+21
+25
+32
+33
+#
+# Kapitel 14 geoalgebra
+chapter=geoalgebra
+4
+5
+7
+8
+13
+14
+15
+#
+# Kapitel 15 nerven
+chapter=nerven
+2
+3
+4
+5
+6
+12
+13
+14
+#
+# Kapitel 16 poinbendix
+chapter=poinbendix
+4
+6
+7
+8
+10
+#
+# Kapitel 17 elastomechanik
+chapter=elastomechanik
+#
+# Kapitel 18 maxwell
+chapter=maxwell
+#
+# Kapitel 19 diffortho
+chapter=diffortho
+2
+5
+#
+# Kapitel 20 helmholtz
+chapter=helmholtz
+11
+12
+#
+# Kapitel 21 schall
+chapter=schall
+#
+# Kapitel 22 reaktdiff
+chapter=reaktdiff
+5
+10
+11
+12
+14
+15
+#
+# Kapitel 23 mongeampere
+chapter=mongeampere
+4
+5
+#
+# Kapitel 24 mongekant
+chapter=mongekant
+2
+6
+10
+12
+14
+#
+# Kapitel 25 neuronal
+chapter=neuronal
+3
+6
+9
+10
+11
+12
+13
+14
+15
+#
+# Kapitel 26 parallelisierung
+chapter=parallelisierung
+8
+9
+10
+11
+13
+14
+18
+19
+20
+21
+23
+#
+# Kapitel 27 openfoam
+chapter=openfoam
+10
+11
+13
+15
+18
+#
+# Kapitel 28 reynolds
+chapter=reynolds
+7
+9
+#
+# Kapitel 29 ueberschall
+chapter=ueberschall
+5
+6
+7
+9
+11
+13
+14
+#
+# Kapitel 30 wirbelringe
+chapter=wirbelringe
+2
+4
+5
+8
+12
+16
+#
+# Kapitel 31 geostrophisch
+chapter=geostrophisch
+4
+5
+8
+9
+12
+13
+14
+15
+#
+# Kapitel 32 rossby
+chapter=rossby
+3
+4
+5
+7
+8
+9
+13
+14
+#
+# Kapitel 33 fourier
+chapter=fourier
+3
+6
+7
+8
+9
+#
+# Kapitel 34 particles
+chapter=particles
 EOF

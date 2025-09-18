@@ -6,34 +6,33 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\chapter{Thema\label{chapter:geoalgebra}}
-\kopflinks{Thema}
+
+\chapter{Geometrische Algebra\label{chapter:geoalgebra}}
+\kopflinks{Geometrische Algebra}
 \begin{refsection}
 \chapterauthor{Damien Flury}
+\index{Damien Flury}%
+\index{Flury, Damien}%
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+{
+\newcommand{\eone}{\mathbf{e}_1}
+\newcommand{\etwo}{\mathbf{e}_2}
+\newcommand{\ethree}{\mathbf{e}_3}
 
-\input{papers/geoalgebra/teil0.tex}
-\input{papers/geoalgebra/teil1.tex}
-\input{papers/geoalgebra/teil2.tex}
-\input{papers/geoalgebra/teil3.tex}
+\renewcommand{\a}{\mathbf{a}}
+\renewcommand{\b}{\mathbf{b}}
+\renewcommand{\c}{\mathbf{c}}
+\input{papers/geoalgebra/einleitung.tex}
+\input{papers/geoalgebra/komplexe-zahlen.tex}
+\input{papers/geoalgebra/wedge-produkt.tex}
+\input{papers/geoalgebra/bivektoren.tex}
+\input{papers/geoalgebra/trivektoren-n-vektoren.tex}
+\input{papers/geoalgebra/geometrisches-produkt.tex}
+\input{papers/geoalgebra/berechnungen-mit-der-ga.tex}
+\input{papers/geoalgebra/spiegelungen.tex}
+\input{papers/geoalgebra/rotationen.tex}
+\input{papers/geoalgebra/rueckblick.tex}
+}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}

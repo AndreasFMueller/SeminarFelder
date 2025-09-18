@@ -3,37 +3,40 @@
 %
 % (c) 2020 Autor, OST Ostschweizer Fachhochschule
 %
-% !TEX root = ../../buch.tex
+% !TEX root = papers/rossby/papers/rossby/buch.tex
 % !TEX encoding = UTF-8
-%
-\chapter{Thema\label{chapter:rossby}}
-\kopflinks{Thema}
+% !TeX spellcheck = de-CH
+
+\chapter{Rossby-Wellen\label{chapter:rossby}}
+\kopflinks{Rossby-Wellen}
 \begin{refsection}
-\chapterauthor{Hans Muster}
+	\chapterauthor{Michael Schmid}
+\index{Michael Schmid}%
+\index{Schmid, Michael}%
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+    \section{Einleitung}
+    \kopfrechts{Einleitung}
+    \input{papers/rossby/einleitung.tex}
+    \section{Grundlagen}
+    \kopfrechts{Grundlagen}
+    \input{papers/rossby/fundamentals.tex}
+    \section{Vorticity}
+    \kopfrechts{Vorticity}
+    \input{papers/rossby/vorticity.tex}
+    \section{Rossby-Wellen}
+    \kopfrechts{Rossby-Wellen}
+    \input{papers/rossby/rossby.tex}
 
-\input{papers/rossby/teil0.tex}
-\input{papers/rossby/teil1.tex}
-\input{papers/rossby/teil2.tex}
-\input{papers/rossby/teil3.tex}
+
+\section{Fazit}
+
+Von den grundlegenden Kräften in einem rotierenden Bezugssystem über das Konzept der relativen und potenziellen Vorticity bis hin zur Dynamik von Rossby-Wellen spannt sich ein klarer Bogen:
+Die Coriolis-Kraft und die Erhaltung der potenziellen Vorticity liefern die physikalische Grundlage, um grossräumige atmosphärische Strömungen zu verstehen.
+Rossby-Wellen sind ein direktes Resultat dieser Prinzipien und prägen massgeblich die Wetter- und Klimadynamik der mittleren Breiten.
+
+Ihre Fähigkeit, über Tage bis Wochen stabile Muster zu bilden, macht sie zu einem zentralen Faktor für die Entwicklung von Hoch- und Tiefdruckgebieten - und damit auch für das Auftreten von Extremereignissen, wie das Beispiel des Sommers 2010 eindrücklich zeigt.
+Ein vertieftes Verständnis dieser Prozesse ist nicht nur für die Wettervorhersage, sondern auch für die Einschätzung künftiger Klimarisiken von Bedeutung.
+
 
 \printbibliography[heading=subbibliography]
 \end{refsection}

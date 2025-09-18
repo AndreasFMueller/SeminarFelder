@@ -1,3 +1,8 @@
 *.aux
 *.log
 .DS_Store
+buch/paper.out
+buch/paper1-blx.bbl
+buch/paper1-blx.blg
+buch/paper.out
+*.out

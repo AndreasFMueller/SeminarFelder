@@ -1,0 +1,115 @@
+%
+% 2d.tex -- zweidimensionale Diskretisierung
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\def\h{2}
+\def\d{0.45}
+\def\p#1#2{
+	({(#1)*\h},{(#2)*\h})
+}
+\def\punkt#1{
+	\fill[color=white] #1 circle[radius=0.08];
+	\draw[color=darkred] #1 circle[radius=0.08];
+}
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\fill[color=blue!20,rounded corners=0.3cm]
+	\p{-\d}{-\d}
+	-- \p{-\d}{-1-\d} -- \p{\d}{-1-\d}
+	-- \p{\d}{-\d}
+	-- \p{1+\d}{-\d} -- \p{1+\d}{\d}
+	-- \p{\d}{\d}
+	-- \p{\d}{1+\d} -- \p{-\d}{1+\d}
+	-- \p{-\d}{\d}
+	-- \p{-1-\d}{\d} -- \p{-1-\d}{-\d}
+	-- cycle;
+
+\foreach \x in {-2,...,2}{
+	\draw[line width=0.3pt] \p{\x}{-2.4} -- \p{\x}{2.4};
+}
+\foreach \y in {-2,...,2}{
+	\draw[line width=0.3pt] \p{-2.9}{\y} -- \p{2.6}{\y};
+}
+
+\foreach \x in {-2,-1,...,2}{
+	\foreach \y in {-2,...,2}{
+		\punkt{\p{\x}{\y}}
+	}
+}
+
+\node[color=darkred] at \p{-2}{-2} [above right] {$u_{k-2,l-2}$};
+\node[color=darkred] at \p{-1}{-2} [above right] {$u_{k-1,l-2}$};
+\node[color=darkred] at \p{0}{-2} [above right] {$u_{k,l-2}$};
+\node[color=darkred] at \p{1}{-2} [above right] {$u_{k+1,l-2}$};
+\node[color=darkred] at \p{2}{-2} [above right] {$u_{k+2,l-2}$};
+
+\node[color=darkred] at \p{-2}{-1} [above right] {$u_{k-2,l-1}$};
+\node[color=darkred] at \p{-1}{-1} [above right] {$u_{k-1,l-1}$};
+\node[color=darkred] at \p{0}{-1} [above right] {$u_{k,l-1}$};
+\node[color=darkred] at \p{1}{-1} [above right] {$u_{k+1,l-1}$};
+\node[color=darkred] at \p{2}{-1} [above right] {$u_{k+2,l-1}$};
+
+\node[color=darkred] at \p{-2}{0} [above right] {$u_{k-2,l}$};
+\node[color=darkred] at \p{-1}{0} [above right] {$u_{k-1,l}$};
+\node[color=darkred] at \p{0}{0} [above right] {$u_{kl}$};
+\node[color=darkred] at \p{1}{0} [above right] {$u_{k+1,l}$};
+\node[color=darkred] at \p{2}{0} [above right] {$u_{k+2,l}$};
+
+\node[color=darkred] at \p{-2}{1} [above right] {$u_{k-2,l+1}$};
+\node[color=darkred] at \p{-1}{1} [above right] {$u_{k-1,l+1}$};
+\node[color=darkred] at \p{0}{1} [above right] {$u_{k,l+1}$};
+\node[color=darkred] at \p{1}{1} [above right] {$u_{k+1,l+1}$};
+\node[color=darkred] at \p{2}{1} [above right] {$u_{k+2,l+1}$};
+
+\node[color=darkred] at \p{-2}{2} [above right] {$u_{k-2,l+2}$};
+\node[color=darkred] at \p{-1}{2} [above right] {$u_{k-1,l+2}$};
+\node[color=darkred] at \p{0}{2} [above right] {$u_{k,l+2}$};
+\node[color=darkred] at \p{1}{2} [above right] {$u_{k+1,l+2}$};
+\node[color=darkred] at \p{2}{2} [above right] {$u_{k+2,l+2}$};
+
+\node at \p{-2}{-2} [below left] {$(x_{k-2},y_{l-2})$};
+\node at \p{-1}{-2} [below left] {$(x_{k-1},y_{l-2})$};
+\node at \p{0}{-2} [below left] {$(x_k,y_{l-2})$};
+\node at \p{1}{-2} [below left] {$(x_{k+1},y_{l-2})$};
+\node at \p{2}{-2} [below left] {$(x_{k+2},y_{l-2})$};
+
+\node at \p{-2}{-1} [below left] {$(x_{k-2},y_{l-1})$};
+\node at \p{-1}{-1} [below left] {$(x_{k-1},y_{l-1})$};
+\node at \p{0}{-1} [below left] {$(x_k,y_{l-1})$};
+\node at \p{1}{-1} [below left] {$(x_{k+1},y_{l-1})$};
+\node at \p{2}{-1} [below left] {$(x_{k+2},y_{l-1})$};
+
+\node at \p{-2}{0} [below left] {$(x_{k-2},y_l)$};
+\node at \p{-1}{0} [below left] {$(x_{k-1},y_l)$};
+\node at \p{0}{0} [below left] {$(x_k,y_l)$};
+\node at \p{1}{0} [below left] {$(x_{k+1},y_l)$};
+\node at \p{2}{0} [below left] {$(x_{k+2},y_l)$};
+
+\node at \p{-2}{1} [below left] {$(x_{k-2},y_{l+1})$};
+\node at \p{-1}{1} [below left] {$(x_{k-1},y_{l+1})$};
+\node at \p{0}{1} [below left] {$(x_k,y_{l+1})$};
+\node at \p{1}{1} [below left] {$(x_{k+1},y_{l+1})$};
+\node at \p{2}{1} [below left] {$(x_{k+2},y_{l+1})$};
+
+\node at \p{-2}{2} [below left] {$(x_{k-2},y_{l+2})$};
+\node at \p{-1}{2} [below left] {$(x_{k-1},y_{l+2})$};
+\node at \p{0}{2} [below left] {$(x_k,y_{l+2})$};
+\node at \p{1}{2} [below left] {$(x_{k+1},y_{l+2})$};
+\node at \p{2}{2} [below left] {$(x_{k+2},y_{l+2})$};
+
+
+\end{tikzpicture}
+\end{document}
+

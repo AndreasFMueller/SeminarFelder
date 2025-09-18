@@ -1,0 +1,44 @@
+%
+% speedup5000.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{axis}[
+	title={500 Iterationen},
+	xlabel={Anzahl Zellen},
+	ylabel={Speed-Up},
+	xmode=log, % logarithmische Skala sinnvoll bei 1e6, 10e6, 100e6...
+	log basis x=10,
+	legend style={
+		at={(1.05,1)},
+		anchor=north west,
+		draw=none,
+		fill=none
+	},
+	grid=both
+	]
+	
+	\addplot coordinates {(1e7,1.3) (1e8,1.24) (1e9,1.18)};
+	\addlegendentry{4 Threads}
+	
+	\addplot coordinates {(1e7,1.25) (1e8,1.23) (1e9,1.23)};
+	\addlegendentry{6 Threads}
+	
+	\addplot coordinates {(1e7,1.2) (1e8,1.24) (1e9,1.22)};
+	\addlegendentry{12 Threads}
+	
+\end{axis}
+
+\end{tikzpicture}
+\end{document}

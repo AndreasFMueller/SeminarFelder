@@ -6,38 +6,105 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 2 
+\section{Oszilierende Muster
 \label{reaktdiff:section:teil2}}
-\kopfrechts{Teil 2}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+\kopfrechts{Oszillierende Muster}
+Zum Schluss dieses Papers werden Systeme beleuchtet, welche oszillieren.
+Hierfür wird die Lotka-Volterra-Reaktion als Beispiel genommen.
 
-\subsection{De finibus bonorum et malorum
+
+\subsection{Lotka-Volterra-Reaktion 
 \label{reaktdiff:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+
+Die Lotka-Volterra-Reaktion \cite{Wikipedia_LotkaVolterra_2025}  besteht ebenfalls wie die Turing-Muster aus einem Reaktionsdiffusionsmodell mit zwei Gleichungen.
+\index{Lotka-Volterra-Reaktion}%
+Der grosse Unterschied zu den Turing-Mustern ist, dass die Lotka-Volterra-Reaktion bereits ohne Diffusion instabil ist.
+Die Lotka-Volterra-Reaktion (oder Gleichung) wird ebenfalls benutzt, um das klassische Räuber-Beute-Modell zu beschreiben.
+\index{Rauber-Beute-Modell@Räuber-Beute-Modell}%
+
+\subsubsection{Mathematik hinter der Lotka-Volterra-Reaktion}
+
+Wieder werden \(u(x,t)\) und \(v(x,t)\) verwendet um die Konzentration an einem bestimmten Ort zu einem bestimmten Zeitpunkt zu beschreiben.
+Die Reaktionsterme
+\begin{equation}
+     f(u,v) = \alpha u -  \beta v, \quad g(u,v)= \delta uv - \gamma
+      \label{reaktdiff:equation:lvsys}
+\end{equation}
+bestehen neben den Konzentration \(u,v\) aus den Konstanten \(\alpha\),\(\beta\), \(\delta\) und \(\gamma\).
+
+Das dazugehörige Reaktionsdiffusionssystem
+\begin{align*}
+    \frac{\partial u}{\partial t} &= D_u \Delta u + \alpha u - \beta u v,
+    %\label{reaktdiff:equation:lv1}
+    \\
+    \frac{\partial v}{\partial t} &= D_v \Delta v + \delta u v - \gamma v
+    %\label{reaktdiff:equation:lv2}
+\end{align*}
+besteht wieder aus \(D_u,D_v > 0\).
+Das System hat Nullstellen bei  \(u = 0,v = 0\) (trivial) und bei \(u = \frac{\gamma}{\delta}, v = \frac{\alpha}{\beta}\).
+Um die Stabilität an diesen Punkten zu untersuchen, wird wie auch zuvor im Kapitel das System linearisiert und an der interessanten Nullstelle untersucht.
+Die Jacobi-Matrix des Systems lautet
+\begin{equation*}
+        J(u,v) =
+	\bgroup
+	\renewcommand{\arraystretch}{1.9}
+        \begin{pmatrix}
+	\displaystyle
+        \frac{\partial f}{\partial u} &
+	\displaystyle
+	\frac{\partial f}{\partial v} \\
+	\displaystyle
+        \frac{\partial g}{\partial u} &
+	\displaystyle
+	\frac{\partial g}{\partial v}
+        \end{pmatrix}
+	\egroup
+        =
+        \begin{pmatrix}
+        \alpha - \beta v & -\beta u \\
+        \delta v & \delta u - \gamma
+        \end{pmatrix}.
+\end{equation*}
+An der Stelle \(u = \frac{\gamma}{\delta}, v = \frac{\alpha}{\beta}\) ergibt das
+\begin{equation*}
+         J\left(\frac{\gamma}{\delta},\frac{\alpha}{\beta}\right) =
+        \begin{pmatrix}
+        0 & -\beta \cdot\frac{\gamma}{\delta} \\
+        \delta \cdot \frac{\alpha}{\beta} & 0
+        \end{pmatrix}. 
+\end{equation*}
+Somit erhält man
+\begin{equation*}
+    \lambda^2 + \!\sqrt{\frac{\delta \alpha \cdot \beta \gamma}{\delta \beta}}
+     = 
+     \lambda^2 + \alpha \gamma = 0 
+     \Rightarrow
+     \lambda = \pm j \!\sqrt{a\gamma\mathstrut}
+\end{equation*}
+als Eigenwerte.
+Die Eigenwerte sind rein imaginär.
+Das bedeutet, dass eine kleine Störung im System keine Dämpfung erfährt.
+Es entsteht ein oszillierendes Muster (siehe Abbildung \ref{reaktdiff:fig:lv}).
+
+\subsubsection{Simulation der Lotka-Volterra-Reaktion}
+
+Für die Simulation werden die Werte \(\alpha = 1, \beta = 0.1, \gamma = 1.5, \delta = 0.75\) verwendet.
+Somit befindet sich das Gleichgewicht bei
+\begin{equation*}
+    u = \frac{\gamma}{\delta} = \frac{1.5}{0.75} = 2, 
+    v = \frac{\alpha}{\beta} = \frac{1}{0.1} = 10.
+\end{equation*}
+Die Eigenwerte haben den Betrag \(\omega = \!\sqrt{\alpha\gamma\mathstrut} = \!\sqrt{1 \cdot 1.5} \approx 1.225\).
+Die FFT der Simulation ist in Abbildung \ref{reaktdiff:fig:lvfft} zu sehen.
+Die rote Linie zeigt die berechnete Frequenz \(f = \omega / 2 \pi \approx 0.195\,\text{Hz}\).
+In der Grafik sieht man, dass die berechnete Frequenz nicht ganz mit der dominanten Frequenz der Simulation übereinstimmt.
+Diese Abweichung kann durch numerische Effekte erklärt werden.
+
+\input{papers/reaktdiff/fig/lv.tex}
+
+\input{papers/reaktdiff/fig/lv-fft.tex}
+
+
+
 
 

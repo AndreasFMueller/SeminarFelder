@@ -98,6 +98,7 @@ wird daher zu
 \langle\alpha,\beta\rangle\,\nu.
 \label{buch:hodge:skalarprodukt:eqn:skalar}
 \end{equation}
+\index{Skalarprodukt von $p$-Formen}%
 In dieser Form kommt das Koordinatensystem nicht mehr vor.
 Die Definition~\ref{buch:hodge:hodge:definition:hodge}
 war so einfach, weil wir von einem kartesischen Koordinatensystem
@@ -190,6 +191,7 @@ Zur Konstruktion des Gleichungssystems definieren zunächst die
 Abbildung $a_\alpha$ wie folgt.
 
 \begin{definition}
+\label{buch:hodge:koordinatenfrei:def:hodgekoordinatenfrei}
 Sei $a_\alpha$ die lineare Abbildung
 \[
 a_\alpha
@@ -372,6 +374,7 @@ Die Volumenform ist daher
 
 \begin{beispiel}
 In Polarkoordinaten $(r,\varphi)$ ist die Metrik durch die
+\index{Polarkoordinaten}%
 Matrix
 \[
 (g_{ik})
@@ -399,10 +402,12 @@ r^2
 r\,dr\wedge d\varphi.
 \]
 Dies ist das bekannte Flächenelement in Polarkoordinaten.
+\index{Flachenelement in Polarkoordinaten@Flächenelement in Polarkoordinaten}%
 \end{beispiel}
 
 \begin{beispiel}
 In Kugelkoordinaten $(r,\vartheta,\varphi)$ ist die Metrik durch die
+\index{Kugelkoordinaten}%
 Matrix
 \[
 (g_{ik})
@@ -425,7 +430,214 @@ Tatsächlich ist das Volumenelement
 r^2 \sin\varphi\,dr\wedge d\vartheta\wedge d\varphi
 \]
 in Kugelkoordinaten.
+\index{Volumenelement in Kugelkoordinaten}%
 \end{beispiel}
+
+%
+% Ableitungen von $g^{ik}$
+%
+\subsubsection{Ableitungen von $g^{ik}$}
+Für spätere Anwendungen studieren wir hier noch ein paar Identitäten
+für die Ableitungen von $g$ und $^{ik}$.
+
+Die Matrix mit Einträgen $g^{ik}$ ist invers zur Matrix mit
+Einträgen $g_{ik}$.
+Die Produktmatrix ist daher die Einheitsmatrix, in Komponenten gilt
+\begin{equation*}
+g^{ik}g_{kl}
+=
+\delta^i_l.
+\end{equation*}
+Die Ableitung nach der Koordinaten $x^m$ ist nach der Produktregel
+\begin{equation*}
+\frac{\partial g^{ik}}{\partial x^m} g_{kl}
++
+g^{ik} \frac{\partial g_{kl}}{\partial x^m}
+=
+0
+\qquad\Rightarrow\qquad
+\frac{\partial g^{ik}}{\partial x^m} g_{kl}
+=
+-
+g^{ik} \frac{\partial g_{kl}}{\partial x^m}.
+\end{equation*}
+Die Ableitung von $g^{ik}$ kann daraus bestimmt werden, indem auf
+beiden Seiten mit der Inversen von $g_{kl}$ multipliziert wird.
+Multiplikation mit der $g^{l\!j}$ auf beiden Seiten ergibt
+\begin{align*}
+\frac{\partial g^{ik}}{\partial x^m} g_{kl}  g^{lj}
+&=
+-
+g^{ik} \frac{\partial g_{kl}}{\partial x^m} g^{lm}
+\intertext{und wegen $g_{kl}g^{l\!j}=\delta^j_k$ folgt}
+\frac{\partial g^{i\!j}}{\partial x^m}
+&=
+-
+g^{ik}
+g^{l\!j}
+\frac{\partial g_{kl}}{\partial x^m}.
+\end{align*}
+Die Ableitung der kontravarianten metrischen Koeffizienten entstehen
+also durch Hochziehen der Indizes der Ableitung der kovarianten
+metrischen Koeffizienten und einen Vorzeichenwechsel.
+Der Vorzeichenwechsel erinnert daran, dass Ableiten und Hochziehen
+der Herunterziehen eines Index nicht vertauschen müssen.
+
+%
+% Ableitungen von $g$
+%
+\subsubsection{Ableitungen von $g$}
+Die Determinanten $g$ ist eine algebraische Funktion allein der 
+metrischen Koeffizienten $g_{ik}$.
+Die Ableitung der Determinante $g$ nach einer Koordinate kann daher
+mit der Kettenregel als
+\begin{equation*}
+\frac{\partial g}{\partial x^m}
+=
+\sum_{i,k=1}^n
+\frac{\partial g}{\partial g_{ik}}
+\frac{\partial g_{ik}}{\partial x^m}
+\end{equation*}
+geschrieben werden.
+Die partiellen Ableitungen von $g$ nach den $g_{ik}$ lassen sich
+mit dem laplaceschen Entwicklungssatz berechnen.
+Wir bezeichnen mit $G_{ik}$ die Minormatrix von $g_{ik}$, in der
+die Zeile $i$ und die Spalte $k$ weggelassen sind.
+Dann ist 
+\begin{align*}
+g
+&=
+\sum_{l=1}^n (-1)^{l+k} g_{lk} \det G_{lk}
+&&\text{die Entwicklung nach Zeile $i$ und}
+\\
+&=
+\sum_{l=1}^n (-1)^{i+l} g_{il} \det G_{il}
+&&\text{die Entwicklung nach Spalte $k$.}
+\end{align*}
+In der Minormatrix $G_{ik}$ kommen die $g_{il}$ und $g_{lk}$ für
+$l=1,\dots,n$, nicht vor.
+Insbesondere kommt $g_{ik}$ nur in einem einzigen Term vor und es
+folgt
+\[
+\frac{\partial g}{\partial g_{ik}}
+=
+(-1)^{i+k}
+\det G_{ik}.
+\]
+Andererseits lassen sich auch die Einträge $g^{ik}$ der inversen
+Matrix als
+\[
+g^{ik} = \frac{1}{g} (-1)^{i+k} \det G_{ik}
+\]
+schreiben.
+Es folgt, dass
+\[
+\frac{\partial g}{\partial g_{ik}}
+=
+g\, g^{ik}
+\]
+ist.
+Die Ableitung nach $x^m$ ist daher
+\[
+\frac{\partial g}{\partial x^m}
+=
+\sum_{i,k=1}^n g\,g^{ik} \frac{\partial g_{ik}}{\partial x^m}.
+\]
+Diese Eigenschaft lässt sich auch als das Differential
+\begin{equation}
+dg
+=
+g\,g^{ik}\,dg_{ik}
+\label{buch:hodge:koorinatenfrei:eqn:dg}
+\end{equation}
+schreiben.
+
+Da $g^{ik}g_{kl}=\delta^i_l$ gilt, ist
+\[
+g^{ik}g_{ki} = \delta^i_i = n
+\]
+konstant.
+Das Differential ist nach der Kettenregel
+\[
+g_{ki}\,dg^{ik}
++
+g^{ik}\,dg_{ik}
+=
+0
+\qquad\Rightarrow\qquad
+g_{ki}\,dg^{ik}
+=
+-
+g^{ik}\,dg_{ik}.
+\]
+Das Differential $dg$ kann daher ausser in der Form
+\eqref{buch:hodge:koorinatenfrei:eqn:dg}
+auch in der Form
+\begin{equation}
+dg
+=
+g\,g^{ik}\,dg_{ik}
+=
+-
+g\,g_{ik}\,dg^{ik}
+\label{buch:hodge:koorinatenfrei:eqn:dg2}
+\end{equation}
+geschrieben werden.
+
+%
+% Ableitung einer Determinanten
+%
+\subsubsection{Ableitung der Determinanten}
+Die explizite Berechnung der Ableitung der Determinangen $g$ in
+Komponenten kann auch in für eine beliebige matrixwertige Funktion
+\[
+A
+\colon
+\mathbb{R}\to M_{n\times n}(\mathbb{R})
+:
+t\mapsto A(t)
+\]
+durchgeführt werden.
+Dazu berechnet man
+\begin{align*}
+\frac{d}{dt}
+\det A(t)
+&=
+\lim_{h\to 0}
+\frac{\det A(t+h) - \det A(t)}{h}
+\\
+&=
+\det A(t)
+\lim_{h\to 0}
+\frac{\det A(t)^{-1}\bigl(\det A(t+h) - \det A(t)\bigr)}{h}
+\\
+&=
+\det A(t)
+\lim_{h\to 0}
+\frac{\det(A(t)^{-1} A(t+h)) - 1)}{h}.
+\intertext{Der Grenzwert auf der rechten Seite ist die Ableitung 
+der Matrixfunktion $B(h)=A(t)^{-1}A(t+h)$ an der Stelle $h=0$
+mit der Eigenschaft $B(0)=I$.}
+&=
+\det A(t)
+\frac{d}{dh} \det(A(t)^{-1} A(t+h))\bigg|_{h=0}
+\intertext{Eine solche Ableitung ist die Spur, es folgt daher, dass die
+Ableitung von $\det A(t)$}
+&=
+\det A(t) \operatorname{Spur} \frac{d}{dh}A(t)^{-1}A(t+h)\bigg|_{h=0}
+\\
+&=
+\det A(t) \operatorname{Spur}\biggl( A(t)\frac{dA(t)}{dt}\biggr).
+\intertext{In Komponenten ausgeschrieben ist dies}
+\frac{d}{dt}\det A(t)
+&=
+\det A(t)
+\sum_{i,k=1}^n
+a_{ik}(t) a_{ki}'(t),
+\end{align*}
+was für eine symmetrische Matrix mit den für $g$ gefundenen Formeln
+übereinstimmt.
+
 
 %
 % Skalarprodukt der 1-Formen
@@ -563,6 +775,7 @@ Berechnung des Hodge-Operators für Basis-$p$-Formen.
 % Hodge-Operator in Polarkoordinaten
 %
 \subsubsection{Hodge-Operator in Polarkoordinaten}
+\index{Hodge-Operator!in Polarkoordinaten}%
 Wir betrachten Polarkoordinaten $(r,\varphi)$ auf der Ebene $\mathbb{R}^2$.
 Die Umrechnung von Polarkoordinaten in kartesische Koordinaten ist durch
 \begin{align*}
@@ -855,6 +1068,7 @@ Beispiel~\ref{buch:hodge:hodge:beispiel:r2}.
 % Hodge-Operator in Kugelkoordinaten
 %
 \subsubsection{Hodge-Operator in Kugelkoordinaten}
+\index{Hodge-Operator!in Kugelkoordinaten}%
 Kugelkoordinaten $(r,\vartheta,\varphi)$ sind gegeben durch die
 Umrechnungsformeln
 \begin{equation}

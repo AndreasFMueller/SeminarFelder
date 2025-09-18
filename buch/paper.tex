@@ -27,6 +27,8 @@ pdfauthor={Andreas Müller}
 % Bibresources for each article
 \input{papers/common/addbibresources.tex}
 
+% make sure the last index starts on an odd page
+\AtEndDocument{\clearpage\ifodd\value{page}\else\null\clearpage\fi}
 \makeindex
 
 %\pgfplotsset{compat=1.12}
@@ -34,24 +36,22 @@ pdfauthor={Andreas Müller}
 \DeclareGraphicsRule{*}{mps}{*}{}
 \begin{document}
 
-% cover page
-\ifthenelse{\boolean{includecover}}{
-\incgraph[documentpaper][width=\paperwidth,height=\paperheight]{../cover/buchcover.jpg}
-\newpage\null\thispagestyle{empty}\newpage
-}{}
-
 % add common macros
 \input{common/macros.tex}
 
+% set up page headers and footeres
+\pagestyle{fancy}
 \kopflinks{}
 \kopfrechts{}
 
+% the main part of the text
 \mainmatter
 \def\kapitelNummer{\csname kapitelNummer\papername\endcsname}
 \setcounter{chapter}{\kapitelNummer}
 \expandafter\def\csname paperpath\endcsname{papers/\papername/main.tex}
 \input{\paperpath}
 
+% add the index
 \vfill
 \pagebreak
 \ifodd\value{page}\else\null\clearpage\fi

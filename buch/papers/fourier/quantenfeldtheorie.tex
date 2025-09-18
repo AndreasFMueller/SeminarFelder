@@ -1,0 +1,705 @@
+%
+% quantenfeldtheorie.tex -- Quantenfeldtheorie: Quantisierung, Schrödinger-Gleichung, der harmonische Oszillator, Photonen als Oszillatoren
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Quantenfeldtheorie\label{fourier:section:quantenfeldtheorie}}
+\kopfrechts{Quantenfeldtheorie}
+Zwei grundlegende Begriffe der Quantenfeldtheorie sind Quant und Quantisierung. 
+\index{Quantenfeldtheorie}%
+Ein Quant ist ein kleinstmögliches Teilchen und Quantisierung bedeutet nichts anderes als zählbar. 
+In der Quantenfeldtheorie ist genau dieser Schritt von zentraler Bedeutung, denn nun ist alles zählbar. 
+Dabei werden klassische Felder wie das elektromagnetische Feld in quantenmechanische Operatoren überführt, wodurch die zuvor kontinuierlichen Felder plötzlich aus einer endlichen Menge von Quanten bestehen.
+Wie kam es eigentlich dazu, dass man physikalische Grössen plötzlich als „quantisiert“ betrachtete?
+Ein kurzer Blick in die Geschichte hilft, diesen Schritt besser zu verstehen.
+
+\subsection{Die Idee der Quantisierung\label{fourier:subsection:DieIdeeDerQuantisierung}}
+Mit 16 Jahren fragte Max Planck seinen Physiklehrer, ob sich ein Studium in der Physik lohne. 
+\index{Planck, Max}%
+Dieser soll geantwortet haben, dass im Fach im Grunde schon alles entdeckt sei und nur noch ein paar Lücken zu füllen blieben.
+Das war 1874.
+Zum Glück liess sich Planck davon nicht abhalten.
+1897 wurde er Professor für Physik und beschäftigte sich mit einem dieser ungelösten Probleme, der Schwarzkörperstrahlung. 
+\index{Schwarzkorperstrahlung@Schwarzkörperstrahlung}%
+
+In der Abbildung~\ref{fourier:fig:schwarzkoerper} ist das Experiment dargestellt. Ein hohler Metallwürfel mit einem Loch wird erwärmt. 
+Die ganze elektromagnetische Strahlung, die von aussen in das Loch eindringt, wird im Inneren absorbiert und ist visualisiert durch den blauen Pfeil. 
+Die austretende Strahlung wird nur vom Würfelinneren abgegeben, siehe die roten Pfeile. 
+Der schwarze Strahler ist in Wirklichkeit das Loch und nicht das Material selbst, obschon man dazu ein geeignetes Material benötigt!
+Nun misst man, welche Intensität von welcher Wellenlänge aus dem Loch austritt, diese hängt auch von der Temperatur des Metallwürfels ab. 
+\index{Temperatur}%
+
+Gut zu wissen ist, dass jedes Objekt über dem absoluten Nullpunkt elektromagnetische Wellen abstrahlt. 
+Sehen tut man dies bei Raumtemperatur nicht, da die Strahlungintensität im sichtbaren Wellenbereich, zwischen 400nm und 780nm, extrem gering ist. 
+Erst bei höheren Temperaturen wird die Strahlung für uns sichtbar. 
+
+\input{papers/fourier/fig/fig-schwarzkoerper.tex}
+
+In der Abbildung~\ref{fourier:fig:strahlungsspektren} wurde der Metallblock auf 1000K erwärmt und anschliessend gemessen, wie hoch die Intensität bei jeder Wellenlänge ist. 
+Die Messwerte liegen auf der schwarzen Kurve.
+Bei dieser Temeratur glüht das Eisen rötlich, hiermit handelt es sich um vom Block abgegebene elektromagnetische Strahlung!
+
+
+Nach dem Rayleigh-Jeans-Gesetz 
+\index{Rayleigh-Jeans-Gesetz}%
+\begin{equation}
+	B(\lambda, T) = \frac{2 \pi c k_\mathrm{B} T}{\lambda^4}
+\end{equation}
+steigt die abgegebene Strahlungintensität eines Körpers mit kleiner werdender Wellenlänge immer weiter an. 
+Bei hohen Wellenlängen passt das Gesetz gut, aber im ultravioletten Bereich versagt die Theorie komplett. Ultraviolette Strahlung umfasst den Wellenbereich von 10 nm bis 400 nm. 
+Die Formel sagt gigantische Energien voraus, während in Wirklichkeit kaum noch Strahlung messbar ist. 
+Dieser Erklärungsversuch der klassischen Thermodynamik für die Schwarzkörperstrahlung wird heute als Ultraviolett-Katastrophe bezeichnet. 
+\index{Thermodynamik}%
+\index{Ultraviolett-Katastrophe}
+
+\input{papers/fourier/fig/fig-strahlung.tex}
+
+Planck suchte drei Jahre lang nach einer Formel, die das gemessene Spektrum des schwarzen Körpers korrekt wiedergibt.  
+Bis dahin glaubte man, die Energie einer Welle hänge nur von ihrer Amplitude ab und Atome könnten beliebige Energiemengen abstrahlen.  
+Planck zeigte dagegen, dass die Energie einer Welle allein von ihrer Frequenz abhängt und dass Atome ihre Energie nur in diskreten Grössen abgeben können.  
+Um diese Zusammenhänge zu beschreiben, führte Planck das Wirkungsquantum $h$ ein, heute definiert als  
+\index{Wirkungsquantum}%
+$
+h = 6{,}626\cdot10^{-34}\,\mathrm{J\,s}.
+$
+Die Energie einer elektromagnetischen Welle beträgt danach $E = hf$.  
+Oft schreibt man diese Beziehung mit dem reduzierten Planckschen Wirkungsquantum $\hbar = \tfrac{h}{2\pi}$ und der Winkelfrequenz $\omega = 2\pi f$ als  
+$
+E = \hbar\,\omega = \frac{h}{2\pi}\cdot2\pi f = h f.
+$
+Auf dieser Grundlage erhielt Planck die Strahlungsdichte  
+\index{Strahlungsgesetz von Planck}%
+\begin{equation}
+	B(\lambda,T)
+	= \frac{2\pi\,h\,c^2}{\lambda^5}\,\frac{1}{e^{\frac{h\,c}{\lambda\,k_B\,T}} - 1}.
+\end{equation}
+Die Exponentialfunktion stellt sicher, dass die Intensität bei kurzen Wellenlängen gegen null fällt. 
+Je höher die Frequenz, desto grösser ist das nötige Energiepaket. 
+Deshalb nimmt die Strahlung bei hohen Frequenzen wieder ab, denn hohe Frequenzen bedeuten grosse Energiepakete und es ist ziemlich unwahrscheinlich, dass ein einzelnes Atom so viel Energie auf einen Schlag abgibt. 
+
+
+Planck erkannte die physikalische Bedeutung der von ihm eingeführten Quantisierung zunächst nicht. 
+Erst später wurde klar, dass diese Energiepackete das physikalische Objekt darstellen, das in Abschnitt~\ref{fourier:section:AnwendungAufFeld} als schwingendes Element des elektromagnetischen Feldes beschrieben wird.
+
+%Einstein
+
+1905 erklärte Albert Einstein den photoelektrischen Effekt. 
+\index{Einstein, Albert}%
+\index{photoelektrischer Effekt}%
+Dabei werden Elektronen aus einer Metalloberfläche ausgelöst, sobald die einfallende elektromagnetische Strahlung eine bestimmte Mindestfrequenz überschreitet. 
+Nach der Beziehung $E = hf$ entspricht diese Mindestfrequenz einem minimalen Energielevel, das von einem Photon erreicht werden muss.
+Mit dieser Arbeit zeigte er, dass elektromagnetische Strahlung nicht nur wellenartige Eigenschaften besitzt, sondern auch in Form diskreter Energiepackete, der Photonen, auftritt. 
+Für diese Erkenntnis erhielt er 1921 den Nobelpreis für Physik, nicht für seine Relativitätstheorie, wie häufig angenommen.
+\index{Relativitatstheorie@Relativitätstheorie}%
+
+
+%de Broglie
+
+1924 stellte Louis de Broglie eine revolutionäre Idee vor.
+\index{de Broglie, Louis}%
+Nicht nur elektromagnetische Strahlung besitzt Wellencharakter, auch Materie, also Teilchen wie Elektronen, könnten wellenartige Eigenschaften haben.
+Er vermutete, dass jedem Teilchen mit Impuls $p$ eine Wellenlänge
+\begin{equation}
+	\lambda = \frac{h}{p}
+\end{equation}	
+zugeordnet werden kann.
+Mit dieser einfachen Formel verband de Broglie die Vorstellung von Teilchen und Wellen. Damit wurde erstmals verständlich, warum sich auch Elektronen in bestimmten Experimenten wie Wellen verhalten.
+Kurios ist, dass jedes Objekt eine Wellenlänge hat, auch ein Fussball.
+
+
+\begin{beispiel}
+Angenommen man schiesst einen Fussball mit der Masse von $0.45\,\text{kg}$
+mit der Geschwindigkeit von $20\,\text{m/s}$.
+Die zugehörige Wellenlänge nach de Broglie ist 
+\begin{equation}
+	\lambda = \frac{h}{p} = \frac{h}{m \cdot v} = 	\frac{6{,}626 \cdot 10^{-34} \ \text{Js}}{0{,}45 \ \text{kg} \cdot 20 \ \text{m/s}} \approx 7{,}36 \cdot 10^{-35} \ \text{m}.
+\end{equation}	
+
+Die Berechnung zeigt, dass der Fussball eine extrem kleine Wellenlänge hat, somit besitzt er Wellencharakteristiken.
+Das Resultat ist absurd und hat in der Realität keinerlei Bedeutung.
+Solche Rechnungen machen nur in der Quantenwelt Sinn, auch wenn die Gleichungen für alle Objekte gelten. 
+De Broglie zeigte, dass Wellen als Teilchen intepretiert werden können und umgekehrt. 
+\end{beispiel}
+
+
+%Schrödinger
+Erwin Schrödinger formulierte 1926 eine Gleichung, die das Verhalten von Teilchen als Wellen beschreibt. 
+\index{Schrodinger, Erwin@Schrödinger, Erwin}%
+Sie bildet die Grundlage der Quantenmechanik. Die Lösung dieser Gleichung ist die Wellenfunktion $\psi(x, t)$.
+Sie liefert keine feste Bahn, sondern eine Wahrscheinlichkeitsverteilung für den Aufenthaltsort eines Teilchens.
+\index{Wahrscheinlichkeitsverteilung}%
+Die eindimensionale zeitabhängige Schrödinger-Gleichung lautet:
+\index{Schrodinger-Gleichung@Schrödinger-Gleichung}%
+
+\begin{equation}\label{fourier:equation:zeitabhaengigeSchroedingerGleichung}
+	i \hbar \frac{\partial \psi(x,t)}{\partial t} = -\frac{\hbar^2}{2m} \frac{\partial^2 \psi(x,t)}{\partial x^2} + V(x) \psi(x,t).
+\end{equation}
+
+
+Um herauszufinden, wie wahrscheinlich sich ein Teilchen an einem bestimmten Ort aufhält, muss man den Betrag von $\psi(x, t)$ quadrieren. 
+Die resultierende Funktion $|\psi(x, t)|^2$ ist die Aufenthaltswahrscheinlichkeitsdichte. 
+\index{Aufenthaltswahrscheinlichkeitsdichte}%
+
+Die Reise begann mit Plancks Energiepaketen, führte über Einsteins Lichtteilchen und de Broglies Materiewellen hin zu Schrödingers Wahrscheinlichkeitswellen. 
+Doch all diese Ideen behandelten Teilchen meist als isolierte Objekte.
+Die Quantenfeldtheorie geht einen Schritt weiter.
+Sie besagt, dass Teilchen nicht mehr als kleine Teilchen existieren, sondern als Anregungen von Feldern, die den gesamten Raum durchdringen. 
+Elektronen, Photonen und alle anderen Teilchen sind Wellen in ihren jeweiligen Quantenfeldern.
+Damit verschmilzt die Teilchenwelt mit der Feldvorstellung.
+Nicht das Teilchen ist grundlegend, sondern das Feld und was wir beobachten, sind nur dessen kleinste Schwingungen.
+So wird aus der Quantenmechanik eine Feldtheorie.
+
+
+Felder können durch die Kombination von einzelnen quantenmechanische harmonische Oszilatoren beschrieben werden. Solche einzelne Oszilatoren werden im nachfolgenden Abschnitt angeschaut.
+
+
+\subsection{Der quantenmechanische harmonische Oszillator\label{fourier:subsection:derQMHarmonischeOszillator}}
+
+Im Abschnitt~\ref{fourier:section:AnwendungAufFeld} wurde gezeigt, wie sich eine klassische Wellengleichung mithilfe einer Fourier-Zerlegung in eine Überlagerung von Schwingungsmoden zerlegen lässt.
+Jede dieser Moden erfüllt formal die Bewegungsgleichung eines klassischen harmonischen Oszillators.
+
+Abschnitt~\ref{fourier:section:derKlassischeHarmonischeOszillator} analysierte die Gesamtenergie eines solchen Oszillators.
+Sie setzt sich zusammen aus kinetischer Energie $\frac{p^2}{2m}$ und potentieller Energie $\frac{1}{2}kx^2$, sodass sich ergibt:
+\begin{equation}\label{fourier:equation:klassischeEnergieformel}
+E = \frac{p^2}{2m} + \frac{1}{2}kx^2.
+\end{equation}
+
+Der nächste Schritt ist, diesen klassischen Oszillator in den quantenmechanischen Formalismus zu überführen.
+Dabei wird die klassische Energieformel (\ref{fourier:equation:klassischeEnergieformel}) zur Grundlage des sogenannten \emph{Hamilton-Operators}, der die Energie im quantenmechanischen Sinne beschreibt:
+\index{Hamilton-Operator}%
+\begin{equation}
+\hat{H} = \frac{\hat{p}^2}{2m} + \frac{1}{2} k \hat{x}^2.
+\label{fourier:equation:hamiltonOperator}
+\end{equation}
+Die klassischen Grössen Ort $x$ und Impuls $p$ werden zu \emph{Operatoren} $\hat{x}$ und $\hat{p}$.
+Diese Operatoren wirken nicht mehr auf Zahlen, sondern auf die \emph{Zustände} eines physikalischen Systems.
+
+Zur mathematischen Beschreibung dieser Zustände verwendet man den sogenannten \emph{Hilbert-Raum} --- ein komplexer Vektorraum, der mit einem innerem Produkt ausgestattet ist.
+\index{Hilbert-Raum}%
+Dieses innere Produkt erlaubt es, den Raum mit Begriffen wie Länge und Winkel zu versehen und somit Zustände und ihre Überlagerungen präzise zu beschreiben.
+Die Zustände selbst werden durch Vektoren in diesem Raum dargestellt.
+
+Die Wirkung eines Operators auf einen Zustand liefert, im Fall eines Eigenzustands, das zugehörige Messergebnis als Eigenwert.
+Die Eigenwerte des Hamilton-Operators $\hat{H}$ entsprechen den möglichen Energiezuständen des quantenmechanischen Systems.
+
+Ziel ist es, das \emph{Energiespektrum} des quantenmechanischen Oszillators zu bestimmen.
+\index{Energiespektrum}%
+Es zeigt sich, dass die Energie nur in diskreten Werten auftreten kann:
+\[
+E_n = \hbar \omega \biggl(n + \frac{1}{2} \biggr), \quad n = 0, 1, 2, \dots
+\]
+Die Herleitung dieses Spektrums erfolgt in zwei Schritten:
+\begin{itemize}
+	\item Abschnitt~\ref{fourier:subsection:werkzeugeQuantenmechanik} führt die grundlegenden Werkzeuge der Quantenmechanik ein,
+	darunter Bra-Ket-Notation, Erwartungswerte, Operatoren und die Unschärferelation.
+	\item Abschnitt~\ref{fourier:subsection:Leiteroperatoren} wendet diese Konzepte auf den harmonischen Oszillator an.
+	Dort werden sogenannte Leiteroperatoren eingeführt, mit deren Hilfe sich das Spektrum ableiten lässt.
+\end{itemize}
+Die Diskretisierung der Energie ist eine direkte Konsequenz der mathematischen Struktur der Theorie.
+Sie ergibt sich aus dem Operatorformalismus und wird nicht unabhängig angenommen.
+
+
+Der Grundzustand besitzt die Energie $E_0 = \frac{1}{2}\hbar \omega$.
+Die Herkunft dieses Nullpunktterms wird in Abschnitt~\ref{fourier:subsection:Leiteroperatoren} erläutert.
+\index{Nullpunktterm}%
+
+Der harmonische Oszillator ist ein zentrales Modell der Quantenphysik.
+Viele physikalische Systeme lassen sich näherungsweise durch ihn beschreiben.
+Seine Quantisierung bildet die Grundlage der Quantenfeldtheorie.
+
+Ein wesentliches Beispiel ist das elektromagnetische Feld.
+Wie in Abschnitt~\ref{fourier:section:AnwendungAufFeld} dargestellt, lässt es sich in Moden zerlegen, von denen jede einem quantenmechanischen Oszillator entspricht.
+Die Zustände dieser Oszillatoren --- sogenannte Photonenzahlenzustände ---
+erklären, warum Licht nicht kontinuierlich, sondern in diskreten Paketen emittiert und absorbiert wird, die Photonen genannt werden.
+
+Auch in der Festkörperphysik und Quantenoptik ist der Oszillator zentral.
+Er beschreibt Gitterschwingungen (Phononen), Lichtfelder und Resonanzen in elektrischen Schaltungen.
+\index{Gitterschwingungen}%
+\index{Phononen}%
+Der quantenmechanische harmonische Oszillator ist damit ein universeller Baustein in der Beschreibung quantisierter Systeme.
+
+\subsection{Einführung in Werkzeuge der Quantenmechanik\label{fourier:subsection:werkzeugeQuantenmechanik}}
+Um die quantenmechanische Beschreibung des harmonischen Oszillators vollständig zu verstehen, ist eine neue mathematische Sprache erforderlich.
+In den folgenden Abschnitten werden zentrale Werkzeuge vorgestellt:
+\begin{itemize}
+	\item \textbf{Bra-Ket-Notation}:
+	Dient zur kompakten Darstellung von Zuständen und Operatoren im Hilbertraum.
+
+	\item \textbf{Erwartungswert eines Operators}:
+	Beschreibt den Mittelwert der Messergebnisse eines Operators in einem Zustand und wird mithilfe der Bra-Ket-Notation ermittelt.  
+
+	\item \textbf{Vertauschungsrelation}:
+	Beschreibt die grundlegende Eigenschaft von Operatoren, wie sie miteinander vertauschen oder nicht vertauschen.
+	Insbesondere ist sie entscheidend, um Produkte von Operatoren umzuschreiben und wird später bei der Definition der Leiteroperatoren
+	(Abschnitt~\ref{fourier:subsection:Leiteroperatoren}) angewendet.
+
+	\item \textbf{Heisenbergs Unschärferelation}:
+	Beschreibt die fundamentale Grenze der gleichzeitigen Bestimmbarkeit von Ort und Impuls.
+
+	\item \textbf{Hamilton-Operator und Schrödinger-Gleichung}:
+	Zwei zentrale mathematische Werkzeuge, mit denen sich die Dynamik quantenmechanischer Systeme vollständig beschreiben lässt.
+	
+\end{itemize}
+
+Diese Konzepte sind nicht nur theoretisch relevant, sondern bilden die Grundlage für das Verständnis von Photonen, Feldern und quantisierten Schwingungen im weiteren Verlauf.
+
+\subsubsection{Bra-Ket-Notation\label{fourier:subsubsection:braKetNotation}}
+Die Bra-Ket-Notation, auch Dirac-Notation genannt, wurde von Paul Dirac eingeführt und ist heute Standard in der Quantenmechanik.
+\index{Bra-Ket-Notation}%
+\index{Dirac-Notation}%
+\index{Dirac, Paul}%
+Sie dient dazu, Zustände und Operatoren kompakt und elegant darzustellen.
+Die Bra-Ket-Notation ist nicht nur kompakt, sondern macht viele Rechnungen in der Quantenmechanik übersichtlich und leicht handhabbar.
+
+\begin{itemize}
+	\item Ein \emph{Ket} $|\psi\rangle$ beschreibt den Zustand eines quantenmechanischen Systems.
+\index{Ket}%
+	Man kann sich Kets wie Richtungspfeile oder Vektoren vorstellen, die angeben, in welchem Zustand sich das System gerade befindet ---
+	zum Beispiel mit welchem Energieeigenwert, welcher Spinquantenzahl oder an welchem Ort sich ein Teilchen befindet.
+	\item Ein \emph{Bra} $\langle\psi|$ ist das zugehörige Dualelement zum Ket.
+\index{Bra}%
+	Es steht symbolisch für eine Messung oder einen Test auf diesen Zustand.
+	Formal ist es das komplex-konjugierte und transponierte Objekt zum Ket.
+\end{itemize}
+Beispiele:
+\begin{itemize}
+\item $|0\rangle$ kann den Grundzustand eines Systems beschreiben.
+\item $|x\rangle$ steht für einen Zustand, in dem sich ein Teilchen genau am Ort $x$ befindet.
+\item Allgemeine Zustände lassen sich als Superposition (Überlagerung) schreiben, beispielsweise:
+\index{Superposition}%
+\[
+	|\psi\rangle = \alpha\,|0\rangle + \beta\,|1\rangle,
+\]
+wobei $\alpha$ und $\beta$ $\in \mathbb{C}$.
+\end{itemize}
+
+Die \emph{Norm} eines Zustands ergibt sich aus seinem Skalarprodukt mit sich selbst:
+\begin{equation}\label{fourier:equation:normEinesZustands}
+	\langle \psi | \psi \rangle = \int \psi^*(x)\psi(x)dx = 1 \quad \text{(für normierte Zustände)}.
+\end{equation}
+Dabei wird der Ausdruck $\psi^*(x)\psi(x) = |\psi(x)|^2$ als \emph{Wahrscheinlichkeitsdichte} interpretiert.
+\index{Wahrscheinlichkeitsdichte}%
+Dies bedeutet einschränkend, dass der Zustand $\psi$ immer so normiert werden muss, dass
+\begin{equation}
+	\int |\psi|^2 dx = 1
+\end{equation}
+gilt.
+
+Das \emph{Skalarprodukt} zweier Zustände $\langle \varphi | \psi \rangle$ misst, wie ähnlich sie sich sind:
+\index{Skalarprodukt}%
+\begin{equation}
+\langle \varphi | \psi \rangle = \int\limits_{-\infty}^{+\infty} \varphi^*(x)\,\psi(x)\,dx.
+\end{equation}
+Dazu wird die konjugiert-komplexe und transponierte Funktion $\varphi^*(x)$ mit $\psi(x)$ multipliziert und über den gesamten Raum integriert.
+Das Ergebnis ist eine einzelne (meist komplexe) Zahl, die angibt, wie stark die beiden Zustände übereinstimmen oder sich unterscheiden. 
+Dabei gilt:
+\begin{itemize}
+	\item Für identische, normierte Zustände ($\varphi = \psi$) ist $\langle \psi | \psi \rangle = 1$.
+	\item Sind die Zustände orthogonal, also völlig verschieden, so gilt $\langle \varphi | \psi \rangle  = 0$.
+\end{itemize}
+
+\subsubsection{Erwartungswert eines Operators\label{fourier:subsubsection:erwartungswertEinesOperators}}
+Der gemessene Durchschnittswert --- also der Erwartungswert --- eines Operators im Zustand $|\psi\rangle$ wird so berechnet:
+\index{Erwartungswert}%
+\begin{equation}
+	\langle A \rangle = \langle \psi | \hat{A} | \psi \rangle = \int \psi^*(x)\,\hat{A}\,\psi(x)\,dx.
+\end{equation}
+Dieser Ausdruck ist zentral in der Quantenmechanik.
+Besonder wichtig ist er bei der Energie. Der Energieerwartungswert wird als
+\begin{equation}
+	\langle H \rangle = \langle \psi|\hat{H}|\psi \rangle
+\end{equation}
+geschrieben.
+\begin{itemize}
+	\item Der Operator $A$ wirkt zunächst auf den Ket $|\psi\rangle$, also auf die Wellenfunktion $\psi(x)$ von rechts.
+	\item Anschliessend wird das Ergebnis mit dem Bra $\langle \psi|$ beziehungsweise der komplex-konjugierten Wellenfunktion $\psi^*(x)$ multipliziert.
+	\item Durch Integration über alle Orte $x$ erhält man den Mittelwert --- den Erwartungswert.
+\end{itemize}
+Das Ergebnis $\langle A \rangle$ ist also der theoretische Durchschnittswert, den man bei vielen Messungen der Grösse $A$ im Zustand $|\psi\rangle$ erhält.
+
+Wenn der Zustand $|\psi\rangle$ ein \emph{Eigenzustand} des Operators $\hat{A}$ ist, dann gilt:
+\begin{equation}
+	\hat{A} | \psi \rangle = a | \psi \rangle \Rightarrow \langle A \rangle = a.
+\end{equation}
+Dabei ist $a$ der \emph{Eigenwert}, der dem Eigenzustand $|\psi\rangle$ des Operators $\hat{A}$ zugeordnet ist. 
+\index{Eigenwert}%
+\index{Eigenzustand}%
+Man erhält also bei jeder Messung denselben Wert $a$, was typisch für beispielsweise einen stationären Energiezustand ist.
+
+\subsubsection{Vertauschungsrelation\label{fourier:subsubsection:Vertauschungsrelation}}
+In der Quantenmechanik sind Operatoren nicht immer vertauschbar.
+Das heisst, die Reihenfolge, in der sie angewendet werden, spielt eine wichtige Rolle.
+Die Vertauschungsrelation quantifiziert diese Eigenschaft und ist ein zentralses algebraisches Werkzeug.
+
+Für zwei Operatoren $A$ und $B$ definiert man den \emph{Kommutator} als
+\begin{equation}\label{fourier:equation:Vertauschungsrelation}
+	[A, B] = AB - BA.
+\end{equation}
+\index{Kommutator}%
+Ist dieser Ausdruck ungleich null, so vertauschen die Operatoren nicht.
+Diese Relation ermöglicht es, Operatorprodukte umzuschreiben und ist die Grundlage für viele Berechnungen im harmonischen Oszillator.
+
+\subsubsection{Heisenbergs Unschärferelation%
+\label{fourier:subsubsection:unschaerferelation}}
+\index{Unscharferelation@Unschärferelation}%
+\index{heisenbergsche Unscharferelation@heisenbergsche Unschärferelation}%
+In der klassischen Mechanik lassen sich Ort $x$ und Impuls $p$ gleichzeitig beliebig genau messen.
+In der Quantenmechanik ist dies \emph{grundsätzlich nicht möglich}.
+Der Impulsoperator lautet:
+\begin{equation}
+	\hat{p} = \frac{\hbar}{i} \frac{d}{dx}.
+\end{equation}
+Man kann nicht einfach sagen ``Das Teilchen hat genau diesen Impuls'', sondern der Impuls ist grundsätzlich unscharf (nicht exakt bestimmbar).
+Ort und Impuls sind sogenannte nicht gleichzeitig messbare Grössen:
+Ihre Operatoren ``vertauschen'' nicht miteinander, was mathematisch ausgedrückt wird durch
+\begin{equation}
+	[\hat{x},\hat{p}] = \hat{x} \hat{p} - \hat{p} \hat{x} = i \hbar.
+\end{equation}
+Diese fehlende Vertauschbarkeit führt direkt zur bekannten Unschärferelation.
+Ihre Herleitung basiert auf einer grundlegenden mathematischen Ungleichung, der sogenannten \emph{Cauchy-Schwarz-Ungleichung}:
+\index{Cauchy-Schwarz-Ungleichung}%
+\begin{equation}\label{fourier:equation:CauchySchwarzUngleichung}
+	\vec{a} \cdot \vec{b} = |\vec{a}|\, |\vec{b}|\cos\alpha \le |\vec{a}|\, |\vec{b}|.
+\end{equation}
+die besagt, dass das Skalarprodukt zweier Vektoren nie grösser sein kann als das Produkt ihrer Längen.
+Übertragen auf die Wellenfunktionen zweier Quantenzustände $|\varphi\rangle$ und $|\chi\rangle$, erhält man
+\begin{equation}
+	|\langle\varphi | \chi\rangle|^2 \le \langle\varphi | \varphi\rangle \langle\chi | \chi\rangle.
+\end{equation}
+Diese Relation setzt eine obere Schranke dafür, wie stark zwei Zustände miteinander überlappen können.
+Sie beschreibt also, wie ähnlich sich zwei Zustände in ihrer quantenmechanischen Beschreibung überhaupt sein können.
+Der Ausdruck $|\langle\varphi|\chi\rangle|^2$ misst die Überlappung der beiden Zustände, also gewissermassen, wie ähnlich sie sich sind.
+Die Terme $\langle\varphi|\varphi\rangle$ und $\langle\chi|\chi\rangle$ entsprechen dabei den Quadraten der Längen (Normen) der Zustände.
+Der Betrag des Skalarprodukts kann also niemals grösser werden als das Produkt der Normen, ganz analog zur klassischen Vektoranalysis.
+Das Quadrat auf der linken Seite ergibt sich, weil die Ungleichung eine Aussage über den Betrag des Skalarprodukts ist, während die rechte Seite stets reell und positiv ist.
+Diese Form der Ungleichung bildet die mathematische Grundlage für die Herleitung der heisenbergschen Unschärferelation.
+
+Setzt man
+\begin{equation}
+	|\varphi\rangle = (\hat{x} - \langle \hat{x} \rangle) |\psi\rangle \quad |\chi\rangle = (\hat{p} - \langle \hat{p} \rangle) | \psi\rangle,
+\end{equation}
+also die Abweichungen von Ort und Impuls gegenüber ihren Mittelwerten ein, so führen die Definitionen
+\begin{equation}
+	\sigma_x^2 = \langle\varphi | \varphi\rangle \text{ und } \sigma_p^2 = \langle\chi | \chi\rangle
+\end{equation}
+für die sogenannten Standardabweichungen --- ein Mass für die „Streuung“ oder Unschärfe --- zusammen mit der Vertauschungsrelation (siehe Abschnitt~\ref{fourier:subsubsection:Vertauschungsrelation})
+\index{Standardabweichung}%
+\index{Streuung}%
+\index{Unscharfe@Unschärfe}%
+\begin{equation}
+	\langle\psi | [\hat{x},\hat{p}] | \psi\rangle = i\hbar
+\end{equation}
+und der Cauchy-Schwarz-Ungleichung (\ref{fourier:equation:CauchySchwarzUngleichung}) zur Beziehung:
+\begin{equation}
+	\sigma_x^2 \sigma_p^2 \ge \frac{1}{4} |\langle\psi | [\hat{x},\hat{p}] | \psi\rangle|^2 = \frac{\hbar^2}{4}.
+\end{equation}
+Nimmt man aus beiden Seiten die Quadratwurzel, erhält man die bekannte Form der Unschärferelation:
+\begin{equation}\label{fourier:equation:FormUnschaerferelation}
+	\sigma_x \sigma_p \ge \frac{\hbar}{2}.
+\end{equation}
+Hier bedeuten $\sigma_x$ und $\sigma_p$ die Unschärfen (Standardabweichungen) in Ort und Impuls.
+Die Unschärferelation sagt also:
+Je genauer der Ort eines Teilchens bekannt ist (kleines $\sigma_x$), desto unschärfer muss sein Impuls ($\sigma_p$) sein --- und umgekehrt.
+Das zeigt anschaulich die Wellennatur von Teilchen:
+Ein Teilchen, das genau lokalisiert ist, muss eine breite Wellenverteilung im Impulsraum haben.
+Würde man das $\tfrac{1}{2}$ in der Form der Unschärferelation (\ref{fourier:equation:FormUnschaerferelation}) weglassen, erhielte man eine vereinfachte, aber weniger präzise Darstellung des Zusammenhangs.
+
+Die Unschärferelation macht deutlich, dass klassische Begriffe wie ``Ort'' und ``Impuls'' in der Quantenmechanik nur noch als mittlere Werte und Streuungen auftreten können.
+Um diese Konzepte mathematisch präzise zu fassen und weiterführende Aussagen über die Dynamik eines Systems zu treffen, bedarf es weiterer Werkzeuge ---
+insbesondere des Hamilton-Operators und der Schrödinger-Gleichung.
+
+\subsubsection{Hamilton-Operator und Schrödinger-Gleichung%
+\label{fourier:subsubsection:hamiltonOperatorUndSchroedinger}}
+Die Unschärferelation hat gezeigt, dass Ort und Impuls eines Teilchens nicht gleichzeitig beliebig genau bestimmt werden können.
+Diese fundamentale Eigenschaft ist nicht nur eine Aussage über Messprozesse,
+sondern hat unmittelbare Konsequenzen für die Dynamik eines quantenmechanischen Systems.
+Um zu beschreiben, wie sich ein solcher Zustand mit der Zeit entwickelt,
+benötigt man ein mathematisches Werkzeug, das diese Unschärfe respektiert
+und gleichzeitig Auskunft über die Energieverhältnisse im System gibt.
+
+Dieses Werkzeug ist der Hamilton-Operator \( \hat{H} \).
+Er spielt in der Quantenmechanik eine doppelte Rolle:
+\begin{itemize}
+\item Er beschreibt die Gesamtenergie eines Systems (kinetisch und potentiell).
+\item Er steuert die zeitliche Entwicklung eines Zustands über die Schrödinger-Gleichung.
+\end{itemize}
+Im Abschnitt~\ref{fourier:subsection:derQMHarmonischeOszillator} wurde $\hat{H}$ bereits in einem konkreten Beispiel eingeführt.
+Hier betrachten wir ihn unabhängig von einem speziellen Potential.
+In der klassischen Mechanik ergibt sich die Gesamtenergie aus der Summe von kinetischer und potentieller Energie.
+In der Quantenmechanik wird diese Grösse durch den Hamilton-Operator:
+\begin{equation}\label{fourier:equation:HamiltonOperatorQM}
+	\hat{H} = \frac{\hat{p}^2}{2m} + V(\hat{x})
+\end{equation}
+ersetzt.
+Dabei treten $\hat{x}$ und $\hat{p}$ als nicht-kommutierende (also nicht vertauschbare) Operatoren auf.
+
+In der Ortsdarstellung gilt:
+\begin{equation}
+	\hat{x} = x, \qquad \hat{p} = -i\hbar \frac{\partial}{\partial x}.
+\end{equation}
+Setzt man dies ein, ergibt sich die konkrete Form
+\begin{equation}
+	\hat{H} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x)
+\end{equation}
+des Hamilton-Operators.
+Dieser Operator ist zentral in der zeitabhängigen Schrödinger-Gleichung (\ref{fourier:equation:zeitabhaengigeSchroedingerGleichung}):
+\begin{equation}
+	i\hbar \frac{\partial}{\partial t} \psi(x,t) = \hat{H} \psi(x,t).
+\end{equation}
+Sie beschreibt, wie sich der Zustand eines Systems mit der Zeit verändert.
+Die Lösung dieser Gleichung ist die sogenannte Wellenfunktion \( \psi(x,t) \).
+
+Gleichzeitig ist der Hamilton-Operator ein sogenannter Observablenoperator.
+\index{Observablenoperator}%
+Das bedeutet:
+Seine Eigenwerte entsprechen den möglichen Energie-Messwerten des Systems.
+Und seine Eigenfunktionen beschreiben stationäre Zustände mit konstanter Energie.
+Ein weiterer wichtiger Punkt ist, dass die Struktur von \( \hat{H} \) direkt von den Vertauschungsrelationen
+(siehe Abschnitt~\ref{fourier:subsubsection:Vertauschungsrelation}) von \( \hat{x} \) und \( \hat{p} \) abhängt:
+\begin{equation}\label{fourier:equation:Vertauschungsrelation_x_p}
+	[\hat{x}, \hat{p}] = i \hbar.
+\end{equation}
+
+Diese Beziehung führt, wie gesehen, zur Unschärferelation.
+Gleichzeitig stellt sie sicher, dass die Dynamik mit den Regeln der Quantenmechanik verträglich ist.
+Die mathematische Konsistenz der Schrödinger-Gleichung hängt also von genau dieser Nichtvertauschbarkeit ab.
+
+Beispielhaft kann man mit dem Hamilton-Operator Erwartungswerte berechnen.
+Für den Impuls ergibt sich:
+\begin{equation}
+	E(p) = \int \bar{\psi}(x) \, \hat{p} \, \psi(x) \, dx 
+	= \int \bar{\psi}(x) \, \frac{\hbar}{i} \, \frac{\partial \psi}{\partial x} \, dx 
+	= \langle \psi | \hat{p} | \psi \rangle
+\end{equation}
+
+
+Solche Berechnungen sind nicht nur theoretisch relevant, sondern liefern konkrete Vorhersagen für Experimente.
+Sie zeigen, wie Operatoren mit Zuständen kombiniert werden, um physikalische Grössen wie Energie, Ort oder Impuls zu berechnen.
+
+Der Hamilton-Operator $\hat{H}$ fasst alle wesentlichen Informationen über das System zusammen:
+Er beschreibt die Energie und steuert gleichzeitig die zeitliche Entwicklung des Quantenzustands gemäss der Schrödinger-Gleichung.
+Damit bildet $\hat{H}$ das Herzstück der Quantenmechanik.
+
+\subsubsection{Ausblick\label{fourier:subsubsection:Ausblick}}
+Mit den bisher eingeführten Werkzeugen lässt sich der quantenmechanische harmonische Oszillator vollständig verstehen.
+Im nächsten Abschnitt wird gezeigt, wie sich der Hamilton-Operator in diesem Fall besonders elegant mithilfe sogenannter \emph{Leiteroperatoren} behandeln lässt.
+\index{Leiteroperator}%
+
+Dabei wird betrachtet, wie diese Operatoren auf Zustände wirken, wie daraus die \emph{Energieniveaus} entstehen ---
+und warum der Oszillator niemals die Energie Null haben kann.
+
+\subsection{Leiteroperatoren\label{fourier:subsection:Leiteroperatoren}}
+Die Energie des quantenmechanischen harmonischen Oszillators ist diskret.
+Ziel dieses Abschnitts ist es, diese Aussage formal zu begründen.
+Grundlage ist die algebraische Methode mit sogenannten Leiteroperatoren, die eine vollständige Lösung des Systems ermöglichen, ohne Differentialgleichungen zu lösen.	
+
+\subsubsection{Dimensionlose Operatoren\label{fourier:subsubsection:DimensionsloseOperatoren}}
+Zur Vereinfachung führt man dimensionslose Operatoren ein:
+\index{dimensionslos}%
+\[
+	Q = \sqrt{\frac{m\omega}{\hbar}}x
+	\qquad\text{und}\qquad
+	P = \frac{1}{\sqrt{m\hbar\omega}}p.
+\]
+Die Wurzelausdrücke sorgen dafür, dass beide Operatoren keine physikalischen Einheiten mehr haben.
+Der Hamilton-Operator~\ref{fourier:equation:HamiltonOperatorQM} des harmonischen Oszillators nimmt damit die Form
+\begin{equation}\label{fourier:equation:HamiltonOperatorDimLos}
+	H = \frac{1}{2}(P^2 + Q^2)
+\end{equation}
+an.
+Auch $Q$ und $P$ vertauschen nicht, aus (\ref{fourier:equation:Vertauschungsrelation_x_p}) folgt
+\[
+	[Q,P] = i.
+\]
+
+\subsubsection{Definition der Leiteroperatoren\label{fourier:subsubsection:DefinitionLeiteroperatoren}}
+Der Ausdruck~\ref{fourier:equation:HamiltonOperatorDimLos} lässt sich faktorisieren:
+\[
+	H = \frac{1}{2}(Q + iP)(Q - iP).
+\]
+Dies motiviert die Definition der Leiteroperatoren:
+\begin{equation}
+	a = \frac{1}{\sqrt{2}}(Q + iP),
+	\qquad\text{und}\qquad
+	a^+ = \frac{1}{\sqrt{2}}(Q - iP).
+\end{equation}
+Diese erfüllen die fundamentale Vertauschungsrelation
+\begin{equation}
+	[a, a^+] = 1.
+\end{equation}
+Die Reihenfolge der Operatoren ist entscheidend: $[a^+, a] = -1$.
+
+\noindent
+\textit{Anmerkung:}
+Ursprünglich wurde der Erzeugungsoperator mit einem $\dagger$ (engl. ``dagger'') als hochgestelltes Symbol geschrieben, also $a^\dagger$.
+Aufgrund der begrenzten Verfügbarkeit von Sonderzeichen auf Tastaturen und in einfachen Textsystemen wird oft stattdessen das Pluszeichen $a^+$ verwendet.
+Heute findet man deshalb in der Literatur häufig das hochgestellte Plus.
+Beide Bezeichnungen meinen denselben Operator.
+
+\subsubsection{Hamilton-Operator in Operatorform\label{fourier:subsubsection:HamiltonOperatorInOperatorform}}
+Die Leiteroperatoren ermöglichen eine kompakte Darstellung des Hamilton-Operators.
+Zunächst ergibt sich durch Ausmultiplizieren:
+\[
+	a^+a = \frac{1}{2}(Q - iP)(Q + iP) = \frac{1}{2}(Q^2 + iQP - iPQ + P^2) = \frac{1}{2}(Q^2 + P^2 + i[Q, P]).
+\]
+Da $QP - PQ = [Q, P] = i$, folgt:
+\[
+	a^+a = \frac{1}{2}(Q^2 + P^2 - 1).
+\]
+Formt man diese Gleichung nach $Q^2 + P^2$ um, erhält man:
+\[
+	Q^2 + P^2 = 2a^+a + 1.
+\]
+Setzt man dies in den ursprünglichen Hamilton-Operator ein, ergibt sich
+\[
+	H = \frac{1}{2}(Q^2 + P^2) = \frac{1}{2}(2a^+a + 1) = a^+a + \frac{1}{2}.
+\]
+Mit Einheiten eingesetzt:
+\begin{equation}
+	\hat{H} = \hbar\omega \biggl(a^+ a + \frac{1}{2}\biggr) = \hbar\omega \biggl(N + \frac{1}{2}\biggr).
+\end{equation}
+Hierbei ist $N = a^+a$ der sogenannte Zahloperator.
+Er zählt die Anzahl von Quanten (zum Beispiel Photonen) im Zustand.
+Der Term $\frac{1}{2}\hbar\omega$ ergibt sich aus der Vertauschungsrelation und beschreibt die \emph{Nullpunktenergie} des Oszillators.
+\index{Nullpunktenergie}%
+
+\subsubsection{Wirkung der Leiteroperatoren\label{fourier:subsubsection:WirkungLeiteroperatoren}}
+Die gemessene Energie eines quantenmechanischen Zustands ist der Erwartungswert des Hamilton-Operators:
+\begin{equation}
+	\langle\psi|\hat{H}|\psi\rangle = \langle\psi|E|\psi\rangle.
+\end{equation}
+Gilt $|\psi\rangle$ als Eigenzustand von $\hat{H}$ mit Eigenwert $E$, so folgt
+\begin{equation}
+	\hat{H}|\psi\rangle = E|\psi\rangle.
+\end{equation}
+Weil $E$ nur eine Zahl ist, lässt sich
+\[
+	\langle\psi|E|\psi\rangle = E \langle\psi|\psi\rangle
+\]
+schreiben.
+Für normierte Zustände gilt $\langle\psi|\psi\rangle = 1$ (siehe Formel~\ref{fourier:equation:normEinesZustands}), womit sich schliesslich
+\[
+	E \langle\psi|\psi\rangle = E \cdot 1 = E
+\]
+ergibt.
+Der Erwartungswert der Energie ist also gleich dem Eigenwert, wenn der Zustand $|\varphi\rangle$ ein Eigenzustand des Hamilton-Operators ist.
+
+Jetzt kann man leicht nachvollziehen, wie die Operatoren $a$ und $a^+$ die Energie eines Zustands verändern.
+Die grundlegenden Vertauschungsrelationen lauten:
+\[
+	[H, a^+] = \hbar\omega~a^+
+	\qquad
+	und
+	\qquad
+	[H, a] = -\hbar\omega~a
+\]
+Diese geben an, wie sich $a$ und $a^+$ mit dem Hamilton-Operator $H$ verhalten.
+
+Sei nun $|\psi_n\rangle$ ein Energieeigenzustand:
+\[
+	H|\psi_n\rangle = E_n|\psi_n\rangle.
+\]
+Für den \emph{Erzeugungsoperator} $a^+$ gilt aus der Definition des Kommutators (siehe Abschnitt \ref{fourier:subsubsection:Vertauschungsrelation})
+\index{Erzeugungsoperator}%
+\[
+	H a^+ = a^+ H + [H, a^+].
+\]
+Angewendet auf den Zustand $|\psi_n\rangle$ ergibt sich
+\[
+	H a^+|\psi_n\rangle = a^+ H|\psi_n\rangle + [H, a^+]|\psi_n\rangle.
+\]
+Da $|\psi_n\rangle$ ein Eigenzustand von $H$ mit Energie $E_n$ ist, folgt
+\[
+	H|\psi_n\rangle = E_n|\psi_n\rangle
+\]
+und somit
+\[
+	H a^+|\psi_n\rangle = a^+ E_n|\psi_n\rangle + [H, a^+]|\psi_n\rangle.
+\]
+Mit $[H, a^+] = \hbar\omega~a^+$ wird der zugehörige Ausdruck
+\[
+	H a^+|\psi_n\rangle = E_n a^+|\psi_n\rangle + \hbar\omega~a^+|\psi_n\rangle.
+\]
+Zusammenfassung der Terme liefert
+\begin{equation}
+	H a^+|\psi_n\rangle = (E_n + \hbar\omega)a^+|\psi_n\rangle.
+\end{equation}
+Der Zustand $a^+|\psi_n\rangle$ besitzt daher die Energie $E_n + \hbar\omega$.
+Analog gilt für den \emph{Vernichtungsoperator} $a$:
+\index{Vernichtungsoperator}
+\begin{equation}
+	H a |\psi_n\rangle = (E_n - \hbar\omega)a|\psi_n\rangle.
+\end{equation}
+Die Operatoren verändern also die Energie eines Zustands um $\pm\hbar\omega$.
+
+Die Wirkung auf die Zustände selbst lautet:
+\begin{equation}
+	a^+|\psi_n\rangle = \sqrt{n+1}|\psi_{n+1}\rangle, \qquad a|\psi_n\rangle = \sqrt{n}|\psi_{n-1}\rangle.
+\end{equation}
+Die Faktoren $\sqrt{n+1}$ beziehungsweise $\sqrt{n}$ stammen aus der Normierung und stellen sicher, dass $|\psi_{n\pm 1}\rangle$ weiterhin normiert bleiben.
+
+Zusammenfassend wirken die Leiteroperatoren wie folgt auf Energiezustände:
+\begin{itemize}
+	\item $a^+$ erhöht die Quantenzahl $n$ um eins und die Energie um $\hbar\omega$ ---
+	es wird ein zusätzliches Quant erzeugt.
+	\item $a$ senkt $n$ um eins und die Energie um $\hbar\omega$ ---
+	ein Quant wird vernichtet.
+\end{itemize}
+
+Physikalisch entsprechen diese Übergänge der Emission oder Absorption eines einzelnen Quants (zum Beispiel eines Photons) und sind die Grundlage für das diskrete Spektrum des Systems.
+Somit beschreibt die algebraische Struktur nicht nur die diskreten Energiewerte, sondern auch die quantisierten Übergänge zwischen ihnen, die in experimentellen Messungen beobachtet werden können.
+
+\subsubsection{Energieeigenwerte\label{fourier:subsubsection:Energieeigenwerte}}
+Da $\hat{H} = \hbar\omega(N + \frac{1}{2})$, folgt:
+\begin{equation}
+	H\,|\psi_n\rangle = \hbar\omega\biggl(n + \frac{1}{2}\biggr) |\psi_n\rangle.
+\end{equation}
+Die Eigenwerte sind also diskret:
+\[
+	E_n = \hbar\omega\biggl(n + \frac{1}{2}\biggr), \quad \text{mit } n = 0,1,2,\dots
+\]
+Der Zustand mit $n = 0$ ist der Grundzustand mit minimaler Energie $\frac{1}{2}\hbar\omega$.
+Zustände mit negativer Teilchenzahl existieren nicht, da sonst unphysikalisch negative Energien entstünden.
+
+\subsubsection{Bedeutung für die Quantisierung des Lichts\label{fourier:subsubsection:QuantisierungElmagFeld}}
+Diese Struktur überträgt sich direkt auf die Quantisierung des elektromagnetischen Feldes.
+Jede Modenkombination eines Feldes (Frequenz, Richtung, Polarisation) wird als unabhängiger Oszillator modelliert.
+Die zugehörigen Fourier-Koeffizienten verhalten sich wie die Operatoren $a$ und $a^+$.
+
+Die Energie des Feldes ergibt sich analog:
+\[
+	E_n = \hbar\omega\biggl(n + \frac{1}{2}\biggr),
+\]
+was zur quantisierten Natur des Lichts  führt.
+Das Photon entspricht einem einzelnen Quant der Energie $\hbar\omega$.
+Jeder Zustand $n$ enthält $n$ Photonen.
+
+\textit{Anmerkung zur Polarisation:}
+\index{Polarisation}%
+Jede Polarisation entspricht einem eigenen Oszillator mit eigenen Leiteroperatoren.
+Reales Licht besteht aus Überlagerungen dieser Moden.
+
+\subsubsection{Bemerkung zu Energiegrenzen\label{fourier:subsubsection:BemerkungBegrenztheitDerEnergie}}
+Der Vernichtungsoperator $a$ kann nur bis zum Grundzustand angewendet werden.
+Eine weitere Anwendung würde unphysikalische Zustände erzeugen.
+Nach oben existiert formal kein Limit, allerdings setzt die reale Physik praktische Grenzen
+(beispielsweise durch Wechselwirkungen, Instabilität oder Gravitationseffekte bei extremer Energiedichte).
+
+\section{Fazit\label{fourier:section:fazit}}
+\kopfrechts{Fazit}
+In diesem Kapitel wurde der Zusammenhang zwischen der klassischen Fourier-Analyse und der Quantenmechanik dargestellt.
+Es wurde gezeigt, wie komplexe Schwingungen durch Fourier-Reihen in einfachere harmonische Komponenten zerlegt werden können.
+
+Am Beispiel des quantenmechanischen harmonischen Oszillators wurden die Leiteroperatoren $a^+$ und $a$ eingeführt.
+Diese Operatoren entsprechen der Addition beziehungsweise Subtraktion eines diskreten Energiequants $\hbar \omega$.
+Damit wird das grundlegende Prinzip der Quantisierung veranschaulicht, dass Energie nicht kontinuierlich, sondern in diskreten Stufen vorkommt.
+
+Die Zustände $|\psi_n\rangle$ des Oszillators stellen diskrete Energieeigenzustände dar, deren Energiewerte durch ganzzahlige Vielfache von $\hbar \omega$ bestimmt sind.
+Dieses Konzept ist grundlegend für viele quantenmechanische Systeme und findet Anwendung in verschiedenen Bereichen der Physik, die Schwingungs- und Wellenphänomene beschreiben.
+
+Für weiterführende mathematische Details und eine vertiefte Behandlung der Quantisierung kann Kapitel 8 in~\cite{fourier:quantenmechanik} konsultiert werden.
+
+Zusammenfassend lässt sich festhalten, dass Schwingungen und Energie in der Quantenmechanik in diskreten Quantensprüngen auftreten, was einen wesentlichen Unterschied zur klassischen Physik darstellt.

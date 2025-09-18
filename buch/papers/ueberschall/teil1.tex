@@ -1,58 +1,134 @@
 %
-% teil1.tex -- Beispiel-File für das Paper
+% teil2.tex -- Beispiel-File für teil2 
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
-\label{ueberschall:section:teil1}}
-\kopfrechts{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
-\begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{ueberschall:equation1}
-\end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+\section{Potentialströmung\label{ueberschall:section:potentialstroemung}}
+\kopfrechts{Potentialströmung}
+Bei der \emph{Potentialströmung} handelt es sich um eine 
+\index{Potentialstromung@Potentialströmung}%
+quellenfreie und wirbelfreie Strömung.
+Mathematisch wird dies durch die folgenden Bedingungen 
+an das Geschwindigkeitsfeld~$\vec{v}$ ausgedrückt:
+\begin{align*}
+    \operatorname{div} \vec{v} &= 0, \\
+    \operatorname{rot} \vec{v} &= 0,
+\end{align*}
+wobei~$\vec{v}$ die Geschwindigkeit der Strömung bezeichnet.
+Diese Idealisierung stellt einen Spezialfall der
+laminaren Strömung dar. 
+Unter Einhaltung der genannten Bedingungen 
+besitzt das Geschwindigkeitsfeld ein skalares
+Potential~$\Phi$, sodass gilt:
+\begin{align}
+    \vec{v} 
+    = 
+    \mathrm{grad} \Phi 
+    = 
+    \nabla \Phi.\label{eq:potential}
+\end{align}
+Das bedeutet, dass~$\vec{v}$ dem Gradienten des Potentials 
+entspricht, also der Richtungsableitung in jeder 
+Koordinatenrichtung:
+\begin{align*}
+    \nabla \Phi =
+\renewcommand{\arraystretch}{1.9}
+    \begin{pmatrix}
+        \displaystyle\frac{\partial \Phi}{\partial x} \\
+        \displaystyle\frac{\partial \Phi}{\partial y} \\
+        \displaystyle\frac{\partial \Phi}{\partial z}
+    \end{pmatrix}.
+\end{align*}
+Da es sich bei~$\Phi$ um eine skalare Funktion handelt, 
+kann der Gradient formal als gewöhnliche Multiplikation 
+mit dem Nabla-Operator~$\nabla$ interpretiert werden.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+Jetzt betrachten wir eine stationäre Strömung.  
+Natürlich muss dabei auch die Kontinuitätsgleichung
+erfüllt sein:
+\begin{align*}
+    \frac{\partial \rho}{\partial t}
+    + 
+    \operatorname{div} \rho\vec{v} 
+    = 
+    0.
+\end{align*}
+Für inkompressible Medien vereinfacht sich dies, 
+da die Dichte zeitlich konstant bleibt:
+\begin{align*}
+    \frac{\partial \rho}{\partial t} 
+    = 
+    0,
+\end{align*}
+woraus folgt, dass das Geschwindigkeitsfeld 
+quellen- und senkenfrei ist, also
+\begin{align*}
+    \operatorname{div} \vec{v} 
+    = 
+    0.
+\end{align*}
+Die Divergenz kann auch als Skalarprodukt 
+des Nabla-Operators mit dem Geschwindigkeitsfeld 
+geschrieben werden:
+\begin{align*}
+    \operatorname{div} \vec{v}
+    = 
+    \nabla \cdot \vec{v}
+    = 
+    \frac{\partial v_x}{\partial x} 
+    +
+    \frac{\partial v_y}{\partial y} 
+    +
+    \frac{\partial v_z}{\partial z}.
+\end{align*}
+Sie ist ein Mass dafür, wie stark sich ein Feld lokal 
+wie eine Quelle oder eine Senke verhält.  
+Ist $\operatorname{div} \vec{v} = 0$, 
+so ist das Feld weder Quelle noch Senke.
 
-\subsection{De finibus bonorum et malorum
-\label{ueberschall:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{ueberschall:equation1}.
+Das Kreuzprodukt des Nabla-Operators mit 
+dem Geschwindigkeitsfeld entspricht der Rotation 
+(auch Wirbel) des Feldes:
+\begin{align*}
+    \operatorname{rot} \vec{v} 
+    = 
+    \nabla \times \vec{v}
+    =
+\renewcommand{\arraystretch}{1.9}
+    \begin{pmatrix}
+        \displaystyle\frac{\partial v_z}{\partial y} - \frac{\partial v_y}{\partial z} \\
+        \displaystyle\frac{\partial v_x}{\partial z} - \frac{\partial v_z}{\partial x} \\
+        \displaystyle\frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y}
+    \end{pmatrix}.
+\end{align*}
+Diese Grösse beschreibt, wie ein Körper, 
+der sich im Strömungsfeld befindet, zu rotieren beginnt.  
+Ein wirbelfreies Feld erfüllt demnach
+ $\operatorname{rot} \vec{v} = 0$,  
+woraus folgt, dass das Vektorfeld ein \emph{Gradientenfeld}
+ist --- wie in Gleichung~\eqref{eq:potential} gezeigt.
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{ueberschall:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{ueberschall:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+Wenn nun in die Kontinuitätsgleichung des inkompressiblen 
+Falls, $\nabla \cdot \vec{v} = 0$, 
+die Definition des Geschwindigkeitsfeldes 
+aus Gleichung~\eqref{eq:potential} eingesetzt wird, 
+ergibt sich:
+\begin{align}
+    \nabla \cdot \vec{v}
+    = 
+    \nabla \cdot \nabla \Phi
+    = 
+    \nabla^2 \Phi
+    = 
+    \Delta \Phi
+    = 
+    0, \label{eq:laplace}
+\end{align}
+auch bekannt als Laplace-Gleichung mit dem 
+Laplace-Operator~$\Delta$.
+
 
 

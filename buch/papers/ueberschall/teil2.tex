@@ -1,43 +1,443 @@
 %
-% teil2.tex -- Beispiel-File für teil2 
+% teil1.tex -- Beispiel-File für das Paper
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
-%
-\section{Teil 2 
-\label{ueberschall:section:teil2}}
-\kopfrechts{Teil 2}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+%c
+\section{Strömungsgleichungen\label{ueberschall:stroemungsgleichung}}
+\kopfrechts{Strömungsgleichungen}
+Wir untersuchen hier an einem einfachen Beispiel, 
+illustriert in Abbildung~\ref{fig:wellblech},
+die Strömung der Luft über einem Wellblech.
+Dafür definieren wir das Potential der Strömung als
+\begin{align*}
+    \Phi
+    =
+    U x + A \frac{l}{2 \pi} \sin\left(\frac{2 \pi x}{l}\right)
+    e^{-\frac{2 \pi y}{l}}
+\end{align*}
+wobei $U$ die ungestörte Geschwindigkeit im 
+Unendlichen $y\rightarrow\infty$ bedeutet.
+\input{papers/ueberschall/figures/stroemung_wellblech.tex}
 
-\subsection{De finibus bonorum et malorum
-\label{ueberschall:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+\subsection{Inkompressible Strömung im Unterschall}
+Bei inkompressibler Strömung ist die
+Laplace-Gleichung~\eqref{eq:laplace} sofort erfüllt.
+Das kann bewiesen werden, indem wir für das Potential
+die zweiten Ableitungen
+\begin{align*}
+    \frac{\partial^2 \Phi}{\partial x^2}
+    &= \frac{A 2 \pi}{l} \sin\left(\frac{2 \pi x}{l}\right)
+    e^{-\frac{2 \pi y}{l}} \\
+    \frac{\partial^2 \Phi}{\partial y^2}
+    &= -\frac{A 2 \pi}{l} \sin\left(\frac{2 \pi x}{l}\right)
+     e^{-\frac{2 \pi y}{l}}
+\end{align*}
+berechnen wobei ersichtlich ist, dass
+\begin{align*}
+    \frac{\partial^2 \Phi}{\partial x^2}
+    =
+    -\frac{\partial^2 \Phi}{\partial y^2}.
+\end{align*}
+Die Laplace-Gleichung $\Delta \Phi = 0$ ist somit erfüllt.
 
+Es existiert dann auch eine sogenannte \emph{Stromfunktion}
+\begin{align*}
+    \Psi
+    =
+    U y - A \frac{l}{2 \pi} \cos\left(\frac{2 \pi x}{l}\right)
+     e^{-\frac{2 \pi y}{l}},
+\end{align*}
+welche die Bedingung
+\begin{align*}
+    u 
+    &=
+    \frac{\partial \Phi}{\partial x}
+    =
+    \frac{\partial \Psi}{\partial y}
+    \\
+    v
+    &=
+    \frac{\partial \Phi}{\partial y}
+    =
+    -\frac{\partial \Psi}{\partial x}
+\end{align*}
+erfüllt.
+Dabei sind $u$ und $v$ die Geschwindigkeitskomponenten in $x$- und $y$-Richtung.
+Auch die Stromfunktion ist eine Lösung der Laplace-Gleichung
+\begin{align*}
+    \frac{\partial^2 \Psi}{\partial x^2}
+    +
+    \frac{\partial^2 \Psi}{\partial y^2}
+    =
+    0.
+\end{align*}
 
+Wenn wir $\Psi = c$ setzen, dann erhalten wir die Gleichung
+\begin{align}
+    c = U y - A \frac{l}{2 \pi} 
+    \cos\left(\frac{2 \pi x}{l}\right) 
+    e^{-\frac{2 \pi y}{l}}\label{eq:stromlinie}
+\end{align}
+einer Stromlinie.
+\index{Stromlinie}%
+Aufgelöst nach $y$ ergibt das
+\begin{align*}
+    y
+    =
+    \frac{A}{U} \frac{l}{2 \pi} 
+    \cos\left(\frac{2 \pi x}{l}\right) 
+    e^{-\frac{2 \pi y}{l}}.
+\end{align*}
+Wir setzen zusätzlich 
+\begin{align*}
+    \frac{A}{U} \ll 1,
+\end{align*}
+damit näherungsweise
+\begin{align*}
+    y
+    =
+    h \cos\left(\frac{2 \pi x}{l}\right)
+\end{align*}
+gilt.
+Die Stromlinie sehr nahe am Wellblech ist eine
+\index{Wellblech}%
+Kosinuslinie, d.h. sie entspricht gerade der Kontur
+des Blechs, wie in Abbildung~\ref{fig:stromlinien} ersichtlich.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{papers/ueberschall/figures/Stromlinien.pdf}
+    \caption{Stromlinien über dem Wellblech für $\frac{A}{U}=0.2$.}
+    ~\label{fig:stromlinien}  
+\end{figure}
+Die anderen Stromlinien $y > 0$ gehen mit zunehmendem $y$
+in Gerade über, weil
+\begin{align*}
+    \lim_{y \to \infty}
+    e^{-\frac{2 \pi y}{l}}
+    =
+    0.
+\end{align*}
+
+Mithilfe der bernoullischen Gleichung~\cite{BernoulliWikiDE}
+\index{Bernoulli, Gesetz von}%
+\begin{align*}
+    p_{\text{tot}} 
+    = 
+    p 
+    + 
+    \frac{1}{2} \rho V^2 
+    + 
+    \rho g z 
+    = \text{const}
+\end{align*}
+lässt sich für dieses Szenario auch die Druckverteilung bestimmen.
+Dabei ist $p_{\text{tot}}$ der Totaldruck, 
+$\rho$ die Dichte des Fluids, $g$ die Erdbeschleunigung,
+$V$ die Geschwindigkeit an jedem Ort auf der Stromlinie 
+und $z$ die Höhe über einem Bezugspunkt 
+für ein dreidimensionales Strömungsfeld.
+Da wir jedoch ausschliesslich in der $x,y$-Ebene arbeiten, 
+fällt der letzte Term weg, weil $z = 0$.
+Es bleibt somit:
+\begin{align*}
+    \underbrace{p}_{\text{statischer Druck}} 
+    + 
+    \underbrace{\frac{1}{2} \rho V^2}_{\text{dynamischer Druck}} 
+    = 
+    \text{const},
+\end{align*}
+was bedeutet, dass entlang einer Stromlinie 
+der statische Druck und der dynamische Druck
+\index{Druck!statisch}%
+\index{statischer Druck}%
+\index{Druck!dynamisch}%
+\index{dynamischer Druck}%
+zusammen konstant bleiben.
+Wenn wir nun den lokalen Druck $p$ berechnen möchten, 
+verwenden wir die freie Strömungsgeschwindigkeit $U$
+als Referenzgrösse. 
+Daraus ergibt sich:
+\begin{align*}
+    p_\infty 
+    + 
+    \frac{1}{2} \rho U^2 
+    = 
+    p 
+    + 
+    \frac{1}{2} \rho V^2,
+\end{align*}
+umgestellt nach dem lokalen Druck:
+\begin{align*}
+    p = p_\infty + \frac{1}{2} \rho (U^2 - V^2),
+\end{align*}
+wobei $V^2$ sich ergibt aus:
+\begin{align*}
+    V^2 = u^2 + v^2.
+\end{align*}
+Damit kann nun die Druckverteilung über dem Wellblech visualisiert werden, 
+wie in Abbildung~\ref{fig:druckverteilung} dargestellt. 
+Es handelt sich dabei um den relativen Druck, 
+das heisst, der Druck ist bezogen auf den Umgebungsdruck. 
+Deutlich erkennbar ist, dass der höchste Druck an den konkaven Stellen auftritt, 
+während an den konvexen Stellen der niedrigste Druck herrscht.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{papers/ueberschall/figures/Druckverteilung.pdf}
+    \caption{Relative Druckverteilung über dem Wellblech im Unterschall.}
+    ~\label{fig:druckverteilung}  
+\end{figure}
+
+\subsection{Kompressible Strömung im Unterschall}
+Bei kompressibler Strömung gestaltet sich die Situation etwas komplexer.
+Die Ausgangslage ist eine partielle Differentialgleichung zweiter Ordnung,
+die durch geeignete Vereinfachungen auf jene Terme reduziert wurde, 
+welche den grössten Einfluss auf Abweichung haben.
+Das genaue Vorgehen ist in~\cite{Ackeret1928} ausführlich dokumentiert.
+Die folgende Gleichung stellt daher eine Näherungslösung dar,
+die jedoch wesentliche Eigenschaften der exakten Lösung widerspiegelt:
+\begin{align}
+    \frac{\partial^2 \Phi}{\partial x^2} 
+    \left(1-\frac{U^2}{a^2}\right)
+    +
+    \frac{\partial^2 \Phi}{\partial y^2}
+    =
+    0.\label{eq:kompressible_stroemung}
+\end{align}
+Der Ausdruck in der Klammer ist eine Konstante, d.h.
+durch die einfache Koordinatentransformation
+\begin{align*}
+    x 
+    &=
+    \xi \\
+    y \beta
+    &=
+    \eta \\
+    \beta
+    &=
+    \sqrt{1-\frac{U^2}{a^2}}
+\end{align*}
+wird daraus wenig überraschend die gewöhnlichen laplaceschen Gleichung
+\begin{align*}
+    \frac{\partial^2 \Phi}{\partial \xi^2} 
+    +
+    \frac{\partial^2 \Phi}{\partial \eta^2}
+    =
+    0,
+\end{align*}
+wie bei der Potentialströmung.
+Das Potential dieser kompressiblen Strömung ergibt sich zu
+\begin{align*}
+    \Phi
+    =
+    U x + A \frac{l}{2 \pi} \sin\left(\frac{2 \pi x}{l}\right)
+     e^{-\frac{2 \pi y \beta}{l}}
+\end{align*}
+und die dazugehörige Stromfunktion
+\begin{align*}
+    \Psi
+    =
+    U y - U \frac{h}{\beta^2} \cos\left(\frac{2\pi x}{l}\right)
+     e^{-\frac{2\pi y \beta}{l}}.
+\end{align*}
+Durch gleiches Vorgehen wie bei Gleichung~\eqref{eq:stromlinie}
+erhalten wir für $y \to 0$
+\begin{align*}
+    y
+    =
+    \frac{A \beta l}{2 \pi U} 
+    \cos\left(\frac{2 \pi x}{l}\right).
+\end{align*}
+Damit wäre für kleine $y$ die Amplitude $h$ der Kosinuslinie
+\begin{align*}
+    h
+    =
+    \frac{A l \beta}{2 \pi U}
+\end{align*}
+und somit 
+\begin{align*}
+    A
+    =
+    \frac{2 \pi h U}{\beta l}.
+\end{align*}
+Demnach formulieren wir neu $\Phi$ als
+\begin{align*}
+    \Phi
+    =
+    U x + U \frac{h}{\beta} \sin\left(\frac{2 \pi x}{l}\right)
+     e^{-\frac{2 \pi y \beta}{l}}.
+\end{align*}
+Der Faktor~$\beta$ beeinflusst das Abklingen der Störung,
+wie in Abbildung~\ref{fig:abklingen_stromlinie} 
+für drei verschiedene Fälle dargestellt ist.
+Dazu werden die Stromlinien über einem Buckel visualisiert.
+\begin{figure}
+    \centering
+    \begin{minipage}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{papers/ueberschall/figures/abklingen_10.pdf}
+        \caption*{$\beta = 1$ ; $U = 10\,\frac{\mathrm{m}}{\mathrm{s}}$}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{papers/ueberschall/figures/abklingen_200.pdf}
+        \caption*{$\beta = 0.81$ ; $U = 200\,\frac{\mathrm{m}}{\mathrm{s}}$}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{papers/ueberschall/figures/abklingen_340.pdf}
+        \caption*{$\beta = 0$ ; $U = a$}
+    \end{minipage}
+    \caption{Stromlinien bei verschiedenen Strömungsgeschwindigkeiten im Unterschall.}
+~\label{fig:abklingen_stromlinie}
+\end{figure}
+
+\subsection{Kompressible Strömung im Überschall}
+Nun betrachten wir die Strömung im Überschallbereich.
+Wir starten dabei bereits mit der vereinfachten 
+Gleichung~\eqref{eq:kompressible_stroemung}:
+\begin{align*}
+    \frac{\partial^2 \Phi}{\partial x^2}
+    \left(1 - \frac{U^2}{a^2}\right)
+    =
+    -\frac{\partial^2 \Phi}{\partial y^2},
+\end{align*}
+wobei der rechte Term zur besseren Übersicht auf die 
+andere Seite genommen wurde.
+Da im Überschallbereich $U > a$ gilt, wird der Ausdruck 
+in der Klammer negativ.
+Es ist daher sinnvoll, die Gleichung in der Form
+\begin{align*}
+    \frac{\partial^2 \Phi}{\partial x^2}
+    \left(\frac{U^2}{a^2} - 1\right)
+    =
+    \frac{\partial^2 \Phi}{\partial y^2}
+\end{align*}
+umzuschreiben.
+Führen wir nun die Koordinatentransformation
+\begin{align*}
+    x 
+    &= 
+    \xi, \\
+    y \beta 
+    &= 
+    \eta,
+\end{align*}
+mit dem Parameter
+\begin{align*}
+    \beta = \sqrt{\frac{U^2}{a^2} - 1},
+\end{align*}
+durch,
+so ergibt sich die transformierte Gleichung:
+\begin{align}
+    \frac{\partial^2 \Phi}{\partial \xi^2}
+    -
+    \frac{\partial^2 \Phi}{\partial \eta^2}
+    =
+    0.\label{eq:wellengl_ueberschall}
+\end{align}
+Diese Gleichung ähnelt formal der ursprünglichen Gleichung 
+für den Unterschallbereich, weist jedoch ein 
+unterschiedliches Vorzeichen im zweiten Term auf.
+Dementsprechend handelt es sich hier um eine hyperbolische 
+Differentialgleichung, die Wellenvorgänge beschreibt.
+\index{partielle Differentialgleichung!hyperbolisch}%
+Das Strömungsverhalten im Überschallbereich ist daher ---
+in gewisser Weise --- mit dem Verhalten von Wellen in Wasser vergleichbar.
+\index{Wellengleichung}%
+
+Die Lösung von Gleichung~\eqref{eq:wellengl_ueberschall} lautet:
+\begin{align*}
+    \Phi
+    =
+    F_1(\xi-\eta)
+    +
+    F_2(\xi+\eta).
+\end{align*}
+Für den vorliegenend Fall gilt sogar $F_2 = 0$, 
+was zur Folge hat, dass für $\eta = \xi$ das Potential
+$\Phi$ konstant ist.
+So finden wir für $\Phi$
+\begin{align*}
+    \Phi
+    =
+    A \sin\left(
+        \frac{2\pi}{l}
+        (\eta-\xi)
+    \right)
+\end{align*}
+und für $\Psi$
+\begin{align*}
+    \Psi
+    =
+    A \cos\left(
+        \frac{2\pi}{l}
+        (\eta-\xi)
+    \right).
+\end{align*}
+In den Koordinaten $x$, $y$ entspricht $\eta = \xi$ gerade 
+\begin{align*}
+    y
+    =
+    \frac{x}{\sqrt{\frac{U^2}{a^2}-1}}.
+\end{align*} 
+Da aber der Anfangspunkt $x = 0$ und $y = 0$ beliebig gewählt
+werden kann, ist $\Phi$ auf jeder unter dem Winkel
+\begin{align*}
+    \tan \alpha
+    =
+    \frac{1}{\sqrt{\frac{U^2}{a^2}-1}}.
+\end{align*}
+geneigten Geraden konstant.
+Für $\sin \alpha$ ergibt sich
+\begin{align*}
+    \sin \alpha
+    =
+    \frac{\tan \alpha}{\sqrt{1 + \tan^2 \alpha}}
+    =
+    \frac{a}{U},
+\end{align*}
+$a$ ist auch bekannt als der \emph{mach-dopplersche Winkel}.
+\index{mach-dopplerscher Winkel}%
+\index{Winkel, mach-dopplersch}%
+
+Betrachten wir nun erneut die Druckverteilung, so erkennen wir in 
+Abbildung~\ref{fig:druckvert_ueberschall} die sogenannten machschen Störungslinien. 
+\index{Storungslinie@Störungslinie}%
+Diese sind besser bekannt als Schockwellen, 
+\index{Schockwelle}%
+die beim Durchbrechen der Schallmauer sichtbar werden. 
+\index{Schallmauer}%
+Auf jeder machschen Linie ist das Potential \(\Phi\) konstant. 
+Alle Linien verlaufen parallel und besitzen die Steigung \(\tan \alpha\).
+Ein exponentielles Abklingen, wie es im Unterschallfall auftritt, 
+ist hier nicht mehr vorhanden. 
+Die Maxima und Minima des Drucks entstehen nicht länger an den Wellenbergen, 
+sondern befinden sich an den Wendepunkten der Wellenform. 
+Dies liegt daran, dass an diesen Punkten die grösste Neigung relativ zur 
+ungestörten Anströmung mit Geschwindigkeit \(U\) vorliegt 
+(siehe Abbildung~\ref{fig:wellblech}).
+\begin{figure}
+    \centering
+    \begin{minipage}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{papers/ueberschall/figures/druck_mach_kegel_400.pdf}
+        \caption*{$U = 400\,\frac{\mathrm{m}}{\mathrm{s}}$}
+        ~\label{fig:druckvert_ueberschall_u400}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{papers/ueberschall/figures/druck_mach_kegel_600.pdf}
+        \caption*{$U = 600\,\frac{\mathrm{m}}{\mathrm{s}}$}
+        ~\label{fig:druckvert_ueberschall_u600}
+    \end{minipage}
+    \caption{Relative Druckverteilung über dem Wellblech im Überschall.
+Schockwellen bilden mit dem Rand den mach-dopplerschen Winkel, der von der
+Strömungsgeschwindigkeit abhängt.}
+~\label{fig:druckvert_ueberschall}
+\end{figure}

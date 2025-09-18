@@ -1,0 +1,35 @@
+%
+% teil1.tex -- Beispiel-File für das Paper
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Komplexe Zahlen
+\label{geoalgebra:section:komplexe-zahlen}}
+\kopfrechts{Problemstellung}
+Um die geometrische Algebra zu verstehen, hilft es, wenn wir nochmals kurz die komplexen Zahlen anschauen, da sie ähnliche Axiome verwenden.
+\index{komplexe Zahl}%
+Die imaginäre Einheit $i$ ist definiert durch
+\begin{equation*}
+  i^2 = -1.
+\end{equation*}
+Wir definieren zwei komplexe Zahlen
+\begin{align*}
+  z_1 = a_1 + i a_2 \\
+  z_2 = b_1 + i b_2 
+\end{align*}
+mit $a_i, b_i \in \mathbb{R}$
+und bilden das Produkt $z_1 \cdot{} z_2$. Es ergibt sich
+\begin{align*}
+  z_1 z_2 &= (a_1 + i a_2) (b_1 + i b_2) \\
+  &= a_1 b_1 + i a_1 b_2 + i a_2 b_1 + i^2 a_2 b_2 \\
+  &= (a_1 b_1 - a_2 b_2) + i (a_1 b_2 + a_2 b_1).
+\end{align*}
+Wie wir hier sehen, bleiben die gemeinsamen Terme $(a_1 b_1 - a_2 b_2)$ als reelle Zahlen übrig, während die \emph{gemischten} Terme $(a_1 b_2 + a_2 b_1)$ weiterhin mit $i$
+multipliziert werden, d.~h. dieser Teil ist imaginär. Wir werden etwas Ähnliches bei der geometrischen Algebra beobachten, wo die Mischterme übrig bleiben.
+
+
+
+

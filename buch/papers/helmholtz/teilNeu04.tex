@@ -1,0 +1,92 @@
+%
+% teil3.tex -- Beispiel-File für Teil 3
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Akustische Grundlagen und Feldtheorie
+\label{helmholtz:section:akustische_Grundlagen}}
+\kopfrechts{Akustische Grundlagen und Feldtheorie}
+
+Um die Anwendung der Helmholtz-Zerlegung in der Akustik zu verstehen, bedarf es grundlegender Kenntnisse der physikalischen Akustik. Hier werden die zentralen physikalischen Grössen Schalldruck, Schallschnelle und deren Zusammenhänge erläutert. In vielen akustischen Aufgaben wird mit der komplexen Schreibweise gearbeitet, weshalb die Formeln vorzugsweise im Frequenzbereich dargestellt werden.
+
+\subsection{Grundbegriffe der physiklalischen Akustik
+\label{helmholtz:subsection:Grundbegriffe_Akustik}}
+
+\subsubsection{Schalldruck $p$}
+ 
+\noindent Der Schalldruck ist eine der fundamentalen Größen in der Akustik und beschreibt lokale Druckschwankungen im Medium:
+ 
+\begin{itemize}
+\item $P \: (\mathbf{r})$ bezeichnet die Amplitude des Schalldrucks am Ort $\mathbf{r}$ und ist eine reelle Grösse.
+\item $\omega$ ist die Kreisfrequenz.
+\item $\phi \: (\mathbf{r})$ beschreibt die Phase am Ort $\mathbf{r}$ und ist ebenfalls eine reelle Grösse.
+\end{itemize}
+ 
+\noindent Die zeitabhängige Darstellung des Schalldrucks lautet:
+\begin{equation}
+p(r,t) = P(\mathbf{r}) \: e^{j( \omega t - \phi(\mathbf{r}))} \qquad (\si{\pascal}).
+\end{equation}
+ 
+\noindent Im Frequenzbereich, auch Phasor-Darstellung genannt, bei einer festen Frequenz $\omega$ vereinfacht sich dies zu:
+\begin{equation}
+p(r) = P(r) \: e^{j \phi (r)}.
+\label{helmholtz:PhasorSchalldruck}
+\end{equation}
+ 
+\subsubsection{Schallschnelle $\mathbf{u}$}
+ 
+Die Schallschnelle $\mathbf{u}$ auch Teilchengeschwindigkeit genannt, wird aus dem Druckgradienten $\nabla p$ abgeleitet. Für die linearisierte Form im Frequenzbereich $\mathbf{u} = \frac{j}{\rho_0 \omega} \nabla p$ bei harmonischen Feldern $\mathbf{u}(r,t)$ ergibt sich:
+ 
+\begin{equation}
+\mathbf{u}(r,t) = \frac{1}{\omega \rho} \nabla \: p(r,t) = \frac{1}{\omega \rho} \bigg[ P(r) \nabla \Phi(r) + j\nabla P(r)  \bigg] \: e^{j[\omega t -\Phi(r)]} \qquad (\si{\metre / \second}).
+\end{equation}
+ 
+\noindent Dabei sind:
+\begin{itemize}
+\item $\nabla \phi \: (r)$ der Gradient der Phase zeigt in Richtung der steilsten Phasenänderung, senkrecht zur Wellenfront.
+\item $\nabla P \:(r)$ der Gradient der Druckamplitude zeigt in Richtung der schnellsten Amplitudenänderung.
+\item $\rho$ die Dichte des Mediums.
+\end{itemize}
+ 
+\noindent Als Phasor bei einer fixen Frequenz $\omega$ ergibt sich die Schallschnelle zu:
+\begin{equation}
+\mathbf{u}(r) = \frac{1}{\omega \rho} \: \bigg[ P(r) \: \nabla \phi(r) + j - \nabla P(r) \bigg] \: e^{j\phi (r)}.
+\label{helmholtz:PhasorSchallschnelle}
+\end{equation}
+ 
+%\subsubsection{Wellengleichung und Helmholtz-Gleichung}
+ 
+%In der linearen Akustik sind Schalldruck und Schallschnelle durch folgende Grundgleichungen verbunden:
+ 
+%\begin{itemize}
+%\item Die Euler-Gleichung %(Impulserhaltung):
+%\begin{equation}
+%\rho_0 \frac{\partial \mathbf{u}}{\partial t} = -\nabla p
+%\end{equation}
+ 
+%\item Die Kontinuitätsgleichung %(Massenerhaltung):
+%\begin{equation}
+%\frac{\partial \rho}{\partial t} + \rho_0 \nabla \cdot \mathbf{u} = 0
+%\end{equation}
+%\end{itemize}
+ 
+%\noindent Durch Kombination dieser Gleichungen erhält man die Wellengleichung für den Schalldruck:
+%\begin{equation}
+%\nabla^2 p - \frac{1}{c^2}\frac{\partial^2 p}{\partial t^2} = 0
+%\end{equation}
+ 
+%\noindent Für zeitharmonische Anregung mit $e^{j\omega t}$ führt dies zur Helmholtz-Gleichung:
+%\begin{equation}
+%\nabla^2 p + k^2 p = 0
+%\end{equation}
+ 
+%\noindent wobei $k = \omega/c$ die Wellenzahl ist und $c$ die Schallgeschwindigkeit im Medium.
+
+\subsection{Energiebetrachtungen in akustischen Feldern
+\label{helmholtz:subsection:Energiebetrachtung}}
+
+
+

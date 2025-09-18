@@ -1,0 +1,8 @@
+/*
+ * bipolar.maxima
+ */
+
+z: coth(u + %i * v);
+
+trigsimp(realpart(z));
+trigsimp(imagpart(z));

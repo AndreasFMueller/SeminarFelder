@@ -6,10 +6,66 @@
 \chapter{Topologie
 \label{chapter:topologie}}
 \kopflinks{Topologie}
+\input{chapters/120-topologie/fig/fig-torus.tex}%
+\input{chapters/120-topologie/fig/fig-sphaere.tex}%
+\input{chapters/120-topologie/fig/table-polyeder.tex}%
 
-\section{Problemstellung}
+\noindent
+Das Poincaré-Lemma ist der erste Hinweis darauf, dass die grossräumige
+\index{Poincare-Lemma@Poincaré-Lemma}%
+\index{Topologie}%
+Gestalt einer Mannigfaltigkeit einen Einfluss darauf hat, ob sich eine
+Differentialgleichung lösen lässt.
+Es sagt nämlich, dass es auf einer zusammenziehbaren Mannigfaltigkeit
+immer eine Lösung der Gleichung $d\alpha = 0$ im Raum der $p$-Formen
+gibt.
+Die Kohomologietheorie vertieft diese Idee und definiert eine Familie
+\index{Kohomologie}%
+von Vektorräumen, deren Dimension angibt, wieviele in noch zu definierendem
+Sinn wesentlich verschiedene Lösungen eine solche Gleichung haben kann.
+Diese Dimensionszahlen geben wesentliche Informationen über die grossräumige
+Gestalt der Mannigfaltigkeit.
 
-\section{Morse-Theorie}
+Auf Leonhard Euler geht die Beobachtung zurück, dass für ein beliebiges
+\index{Euler, Leonhard}%
+geschlossenes Polyeder ohne Löcher im Raum immer
+\begin{equation}
+\#\{\text{Ecken}\}
+-
+\#\{\text{Kanten}\}
++
+\#\{\text{Flächen}\}
+=
+E-K+F
+=
+2
+\label{buch:topologie:eqn:eulerpolyeder}
+\end{equation}
+gilt.
+Da sich eine beliebige zweidimensionale Mannigfaltigkeit triangulieren
+lässt, kann diese Zahl auch für eine Triangulierung berechnet werden.
+Es stellt sich heraus, dass 
+die Zahl \eqref{buch:topologie:eqn:eulerpolyeder}
+nicht von der Triangulierung abhängt und sich auch aus den Dimensionszahlen
+der Kohomologievektorräume berechnen lässt.
+Sie heisst heute die Euler-Charakteristik $\chi(M)$ einer Mannigfaltigkeit.
+Tabelle~\ref{buch:topologie:intro:table:eulercharakteristik} enthält
+eine Zusammenstellung der Euler-Charakteristiken der eulerschen Polyeder
+sowie von Triangulationen von Torus und Kugel.
+\index{Kugel}%
+\index{Torus}%
 
-\section{de Rham-Kohomologie}
+Das Gebiet der algebraischen Topologie befasst sich genau mit dieser Art
+\index{Topologie!algebraische}
+der Beschreibung der ``Gestalt'' von topologischen Räumen.
+Für Mannigfaltigkeiten stellt sie einen besonders vielfältigen
+Werkzeugkasten bereit, der solche Fragestellungen sowohl mit
+kombinatorischen wie auch mit analytischen Aspekten einer Mannigfaltigkeit
+verbinden kann.
+Ziel dieses Kapitels ist, einen Ausblick auf die wichtigsten Ideen
+dieser reichhaltigen Theorie zu geben.
+
+\input{chapters/120-topologie/1-simplex.tex}
+\input{chapters/120-topologie/2-morse.tex}
+\input{chapters/120-topologie/3-derham.tex}
 

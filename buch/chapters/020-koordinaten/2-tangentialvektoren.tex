@@ -36,7 +36,7 @@ Richtung man den Koordinatenachsen zuordnen kann.
 Es ist üblich, die Koordinatenachsen als Vektoren in der Ebene
 zu zeichnen.
 Die Idee einer geraden Koordinatenachse ist nicht mehr anwendbar,
-wenn beliebige Koordinatensystem verwendet werden sollen.
+wenn beliebige Koordinatensysteme verwendet werden sollen.
 Bei der Umrechnung zwischen Koordinatensystemen entstehen unweigerlich
 gekrümmte Koordinatenlinien.
 Es braucht also etwas mehr Sorgfalt, die Idee der {\em Richtung}
@@ -60,7 +60,8 @@ X=(a,b) \hookrightarrow \mathbb{R}
 :
 x\mapsto x
 \]
-als Koordinatensystem verwenden.
+als Koordinatensystem verwenden (Der ``Haken'' am Abbildungspfeil
+soll die Einbettung symbolisieren).
 Die Koordinatenwechselabbildung zu einem alternativen Koordinatensystem
 auf dem Intervall ist eine streng monoton wachsende, differenzierbare
 Funktion, deren Ableitung nirgends verschwindet.
@@ -214,11 +215,19 @@ Kurven sind also tangential in einem Punkt, wenn sie sich in jedem
 Koordinatensystem mit der gleichen momentanen Geschwindigkeit
 durch den Punkt im Koordinateraum bewegen.
 Die Abbildung~\ref{buch:koordinaten:tangentialvektoren:fig:kurve}
-macht auch deutlich, dass es in $Y$ nicht sinnvoll ist, von einem
-Tangentialvektor im Punkt $y$ an die Kurven zu sprechen.
-Der grün eingezeichnete Tangentialvektor hängt von der Art der
-für die graphische Darstellung notwendigen Einbettung von Y in
-den dreidimensionalen Raum ab.
+macht auch deutlich, dass es nicht sinnvoll ist, von einem
+Tangentialvektor im Punkt $y$ an die Kurven ``in $Y$'' zu sprechen.
+Der grün eingezeichnete Tangentialvektor ist nicht Teil von $Y$.
+Er hängt von der Art der für die graphische Darstellung notwendigen
+Einbettung von Y in den dreidimensionalen Raum ab.
+Eine rein geometrische Definition des Tangentialvektors ist also
+nicht möglich.
+Erst im Koordinatensystem, also nach der Abbildung mit $\varphi$,
+entsteht ein Tangentialvektor, mit dem man in $\mathbb{R}^n$
+rechnen kann, doch dieser Tangentialvektor hängt notwendigerweise
+vom Koordinatensystem ab.
+Es muss daher zusätzlich geklärt werden, wie sich der Tangentialvektor
+ändert, wenn man ein anderes Koordinatensystem verwendet.
 
 %
 % Tangentialvektoren
@@ -297,7 +306,7 @@ Der Summationsindex kommt in den Faktoren $u^k$ als oberer Index
 vor, während er in der Jacobi-Matrix unter dem Bruchstrich steht.
 Eine Dimensionsüberlegung kann illustrieren, dass der Position unter
 dem Bruchstrich eine andere Bedeutung zukommt.
-Wir nämlich die Masseinheit für die Koordinaten $y$ durch eine kleinere
+Wird nämlich die Masseinheit für die Koordinaten $y$ durch eine kleinere
 Einheit ersetzt, werden die Komponenten $u^k$ des Tangentialvektors
 grösser.
 Die Ableitungen nach $y^k$ werden aber um den gleichen Faktor kleiner.
@@ -305,7 +314,7 @@ Im Ausdruck
 \eqref{buch:koordinaten:tangentialvektoren:eqn:tangentialtransformation}
 heben sich diese beiden Faktoren auf und er bleibt unverändert.
 Dies ist auch notwendig, denn die Komponenten $u^{\prime i}$ dürfen
-sich nicht verändern, wenn man Sie ausgehend von einem anderen
+sich nicht verändern, wenn man sie ausgehend von einem anderen
 Koordinatensystem zu berechnen versucht.
 
 Um anzudeuten, dass sich die Ableitungen nach den $y^k$ anders verhalten
@@ -353,6 +362,7 @@ vorzunehmen, wann immer ein oberer und untere Index in einem Ausdruck
 auftreten.
 
 \begin{definition}[einsteinsche Summenkonvention]
+\label{buch:koordinaten:tangentialvektoren:def:einsteinschesummenkonvention}
 Kommt in einem Ausdruck der gleiche Index als oberer und als unterer
 Index vor, dann wird über diesen Index summiert.
 \end{definition}

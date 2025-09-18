@@ -47,6 +47,7 @@ Die äussere Ableitung ist linear, es reicht daher, sie auf
 Basisdifferentialformen zu definieren.
 
 \begin{definition}[Äussere Ableitung]
+\label{buch:pformen:def:aeussereableitung}
 Die äussere Ableitung der Basis-$p$-Form 
 $\alpha=f(x)\, dx^{i_1}\wedge\dots\wedge dx^{i_p}$
 ist
@@ -253,10 +254,170 @@ sodass $\omega = d\alpha$.
 \index{exakte $p$-Form}%
 \end{definition}
 
+
+%
+% Die zweite äussere Ableitung
+%
+\subsubsection{Die zweite äussere Ableitung}
+Ist $\alpha\in\Omega^p(M)$ eine $p$-Form, dann ist $d\alpha\in\Omega^{p+1}(M)$
+eine $p+1$-Form.
+Sie kann natürlich noch einmal mit der äusseren Ableitung differenziert
+werden.
+
+\begin{satz}
+\label{buch:section:pformen:satz:zweiteableitung}
+Für eine $p$-Form $\alpha\in\Omega^{p}(M)$ gilt $dd\alpha=0$.
+\end{satz}
+
+\begin{proof}
+Wegen der Linearität der äusseren Ableitung genügt es, die Identität für 
+eine $p$-Form der Form
+\[
+\alpha
+=
+f(x^1,\dots,x^n)\, dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\]
+nachzurechnen.
+Ausserdem dürfen wir annehmen, dass $i_1<\dots<i_p$ ist.
+
+Die äussere Ableitung von $\alpha$ ist nach
+Definition~\ref{buch:pformen:def:aeussereableitung}
+\[
+d\alpha
+=
+\sum_{k=1}^n
+\frac{\partial f}{\partial x^k}
+\,
+dx^k\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}.
+\]
+Die $p+1$-Form muss jetzt ein weiteres Mal abgeleitet werden.
+Wir schreiben den neuen Index für die Koordinate, nach der abgeleitet werden
+soll, mit $l$ und erhalten
+\begin{align}
+dd\alpha
+&=
+\sum_{l=1}^n 
+\sum_{k=1}^n
+\frac{\partial f}{\partial x^l\,\partial x^k}
+\,
+dx^l\wedge
+dx^k\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}.
+\\
+&=
+\sum_{l,k=1}^n
+\frac{\partial f}{\partial x^l\,\partial x^k}
+\,
+dx^l\wedge
+dx^k\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}.
+\label{buch:pformen:ddbeweis:summe}
+\intertext{Natürlich verschwinden alle Terme, in denen $l$ oder $k$ mit einem
+der Indizes $i_1,\dots,i_p$ übereinstimmt.
+Ebenso verschwinden die Terme mit $l=k$.
+Es gibt keine Einschränkung, welcher der beiden Indizes $l$ und $k$
+in~\eqref{buch:pformen:ddbeweis:summe}
+grösser ist, jeder kann grösser sein.
+Unterscheiden wir die beiden Fälle, erhalten wir
+}
+&=
+\sum_{l<k}
+\frac{\partial f}{\partial x^l\,\partial x^k}
+\,
+dx^l\wedge
+dx^k\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}.
+\notag
+\\
+&\qquad
++
+\sum_{l>k}
+\frac{\partial f}{\partial x^l\,\partial x^k}
+\,
+dx^l\wedge
+dx^k\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}.
+\notag
+\intertext{Wir können die beiden Summen in eine einzige vereinen,
+indem wir in der zweiten Systeme die Namen der Indizes austauschen:}
+&=
+\sum_{l<k}
+\frac{\partial f}{\partial x^l\,\partial x^k}
+\,
+dx^l\wedge
+dx^k\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}.
+\notag
+\\
+&\qquad
++
+\sum_{k>l}
+\frac{\partial f}{\partial x^k\,\partial x^l}
+\,
+dx^k\wedge
+dx^l\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}.
+\notag
+\intertext{Beide Summen erstrecken sich über die Paare von Indizes mit
+$l<k$, wir können sie daher als eine Summe}
+&=
+\sum_{l<k}
+\biggl(
+\frac{\partial f}{\partial x^l\,\partial x^k}
+dx^l\wedge dx^k
++
+\frac{\partial f}{\partial x^k\,\partial x^l}
+\,
+dx^k\wedge
+dx^l
+\biggr)
+\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}.
+\notag
+\intertext{schreiben.
+Damit die 2-Formen in der Klammer aus der Klammer gezogen werden können,
+müssen wir die Faktoren im zweiten Term in der Klammer vertauschen,
+wobei das Vorzeichen wechselt.
+Die Summe vereinfacht sich dann zu
+}
+&=
+\sum_{l<k}
+\biggl(
+\frac{\partial f}{\partial x^l\,\partial x^k}
+-
+\frac{\partial f}{\partial x^k\,\partial x^l}
+\biggr)
+\,
+dx^l\wedge dx^k
+\wedge
+dx^{i_1}\wedge\dots\wedge dx^{i_p}.
+\notag
+\end{align}
+Nach dem Satz von Schwarz dürfen die partiellen Ableitungen
+von $f$ nach $x^k$ und $x^l$ vertauscht werden.
+Die beiden Terme in der Klammer stimmen daher überein, die Klammer
+verschwindet.
+Daraus folgt auch, das $dd\alpha=0$ ist.
+\end{proof}
+
+%
+% Äussere Ableitungen sind geschlossen und exakt
+%
+\subsubsection{Äussere Ableitungen sind geschlossen und exakt}
+Aus dem Satz~\ref{buch:section:pformen:satz:zweiteableitung} folgt,
+dass die äussere Ableitung einer beliebigen $p$-Form eine geschlossene
+Form ist.
+Eine äussere Ableitung einer $p$-Form ist von der Form $\omega=d\alpha$,
+sie ist also nach Definition auch exakt.
+
+Etwas schwieriger ist die Frage, ob eine geschlossene $p+1$-Form $\omega$
+exakt ist.
+Dazu muss eine $p$-Form $\alpha$ mit $\omega=d\alpha$ gefunden werden.
+Es ist nicht offensichtlich, wie dies möglich sein soll.
 Nach den Erkenntnissen von Abschnitt~\ref{buch:green:section:geschlossen}
 ist eine geschlossene 1-Form auf einem zusammenhängenden Gebiet exakt.
 In Abschnitt~\ref{buch:pformen:geschlossen:subsection:exakt}
 wird das Poincaré-Lemma~\ref{buch:pformen:geschlossen:satz:poincare-lemma}
 bewiesen, welches zeigt, dass auf einem sternförmigen Gebiet eine
 geschlossene $p$-Form exakt ist.
-

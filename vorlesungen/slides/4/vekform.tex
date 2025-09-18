@@ -1,0 +1,113 @@
+%
+% vekform.tex -- slide template
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\bgroup
+\begin{frame}[t]
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\frametitle{2-Vektoren und 2-Formen}
+\vspace{-20pt}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{0.48\textwidth}
+\begin{block}{2-Formen}
+\begin{itemize}
+\item<3->
+$\alpha\wedge \beta = - \beta\wedge \alpha$
+\item<5->
+$\alpha\wedge\alpha = 0$
+\item<7->
+Bilinear:
+\[
+\hspace*{-9pt}
+\begin{aligned}
+(\alpha_1+s\alpha_2)\wedge\beta
+&=
+\alpha_1\wedge\beta + s(\alpha_2\wedge\beta)
+\\
+\alpha\wedge(\beta_1+t\beta_2)
+&=
+\alpha\wedge\beta_1 + t(\alpha\wedge\beta_2)
+\end{aligned}
+\]
+\item<9->
+Basis: $dx^i\wedge dx^k$, $i<k$
+\item<11->
+Komponenten der 2-Form $\alpha$:
+\[
+\alpha
+=
+\sum_{i<k} a_{ik}(x)\,dx^i\wedge dx^k
+\]
+\end{itemize}
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{2-Vektoren}
+\begin{itemize}
+\item<2->
+$X\wedge Y = - Y\wedge X$
+\item<4->
+$X\wedge X = 0$
+\item<6->
+Bilinear:
+\[
+\hspace*{-9pt}
+\begin{aligned}
+(X_1+sX_2)\wedge Y
+&=
+X_1\wedge Y + s(X_2\wedge Y)
+\\
+X\wedge(Y_1+tY_2)
+&=
+X\wedge Y_1 + t(X\wedge Y_2)
+\end{aligned}
+\]
+\item<8->
+Basis:
+$
+\vec{e}_i\wedge\vec{e}_k
+=
+\smash{\frac{\partial}{\partial x^i}\wedge\frac{\partial}{\partial x^k}}
+$, $i<k$
+\item<10->
+Komponenten des 2-Vektors:
+\[
+\sum_{i<k} \xi^{ik} \vec{e}_i\vec{e}_k
+=
+\sum_{i<k} \xi^{ik}
+\frac{\partial}{\partial x^i}
+\wedge
+\frac{\partial}{\partial x^k}
+\]
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+\[
+\left.
+\begin{aligned}
+\uncover<13->{
+\alpha,\beta&\in\Omega^1(M)}\\
+\uncover<12->{
+X,Y&\in {\textstyle\bigwedge^1} T(M)}
+\end{aligned}
+\uncover<13->{\right\}}
+\uncover<14->{\quad\Rightarrow\quad}
+\uncover<15->{
+\langle
+\alpha\wedge\beta,
+X\wedge Y
+\rangle
+=
+\left|
+\begin{matrix}
+\langle \alpha, X \rangle & \langle \alpha, Y \rangle \\
+\langle \beta, X \rangle  & \langle \beta, Y \rangle
+\end{matrix}
+\right|
+}
+\]
+\end{frame}
+\egroup

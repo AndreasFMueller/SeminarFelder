@@ -6,34 +6,46 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\chapter{Thema\label{chapter:reaktdiff}}
-\kopflinks{Thema}
+\chapter{Musterbildung mit Reaktionsdiffusionsgleichungen\label{chapter:reaktdiff}}
+\kopflinks{Reaktionsdiffusionsgleichung}
 \begin{refsection}
-\chapterauthor{Hans Muster}
+\chapterauthor{Lukas Schöpf}
+\index{Lukas Schopf@Lukas Schöpf}%
+\index{Schopf, Lukas@Schöpf, Lukas}%
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+\noindent
+In diesem Kapitel wird die \emph{Reaktionsdiffusionsgleichung}
+\index{Reaktionsdiffusionsgleichung}%
+%\cite{reaktdiff:reaktionsdiffwikipedia}
+\begin{equation}
+\label{reaktdiff:equation:reaktdiff}
+\frac{\partial c}{\partial t} = D \Delta c + f(c)
+\end{equation}
+untersucht.
+Sie ist eine nichtlineare partielle Differentialgleichung zweiten Grades.
+Die Reaktionsdiffusionsgleichung beschreibt die zeitliche und räumliche Entwicklung der Grösse \(c(x,t)\).
+\index{Reaktionsdiffusionsgleichung}%
+
+\(c(x,t)\) beschreibt die Konzentration eines Stoffes an einem Ort \(x\) zu einem gegebenen Zeitpunkt \(t\).
+\index{Konzentration}%
+Die Gleichung \eqref{reaktdiff:equation:reaktdiff} besteht aus einem Diffusionsterm und einem Reaktionsterm.
+Der Diffusionsterm \(D \Delta c\) beschreibt die räumliche Ausbreitung von \(c\), wobei \(D > 0\) der Diffusionskoefizient eines Stoffes ist.
+\index{Diffusionsterm}%
+\index{Diffusionskoeffizient}%
+Der Reaktionsterm \(f(c)\) beschreibt die Reaktion des Stoffes.
+\index{Reaktionsterm}%
+Er erlaubt die Umwandlung von einem Stoff, beschrieben durch \(c\), in andere Stoffe.
+
+Der Reaktionsterm kann je nach Anwendung verschiedene Formen annehmen.
+Dieses Kapitel wird sich mit verschiedenen Anwendungen der Reaktionsdiffusionsgleichung beschäftigen.
+Es werden Anwendung mit einem, zwei oder noch mehr Stoffen betrachtet.
+Beginnen wird das Kapitel mit einer Anwendung, bei der \(c\) einen einzelnen Stoff beschreibt.
 
 \input{papers/reaktdiff/teil0.tex}
 \input{papers/reaktdiff/teil1.tex}
 \input{papers/reaktdiff/teil2.tex}
 \input{papers/reaktdiff/teil3.tex}
+
 
 \printbibliography[heading=subbibliography]
 \end{refsection}

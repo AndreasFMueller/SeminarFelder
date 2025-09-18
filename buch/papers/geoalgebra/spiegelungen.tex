@@ -1,0 +1,55 @@
+\section{Spiegelungen}
+\renewcommand{\v}{\hat{\mathbf{v}}}
+\subsection{Spiegelung in der traditionellen Vektorgeometrie}
+Wir betrachten den Vektor
+\begin{equation*}
+\a = a_1 \eone + a_2 \etwo.
+\end{equation*}
+In \autoref{geoalgebra:fig:reflection}, fällt schnell auf, dass bei dem an $\etwo$ gespiegelte Vektor
+$\a'$ genau eine Komponente negativ wird:
+\begin{equation*}
+\a' = -a_1 \eone + a_2 \etwo.
+\end{equation*}
+
+\subsection{Projektion eines Vektors}
+Sei ein beliebiger Vektor $\a$ und ein beliebiger Einheitsvektor $\v$ (\autoref{geoalgebra:fig:reflection}).
+Den auf $\v$ projizierte Vektor $\a_{||}$ erhält man durch
+\begin{equation*}
+  \a_{||} = (\v \cdot \a) \v.
+\end{equation*}
+Den Senkrechten $\a_{\perp}$ erhält man durch
+\begin{equation}
+  \a_{\perp} = (\v \wedge \a) \v
+  \label{geoalgebra:eq:perpendicular}
+\end{equation}
+\begin{proof}[Beweis von \eqref{geoalgebra:eq:perpendicular}]
+  $\a$ lässt sich ausdrücken als
+  \begin{equation*}
+    \a = a_1 \eone + a_2 \etwo.
+  \end{equation*}
+  Ausserdem ist aus \eqref{geoalgebra:eq:geo-product-wedge} bekannt, dass
+  \begin{equation*}
+    \a \wedge \v = \frac{1}{2} (\a \v - \v \a).
+  \end{equation*}
+Der Einfachheit halber sei $\v = \etwo$.
+  Somit ist
+  \begin{align*}
+      \a_{\perp} &= \etwo (\a \wedge \etwo) = \etwo \frac{1}{2} (\a \etwo - \etwo \a) \\
+                 &= \frac{1}{2} \etwo ((a_1 \eone + a_2 \etwo) \etwo - \etwo (a_1 \eone + a_2 \etwo)) \\
+                 &= \frac{1}{2} \etwo (a_1 \eone \etwo + a_2 \etwo \etwo - a_1 \etwo \eone - a_2 \etwo \etwo) \\
+                 &= \frac{1}{2} \etwo (a_1 \eot + a_2 + a_1 \eot - a_2) \\
+                 &= \frac{1}{2} \etwo 2 a_1 \eot = a_1 \mathbf{e}_{212} = -a_1 \eone,
+  \end{align*}
+  was genau dem Orthogonalvektor $\a_{\perp}$ entspricht!
+\end{proof}
+Den an $\v$ gespiegelten Vektor $\a'$ erhalten wir durch
+\begin{equation*}
+  \a' = \a_{||} + \a_{\perp} = \v (\a \cdot \v) + \v (\a \wedge \v) = \v \a \v.
+\end{equation*}
+\begin{figure}
+  \begin{center}
+  \input{papers/geoalgebra/assets/reflections/reflection-1.tex}
+  \end{center}
+\caption{Spiegelung}
+\label{geoalgebra:fig:reflection}
+\end{figure}

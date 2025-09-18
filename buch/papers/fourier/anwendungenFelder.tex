@@ -1,0 +1,125 @@
+%
+% anwendungenFelder.tex -- 3.	Anwendungen auf Felder, PDEs in ODE umwandeln (Grundlage, um Feldgleichungen als eine Familie von Oszillator-Gleichungen zu interpretieren)
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+
+%    Anwendungen auf Felder, PDEs in ODE umwandeln (Grundlage, um Feldgleichungen als eine Familie von Oszillator-Gleichungen zu interpretieren) 
+
+
+\section{Anwendung auf ein Feld\label{fourier:section:AnwendungAufFeld}}
+\kopfrechts{Anwendung auf ein Feld}
+
+Eine gewöhnliche Differentialgleichung enthält Ableitungen nur nach einer unabhängigen Variable, während eine partielle Differentialgleichung Ableitungen nach mehreren unabhängigen Variablen enthält.  
+In diesem Abschnitt überführen wir eine partielle Differentialgleichung mittels Fourier-Reihe in eine gewöhnliche Differentialgleichung für die Zeitvariable.
+Als Beispiel betrachten wir die eindimensionale Wellengleichung  
+\index{Wellengleichung}
+\begin{equation}\label{eq:wellengleichung}
+	\frac{\partial^2 u(x,t)}{\partial t^2} = c^2 \frac{\partial^2 u(x,t)}{\partial x^2}
+\end{equation}  
+mit Ausbreitungsgeschwindigkeit $c$. Dieses Modell beschreibt unter anderem elektromagnetische Felder.  
+\index{elektromagnetisches Feld}%
+Unter der Annahme, dass $u(x, t)$ eine periodisch Funktion von $x$ ist, führen wir eine Fourier-Reihenentwicklung durch. 
+Neu besteht 
+\begin{equation}
+	u(x,t) = \frac{a_0(t)}{2} + \sum_{n=1}^{\infty} \left( a_n(t) \cos(n \omega x) + b_n(t) \sin(n \omega x) \right)
+\end{equation}
+aus einer unendlichen Anzahl von Schwingungen.
+Alle drei Arten von Fourier-Koeffizienten erhält man durch die Integralrechnungen im Abschnitt~\ref{fourier:section:GrundlagenFourierAnalyse}. 
+Da das Ziel ist, $x$ zu eliminieren, integriert man über eine Periode nach $x$.
+Somit entstehen Fourier-Koeffizienten, die von $t$ abhängig sind. 
+
+Nun wird $u(x,t)$ in seiner Summenform in die Wellengleichung eingesetzt. 
+Dazu muss $u(x,t)$ je zwei Mal nach $t$ und $x$ abgeleitet werden:
+
+\begin{equation}
+	\begin{aligned}
+		\frac{\partial^2 u(x,t)}{\partial t^2}
+		&= \frac{1}{2}\ddot{a}_0(t) + \sum_{n=1}^{\infty}\Bigl(\ddot{a}_n(t)\cos(n\omega x)+ \ddot{b}_n(t)\sin(n\omega x))
+		\\
+		\frac{\partial^2 u(x,t)}{\partial x^2}
+		&= \sum_{n=1}^{\infty}\left(-n^2\omega^2\,a_n(t)\cos(n\omega x)-n^2\omega^2\,b_n(t)\sin(n\omega x)\right).
+	\end{aligned}
+\end{equation}
+
+Von nun an wird als Ableitungsoperator $\frac{d}{dt}$ beziehungsweise äquivalent die Punktnotation, zum Beispiel $\dot{x}(t)$, verwendet, da die Gleichung nur noch von $t$ abhängig ist. Die Resultate können nun in die Wellengleichung eingesetzt werden. 
+Formal entspricht die Gleichung
+\begin{multline}
+	\frac{1}{2}\ddot{a}_0(t)
+	+ \sum_{n=1}^{\infty}\Bigl(
+	\ddot{a}_n(t)\cos(n\omega x)
+	+ \ddot{b}_n(t)\sin(n\omega x)
+	\Bigr)
+	= \\[-0.8ex]
+	c^2 \sum_{n=1}^{\infty}\Bigl(
+	-a_n(t)\,n^2\omega^2\cos(n\omega x)
+	-b_n(t)\,n^2\omega^2\sin(n\omega x)
+	\Bigr)
+\end{multline}
+der Wellengleichung, wobei sie hier in der Fourier-Reihendarstellung mit zeitabhängigen Koeffizienten formuliert ist.
+Diese Gleichung kann nun mithilfe eines Koeffizientenvergleichs gelöst werden.
+\index{Koeffizientenvergleich}%
+So entstehen folgende drei Gleichungen:
+
+\begin{equation}
+	\begin{alignedat}{2}
+		&\text{konstanter Term:} 
+		&\quad \frac{1}{2} \frac{d^2 a_0(t)}{dt^2} &= 0 \\[0.8em]
+		&\text{Koeffizient von }\cos(n\omega x): 
+		&\quad \frac{d^2 a_n(t)}{dt^2} &= c^2 \cdot (-a_n(t))\,n^2\omega^2 \\[0.8em]
+		&\text{Koeffizient von }\sin(n\omega x): 
+		&\quad \frac{d^2 b_n(t)}{dt^2} &= c^2 \cdot (-b_n(t))\,n^2\omega^2
+	\end{alignedat}
+\end{equation}
+
+Die zweite Ableitung des Mittelwerts $a_0(t)$ ist 0, somit ist $a_0(t)$ eine lineare Funktion, eine Konstante oder 0. Also ist $a_0(t)$ von der Form $a_0(t)=C_1 t + C_2$.
+Die Integrationskonstanten $C_1$ und $C_2$ werden durch die Anfangsbedingungen des Systems festgelegt.
+%Die Gleichungen mit $a_n(t)$ und $b_n(t)$ kann man wiederum mit einem Koefizientenvergleich lösen, diesmal jedoch über eine unendliche Summe! 
+Da $n$ bis unendlich läuft, resultiert eine unendliche Anzahl von Gleichungen, jeweils eine pro harmonischer.
+%Da sie alle dieselbe Form haben, bleibt man mit der Schreibweise bei $n$.
+%Zudem sind die $\cos(n\omega x)$ und $\sin(n\omega x)$ zu kürzen. 
+Es entstehen die folgenden zwei Arten von gewöhnlichen Differentialgleichungen:
+
+\begin{equation}\label{eq:ODE_Wellengleichung}
+	\frac{d^2}{dt^2} a_n(t) + a_n(t) n^2 \omega^2 c^2 = 0
+	  \quad   \text{und} \quad  \frac{d^2}{dt^2} b_n(t) + b_n(t) n^2 \omega^2 c^2 = 0.
+\end{equation}
+
+Die Struktur der Differentialgleichungen aus~\eqref{eq:ODE_Wellengleichung} entsprechen formal der Bewegungsgleichung eines ungedämpften Federpendels: 
+\begin{equation}\label{eq:loesungFederpendel}
+	\frac{d^2}{dt^2}x(t) + \omega^2 x(t) = 0.
+\end{equation}
+
+Die allgemeine Lösung von~\eqref{eq:loesungFederpendel} lautet  
+\begin{equation}
+	x(t) = A \cos(\omega t) + B \sin(\omega t).
+	%\quad\text{oder}\quad
+	%x(t) = C \cos(\omega t - \varphi).
+\end{equation}
+Dieses Ergebnis beschreibt die Frequenz und Amplitude, mit der eine Masse an einer Feder schwingt.  
+Da beide Gleichungen identische Struktur aufweisen, ergibt sich für~\eqref{eq:ODE_Wellengleichung} 
+\begin{equation}
+	a_n(t) = A_n \cos(n \omega c t) + B_n \sin(n \omega c t)
+	\quad\text{und}\quad
+	b_n(t) = A_n \cos(n \omega c t) + B_n \sin(n \omega c t).
+\end{equation}
+Die Resultate sind als eine unendliche Anzahl von Federpendeln zu intepretieren.
+Die Kreisfrequenz ist $n \omega c$. 
+Ein $a_0\neq0$ fügt lediglich einen konstanten oder linear wachsenden Versatz hinzu, Frequenz und Form der Schwingungen bleiben davon jedoch unbeeinflusst.
+Beim Federpendel ist es die Masse, die hin- und herschwingt.
+Welches physikalische Objekt übernimmt diese Rolle im elektromagnetischen Feld? 
+Auf diese Frage wird später eingegangen.
+
+In diesem Kapitel wurde die Thematik vereinfacht dargestellt. 
+Anstelle eines dreidimensionalen Feldes $u(x,y,z,t)$ wurde lediglich eine eindimensionale Funktion $u(x,t)$ betrachtet. Die Fourier-Reihe lässt sich auch auf mehrdimensionale Felder anwenden, der damit verbundene mathematische Aufwand ist jedoch höher. 
+
+
+
+
+
+
+
+

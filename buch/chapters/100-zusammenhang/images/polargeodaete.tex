@@ -1,0 +1,77 @@
+%
+% polargeodaete.tex -- Geodäte in Polarkoordinaten
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\definecolor{hellgrau}{rgb}{0.8,0.8,0.8}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[->,color=hellgrau] (0,0) -- (5.9,0) coordinate[label={$r$}];;
+\begin{scope}
+	\clip (-1.6,-2.6) rectangle (5.6,4.6);
+	\foreach \r in {0.5,1,...,7.0}{
+		\draw[color=hellgrau] (0,0) circle[radius=\r];
+	}
+	\foreach \w in {0,15,...,345}{
+		\draw[color=hellgrau] (0,0) -- (\w:7);
+	}
+
+\def\w{-20}
+\def\r{2.7}
+\def\t{5}
+
+\pgfmathparse{\w+atan(\t/\r)}
+\xdef\W{\pgfmathresult}
+
+\node at (0,0) [left] {$O$};
+
+\fill[color=orange!50,opacity=0.5] (\w:\r) -- ($(\w:\r)+({\w+90}:0.4)$)
+	arc ({\w+90}:{\w+180}:0.4) -- cycle;
+\fill[color=white] ($(\w:\r)+({\w+135}:0.25)$) circle[radius=0.04];
+
+\fill[color=blue!40,opacity=0.5] (0,0) -- (\w:1.4) arc (\w:0:1.4) -- cycle;
+\draw[<-,color=blue,line width=0.7pt] (\w:1.4) arc (\w:0:1.4);
+\node[color=blue] at ({0.5*\w}:1.15) {$\varphi_0$};
+
+\draw[color=blue,line width=1.2pt] (0,0) -- (\w:\r);
+\node[color=blue] at (\w:{0.5*\r}) [below left] {$d$};
+
+\fill[color=darkgreen!40,opacity=0.5] (0,0) -- (0:1.4) arc(0:{\W}:1.4) -- cycle;
+\draw[->,color=darkgreen,line width=0.7pt] (0:1.4) arc(0:{\W}:1.4);
+\node[color=darkgreen] at ({0.5*\W}:1.05) {$\varphi(t)$};
+
+\fill[color=darkred] (\w:\r) circle[radius=0.08];
+\draw[color=darkred,line width=1.5pt]
+	(\w:\r) -- ++({\w+90}:\t);
+\draw[color=darkred,line width=1.0pt]
+	($(\w:\r)+({\w-90}:5)$) -- ++({\w+90}:11);
+\node[color=darkred] at ($(\w:\r)+({\w+90}:0.5*\t)$)
+	[below,rotate={\w+90}] {$v(t-t_0)$};
+\node[color=darkred] at ($(\w:\r)+({\w+90}:{\t+0.7})$) [right] {$\gamma(t)$};
+
+\fill[color=darkgreen] ($(\w:\r)+({\w+90}:\t)$) circle[radius=0.08];
+\draw[color=darkgreen,line width=1.2pt]
+	(0,0) -- ($(\w:\r)+({\w+90}:\t)$);
+\node[color=darkgreen] at ($0.5*((\w:\r)+0.5*({\w+90}:\t)$)
+	[above,rotate=\W] {$r(t)=\sqrt{(v(t-t_0))^2+d^2}$};
+
+\fill[color=blue] (0,0) circle[radius=0.05];
+
+\node at (\w:\r) [right] {$t=t_0=\displaystyle-\frac{b}{2a}$};
+
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

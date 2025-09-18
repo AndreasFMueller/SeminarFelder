@@ -1,0 +1,27 @@
+# Python
+*.pyc
+
+# Data and generated stuff
+src/data/
+slides/
+papers/
+
+# Lock and large files
+*.lock
+*.lfs
+
+# Logs
+*.log
+
+# LaTeX aux files
+*.toc
+*.aux
+*.out
+*.bbl
+*.blg
+*.dvi
+*.snm
+
+# Ignore specific image folders everywhere
+**/images/weather/
+**/images/rotating_earth/

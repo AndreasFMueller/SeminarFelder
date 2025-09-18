@@ -15,7 +15,7 @@ Es ist aber nur indirekt mit Hilfe eines Koordinatensystems möglich, sich
 einen Tangentialvektor als einen ``Pfeil'' vorzustellen.
 Richtung und Geschwindigkeit kann man aber auch dadurch detektieren, dass
 man bestimmt, wie schnell sich eine Messgrösse, die von den Koordinaten
-abhängit, ändert.
+abhängig, ändert.
 Die instantane Änderung einer Funktion ein einem Punkt ist so etwas
 wie eine Ableitung.
 In diesem Abschnitt soll daher gezeigt werden, dass man sich
@@ -102,7 +102,7 @@ Man erwartet, dass die Ableitung entlang der Kurve an der Stelle
 $\gamma(0)$ eine lokale Eigenschaft ist, dass also nur der Verlauf
 der Kurve in einer beliebig kleinen Umgebung des Punktes $\gamma(0)$
 eine Rolle spielt.
-Eine andere Kurve $\tilde{\gamma}:\colon(-\varepsilon,\varepsilon)\to X$,
+Eine andere Kurve $\tilde{\gamma}\colon(-\varepsilon,\varepsilon)\to X$,
 die in $0$ tangential ist an die Kurve $\gamma$, sollte zur gleichen
 Ableitung führen.
 Wir schreiben sie auch $\tilde{\gamma}^i(t) = \tilde{x}^i(t)$.
@@ -128,11 +128,12 @@ Sei $f\colon X\to\mathbb{R}$ eine differenzierbare Funktion und
 $V$ ein Tangentialvektor im Punkt $x_0\in X$.
 Dann ist
 \[
-X\cdot f(x_0)
+V\cdot f(x_0)
 =
 \frac{d}{dt} f(\gamma(t))\bigg|_{t=0}
 \]
-für jede Kurve mit dem Tangentialvektor $V$ an der Stelle $t=0$.
+für jede Kurve $\gamma(t)$ mit dem Tangentialvektor $V=\dot{\gamma}(0)$
+an der Stelle $t=0$.
 \end{definition}
 
 Tangentialvektoren können also als Differentialoperatoren betrachtet
@@ -160,13 +161,14 @@ hat als Tangentialvektor den $k$-ten Standardbasisvektor.
 Die Ableitung einer Funktion $f$ entlang dieser Kurve ist
 \begin{align*}
 \frac{d}{dt}
-f(x_0^1,\dots,x_0^k+t,\ddots,x_0^n)
+f(x_0^1,\dots,x_0^k+t,\dots,x_0^n)
 \bigg|_{t=0}
 &=
 \frac{\partial f}{\partial y^k}(x_0^1,\dots,x_0^n).
 \end{align*}
 Man kann daher den $k$-ten Standardbasisvektor im Tangentialraum
-des Punktes $y_0$ mit der partiellen Ableitung nach der Koordinate
+des Punktes $y_0$ mit dem Operator der partiellen Ableitung nach
+der Koordinate $y^k$ identifizieren.
 
 \begin{satz}
 In einem Koordinatensystem $(X,\varphi)$ auf $X$ bilden 
@@ -186,6 +188,9 @@ u^k\partial_i = u^k\frac{\partial}{\partial x^k},
 \]
 also eine Linearkombination der partiellen Ableitungsoperatoren
 (einsteinsche Summenkonvention).
+Der Index $k$ im Nenner des Ableitungsoperators gilt als unterer
+Index, denn die zugehörigen Koeffizienten transformieren sich
+wie Vektorkomponenten.
 
 %
 % Ableitung eines Vektors?
@@ -289,7 +294,7 @@ Vorschrift transformiert wird.
 Der Transport von Vektoren entlang einer Kurve ist also keine
 Selbstverständlichkeit, er erfordert ein zusätzliches mathematisches
 Hilfsmittel.
-Ein Zusammenhang, wie er in Kapiteln~\ref{chapter:zusammenhang} definiert
+Ein Zusammenhang, wie er in Kapitel~\ref{chapter:zusammenhang} definiert
 wird, schafft diese Möglichkeit.
 
 %
@@ -327,9 +332,9 @@ Y^i(x)\frac{\partial X^k}{\partial x^i}(x)
 -
 X^i(x)\frac{\partial Y^k}{\partial x^i}(x)
 \biggr)
-\frac{\partial f}{\partial x^k}(x)
+\frac{\partial f}{\partial x^k}(x).
 \end{align*}
-Da da darin nur noch erste Ableitungen vorkommen, ist dies wieder
+Da darin nur noch erste Ableitungen vorkommen, ist dies wieder
 ein Differentialoperator erster Ordnung, der als Vektor
 geschrieben werden kann.
 
@@ -546,9 +551,9 @@ f\cdot L_XY,
 \]
 die genau die Form einer Produktregel hat.
 
-Mit der Schreibeweise von Definition
-\ref{buch:koordinaten:diffop:def:lieableitung} kann auch die
-Jacobi-Identität kann man ebenfalls in eine übersichtlichere Form
+Mit der Schreibweise von Definition
+\ref{buch:koordinaten:diffop:def:lieableitung} kann die
+Jacobi-Identität in eine übersichtlichere Form
 gebracht werden.
 Dazu schreibt man sie zunächst so um, dass $Z$ jeweils ganz rechts steht:
 \[
@@ -556,10 +561,24 @@ Dazu schreibt man sie zunächst so um, dass $Z$ jeweils ganz rechts steht:
 \]
 Darin schreiben wir alle Lie-Klammern als Lie-Ableitungen, ausser der Klammer
 $[X,Y]$, und erhalten
+\begin{equation}
+L_X\circ L_Y - L_Y\circ L_X
+=
+L_{[X,Y]}.
+\label{buch:koordinaten:diffop:eqn:liekommutator}
+\end{equation}
+Die linke Seite von
+\eqref{buch:koordinaten:diffop:eqn:liekommutator}
+wird auch als Kommutator 
 \[
-L_X\circ L_Y - L_Y\circ L_X = L_{[X,Y]}.
+[L_X,L_Y]
+:=
+L_X\circ L_Y - L_Y\circ L_X
 \]
-
+bezeichnet.
+Nach \eqref{buch:koordinaten:diffop:eqn:liekommutator}
+ist also der Kommutator der Operatoren $L_X$ und $L_Y$
+die Lie-Ableitung mit dem Vektorfeld $[X,Y]$.
 
 
 

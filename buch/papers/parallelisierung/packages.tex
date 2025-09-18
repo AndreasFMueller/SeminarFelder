@@ -8,3 +8,26 @@
 % following example
 %\usepackage{packagename}
 
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{pgfplotstable} % falls du Daten aus einer Tabelle einlesen willst
+
+\lstset{
+	language=C++,
+	basicstyle=\ttfamily\footnotesize,
+	keywordstyle=\color{blue}\bfseries,
+	stringstyle=\color{red},
+	commentstyle=\color{green!50!black}\itshape,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	stepnumber=1,
+	showstringspaces=false,
+	tabsize=4,
+	breaklines=true%,
+	%frame=none
+}
+\newfloat{lstfloat}{htbp}{}[chapter]
+\floatname{lstfloat}{Listing\strut}
+\def\lstfloatautorefname{Listing}

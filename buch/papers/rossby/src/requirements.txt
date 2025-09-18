@@ -1,0 +1,13 @@
+cartopy
+numpy
+plotly
+dash
+dash-bootstrap-components
+kaleido
+ipykernel
+pyqt5
+xarray
+matplotlib
+cdsapi
+netcdf4
+h5netcdf

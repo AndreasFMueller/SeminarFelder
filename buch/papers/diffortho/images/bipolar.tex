@@ -1,0 +1,77 @@
+%
+% bipolar.tex -- Bipolar
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\def\rechterwinkel#1#2#3{
+	\fill[color=darkgreen!40] ({#1*\dx},{#2*\dy})
+		-- ++(#3:0.12) arc(#3:{#3+90}:0.12) -- cycle;
+}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[->] (-4.2,0) -- (4.5,0) coordinate[label={$y^1$}];
+\draw[->] (0,-4.1) -- (0,4.3) coordinate[label={right:$y^2$}];
+
+\begin{scope}
+	\clip (-4.1,-4.1) rectangle (4.1,4.1);
+	\def\dx{1}
+	\def\dy{1}
+
+	\input{bipolarpaths.tex}
+
+	\rechtewinkel
+
+	\draw[color=darkred] \upathA;
+	\draw[color=darkred] \upathB;
+	\draw[color=darkred] \upathC;
+	\draw[color=darkred] \upathD;
+	\draw[color=darkred] \upathE;
+	\draw[color=darkred] \upathF;
+	\draw[color=darkred] \upathG;
+	\draw[color=darkred] \upathH;
+	\draw[color=darkred] \upathI;
+	\draw[color=darkred] \upathJ;
+	\draw[color=darkred] \upathK;
+	\draw[color=darkred] \upathL;
+	\draw[color=darkred] \upathM;
+	\draw[color=darkred] \upathN;
+	\draw[color=darkred] \upathO;
+	\draw[color=darkred] \upathP;
+	\draw[color=darkred] \upathQ;
+	\draw[color=darkred] \upathR;
+
+	\draw[color=blue] \vpathA;
+	\draw[color=blue] \vpathB;
+	\draw[color=blue] \vpathC;
+	\draw[color=blue] \vpathD;
+	\draw[color=blue] \vpathE;
+	\draw[color=blue] \vpathF;
+	\draw[color=blue] \vpathG;
+	\draw[color=blue] \vpathH;
+	\draw[color=blue] \vpathI;
+	\draw[color=blue] \vpathJ;
+	\draw[color=blue] \vpathK;
+	\draw[color=blue] \vpathL;
+	\draw[color=blue] \vpathM;
+	\draw[color=blue] \vpathN;
+	\draw[color=blue] \vpathO;
+	\draw[color=blue] \vpathP;
+	\draw[color=blue] \vpathQ;
+	\draw[color=blue] \vpathR;
+
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

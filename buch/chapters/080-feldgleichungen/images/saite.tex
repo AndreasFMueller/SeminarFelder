@@ -1,0 +1,70 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\def\l{8}
+\def\xone{3.1}
+\def\xtwo{4.3}
+\pgfmathparse{0.5*(\xone+\xtwo)}
+\xdef\xmitte{\pgfmathresult}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function={
+a(\t) = (180 * \t / \l);
+u(\t) = 0.2 * sin(a(\t)) + 0.3 * sin(2*a(\t)) - 0.7 * sin(3*a(\t));
+up(\t) = 3.1415 * (0.2 * cos(a(\t)) + 0.3 * 2 * cos(2*a(\t)) - 0.7 * 3 * cos(3*a(\t)))/\l;
+}]
+
+\draw[color=darkred,line width=1.2pt]
+	plot[domain=0:\l,samples=100] ({\x},{u(\x)});
+\draw[color=darkred,line width=1.6pt]
+	plot[domain=\xone:\xtwo,samples=100] ({\x},{u(\x)});
+
+\node[color=darkred] at (\xmitte,{u(\xmitte)}) [above] {$\mu\,\Delta x$};
+
+% add image content here
+\draw[->] (-0.1,0) -- ({\l+0.5},0) coordinate[label={$x$}];
+\draw[->] (0,-1.2) -- (0,1.4) coordinate[label={right:$u$}];
+
+\draw[line width=0.2] (\xone,0) -- (\xone,{u(\xone)});
+\draw (\xone,-0.05) -- ++(0,0.1);
+\node at (\xone,0) [below] {$x\mathstrut$};
+\draw[line width=0.2] (\xtwo,0) -- (\xtwo,{u(\xtwo)});
+\draw (\xtwo,-0.05) -- ++(0,0.1);
+\node at (\xtwo,0) [below] {$x+\Delta x\mathstrut$};
+
+\fill[color=blue] (\xone,{u(\xone)}) circle[radius=0.08];
+\fill[color=blue] (\xtwo,{u(\xtwo)}) circle[radius=0.08];
+\draw[color=blue,line width=0.2pt] (\xtwo,{u(\xtwo)}) -- ++(1,0);
+\draw[->,color=blue]
+	($(\xtwo,{u(\xtwo)})+(1,0)$) -- ($(\xtwo,{u(\xtwo)})+(1,{up(\xtwo)})$);
+\draw[color=blue,line width=0.2pt] (\xone,{u(\xone)}) -- ++(-1,0);
+\draw[->,color=blue]
+	($(\xone,{u(\xone)})+(-1,0)$) -- ($(\xone,{u(\xone)})+(-1,{-up(\xone)})$);
+\draw[->,color=blue] (\xtwo,{u(\xtwo)}) -- ++(1,{up(\xtwo)});
+\draw[->,color=blue] (\xone,{u(\xone)}) -- ++(-1,{-up(\xone)});
+
+\node[color=blue] at ($(\xtwo,{u(\xtwo)})+(1,{0.5*up(\xtwo)})$)
+	[right] {$\displaystyle F\frac{\partial u}{\partial x}(x+\Delta x,t)$};
+\node[color=blue] at ($(\xone,{u(\xone)})+(-1,{-0.5*up(\xone)})$)
+	[left] {$\displaystyle -F\frac{\partial u}{\partial x}(x,t)$};
+
+\draw (0,0.05) -- (0,-0.05);
+\draw (\l,0.05) -- (\l,-0.05);
+
+\node at (0,0) [below left] {$0$};
+\node at (\l,0) [below right] {$l$};
+
+\end{tikzpicture}
+\end{document}
+

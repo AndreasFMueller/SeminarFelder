@@ -1,0 +1,95 @@
+/*
+ * f.maxima
+ *
+ * (c) 2025 Prof Dr Andreas Müller
+ */
+gradef(f(u,v), fu(u,v), fv(u,v));
+gradef(fu(u,v), fuu(u,v), fuv(u,v));
+gradef(fv(u,v), fuv(u,v), fvv(u,v));
+
+r: matrix([u], [v], [f(u,v)]);
+ru: diff(r, u);
+rv: diff(r, v);
+g: matrix(
+	[ ru . ru, ru . rv ],
+	[ rv . ru, rv . rv ]
+);
+x: [u, v];
+
+batchload("curvature.maxima");
+
+ginverse;
+
+/*
+ * Christoffel-Symbole erster Art
+ *
+ * \Gamma_{\alpha,\mu\nu}
+ */
+
+Christoffel1(1,1,1);
+Christoffel1(1,1,2);
+Christoffel1(1,2,1);
+Christoffel1(1,2,2);
+Christoffel1(2,1,1);
+Christoffel1(2,1,2);
+Christoffel1(2,2,1);
+Christoffel1(2,2,2);
+
+/*
+ * Christoffelsymbole zweiter Art
+ *
+ * Gamma_{mu,nu}^\sigma
+ */
+
+Christoffel2(1,1,1);
+Christoffel2(1,1,2);
+Christoffel2(1,2,1);
+Christoffel2(1,2,2);
+Christoffel2(2,1,1);
+Christoffel2(2,1,2);
+Christoffel2(2,2,1);
+Christoffel2(2,2,2);
+
+/*
+ * Riemann-Tensor
+ */
+
+Riemann(1,2,1,2);
+Riemann(1,2,2,1);
+Riemann(2,1,1,2);
+Riemann(2,1,2,1);
+
+/*
+ * kovarianter Riemann-Tensor
+ */
+
+Riemann2(1,2,1,2);
+Riemann2(1,2,2,1);
+Riemann2(2,1,1,2);
+Riemann2(2,1,2,1);
+
+/*
+ * Ricci Tensor
+ */
+Ricci(1,1);
+Ricci(1,2);
+Ricci(2,2);
+
+/*
+ * Kruemmungs-Skalar
+ */
+RicciScalar();
+
+/*
+ * Einstein Tensor
+ *
+ */
+Einstein(1,1);
+Einstein(1,2);
+Einstein(2,2);
+
+r: Riemann2(1,2,1,2);
+r: subst(0, f(u, v), r);
+r: subst(0, f(u, v), r);
+r: subst(0, fu(u, v), r);
+r: subst(0, fv(u, v), r);

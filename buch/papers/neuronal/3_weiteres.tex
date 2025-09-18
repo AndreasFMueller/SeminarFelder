@@ -1,0 +1,40 @@
+%
+% 3_weiteres.tex -- Diskussion & weitere Anwendungsmöglichkeiten
+%
+% (c) 2025 Roman Cvijanovic & Nicola Dall'Acqua, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+
+\section{Diskussion}\label{neuronal:section:diskussion}
+\kopfrechts{Diskussion}
+
+Der grosse Vorteil dieser Methode liegt in ihrer breiten Anwendbarkeit.
+Sie kann grundsätzlich auf beliebige Feldgleichungen angewendet werden, unabhängig von deren Komplexität.
+Im Gegensatz dazu sind klassische Verfahren wie die Finite-Differenzen- oder Finite-Elemente-Methode oft auf bestimmte Gleichungstypen beschränkt und stossen insbesondere bei stark nichtlinearen oder hochdimensionalen Problemen an ihre Grenzen.
+\index{Finite-Differenzen-Methode}%
+\index{Finite-Element-Methode}%
+Neuronale Netzwerke bieten durch das \emph{Universal Approximation Theorem} die theoretische Grundlage, um beliebige stetige Funktionen mit beliebiger Genauigkeit zu approximieren \cite{neuronal:universal_approximation_theorem}.
+\index{Universal Approximation Theorem}%
+Dies befähigt sie theoretisch dazu, Lösungen für jede beliebige Feldgleichung zu approximieren.
+
+Was die vorangegangenen Beispiele jedoch klar zeigen, ist dass diese Methode bei der Burgers-Gleichung deutlich besser funktioniert als bei der Wellengleichung.
+Der Grund dafür liegt in den Gleichungen selbst: 
+Die Wellengleichung ist eine hyperbolische, die Burgers-Gleichung eine parabolische partielle Differentialgleichung.
+\index{partielle Differentialgleichung!hyperbolische}%
+\index{hyperbolisch}%
+\index{partielle Differentialgleichung!parabolische}%
+\index{parabolisch}%
+Neuronale Netzwerke haben beim Lösen von hyperbolischen Gleichungen Schwierigkeiten \cite{neuronal:hyperbolisch_1}, \cite{neuronal:hyperbolisch_2}, \cite{neuronal:hyperbolisch_3}.
+Zu beachten ist, dass diese Schwierigkeiten nicht auf einen Mangel an Ausdruckskraft des neuronalen Netzwerks zurückzuführen sind.
+Vielmehr liegt der Grund im Lösen des vorgestellten Optimierungsproblems \ref{neuronal:subsection:lösen_optimierungsproblem} \cite{neuronal:hyperbolisch_4}.
+Dieses wird für bestimmte Gleichungstypen, wie hyperbolische Feldgleichungen, durch deren charakteristische Eigenschaften --- zum Beispiel kontinuierliche Wellenausbreitung --- erheblich erschwert.
+Dadurch kann das Finden einer guten Lösung sehr schwer werden.
+Somit ist die Existenz einer guten Lösung zwar durch das \emph{Universal Approximation Theorem} garantiert, nicht aber das Finden davon.
+
+In der Praxis zeigen neuronale Netzwerke vielversprechende Ergebnisse beim Lösen von Feldgleichungen \cite{neuronal:pinns}.
+Jedoch befindet sich die Methode noch in einem frühen Entwicklungsstadium.
+Es gibt viele offene Fragen, insbesondere hinsichtlich der Effizienz und Genauigkeit im Vergleich zu klassischen Verfahren.
+Zusätzliche Forschungsergebnisse dürften hierzu weitere Erkenntnisse liefern.
+Eine abschließende Bewertung der Methode ist daher zum jetzigen Zeitpunkt noch nicht möglich.

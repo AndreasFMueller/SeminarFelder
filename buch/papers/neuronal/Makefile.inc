@@ -7,8 +7,8 @@ dependencies-neuronal =						\
 	papers/neuronal/packages.tex					\
 	papers/neuronal/main.tex					\
 	papers/neuronal/references.bib				\
-	papers/neuronal/teil0.tex					\
-	papers/neuronal/teil1.tex					\
-	papers/neuronal/teil2.tex					\
-	papers/neuronal/teil3.tex
+ 	papers/neuronal/1_herleitung.tex \
+ 	papers/neuronal/2_beispiel.tex   \
+ 	papers/neuronal/3_weiteres.tex   
+
 

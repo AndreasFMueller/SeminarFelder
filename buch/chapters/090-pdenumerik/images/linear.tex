@@ -1,0 +1,45 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[->] (-0.1,0) -- (10.9,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,2.4) coordinate[label={right:$g_i(x)$}];
+
+\foreach \x in {0,...,7}{
+	\fill ({1.5*\x},0) circle[radius=0.05];
+}
+
+\node at (0,0) [below] {$x_0\mathstrut$};
+\node at (1.5,0) [below] {$x_1\mathstrut$};
+\node at ({3*1.5},0) [below] {$\dots\mathstrut$};
+\node at ({3*1.5},0) [below] {$x_{i-1}\mathstrut$};
+\node at ({4*1.5},0) [below] {$x_i\mathstrut$};
+\node at ({5*1.5},0) [below] {$x_{i+1}\mathstrut$};
+\node at ({6*1.5},0) [below] {$\dots\mathstrut$};
+\node at ({7*1.5},0) [below] {$x_n\mathstrut$};
+
+\draw[line width=0.2pt] (0,2) -- ({4*1.5},2);
+\draw (-0.05,2) -- (0.05,2);
+\node at (-0.05,2) [left] {$1\mathstrut$};
+\node at (-0.05,0) [left] {$0\mathstrut$};
+
+\draw[color=darkred,line width=1.2pt] (-0.1,0)
+	-- ({3*1.5},0) -- ({4*1.5},2) -- ({5*1.5},0) 
+	-- (10.5,0);
+
+\end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,55 @@
+%
+% gebiet.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\coordinate (A) at (2,1.5);
+\coordinate (B) at (6.5,1.5);
+\coordinate (B1) at (5,3);
+\coordinate (C) at (2.5,5.5);
+\coordinate (D) at (0.8,2.8);
+\coordinate (E) at (2,3.5);
+
+\def\p{
+	(A) to[out=-20,in=-135]
+	(B) to[out=45,in=10]
+	(B1) to[out=-170,in=-10]
+	(C) to[out=170,in=100]
+	(D) to[out=-80,in=160] (A) -- cycle;
+}
+
+\fill[color=darkred!20] \p;
+\draw[color=darkred,line width=1.2pt] \p;
+\fill[color=darkred] (B1) circle[radius=0.08];
+
+\draw[->,color=darkred,line width=1.4pt] (B1) -- ++(100:1.5);
+\node at ($(B1)+(100:1.5)$) [right] {$n$};
+\node[color=darkred] at (A) [below] {$\partial G$};
+
+\fill[color=blue!40,opacity=0.5] (C) circle[radius=0.3];
+\fill[color=blue] (C) circle[radius=0.05];
+\node[color=blue] at ($(C)+(0,0)$) [above] {$Q$};
+
+\fill[color=blue!40,opacity=0.5] (E) circle[radius=0.3];
+\fill[color=blue] (E) circle[radius=0.05];
+\node[color=blue] at ($(E)+(0,0)$) [above] {$P$};
+
+\draw[->] (0,-0.1) -- (0,6.3) coordinate[label={right:$x^n$}];
+\draw[->] (-0.1,0) -- (7.5,0) coordinate[label={$x^1$}];
+\node[color=darkred] at (3.5,2.2) {$G$};
+
+\end{tikzpicture}
+\end{document}
+

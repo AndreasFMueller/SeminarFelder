@@ -1,0 +1,48 @@
+%
+% teil1.tex -- Beispiel-File für das Paper
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Lokalität
+\label{parallelisierung:sec:Lokalitaet}}
+\kopfrechts{Lokalität}
+Lokalität beschreibt den Umstand, dass ein physikalischer oder mathematischer Vorgang nur von seiner unmittelbaren Umgebung beeinflusst wird. 
+\index{Lokalität}%
+Dieses Konzept ist zentral für das Verständnis vieler physikalischer Prozesse und bildet zugleich die Grundlage für numerische Verfahren, mit denen wir Feldgleichungen berechnen können. 
+Ohne die Annahme der Lokalität wäre es nicht möglich, komplexe Systeme in Teilprobleme zu zerlegen und effizient auf Rechnerarchitekturen umzusetzen.
+
+\subsection{Lokalität im physikalischen Sinn
+	\label{parallelisierung:sub:LokalitaetPhysik}}
+Auf einfache Weise lässt sich Lokalität am Beispiel der Wärmeleitung veranschaulichen. 
+\index{Wärmeleitung}%
+Die Temperatur an einem bestimmten Ort hängt nicht unmittelbar von allen Punkten im Material ab, sondern nur von den direkt benachbarten Zellen. 
+Der Wärmestrom ergibt sich lokal aus den Temperaturdifferenzen zwischen einem Punkt und seinen Nachbarn.
+Eine heisse Stelle in einem Metallblock beeinflusst also nicht direkt eine weit entfernte Stelle, sondern nur die benachbarten Bereiche. 
+Diese Nachbarstellen wiederum beeinflussen die nächsten, und so breitet sich Wärme schrittweise aus. 
+Es gibt Beispiele von Fernwirkung in der Physik wie zum Beispiel das newtonsche Gravitationsgesetz oder Coulombs Gesetz für elektrische Ladung.
+Diese sind für viele Anwendungen sehr nützlich, es sind aber nur vereinfachte Gesetze.
+In der modernen Physik können jedoch alle physikalischen Prozesse durch Felder mit streng lokalen Wechselwirkungen erklärt werden.
+Es gibt ausserhalb der Quantenmechanik keine echte Fernwirkung in der Physik.
+
+\subsection{Lokalität im mathematischen Sinn
+\label{parallelisierung:sub:LokalitaetMathematik}}
+In der Mathematik tritt Lokalität vor allem bei Differentialoperatoren auf. 
+Eine Ableitung an einer Stelle beschreibt das Verhalten einer Funktion in einer sehr kleinen Umgebung dieses Punktes. 
+In der numerischen Mathematik, wo kontinuierliche Operatoren durch diskrete Approximationen ersetzt werden, wird dieses Prinzip besonders deutlich. 
+So wird etwa eine erste Ableitung durch Differenzen zwischen benachbarten Gitterpunkten dargestellt, und eine zweite Ableitung durch Kombination dieser Differenzen. 
+Damit greift die Berechnung stets nur auf Werte aus der unmittelbaren Nachbarschaft zu. 
+Diese Eigenschaft macht Differentialoperatoren lokal und ermöglicht die Umsetzung auf Gittern.
+
+\subsection{Lokalität und partielle Differentialgleichungen
+\label{parallelisierung:sub:LokalitaetPDE}}
+Für partielle Differentialgleichungen (PDEs) ist die Lokalität von zentraler Bedeutung. 
+\index{partielle Differentialgleichungen}
+Die Veränderung einer Grösse in Raum und Zeit hängt immer nur von den lokalen Gradienten oder Krümmungen ab. 
+Würde ein Operator auf das gesamte Feld wirken, könnte man die Gleichung nicht sinnvoll numerisch lösen. 
+Zudem ist Lokalität entscheidend für die Parallelisierung, denn nur da jedes Teilgebiet seine Lösung ausschliesslich aus lokalen Informationen berechnen kann, lassen sich deren Berechnungen auf mehrere Prozessoren verteilen. 
+Lediglich an den Grenzen der Teilgebiete muss kommuniziert werden, um den Austausch der Randzellen sicherzustellen. 
+Somit bildet Lokalität nicht nur die theoretische Grundlage für PDEs, sondern auch die praktische Voraussetzung für deren effiziente Berechnung auf modernen Rechnerarchitekturen.
+

@@ -1,0 +1,8 @@
+\begin{tikzpicture}[>=latex]
+  \draw[->] (-1,0) -- (4,0) node[right] {$x$};
+  \fill (0,0) circle (2pt) node[below] {$0$} node[above] {$\alpha(p)$};
+  \fill (3.14,0) circle (2pt) node[below] {$\pi$} node[above] {$\omega(p)$};
+  \fill (1.57,0) circle (2pt) node[above] {$p$};
+  \draw[red,->,thick] (0.5,0) -- (1,0);
+  \draw[red,->,thick] (2,0) -- (2.5,0);
+\end{tikzpicture}

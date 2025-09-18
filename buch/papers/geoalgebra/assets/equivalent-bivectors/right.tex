@@ -1,0 +1,18 @@
+\begin{tikzpicture}[>=latex, thick]
+  \draw[step=.5cm,gray,very thin] (-0.25,-0.25) grid (4.25,5.25);
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (1.5,0.5);
+  \coordinate (B) at (2,4);
+  \coordinate (C) at ($(A)+(B)$);
+
+  \fill[blue!30,opacity=0.7] (O) -- (A) -- (C) -- (B) -- cycle;
+
+  \draw[thick,->,darkred] (O) -- (A) node[midway,below] {$\frac{1}{2} \a$};
+  \draw[thick,->,blue] (O) -- (B) node[midway,left] {$2 \b$};
+  \draw[dashed] (A) -- (C);
+  \draw[dashed] (B) -- (C);
+
+  \node (K) at ($0.25*(O)+0.25*(A)+0.25*(B)+0.25*(C)$)
+    {$\a \wedge \b$};
+  \draw[thick,->] (K) ++(0.5,0) arc (0:270:0.5);
+\end{tikzpicture}

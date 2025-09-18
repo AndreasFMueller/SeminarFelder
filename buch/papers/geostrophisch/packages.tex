@@ -7,4 +7,26 @@
 % if your paper needs special packages, add package commands as in the
 % following example
 %\usepackage{packagename}
+\usepackage{graphicx}
+\graphicspath{{papers/geostrophisch/Bilder}}
+\usepackage{siunitx}
 
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstdefinestyle{pycode}{
+	language=Python,
+	basicstyle=\ttfamily\footnotesize,
+	keywordstyle=\color{blue},
+	stringstyle=\color{green!50!black},
+	commentstyle=\color{gray},
+	numbers=left,
+	numberstyle=\tiny,
+	frame=single,
+	showstringspaces=false,
+	keepspaces=true,            % Tabs/Spaces bleiben erhalten
+	breaklines=true,            % automatischer Zeilenumbruch
+	breakatwhitespace=false,    % bricht notfalls mitten im "Wort"
+	columns=fullflexible,       % wichtig, damit Umbrüche zuverlässig passieren
+	postbreak=\mbox{\(\hookrightarrow\)\space} % Markierung für umgebrochene Zeilen (optional)
+}

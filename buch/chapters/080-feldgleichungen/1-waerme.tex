@@ -1,0 +1,248 @@
+%
+% Wärmeleitung und Diffusion
+%
+\section{Wärmeleitung und Diffusion}
+\kopfrechts{Wärmeleitung und Diffunsion}
+Wärmeleitung und Diffusion führen auf sehr ähnliche parabolische
+partielle Differentialgleichungen.
+
+%
+% Wärmeleitung
+%
+\subsection{Wärmeleitung}
+Die Wärmeenergiedichte $\varrho$ eines homogenenen Mediums mit der
+\index{Warmeenergiedichte@Wärmeenergiedichte}%
+konstanten Wärmekapazität $c$ ist proportional zur Temperatur,
+es gilt daher $\varrho=cT$.
+\index{Temperatur}%
+Der Wärmeleitungskoeffizient $k$ definiert, wieviel
+\index{Warmeleitungskoeffizient@Wärmeleitungskoeffizient}%
+Wärmeenergie pro Zeiteinheit den Temperaturunterschied
+$\Delta T$ über eine Distanz $\Delta x$ überwindet.
+In differentieller Schreibweise ist der Wärmeenergiefluss
+\index{Warmeenergiefluss@Wärmeenergiefluss}%
+\[
+\vec{\jmath}
+=
+-k \operatorname{grad} T.
+\]
+Da die Wärmeenergie erhalten bleibt, gilt die Kontinuitätsgleichung
+\index{Kontinuitatsgleichung@Kontinuitätsgleichung}%
+für $\varrho$ und $\vec{\jmath}$, sie lautet
+\begin{align*}
+-\frac{\partial\varrho}{\partial t}
+&=
+\operatorname{div}\bigl(
+-\kappa\operatorname{grad}T
+\bigr)
+\\
+-c\frac{\partial T}{\partial t}
+&=
+-k\varrho\operatorname{div}\operatorname{grad}T
+\intertext{oder nach Division durch $-c$}
+\frac{\partial T}{\partial t}
+&=
+\kappa\,
+\Delta T
+\end{align*}
+mit $\kappa = \frac{c}{k}$.
+
+%
+% Diffusion
+%
+\subsection{Diffusion}
+In einem homogenen Medium ist ein Stoff mit der Konzentration 
+$c$ gelöst.
+\index{Konzentration}%
+Konzentrationsunterschiede werden durch Diffusion des gelösten
+Stoffs ausgeglichen.
+\index{Diffusion}%
+Je grösser der Konzentrationsunterschied, desto grösser ist
+der Stofffluss, es gilt also
+\[
+\vec{\jmath}\, = -D\operatorname{grad}c
+\]
+für den Stofffluss, mit einer Materialkonstanten $D$.
+\index{Stofffluss}%
+Die Konzentration $c$ ist die Dichte des gelösten Stoffs,
+$\vec{\jmath}$\, ist der Stofffluss im Medium.
+Sofern der Stoff keine Reaktionen mit dem Medium eingeht,
+bleibt die gelöste Stoffmenge erhalten, es muss daher die
+Kontinuitätsgleichung
+\begin{align*}
+-\frac{\partial c}{\partial t}
+&=
+\operatorname{div}\bigl(
+-D\operatorname{grad}c
+\bigr)
+\\
+\frac{\partial c}{\partial t}
+&=
+D\operatorname{div}\operatorname{grad}c
+\intertext{gelten.
+Mit dem Laplace-Operator geschrieben ist dies}
+\frac{\partial c}{\partial t}
+&=
+D\,\Delta c,
+\end{align*}
+\index{Laplace-Operator}%
+eine zur Wärmeleitungsgleichung äquivalente partielle
+Differentialgleichung.
+
+%
+% Fundamentallösung
+%
+\subsection{Fundamentallösung}
+Ersetzt man die Zeitkoordinate $t$ durch $\tau=\kappa t$, wird die
+Zeitableitung zu
+\[
+\frac{1}{\kappa}
+\frac{\partial}{\partial t}
+=
+\frac{\partial}{\partial (\kappa t)}
+=
+\frac{\partial}{\partial\tau}.
+\]
+Durch Wahl einer geeigneten Zeiteinheit lässt sich die 
+Wärmeleitungsgleichung auf $\mathbb{R}^n$ also in die Form
+\begin{equation}
+\frac{\partial u}{\partial t}
+=
+\Delta u
+\label{buch:feldgleichungen:waermeleitung:eqn:normalisiert}
+\end{equation}
+bringen.
+
+Die Gleichung \eqref{buch:feldgleichungen:waermeleitung:eqn:normalisiert}
+hat die Fundamentallösung
+\begin{equation}
+u(x,t)
+=
+\frac{1}{(\!\sqrt{4\pi t})^{\frac{n}2}}
+e^{-\frac{|x|^2}{4t}}
+,
+\label{buch:feldgleichungen:waermeleitung:eqn:fundamentalloesung}
+\end{equation}
+wie man durch Einsetzen prüfen kann.
+In einer Dimension, also für $n=1$, sind die Ableitungen
+\[
+\left.
+\begin{aligned}
+\frac{\partial u}{\partial t}
+&=
+\frac{1}{4\!\sqrt{\pi t}}
+\biggl(
+\frac{x^2}{2t^2}
+-
+\frac{1}{t}
+\biggr)
+e^{-\frac{x^2}{4t}}
+\\
+\frac{\partial u}{\partial x}
+&=
+-
+\frac{1}{4\!\sqrt{\pi t}} \frac{x}{t} e^{-\frac{x^2}{4t}}
+&&\Rightarrow&
+\frac{\partial^2 u}{\partial x^2}
+&=
+\frac{1}{4\!\sqrt{\pi t}}
+\biggl(
+\frac{x^2}{2t^2}
+-\frac{1}{t}
+\biggr)
+e^{-\frac{x^2}{4t}}
+\end{aligned}
+\right\}
+\quad
+\Rightarrow
+\quad
+\frac{\partial u}{\partial t}=\Delta u.
+\]
+Die Wärmeleitungsgleichung ist also in diesem Fall erfüllt.
+
+Für $n>1$ muss $\operatorname{grad}u$ und davon die Divergenz
+berechnet werden.
+Dies wird einfacher, wenn man beachtet, dass
+\[
+u(x,t)
+=
+u_0(x^1,t)
+\dots
+u_0(x^2,t)
+\]
+ist, wobei $u_0(x,t)$, die eindimensionale Fundamentallösung
+von \eqref{buch:feldgleichungen:waermeleitung:eqn:fundamentalloesung}
+ist.
+Die Zeitableitung von $u(x,t)$ ist nach der Produktregel
+\[
+\frac{\partial u}{\partial t}(x,t)
+=
+\sum_{i=1}^n
+u_0(x^1,t)\cdots u_0(x^{i-1})
+\cdot
+\frac{\partial u_0}{\partial t}(x^i,t)
+\cdot
+u_0(x^{i+1},t)\cdots u_0(x^n).
+\]
+Der Gradient $\operatorname{grad}u$ hat die Komponenten
+\[
+\frac{\partial u}{\partial x^i}
+=
+\frac{\partial}{\partial x^i}
+\prod_{k=1}^n
+u_0(x^k,t)
+=
+u_0(x^1,t)\cdots u_0(x^{i-1},t)
+\cdot
+\frac{\partial u_0}{\partial x}(x^i,t)
+\cdot
+u_0(x^{i+1},t) \cdots u_0(x^n,t).
+\]
+Daraus kann man die Divergenz berechnen als
+\begin{align*}
+\Delta u(x,t)
+=
+\operatorname{div}
+\operatorname{grad}
+u(x,t)
+&=
+\sum_{i=1}^n
+u_0(x^1,t)\cdots u_0(x^{i-1},t)
+\cdot
+\frac{\partial^2 u_0}{\partial x^2}(x^i,t)
+\cdot
+u_0(x^{i+1},t) \cdots u_0(x^n,t).
+\end{align*}
+Die Differenz ist
+\begin{align*}
+\frac{\partial u}{\partial t}
+-
+\Delta u
+&=
+\sum_{i=1}^n
+u_0(x^1,t)\cdots u_0(x^{i-1},t)
+\cdot
+\biggl(
+\underbrace{
+\frac{\partial u_0}{\partial t}(x^i,t)
+-
+\frac{\partial^2 u_0}{\partial x^2}(x^i,t)
+}_{\displaystyle = 0}
+\biggr)
+\cdot
+u_0(x^{i+1},t) \cdots u_0(x^n,t)
+\\
+&=
+0.
+\end{align*}
+Damit ist gezeigt, dass $u(x,t)$ eine Lösung der Wärmeleitungsgleichung
+ist.
+
+Die Funktion $u_0(x,t)$ ist die Normalerteilung mit der Varianz $2t$ und
+$u(x,t)$ ist eine $n$-dimensionale Normalverteilung.
+Dies deckt sich mit den Erwartungen, die sich aus dem zentralen
+Grenzwertsatz ergeben.
+Die Diffusion von Molekülen ist setzt sich aus sehr vielen sehr
+kleinen, zufälligen Stössen zusammen.
+Der zentrale Grenzwertsatz sagt unter diesen Voraussetzungen eine
+Normalverteilung voraus.

@@ -7,11 +7,47 @@
 \label{chapter:zusammenhang}}
 \kopflinks{Zusammenhang und kovariante Ableitung}
 
-\section{Paralleltransport}
+\noindent
+Die Diskussion der Lie-Ableitung in
+Abschnitt~\ref{buch:koordinaten:section:differentialoperatoren}
+hat gezeigt, dass die zweite Ableitung eines Kurve nicht auf
+allgemein kovariante Art definiert werden kann.
+Der Grund dafür ist, dass die Tangentialvektoren in den Punkten
+$\gamma(t)$ und $\gamma(t+\Delta t)$ in den disjunkten Vektorräumen
+$T_{\gamma(t)}M$ und $T_{\gamma(t+\Delta t)}M$ liegen und sich nicht
+einfach so miteinander verrechnen lassen
+(Abbildung~\ref{buch:zusammenhang:fig:differenz}).
+\input{chapters/100-zusammenhang/fig/fig-differenz.tex}%
+Dazu wird eine Methode benötigt, die Tangentialvektoren vom einen
+Punkt in einen nahegelegenen Punkt zu transportieren.
+Die einfachste Methode, dies zu erreichen, ist eine Metrik $g$ auf der
+Mannigfaltigkeit zu verwenden, und Vektoren ``parallel'' zu transportieren,
+wie dies in Abschnitt~\ref{buch:zusammenhang:section:paralleltransport}
+unternommen wird.
+{\em Geodäten} sind kürzeste Verbindungen auf einer Mannigfaltigkeit, sie
+lassen sich aber auch als Kurven charakterisieren, die ihren Tangentialvektor
+parallel transportieren.
+\index{Geodate@Geodäte}%
+Dies definiert eine Differentialgleichung zweiter Ordnung für die
+Geodäten (Abschnitt~\ref{buch:zusammenhang:section:geodaeten}).
+Die kovariante Ableitung von
+Abschnitt~\ref{buch:zusammenhang:section:kovarianteableitung}
+verallgemeinert den Differentialoperator, der in der Differentialgleichung
+der Geodäten vorkommt, für beliebige Vektoren.
+Die kovariante Ableitung ist festgelegt, wenn man auf der Mannigfaltigkeit
+eine sogenannten {\em Zusammenhang} definiert hat
+(Abschnitt~\ref{buch:zusammenhang:section:zusammenhang}). 
+\index{Zusammenhang}%
+In Abschnitt~\ref{buch:zusammenhang:section:paralleltransport} wurden
+Vektoren mit Hilfe des Paralleltransports verglichen.
+Ein Zusammenhang verallgemeinert diese Idee und ermöglicht damit auch
+Vektoren zu vergleichen, die nicht mit der Metrik verrechnet werden
+können.
 
-\section{Geodäten}
+\input{chapters/100-zusammenhang/1-parallel.tex}
 
-\section{Kovariante Ableitung}
+\input{chapters/100-zusammenhang/2-geodaeten.tex}
 
-\section{Strömungsgleichungen}
+\input{chapters/100-zusammenhang/3-divergenz.tex}
 
+\input{chapters/100-zusammenhang/4-zusammenhang.tex}

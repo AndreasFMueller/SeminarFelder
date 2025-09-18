@@ -7,13 +7,100 @@
 \label{chapter:kruemmung}}
 \kopflinks{Krümmung}
 
-\section{Der riemannsche Krümmungstensor}
+\noindent
+In Abbildung~\ref{buch:kruemmung:fig:exzess}
+\input{chapters/110-kruemmung/fig/fig-exzess.tex}
+\input{chapters/110-kruemmung/fig/fig-drehung.tex}
+sind gleichseitige sphärische Dreiecke zu unterschiedlichen
+Kugelradien dargestellt.
+Die Seiten $a=b=c$ sind gleich, ebenso die Winkel $\alpha=\beta=\gamma$.
+Das Dreieck ganz rechts ist im Vergleich zum Kugelradius so klein,
+dass die Krümmung kaum mehr sichtbar ist.
+Nach dem Seitenkosinussatz
+\[
+\cos c = \cos a\cos b + \sin a \sin b \cos\alpha
+\]
+der sphärischen Trigonometrie folgt für das gleichseitige Dreieck
+\begin{align*}
+\cos a-\cos^2a
+&=
+\sin^2 a \cos\alpha
+=
+(1-\cos^2 a)\cos\alpha
+\\
+\cos a(1-\cos a)
+&=
+(1+\cos a)(1-\cos a)\cos\alpha
+\intertext{und nach Division durch $1-\cos a$}
+\frac{ \cos a }{ 1+\cos a }
+&=
+\cos\alpha.
+\end{align*}
+Im Grenzwert $a\to 0$ strebt $\cos a$ gegen 1.
+Der Grenzwert für den Winkel $\alpha$ ergibt sich daher aus
+$\cos\alpha=\frac12$ als $\alpha=60^\circ$.
 
-\section{Ricci-Krümmung}
+Der Transport des Tangentialvektors entlang der Seite $AB$ eines
+beliebigen sphärischen Dreiecks wie in
+Abbildung~\ref{buch:kruemmung:fig:drehung}
+liefert den Tangentialvektor an $AB$ im Punkt $B$.
+Dieser schliesst mit der Seite $BC$ den Winkel $\beta$ ein.
+Der Paralleltransport dieses Vektors ergibt einen Vektor im Punkt $C$,
+der mit der Seite $CA$ einen Winkel $\beta+\gamma$ einschliesst.
+Durch Paralleltransport zum Punkt $A$ ergibt sich eine Drehung um
+insgesamt $\varepsilon= \alpha+\beta+\gamma -\pi$.
+Die Grösse $\varepsilon$ ist bekannt als der {\em sphärische Exzess}
+\index{Exzess, spharisch@Exzess, sphärisch}%
+\index{spharischer Exzess@sphärischer Exzess}%
+Bei einem ebenen Dreieck verschwindet der sphärische Exzess,
+beim Paralleltransport eines Vektors ist keine Drehung feststellbar.
 
-\section{Energie-Impuls-Tensor und die Feldgleichungen der Gravitation}
+Beim gleichseitigen sphärischen Dreieck von
+Abbildung~\ref{buch:kruemmung:fig:exzess}
+sind alle Winkel gleich gross, der sphärische Exzess und damit die
+Drehung des Tangentialvektors ist daher $\varepsilon=3\alpha-\pi$. 
+Er erreicht für ein Dreieck mit drei rechten Winkeln und drei
+Seiten der Längen $\frac{\pi}2$ den Wert $\frac{\pi}2$.
 
-\section{Schwarze Löcher}
+Der sphärische Exzess eines sphärischen Dreiecks ist auch ein Mass für
+den Flächeninhalt $\Delta F = (\alpha+\beta+\gamma-\pi)R^2$.
+Je grösser der Flächeninhalt in Relation zur Oberfläche der Kugel,
+desto grösser die Drehung beim Paralleltransport eines Vektors um
+ein Dreieck.
+Oder je grösser der Drehwinkel, desto grösser die Krümmung $1/R^2$
+der Kugeloberfläche.
+Die Krümmung einer Fläche kann also verallgemeinert werden als
+der Grenzwert des Verhältnisses des Drehwinkels eines Vektors um einen
+geschlossenen polygonalen Weg zum Flächeninhalt des Polygons für
+sehr kleine Polygone.
 
-\section{Die Friedmann-Gleichung und die Geschichte des Universums}
+In Abschnitt~\ref{buch:kruemmung:section:riemann} dieses Kapitels
+wird der riemannsche Krümmungstensor als eine lineare Abbildung,
+die aus einem 2-Vektor eine Drehmatrix berechnet.
+Zur Charakterisierung kann man aber auch nur einzelne Invarianten
+der Drehmatrix verwenden.
+Zum Beispiel lässt sich der Drehwinkel aus der Spur der Drehmatrix
+berechnen.
+Die Spur des riemannschen Krümmungstensors wird daher in 
+Abschnitt~\ref{buch:kruemmung:section:riemann} als der Ricci-Tensor
+eingeführt.
+Aus dem Ricci-Tensor lassen sich die Einsteinschen Feldgleichungen
+konstruieren, wie Abschnitt~\ref{buch:kruemmung:section:gravitation}
+gezeigt wird.
+Damit werden dann Aussagen über schwarze Löcher
+(Abschnitt~\ref{buch:kruemmung:section:schwarzesloch})
+und die Geschichte des Universums
+(Abschnitt~\ref{buch:kruemmung:section:friedmann})
+ableiten.
+
+\input{chapters/110-kruemmung/1-kruemmung.tex}
+\input{chapters/110-kruemmung/2-flaeche.tex}
+\input{chapters/110-kruemmung/3-schnittkruemmung.tex}
+\input{chapters/110-kruemmung/4-ricci.tex}
+\input{chapters/110-kruemmung/5-newton.tex}
+\input{chapters/110-kruemmung/6-feldgleichungen.tex}
+\input{chapters/110-kruemmung/7-schwarzeloecher.tex}
+\input{chapters/110-kruemmung/8-friedmann.tex}%
+
+
 

@@ -1,0 +1,112 @@
+%
+% abstnd.tex -- template for standalon tikz images
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\def\w{10}
+\def\r{11.8}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}[xshift=-4cm]
+	\fill[color=gray!20] (-2,0) rectangle (0,2);
+	\node at (-1,1) {$\vec{h}\wedge\vec{k}$};
+
+	\draw (0,0) -- (0,4);
+	\node at (0,4)  [right] {$\gamma(t)$};
+
+	\draw[->,color=darkred,line width=1.4pt] (0,0) -- (0,2);
+	\node[color=darkred] at (0,1) [right] {$\vec{h}$};
+
+	\fill[color=darkred!20]
+		($({-2-\r},0)+(\w:\r)$)
+			-- ++(0,{2*cos(\w)})
+			-- ++({-2*sin(\w)},0)
+			-- cycle;
+
+	\draw (-2,0) arc (0:20:11.8);
+	\draw[->,color=darkred,line width=1.4pt]
+		($({-2-\r},0)+(\w:\r)$) -- ++({90+\w}:2);
+	\fill[color=darkred] ($({-2-\r},0)+(\w:\r)$) circle[radius=0.07];
+	\node[color=darkred] at ($({-2-\r},0)+(\w:\r)+({90+\w}:1)$)
+		[left] {$\vec{h}''$};
+
+	\draw[->,color=darkred,line width=1.4pt] (-2,0) -- (-2,2);
+	\node[color=darkred] at (-2,1) [left] {$\vec{h}'$};
+
+	\draw[->,color=blue,line width=1.4pt] (0,0) -- (-2,0);
+	\node[color=blue] at (-1,0) [below] {$\vec{k}$};
+
+	\node at (-1,-0.9) {$S(\vec{h},\vec{k}) > 0$};
+\end{scope}
+
+\begin{scope}
+	\fill[color=gray!20] (-2,0) rectangle (0,2);
+	\node at (-1,1) {$\vec{h}\wedge\vec{k}$};
+
+	\draw (0,0) -- (0,4);
+	\node at (0,4)  [right] {$\gamma(t)$};
+
+	\draw[->,color=darkred,line width=1.4pt] (0,0) -- (0,2);
+	\node[color=darkred] at (0,1) [right] {$\vec{h}$};
+
+	\draw (-2,0) -- (-2,4);
+
+	\draw[->,color=darkred,line width=1.4pt] (-2,{\r*sin(\w)}) -- ++(0,2);
+	\fill[color=darkred] (-2,{\r*sin(\w)}) circle[radius=0.07];
+	\node[color=darkred] at (-2,{\r*sin(\w)+1}) [left] {$\vec{h}''$};
+
+	\draw[->,color=darkred,line width=1.4pt] (-2,0) -- (-2,2);
+	\node[color=darkred] at (-2,1) [left] {$\vec{h}'$};
+
+	\node[color=blue] at (-1,0) [below] {$\vec{k}$};
+	\draw[->,color=blue,line width=1.4pt] (0,0) -- (-2,0);
+
+	\node at (-1,-0.9) {$S(\vec{h},\vec{k}) = 0$};
+\end{scope}
+
+\begin{scope}[xshift=4cm]
+	\fill[color=gray!20] (-2,0) rectangle (0,2);
+	\node at (-1,1) {$\vec{h}\wedge\vec{k}$};
+
+	\draw (0,0) -- (0,4);
+	\node at (0,4)  [right] {$\gamma(t)$};
+
+	\draw[->,color=darkred,line width=1.4pt] (0,0) -- (0,2);
+	\node[color=darkred] at (0,1) [right] {$\vec{h}$};
+
+	\fill[color=darkred!20]
+		($({-2+\r},0)+({180-\w}:\r)$)
+			-- ++({2*sin(\w)},0)
+			-- ++(0,{2*cos(\w)})
+			-- cycle;
+
+	\draw (-2,0) arc (180:160:\r);
+	\draw[->,color=darkred,line width=1.4pt]
+		($({-2+\r},0)+({180-\w}:\r)$) -- ++({90-\w}:2);
+	\fill[color=darkred] ($({-2+\r},0)+({180-\w}:\r)$)
+		circle[radius=0.07];
+	\node[color=darkred] at ($({-2+\r},0)+({180-\w}:\r)+({90-\w}:1)$)
+		[left]{$\vec{h}''$};
+
+	\draw[->,color=darkred,line width=1.4pt] (-2,0) -- (-2,2);
+	\node[color=darkred] at (-2,1) [left] {$\vec{h}'$};
+
+	\draw[->,color=blue,line width=1.4pt] (0,0) -- (-2,0);
+	\node[color=blue] at (-1,0) [below] {$\vec{k}$};
+
+	\node at (-1,-0.9) {$S(\vec{h},\vec{k}) < 0$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

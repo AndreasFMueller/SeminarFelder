@@ -1,0 +1,33 @@
+\section{Faraday-Tensor}
+\label{maxwell:faraday}
+\kopfrechts{Faraday-Tensor}
+Wie in Kapitel \ref{maxwell:motivation} beschrieben, wollen wir $\vec{E}$ und $\vec{B}$ gemeinsam in einem Objekt unterbringen, das bei Koordinatentransformationen seine physikalische Bedeutung beibehält. Aufgrund der geometrischen Eigenschaften des elektromagnetischen Feldes liegt es nahe, dafür einen antisymmetrischen Tensor zweiter Stufe zu wählen. Ein solcher Tensor ordnet jedem orientierten Flächenelement in der Raum-Zeit einen Wert zu, der die Wirkung des Feldes über diese Fläche beschreibt. Für magnetische Felder sind dies rein räumliche Flächen, über die sich ein magnetischer Fluss messen lässt. Elektrische Felder sind in dieser Darstellung mit Flächen verknüpft, die sowohl in Zeit- als auch in Raumrichtung orientiert sind und so die Wirkung einer Feldänderung zwischen verschiedenen Raum-Zeit-Punkten erfassen.
+
+In vier Dimensionen hat ein antisymmetrischer Tensor zweiter Stufe genau sechs unabhängige Komponenten, entsprechend den drei unabhängigen Raumkomponenten von $\vec{E}$ und $\vec{B}$. Wir definieren den Faraday-Tensor
+\[
+F_{\mu\nu}
+= 
+\begin{pmatrix}
+	0 & -E_1/c & -E_2/c & -E_3/c \\
+	E_1/c &  0 &  B_3 & -B_2 \\
+	E_2/c & -B_3 &  0 &  B_1 \\
+	E_3/c &  B_2 & -B_1 &  0 \\
+\end{pmatrix}.
+\]
+
+Die Komponenten der elektrischen Feldstärke erscheinen in den gemischten Raum-Zeit-Komponenten $F_{0\nu}$ mit $\nu=1,2,3$. Dies spiegelt wider, dass elektrische Felder in dieser Darstellung mit Raum-Zeit-Flächen verbunden sind. Die Komponenten der magnetischen Flussdichte treten in den rein räumlichen Indizes $F_{\mu\nu}$ mit $\mu,\nu>0$ auf, was ihrer Verknüpfung mit Flächen im Raum entspricht. Diese Struktur passt zu der in Kapitel \ref{maxwell:motivation} beschriebenen Situation: In einem Koordinatensystem, das mit einer bewegten Ladung mitgeführt wird, kann ein Magnetfeld verschwinden, sodass nur noch ein elektrisches Feld bleibt. Bei einer anderen Wahl der Raum-Zeit-Koordinaten erscheinen beide Felder gleichzeitig. Der Faraday-Tensor vereint diese Sichtweisen in einem einheitlichen mathematischen Objekt.
+
+Die Faktoren $1/c$ bei den $\vec{E}$-Komponenten stellen sicher, dass alle Einträge dieselben physikalischen Einheiten besitzen.
+
+
+
+%Für unsere Berechnungen benötigen wir ein mathematisches Objekt...
+%Das Ziel ist es, e und bfeld zu vereinheitlichen
+%es soll algemein kovariant sein, deshalb tensor
+%4d
+%lorentztransformatio erwähnen
+
+
+%zweiform
+%allgemein kovariant
+%e und b

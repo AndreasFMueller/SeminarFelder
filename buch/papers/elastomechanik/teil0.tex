@@ -6,9 +6,74 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 0\label{elastomechanik:section:teil0}}
-\kopfrechts{Teil 0}
-Sofia Aaltonen!
-Rafael!!
+\section{Einleitung}
+\label{elastomechanik:section:Einleitung}
+\kopfrechts{Einleitung}%
+Wer schon einmal ein Stück Knetmasse in der Hand gedrückt hat, hat
+dabei ganz praktisch erlebt, wie sich Materialien unterschiedlich
+verhalten können.
+Während die Knete seitlich ausweicht, wenn man sie zusammendrückt,
+\index{Knetmasse}%
+gibt es andere Materialien, die sich nur schwer verformen lassen und
+dabei ihr Volumen nahezu beibehalten.
+Willkommen in der faszinierenden Welt der Elastizitätstheorie!
+In diesem Kapitel der Seminararbeit über Felder beschäftigen wir
+uns mit der mathematischen Beschreibung elastischer Materialien.
+\index{elastisches Material}%
+Ziel ist es, Deformationen, also Formänderungen infolge äusserer
+Belastungen, zu berechnen und zu verstehen, wie sich Körper unter
+Krafteinwirkung verhalten.
+\index{Deformtion}%
+Ein zentrales Modell zur Beschreibung dieses Verhaltens ist das sogenannte
+hookesche Gesetz.
+\index{hooksches Gesetz}%
+\index{Gesetz!hookesch}%
+Es stellt in seiner einfachsten Form einen linearen Zusammenhang
+zwischen mechanischer Spannung $\sigma$ Kraft pro Fläche und Dehnung
+$\varepsilon$ relative Längenänderung her:
+	\begin{equation*}
+		\sigma = 
+		E \cdot \varepsilon.
+	\end{equation*}
+Der Proportionalitätsfaktor $E$ ist der \emph{Elastizitätsmodul}
+eines Materials.
+\index{Elastizitatsmodul@Elastizitätsmodul}%
+Er beschreibt wie steif ein Material ist.
+Je grösser $E$ desto weniger lässt es sich dehnen oder stauchen.
+Für eine vollständige Beschreibung des Materialverhaltens insbesondere
+im dreidimensionalen Raum genügt diese einfache Beziehung jedoch
+nicht.
+In der Regel benötigt man zwei Materialkonstanten,
+um das mechanische Verhalten realistisch zu modellieren.
+Hier lohnt sich ein Blick auf zwei extreme Beispiele:
+\begin{description}
+\item[\textbf{Inkompressible Materialien}] wie Gummi behalten ihr
+Volumen unter Belastung nahezu gleich.
+\index{inkompressibel}%
+Wird Druck ausgeübt weichen sie zur Seite aus.
+Dies lässt sich physikalisch durch eine hohe Poisson-Zahl beschreiben.
+\index{Poisson-Zahl}%
+\item[\textbf{Kompressible Materialien}] wie Schaumstoff reagieren
+hingegen stark auf Volumenänderung.
+\index{kompressibel}%
+Sie lassen sich leicht zusammendrücken wobei sich ihr Volumen
+deutlich reduziert.
+Dies lässt sich physikalisch durch das sogenannte \emph{Kompressionsmodul}
+beschreiben.
+\index{Kompressionsmodul}%
+\end{description}
 
-
+Solche Beobachtungen aus dem Alltag lassen sich mithilfe der Mathematik analysieren.
+Im Verlauf dieser Arbeit werden wir dazu Felder einführen, die die
+räumliche Verteilung von Kräften, Spannungen und Verformungen beschreiben.
+\index{Kraft}%
+\index{Spannung}%
+\index{Verformung}%
+Auf dieser Grundlage entwickeln wir mathematische Modelle insbesondere
+in Form partieller Differentialgleichungen die das elastische Verhalten
+von Körpern präzise abbilden.
+\index{partielle Differentialgleichung}%
+\index{Differentialgleichung!partiell}%
+Mathematik trifft hier auf physikalische Intuition ein spannendes
+Zusammenspiel, das nicht nur theoretisch herausfordernd, sondern auch
+praktisch äusserst relevant ist.

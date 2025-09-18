@@ -1,25 +1,354 @@
 %
-% einleitung.tex -- Beispiel-File für die Einleitung
+% teil0.tex -- Theorie
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 0\label{reynolds:section:teil0}}
-\kopfrechts{Teil 0}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{reynolds:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
+\section{Theorie\label{reynolds:section:teil0}}
+\kopfrechts{Theorie}%
+%
+Im folgenden Abschnitt wird kurz erläutert, wie man von den berühmten Navier-Stokes-Gleichung
+\index{Navier-Stokes-Gleichung}%
+durch mathematische Umformungen auf die zeitgemittelten RANS-Gleichun\-gen kommt.
+\index{zeitgemittelt}%
+%
+Ziel dieser Umformungen ist es, die Möglichkeit zu schaffen, mittels zusätzlicher Felder
+die mittleren Effekte von Eddies zwischen zwei Zeitschritten so zu beschreiben, dass sich die
+Effekte in die Navier-Stokes-Gleichung einfügen lassen.
+%
+\subsection{Die Navier-Stokes-Gleichung}
+%
+Die Navier-Stokes-Gleichungn für ein viskoses, inkompressibles, newtonisches Fluid lauten
+\index{viskos}%
+\index{inkompressibel}%
+\index{newtonsches Fluid}%
+%
+\begin{equation}
+    \label{reynolds:eqs:impulse}
+    \frac{\partial u_i}{\partial t} + u_j \frac{\partial u_i}{\partial x_j} =
+        f_i - \frac{1}{\rho} \frac{\partial p}{\partial x_i} + 
+        \nu \frac{\partial^2 u_i}{\partial x_j\, \partial x_j},\quad\text{für $i = 1,2,3$},
+\end{equation}
+%
+wobei $u_i$ die Komponenten des Flussgeschwindigkeitsvektors und $p$ den Druck bezeichnet.
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
-
-
+Eine weitere fundamentale Gleichung, die das Verhalten eines Fluids beschreibt, ist die \emph{Kontinuitätsgleichung},
+\index{Kontinuitatsgleichung@Kontinuitätsgleichung}%
+welche die Tatsache abbildet, dass Masse erhalten bleibt, das heisst in einem gegebenen Volumen Fluid keine Masse
+entstehen oder verschwinden kann, ausser sie fliesst über die Volumengrenze. Für ein inkompressibles Fluid lautet sie
+%
+\begin{equation}
+    \label{reynolds:eqs:mass}
+    \frac{\partial u_i}{\partial x_i} = 0.
+\end{equation}
+%
+Die Gleichungen machen Gebrauch von der \emph{einsteinschen Summenkonvention}: Über Indizes, welche in einem Term doppelt
+\index{einsteinsche Summenkonvention}%
+erscheinen, wird summiert, so wird zum Beispiel der Diffusionsterm aus Gleichung \eqref{reynolds:eqs:impulse} wie folgt aufgelöst:
+%
+\begin{equation}
+u_j \frac{\partial u_i}{\partial x_j} = \sum_{j=1}^{3} u_j \frac{\partial u_i}{\partial x_j}
+\end{equation}
+%
+Die Terme lassen sich wie folgt beschreiben:
+%
+\begin{enumerate}
+    \item $\frac{\partial u_i}{\partial x_i} = \operatorname{div}(\mathbf{u})$: \emph{Massengenerierung}.
+\index{Massengenerierung}%
+    Aufgrund des Massenerhalts $ = 0$.
+    \item $\frac{\partial u_i}{\partial t}$: Die zeitliche Änderung der Flussgeschwindigkeit, also die 
+        Impulsänderung, an einem fixen, örtlichen Punkt.
+\index{Impulsanderung@Impulsänderung}%
+    \item $u_j \frac{\partial u_i}{\partial x_j}$: Die Konvektion, also die Impulsänderung durch \emph{Abfliessen}
+\index{Konvektion}%
+\index{Abfliessen}%
+        von bewegten Teilchen.
+    \item $f_i$: Andere, allgemeine \emph{innere} Kräfte, typischerweise die Gravitation.
+\index{innere Kraft}%
+\index{Gravitation}%
+    \item $\frac{1}{\rho} \frac{\partial p}{\partial x_i}$: Das Druckgefälle.
+\index{Druchgefalle@Druckgefälle}%
+    \item $\nu \frac{\partial^2 u_i}{\partial x_j\, \partial x_j} \overset{\text{def}}{=} \nu \Delta u_i$: Die Diffusion, also Änderung des Impulses
+\index{Diffusion}%
+        aufgrund mikroskopischer Kollisionen und anderer Wechselwirkungen von Teilchen bzw.
+        makroskopischer Reibung.
+\end{enumerate}
+%
+\subsection{Die Reynolds-Zerlegung}
+%
+Für eine gegebene zeitliche Schrittgrösse $\Delta t$ wird die \emph{Reynolds-Zerlegung} von $u_i$ zur Zeit $t = t_0$
+\index{Reynolds-Zerlegung}%
+wie folgt definiert:
+%
+\newcommand{\ravg}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\rdecomp}[1]{\ensuremath{\ravg{#1} + #1'}}
+%
+\begin{equation}
+    \label{reynolds:eqs:reynolds-decomp}
+    u_i = \rdecomp{u_i},
+\end{equation}
+%
+wobei der Operator $\ravg{\cdot}$ der Mittelwert
+%
+\begin{equation}
+    \ravg{g} = \frac{1}{\Delta t}\int_{t=t_0}^{t_0 + \Delta t} g \,dt
+\end{equation}
+%
+für eine beliebige Funktion $g$ über das Zeitintervall $\Delta t$ ist.
+%
+$u_i(t)$ wird also in den mittleren Teil $\ravg{u_i}$, welcher über den Zeitraum
+$\Delta t$ konstant bleibt, und den transienten Teil $u_i'(t) = u_i(t) - \langle u_i \rangle$
+zerlegt.
+%
+Aus der Definition des Operators $\ravg{\cdot}$ folgen die Eigenschaften:
+%
+\begin{align}
+    \ravg{\ravg{a}} &= \ravg{a} \\
+    \ravg{a + b} &= \ravg{a} + \ravg{b} \\
+    \ravg{a \ravg{b}} &= \ravg{a} \ravg{b} \\
+    \label{reynolds:eqs:ravg-partial}
+    \biggl\langle\frac{\partial a}{\partial x_i}\biggr\rangle &=
+        \frac{\partial \ravg{a}}{\partial x_i},\quad\text{für $i = 1, 2, 3$}
+\end{align}
+%
+und daher
+%
+\begin{equation}
+    \label{reynolds:eqs:trans-cancel}
+    \ravg{u_i'} = \ravg{u_i - \ravg{u_i}} = \ravg{u_i} - \ravg{u_i} = 0.
+\end{equation}
+%
+\subsection{Turbulenz}
+%
+\emph{Turbulenz} kann auf sehr kleinen zeitlichen und räumlichen Skalen auftreten.
+\index{Turbulenz}%
+\index{Skala}%
+Insbesondere können diese viel kleiner als $\Delta t$ sein. Um die Turbulenz in dieser
+Grössenordnung abbilden zu können, wird eine sehr kleine zeitliche und räumliche Diskretisierung
+\index{Diskretisierung}%
+benötigt. Dies führt zu grossem Rechenaufwand. Meistens sind die Vorgänge unter
+einer gewissen Grössenordnung jedoch nicht von grossem Interesse. Versucht man aber, einfach den Zeitschritt
+(und die Gitterweite) zu erhöhen, ohne die zu lösenden Navier-Stokes-Gleichung
+anzupassen, kann dies zu numerischen Instabilitäten und falschen Ergebnissen führen.
+%
+\subsection{Reynolds-Averaging}
+Eine Art, die Gleichungen anzupassen ist \emph{Reynolds-Averaging}. Mit Reynolds-Averaging verfolgt
+\index{Reynolds-Averaging}%
+man das Ziel, sich auf Phänomene zu fokussieren, die in etwa eine Zeitspanne $\Delta t$ überdauern.
+Zeitlich schnellere Phänomene werden über eine Zeit von $\Delta t$ gemittelt.
+%
+Im ersten Schritt werden die Unbekannten Geschwindigkeit, $u_i$, und Druck, $p$, in den Navier-Stokes-Gleichung
+\eqref{reynolds:eqs:impulse} durch ihre Reynolds-Zerlegungen --- $\rdecomp{u_i}$ und analog für $p$ --- ersetzt und die Gleichung
+mit $\rho$ multipliziert. Wir erhalten dann
+%
+\begin{equation}
+    \label{reynolds:eqs:der1}
+    \rho \biggl( \frac{\partial ( \rdecomp{u_i} )}{\partial t} + (\rdecomp{u_j} ) \frac{\partial ( \rdecomp{u_i} )}{\partial x_j} \biggr) =
+        - \frac{\partial ( \rdecomp{p} )}{\partial x_i} + 
+        \mu \frac{\partial^2 ( \rdecomp{u_i} )}{\partial x_j\, \partial x_j},
+\end{equation}
+%
+mit $\mu = \rho \nu$ und, ohne Beschränkung der Allgemeinheit, $f_i \equiv 0$.
+%
+Mit Hilfe der Produktregel lässt sich der Term
+%
+$$( \rdecomp{u_j} ) \frac{\partial ( \rdecomp{u_i} )}{\partial x_j}$$
+%
+zu
+%
+\begin{equation*}
+    ( \rdecomp{u_j} ) \frac{\partial ( \rdecomp{u_i} )}{\partial x_j} =
+        \frac{\partial \bigl[ ( \rdecomp{u_j} ) ( \rdecomp{u_i} ) \bigr]}{\partial x_j}
+        - \frac{\partial ( \rdecomp{u_j} )}{\partial x_j} ( \rdecomp{u_i} )
+\end{equation*}
+umformen.
+%
+Aus dem Massenerhalt (Gleichung \eqref{reynolds:eqs:mass}) folgt
+%
+\begin{equation*}
+    \frac{\partial ( \rdecomp{u_j} )}{\partial x_j} = 0
+\end{equation*}
+%
+und somit
+%
+\begin{equation}
+    \label{reynolds:eqs:der2}
+    ( \rdecomp{u_j} ) \frac{\partial ( \rdecomp{u_i} )}{\partial x_j} =
+        \frac{\partial \bigl[ ( \rdecomp{u_j} ) ( \rdecomp{u_i} ) \bigr]}{\partial x_j}.
+\end{equation}
+%
+Setzen wir Gleichung \eqref{reynolds:eqs:der2} in Gleichung \eqref{reynolds:eqs:der1} ein, erhalten wir
+%
+\begin{align*}
+    \rho \biggl(
+            \frac{\partial ( \rdecomp{u_i} )}{\partial t} +
+            \frac{\partial \bigl[ ( \rdecomp{u_j} ) ( \rdecomp{u_i} ) \bigr]}{\partial x_j}
+        \biggr) &=
+    - \frac{\partial ( \rdecomp{p} )}{\partial x_i} + 
+    \mu \frac{\partial^2 ( \rdecomp{u_i} )}{\partial x_j\, \partial x_j}
+\intertext{oder nach Ausmultiplizieren}
+    \rho \biggl(
+            \frac{\partial ( \rdecomp{u_i} )}{\partial t} +
+            \frac{\partial \bigl[ \ravg{u_i} \ravg{u_j}  + \ravg{u_j} u_i' + u_j' \ravg{u_i} + u_j' u_i' \bigr]}{\partial x_j}
+        \biggr) &=
+    - \frac{\partial ( \rdecomp{p} )}{\partial x_i} + 
+    \mu \frac{\partial^2 ( \rdecomp{u_i} )}{\partial x_j\, \partial x_j}.
+\end{align*}
+%
+Als nächstes wird auf beide Seiten der Gleichung der Operator $\ravg{\cdot}$ angewendet.
+Aufgrund von Gleichung \eqref{reynolds:eqs:trans-cancel} fallen die transienten Terme somit
+weg und es bleibt:
+%
+\begin{equation*}
+    \rho \biggl(
+            \frac{\partial \ravg{u_i}}{\partial t} +
+            \frac{\partial \bigl[ \ravg{u_i} \ravg{u_j} + \ravg{u_i' u_j'} \bigr]}{\partial x_j}
+        \biggr) =
+        - \frac{\partial \ravg{p}}{\partial x_i} + 
+        \mu \frac{\partial^2 \ravg{u_i}}{\partial x_j\, \partial x_j}.
+\end{equation*}
+%
+Der Term 
+%
+$$\rho \frac{\partial \ravg{u_i' u_j'}}{\partial x_j}$$
+%
+wird auf die andere Seite des Gleichheitszeichens in den Term 
+%
+$$\mu \frac{\partial^2 \ravg{u_i}}{\partial x_j\, \partial x_j}$$
+%
+gezogen:
+%
+\begin{equation*}
+    \rho \biggl(
+            \frac{\partial \ravg{u_i}}{\partial t} +
+            \frac{\partial ( \ravg{u_i} \ravg{u_j})}{\partial x_j}
+        \biggr) =
+        - \frac{\partial \ravg{p}}{\partial x_i} + 
+            \frac{\partial}{\partial x_j} 
+                \biggl(
+                    \mu \frac{\partial \ravg{u_i}}{\partial x_j} - \rho \ravg{u_i' u_j'}
+                \biggr).
+\end{equation*}
+%
+Mit der Vereinfachung
+%
+\begin{align*}
+    \frac{\partial ( \ravg{u_i} \ravg{u_j})}{\partial x_j} &=
+    \frac{\partial \ravg{u_i}}{\partial x_j} \ravg{u_j} +
+    \ravg{u_i} \frac{\partial \ravg{u_j}}{\partial x_j} \\
+    &= \frac{\partial \ravg{u_i}}{\partial x_j} \ravg{u_j} +
+    \ravg{u_i} \ravg{\frac{\partial u_j}{\partial x_j}} \\
+    &= \frac{\partial \ravg{u_i}}{\partial x_j} \ravg{u_j}
+\end{align*}
+%
+(Kettenregel, Gleichungen \eqref{reynolds:eqs:ravg-partial} und \eqref{reynolds:eqs:mass}) erhalten wir schlussendlich
+%
+\begin{align}
+    \label{reynolds:eqs:rans}
+    \rho \biggl(
+            \frac{\partial \ravg{u_i}}{\partial t} +
+            \frac{\partial \ravg{u_i}}{\partial x_j} \ravg{u_j}
+        \biggr) &=
+        - \frac{\partial \ravg{p}}{\partial x_i} + 
+            \frac{\partial}{\partial x_j}
+            \biggl(
+                \mu \frac{\partial \ravg{u_i}}{\partial x_j} - \rho \ravg{u_i' u_j'}
+            \biggr),\quad\text{für $i=1,2,3$}.
+\end{align}
+%
+Die Gleichung \eqref{reynolds:eqs:rans} stellt die
+\emph{Reynolds-gemittelten Navier-Stokes-Gleichung} (oder englisch \emph{Reynolds-averaged
+\index{Reynolds-gemittelte Navier-Stokes-Gleichung}%
+\index{Reynolds-averaged Navier-Stokes}%
+Navier-Stokes (RANS)})-Gleichung dar.
+\index{RANS}%
+Verblüfend ist dabei wie sehr die gemittelten-Navier-Stokes-Gleichungen den normalen Navier-Stokes-Gleichen ähnlich sind.
+Dies auch weil der einzige Term, in dem die transienten Anteile vorkommen,
+der Term
+%
+\begin{equation*}
+    \frac{\partial(- \rho \ravg{u_i' u_j'})}{\partial x_j}
+\end{equation*}
+ist.
+%
+Er enthält die Korrelation
+%
+\[
+- \rho \ravg{u_i' u_j'}
+\]
+%
+zwischen den Transienten der verschiedenen Raumkoordinaten und wird auch als \emph{Reynolds-Spannungstensor}
+\index{Reynolds-Spannungstensor}%
+bezeichnet, und bringt eine Art zusätzlichen Impuls, für die zeitlich Gemittelten Phänomene, in die Gleichung ein.
+Der Reynolds-Spannungstensor sieht folgendermassen aus:
+%
+\begin{equation*}
+    R_{ij} = -\rho \langle u'_iu'_j\rangle
+    \qquad\text{oder als Matrix}\qquad
+    R
+    =
+    \begin{pmatrix}
+        R_{11} & R_{12} & R_{13} \\
+        R_{21} & R_{22} & R_{23} \\
+        R_{31} & R_{32} & R_{33}
+    \end{pmatrix},
+\end{equation*}
+%
+wobei die Diagonalen $R_{11}$, $R_{22}$ und $R_{33}$ die drei Normalspannungen sind
+und die zusammengesetzten Terme $R_{12} = R_{21}$, $R_{13} = R_{31}$ und $R_{23} = R_{32}$ die Schubspannungen darstellen.
+%
+\subsection{Beispiel anhand von k-$\epsilon$}
+%
+Sofort ist ersichtlich, dass für das Befüllen des Reynolds-Spannungstensor sechs Grössen notwendig sind.
+Turbulenzmodelle reduzieren dies auf (meist) zwei zu berechnende Skalarfelder.
+\index{Turbulenzmodell}%
+\index{Skalarfeld}%
+%
+%
+In Abbildung~\ref{fig:e} und \ref{fig:k} sind die beiden Skalarfelder des k-$\epsilon$-Modells dargestellt.
+Mit den beiden Feldern k und $\epsilon$ kann die turbulente Viskosität $\mu_t$ (auch wiederum ein Skalarfeld) wie
+\index{turbulente Viskositat@turbulente Viskosität}%
+folgt berechnet werden:
+%
+\begin{equation}
+    \label{eqs:Turbulent-Viscosity}
+    \mu_t = \rho C_\mu \frac{k^2}{\epsilon},
+\end{equation}
+wobei $C_\mu \approx 0.09$ eine Modellkonstante ist.
+%
+Die turbulente Viskosität ist in Abbildung~\ref{fig:mu-t} dargestellt.
+Der Wert der turbulenten Viskosität ist dort am höchsten, wo die meisten Turbulenzen auftreten.
+Die Abbildung~\ref{fig:mu-t} ist dafür ein sehr anschauliches Beispiel,
+da man genau an den Orten mit den höchsten Werten der turbulenten Viskosität die vollständige Ablösung
+der Grenzschicht erwarten würde\footnote{Im Bereich nach der Ablösung der Grenzschicht entstehen die meisten Turbulenzen.}.
+%
+Damit können alle sechs Terme des Reynolds-Spannungstensors folgendermassen berechnet werden:
+%
+Die diagonalen Terme $R_{11}$, $R_{22}$ und $R_{33}$ sind
+%
+\begin{equation}
+    R_{ii} = 2 \mu_t \frac{\partial u_i}{\partial x_i} - \frac{2}{3}\rho k,
+\end{equation}
+%
+und die Terme $R_{12} = R_{21}$, $R_{13} = R_{31}$ und $R_{23} = R_{32}$ sind
+%
+\begin{equation}
+    R_{ij} = R_{ji} = \mu_t \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right).
+\end{equation}
+%
+\begin{figure}
+  \centering
+  \includegraphics[width=0.99\textwidth]{papers/reynolds/croppedimages/eddy-viscosity.png}
+  \caption{Eddy Viscosity ($\epsilon$-Feld)}
+  \label{fig:e}
+  \vspace*{16pt}
+  \includegraphics[width=0.99\textwidth]{papers/reynolds/croppedimages/turbulence-kinetic-energy.png}
+  \caption{Turbulente Kinetische Ernergie (k-Feld)}
+  \label{fig:k}
+  \vspace*{16pt}
+  \includegraphics[width=0.99\textwidth]{papers/reynolds/croppedimages/turbulent-viscosity.png}
+  \caption{Turbulente Viskosität}
+  \label{fig:mu-t}
+\end{figure}

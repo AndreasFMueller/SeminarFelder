@@ -6,53 +6,91 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
-\label{geostrophisch:section:teil1}}
+\section{Geostrophischer Wind
+\label{geostrophisch:section:geoWind}}
 \kopfrechts{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+
+
+\subsection{Coriolis-Kraft
+\label{geostrophisch:subsection:coriolis}}
+Die \emph{Coriolis-Kraft}, welche durch die Rotation der Erde entsteht, beeinflusst die Bewegung von Luftmassen und anderen frei beweglichen Körpern auf der Erdoberfläche. Sie ist eine Scheinkraft, die nur in einem rotierenden Bezugssystem wie dem der Erde auftritt. Die Stärke hängt von der geografischen Breite ab und nimmt in Richtung der Pole zu.
+\index{Coriolis-Kraft}%
+Der Coriolis-Parameter $f$ beschreibt diese Abhängigkeit und ist definiert als 
+\index{Coriolis-Parameter}%
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{geostrophisch:equation1}
+f\, 
+= 
+2\Omega\sin(\varphi)
+\label{geostrophisch:equation1}.
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+In dieser Gleichung steht $\Omega$ für die Winkelgeschwindigkeit der Erdrotation und $\varphi$ für die geografische Breite auf der Erdoberfläche.
+Die Coriolis-Kraft wirkt immer senkrecht zur Bewegungsrichtung. In der Meteorologie betrachtet man sie in der Regel pro Masseneinheit, da sich die Masse eines Luftpakets nicht eindeutig festlegen lässt. Auf der Nordhalbkugel lenkt sie Bewegungen nach rechts ab, auf der Südhalbkugel nach links. Mathematisch lässt sie sich für eine Geschwindigkeit $\vec{v}_g $ mit Hilfe des Kreuzproduktes darstellen. 
+\index{Luftpaket}%
+Die Coriolis-Kraft pro Masseneinheit ergibt sich aus der Formel
+\begin{equation}
+\frac{\vec{F}_c} {m}
+= 
+-f\, (\vec{k} \times \vec{v}_g) 
+\label{geostrophisch:equation2},
+\end{equation}
+wobei $\vec{k}$ ein Einheitsvektor ist, der lokal in vertikaler Richtung, das heisst senkrecht zur Erdoberfläche (radial nach aussen vom Erdmittelpunkt), zeigt.
+Das Kreuzprodukt von $\vec{k}$ mit  $\vec{v}_g $ sorgt dafür, dass die Coriolis-Kraft immer genau senkrecht zur Bewegungsrichtung wirkt.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+\subsection{Gradientenkraft
+\label{geostrophisch:subsection:gradient}}
+Die \emph{Gradientenkraft} ist die treibende Kraft pro Masseneinheit, die entsteht, wenn zwischen zwei Orten ein Druckunterschied besteht. Sie wirkt immer von Gebieten mit hohem Druck in Richtung niedrigen Drucks und ist die wichtigste antreibende Kraft für Luftbewegungen in der Atmosphäre. Je grösser der Druckunterschied über eine bestimmte Entfernung, desto stärker ist die Gradientenkraft.
+\index{Gradientkraft}%
+Mathematisch lässt sie sich wie folgt beschreiben:
+\begin{equation}
+\frac{\vec{F}_p} {m}
+= 
+-\frac{1}{\rho} \nabla p
+\label{geostrophisch:equation4},
+\end{equation}
+wobei $\rho$ die Luftdichte und $\nabla p$ der Druckgradient ist. 
+Der negative Vorfaktor zeigt, dass die Kraft immer in Richtung des abnehmenden Drucks wirkt.
 
-\subsection{De finibus bonorum et malorum
-\label{geostrophisch:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{geostrophisch:equation1}.
+Die Gradientenkraft setzt Luftmassen in Bewegung, da sie ein Ungleichgewicht im Druckfeld ausgleicht. Ohne weitere Kräfte wie die Coriolis-Kraft würde die Luft somit direkt vom Hochdruckgebiet in das Tiefdruckgebiet strömen.
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{geostrophisch:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{geostrophisch:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+\subsection{Geostrophischer Wind}
+
+Der \emph{geostrophische Wind} ist eine idealisierte Luftströmung, bei der sich die Druckgradientkraft und die Coriolis-Kraft im Gleichgewicht befinden. In diesem Fall bewegt sich die Luft parallel zu den \emph{Isobaren} (Linien gleichen Drucks). Auf der Nordhalbkugel befindet sich das Tiefdruckgebiet dabei stets zur linken Seite der Strömungsrichtung, auf der Südhalbkugel ist es umgekehrt.
+\index{geostrophischer Wind}%
+\index{Isobaren}%
+
+Diese Näherung gilt besonders gut in der freien Atmosphäre oberhalb der Reibungsschicht (ca. 1 km Höhe), wo Reibungskräfte vernachlässigbar sind. 
+\index{Reibungskrafte@Reibungskräfte}%
+
+\begin{figure}
+    	\centering
+    	\includegraphics[scale=0.4]{ideal.jpeg}
+  	 \caption{Idealer geostrophischer Wind, welcher parallel zu den Isobaren weht.}
+   	\label{bild:ideal}
+\end{figure}
+
+\begin{figure}
+    	\centering
+    	\includegraphics[scale=0.35]{real.png}
+  	 \caption{Reale Wetterkarte mit Windpfeilen, die nicht exakt parallel zu den Isobaren verlaufen, zum Beispiel durch Reibung in Bodennähe.}
+   	\label{bild:real}
+\end{figure}
+
+\begin{figure}
+    	\centering
+    	\includegraphics[scale=0.4]{Reibung.jpg}
+  	 \caption{Eine grafische Darstellung, die den Einfluss von Reibung in Bodennähe zeigt. Die Einheit mb steht für Millibar. Heutzutage verwendet man hPa (Hektopascal), 1\,mb = 1\,hPa,}
+   	\label{bild:reibung}
+\end{figure}
+
+
+Wichtiger Hinweis zur Idealisierung:
+Der geostrophische Wind ist ein nützliches Modell, um die grossskalige Strömung in der Atmosphäre zu beschreiben. In der Realität treten jedoch Abweichungen auf, insbesondere in Bodennähe, wo Reibung den Wind abbremst und in Richtung niedriger Drücke ablenkt. Auch komplexe Topografie und instationäre Wettersituationen können dazu führen, dass der Idealzustand nicht erreicht wird.
+\index{Topografie}%
+Diese Abweichungen werden in Abschnitt~\ref{geostrophisch:subsection:failedPrediction} (Grund der fehlerhaften Vorhersage) nochmals aufgegriffen.
+
+
+
+
+
 
 

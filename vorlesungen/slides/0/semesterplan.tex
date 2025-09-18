@@ -1,0 +1,109 @@
+%
+% semesterplan.tex -- Semesterplan
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\bgroup
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\def\w#1#2{#1{\tiny/#2}}
+\begin{frame}[t]
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+%\frametitle{Semesterplan}
+\vspace*{-3pt}
+\begin{center}
+\hspace*{-4pt}
+\begin{tabular}{|r|r|l|}
+\hline
+\rowcolor{black}
+\color{white}\bf Wo&
+\color{white}\bf Datum&
+\color{white}\bf Inhalt\raisebox{3pt}{\strut}
+\\[1pt]
+\hline
+\rowcolor{darkgreen!10}
+\color<1>{darkred} \w{1}{\phantom{0}8}&
+\color<1>{darkred} 17.~2.&
+\color<1>{darkred}Koordinaten \raisebox{2pt}{\strut}
+\\
+\rowcolor{darkgreen!10}
+\color<2>{darkred} \w{2}{\phantom{0}9}&
+\color<2>{darkred} 24.~2.&
+\color<2>{darkred}Tangentialvektoren, 1-Formen, Wegintegral
+\\
+\rowcolor{darkgreen!10}
+\color<3>{darkred} \w{3}{10}&
+\color<3>{darkred}  3.~3.&
+\color<3>{darkred}Wegabhängigkeit, 2-Vektoren und 2-Formen, Satz von Green
+\\
+\rowcolor{darkgreen!10}
+\color<4>{darkred} \w{4}{11}&
+\color<4>{darkred} 10.~3.&
+\color<4>{darkred}Integration von 2-Formen, Satz von Stokes, äussere Ableitung
+\\
+\rowcolor{darkgreen!10}
+\color<5>{darkred} \w{5}{12}&
+\color<5>{darkred} 17.~3.&
+\color<5>{darkred}$p$-Formen, Divergenz, Satz von Gauss
+\\
+\rowcolor{darkgreen!10}
+\color<6>{darkred} \w{6}{13}&
+\color<6>{darkred} 24.~3.&
+\color<6>{darkred}Hodge-Operator, Laplace-Operator, Feldgleichungen der Physik
+\\
+\rowcolor{darkgreen!10}
+\color<7>{darkred} \w{7}{14}&
+\color<7>{darkred} 31.~3.&
+\color<7>{darkred}Paralleltransport, Zusammenhang, Geodäten
+\\
+\rowcolor{gray!40}
+\color{white}\w{  }{15}&
+\color{white}  7.~4.&
+\color{white}keine Vorlesung, Frühjahrsferien
+\\
+\rowcolor{darkgreen!10}
+\color<8>{darkred}\w{8}{16}&
+\color<8>{darkred} 14.~4.&
+\color<8>{darkred}Krümmung
+\\
+\rowcolor{gray!40}
+\color{white}\w{  }{17}&
+\color{white} 21.~4.&
+\color{white}keine Vorlesung, Ostermontag
+\\
+\rowcolor{blue!10}
+\color<9>{darkred}\w{9}{18}&
+\color<9>{darkred} 28.~4.&
+\color<9>{darkred}Vorträge 1: Geometrische Algebra, Geostrophische Näherung
+\\
+\rowcolor{blue!10}
+\color<10>{darkred}\w{10}{19}&
+\color<10>{darkred}  5.~5.&
+\color<10>{darkred}Vorträge 2: Überschall, RANS
+\\
+\rowcolor{blue!10}
+\color<11>{darkred}\w{11}{20}&
+\color<11>{darkred} 12.~5.&
+\color<11>{darkred}Vorträge 3: Wirbelringe, Elastizitätstheorie
+\\
+\rowcolor{blue!10}
+\color<12>{darkred}\w{12}{21}&
+\color<12>{darkred} 19.~5.&
+\color<12>{darkred}Vorträge 4: Nervenfasern, Waves to particles
+\\
+\rowcolor{blue!10}
+\color<13>{darkred}\w{13}{22}&
+\color<13>{darkred} 26.~5.&
+\color<13>{darkred}Vorträge 5: OpenFOAM, Parallelisierung, neuronale Lösung
+\\
+\rowcolor{blue!10}
+\color<14>{darkred}\w{14}{23}&
+\color<14>{darkred}  2.~6.&
+\color<14>{darkred}Vorträge 6: Vierdimensional, Fourier. Abschlusssitzung
+\\[1pt]
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+\egroup

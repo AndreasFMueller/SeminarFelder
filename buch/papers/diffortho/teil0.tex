@@ -8,11 +8,12 @@
 %
 \section{Orthogonale Koordinaten\label{diffortho:section:orthokoord}}
 \kopfrechts{Orthogonale Koordinaten}
+\input{papers/diffortho/fig/fig-polar.tex}%
 Die wohlbekannten Koordinatensysteme wie kartesische Koordinaten oder
 Polarkoordinaten sind nicht beliebig.
 Sie haben die zusätzliche Eigenschaft, dass die Koordinatenlinien
-orthogonal sind, wie dies in Abbildung~\ref{XXX} am Beispiel der
-Polarkoordinaten gezeigt wird.
+orthogonal sind, wie dies in Abbildung~\ref{diffortho:fig:polar}
+am Beispiel der Polarkoordinaten gezeigt wird.
 Es gilt daher zunächst, diese Eigenschaft zu charakterisieren.
 
 \begin{definition}
@@ -335,5 +336,57 @@ g_3
 \]
 die sofort durch Nachrechnen als orthonormiert verifiziert werden können.
 \end{beispiel}
+
+Komplex differenzierbare Funktionen
+$f\colon\mathbb{C}\to\mathbb{C}:z\mapsto f(z)$
+stellen konform Abbildungen der komplexen Ebene dar.
+Die durch
+\[
+y^1 + y^2i
+=
+f(x^1 + x^2i)
+\]
+definierte eine orthogonale Koordinatentransformation.
+\input{papers/diffortho/fig/fig-bipolar.tex}%
+Die Abbildung~\ref{diffortho:fig:bipolar} zeigt als Beispiel
+die durch die meromorphe Funktion $f(z) = \coth(z)$ definiert
+Abbildung.
+Durch Einsetzen der Definition der hyperbolischen Cotangens-Funktion
+und Anwendung der Additionstheoreme kann die reelle Schreibweise der
+Funktion als
+%(%i3) trigsimp(realpart(z))
+%                   sinh(2 u) cos(2 v) + cosh(2 u) sinh(2 u)
+%(%o3)              ----------------------------------------
+%                               2            2
+%                            sin (2 v) + sinh (2 u)
+%(%i4) trigsimp(imagpart(z))
+%                         (cos(2 v) + cosh(2 u)) sin(2 v)
+%(%o4)                  - -------------------------------
+%                                2            2
+%                             sin (2 v) + sinh (2 u)
+\begin{align*}
+y^1
+&=
+\frac{
+\sinh(2x^1)\cos(2x^2)+\cosh(2x^1)\sinh(2x^1)
+}{
+\sin^2(2x^2)+\sinh^2(2x^1)
+}
+\\
+y^2
+&=
+-\frac{
+(\cos(2x^2)+\cosh(2x^1))\sin(2x^2)
+}{
+\sin^2(2x^2)+\sinh^2(2x^1)
+}
+\end{align*}
+gefunden werden.
+Damit lassen sich die Koordinatenlinien als Linien mit einer
+konstanten Koordinate zeichnen.
+Sie können auch als die Feldlinien und Äquipotentiallinien des
+elekrostatischen Feldes zweier Punktladungen in den Punkten $(\pm,0)$
+der Ebene aufgefasst werden.
+
 
 

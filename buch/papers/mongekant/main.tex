@@ -4,31 +4,53 @@
 % (c) 2020 Autor, OST Ostschweizer Fachhochschule
 %
 % !TEX root = ../../buch.tex
+% !TEX spellcheck = de_CH
 % !TEX encoding = UTF-8
 %
-\chapter{Thema\label{chapter:mongekant}}
-\kopflinks{Thema}
+\newcommand{\wasserstein}[1][p]{\mathcal{W}_{#1}}
+\chapter{Optimaler Transport\label{chapter:mongekant}}
+\kopflinks{Optimaler Transport}
 \begin{refsection}
-\chapterauthor{Hans Muster}
+\chapterauthor{Patrik Müller}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+\noindent
+Wie transportiere ich eine Ladung effizient von A nach B?
+Diese Frage beschäftigt die Menschheit seit jeher ---
+vom Umlagern von Getreidekörnern auf dem Feld
+\index{Getreidekorner@Getreidekörner}%
+bis zum Versenden von Paketen in globalen Logistiknetzen.
+\index{Paket}%
+\index{Logistiknetz}%
+
+Im 18.~Jahrhundert stellte sich der französische Mathematiker Gaspard Monge
+\index{Monge, Gaspard}%
+im Dienste Napoléon Bonapartes genau dieselbe Frage:
+\index{Napoleon Bonaparte@Napoléon Bonaparte}
+Wie kann man Erde von einem Ort zum anderen bewegen,
+um eine Befestigung zu errichten,
+\index{Befestigung}%
+sodass die dafür notwendige Arbeit minimal ist?
+1781 veröffentlichte er ein präzises mathematisches Modell,
+das heute als Monge-Problem des optimalen Transports bekannt ist.
+\index{Monge-Problem}%
+\index{optimaler Transport}%
+
+Im 20.~Jahrhundert erweiterte Leonid Witaljewitch~Kantorowitch das Modell,
+\index{Kantorowitch, Leonid Wialjewitch}%
+indem er einige von Monge aufgestellte Forderungen lockerte.
+Diese Relaxation führt zur linearen Optimierungsformulierung,
+\index{Optimierungsproblem}%
+die heute als Kantorowitch-Problem bezeichnet wird
+\index{Kantorowitch-Problem}%
+und den Grundstein für die moderne Theorie des optimalen Transports legt.
+Für diesen bahnbrechenden Beitrag erhielt Kantorowitch 1975
+den Nobelpreis für Wirtschaftswissenschaften.
+\index{Nobelpreis}%
+
+In diesem Kapitel erläutern wir die mathematischen Grundlagen,
+stellen dann beide Modelle vor und betrachten ihre Eigenschaften.
+Anschliessend diskutieren wir ein paar visuell anschauliche Anwendungen
+des optimalen Transports aus unterschiedlichen Bereichen.
 
 \input{papers/mongekant/teil0.tex}
 \input{papers/mongekant/teil1.tex}

@@ -1,0 +1,139 @@
+%
+% Feldgleichunge, die sich durch zusätzliche Annahmen ergeben
+%
+\section{Feldgleichungen, die sich durch zusätzliche Annahmen ergeben}
+\kopfrechts{Zusätzliche Annahmen}
+Oft lassen sich Feldgleichungen mit Hilfe zusätzlicher Annahmen
+vereinfachen.
+Eine stationäre Lösung einer partiellen Differentialgleichung ist
+eine Lösung, die nicht von der Zeit abhängt, in der also alle
+Zeitableitungen verschwinden.
+
+\subsection{Die Poisson-Gleichung}
+In der Elektrostatik sind die Ladungen, die das elektrostatische
+Feld erzeugen, unbeweglich, und das Feld ändert sich mit der Zeit
+nicht.
+Aus den Maxwell-Gleichungen, die in Kapitel~\ref{chapter:4d}
+ausführlicher diskutiert werden, folgt dann, dass das elektrische
+Feld ein Potentialfeld ist und dass das Potential $\varphi$ die
+Differentialgleichung
+\begin{equation}
+\Delta \varphi = 4\pi \varrho
+\label{buch:feldgleichungen:zusätzlich:eqn:poisson}
+\end{equation}
+erfüllt, wobei $\varrho$ die Ladungsdichte ist.
+Die Gleichung~\eqref{buch:feldgleichungen:zusätzlich:eqn:poisson}
+heisst auch die {\em Poisson-Gleichung}.
+\index{Poisson-Gleichung}%
+Sie tritt zum Beispiel auch bei Minimalflächen in linearer Näherung
+auf, wenn zwischen den beiden Seiten der Fläche ein Druckunterschied
+vorliegt.
+
+\subsection{Die Laplace-Gleichung}
+Aus der Poisson-Gleichung \eqref{buch:feldgleichungen:zusätzlich:eqn:poisson}
+ergibt sich im Vakuum, wo keine Ladungen vorhanden sind, die noch
+einfachere Gleichung
+\[
+\Delta \varphi = 0,
+\]
+die auch die {\em Laplace-Gleichung} genannt wird.
+\index{Laplace-Gleichung}%
+Sie tritt auch im Grenzfall einer stationären Temperaturverteilung
+auf, denn in diesem Fall verschwindet die Zeitableitung in der
+Wärmeleitungsgleichung.
+Die Lösungen der Laplace-Gleichung heissen auch {\em harmonische} 
+Funktionen.
+
+\subsection{Die Helmholtz-Gleichung}
+Die Wellengleichung in zwei Dimension hat die Form
+\[
+\frac{1}{a^2}
+\frac{\partial^2u}{\partial t^2}
+=
+\frac{\partial^2 u}{\partial x^2}
++
+\frac{\partial^2 u}{\partial y^2}.
+\]
+Auch hier kann man einen Separationsansatz versuchen und
+\[
+u(x,y,t) = T(t) v(x,y)
+\]
+ansetzen.
+Einsetzen in die Differentialgleichung ergibt
+\[
+\frac{1}{a^2}
+T''(t) v(x,y)
+=
+T(t)
+\biggl(
+\frac{\partial^2 v}{\partial x^2}
++
+\frac{\partial^2 v}{\partial y^2}
+\biggr).
+\]
+Division durch $u$ separiert die Variablen, den in
+\[
+\frac{1}{a^2}
+\frac{T''(t)}{T(t)}
+=
+\frac{\delta v(x,y)}{v(x,y)}
+\]
+hängt die linke Seite nur von $t$, die rechte nur von $x$ und $y$ ab.
+Beide Seiten sind daher konstant.
+Wir bezeichnen die Konstante mit mit $-\lambda^2$ und bekommen die
+beiden separierten Differentialgleichungen
+\[
+T''(t) = -a^2\lambda^2 T(t)
+\qquad\text{und}\qquad
+\Delta v = -\lambda^2 v.
+\]
+Die Differentialgleichung für $T$ ist eine gewöhnliche
+Schwingungsdifferentialgleichung mit der allgemeinen Lösung
+\[
+T(t) = A\cos a\lambda t + B \sin a\lambda t.
+\]
+Es muss daher nur noch die zweite Differentialgleichung gelöst
+werden.
+In allgemeinster Form ist dies die Gleichung
+\begin{equation}
+\Delta v = \lambda v,
+\end{equation}
+die auch die {\em Helmholtz-Gleichung} heisst.
+\index{Helmholtz-Gleichung}%
+
+
+Bei der schwingenden Saite reduziert sich die Helmholtz-Gleichung
+auf die Differentialgleichung
+\[
+X''(x) = \lambda X(x),
+\]
+die sich ebenfalls mit trigonometrischen Funktionen lösen lässt.
+Auf einem endlichen Intervall der Länge $l$ mit Dirichlet-Randbedingungen
+sind Lösungen nur für $\lambda=n\pi/l$, $n\in\mathbb{N}$ möglich.
+
+Die allgemeine Theorie der Helmholtz-Gleichung zeigt, dass für
+kompakte Gebiete mit ausreichend glattem Rand und Dirichlet-Randbedingungen
+eine diskrete Folge $(\lambda_n)_{n\in\mathbb{N}}$ von möglichen Werten
+für $\lambda$ mit jeweils endlichdimensionalen Lösungsraum der Dimension
+$k(n)$ existiert, aus denen sich alle Lösungen
+\[
+u(x,t)
+=
+\sum_{n=0}^\infty
+\sum_{k=1}^{k(n)}
+\bigl(
+a_n
+\cos a\lambda_n t
++
+b_n
+\sin a\lambda_n t
+\bigr)
+u_{n,k}(x)
+\]
+zusammensetzen lassen, wobei die Funktionen $u_{n,k}$, $k=1,\dots,k(n)$
+eine Basis des Lösungsraumes der Helmholtz-Gleichung für $\lambda=\lambda_n$
+ist.
+
+Auch aus der Wärmeleitungsgleichung auf dem Gebiet $G$ entsteht
+mit Hilfe des obigen Separationsansatzes eine Helmholtz-Gleichung.
+

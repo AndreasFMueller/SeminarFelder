@@ -1,0 +1,23 @@
+/*
+ * Geodäten auf einer Kugel
+ *
+ * (c) 2025 Prof Dr Andreas Müller
+ */
+theta: acos(s * sin(t));
+
+phi: acos(cos(t) / sin(theta));
+
+thetadot:  trigsimp(ratsimp(diff(theta,    t)));
+thetaddot: trigsimp(ratsimp(diff(thetadot, t)));
+
+phidot: diff(phi,t);
+phiddot: diff(phidot, t);
+phidot:  ratsimp(phidot);
+phiddot: ratsimp(phiddot);
+
+etheta: thetaddot - sin(theta) * cos(theta) * phidot^2;
+trigsimp(ratsimp(etheta));
+
+ephi:   phiddot + 2 * cot(theta) * thetadot * phidot;
+trigsimp(ratsimp(ephi));
+

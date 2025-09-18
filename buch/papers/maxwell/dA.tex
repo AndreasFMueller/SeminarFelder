@@ -1,0 +1,149 @@
+\section{$dA = F$
+	\label{maxwell:section:dA}}
+\kopfrechts{$dA = F$}
+Den Faraday-Tensor haben wir definiert als
+\begin{equation}
+	F_{\mu\nu} = \begin{pmatrix}
+		0 & -E_1/c & -E_2/c & -E_3/c \\ E_1/c & 0 & B_3 & -B_2 \\ E_2/c & -B_3 & 0 & B_1 \\ E_3/c & B_2 & -B_1 & 0 
+	\end{pmatrix}.
+	\label{maxwell:section:dA:Faraday-Tensor}
+\end{equation}
+Wir haben gesehen, dass die äussere Ableitung von $F$ verschwindet.
+Aufgrund des Poincaré-Lemmas (Satz~\ref{buch:pformen:geschlossen:satz:poincare-lemma}) wissen wir, dass es eine 1-Form geben muss, deren äussere Ableitung $F$ ergibt.
+\index{Poincare-Lemma@Poincaré-Lemma}%
+Eine solche Differentialform nennt man auch Potentialform.
+\index{Potentialform}%
+Dieser Name lässt die Frage offen, ob man $F$ somit mit einer 1-Form, welche das magnetische Vektorpotential und das elektrische Potential beinhaltet, ausdrücken kann.
+Zuerst ist unser Ziel, die elektrische Feldstärke und magnetische Flussdichte rein mit den beiden Potentialen auszudrücken und dann einen Übergang in die Differentialformen zu schaffen. 
+
+\subsection{$\vec{B}$ und $\vec{E}$ aus Maxwell-Gleichungen herleiten}
+Aus dem gaussschen Gesetz für Magnetfelder
+\begin{equation*}
+	\nabla \cdot \vec{B} = 0
+\end{equation*}
+und der Tatsache, dass jedes divergenzfreie, stetig differenzierbare Vektorfeld als Rotation eines anderen Vektorfelds lokal dargestellt werden kann,
+folgt
+\begin{equation}
+	\label{maxwell:dA;rotA}
+	\vec{B} = \nabla \times \vec{A}.
+\end{equation}
+Diese Beziehung steht in engem Zusammenhang mit dem Prinzip, dass die zweifache äussere Ableitung auf Differentialformen verschwindet. Hier beziehen wir uns aber auf Vektoren.
+
+Das Induktionsgesetz lautet
+\begin{equation}
+	\nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}.
+	\label{maxwell:equation:induktionsgesetz}
+\end{equation}
+Setzt man für $\vec{B}$ dem Ausdruck \eqref{maxwell:dA;rotA} ein, ergibt sich
+\begin{equation*}
+	\nabla \times \vec{E} = - \frac{\partial}{\partial t}(\nabla \times \vec{A}).
+\end{equation*}
+Die Rotation eines Vektorfelds ist linear und daraus folgt
+\begin{equation*}
+	\nabla \times \biggl( \vec{E} + \frac{\partial \vec{A}}{\partial t}\biggr) = 0.
+\end{equation*}
+Ist ein Vektorfeld rotationsfrei, so kann es als Gradient eines Skalarfelds geschrieben werden und wir erhalten
+\begin{equation}
+	\label{maxwell:dA:defE}
+	\vec{E} + \frac{\partial \vec{A}}{\partial t} = -\nabla \varphi \quad \Rightarrow \quad \vec{E} = -\nabla \varphi -\frac{\partial \vec{A}}{\partial t}.
+\end{equation}
+Das Minuszeichen vor dem Gradienten des elektrischen Potentials $\varphi$ ergibt sich daraus, dass das elektrische Feld immer in Richtung des niedrigeren Potentials zeigt.
+
+Jetzt haben wir zwei Formeln gefunden, mit welchen sich die elektrische Feldstärke und die magnetische Flussdichte aus dem elektrischen Potential und dem magnetischen Vektorpotential herleiten lassen.
+\subsection{Potentialform von $F$ finden}
+Aus den beiden hergeleiteten Gleichungen
+\begin{align*}
+	\vec{B} &= \nabla \times \vec{A},\\
+	\vec{E} &= -\nabla \varphi -\frac{\partial \vec{A}}{\partial t}
+\end{align*}
+können wir bereits erkennen, dass die gesuchte 1-Form die drei Komponenten des magnetischen Vektorpotentials und das elektrische Potential enthalten muss.
+Zusätzlich müssen wir auf die Vorzeichen achten und den Faktor $c$, der in der Definition \eqref{maxwell:section:dA:Faraday-Tensor} von $F$ vorkommt, unterbringen.
+Weil im Faraday-Tensor nur die $E$-Teile das $c$ beinhalten, bringen wir dieses beim elektrischen Potential $\varphi$ unter.
+Aufgrund der $({-}{+}{+}{+})$-Metrik wählen wir die Zeitkomponente negativ und die drei Raumkomponenten positiv.
+Wir verwenden also die 1-Form 
+\begin{equation}
+	A = -\frac{\varphi}{c}\,dx^0 + A_1 \,dx^1 + A_2 \,dx^2 + A_3 \,dx^3.
+\end{equation}
+Um nun zu prüfen, was die äussere Ableitung von $A$ ergibt, rechnen wir
+
+\begin{align*}
+	dA &= \phantom{+}
+	\frac{1}{c} \frac{\partial (-\varphi)}{\partial x^1} \,dx^1 \wedge dx^0
+	+ \frac{1}{c}\frac{\partial (-\varphi)}{\partial x^2} \,dx^2 \wedge dx^0
+	+ \frac{1}{c}\frac{\partial (-\varphi)}{\partial x^3} \,dx^3 \wedge dx^0
+	\\
+	&\phantom{=}+ \phantom{\frac{1}{c}} \frac{\partial A_1}{\partial x^0} \,dx^0 \wedge dx^1
+	+ \frac{\partial A_1}{\partial x^2} \,dx^2 \wedge dx^1
+	+ \frac{\partial A_1}{\partial x^3} \,dx^3 \wedge dx^1
+	\\
+	&\phantom{=}+ \phantom{\frac{1}{c}} \frac{\partial A_2}{\partial x^0} \,dx^0 \wedge dx^2
+	+ \frac{\partial A_2}{\partial x^1} \,dx^1 \wedge dx^2
+	+ \frac{\partial A_2}{\partial x^3} \,dx^3 \wedge dx^2
+	\\
+	&\phantom{=}+ \phantom{\frac{1}{c}} \frac{\partial A_3}{\partial x^0} \,dx^0 \wedge dx^3
+	+ \frac{\partial A_3}{\partial x^1} \,dx^1 \wedge dx^3
+	+ \frac{\partial A_3}{\partial x^2} \,dx^2 \wedge dx^3
+	\\[2ex] 
+	&=
+	\,\,\, \left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x^1}-\frac{\partial A_1}{\partial x^0}\right) dx^1 \wedge dx^0 
+	+ \left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x^2}-\frac{\partial A_2}{\partial x^0}\right) dx^2 \wedge dx^0
+	\\
+	&\phantom{=} + \left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x^3}-\frac{\partial A_3}{\partial x^0}\right) dx^3 \wedge dx^0
+	+ \left(\frac{\partial A_1}{\partial x^2}-\frac{\partial A_2}{\partial x^1}\right) dx^2 \wedge dx^1
+	\\
+	&\phantom{=} + \left(\frac{\partial A_1}{\partial x^3}-\frac{\partial A_3}{\partial x^1}\right) dx^3 \wedge dx^1 
+	+ \left(\frac{\partial A_2}{\partial x^3}-\frac{\partial A_3}{\partial x^2}\right) dx^3 \wedge dx^2.				
+\end{align*}
+
+Wir wissen, dass $dx^0 = c\,dt$ entspricht und nutzen dies hier aus, um die Klammerausdrücke besser interpretieren zu können.
+In der Ableitung nach der Koordinate $x^0$ verbirgt sich nämlich noch der Faktor $c$ im Nenner.
+Um dies zu veranschaulichen, wechseln wir kurz in die physikalische Darstellung gemäss \eqref{maxwell:koordinaten} und erhalten
+\begin{align*}
+	dA = \phantom{\frac{1}{c}}
+	& \left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial x}-\frac{1}{c}\frac{\partial A_1}{\partial t}\right) dx \wedge c\,dt 
+	+ \left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial y}-\frac{1}{c}\frac{\partial A_2}{\partial t}\right) dy \wedge c\,dt 
+	\\
+	+ &\left(\frac{1}{c}\frac{\partial (-\varphi)}{\partial z}-\frac{1}{c}\frac{\partial A_3}{\partial t}\right) dz \wedge c\,dt
+	+ \left(\frac{\partial A_1}{\partial y}-\frac{\partial A_2}{\partial x}\right) dy \wedge dx 
+	\\
+	+ &\left(\frac{\partial A_1}{\partial z}-\frac{\partial A_3}{\partial x}\right) dz \wedge dx 
+	+ \left(\frac{\partial A_2}{\partial z}-\frac{\partial A_3}{\partial y}\right) dz \wedge dy.
+\end{align*}
+Setzen wir hier die obigen Formeln für $\vec{B}$ \eqref{maxwell:dA;rotA} und $\vec{E}$ \eqref{maxwell:dA:defE} ein, erhalten wir
+\begin{align*}
+	dA = \phantom{+}
+	\frac{E_1}{c} \,dx &\wedge c\,dt +
+	\frac{E_2}{c} \,dy \wedge c\,dt +
+	\frac{E_3}{c} \,dz \wedge c\,dt
+	\\
+	\, - \, B_3 \, dy &\wedge \phantom{c}dx +
+	\, B_2 \,  \, dz \wedge \phantom{c} dx -
+	\, B_1 \, \, dz \wedge \phantom{c} dy.
+\end{align*}
+Wechseln wir nun wieder in die koordinatenfreie Formulierung, ergibt sich
+\begin{align*}
+	dA &= \,\,\,
+	 \frac{E_1}{c} \,dx^1 \wedge dx^0 +
+	\frac{E_2}{c} \,dx^2 \wedge dx^0 +
+	\frac{E_3}{c} \,dx^3 \wedge dx^0
+	\\
+	& \phantom{=}- \, B_3 \, dx^2 \wedge dx^1 +
+	\, B_2 \, \, dx^3 \wedge dx^1 -
+	\, B_1 \, \, dx^3 \wedge dx^2
+	\\[2ex] 
+	&= \quad 
+	\begin{pmatrix}
+		0 & -E_1/c & -E_2/c & -E_3/c \\ E_1/c & 0 & B_3 & -B_2 \\ E_2/c & -B_3 & 0 & B_1 \\ E_3/c & B_2 & -B_1 & 0 
+	\end{pmatrix},
+\end{align*}
+was exakt dem Faraday-Tensor entspricht.
+Wir haben nun also eine 1-Form gefunden, deren äussere Ableitung den Faraday-Tensor ergibt.
+Diese 1-Form definieren wir als Viererpotential
+\begin{equation}
+	A = -\frac{\varphi}{c}\,dx^0 + A_1 \,dx^1 + A_2 \,dx^2 + A_3 \,dx^3.
+\end{equation}
+Verwenden wir wiederum die physikalische Darstellung gemäss \eqref{maxwell:koordinaten},
+ergibt sich das Viererpotential als
+\begin{equation}
+	A = -\varphi\,dt + A_1 \,dx + A_2 \,dy + A_3 \,dz.
+\end{equation}

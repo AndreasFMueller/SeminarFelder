@@ -1,0 +1,176 @@
+
+\section{Wedgeprodukt
+\label{geoalgebra:section:wedgeprodukt}}
+\kopfrechts{Wedgeprodukt}
+
+Im Rahmen der geometrischen Algebra möchten wir eine neue Operation
+definieren, das \emph{Wedgeprodukt} $\wedge$.
+\index{Wedgeprodukt}%
+Es ist die grundlegende Operation der geometrischen
+Algebra.
+Angenommen, wir haben die
+zwei Vektoren $\a, \b$ und bilden das Wedgeprodukt
+\begin{equation*}
+  B = \a \wedge \b.
+\end{equation*}
+So erhalten wir ein neues mathematisches Konzept, den \emph{Bivektor} $B$.
+Ein Bivektor unterscheidet sich grundsätzlich von einem Vektor (siehe \autoref{geoalgebra:section:bivektoren}).
+
+\subsection{Definition und grundlegende Axiome}
+\label{geoalgebra:section:axiome}
+Um das Wedgeprodukt definieren zu können, werden einige wenige Axiome, d.~h. grundlegende Annahmen, die getroffen werden,
+benötigt. Auf dieser Basis wird dann die geometrische Algebra aufgebaut.
+Wir definieren:
+
+\begin{axiom}
+  Das Wedgeprodukt ist \em{antikommutativ}:
+\index{antikommutativ}%
+  \begin{equation}
+  \a \wedge \b = -\b \wedge \a.
+  \label{geoalgebra:eq:antikommutativ}
+  \end{equation}
+\end{axiom}
+Daraus folgt:
+\begin{lemma}
+  \label{geoalgebra:lemma:null}
+  Das Wedgeprodukt eines Vektors mit sich selbst ist $0$
+  \begin{equation*}
+  \a \wedge \a = 0.
+  \end{equation*}
+\end{lemma}
+
+\begin{axiom}
+  Es gilt das \em{Distributivgesetz}
+\index{Distributivgesetz}%
+  \begin{equation*}
+  \a \wedge (\b + \c) = \a \wedge \b + \a \wedge \c.
+  \end{equation*}
+\end{axiom}
+
+\begin{axiom}
+  Das Wedgeprodukt ist bilinear in beiden Faktoren:
+\index{bilinear}%
+  \begin{equation}
+    \a \wedge (\lambda \b + \mu \c) = \lambda (\a \wedge \b) + \mu (\a \wedge \c).
+    \label{geoalgebra:eq:bilinear}
+  \end{equation}
+\end{axiom}
+
+Für die Definition von \emph{Trivektoren} benötigen wir desweiteren noch das folgende Axiom.
+\begin{axiom}
+  Das Wedgeprodukt ist \em{assoziativ}:
+\index{assoziativ}%
+  \begin{equation*}
+    (\mathbf{a} \wedge \mathbf{b}) \wedge \mathbf{c} = \mathbf{a} \wedge (\mathbf{b} \wedge \mathbf{c}).
+  \end{equation*}
+\end{axiom}
+
+\subsection{Das Wedgeprodukt in zwei Dimensionen}
+\renewcommand{\subsectionautorefname}{Abschnitt}
+Mit den Axiomen aus \autoref{geoalgebra:section:axiome} können wir bereits das Wedgeprodukt zwischen zwei
+Vektoren in zwei Dimensionen herleiten.
+Dazu machen wir uns zu nutze, dass wir jeden Vektor als
+Linearkombination von den Standardbasisvektoren beschreiben können.
+Es gilt
+\begin{align}
+  \a &= \begin{pmatrix} a_1 \\ a_2 \end{pmatrix} = a_1 \mathbf{e}_1 + a_2 \mathbf{e}_2.
+\end{align}
+
+\begin{lemma}
+  Wir betrachten die beiden zweidimensionalen Vektoren $\a,
+  \b$.
+  Das Wedgeprodukt von $\a$ und $\b$ ist
+\begin{equation*}
+    \a \wedge \b 
+    = (a_1 b_2 - a_2 b_1) \eone \wedge \etwo.
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+Durch Nachrechnen:
+  \begin{align*}
+    \a \wedge \b &= (a_1 \eone + a_2 \etwo) \wedge
+    (b_1 \eone + b_2 \etwo)
+\\
+    &= a_1 \eone \wedge (b_1 \eone + b_2 \etwo) + a_2 \etwo \wedge (b_1 \eone + b_2 \etwo)
+\\
+    &= a_1 \eone \wedge b_1 \eone + a_1 \eone \wedge b_2 \etwo + a_2 \etwo \wedge b_1 \eone + a_2 \etwo \wedge b_2 \etwo
+\\
+    &= a_1 b_1 (\underbrace{\eone \wedge \eone}_{\displaystyle=0}) + a_1 b_2 (\eone \wedge \etwo) + a_2 b_1 (\etwo \wedge \eone) + a_2 b_2 (\underbrace{\etwo \wedge \etwo}_{0})
+\\
+    &= (a_1 b_2 - a_2 b_1) \eone \wedge \etwo.
+\qedhere
+    \end{align*}
+\end{proof}
+Der Skalarfaktor im letzten Ausdruck ist eine Determinante und das
+Wedgeprodukt kann daher als
+\begin{equation}
+    \a \wedge \b
+=
+  \begin{vmatrix}
+    a_1 & b_1 \\
+    a_2 & b_2
+  \end{vmatrix}
+  \eone \wedge \etwo
+    \label{geoalgebra:eq:2d-wedgeproduct}
+\end{equation}
+beschrieben werden.
+
+\subsection{Das Wedgeprodukt in drei Dimensionen}
+Zunächst wollen wir uns nochmals unser bereits bekanntes
+Vektorprodukt ansehen.
+\index{Vektorprodukt}%
+\begin{definition}
+  Wir betrachten die beiden dreidimensionalen Vektoren $\mathbf{a}, \mathbf{b}$
+  und bilden das Kreuzprodukt
+  \begin{equation}
+    \mathbf{a} \times \mathbf{b} = \begin{pmatrix} a_2 b_3 - a_3 b_2 \\ a_3 b_1 - a_1 b_3 \\ a_1 b_2 - a_2 b_1 \end{pmatrix}.
+    \label{geoalgebra:eq:vektorprodukt}
+  \end{equation}
+  
+\end{definition}
+
+Das Wedgeprodukt funktioniert nicht nur in zwei, sondern auch
+in beliebigen Dimensionen. Im folgenden möchten wir kurz
+das Wedgeprodukt zwischen zwei dreidimensionalen Vektoren
+herleiten.
+
+\begin{lemma}
+Wir betrachten die \emph{dreidimensionalen} Vektoren $\mathbf{a}, \mathbf{b}$.
+Das Wedgeprodukt von $\mathbf{a}$ und $\mathbf{b}$ ist
+\begin{equation*}
+      \mathbf{a} \wedge \mathbf{b}
+=
+      (a_1 b_2 - a_2 b_1) \eone \wedge \etwo 
+      + (a_2 b_3 - a_3 b_2) \etwo \wedge \ethree 
+      + (a_3 b_1 - a_1 b_3) \ethree \wedge \eone.
+\end{equation*}
+\label{geoalgebra:eq:wedgeprodukt-dreidimensional}
+\end{lemma}
+\begin{proof}
+Durch Nachrechnen:
+\begin{align*}
+      \mathbf{a} \wedge \mathbf{b} &= (a_1 \eone + a_2 \etwo + a_3 \ethree) \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \\
+      &= a_1 \eone \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \\
+      &\quad+ a_2 \etwo \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \\
+      &\quad+ a_3 \ethree \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \\
+      &= (a_1 b_2 - a_2 b_1) \eone \wedge \etwo 
+      + (a_2 b_3 - a_3 b_2) \etwo \wedge \ethree 
+      + (a_3 b_1 - a_1 b_3) \ethree \wedge \eone.
+\qedhere
+\end{align*}
+\end{proof}
+\noindent Wir stellen fest, dass die Koeffizienten hinter den drei entstandenen Wedgeprodukten
+gleich sind wie die Komponenten des Vektorprodukts in \eqref{geoalgebra:eq:vektorprodukt}.
+
+\subsection{Rückblick}
+Hier wollen wir einen kurzen Rückblick vornehmen. Wir haben zunächst
+die komplexen Zahlen nochmals kurz betrachtet und haben gesehen,
+wie sie eine natürliche Erweiterung der reellen Zahlen bieten.
+Analog dazu bietet die geometrische Algebra eine natürliche
+Erweiterung zur bereits bekannten Vektorgeometrie. Wir wissen,
+dass das Vektorprodukt $\a_1 \times \a_2$ nur
+in drei Dimensionen funktioniert und haben erkannt, dass
+die neue Operation des Wedgeprodukts $\a_1 \wedge \a_2$
+im Gegensatz dazu auch in zwei Dimensionen funktioniert.
+Später wollen wir das Ganze noch auf beliebige Dimensionen erweitern.

@@ -7,8 +7,9 @@ dependencies-wirbelringe =						\
 	papers/wirbelringe/packages.tex					\
 	papers/wirbelringe/main.tex					\
 	papers/wirbelringe/references.bib				\
-	papers/wirbelringe/teil0.tex					\
-	papers/wirbelringe/teil1.tex					\
-	papers/wirbelringe/teil2.tex					\
-	papers/wirbelringe/teil3.tex
+	papers/wirbelringe/bewegung.tex					\
+	papers/wirbelringe/helmholtz.tex					\
+	papers/wirbelringe/slugModell.tex					\
+	papers/wirbelringe/Wirbelschleppe.tex					\
+	papers/wirbelringe/WirbelringKanone.tex
 

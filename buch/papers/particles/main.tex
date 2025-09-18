@@ -6,34 +6,48 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\chapter{Thema\label{chapter:particles}}
-\kopflinks{Thema}
+\newcommand{\mytodo}[1]{\textbf{\textcolor{red}{TODO: #1}}}
+\newcommand{\mynote}[1]{\textbf{\textcolor{orange}{NOTE: #1}}}
+\chapter{Turning Waves into Particles\label{chapter:particles}}
+\kopflinks{Turning Waves into Particles}
 \begin{refsection}
-\chapterauthor{Hans Muster}
+\chapterauthor{Flurin Brechbühler und Laurin Heitzer}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+Wellen treten überall auf, egal ob in Wasser, als Schallwelle, Licht oder in der Elektrotechnik.
+Bei den Medien, in denen sich diese Wellen ausbreiten, geht man oft davon aus, dass sie sich linear verhalten.
+Viel spannender wird es aber, wenn sich Nichtlinearitäten einschleichen, welche einige interessante Nebeneffekte mit sich bringen.
+Solche Nebeneffekte wurden im Video \emph{Turning Waves into Particles}~\cite{particles:huygens-optics} von Huygens Optics (YouTube) gezeigt.
+Das Ziel im Video ist, Energie mithilfe der Nichtlinearität des Mediums räumlich zu fangen.
 
-\input{papers/particles/teil0.tex}
-\input{papers/particles/teil1.tex}
-\input{papers/particles/teil2.tex}
-\input{papers/particles/teil3.tex}
+In der folgenden Arbeit wird dieses Phänomen nochmals mathematisch aufgearbeitet. % TODO: Satz passt noch nicht
+Es soll der theoretische Hintergrund zu linearen und nichtlinearen Medien erklärt und anhand numerischer Simulation deren Auswirkungen auf die Wellenausbreitung veranschaulicht werden.
 
+\input{papers/particles/teil1_lineares_medium.tex}
+% TODO Teil 1:
+% - Was ist Linearität?
+% - Superposition
+% - Grenze der Linearität: Schwinger-Limit
+\input{papers/particles/teil2_simulation.tex} % TODO: Was passiert bei Nichtlinearitäten
+% TODO Teil 2:
+% - Definition, Beispiele
+% - Schwinger-Limit in der Praxis (?)
+% - Selbstfokussierung / Confined Energy
+% - Soliton
+\input{papers/particles/teil3_gebundene_energie.tex} % TODO: Wie funktioniert die Simulation?
+% TODO Teil 3:
+% - Wellengleichung
+% - Diskretisierung
+% - Verbindung zur Simulation (?)
+\input{papers/particles/teil4_fazit.tex} % TODO: Fazit: Was könnten wir hier beobachtet haben?
+
+% save current state of biburlnumpenalty in temp varialbe, in case it has already been overwritten somewhere
+\newcounter{oldbiburlnumpenalty}
+\setcounter{oldbiburlnumpenalty}{\value{biburlnumpenalty}}
+
+% change biburlnumpenalty, allowing linebreaks within urls in bibliography
+\setcounter{biburlnumpenalty}{7000}
 \printbibliography[heading=subbibliography]
+
+% reset biburlnumpenalty to its original state
+\setcounter{biburlnumpenalty}{\value{oldbiburlnumpenalty}}
 \end{refsection}

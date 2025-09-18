@@ -6,34 +6,35 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\chapter{Thema\label{chapter:helmholtz}}
-\kopflinks{Thema}
+\chapter{Helmholtz-Zerlegung\label{chapter:helmholtz}}
+\kopflinks{Helmholtz-Zerlegung}
 \begin{refsection}
-\chapterauthor{Hans Muster}
+\chapterauthor{Joël Rechsteiner}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+Im Mittelpunkt in diesem Kapitel steht die Helmholtz-Zerlegung.
+Anhand eines Beispiels aus der Physik in der Akustik aus dem Paper
+\cite{helmholtz:paper}
+wird eine Anwendung der Helmholtz-Zerlegung
+dargestellt, wo die komplexe akustischen Intensität in wirbelfreie
+und quellenfreie Anteile zerlegt wird im kartesischen Koordinatensystem.
+Allerdings kann die Helmholtz-Zerlegung auch auf ein beliebiges
+Koordinatensystem angewendet werden, worauf hier nicht weiter
+eingegangen wird. \newline
 
-\input{papers/helmholtz/teil0.tex}
-\input{papers/helmholtz/teil1.tex}
-\input{papers/helmholtz/teil2.tex}
-\input{papers/helmholtz/teil3.tex}
+
+Schritt für Schritt wird erklärt, wie die relevanten Gleichungen mit mathematischen Tools vorangegangener Kapitel der Vektoranalysis mit der physikalischer Deutung zusammenhängen. Anschliessend wird die Aufteilung der akustischen Intensität in aktive und reaktive Komponenten aufgezeigt. Die Ableitung der Differentialgleichungen für aktive und reaktive Intensitätsfelder, die Wirbelbildung in der Intensitätsverteilung und zeigen, wie diese Konzepte in numerischen Simulationen wie zum Beispiel in COMSOL und praktischen Messungen etwa zur Interpretation von Nah- und Fernfeld oder der Quellenkopplung angewendet werden.
+
+
+
+%\input{papers/helmholtz/teil0.tex}
+%\input{papers/helmholtz/teil1.tex}
+%\input{papers/helmholtz/teil2.tex}
+\input{papers/helmholtz/teilNeu01.tex}
+\input{papers/helmholtz/teilNeu02.tex}
+\input{papers/helmholtz/teilNeu03.tex}
+\input{papers/helmholtz/teilNeu04.tex}
+\input{papers/helmholtz/teilNeu05.tex}
+\input{papers/helmholtz/teilNeu06.tex}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}

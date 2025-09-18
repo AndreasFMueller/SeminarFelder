@@ -1,0 +1,101 @@
+%
+% Spektrale Methoden
+%
+\section{Spektrale Methoden
+\label{buch:pdenumerik:section:spektral}}
+Die Transformationsmethode zur Lösung partieller Differentialgleichungen
+verwendet die Tatsache, dass Lösungsfunktionen immer als Reihe von
+Eigenfunktionen des Laplace-Operators entwickelt werden können.
+Zum Beispiel sind die Funktionen
+\(
+e_k(x) = e^{ikx}
+\)
+Eigenfunktionen des Ableitungsoperators auf dem Intervall $[0,2\pi]$,
+denn es gilt
+\[
+\frac{d^2}{dx^2} e_k(x)
+=
+\frac{d^2}{dx^2} e^{ikx}
+=
+-k^2 e^{ikx}
+=
+-k^2 e_k(x).
+\]
+Der Eigenwert ist also $-k^2$.
+Die Fourier-Theorie besagt, dass nicht allzu irreguläre periodische
+Funktionen $f(x)$ als Reihe
+\[
+f(x)
+=
+\sum_{k\in\mathbb{Z}} c_ke^{ikx}
+\]
+geschrieben werden können.
+
+Funktionen $f(\vartheta,\varphi)$ auf einer Kugeloberfläche können
+ganz ähnlich als Funktionenreihe der sogenannten Kugelfunktionen
+$Y^m_l(\vartheta,\varphi)$ geschrieben werden, die Eigenfunktionen
+des Laplace-Operators sind:
+\[
+\Delta Y^m_l
+=
+-l(l+1) Y^m_l.
+\]
+Die ganzzahligen Werte von $l$ und $m$ erfüllen $|m|\le l$ und $l\ge 0$.
+
+Als Beispiel für die Anwendung dieser Eigenschaften, nehmen wir an,
+dass $f_n$ eine vollständige Familie von Eigenfunktionen des Laplace-Operators
+mit Eigenwert $\lambda_n$ auf dem Gebiet $G$ ist. 
+Jede Funktion $f$ auf dem Gebiet lässt sich also schreiben als
+\begin{equation}
+f = \sum_{k=1}^\infty a_k f_k.
+\label{buch:pdenumerik:spektral:ansatz}
+\end{equation}
+Damit kann jetzt die Wärmeleitungsgleichung
+\[
+\frac{\partial f}{\partial t}
+=
+\kappa
+\Delta f
+\]
+gelöst werden.
+Setzt man den Ansatz~\eqref{buch:pdenumerik:spektral:ansatz} in die 
+Differentialgleichung ein, ergibt sich
+\[
+\sum_{k=1}^\infty
+\frac{d a_k}{d t}
+f_k
+=
+\kappa \sum_{k=1}^n a_k \lambda_k f.
+\]
+Durch Koeffizientenvergleich für jedes $k$ folgt die gewöhnliche
+Differentialgleichung
+\[
+\frac{d a_k}{d t}
+=
+\kappa \lambda_k a_k.
+\]
+Ihre Lösung ist $a_k(t) = a_k(0) e^{\lambda_kt}$.
+Das schwierige Problem der Lösung der partiellen Differentialgleichung
+wird durch den Ansatz~\eqref{buch:pdenumerik:spektral:ansatz} auf die
+Lösung einer sehr einfachen gewöhnliche Differentialgleichung reduziert.
+
+Die Idee lässt sich auch auf komplizierte, sogar nichtlineare
+Feldgleichungen übertragen.
+Es entstehen möglicherweise nichtlinear Differentialgleichungssysteme
+für die Koeffizienten $a_k$.
+In vielen Anwendungsfällen reicht eine vergleichsweise kleine Zahl
+von Koeffizienten für eine gute Approximation der Lösung.
+Diese sogenannten \emph{spektralen Methoden}
+\index{spektrale Methode}%
+werden zum Beispiel für die Berechnung der Strömungsfelder in der 
+Erdatmosphäre vom Europäischen Zentrum für Mittelfristprognose
+(ECMWF) verwendet.
+
+Die Arbeit~\ref{chapter:fourier} von Martina Knobel und Gian Kraus
+zeigt eine weitere Anwendung dieser Methoden.
+Sie erklärt, wie spektrale Methoden eine Feldgleichung in eine Menge
+unabhängiger quantenmechanischer Oszillatoren zerlegt, die als Quanten
+eines Feldes betrachtet werden können.
+In diesem Sinn sind die spektralen Methode die Grundlage für die
+moderne Quantenfeldtheorie.
+

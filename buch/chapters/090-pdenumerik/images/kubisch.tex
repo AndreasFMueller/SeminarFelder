@@ -1,0 +1,52 @@
+%
+% kubisch.tex -- Kubische Approximationsfunktionen
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\definecolor{darkred}{rgb}{0.8,0,0}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala,
+declare function = {
+	Hl(\X) = (1-2*\X)*(1+\X)*(1+\X);
+	Hr(\X) = (1+2*\X)*(1-\X)*(1-\X);
+	H1r(\X) = \X*(1-\X)*(1-\X);
+	H1l(\X) = \X*(1+\X)*(1+\X);
+}]
+
+\begin{scope}[xshift=-3.1cm]
+\draw[->] (-2.8,0) -- (3.1,0) coordinate[label={above left:$x$}];
+\draw[->] (0,-0.5) -- (0,2.3) coordinate[label={right:$H(x)$}];
+\fill (-2,0) circle[radius=0.05];
+\fill (0,0) circle[radius=0.05];
+\fill (2,0) circle[radius=0.05];
+\draw[color=darkred,line width=1.2pt]
+	(-2.9,0) -- (-2,0)
+	-- plot[domain=-1:0,smooth] ({2*\x},{2*Hl(\x)})
+	-- plot[domain=0:1,smooth] ({2*\x},{2*Hr(\x)})
+	-- (2.9,0);
+\end{scope}
+
+\begin{scope}[xshift=3.1cm]
+\draw[->] (-2.8,0) -- (3.1,0) coordinate[label={above left:$x$}];
+\draw[->] (0,-0.5) -- (0,2.3) coordinate[label={right:$H^1(x)$}];
+\fill (-2,0) circle[radius=0.05];
+\fill (0,0) circle[radius=0.05];
+\fill (2,0) circle[radius=0.05];
+\draw[color=darkred,line width=1.2pt]
+	(-2.9,0) -- (-2,0)
+	-- plot[domain=-1:0,smooth] ({2*\x},{2*H1l(\x)})
+	-- plot[domain=0:1,smooth] ({2*\x},{2*H1r(\x)})
+	-- (2.9,0);
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

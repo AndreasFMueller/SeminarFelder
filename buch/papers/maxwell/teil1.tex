@@ -1,0 +1,209 @@
+%
+% teil1.tex -- Beispiel-File für das Paper
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Metrik und Hodge-Theorie 
+\label{maxwell:section:teil1}}
+\kopfrechts{Metrik und Hodge-Theorie}
+
+\subsection{Minkowski Metrik}
+In der speziellen Relativitätstheorie (SRT) wird die Minkowski-Metrik verwendet.
+\index{spezielle Relativitatstheorie@spezielle Relativitätstheorie}%
+\index{Relativitatstheorie, spezielle@Relativitätstheorie, spezielle}%
+\index{Minkowski-Metrik}%
+Da es in der SRT keine Krümmung und Gravitation gibt, sind alle Elemente ausserhalb der Diagonale des metrischen Tensors null und somit ist die Raum-Zeit flach.
+Zwei Signaturen sind üblich.
+Einerseits gibt es die $({-}{+}{+}{+})$-Signatur, bei welcher die Zeitkomponente negativ und die Raumkomponenten positiv gezählt werden.
+Andererseits gibt es die $({+}{-}{-}{-})$-Signatur, bei welcher die Zeitkomponente positiv und die Raumkomponenten negativ gezählt werden.
+Beide Signaturen sind gleichwertig, solange man sich auf eine Metrik festlegt und diese konsequent beibehält.
+Im Folgenden werden wir uns an die $({-}{+}{+}{+})$-Signatur halten.
+Daher definieren wir den metrischen Tensor als
+\begin{equation}
+	g^{ik} = \begin{pmatrix}
+		-1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 
+	\end{pmatrix}.
+	\label{maxwell:section:teil1:metrik}
+\end{equation}
+Der Ausdruck für ein Linienelement in dieser Metrik ist definiert als
+\begin{equation*}
+	dl^2 = -(dx^0)^2 +(dx^1)^2+(dx^2)^2+(dx^3)^2.
+\end{equation*}
+Damit wir Raum und Zeit in dieser Metrik gleichartig behandeln können, wählen wir beim Übergang in physikalische Einheiten 
+\begin{equation}
+	\label{maxwell:koordinaten}
+	x^0 = ct,\quad x^1 = x,\quad x^2 = y, \quad x^3 = z .
+\end{equation}
+Dabei entspricht $c$ der Lichtgeschwindigkeit und ein Linienelement ist somit definiert als
+\begin{equation*}
+	dl^2 = -c^2dt^2 +dx^2+dy^2+dz^2.
+\end{equation*}
+Eine Konsequenz dieser Signatur ist, dass zeitartige Abstände $dl^2 < 0$ und raumartige Abstände $dl^2 > 0$ sind.
+
+\subsection{Hodge-Duale der Basis-$k$-Formen}
+Für den Teil der inhomogenen Maxwell-Gleichungen benötigen wir die Hodge-Duale von 1-Formen, 2-Formen und 3-Formen im vierdimensionalen Minkowski-Raum.
+Um dabei die korrekten Vorzeichen zu erhalten, muss die Hodge-Dualität mit Hilfe des metrischen Tensors $g^{ik}$  der Minkowski-Metrik verwendet werden.
+
+Wir verwenden die Definition des Hodge-Operators
+\begin{equation*}
+	\alpha \wedge \ast \beta = \langle \alpha, \beta \rangle \operatorname{vol}(M),
+\end{equation*}
+wobei $\langle \cdot , \cdot \rangle$ das durch die Metrik $g^{ik}$ induzierte Skalarprodukt ist.
+Im Folgenden führen wir alle Berechnungen der Hodge-Duale von 1-, 2- und 3-Formen durch.
+Wir verwenden $g^{ik}$ gemäss \eqref{maxwell:section:teil1:metrik} und $\operatorname{vol}(M) = dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3$.
+\begin{definition}
+\label{maxwell:hodge:kurzschreibweise}
+Um die Notation kompakter und übersichtlicher zu gestalten, führen wir die Schreibweise
+\begin{align*}
+	dx^{i\!j} &:= dx^i \wedge dx^j, 
+	%\label{maxwell:hodge:zwei}
+	\\
+	dx^{i\!jk} &:= dx^i \wedge dx^j \wedge dx^k, 
+	%\label{maxwell:hodge:drei}
+	\\
+	dx^{i\!jkl} & := dx^i \wedge dx^j \wedge dx^k \wedge dx^l
+	\notag
+\end{align*}
+für Wedge-Produkte von Basisformen ein.
+\end{definition}
+Mit dieser Vorbereitung können wir nun die konkreten Hodge-Duale der Basisformen berechnen.
+\subsubsection{Hodge-Duale von 1-Formen}
+\begin{align*}
+	\ast dx^0 
+	&= s \, dx^{123} \\
+	dx^0 \wedge \ast dx^0 
+	&= dx^0 \wedge s \, dx^{123} = s \, dx^{0123} \\
+	&= \langle dx^0, dx^0 \rangle \operatorname{vol}(M) = g^{00} \, dx^{0123} = -dx^{0123} \\
+	\Rightarrow s &= -1 \Rightarrow \boxed{\ast dx^0 = - dx^{123}}
+	\\[1em]
+	\ast dx^1 
+	&= s \, dx^{023} \\
+	dx^1 \wedge \ast dx^1 
+	&= dx^1 \wedge s \, dx^{023} = -s \, dx^{0123} \\
+	&= \langle dx^1, dx^1 \rangle \operatorname{vol}(M) = g^{11} \, dx^{0123} = dx^{0123} \\
+	\Rightarrow s &= -1 \Rightarrow \boxed{\ast dx^1 = - dx^{023}}
+	\\[1em]
+	\ast dx^2 
+	&= s \, dx^{013} \\
+	dx^2 \wedge \ast dx^2 
+	&= dx^2 \wedge s \, dx^{013} = s \, dx^{0123} \\
+	&= \langle dx^2, dx^2 \rangle \operatorname{vol}(M) = g^{22} \, dx^{0123} = dx^{0123} \\
+	\Rightarrow s &= +1 \Rightarrow \boxed{\ast dx^2 = dx^{013}}
+	\\[1em]
+	\ast dx^3 
+	&= s \, dx^{012} \\
+	dx^3 \wedge \ast dx^3 
+	&= dx^3 \wedge s \, dx^{012} = -s \, dx^{0123} \\
+	&= \langle dx^3, dx^3 \rangle \operatorname{vol}(M) = g^{33} \, dx^{0123} = dx^{0123} \\
+	\Rightarrow s &= -1 \Rightarrow \boxed{\ast dx^3 = - dx^{012}}
+\end{align*}
+
+\subsubsection{Hodge-Duale von 2-Formen}
+\begin{align*}
+	\ast dx^{01} &= s \, dx^{23} \\
+	dx^{01} \wedge \ast dx^{01} &= s \, dx^{0123} \\
+	&= \langle dx^{01}, dx^{01} \rangle \, \operatorname{vol}(M) 
+	= g^{00} g^{11} \operatorname{vol}(M) = -dx^{0123} \\
+	\Rightarrow s &= -1 \Rightarrow \boxed{\ast dx^{01} = - dx^{23}}
+	\\[1em]
+	\ast dx^{12} &= s \, dx^{03} \\
+	dx^{12} \wedge \ast dx^{12} &= s \, dx^{0123} \\
+	&= \langle dx^{12}, dx^{12} \rangle \, \operatorname{vol}(M) 
+	= g^{11} g^{22} \operatorname{vol}(M) = dx^{0123} \\
+	\Rightarrow s &= +1 \Rightarrow \boxed{\ast dx^{12} = dx^{03}}
+	\\[1em]
+	\ast dx^{23} &= s \, dx^{01} \\
+	dx^{23} \wedge \ast dx^{23} &= s \, dx^{0123} \\
+	&= \langle dx^{23}, dx^{23} \rangle \, \operatorname{vol}(M) 
+	= g^{22} g^{33} \operatorname{vol}(M) = dx^{0123} \\
+	\Rightarrow s &= +1 \Rightarrow \boxed{\ast dx^{23} = dx^{01}}
+	\\[1em]
+	\ast dx^{02} &= s \, dx^{13} \\
+	dx^{02} \wedge \ast dx^{02} &= -s \, dx^{0123} \\
+	&= \langle dx^{02}, dx^{02} \rangle \, \operatorname{vol}(M) 
+	= g^{00} g^{22} \operatorname{vol}(M) = -dx^{0123} \\
+	\Rightarrow s &= +1 \Rightarrow \boxed{\ast dx^{02} = dx^{13}}
+	\\[1em]
+	\ast dx^{03} &= s \, dx^{12} \\
+	dx^{03} \wedge \ast dx^{03} &= s \, dx^{0123} \\
+	&= \langle dx^{03}, dx^{03} \rangle \, \operatorname{vol}(M) 
+	= g^{00} g^{33} \operatorname{vol}(M) = -dx^{0123} \\
+	\Rightarrow s &= -1 \Rightarrow \boxed{\ast dx^{03} = - dx^{12}}
+	\\[1em]
+	\ast dx^{13} &= s \, dx^{02} \\
+	dx^{13} \wedge \ast dx^{13} &= -s \, dx^{0123} \\
+	&= \langle dx^{13}, dx^{13} \rangle \, \operatorname{vol}(M) 
+	= g^{11} g^{33} \operatorname{vol}(M) = dx^{0123} \\
+	\Rightarrow s &= -1 \Rightarrow \boxed{\ast dx^{13} = - dx^{02}}
+\end{align*}
+
+\subsubsection{Hodge-Duale von 3-Formen}
+\begin{align*}
+	\ast dx^{012} &= s \, dx^3 \\
+	dx^{012} \wedge \ast dx^{012} &= s \, dx^{0123} \\
+	&= \langle dx^{012}, dx^{012} \rangle \, \operatorname{vol}(M) 
+	= g^{00} g^{11} g^{22} \operatorname{vol}(M) = -dx^{0123} \\
+	\Rightarrow s &= -1 \Rightarrow \boxed{\ast dx^{012} = - dx^3}
+	\\[1em]
+	\ast dx^{013} &= s \, dx^2 \\
+	dx^{013} \wedge \ast dx^{013} &= -s \, dx^{0123} \\
+	&= \langle dx^{013}, dx^{013} \rangle \, \operatorname{vol}(M) 
+	= g^{00} g^{11} g^{33} \operatorname{vol}(M) = -dx^{0123} \\
+	\Rightarrow s &= 1 \Rightarrow \boxed{\ast dx^{013} = dx^2}
+	\\[1em]
+	\ast dx^{023} &= s \, dx^1 \\
+	dx^{023} \wedge \ast dx^{023} &= s \, dx^{0123} \\
+	&= \langle dx^{023}, dx^{023} \rangle \, \operatorname{vol}(M) 
+	= g^{00} g^{22} g^{33} \operatorname{vol}(M) = -dx^{0123} \\
+	\Rightarrow s &= -1 \Rightarrow \boxed{\ast dx^{023} = - dx^1}
+	\\[1em]
+	\ast dx^{123} &= s \, dx^0 \\
+	dx^{123} \wedge \ast dx^{123} &= -s \, dx^{0123} \\
+	&= \langle dx^{123}, dx^{123} \rangle \, \operatorname{vol}(M)
+	= g^{11} g^{22} g^{33} \operatorname{vol}(M) = dx^{0123} \\
+	\Rightarrow s &= -1 \Rightarrow \boxed{\ast dx^{123} = - dx^0}
+\end{align*}
+In der Tabelle \ref{maxwell:section:teil1:Hodge-Tabelle} sind alle berechneten Hodge-Duale noch einmal zusammengefasst.
+\begin{table}
+	\centering
+	%\caption{Hodge-Duale}
+	%\label{maxwell:section:teil1:Hodge-Tabelle}
+	\begin{tabularx}{\textwidth}{ 
+			| >{\centering\arraybackslash}X 
+			| >{\centering\arraybackslash}X 
+			| >{\centering\arraybackslash}X | }
+		\hline
+		\textbf{1-Form} & \textbf{2-Form} & \textbf{3-Form} \\
+		\hline
+		\( \rule{0pt}{1.5em} {\ast} dx^0 = -dx^1 \wedge dx^2 \wedge dx^3 \) \newline
+	\( {\ast} dx^1 = -dx^0 \wedge dx^2 \wedge dx^3 \) \newline
+	\( {\ast} dx^2 = \phantom{-} dx^0 \wedge dx^1 \wedge dx^3 \) \newline
+	\( {\ast} dx^3 = -dx^0 \wedge dx^1 \wedge dx^2 \, \) 
+	&
+	\( \rule{0pt}{1.5em} {\ast} (dx^0 \wedge dx^1) = -dx^2 \wedge dx^3 \) \newline
+	\( {\ast} (dx^1 \wedge dx^2) = \phantom{-} dx^0 \wedge dx^3 \) \newline
+	\( {\ast} (dx^2 \wedge dx^3) = \phantom{-} dx^0 \wedge dx^1 \) \newline
+	\( {\ast} (dx^0 \wedge dx^2) = \phantom{-} dx^1 \wedge dx^3 \) \newline
+	\( {\ast} (dx^0 \wedge dx^3) = -dx^1 \wedge dx^2 \) \newline
+	\( {\ast} (dx^1 \wedge dx^3) = -dx^0 \wedge dx^2 \)
+	&
+	\( \rule{0pt}{1.5em} {\ast} (dx^0 \wedge dx^1 \wedge dx^2) = -dx^3 \) \newline
+	\( {\ast} (dx^0 \wedge dx^1 \wedge dx^3) = \phantom{-} dx^2 \) \newline
+	\( {\ast} (dx^0 \wedge dx^2 \wedge dx^3) = -dx^1 \) \newline
+	\( {\ast} (dx^1 \wedge dx^2 \wedge dx^3) = -dx^0 \)
+		\\
+		\hline
+	\end{tabularx}
+	\caption{Tabelle aller Hodge-Duale von 1-, 2-, und 3-Formen mit $({-}{+}{+}{+})$-Signatur}
+	\label{maxwell:section:teil1:Hodge-Tabelle}
+\end{table}
+
+
+
+
+
+
+
