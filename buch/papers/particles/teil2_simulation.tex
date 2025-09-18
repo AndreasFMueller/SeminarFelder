@@ -24,16 +24,32 @@ Die Szene wird dabei ebenfalls örtlich diskretisiert, indem sie in Pixel aufget
 
 \subsection{Wellengleichung\label{particles:section:simulation:wellengleichung}}
 Die Diskretisierung der Raumdimensionen erlaubt die Berechnung von $\nabla^2 u$ als Faltung des Felds $u$ mit einem Laplace Kernel.
-WaveSimulator2D verwendet dazu den Kernel
+Dies ist ähnlich der Updateformel~\eqref{parallelisierung:eq:update_formel} aus Kapitel~\ref{chapter:parallelisierung}, 
+welche auch mit dem Kernel
+\[
+    \boldsymbol{D}_{xy}^2
+    =
+    \begin{pmatrix}
+        0.00 &  0.25 & 0.00\\
+        0.25 & -1.00 & 0.25\\
+        0.00 &  0.25 & 0.00\\
+    \end{pmatrix}
+\]
+geschrieben werden könnte.
+Hier werden jedoch die diagonalen Terme vernachlässigt, 
+da nur die direkt benachbarten Zellen aufgrund der Lokalität der Feldgleichung berücksichtigt werden müssen.
+Für den WaveSimulator2D können die diagonalen Terme jedoch nicht einfach vernachlässigt werden, 
+da diese einen signifikanten Einfluss auf das Resultat haben.
+Es wird daher der für unseren Fall verfeinerte Kernel
 \[
     \boldsymbol{D}^2_{xy} = 
     \begin{pmatrix}
         0.066 &  0.184 & 0.066\\
         0.184 & -1.000 & 0.184\\
         0.066 &  0.184 & 0.066\\
-    \end{pmatrix},
+    \end{pmatrix}
 \]
-was zu der angepassten Wellengleichung 
+verwendet, was zu der angepassten Wellengleichung 
 \[
     \frac{\d^2 u}{\d t^2} = c^2 \cdot (\boldsymbol{D}^2_{xy} * u)
 \]
