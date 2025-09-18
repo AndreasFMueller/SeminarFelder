@@ -24,7 +24,22 @@ Die Szene wird dabei ebenfalls örtlich diskretisiert, indem sie in Pixel aufget
 
 \subsection{Wellengleichung\label{particles:section:simulation:wellengleichung}}
 Die Diskretisierung der Raumdimensionen erlaubt die Berechnung von $\nabla^2 u$ als Faltung des Felds $u$ mit einem Laplace Kernel.
-WaveSimulator2D verwendet dazu den Kernel
+Damit wird nach dem in Abschnitt~\ref{parallelisierung:section:numerik} gezeigten Schema die Wellengleichung zu einer Update-Formel analog zu Gleichung~\eqref{parallelisierung:eq:update_formel} umgeformt.
+Im genannten Abschnitt wird dabei mit dem Kernel
+\[
+    \boldsymbol{D}_{xy}^2
+    =
+    \begin{pmatrix}
+        0.00 &  0.25 & 0.00\\
+        0.25 & -1.00 & 0.25\\
+        0.00 &  0.25 & 0.00\\
+    \end{pmatrix}
+\]
+gearbeitet.
+Auf die diagonalen Terme des Laplace-Kernels wird dabei verzichtet. 
+Da die in Abschnitt~\ref{parallelisierung:section:numerik} gelöste Wärmeleitungsgleichung parabolisch ist, werden die dadurch resultierenden, hochfrequenten Quantisierungsfehler stark gedämpft.
+Für hyperbolische Differenzialgleichungen können die diagonalen Terme schlecht vernachlässigt werden, denn hyperbolische Differenzialgleichungen schaukeln derartige hochfrequente Fehler eher auf, als sie zu dämpfen.
+Wir verwenden daher den verfeinerten Kernel
 \[
     \boldsymbol{D}^2_{xy} = 
     \begin{pmatrix}
