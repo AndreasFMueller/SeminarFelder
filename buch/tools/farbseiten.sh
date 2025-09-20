@@ -270,4 +270,11 @@ chapter=fourier
 #
 # Kapitel 34 particles
 chapter=particles
+2
+3
+8
+9
+10
+11
+12
 EOF
