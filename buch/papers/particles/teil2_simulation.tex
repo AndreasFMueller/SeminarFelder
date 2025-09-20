@@ -19,34 +19,41 @@ dass schliesslich auch nichtlineare Medien simuliert werden können,
 ein numerischer Ansatz gewählt.
 
 So wurde für die Simulationen eine von \emph{Dr. Jeroen Vleggaar} angepasste Variante auf Basis vom Stand~\cite{particles:commit-wavesim2d} des Open-Source Wellensimulators WaveSimulator2D~\cite{particles:repo-wavesim2d} verwendet.
+\index{Vleggar, Dr.~Jeroen}%
 Dieser simuliert eine zweidimensionale Szene, indem er die Wellengleichung für einen diskreten Zeitschritt simuliert und das resultierende Feld anzeigt.
 Die Szene wird dabei ebenfalls örtlich diskretisiert, indem sie in Pixel aufgeteilt wird.
 
 \subsection{Wellengleichung\label{particles:section:simulation:wellengleichung}}
-Die Diskretisierung der Raumdimensionen erlaubt die Berechnung von $\nabla^2 u$ als Faltung des Felds $u$ mit einem Laplace Kernel.
+Die Diskretisierung der Raumdimensionen erlaubt die Berechnung von $\nabla^2 u$ als Faltung des Felds $u$ mit einem Laplace-Kernel.
+\index{Laplace-Kernel}%
 Damit wird nach dem in Abschnitt~\ref{parallelisierung:section:numerik} gezeigten Schema die Wellengleichung zu einer Update-Formel analog zu Gleichung~\eqref{parallelisierung:eq:update_formel} umgeformt.
 Im genannten Abschnitt wird dabei mit dem Kernel
 \[
     \boldsymbol{D}_{xy}^2
     =
-    \begin{pmatrix}
+    \begin{pmatrix*}[r]
         0.00 &  0.25 & 0.00\\
         0.25 & -1.00 & 0.25\\
         0.00 &  0.25 & 0.00\\
-    \end{pmatrix}
+    \end{pmatrix*}
 \]
 gearbeitet.
 Auf die diagonalen Terme des Laplace-Kernels wird dabei verzichtet. 
 Da die in Abschnitt~\ref{parallelisierung:section:numerik} gelöste Wärmeleitungsgleichung parabolisch ist, werden die dadurch resultierenden, hochfrequenten Quantisierungsfehler stark gedämpft.
-Für hyperbolische Differenzialgleichungen können die diagonalen Terme schlecht vernachlässigt werden, denn hyperbolische Differenzialgleichungen schaukeln derartige hochfrequente Fehler eher auf, als sie zu dämpfen.
+\index{Quantisierungsfehler}%
+Für hyperbolische Differenzialgleichungen können die diagonalen Terme schlecht vernachlässigt werden, denn hyperbolische Differenzialgleichungen schaukeln derartige hochfrequente Fehler eher auf, als sie zu dämpfen\footnote{%
+Anmerkung des Herausgebers: Dieses Phänomen zeigt sich auch im
+Kapitel~\ref{chapter:neuronal}, wo gefunden wurde, dass hyperbolische
+partielle Differentialgleichungen der Lösung durch neuronale Netzwerke
+weniger gut zugänglich sind.}.
 Wir verwenden daher den verfeinerten Kernel
 \[
     \boldsymbol{D}^2_{xy} = 
-    \begin{pmatrix}
+    \begin{pmatrix*}[r]
         0.066 &  0.184 & 0.066\\
         0.184 & -1.000 & 0.184\\
         0.066 &  0.184 & 0.066\\
-    \end{pmatrix},
+    \end{pmatrix*},
 \]
 was zu der angepassten Wellengleichung 
 \[
@@ -55,6 +62,8 @@ was zu der angepassten Wellengleichung
 führt.
 
 Für die Ableitung im Zeitbereich wird der zentrale Differenzenquotient
+\index{zentraler Differenzenquotient}%
+\index{Differenzenquotient, zentral}%
 \[
     \frac{\d^2 u(t)}{\d t^2} \approx \frac{u(t-T) - 2u(t) + u(t+T)}{T^2}
 \]
@@ -71,7 +80,7 @@ kann nun nach $u(t+T)$, also nach dem Wert von $u$ einen Zeitschritt in der Zuku
         u(t+T) = 2 u(t) - u(t+T) + T^2      % Equation part 1
         \vphantom{\boldsymbol{D}^2_{xy}}        % Adjust height
     }_{%
-        \textstyle
+        \displaystyle
         \frac{\d^2 u(t)}{\d t^2}            % Description
     } 
     \cdot 
@@ -87,6 +96,7 @@ resultiert.
 Diese Gleichung kann verwendet werden, um ungedämpfte Wellen in linearen Medien zu simulieren.
 
 \subsection{Dämpfung}
+\index{Dampfung@Dämpfung}%
 Ohne Dämpfung kann keine Energie die Simulation verlassen. 
 Abstrakt betrachtet würden die Wellen an den Rändern der Simulation reflektiert. 
 Um solche Reflexionen abzudämpfen wird die Wellengleichung durch einen Dämpfungsterm erweitert.
@@ -97,7 +107,7 @@ Die angepasste Wellengleichung
 mit der Dämpfung $d$ als Skalarfeld kann entlang dem selben Weg wie in Abschnitt~\ref{particles:section:simulation:wellengleichung} dargestellt nach $u(t+T)$ umgeformt werden.
 Dabei wird für die Ableitung $\frac{\d u}{\d t}$ der einseitige Differenzquotient
 \[
-    \frac{\d u}{\d t} \approx \frac{ - u(t-T)}{T}
+    \frac{\d u}{\d t} \approx \frac{u(t) - u(t-T)}{T}
 \]
 verwendet.
 
@@ -107,7 +117,7 @@ Die resultierende Wellengleichung lautet
         u(t+T) = 2 u(t) - u(t+T) + T^2      % Equation part 1
         \vphantom{\boldsymbol{D}^2_{xy}}        % Adjust height
     }_{%
-        \textstyle
+        \displaystyle
         \frac{\d^2 u(t)}{\d t^2}            % Description
     } 
     \cdot 
@@ -123,7 +133,7 @@ Die resultierende Wellengleichung lautet
         d \cdot T \cdot (u(t) - u(T-1))
         \vphantom{\boldsymbol{D}^2_{xy}}        % Adjust height
     }_{%
-        \textstyle
+        \displaystyle
         d \cdot \frac{\d u(t)}{\d t}        % Description
     }.
 \]
@@ -152,5 +162,7 @@ Der grüne Kanal diktiert nun das Deformationsfeld zu Beginn der Simulation.
 
 \subsection{Performance}
 Die Simulation ist trotz relativ tiefer Auflösung nicht trivial. 
-Der WaveSimulator2D zieht Nutzen aus der \texttt{CuPy}\footnote{\url{https://cupy.dev/}} Bibliothek, um die Faltung des Laplace Kernels mit den aktuellen Feldwerten auf der Grafikkarte laufen zu lassen.
+Der WaveSimulator2D zieht Nutzen aus der \texttt{CuPy} Bibliothek
+\cite{particles:cupy}, um die Faltung des Laplace Kernels mit den
+aktuellen Feldwerten auf der Grafikkarte laufen zu lassen.
 Dies reduziert die Laufzeit auf modernen Rechnern erheblich.
