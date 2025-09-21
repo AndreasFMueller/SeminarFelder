@@ -201,7 +201,7 @@ $\underbrace{\frac{1}{4 \pi} \Delta F}_{invertiert} = \rho$ & $A^{-1}Au = A^{-1}
 \noindent kann das Vektorfeld $\mathbf{F}$ geschrieben werden als:
 
 \begin{equation}
-\mathbf{F}(\mathbf{r}) = - \frac{1}{4 \pi} \nabla \bigg( \nabla \cdot \int_V \frac{\mathbf{F}(\mathbf{x}^{\prime})}{|\mathbf{r} - \mathbf{r}^{\prime}|} d\mathbf{x}^{\prime} \bigg) + \frac{1}{4 \pi} \nabla \times \bigg( \nabla \times \int_V \frac{\mathbf{F}(\mathbf{x}^{\prime})}{|\mathbf{r} - \mathbf{r}^{\prime}|} d\mathbf{x}^{\prime} \bigg).
+\mathbf{F}(\mathbf{r}) = - \frac{1}{4 \pi} \nabla ( \nabla \cdot \int_V \frac{\mathbf{F}(\mathbf{x}^{\prime})}{|\mathbf{r} - \mathbf{r}^{\prime}|} d\mathbf{x}^{\prime} ) + \frac{1}{4 \pi} \nabla \times ( \nabla \times \int_V \frac{\mathbf{F}(\mathbf{x}^{\prime})}{|\mathbf{r} - \mathbf{r}^{\prime}|} d\mathbf{x}^{\prime} ).
 \end{equation}
 
 \noindent Diese Gleichung repräsentiert die Helmholtz-Zerlegung des Vektorfeldes $\mathbf{F}$.
@@ -284,6 +284,7 @@ Eine wichtige Eigenschaft der Helmholtz-Zerlegung ist die Orthogonalität der be
 
 \noindent Das Integral ist null, weil es mithilfe des Gaussschen Integralsatzes in ein Oberflächenintegral umgewandelt werden kann, das unter den für die Helmholtz-Zerlegung Randbedingungen, wie in \ref{helmholtz:subsection:Bedingungen_onlyEindeutigkeit} beschrieben, verschwindet.
  
- In physikalischen Anwendungen, wie beispielsweise in der Akustik, bedeutet diese mathematische Orthogonalität, dass die beiden Feldkomponenten unterschiedliche physikalische Phänomene beschreiben, die unabhängig voneinander analysiert werden können. Mehr dazu wird im Unterkapitel \ref{tab:helmholtz:Energie_Interpretation} erläutert.
+ 
+\noindent In physikalischen Anwendungen, wie beispielsweise in der Akustik, bedeutet diese mathematische Orthogonalität, dass die beiden Feldkomponenten unterschiedliche physikalische Phänomene beschreiben, die unabhängig voneinander analysiert werden können. Mehr dazu wird im Unterkapitel \ref{tab:helmholtz:Energie_Interpretation} erläutert.
 
 
