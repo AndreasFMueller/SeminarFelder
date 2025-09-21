@@ -8,36 +8,45 @@
 %
 \section{Die Differentialgleichung\label{mongeampere:section:teil0}}
 \kopfrechts{Teil 0}
-Die Monge-Ampèresche Gleichung ist
+Die monge-ampèresche Gleichung ist
 \begin{equation}
   \det D^2 u = f(x, u, \nabla u),
   \label{mongeampere:eq:mongeampere}
 \end{equation}
-wobei $D$ die Hessche Matrix
-\begin{equation}
+wobei $D$ die hessesche Matrix
+\begin{equation*}
   D^2 u =
+\renewcommand{\arraystretch}{1.7}
   \begin{pmatrix}
-    \pdv[2]{u}{x_1} & \dots &\pdv{u}{x_1}{x_n} \\
+    \displaystyle \frac{\partial^2 u}{\partial x_{1\mathstrut}^2\mathstrut}
+	& \dots
+		&\displaystyle \frac{\partial^2 u}{\partial x_{1\mathstrut}^{\phantom{2}} \,\partial x_{n\mathstrut}^{\phantom{2}}\mathstrut} \\[-2pt]
   \vdots & \ddots & \vdots \\
-  \pdv{u}{x_n}{x_1} & \dots &\pdv[2]{u}{x_n} \\
+  \displaystyle \frac{\partial^2 u}{\partial x_{n\mathstrut}^{\phantom{2}} \,\partial x_{1\mathstrut}^{\phantom{2}}\mathstrut}
+	& \dots
+		&\displaystyle \frac{\partial^2 u}{\partial x_{n\mathstrut}^2\mathstrut} \\
   \end{pmatrix}
-  \label{mongeampere:eq:hess}
-\end{equation}
+  %\label{mongeampere:eq:hess}
+\end{equation*}
 ist.
 Wenn man die Gleichung ansieht, erkennt man, dass es sich bei ihr um eine partielle
-nicht-lineare Gleichung handelt.
-Das Lösen einer solchen Differentialgelichung ist im generellen ein anspruchvolles Problem.
-Anhand von Bedinugnen für $u$ und $f$ kann man \eqref{mongeampere:eq:mongeampere} 
-in einen bestimmten Typ Differnetialgleichung bringen, was unterschiedliche Lösungsansätze ermöglicht.
+nicht-lineare Differentialgleichung handelt.
+Das Lösen einer solchen Differentialgleichung ist im Allgemeinen ein anspruchvolles Problem.
+Anhand von Bedingungen für $u$ und $f$ kann man \eqref{mongeampere:eq:mongeampere} 
+in einen bestimmten Typ Differentialgleichung bringen, was unterschiedliche Lösungsansätze ermöglicht.
 Setzt man voraus, dass $u$ eine glatte konvexe Function ist, und $f$ positiv, dann ist \eqref{mongeampere:eq:mongeampere}
-eine elliptische partielle Differnetialgleichung.
-Gemäss \cite{mongeampere:figalli2018mongeampereequation} gibt eine solche Form Hoffnung auf die existenz einer regulären Lösung.
-Ein anderes beispiel ist in \cite{mongeampere:figalli2022prescribednegativegausscurvature} zu finden, wo die 
+eine elliptische partielle Differentialgleichung.
+\index{elliptische partielle Differentialgleichung}%
+Gemäss \cite{mongeampere:figalli2018mongeampereequation} gibt eine solche Form Hoffnung auf die Existenz einer regulären Lösung.
+Ein anderes Beispiel ist in \cite{mongeampere:figalli2022prescribednegativegausscurvature} zu finden, wo die 
 Gleichung linearisiert wird um lokale Lösungen zu finden.
 
-\subsection{Minkowski Problem}
-Eine Anwendung, welche vom Deutsche Mathematiker Hermann Minkwoski entdekt wurde, ist das Lösen des
-Prescribed Gaussian Curvature Problem mit der Monge-Ampere Gleichung.
-Diese Anwendung befasst damit eine konvexe kompakte Fläche zu finden, dessen Gaussche Krümmung 
+\subsection{Minkowski-Problem}
+\index{Minkowski-Problem}%
+Eine Anwendung, welche vom deutschen Mathematiker Hermann Minkwoski entdekt wurde, ist das Lösen des
+\index{Minkowski, Hermann}%
+\emph{Prescribed Gaussian Curvature Problem} mit der Monge-Ampère-Gleichung.
+\index{Prescribed Gaussian Curvature Problem}%
+Diese Anwendung befasst damit eine konvexe kompakte Fläche zu finden, deren gausssche Krümmung 
 an jedem Punkt gegeben ist.
 

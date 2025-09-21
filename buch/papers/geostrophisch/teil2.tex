@@ -17,16 +17,20 @@ Die erste Gleichung:
 	\label{eq:navstok}
 \end{equation}
 ist eine Form der Navier-Stokes-Gleichung für rotierende Bezugssysteme.
+\index{Navier-Stokes-Gleichung}%
+\index{rotierendes Bezugssystem}%
 $\frac{D\vec{v}}{Dt}$ entspricht der zeitlichen totalen Ableitung aller Geschwindigkeitskomponenten in Nord-, Ost- und Vertikalrichtungen.
 Das grosse $D$ steht dabei für die totale Ableitung, dass bedeutet es wird die Änderung der Geschwindigkeit, wenn man sich mit der Luft bewegt, berechnet. 
 Sie beschreibt also die Beschleunigung von Luftmassen und ausserdem werden darin die Coriolis-Kraft und der Druckgradient berücksichtigt.
 
 Als nächstes verwendete er die Kontinuitätsgleichung:
+\index{Kontinuitatsgleichung@Kontinuitätsgleichung}%
 \begin{equation}
 	\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \vec{v}) = 0 \\,
 	\label{eq:kont}
 \end{equation}
 welche die Massenerhaltung beschreibt, siehe dafür auch~\ref{buch:zusammenhang:erhaltungssatz:subsection:kontinuitaetsgleichung}.
+\index{Massenerhaltung}%
 Also in anderen Worten die Luft kann weder verschwinden noch aus dem Nichts auftauchen. 
 
 Zudem brauchte er noch eine Gleichung, welche die Energie beschreibt, dazu diente 
@@ -35,19 +39,29 @@ Zudem brauchte er noch eine Gleichung, welche die Energie beschreibt, dazu dient
 	\label{eq:enrgy}
 \end{equation}
 Damit werden Temperaturänderungen durch Transport sowie Expansion und Kompression der Luftmassen ausgedrückt.
+\index{Temperaturanderung@Temperaturänderung}%
+\index{Expansion}%
+\index{Kompression}%
 Das ${Q}$ in der Gleichung drückt die Energiezu- oder -abfuhr, in Form von Wärme aus.
+\index{Warme@Wärme}%
 $s$ ist die spezifische Entropie der Luft, diese liesse sich auch durch 
+\index{spezifische Entropie}%
 \begin{equation}
 	\frac{Ds}{Dt} = \frac{DT}{Dt} - \frac{R}{c_p} \, \frac{T}{p} \, \frac{Dp}{Dt}
 	\label{eq:enrgy2}
 \end{equation}
 ausdrücken.
 Dabei gilt $R$ ist die Gaskonstante für trockene Luft ($R \approx 287\,\mathrm{J\,kg^{-1}\,K^{-1}}$).
+\index{Gaskonstante}%
 $c_p$ ist die spezifische Wärmekapazität bei konstantem Druck ($\approx 1004\,\mathrm{J\,kg^{-1}\,K^{-1}}$).
+\index{Warmekapazitat@Wärmekapazität}%
 $T$ ist die Temperatur des Luftpakets in Kelvin.
+\index{Temperatur}%
 $p$ ist der Druck des Luftpakets in Pascal.
 
 Als letztes verwendete er noch das ideale Gasgesetz:
+\index{ideales Gasgesetz}%
+\index{Gasgesetz}%
 \begin{equation}
 	p = \rho R T,
 	\label{eq:gasgesetz}
@@ -62,10 +76,11 @@ Das bedeutete in jeder Zelle trug Richardson Werte für Druck, horizontale Windg
 Die Daten zu diesen Variablen nahm er aus den Berichten der schon erwähnten Wetterballonmessungen.
 Doch bevor er diese einsetzen konnte musste er sie auf sein Gitter interpolieren. 
 
-Da Richardson die Rechnung alleine durchführte, brauchte er dafür 6 Wochen Arbeitszeit. 
+Da Richardson die Rechnung alleine durchführte, brauchte er dafür sechs Wochen Arbeitszeit. 
 Praktisch nützlich war diese Prognose nicht mehr.
 Dazu müsste die Berechnung innert Stunden oder sogar Minuten abgeschlossen werden können, was damals nur durch Zusammenarbeit vieler Mitrechner möglich wurde. 
-So entstand Richardsons Traumvorstellung einer \glqq Wettervorhersagenfabrik\grqq  für die ganze Welt.
+So entstand Richardsons Traumvorstellung einer ``Wettervorhersagenfabrik'' für die ganze Welt.
+\index{Wettervorhersagefabrik}%
 Diese besteht aus einer grossen Kuppel, welche im Innern eine Weltkarte an der Wand hat. 
 Darin sitzen rundherum etwa 64000 Leute, die je zu ihrem zugewiesenen Bereich die Daten der Atmosphäre erhalten und damit die Berechnungen machen müssen. 
 Ihre Resultate geben sie an die benachbarten Mitarbeiter weiter und das grosse Rechnen beginnt von vorn. 
@@ -75,10 +90,15 @@ Siehe Abbildung~\ref{bild:richardsonsTraum} für ein Beispiel solch einer Illust
 
 \begin{figure}
 	\centering
-	\includegraphics{eingeteilte_Karte.jpg}
+\begin{tikzpicture}[>=latex,thick]
+\clip (-6.3,-8) rectangle (6.3,8);
+%\draw[color=red] (-6.3,-7.6) rectangle (6.3,7.6);
+\node at (0,0) {\includegraphics[width=\textwidth]{eingeteilte_Karte.jpg}};
+\fill[color=darkred,opacity=0.2] (1,-3.93) -- (2.03,-3.87) -- (1.95,-2.93) -- (0.95,-2.96) -- cycle;
+\end{tikzpicture}
 	\caption{Gitter zur numerischen Approximation der Felder, welche das Wetter beeinflussen.
-		Wie man sehen kann ist das Gitter sehr grob und somit ungenau.
-		In der Schweiz, zum Beispiel hat es nur einen Gitterpunkt. 
+		Wie man sehen kann, ist das Gitter sehr grob und somit ungenau.
+		In der Schweiz zum Beispiel hat es nur den einen Gitterpunkt ``Laax'' ({\color{darkred}rot} hervorgehoben). 
 		}
 	\label{bild:karteEuropa}
 \end{figure}
@@ -101,9 +121,13 @@ Sondern es lag viel mehr an praktischen Problemen.
 In der Atmosphäre kompensieren sich unter großräumigen Bedingungen normalerweise der Druckgradient und die Coriolis-Kraft näherungsweise, sodass sich ein nahezu stationärer, geostrophischer Wind einstellt.
 Doch die Daten vom 20. Mai 1910, welche mittels den Wetterballonen aufgezeichnet wurden, befanden sich nicht im geostrophischen Gleichgewicht.
 Grund dafür waren regionale Wetterstörungen wie Tiefdruckgebiete, Fronten und vertikale Strömungen, welche den idealisierten Ausgleich zwischen Druckgradient- und Coriolis-Kraft verhinderten.
+\index{Wetterstorung@Wetterstörung}%
+\index{Front}%
 Zudem wirkten in der unteren Troposphäre Reibungseinflüsse und kleinräumige Turbulenz, sodass Windgeschwindigkeit und -richtung deutlich von den geostrophischen Werten abwichen.
+\index{Tropsphare@Troposphäre}%
+\index{Turbulenz}%
 Die punktuell und zu unterschiedlichen Zeitpunkten erhobenen Messungen führten darüber hinaus zu inkonsistenten Druck- und Windfeldern.
-Richardson setzte die Rohdaten – abgesehen von der Interpolierung auf das Gitter – unverändert in seine Bewegungsgleichungen ein, ohne zuvor eine Anpassung an das geostrophische Gleichgewicht vorzunehmen.
+Richardson setzte die Rohdaten --- abgesehen von der Interpolierung auf das Gitter --- unverändert in seine Bewegungsgleichungen ein, ohne zuvor eine Anpassung an das geostrophische Gleichgewicht vorzunehmen.
 Dadurch traten in seiner Modellrechnung große Beschleunigungen auf, die schlussendlich zu seiner stark fehlerhaften Wettervorhersage führten.
 Erst Jahrzehnte später wurde klar, dass für stabile numerische Prognosen ein Anfangszustand im geostrophischen Gleichgewicht oder zumindest nahe daran essentiell ist.
 

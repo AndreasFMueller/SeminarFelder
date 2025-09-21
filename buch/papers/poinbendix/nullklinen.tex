@@ -1,14 +1,17 @@
 \section{Verhalten von Bahnkurven in 2D} \label{poinbendix:section:nullklinen}
-
+\kopfrechts{Verhalten von Bahnkurven in 2D}
 Das Verhalten von Bahnkurven in 2D kann anhand von verschiedenen Methoden analysiert werden.
 Dabei gehen wir immer von $r$-fach differenzierbaren dynamischen Systemen aus, welche also stetige Bahnkurven hervorbringen.
 Die Bahnen in diesen Systemen sind dann zu einem gewissen Grad vorhersagbar durch die Analyse der Nullklinen.
 Ein Beispiel dazu findet sich im nächsten Abschnitt \ref{poinbendix:subsection:nullklinen}.
-In einem zweiten Abschnitt \ref{poinbendix:subsection:limesmengen} werden dann die sogenannten Limesmengen eingeführt, welche der Kern des Satzes von Poincaré-Bendixson bilden.
+In einem zweiten Abschnitt \ref{poinbendix:subsection:limesmengen} werden dann die sogenannten Limesmengen eingeführt, welche den Kern des Satzes von Poincaré-Bendixson bilden.
+\index{Limesmengen}%
 
 \subsection{Nullklinen} \label{poinbendix:subsection:nullklinen}
 
-Die Punkte, bei denen die Ableitungen entlang einer Koordinatenachse null werden (e.g.: $\dot{x}=0$), befinden sich auf Kurven, welche \emph{Nullklinen} genannt werden.
+Die Punkte, bei denen die Ableitungen entlang einer Koordinatenachse null
+werden (z.~B.: $\dot{x}=0$), befinden sich auf Kurven, welche \emph{Nullklinen} genannt werden.
+\index{Nullkline}%
 Somit werden Nullklinen in 2D immer von einem vertikalen ($x$-Nullkline) oder einem horizontalen ($y$-Nullkline) Fluss durchflossen.
 Daraus folgt, dass Schnittpunkte zweier Nullklinen Nullstellen sind (in 2D).
 Alle Ableitungen werden also null ($\dot{x}=\dot{y}=0$) und Bahnkurven, welche zu diesen Punkten kommen, enden sofort.
@@ -43,7 +46,7 @@ Durch Gleichsetzen der beiden Nullklinen
 erhält man dann zwei Nullstellen an den Punkten $(0, 0)$ und $(1, 1)$.
 
 In Abbildung \ref{poinbendix:fig:nullklinen} sieht man, wie sich die $x$-Nullkline (rot) und die $y$-Nullkline an den beiden Nullstellen kreuzen.
-Es ergeben sich 5 Regionen mit unterschiedlicher Flussrichtung.
+Es ergeben sich fünf Regionen mit unterschiedlicher Flussrichtung.
 
 Wenn man sich diese Regionen um die Nullpunkte genauer anschaut, kann man schon eine ungefähre Vorstellung von möglichen Bahnkurven bekommen (siehe die beiden vergrösserten Ausschnitte in Abbildung \ref{poinbendix:fig:nullklinen}).
 Zur Erinnerung, die Ableitungen können nur auf den Nullklinen ihre Richtung wechseln.
@@ -52,6 +55,7 @@ Daraus folgt, dass ein einzelner Punkt pro Region genügt, um den (generellen) F
 Nehmen wir den Punkt $(-2, 0)$, welcher in der Region links liegt.
 Dann erhalten wir
 \[
+\renewcommand{\arraycolsep}{3pt}
 \begin{array}{rcccl}
 \dot{x} &=& y-x^2 &=&-4 \\
 \dot{y} &=& x-y^3 &=&-2.
@@ -72,19 +76,24 @@ Mit derselben Methode können auch die anderen 4 Regionen analysiert werden.
 \subsection{Limesmengen} \label{poinbendix:subsection:limesmengen}
 
 Limesmengen beinhalten alle Punkte, welchen sich Bahnkurven unendlich oft annähern.
+\index{Limesmengen}%
 Dies können einzelne Punkte sein, periodische Bahnen, oder Kombinationen davon.
 Dabei startet man bei einem beliebigen Punkt $p \in M$ und schaut sich das Verhalten in positiver und negativer Zeit an.
 
-Formell betrachtet bestehen die Limesmengen aus sogenannten Häuffungspunkten, also allen Punkten, denen die Bahn beliebig nahe kommt.
-\begin{definition}[Häuffungspunkte]
+Formell betrachtet bestehen die Limesmengen aus sogenannten Häufungspunkten, also allen Punkten, denen die Bahn beliebig nahe kommt.
+\begin{definition}[Häufungspunkte]
+\index{Haufungspunkt@Häufungspunkt}%
 \label{poinbendix:def:limesmengen}
 $q$ ist ein Häufungspunkt der Bahn $\Phi_t(p)$, wenn es für jedes $\epsilon > 0$ und jedes $N > 0$ einen Zeitpunkt $t > N$ gibt, sodass der Abstand $d(\Phi_t(p),q) < \epsilon$ ist.
 \end{definition}
 
-Ist die Bahnkurve periodisch, so werden die Häuffungspunkte immer wieder nach diskreten Zeitpunkten $t_i$ erreicht.
+Ist die Bahnkurve periodisch, so werden die Häufungspunkte immer wieder nach diskreten Zeitpunkten $t_i$ erreicht.
 \begin{definition}[Limesmengen]
 \label{poinbendix:def:limesmengen}
+\index{Limesmenge}%
 Die Alpha- und Omega-Limesmengen
+\index{Alpha-Limesmenge}%
+\index{Omega-Limesmenge}%
 \begin{align*}
     \alpha(p) &= \{q\in M; \; \Phi_{t_i}(p) \to q \; \text{für eine Sequenz} \; t_i \to -\infty\} \\
     \omega(p) &= \{q\in M; \; \Phi_{t_i}(p) \to q \; \text{für eine Sequenz} \; t_i \to \infty\}

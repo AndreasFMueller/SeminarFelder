@@ -1,5 +1,5 @@
 \section{Der Satz von Poincaré-Bendixson} \label{poinbendix:section:poinbendix}
-
+\kopfrechts{Der Satz von Poincaré-Bendixson}
 Im vorherigen Abschnitt wurde gezeigt, wie Bahnkurven von zweidimensionalen dynamischen Systemen durch Analyse der Nullklinen vorhergesagt werden können.
 Der Satz von Poincaré-Bendixson bricht diese Intuition auf drei konkrete Fälle herunter.
 Andere Lösungen ausserhalb dieser drei Fälle kann es in zwei Dimensionen nicht geben.
@@ -12,9 +12,9 @@ Den Satz von Poincaré-Bendixson zu beweisen würde den Rahmen dieses Papers spr
 $\Phi_t(p) \in \Xi^r(\mathbb{S}^2)$ sei ein $r$-fach differenzierbares, zweidimensionales dynamisches System mit Startpunkt $p \in \mathbb{S}^2$.
 Dann gilt für die Omega-Limesmenge $\omega(p)$ eine der folgenden Optionen:
 \begin{enumerate}
-\item $\omega(p)$ ist eine Nullstelle
-\item $\omega(p)$ ist ein geschlossener Orbit
-\item $\omega(p)$ ist ein geschlossener Orbit welcher Singularitäten verbindet
+\item $\omega(p)$ ist eine Nullstelle.
+\item $\omega(p)$ ist ein geschlossener Orbit.
+\item $\omega(p)$ ist ein geschlossener Orbit, welcher Singularitäten (Nullstellen des Vektorfeldes) verbindet.
 \end{enumerate}
 \end{satz}
 
@@ -25,11 +25,13 @@ In den darauffolgenden Abschnitten wird dann für jeden Fall jeweils ein Beispie
 \subsection{Kugeloberfläche und Ebene} \label{poinbendix:subsection:kugeloberflaeche}
 
 Im Beispiel \ref{buch:koordinaten:diffmannig:beispiel:stereographisch} wird die stereographische Projektion eingeführt, welche ein planares Polarkoordinatensystem auf die Kugeloberfläche projiziert.
+\index{stereographische Projektion}%
 In Abbildung \ref{buch:koordinaten:diffmannig:fig:stereographisch} sieht man, dass dabei der Punkt auf dem Nordpol der Kugeloberfläche ins unendliche auf der Ebene abgebildet wird.
 Somit ergibt sich für den Fall einer Nullstelle auf dem Nordpol eine divergierende Bahnkurve auf der Ebene.
 
 Auch wenn die Formulierung auf der Kugeloberfläche etwas eleganter ist, gilt der Satz von Poincaré-Bendixson sowohl auf der Ebene $\mathbb{R}^2$ wie auch auf der Kugeloberfläche $\mathbb{S}^2$.
 Allerdings gilt er nicht auf allen zweidimensionalen Mannigfaltigkeiten, so können zum Beispiel auf dem Torus Bahnkurven auftreten welche nicht wirklich periodisch sind, aber auch nicht auf eine Singularität fallen \cite{poinbendix:wiki}.
+\index{Torus}%
 
 
 \subsection{Fall 1: $\omega(p)$ ist eine Nullstelle} \label{poinbendix:subsection:fall1}
@@ -57,7 +59,7 @@ Nun setzen wir dieses Resultat in die Ableitung nach $y$ und setzen es gleich Nu
 \end{align*}
 Nach dieser Untersuchung sehen wir, dass es nur eine reelle Nullstelle $x=y=0$ geben kann, da $a^2 + 1$ im reellen nie Null werden kann.
 
-Dieses Beispiel wurde gewählt da sehr schöne Bahnkurven entstehen.
+Dieses Beispiel wurde gewählt, da sehr schöne Bahnkurven entstehen.
 Wie diese Bahnkurven aussehen können, sieht man in Abbildung \ref{poinbendix:fig:fixed_point_omega_set}.
 \end{beispiel}
 
@@ -86,8 +88,8 @@ Diese Variante wird im folgenden Beispiel genauer gezeigt.
 \begin{beispiel} \label{poinbendix:beispiel:fall2_1}
 Das Gleichungssystem
 \begin{align*}
-    \dot{x} &= y \\
-    \dot{y} &= x
+    \dot{x} &= \phantom{-}y \\
+    \dot{y} &= -x
 \end{align*}
 erzeugt dabei kreisrunde Orbits um den Nullpunkt herum.
 Der Nullpunkt ist also eine Nullstelle und stellt damit eine weitere Omega-Limesmenge dar.
@@ -111,6 +113,7 @@ Das Gleichungssystem
     \dot{\varphi} &= -1
 \end{align*}
 in Polarkoordinaten kann als Illustration der Hopf-Bifurkation verwendet werden.
+\index{Hopf-Bifurkation}%
 Schaut man sich die Ableitung des Radius $r$ genauer an, erkennt man, dass diese bei $b = r^2$ verschwindet.
 Dies ist also eine Nullkline.
 Da die Ableitung zum Winkel $\varphi$ konstant ist, entsteht daher ein stabiler Zyklus mit Radius $\sqrt{b} \; \forall \; b > 0$.

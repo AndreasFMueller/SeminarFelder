@@ -12,6 +12,9 @@
 
 \subsection{Minkowski Metrik}
 In der speziellen Relativitätstheorie (SRT) wird die Minkowski-Metrik verwendet.
+\index{spezielle Relativitatstheorie@spezielle Relativitätstheorie}%
+\index{Relativitatstheorie, spezielle@Relativitätstheorie, spezielle}%
+\index{Minkowski-Metrik}%
 Da es in der SRT keine Krümmung und Gravitation gibt, sind alle Elemente ausserhalb der Diagonale des metrischen Tensors null und somit ist die Raum-Zeit flach.
 Zwei Signaturen sind üblich.
 Einerseits gibt es die $({-}{+}{+}{+})$-Signatur, bei welcher die Zeitkomponente negativ und die Raumkomponenten positiv gezählt werden.
@@ -40,8 +43,8 @@ Dabei entspricht $c$ der Lichtgeschwindigkeit und ein Linienelement ist somit de
 \end{equation*}
 Eine Konsequenz dieser Signatur ist, dass zeitartige Abstände $dl^2 < 0$ und raumartige Abstände $dl^2 > 0$ sind.
 
-\subsection{Herleitung Hodge-Duale}
-Für den Teil der inhomogenen Maxwell Gleichungen benötigen wir die Hodge-Duale von 1-Formen, 2-Formen und 3-Formen im vierdimensionalen Minkowski-Raum.
+\subsection{Hodge-Duale der Basis-$k$-Formen}
+Für den Teil der inhomogenen Maxwell-Gleichungen benötigen wir die Hodge-Duale von 1-Formen, 2-Formen und 3-Formen im vierdimensionalen Minkowski-Raum.
 Um dabei die korrekten Vorzeichen zu erhalten, muss die Hodge-Dualität mit Hilfe des metrischen Tensors $g^{ik}$  der Minkowski-Metrik verwendet werden.
 
 Wir verwenden die Definition des Hodge-Operators
@@ -52,17 +55,18 @@ wobei $\langle \cdot , \cdot \rangle$ das durch die Metrik $g^{ik}$ induzierte S
 Im Folgenden führen wir alle Berechnungen der Hodge-Duale von 1-, 2- und 3-Formen durch.
 Wir verwenden $g^{ik}$ gemäss \eqref{maxwell:section:teil1:metrik} und $\operatorname{vol}(M) = dx^0 \wedge dx^1 \wedge dx^2 \wedge dx^3$.
 \begin{definition}
+\label{maxwell:hodge:kurzschreibweise}
 Um die Notation kompakter und übersichtlicher zu gestalten, führen wir die Schreibweise
-\begin{align}
+\begin{align*}
 	dx^{i\!j} &:= dx^i \wedge dx^j, 
-	\label{maxwell:hodge:zwei}
+	%\label{maxwell:hodge:zwei}
 	\\
 	dx^{i\!jk} &:= dx^i \wedge dx^j \wedge dx^k, 
-	\label{maxwell:hodge:drei}
+	%\label{maxwell:hodge:drei}
 	\\
 	dx^{i\!jkl} & := dx^i \wedge dx^j \wedge dx^k \wedge dx^l
 	\notag
-\end{align}
+\end{align*}
 für Wedge-Produkte von Basisformen ein.
 \end{definition}
 Mit dieser Vorbereitung können wir nun die konkreten Hodge-Duale der Basisformen berechnen.
@@ -162,40 +166,41 @@ Mit dieser Vorbereitung können wir nun die konkreten Hodge-Duale der Basisforme
 	= g^{11} g^{22} g^{33} \operatorname{vol}(M) = dx^{0123} \\
 	\Rightarrow s &= -1 \Rightarrow \boxed{\ast dx^{123} = - dx^0}
 \end{align*}
-In der Tabelle \ref{maxwell:section:teil1:Hodge-Tabelle} sind alle berechneten Hodge-Duale noch einmal zusammengefasst:
-\begin{table}
-	\centering
-	%\caption{Hodge-Duale}
-	%\label{maxwell:section:teil1:Hodge-Tabelle}
-	\begin{tabularx}{\textwidth}{ 
-			| >{\centering\arraybackslash}X 
-			| >{\centering\arraybackslash}X 
-			| >{\centering\arraybackslash}X | }
-		\hline
-		\textbf{1-Form} & \textbf{2-Form} & \textbf{3-Form} \\
-		\hline
-		\( \rule{0pt}{1.5em} {\ast} dx^0 = -dx^1 \wedge dx^2 \wedge dx^3 \) \newline
-	\( {\ast} dx^1 = -dx^0 \wedge dx^2 \wedge dx^3 \) \newline
-	\( {\ast} dx^2 = \phantom{-} dx^0 \wedge dx^1 \wedge dx^3 \) \newline
-	\( {\ast} dx^3 = -dx^0 \wedge dx^1 \wedge dx^2 \, \) 
-	&
-	\( \rule{0pt}{1.5em} {\ast} (dx^0 \wedge dx^1) = -dx^2 \wedge dx^3 \) \newline
-	\( {\ast} (dx^1 \wedge dx^2) = \phantom{-} dx^0 \wedge dx^3 \) \newline
-	\( {\ast} (dx^2 \wedge dx^3) = \phantom{-} dx^0 \wedge dx^1 \) \newline
-	\( {\ast} (dx^0 \wedge dx^2) = \phantom{-} dx^1 \wedge dx^3 \) \newline
-	\( {\ast} (dx^0 \wedge dx^3) = -dx^1 \wedge dx^2 \) \newline
-	\( {\ast} (dx^1 \wedge dx^3) = -dx^0 \wedge dx^2 \)
-	&
-	\( \rule{0pt}{1.5em} {\ast} (dx^0 \wedge dx^1 \wedge dx^2) = -dx^3 \) \newline
-	\( {\ast} (dx^0 \wedge dx^1 \wedge dx^3) = \phantom{-} dx^2 \) \newline
-	\( {\ast} (dx^0 \wedge dx^2 \wedge dx^3) = -dx^1 \) \newline
-	\( {\ast} (dx^1 \wedge dx^2 \wedge dx^3) = -dx^0 \)
-		\\
-		\hline
-	\end{tabularx}
-	\caption{Tabelle aller Hodge-Duale von 1-,2-, und 3-Formen mit $({-}{+}{+}{+})$-Signatur}
-	\label{maxwell:section:teil1:Hodge-Tabelle}
-\end{table}
+In der Tabelle \ref{maxwell:section:teil1:Hodge-Tabelle} sind alle berechneten Hodge-Duale noch einmal zusammengefasst.
+%\begin{table}
+%	\centering
+%	%\caption{Hodge-Duale}
+%	%\label{maxwell:section:teil1:Hodge-Tabelle}
+%	\begin{tabularx}{\textwidth}{ 
+%			| >{\centering\arraybackslash}X 
+%			| >{\centering\arraybackslash}X 
+%			| >{\centering\arraybackslash}X | }
+%		\hline
+%		\textbf{1-Form} & \textbf{2-Form} & \textbf{3-Form} \\
+%		\hline
+%		\( \rule{0pt}{1.5em} {\ast} dx^0 = -dx^1 \wedge dx^2 \wedge dx^3 \) \newline
+%	\( {\ast} dx^1 = -dx^0 \wedge dx^2 \wedge dx^3 \) \newline
+%	\( {\ast} dx^2 = \phantom{-} dx^0 \wedge dx^1 \wedge dx^3 \) \newline
+%	\( {\ast} dx^3 = -dx^0 \wedge dx^1 \wedge dx^2 \, \) 
+%	&
+%	\( \rule{0pt}{1.5em} {\ast} (dx^0 \wedge dx^1) = -dx^2 \wedge dx^3 \) \newline
+%	\( {\ast} (dx^1 \wedge dx^2) = \phantom{-} dx^0 \wedge dx^3 \) \newline
+%	\( {\ast} (dx^2 \wedge dx^3) = \phantom{-} dx^0 \wedge dx^1 \) \newline
+%	\( {\ast} (dx^0 \wedge dx^2) = \phantom{-} dx^1 \wedge dx^3 \) \newline
+%	\( {\ast} (dx^0 \wedge dx^3) = -dx^1 \wedge dx^2 \) \newline
+%	\( {\ast} (dx^1 \wedge dx^3) = -dx^0 \wedge dx^2 \)
+%	&
+%	\( \rule{0pt}{1.5em} {\ast} (dx^0 \wedge dx^1 \wedge dx^2) = -dx^3 \) \newline
+%	\( {\ast} (dx^0 \wedge dx^1 \wedge dx^3) = \phantom{-} dx^2 \) \newline
+%	\( {\ast} (dx^0 \wedge dx^2 \wedge dx^3) = -dx^1 \) \newline
+%	\( {\ast} (dx^1 \wedge dx^2 \wedge dx^3) = -dx^0 \)
+%		\\
+%		\hline
+%	\end{tabularx}
+%	\caption{Tabelle aller Hodge-Duale von 1-, 2-, und 3-Formen mit $({-}{+}{+}{+})$-Signatur}
+%	\label{maxwell:section:teil1:Hodge-Tabelle}
+%\end{table}
+\input{papers/maxwell/fig/table-hodge.tex}
 
 
 

@@ -1,0 +1,44 @@
+%
+% speed10000.tex -- 
+%
+% (c) 2021 Prof Dr Andreas Müller, OST Ostschweizer Fachhochschule
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{axis}[
+	title={10000 Iterationen},
+	xlabel={Anzahl Zellen},
+	ylabel={Speed-Up},
+	xmode=log,
+	log basis x=10,
+	legend style={
+		at={(1.05,1)},
+		anchor=north west,
+		draw=none,
+		fill=none
+	},
+	grid=both
+	]
+	
+	\addplot coordinates {(1e6,1.46) (5e6,1.35) (1e7,1.25)};
+	\addlegendentry{4 Threads}
+	
+	\addplot coordinates {(1e6,1.42) (5e6,1.39) (1e7,1.28)};
+	\addlegendentry{6 Threads}
+	
+	\addplot coordinates {(1e6,1.63) (5e6,1.33) (1e7,1.26)};
+	\addlegendentry{12 Threads}
+	
+\end{axis}
+
+\end{tikzpicture}
+\end{document}

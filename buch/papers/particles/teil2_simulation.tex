@@ -1,0 +1,168 @@
+%
+% einleitung.tex -- Beispiel-File für die Einleitung
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+% !TEX root = ../../buch.tex
+% !TEX encoding = UTF-8
+%
+\section{Simulation\label{particles:section:simulation}}
+\kopfrechts{Simulation}
+
+Für die konventionelle Wellengleichung~\eqref{particles:eq:wellengleichung} 
+können Lösungen besonders für einfache Fälle auch analytisch gefunden werden.
+Sobald jedoch das Medium nichtlinear und 
+der Proportionalitätsfaktor $c$ nicht mehr unabhängig von der Deformation $u$ ist, 
+wird eine analytische Lösung beinahe unmöglich.
+Entsprechend wurde in der Hinsicht darauf, 
+dass schliesslich auch nichtlineare Medien simuliert werden können, 
+ein numerischer Ansatz gewählt.
+
+So wurde für die Simulationen eine von \emph{Dr. Jeroen Vleggaar} angepasste Variante auf Basis vom Stand~\cite{particles:commit-wavesim2d} des Open-Source Wellensimulators WaveSimulator2D~\cite{particles:repo-wavesim2d} verwendet.
+\index{Vleggar, Dr.~Jeroen}%
+Dieser simuliert eine zweidimensionale Szene, indem er die Wellengleichung für einen diskreten Zeitschritt simuliert und das resultierende Feld anzeigt.
+Die Szene wird dabei ebenfalls örtlich diskretisiert, indem sie in Pixel aufgeteilt wird.
+
+\subsection{Wellengleichung\label{particles:section:simulation:wellengleichung}}
+Die Diskretisierung der Raumdimensionen erlaubt die Berechnung von $\nabla^2 u$ als Faltung des Felds $u$ mit einem Laplace-Kernel.
+\index{Laplace-Kernel}%
+Damit wird nach dem in Abschnitt~\ref{parallelisierung:section:numerik} gezeigten Schema die Wellengleichung zu einer Update-Formel analog zu Gleichung~\eqref{parallelisierung:eq:update_formel} umgeformt.
+Im genannten Abschnitt wird dabei mit dem Kernel
+\[
+    \boldsymbol{D}_{xy}^2
+    =
+    \begin{pmatrix*}[r]
+        0.00 &  0.25 & 0.00\\
+        0.25 & -1.00 & 0.25\\
+        0.00 &  0.25 & 0.00\\
+    \end{pmatrix*}
+\]
+gearbeitet.
+Auf die diagonalen Terme des Laplace-Kernels wird dabei verzichtet. 
+Da die in Abschnitt~\ref{parallelisierung:section:numerik} gelöste Wärmeleitungsgleichung parabolisch ist, werden die dadurch resultierenden, hochfrequenten Quantisierungsfehler stark gedämpft.
+\index{Quantisierungsfehler}%
+Für hyperbolische Differenzialgleichungen können die diagonalen Terme schlecht vernachlässigt werden, denn hyperbolische Differenzialgleichungen schaukeln derartige hochfrequente Fehler eher auf, als sie zu dämpfen\footnote{%
+Anmerkung des Herausgebers: Dieses Phänomen zeigt sich auch im
+Kapitel~\ref{chapter:neuronal}, wo gefunden wurde, dass hyperbolische
+partielle Differentialgleichungen der Lösung durch neuronale Netzwerke
+weniger gut zugänglich sind.}.
+Wir verwenden daher den verfeinerten Kernel
+\[
+    \boldsymbol{D}^2_{xy} = 
+    \begin{pmatrix*}[r]
+        0.066 &  0.184 & 0.066\\
+        0.184 & -1.000 & 0.184\\
+        0.066 &  0.184 & 0.066\\
+    \end{pmatrix*},
+\]
+was zu der angepassten Wellengleichung 
+\[
+    \frac{\d^2 u}{\d t^2} = c^2 \cdot (\boldsymbol{D}^2_{xy} * u)
+\]
+führt.
+
+Für die Ableitung im Zeitbereich wird der zentrale Differenzenquotient
+\index{zentraler Differenzenquotient}%
+\index{Differenzenquotient, zentral}%
+\[
+    \frac{\d^2 u(t)}{\d t^2} \approx \frac{u(t-T) - 2u(t) + u(t+T)}{T^2}
+\]
+eingesetzt.
+$T$ ist dabei der diskrete Zeitschritt der Simulation.
+
+Die angepasste Wellengleichung 
+\[
+    \frac{u(t-T) - 2 u(t) + u(t+T)}{T^2} = c^2 \cdot (\boldsymbol{D}^2_{xy} * u)
+\]
+kann nun nach $u(t+T)$, also nach dem Wert von $u$ einen Zeitschritt in der Zukunft, umgestellt werden, was in
+\[
+    \underbrace{%
+        u(t+T) = 2 u(t) - u(t+T) + T^2      % Equation part 1
+        \vphantom{\boldsymbol{D}^2_{xy}}        % Adjust height
+    }_{%
+        \displaystyle
+        \frac{\d^2 u(t)}{\d t^2}            % Description
+    } 
+    \cdot 
+    \underbrace{%
+        c^2 \cdot (\boldsymbol{D}^2_{xy} * u)   % Equation part 2
+    }_{%
+        \textstyle
+        c^2 \nabla^2 u                      % Description
+        \vphantom{\frac{\d^2 u(t)}{\d t^2}} % Adjust height
+    }
+\]
+resultiert.
+Diese Gleichung kann verwendet werden, um ungedämpfte Wellen in linearen Medien zu simulieren.
+
+\subsection{Dämpfung}
+\index{Dampfung@Dämpfung}%
+Ohne Dämpfung kann keine Energie die Simulation verlassen. 
+Abstrakt betrachtet würden die Wellen an den Rändern der Simulation reflektiert. 
+Um solche Reflexionen abzudämpfen wird die Wellengleichung durch einen Dämpfungsterm erweitert.
+Die angepasste Wellengleichung 
+\[
+    \frac{\d^2 u}{\d t^2} + d \frac{\d u}{\d t}= c^2 \cdot \nabla^2 u
+\]
+mit der Dämpfung $d$ als Skalarfeld kann entlang dem selben Weg wie in Abschnitt~\ref{particles:section:simulation:wellengleichung} dargestellt nach $u(t+T)$ umgeformt werden.
+Dabei wird für die Ableitung $\frac{\d u}{\d t}$ der einseitige Differenzquotient
+\[
+    \frac{\d u}{\d t} \approx \frac{u(t) - u(t-T)}{T}
+\]
+verwendet.
+
+Die resultierende Wellengleichung lautet
+\[
+    \underbrace{%
+        u(t+T) = 2 u(t) - u(t+T) + T^2      % Equation part 1
+        \vphantom{\boldsymbol{D}^2_{xy}}        % Adjust height
+    }_{%
+        \displaystyle
+        \frac{\d^2 u(t)}{\d t^2}            % Description
+    } 
+    \cdot 
+    \underbrace{%
+        c^2 \cdot (\boldsymbol{D}^2_{xy} * u)   % Equation part 2
+    }_{%
+        \textstyle
+        c^2 \nabla^2 u                      % Description
+        \vphantom{\frac{\d^2 u(t)}{\d t^2}} % Adjust height
+    }
+     - 
+    \underbrace{%
+        d \cdot T \cdot (u(t) - u(T-1))
+        \vphantom{\boldsymbol{D}^2_{xy}}        % Adjust height
+    }_{%
+        \displaystyle
+        d \cdot \frac{\d u(t)}{\d t}        % Description
+    }.
+\]
+
+\subsection{Nichtlinearität}
+Um die Nichtlinearität im Simulator umsetzen zu können, wird nach jedem Zeitschritt die Spannung im Feld ermittelt und anschliessend der Brechungsindex anhand einer Deformationskurve für jedes Pixel neu berechnet.
+Die Spannung ist dabei der Betrag der ersten örtlichen Ableitung, welche im zweidimensionalen Fall als Hypotenuse der beiden Ableitungen in $x$- und $y$-Richtung berechnet werden kann.
+% Die Nichtlinearität des Mediums wird durch die Formel
+% \[
+%     \text{stress} = a \cdot \text{strain} \cdot e^{b \cdot \text{strain}} % TODO: Tatsächliche Formel
+% \]
+% gegeben, wobei das nichtlineare Verhalten durch die Parameter $a$ und $b$ angepasst werden kann.
+% Einige Beispiele der daraus resultierenden Spannungs-Deformations-Kurven sind in Abbildung~\ref{particles:abb:nonlin} gezeigt. % TODO: Abbildung
+% \mytodo{Beschreiben, wie der Simulator das einrechnet}
+
+\subsection{Szenendefinition}
+Zur Definition des Ausgangszustands des Feldes sowie der Eigenschaften des Mediums nimmt der Simulator ein RGB-Bild entgegen.
+Den drei Farbkanälen wird jeweils eine Funktion zugeteilt.
+Der rote Kanal bestimmt den Brechungsindex des jeweiligen Pixels, während über den blauen Kanal die Dämpfung bestimmt werden kann.
+Über den grünen Kanal können im unveränderten Simulator Quellen dargestellt werden, wobei der Farbwert die Frequenz der Quelle darstellt.
+Damit die in der Simulation enthaltene Energie nicht fortlaufend ansteigt, wurde die Funktion des grünen Kanals durch Huygens Optics angepasst.
+Der grüne Kanal diktiert nun das Deformationsfeld zu Beginn der Simulation.
+% Damit die in der Simulation enthaltene Energie nicht fortlaufend ansteigt, wurde die Funktion des grünen Kanals durch \emph{Dr. Jeroen Vleggaar} angepasst. % TODO: Echter Name von Huygens einfügen
+% Der grüne Kanal diktiert nun das Spannungsfeld zu Beginn der Simulation. % CHECK: ist es die Spannung oder die Deformation?
+% TODO: Beispielszene
+
+\subsection{Performance}
+Die Simulation ist trotz relativ tiefer Auflösung nicht trivial. 
+Der WaveSimulator2D zieht Nutzen aus der \texttt{CuPy} Bibliothek
+\cite{particles:cupy}, um die Faltung des Laplace Kernels mit den
+aktuellen Feldwerten auf der Grafikkarte laufen zu lassen.
+Dies reduziert die Laufzeit auf modernen Rechnern erheblich.

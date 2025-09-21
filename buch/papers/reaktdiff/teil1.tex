@@ -8,15 +8,23 @@
 %
 \section{Musterbildung in Reaktionsdiffusionssystemen
 \label{reaktdiff:section:teil1}}
+\kopfrechts{Musterbildung in Reaktionsdiffusionssystemen}
 
 In diesem Abschnitt wird die Reaktionsdiffusionsgleichung mit zwei Komponenten untersucht.
 Als Beispiel wurde sich hier für die Turing-Muster entschieden.
+\index{Turing-Muster}%
 Turing-Muster findet man häufig in der Natur zum Beispiel als Fellmuster bei Tieren oder  das Muster unserer Fingerabdrücke.
+\index{Fellmuster}%
+\index{Fingerabdruck}%
 Sie sind nach dem Mathematiker Alan Turing benannt, der sie 1952 in seinem Artikel \textit{The Chemical Basis of Morphogenesis} \cite{turing1952chemical} beschrieb.
-Er untersuchte Systeme, die aus zwei Komponenten bestehen, einem Inhibitor und einem Aktivator.
-Turing entdeckte für die Entstehung der Turing-Muster eine Bedingung, die sogenannte Turing Bedingung.
+\index{Turing, Alan}%
+Er untersuchte Systeme, die aus zwei Komponenten bestehen, einem \emph{Inhibitor} und einem \emph{Aktivator}.
+\index{Inhibitor}%
+\index{Aktivator}%
+Turing entdeckte für die Entstehung der Turing-Muster eine Bedingung, die sogenannte \emph{Turing-Bedingung}.
+\index{Turing-Bedingung}%
 Sie besagt, dass ein System, in welchem Turing-Muster entstehen können, in Abwesenheit von Diffusion stabil sein muss und mit Diffusion instabil wird.
-Diese Kapitel basiert auf \cite{reaktdiff:turing_patterns_2019} und \cite{reaktdiff:hoyle2006pattern}.
+Dieser Abschnitt basiert auf \cite{reaktdiff:turing_patterns_2019} und \cite{reaktdiff:hoyle2006pattern}.
 
 \subsection{Lineare Stabilitätsanalyse ohne Diffusion
 \label{reaktdiff:subsection:mathe}}
@@ -36,7 +44,7 @@ Hierfür wird eine lineare Stabilitätsanalyse ohne Diffusion durchgeführt.
 Man betrachte die Gleichungen
 \begin{equation}
     \label{reaktdiff:equation:reaktdiff2ohneDiff}
-    \frac{\partial u}{\partial t} = f(u_0,v_0),\,
+    \frac{\partial u}{\partial t} = f(u_0,v_0),\;
     \frac{\partial v}{\partial t} = g(u_0,v_0).
 \end{equation}
 
@@ -86,13 +94,17 @@ Wenn man sie in Matrixform schreibt, erhält man
     \end{pmatrix}.
 \end{equation*}
 Die Matrix \(J\) ist die Jacobi-Matrix der Reaktionsgleichungen.
+\index{Jacobi-Matrix}%
 
 \subsubsection{Stabilität}
 Damit die Gleichung stabil ist, müssen die Eigenwerte der Matrix \(J\), negative Realteile haben.
+\index{Eigenwert}%
 Hierbei ist es ausreichend dass die Spur \(\text{Tr}(J) < 0\) und die Determinante \(\det(J) > 0\) sind.
+\index{Spur}%
+\index{Determinante}%
 Das kann man zeigen, indem
 \begin{equation*}
-    \det(A - \lambda I) = 0
+    \det(J - \lambda I) = 0
 \end{equation*}
 gelöst wird, wobei \(I\) die Einheitsmatrix ist.
 Die Eigenwerte der Matrix \(J\) sind die Lösungen der Gleichung
@@ -100,10 +112,10 @@ Die Eigenwerte der Matrix \(J\) sind die Lösungen der Gleichung
     \lambda^2 - \text{Tr}(J) \lambda + \det(J) = 0.
 \label{reaktdiff:equation:reaktdiff2ohneDifflinearisiert3}
 \end{equation*}
-Stellt man die Gleichung nach \(\lambda\) um erhält man
+Stellt man die Gleichung nach \(\lambda\) um, erhält man
 \begin{equation*}
     \lambda_{1,2} = \frac{1}{2} \left( \text{Tr}(J) \pm 
-    \sqrt{\text{Tr}(J)^2 - 4 \det(J)} \right).
+    \!\sqrt{\text{Tr}(J)^2 - 4 \det(J)} \right).
 \label{reaktdiff:equation:reaktdiff2ohneDifflinearisiert4}
 \end{equation*}
 Hier sieht man das der Wert unter der Wurzel immmer kleiner ist als die Spur der Matrix \(J\) wenn die Determinante positiv ist.
@@ -128,9 +140,9 @@ Mit Diffusion wollen wir die Störungsentwicklung mithilfe der Fourier-Theorie u
 Dazu setzen wir \(\delta u(x,t) = c_k(t) e^{ikx} e^{\lambda t}\) und \(\delta v(x,t) = d_k(t) e^{ikx} e^{\lambda t}\) ein.
 Die Ableitungen werden zu
 \begin{align*}
-    \frac{\partial\,\delta u}{\partial t} &= \sum_k \lambda\, c_k e^{i k x} e^{\lambda t}, &
+    \frac{\partial\delta u}{\partial t} &= \sum_k \lambda c_k e^{i k x} e^{\lambda t}, &
     \Delta \delta u &= \sum_k -k^2 c_k e^{i k x} e^{\lambda t},\\
-    \frac{\partial\,\delta v}{\partial t} &= \sum_k \lambda\, d_k e^{i k x} e^{\lambda t}, &
+    \frac{\partial\delta v}{\partial t} &= \sum_k \lambda d_k e^{i k x} e^{\lambda t}, &
     \Delta \delta v &= \sum_k -k^2 d_k e^{i k x} e^{\lambda t}.
 \end{align*}
 Setzt man diese Ableitungen in die Gleichungen \eqref{reaktdiff:equation:reaktdiff2mitDiff1} und \eqref{reaktdiff:equation:reaktdiff2mitDiff2} ein, so erhält man
@@ -207,7 +219,7 @@ kann man erkennen, dass der Vektor aus \(c_k\) und \(d_k\) ein Eigenvektor der M
 
 \subsubsection{Stabilitätsanalyse}
 Damit dieses System nun instabil ist, muss der Realteil der Eigenwerte der Matrix \(A\) positiv sein.
-Das Ziel ist es nun die Eigenwerte der Matrix \(A\) zu bestimmen.
+Das Ziel ist es nun, die Eigenwerte der Matrix \(A\) zu bestimmen.
 Dazu muss man die Gleichung
 \begin{equation*}
     \det(A - \lambda I) = 0
@@ -215,6 +227,7 @@ Dazu muss man die Gleichung
 \end{equation*}
 lösen.
 Das ergibt eine quadratische Gleichung in \(\lambda\):
+\index{quadratische Gleichung}%
 \begin{equation*}
     \lambda^2 - \text{Tr}(A) \lambda + \det(A) = 0.
 %\label{reaktdiff:equation:reaktdiff2mitDiffFourierkAeig2}
@@ -222,7 +235,7 @@ Das ergibt eine quadratische Gleichung in \(\lambda\):
 Die Eigenwerte der Matrix \(A\) sind
 \begin{equation}
     \lambda = \frac{1}{2} \left( \text{Tr}(A) \pm 
-    \sqrt{\text{Tr}(A)^2 - 4 \det(A)} \right).
+    \!\sqrt{\text{Tr}(A)^2 - 4 \det(A)} \right).
 \label{reaktdiff:equation:reaktdiff2mitDiffFourierkAeig3}
 \end{equation}
 Somit hat man eine Formel, mit der man für eine bestimmte Wellenzahl \(k\) die Eigenwerte \(\lambda\) bestimmen kann.
@@ -233,6 +246,7 @@ Diese Instabilität ist verantworlich für die Musterbildung.
 
 \section{Musterbildung
 \label{reaktdiff:section:diffusioninduzierteInstabilitaet}}
+\kopfrechts{Musterbildung}
 Was in den vorhergehenden Abschnitten gezeigt wurde, ist das ein System ohne Diffusion stabil sein kann, aber mit Diffusion instabil wird.
 Nun kann man aus den gemachten Berechungen Bedingungen für die Musterbildung ableiten.
 
@@ -263,7 +277,7 @@ Da \(f_u > 0\) und \(g_v < 0\) ist, muss auch
 damit die Determinante der Matrix \(A\) negativ ist.
 
 Man erkennt, dass die Determinante von \(A\) ein Polynom zweiten Grades in \(k^2\) ist.  
-Die minimale Wellenzahl \(k\), bei der die Determinante negativ wird, kann daher bestimmt werden.  
+Die minimale Wellenzahl \(k_{\text{min}}\), bei der die Determinante negativ wird, kann daher bestimmt werden.  
 Dazu wird die Determinante nach \(k^2\) abgeleitet und gleich Null gesetzt.  
 Folglich ergibt sich:
 \begin{equation*}
@@ -271,38 +285,38 @@ Folglich ergibt sich:
 \end{equation*}
 Die minimale Wellenzahl \(k\) ist also
 \begin{equation*}
-    k^2_{\text{min}} = \frac{D_v f_u + D_u g_v}{2\, D_u D_v}.
+    k^2_{\text{min}} = \frac{D_v f_u + D_u g_v}{2 D_u D_v}.
 \end{equation*}
 Die minimale Wellenzahl \(k_{\text{min}}\) wird nun in die Gleichung \eqref{reaktdiff:equation:reaktdiffbedingunen} für die Determinante der Matrix \(A\) eingesetzt.
 Somit erhält man einen Ausdruck für den Minimalwert der Determinante
 \begin{equation*}
-    \det(A) = \frac{(D_v f_u + D_u g_v)^2}{4\, D_u D_v} + f_u g_v - f_v g_u.
+    \det(A) = \frac{(D_v f_u + D_u g_v)^2}{4 D_u D_v} + f_u g_v - f_v g_u.
 \end{equation*}
 Die Determinante der Matrix \(A\) ist also negativ, wenn
 \begin{equation*}
-    \frac{(D_v f_u + D_u g_v)^2}{4\, D_u D_v} + f_u g_v - f_v g_u < 0.
+    \frac{(D_v f_u + D_u g_v)^2}{4 D_u D_v} + f_u g_v - f_v g_u < 0.
 \end{equation*}
 
 Diese Gleichung kann man nun umstellen zu
 \begin{equation*}
-    D_u g_v+D_v f_u < 2\sqrt{D_u D_v(f_v g_u - f_u g_v)} ,
+    D_u g_v+D_v f_u < 2\!\sqrt{D_u D_v(f_v g_u - f_u g_v)} ,
     %\label{reaktdiff:equation:reaktdiffbedingung3}
 \end{equation*}
-was eine weitere Bedingung für die Musterbildung in Reaktionsdiffusionssystemen.
+was eine weitere Bedingung für die Musterbildung in Reaktionsdiffusionssystemen ergibt.
 Wir sammeln die gefundenen Bedingungen im folgenden Satz.
 \begin{satz}
 \label{reaktdiff:satz:bedingungen}
-Damit es in einem Reaktions-Diffusionssystemen mit zwei Komponenten zur Musterbildung kommt, müssen folgende Bedingungen erfüllt sein:
+Damit es in einem Reaktions-Diffusionssystem mit zwei Komponenten zur Musterbildung kommt, müssen folgende Bedingungen erfüllt sein:
 \begin{enumerate}
     \item \(\text{Tr}(J) = f_u + g_v < 0\): Stabil ohne Diffusion
     \item \(\det(J) = f_u g_v - f_v g_u > 0\): Keine Eigenwertinstabilität ohne Diffusion
-    \item \(D_u g_v+D_v f_u < 2\sqrt{D_u D_v(f_v g_u - f_u g_v)}\)
+    \item \(D_u g_v+D_v f_u < 2\!\sqrt{D_u D_v(f_v g_u - f_u g_v)}\)
     \item \(D_v \gg D_u\): Inhibitor diffundiert deutlich schneller
 \end{enumerate}
 \end{satz}
 
-\subsection{Aktivator-Inhibitor System}
-Aus den Bedingungen kann man ein generelles System erkennen, welches man Aktivator-Inhibitor System nennt.
+\subsection{Aktivator-Inhibitor-System}
+Aus den Bedingungen kann man ein generelles System erkennen, welches man Aktivator-Inhibitor-System nennt.
 Hierfür ist die Vorzeichenstruktur der Jacobi-Matrix relevant.
 Im klassischen Fall sieht sie so aus:
 \begin{equation*}
@@ -324,13 +338,18 @@ Die Vorzeichen erfüllen folgende Eigenschaften:
     \item \(g_u > 0\): Aktivator aktiviert den Inhibitor
     \item \(g_v < 0\): Inhibitor hemmt sich selbst
 \end{itemize}
-Beispiele eines Aktivator-Inhibitor kann man in der Natur finden.
-Ein Raubtier (Inhibitor) braucht Nahrung in Form von Beutetiere (Aktivator) um zu überleben.
+\index{Aktivator}%
+\index{Inhibitor}%
+Beispiele eines Aktivator-Inhibitor-Systems kann man in der Natur finden.
+Ein Raubtier (Inhibitor) braucht Nahrung in Form von Beutetieren (Aktivator) um zu überleben.
+\index{Raubtier}%
+\index{Beutetier}%
 Jagen die Raubtiere zu viel, haben sie zu wenig Nahrung.
 Gibt es zu wenig Raubtiere, vermehren sich die Beutetiere.
 Stellt man nun die jeweiligen Reviere dar, so erkennt man entstehende Muster.
+\index{Revier}%
 
-\subsubsection{Bedingungen für Muster Bildung}
+\subsubsection{Bedingungen für Musterbildung}
 Zusammen mit den Resultaten von Satz \ref{reaktdiff:satz:bedingungen} ergeben sich die folgenden Bedingungen für die Entstehung von Mustern:
         \begin{itemize}
             \item \(f_u > 0\): Aktivator aktiviert sich selbst
@@ -339,11 +358,12 @@ Zusammen mit den Resultaten von Satz \ref{reaktdiff:satz:bedingungen} ergeben si
             \item \(g_u > 0\): Aktivator aktiviert den Inhibitor
             \item \(\text{Tr}(J) = f_u + g_v < 0\): Stabil ohne Diffusion
             \item \(\det(J) = f_u g_v - f_v g_u > 0\): Keine Eigenwertinstabilität ohne Diffusion
-            \item \(D_u g_v + D_v f_u < 2\sqrt{D_u D_v (f_v g_u - f_u g_v)}\)
+            \item \(D_u g_v + D_v f_u < 2\!\sqrt{D_u D_v (f_v g_u - f_u g_v)}\)
             \item \(D_v \gg D_u\): Inhibitor diffundiert deutlich schneller
         \end{itemize}
 
 \subsection{Einfaches Beispiel}
+\input{papers/reaktdiff/fig/example.tex}%
 Um das Ganze an einem einfachen Beispiel zu zeigen, werden lineare Funktionen
 \begin{equation}
 f(u, v) = a u + b v + k_1, \qquad
@@ -354,13 +374,22 @@ als Reaktionsterme eingesetzt.
 Als Parameter werden \( a = 1.0,\; b = -1.4,\; c = 1.0,\; d = -1.1,\; k_1 = 0.4,\text{und }k_2 = 0.1 \) eingesetzt.
 Durch die Wahl von \(k_1\) und \(k_2\) befindet sich das Gleichgewicht bei \(u_0 = v_0 = 1\).
 Nun werden die Bedingungen für die Musterbildung überprüft.
+\input{papers/reaktdiff/fig/example-fft.tex}%
 Hierfür berechen wir die Jacob-Matrix
 \begin{equation*}
         J =
+\bgroup\renewcommand{\arraystretch}{1.9}
         \begin{pmatrix}
-        \frac{\partial f}{\partial u} & \frac{\partial f}{\partial v} \\
-        \frac{\partial g}{\partial u} & \frac{\partial g}{\partial v}
+	\displaystyle
+        \frac{\partial f}{\partial u} &
+	\displaystyle
+	\frac{\partial f}{\partial v} \\
+	\displaystyle
+        \frac{\partial g}{\partial u} &
+	\displaystyle
+	\frac{\partial g}{\partial v}
         \end{pmatrix}
+\egroup
         =
         \begin{pmatrix}
         a & b \\
@@ -372,54 +401,40 @@ Hierfür berechen wir die Jacob-Matrix
         1.0 & -1.1
         \end{pmatrix}.
 \end{equation*}
-Man sieht direkt, dass die Vorzeichenstruktur der eines Aktivator-Inhibitor Systems entspricht.
+Man sieht direkt, dass die Vorzeichenstruktur der eines Aktivator-Inhibitor-Systems entspricht.
 Nun benötigt man die Deteminante und die Spur.
 Diese sind \(\det(J) = 0.3\) und \(\text{Tr}(J) = -0.1\).
 Somit sind die Bedingungen \(\det(J) > 0\) und \(\text{Tr}(J) <0\) erfüllt.
 
-Weiter geht es mit der Jacobimatrix mit Diffusion.
+
+Weiter geht es mit der Jacobi-Matrix mit Diffusion.
 Die Determinante wird mit
 \begin{equation*}
     \det\bigl(A(k^2)\bigr) = D_u D_v k^4 - (D_v a + D_u d) k^2 + \det(J)
 \end{equation*}
 berechnet.
-Eine der Bedingungen ist, dass \( \det\bigl( A(k_{\min}^2)\bigr)\) kleiner 0 ist.
+Eine der Bedingungen ist, dass \( \det\bigl( A(k_{\min}^2)\bigr)\) kleiner als 0 ist.
 Das Minimum ist bei
 \begin{equation*}
-    k^2_{\text{min}} = \frac{D_v\, a + D_u \, d}{2\, D_u D_v}.
+    k^2_{\text{min}} = \frac{D_v a + D_u  d}{2 D_u D_v}.
 \end{equation*}
-Da eine der Bedingungen \(D_v \ll D_u\) ist werden \(D_u = 1\) und \(D_v = 20\) gewählt.
+Da eine der Bedingungen \(D_v \ll D_u\) ist, werden \(D_u = 1\) und \(D_v = 20\) gewählt.
 Somit erhalten wir als Minimum
 \begin{equation*}
-    k^2_{\text{min}} = \frac{D_v\, a + D_u\, d}{2\, D_u D_v} = \frac{18.9}{40} = 0.4725.
+    k^2_{\text{min}} = \frac{D_v a + D_u d}{2 D_u D_v} = \frac{18.9}{40} = 0.4725.
 \end{equation*}
 Wird nun \(k^2_{\text{min}}\) in der Determinante eingesetzt, ergibt sich
 \begin{equation*}
     \det(A) = 20k^4 - (20 \cdot 1.0 + 1 \cdot (-1.1))k^2 + 0.3 = 20k^4 - 18.9k^2 + 0.3
      = -4.165125 .
 \end{equation*}
-Somit ist die Bedingung, dass die Deteminante mit Diffusion kleiner 0 wird, erfüllt.
+Somit ist die Bedingung, dass die Deteminante mit Diffusion kleiner als 0 wird, erfüllt.
 Ein System mit diesen Reaktionstermen wird Muster bilden.
 Ein Beispiel ist in Abbildung \ref{reaktdiff:fig:ownreakterm} zu sehen.
 In Abbildung \ref{reaktdiff:fig:easyfft} ist die räumliche FFT zu sehen.
 In der FFT ist die minimale räuliche Frequenz als eine rote Linie eingezeichnet.
 Die Grafik zeigt, dass die dominanten Frequenzen sich unter der berechnten minimalen Frequenz befinden.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/simpleExample/easy_n1.png}
-    \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/simpleExample/easy_n300.png}
-    \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/simpleExample/easy_n999.png}
-    \caption{Verlauf der Simulation (links nach rechts) der Reaktions-Diffusiongleichung mit \eqref{reaktdiff:equ:ownreakterm} als Reaktionsterm}
-    \label{reaktdiff:fig:ownreakterm}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{papers/reaktdiff/images/simpleExample/fft_turing_1d.png}
-    \caption{FFT der Simulation eines Reaktionsdiffusionsmodell mit linearen Reaktionstermen \eqref{reaktdiff:equ:ownreakterm}. Die rote Linie zeigt die theortische minimale Frequnez von \(f = k_{\min} / 2 \pi \approx 0.109\). Man sieht, dass die dominanten Frequenzen links des berechneten Minimums ist.}
-    \label{reaktdiff:fig:easyfft}
-\end{figure}
 
 %\begin{table}[h!]
 %    \centering
@@ -437,10 +452,17 @@ Die Grafik zeigt, dass die dominanten Frequenzen sich unter der berechnten minim
 
 \subsection{Klassische Reaktionsterme}
 In der Literatur werden viele weitere Reaktionsterme erwähnt.
-Einige wenig werden hier im Anschluss beleuchtet.
-Die folgenden Bilder zu den Modellen wurden mit der Finiten-Differenzen-Methode erstellt.
+Einige wenige werden hier im Anschluss beleuchtet.
+Die folgenden Bilder zu den Modellen wurden mit der
+Finiten-Differenzen-Methode
+(siehe Abschnitt~\ref{buch:pdenumerik:section:fdm})
+erstellt.
+\index{Finite-Differenzen-Methode}%
 
-Als erstes wird das Gray-Scott Model berachtet.
+
+Als erstes wird das Gray-Scott-Model berachtet.
+\index{Gray-Scott-Modell}%
+\input{papers/reaktdiff/fig/gs.tex}%
 Die Reaktionsterme
 \begin{equation}
      f(u,v) = -uv^2 + F(1 - u), \quad g(u,v) = uv^2 - (F + k)v
@@ -451,7 +473,13 @@ Ein Beispiel kann in Abbildung \ref{reaktdiff:fig:gs} gesehen werden.
 
 
 Ein weiteres Model ist das FitzHugh-Nagumo Model.
-Es wird genutzt, um unter anderem die ausbreitung von Nervenimpulsen zu simulieren.
+\index{FitzHugh-Nagumo-Modell}%
+\input{papers/reaktdiff/fig/fh.tex}%
+Es wird genutzt, um unter anderem die Ausbreitung von Nervenimpulsen
+zu simulieren.
+\index{Nervenimpuls}%
+Eine detaillierte Diskussion des FitzHugh-Nagumo-Modells findet sich in
+Kapitel~\ref{chapter:nerven}.
 Die Reaktionsterme
 \begin{equation}
     f(u,v) = \lambda_u u - u^3 - \kappa - \sigma v, \quad g(u,v) = \frac{1}{\tau}(u - v)
@@ -460,20 +488,4 @@ Die Reaktionsterme
 bilden Muster, welche man in der Natur bei Tieren sehen kann.
 Ein Beispiel ist in Abbildung \ref{reaktdiff:fig:fhn} zu sehen.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/GrayScott/gs_n1.png}
-    \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/GrayScott/gs_n300.png}
-    \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/GrayScott/gs_n999.png}
-    \caption{Verlauf der Simulation (links nach rechts) der Reaktions-Diffusiongleichung mit Gray-Scott Modell (Gleichung \eqref{reaktdiff:equ:gs}) als Reaktionsterm.}
-    \label{reaktdiff:fig:gs}
-\end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/FitzHughNagumo/fhn_n1.png}
-    \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/FitzHughNagumo/fhn_n300.png}
-    \includegraphics[width=0.32\linewidth]{papers/reaktdiff/images/FitzHughNagumo/fhn_n999.png}
-    \caption{Verlauf der Simulation (links nach rechts) der Reaktions-Diffusiongleichung mit FitzHugh-Nagumo Modell (Gleichung \eqref{reaktdiff:equ:fhn}) als Reaktionsterm.}
-    \label{reaktdiff:fig:fhn}
-\end{figure}

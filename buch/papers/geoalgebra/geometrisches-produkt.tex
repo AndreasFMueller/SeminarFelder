@@ -1,10 +1,16 @@
 \section{Geometrisches Produkt}
 Im Rahmen der geometrischen Algebra ist das \emph{geometrische Produkt} eine zentrale Operation. 
+\index{geometrisches Produkt}%
+\index{Produkt, geometrisch}%
 Es kombiniert das \emph{innere Produkt} (Skalarprodukt) und das
+\index{inneres Produkt}%
+\index{Skalarprodukt}%
 \emph{äussere Produkt} (Wedgeprodukt) in einer Operation
-\begin{equation}
+\index{ausseres Produkt@äusseres Produkt}%
+\index{Produkt, ausseres@Produkt, äusseres}%
+\begin{equation*}
 \a \b = \a \cdot \b + \a \wedge \b
-\end{equation}
+\end{equation*}
 und kombiniert somit einen Skalar (0-Vektor) mit einem Bivektor (2-Vektor).
 
 Das folgende Lemma ermöglicht, zwischen dem geometrischen Produkt und dem altbekannten
@@ -13,45 +19,43 @@ Skalarprodukt und dem Wedgeprodukt umzurechnen.
 \begin{lemma}[Rechenregeln für das geometrische Produkt]
   Für beliebige Vektoren $\a$ und $\b$ gilt:
   \begin{enumerate}
-    \item Vertauschungsregel: \begin{align}
-        \a \b &= \a \cdot \b + \a \wedge \b \label{geoalgebra:eq:ab} \\
-        \b \a &= \a \cdot \b - \a \wedge \b \label{geoalgebra:eq:ba}
+    \item Vertauschungsregel:
+\index{Vertauschungsregel}%
+\begin{align}
+        \a \b &= \a \cdot \b + \a \wedge \b,\label{geoalgebra:eq:ab} \\
+        \b \a &= \a \cdot \b - \a \wedge \b.\label{geoalgebra:eq:ba}
       \end{align}
     \item Skalar- und Wedgeprodukt können durch das geometrische Produkt ausgedrückt werden: \begin{align}
-        \a \cdot \b = \frac{1}{2} (\a \b + \b \a) \\
-        \a \wedge \b = \frac{1}{2} (\a \b - \b \a)
+        \a \cdot \b = \frac{1}{2} (\a \b + \b \a),\\
+        \a \wedge \b = \frac{1}{2} (\a \b - \b \a).
         \label{geoalgebra:eq:geo-product-wedge}
       \end{align}
-    \item Norm: \begin{equation}
-      \a^2 = |\a|^2
-    \end{equation}
+    \item Norm: \begin{equation*}
+      \a^2 = |\a|^2.
+    \end{equation*}
   \end{enumerate}
   \label{geoalgebra:lemma:rechenregeln-geom-produkt}
 \end{lemma}
 \noindent Das Lemma \ref{geoalgebra:lemma:rechenregeln-geom-produkt} lässt sich folgenderweise beweisen:
 \begin{proof}
-  1. Da das Wedgeprodukt antikommutativ ist \eqref{geoalgebra:eq:antikommutativ}, folgt
-  \begin{equation}
+  1. Da das Wedgeprodukt antikommutativ ist (Lemma~\ref{geoalgebra:eq:antikommutativ}), folgt
+  \begin{equation*}
     \b \a = \b \cdot \a + \b \wedge \a = \a \cdot \b - \a \wedge \b.
-  \end{equation}
+  \end{equation*}
   2. Durch Addieren von \eqref{geoalgebra:eq:ab} und \eqref{geoalgebra:eq:ba} erhalten wir
-  \begin{equation}
-    \begin{aligned}
+  \begin{align*}
       \a \b + \b \a &= 2 (\a \cdot \b) \\
-      \a \cdot \b &= \frac{1}{2} (\a \b + \b \a). \\
-    \end{aligned}
-  \end{equation}
+      \a \cdot \b &= \frac{1}{2} (\a \b + \b \a).
+  \end{align*}
   Durch Subtrahieren von \eqref{geoalgebra:eq:ab} und \eqref{geoalgebra:eq:ba} erhalten wir
-  \begin{equation}
-    \begin{aligned}
+  \begin{align*}
       \a \b - \b \a &= 2 (\a \wedge \b) \\
-      \a \wedge \b &= \frac{1}{2} (\a \b - \b \a). \\
-    \end{aligned}
-  \end{equation}
-  3.
-  \begin{equation}
-    \a^2 = \a \cdot \a + \underbrace{\a \wedge \a}_{=0} = |\a|^2
-  \end{equation}
+      \a \wedge \b &= \frac{1}{2} (\a \b - \b \a).
+  \end{align*}
+  3. Das Quadrat eines Vektors ist
+  \begin{equation*}
+    \a^2 = \a \cdot \a + \underbrace{\a \wedge \a}_{\displaystyle=0} = |\a|^2.
+  \end{equation*}
   Damit sind alle Formeln bewiesen.
 \end{proof}
 
