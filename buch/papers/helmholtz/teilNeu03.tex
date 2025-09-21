@@ -10,18 +10,17 @@
 \label{helmholtz:section:Helmholtz_Zerlegung}}
 \kopfrechts{Helmholtz-Zerlegung}
 
-Die Grundidee der Helmholtz-Zerlegung besteht darin, dass ein differenzierbares  Vektorfeld $\mathbf{F}$, welches im Unendlichen schnell genug abfällt, sich in zwei in noch zu spezifizierendem Sinne orthogonale Komponenten zerlegen lässt: einen eindeutig wirbelfreien Teil und einen quellenfreien Teil. Diese Zerlegung spiegelt die physikalischen Eigenschaften des Vektorfeldes wider und ist insbesondere in der Akustik, Strömungsmechanik und Elektrodynamik von zentraler Bedeutung.
+Die Grundidee der Helmholtz-Zerlegung besteht darin, dass ein differenzierbares  Vektorfeld $\boldsymbol{F}$, welches im Unendlichen schnell genug abfällt, sich in zwei in noch zu spezifizierendem Sinne orthogonale Komponenten zerlegen lässt: einen eindeutig wirbelfreien Teil und einen quellenfreien Teil. Diese Zerlegung spiegelt die physikalischen Eigenschaften des Vektorfeldes wider und ist insbesondere in der Akustik, Strömungsmechanik und Elektrodynamik von zentraler Bedeutung.
 
 \subsection{Formale Definition der Helmholtz-Zerlegung
 \label{helmholtz:subsection:def_Helmholtz_Zerlegung}}
 
 Mit der Idee der Helmholtz-Zerlegung wird das Vektorfeld geschrieben als
 \begin{equation}
-\underbrace{\mathbf{F}}_{\text{zu zerlegendes Vektorfeld}} = \underbrace{-\nabla \Phi}_{\text{irrotationaler Teil}} + \underbrace{\nabla \times \mathbf{\Psi}}_{\text{solenoidaler Teil}} 
+\underbrace{\boldsymbol{F}}_{\text{zu zerlegendes Vektorfeld}} = \underbrace{-\nabla \Phi}_{\text{irrotationaler Teil}} + \underbrace{\nabla \times \boldsymbol{\Psi}}_{\text{solenoidaler Teil}} 
 \label{helmholtz:equationAllgemein}
 \end{equation}
-
-\noindent und die einzelnen Komponenten lässt sich wie folgt beschreiben:
+und die einzelnen Komponenten lässt sich wie folgt beschreiben:
 
 \begin{itemize}
 \item Der erste Term $ -\nabla \Phi $ ist wirbelfrei, da seine Rotation verschwindet.
@@ -30,9 +29,9 @@ Mit der Idee der Helmholtz-Zerlegung wird das Vektorfeld geschrieben als
 \item Die Feldlinien verlaufen strahlenförmig von Quellen zu Senken.
 \end{itemize}
 
-\item Der zweite Term $\nabla \times \mathbf{\Psi}$ hat gemäss der Definition immer Divergenz gleich null und wird auch solenoidal genannt.
+\item Der zweite Term $\nabla \times \boldsymbol{\Psi}$ hat gemäss der Definition immer Divergenz gleich null und wird auch solenoidal genannt.
 \begin{itemize}
-\item Dieser Anteil hat keine Divergenz: $\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$.
+\item Dieser Anteil hat keine Divergenz: $\nabla \cdot (\nabla \times \boldsymbol{\Psi}) = 0$.
 \item Die Feldlinien bilden geschlossene Schleifen ähnlich einem Magnetfeld.
 \end{itemize}
 \end{itemize}
@@ -44,17 +43,16 @@ Mit der Idee der Helmholtz-Zerlegung wird das Vektorfeld geschrieben als
 Komponente & Potential & Eigenschaft & Bezeichnung \\
 \hline 
 Irrotationaler Teil & $\Phi$ (Skalarpotential) & $\nabla \times (-\nabla \Phi) = 0$ & wirbelfrei\\
-\hline
-Solenoidaler Teil & $\mathbf{\Psi}$ (Vektorpotential) & $\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$ & quellenfrei\\
+Solenoidaler Teil & $\boldsymbol{\Psi}$ (Vektorpotential) & $\nabla \cdot (\nabla \times \boldsymbol{\Psi}) = 0$ & quellenfrei\\
 \hline
 \end{tabular}
 \caption{Übersicht der Helmholtz-Zerlegung}
 \label{tab:helmholtz_overview}
 \end{table}
 
-\noindent In der Tabelle \ref{tab:helmholtz_overview} ist die komplementäre Eigeschaft, die Bezeichnung und die Potentialbeschreibung der jeqeiligen Komponenten zusammengefasst.
+In der Tabelle \ref{tab:helmholtz_overview} ist die komplementäre Eigeschaft, die Bezeichnung und die Potentialbeschreibung der jeqeiligen Komponenten zusammengefasst.
 
-\noindent Um die Zerlegung anwenden zu können, müssen die Potentiale $\Phi$ und $\mathbf{\Psi}$ berechnet werden. Dies kann auf verschiedene Weisen erfolgen, abhängig von den Randbedingungen.
+Um die Zerlegung anwenden zu können, müssen die Potentiale $\Phi$ und $\boldsymbol{\Psi}$ berechnet werden. Dies kann auf verschiedene Weisen erfolgen, abhängig von den Randbedingungen.
 
 \subsection{Mathematischer Nachweis der Eigenschaften
 \label{helmholtz:subsection:math_Nachweis}}
@@ -102,16 +100,16 @@ Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
         0 \\
         0 \\
         0
-    \end{pmatrix} = \mathbf{0}.
+    \end{pmatrix} = \boldsymbol{0}.
     $$
 \end{enumerate}
 
 \subsubsection{Nachweis der Quellenfreiheit des solenoidalen Anteils}
 
 \begin{enumerate}
-    \item Berechnung der Rotation $\nabla \times \mathbf{\Psi}$: Zuerst wird der Rotations-Operator auf $\mathbf{\Psi}$ angewendet:
+    \item Berechnung der Rotation $\nabla \times \boldsymbol{\Psi}$: Zuerst wird der Rotations-Operator auf $\boldsymbol{\Psi}$ angewendet:
     \[
-    \nabla \times \mathbf{\Psi} =
+    \nabla \times \boldsymbol{\Psi} =
     \begin{pmatrix}
         \frac{\partial \Psi_z}{\partial y} - \frac{\partial \Psi_y}{\partial z} \\
         \frac{\partial \Psi_x}{\partial z} - \frac{\partial \Psi_z}{\partial x} \\
@@ -123,7 +121,7 @@ Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
     
     \begin{align*}
     % Schritt 1: Definition der Divergenz anwenden
-    \nabla \cdot (\nabla \times \mathbf{\Psi}) &= \frac{\partial}{\partial x}\left( \frac{\partial \Psi_z}{\partial y} - \frac{\partial \Psi_y}{\partial z} \right) + \frac{\partial}{\partial y}\left( \frac{\partial \Psi_x}{\partial z} - \frac{\partial \Psi_z}{\partial x} \right) + \frac{\partial}{\partial z}\left( \frac{\partial \Psi_y}{\partial x} - \frac{\partial \Psi_x}{\partial y} \right) \\[1em]
+    \nabla \cdot (\nabla \times \boldsymbol{\Psi}) &= \frac{\partial}{\partial x}\left( \frac{\partial \Psi_z}{\partial y} - \frac{\partial \Psi_y}{\partial z} \right) + \frac{\partial}{\partial y}\left( \frac{\partial \Psi_x}{\partial z} - \frac{\partial \Psi_z}{\partial x} \right) + \frac{\partial}{\partial z}\left( \frac{\partial \Psi_y}{\partial x} - \frac{\partial \Psi_x}{\partial y} \right) \\[1em]
     % Schritt 2: Die Ableitungen ausführen
     &= \frac{\partial^2 \Psi_z}{\partial x \partial y} - \frac{\partial^2 \Psi_y}{\partial x \partial z} + \frac{\partial^2 \Psi_x}{\partial y \partial z} - \frac{\partial^2 \Psi_z}{\partial y \partial x} + \frac{\partial^2 \Psi_y}{\partial z \partial x} - \frac{\partial^2 \Psi_x}{\partial z \partial y} \\[1em]
     % Schritt 3: Terme umsortieren, um Paare zu bilden
@@ -136,13 +134,12 @@ Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
     \]
     Angewendet auf die obige Gleichung bedeutet dies, dass jeder Term in den Klammern Null ergibt:
     \begin{align*}
-    \nabla \cdot (\nabla \times \mathbf{\Psi}) &= \underbrace{\left( \frac{\partial^2 \Psi_x}{\partial y \partial z} - \frac{\partial^2 \Psi_x}{\partial y \partial z} \right)}_{=0} + \underbrace{\left( \frac{\partial^2 \Psi_y}{\partial z \partial x} - \frac{\partial^2 \Psi_y}{\partial z \partial x} \right)}_{=0} + \underbrace{\left( \frac{\partial^2 \Psi_z}{\partial x \partial y} - \frac{\partial^2 \Psi_z}{\partial x \partial y} \right)}_{=0} \\[1em]
+    \nabla \cdot (\nabla \times \boldsymbol{\Psi}) &= \underbrace{\left( \frac{\partial^2 \Psi_x}{\partial y \partial z} - \frac{\partial^2 \Psi_x}{\partial y \partial z} \right)}_{=0} + \underbrace{\left( \frac{\partial^2 \Psi_y}{\partial z \partial x} - \frac{\partial^2 \Psi_y}{\partial z \partial x} \right)}_{=0} + \underbrace{\left( \frac{\partial^2 \Psi_z}{\partial x \partial y} - \frac{\partial^2 \Psi_z}{\partial x \partial y} \right)}_{=0} \\[1em]
     &= 0 + 0 + 0 \\[1em]
     &= 0.
     \end{align*}
 \end{enumerate}
-
-\noindent Damit ist die Identität $\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$ bewiesen.
+Damit ist die Identität $\nabla \cdot (\nabla \times \boldsymbol{\Psi}) = 0$ bewiesen.
 
 
 \subsection{Berechnung der Potentiale
@@ -151,7 +148,7 @@ Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
 \subsubsection{Greenscher Ansatz}
 
 Ein möglicher Ansatz zur Lösung der partiellen Differentialgleichung ist die Verwendung der Dirac-Delta-Funktion und des Greenschen Funktionen wie es in \cite{baird_helmholtz} beschrieben ist. Dies entspricht der Integralform einer Matrixmultiplikation, wie in Tabelle \ref{tab:helmholtz_matrix_analogie} 
-veranschaulicht. Dabei wird die Funktion $\mathbf{F}$, die in diesem Fall einen Vektor darstellt, mit der Delta-Funktion multipliziert wie folgt:
+veranschaulicht. Dabei wird die Funktion $\boldsymbol{F}$, die in diesem Fall einen Vektor darstellt, mit der Delta-Funktion multipliziert wie folgt:
 
 \begin{equation}
 \Delta F = -4 \pi \rho. 
@@ -177,52 +174,43 @@ $\underbrace{\frac{1}{4 \pi} \Delta F}_{invertiert} = \rho$ & $A^{-1}Au = A^{-1}
 \label{tab:helmholtz_matrix_analogie}
 \end{table}
 
-\noindent Grundlegend für diesen Ansatz ist die Beziehung
-
+Grundlegend für diesen Ansatz ist die Beziehung
 \begin{equation}
-\delta (\mathbf{x} - \mathbf{x'}) = \frac{1}{4 \pi} \nabla^2 \frac{1}{|\mathbf{x} - \mathbf{x'}|}.
+\delta (\boldsymbol{x} - \boldsymbol{x'}) = \frac{1}{4 \pi} \nabla^2 \frac{1}{|\boldsymbol{x} - \boldsymbol{x'}|}.
 \label{helmholtz:dirac}
 \end{equation}
-
-\noindent Diese Beziehung lässt sich analog zur Multiplikation mit der Einheitsmatrix verstehen, was es ermöglicht, das Vektorfeld $\mathbf{F}$ durch das Volumenintegral
-
+Diese Beziehung lässt sich analog zur Multiplikation mit der Einheitsmatrix verstehen, was es ermöglicht, das Vektorfeld $\boldsymbol{F}$ durch das Volumenintegral
 \begin{equation}
-\mathbf{F}(\mathbf{r}) = -\frac{1}{4\pi} \int_V \mathbf{F}(\mathbf{r}') \nabla^2 \left( \frac{1}{|\mathbf{r} - \mathbf{r}'|} \right) dV'
+\boldsymbol{F}(\boldsymbol{r}) = -\frac{1}{4\pi} \int_V \boldsymbol{F}(\boldsymbol{r}') \nabla^2 \left( \frac{1}{|\boldsymbol{r} - \boldsymbol{r}'|} \right) dV'
 \end{equation}
+auszudrücken.
 
-\noindent auszudrücken.
-
-\noindent Unter Verwendung der Vektoridentität
-
+Unter Verwendung der Vektoridentität
 \begin{equation}
-\nabla^2 \mathbf{\Psi}= \underbrace{\nabla \Big( \nabla \cdot \mathbf{\Psi} \Big)}_{\text{Gradient}} -\underbrace{\nabla \times \Big(\nabla \times \mathbf{\Psi} \Big)}_{\text{Rotation}},
+\nabla^2 \boldsymbol{\Psi}= \underbrace{\nabla \Big( \nabla \cdot \boldsymbol{\Psi} \Big)}_{\text{Gradient}} -\underbrace{\nabla \times \Big(\nabla \times \boldsymbol{\Psi} \Big)}_{\text{Rotation}},
 \end{equation}
-
-\noindent kann das Vektorfeld $\mathbf{F}$ geschrieben werden als:
-
+kann das Vektorfeld $\boldsymbol{F}$ geschrieben werden als:
 \begin{equation}
-\mathbf{F}(\mathbf{r}) = - \frac{1}{4 \pi} \nabla ( \nabla \cdot \int_V \frac{\mathbf{F}(\mathbf{x}^{\prime})}{|\mathbf{r} - \mathbf{r}^{\prime}|} d\mathbf{x}^{\prime} ) + \frac{1}{4 \pi} \nabla \times ( \nabla \times \int_V \frac{\mathbf{F}(\mathbf{x}^{\prime})}{|\mathbf{r} - \mathbf{r}^{\prime}|} d\mathbf{x}^{\prime} ).
+\boldsymbol{F}(\boldsymbol{r}) = - \frac{1}{4 \pi} \nabla ( \nabla \cdot \int_V \frac{\boldsymbol{F}(\boldsymbol{x}^{\prime})}{|\boldsymbol{r} - \boldsymbol{r}^{\prime}|} d\boldsymbol{x}^{\prime} ) + \frac{1}{4 \pi} \nabla \times ( \nabla \times \int_V \frac{\boldsymbol{F}(\boldsymbol{x}^{\prime})}{|\boldsymbol{r} - \boldsymbol{r}^{\prime}|} d\boldsymbol{x}^{\prime} ).
 \end{equation}
-
-\noindent Diese Gleichung repräsentiert die Helmholtz-Zerlegung des Vektorfeldes $\mathbf{F}$.
+Diese Gleichung repräsentiert die Helmholtz-Zerlegung des Vektorfeldes $\boldsymbol{F}$.
 
 \subsubsection{Berechnung der Potentiale in unbeschränkten Gebieten}
 
-Die Potentiale $\Phi$ und $\mathbf{\Psi}$ lassen sich für unbeschränkte Gebiete mit Hilfe der Greenschen Funktion wie folgt berechnen:
+Die Potentiale $\Phi$ und $\boldsymbol{\Psi}$ lassen sich für unbeschränkte Gebiete mit Hilfe der Greenschen Funktion wie folgt berechnen:
 
 \begin{itemize}
 \item Skalares Potential:
 \begin{equation}
-\Phi(\mathbf{r}) = \frac{1}{4 \pi} \int_{V} \frac{\nabla' \cdot \mathbf{F}(\mathbf{r'})}{|\mathbf{r} - \mathbf{r'}|} dV'
+\Phi(\boldsymbol{r}) = \frac{1}{4 \pi} \int_{V} \frac{\nabla' \cdot \boldsymbol{F}(\boldsymbol{r'})}{|\boldsymbol{r} - \boldsymbol{r'}|} dV'
 \end{equation}
 
 \item Vektorpotential:
 \begin{equation}
-\mathbf{\Psi}(\mathbf{r}) = \frac{1}{4 \pi} \int_{V} \frac{\nabla' \times \mathbf{F}(\mathbf{r'})}{|\mathbf{r} - \mathbf{r'}|} dV'
+\boldsymbol{\Psi}(\boldsymbol{r}) = \frac{1}{4 \pi} \int_{V} \frac{\nabla' \times \boldsymbol{F}(\boldsymbol{r'})}{|\boldsymbol{r} - \boldsymbol{r'}|} dV'
 \end{equation}
 \end{itemize}
-
-\noindent Hier bezeichnet $\nabla'$ den Nabla-Operator bezüglich der Integrationsvariablen $\mathbf{r'}$.
+Hier bezeichnet $\nabla'$ den Nabla-Operator bezüglich der Integrationsvariablen $\boldsymbol{r'}$.
 
 \subsubsection{Berechnung der Potentiale in beschränkten Gebieten}
 
@@ -231,33 +219,31 @@ Für endliche Volumina $V$ mit Oberfläche $S$ müssen zusätzliche Oberflächen
 \begin{itemize}
 \item Skalares Potential:
 \begin{equation}
-\Phi (\mathbf{r}) = \frac{1}{4\pi} \int_V \frac{\nabla' \cdot \mathbf{F}(\mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|} dV' + \frac{1}{4\pi} \oint_S \frac{\mathbf{F}(\mathbf{r}') \cdot \mathbf{n}}{|\mathbf{r} - \mathbf{r}'|} dS'
+\Phi (\boldsymbol{r}) = \frac{1}{4\pi} \int_V \frac{\nabla' \cdot \boldsymbol{F}(\boldsymbol{r}')}{|\boldsymbol{r} - \boldsymbol{r}'|} dV' + \frac{1}{4\pi} \oint_S \frac{\boldsymbol{F}(\boldsymbol{r}') \cdot \boldsymbol{n}}{|\boldsymbol{r} - \boldsymbol{r}'|} dS'
 \end{equation}
 
 \item Vektorpotential:
 \begin{equation}
-\mathbf{\Psi}(\mathbf{r}) = \frac{1}{4\pi} \int_V \frac{\nabla' \times \mathbf{F}(\mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|} dV' + \frac{1}{4\pi} \oint_S \frac{\mathbf{n} \times \mathbf{F}(\mathbf{r}')}{|\mathbf{r} - \mathbf{r}'|} dS'
+\boldsymbol{\Psi}(\boldsymbol{r}) = \frac{1}{4\pi} \int_V \frac{\nabla' \times \boldsymbol{F}(\boldsymbol{r}')}{|\boldsymbol{r} - \boldsymbol{r}'|} dV' + \frac{1}{4\pi} \oint_S \frac{\boldsymbol{n} \times \boldsymbol{F}(\boldsymbol{r}')}{|\boldsymbol{r} - \boldsymbol{r}'|} dS'
 \end{equation}
 \end{itemize}
-
-\noindent Hier bezeichnet $\mathbf{n}$ den nach aussen gerichteten Normalenvektor auf der Oberfläche $S$.
+Hier bezeichnet $\boldsymbol{n}$ den nach aussen gerichteten Normalenvektor auf der Oberfläche $S$.
 
 \subsection{Bedingungen und Eindeutigkeit
 \label{helmholtz:subsection:Bedingungen_Eindeutigkeit}}
 
 \subsubsection{Voraussetzungen für die Anwendbarkeit}
-Damit die Zerlegung korrekt durchgeführt werden kann, muss das Vektorfeld $\mathbf{F}$ folgende Bedingungen erfüllen:
+Damit die Zerlegung korrekt durchgeführt werden kann, muss das Vektorfeld $\boldsymbol{F}$ folgende Bedingungen erfüllen:
 
 \begin{itemize}
-\item Glattheit: $\mathbf{F}$ muss stetig differenzierbar sein in dem betrachteten Gebiet.
-\item Abfallverhalten: $\mathbf{F}$ muss im Unendlichen schneller als $\frac{1}{r}$ abfallen, d.h.
+\item Glattheit: $\boldsymbol{F}$ muss stetig differenzierbar sein in dem betrachteten Gebiet.
+\item Abfallverhalten: $\boldsymbol{F}$ muss im Unendlichen schneller als $\frac{1}{r}$ abfallen, d.h.
 \begin{equation}
-\lim_{r \to \infty} r|\mathbf{F}(\mathbf{r})| = 0,
+\lim_{r \to \infty} r|\boldsymbol{F}(\boldsymbol{r})| = 0,
 \end{equation}
-wobei $r = |\mathbf{r}|$ der Abstand vom Ursprung ist.
+wobei $r = |\boldsymbol{r}|$ der Abstand vom Ursprung ist.
 \end{itemize}
-
-\noindent Diese Bedingungen stellen sicher, dass die Integrale in der Greenschen Formulierung konvergieren und die Zerlegung eindeutig ist.
+Diese Bedingungen stellen sicher, dass die Integrale in der Greenschen Formulierung konvergieren und die Zerlegung eindeutig ist.
 
 \subsubsection{Eindeutigkeit der Zerlegung
 \label{helmholtz:subsection:Bedingungen_onlyEindeutigkeit}}
@@ -276,15 +262,12 @@ Die Eindeutigkeit der Helmholtz-Zerlegung hängt von den Randbedingungen ab:
 
 \subsubsection{Orthogonalität der Komponenten}
 
-Eine wichtige Eigenschaft der Helmholtz-Zerlegung ist die Orthogonalität der beiden Komponenten. Für ein Vektorfeld $\mathbf{F} = \mathbf{F}_{\text{irr}} + \mathbf{F}_{\text{sol}}$ gilt unter geeigneten Randbedingungen:
-
+Eine wichtige Eigenschaft der Helmholtz-Zerlegung ist die Orthogonalität der beiden Komponenten. Für ein Vektorfeld $\boldsymbol{F} = \boldsymbol{F}_{\text{irr}} + \boldsymbol{F}_{\text{sol}}$ gilt unter geeigneten Randbedingungen:
 \begin{equation}
-\int_V \mathbf{F}_{\text{irr}} \cdot \mathbf{F}_{\text{sol}} \, dV = 0.
+\int_V \boldsymbol{F}_{\text{irr}} \cdot \boldsymbol{F}_{\text{sol}} \, dV = 0.
 \end{equation}
-
-\noindent Das Integral ist null, weil es mithilfe des Gaussschen Integralsatzes in ein Oberflächenintegral umgewandelt werden kann, das unter den für die Helmholtz-Zerlegung Randbedingungen, wie in \ref{helmholtz:subsection:Bedingungen_onlyEindeutigkeit} beschrieben, verschwindet.
+Das Integral ist null, weil es mithilfe des Gaussschen Integralsatzes in ein Oberflächenintegral umgewandelt werden kann, das unter den für die Helmholtz-Zerlegung Randbedingungen, wie in \ref{helmholtz:subsection:Bedingungen_onlyEindeutigkeit} beschrieben, verschwindet.
  
- 
-\noindent In physikalischen Anwendungen, wie beispielsweise in der Akustik, bedeutet diese mathematische Orthogonalität, dass die beiden Feldkomponenten unterschiedliche physikalische Phänomene beschreiben, die unabhängig voneinander analysiert werden können. Mehr dazu wird im Unterkapitel \ref{tab:helmholtz:Energie_Interpretation} erläutert.
+In physikalischen Anwendungen, wie beispielsweise in der Akustik, bedeutet diese mathematische Orthogonalität, dass die beiden Feldkomponenten unterschiedliche physikalische Phänomene beschreiben, die unabhängig voneinander analysiert werden können. Mehr dazu wird im Unterkapitel \ref{tab:helmholtz:Energie_Interpretation} erläutert.
 
 

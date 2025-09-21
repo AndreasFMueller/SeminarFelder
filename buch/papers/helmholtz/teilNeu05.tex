@@ -13,23 +13,21 @@
 \subsection{Definition und Bedeutung der komplexen Schallintensität
 \label{helmholtz:subsection:def_Schallintensitaet}}
 
-Die komplexe Schallintensität $\mathbf{I}_c$ erweitert das Konzept der Schallintensität und erlaubt eine umfassendere Analyse des akustischen Energieflusses. Sie ist definiert als:
+Die komplexe Schallintensität $\boldsymbol{I}_c$ erweitert das Konzept der Schallintensität und erlaubt eine umfassendere Analyse des akustischen Energieflusses. Sie ist definiert als:
 
 \begin{equation}
-\mathbf{I}_c (\mathbf{r}) = \frac{1}{2} \: p(\mathbf{r}) \: \mathbf{u}^{*}(\mathbf{r}),
+\boldsymbol{I}_c (\boldsymbol{r}) = \frac{1}{2} \: p(\boldsymbol{r}) \: \boldsymbol{u}^{*}(\boldsymbol{r}),
 \label{helmholtz:equationIntensitaetKomplex}
 \end{equation}
-
-\noindent wobei $p(\mathbf{r})$ den komplexen Schalldruck und $\mathbf{u}^{*}(\mathbf{r})$ die komplexe Konjugation der Partikelgeschwindigkeit $\mathbf{u}(\mathbf{r})$ beschreibt. Diese Formulierung berücksichtigt die Phasenverschiebung zwischen Schalldruck und Schallgeschwindigkeit und ermöglicht die Zerlegung des Energieflusses in quellenfreie und wirbelfreie Anteile gemäss der Helmholtz-Zerlegung.
+wobei $p(\boldsymbol{r})$ den komplexen Schalldruck und $\boldsymbol{u}^{*}(\boldsymbol{r})$ die komplexe Konjugation der Partikelgeschwindigkeit $\boldsymbol{u}(\boldsymbol{r})$ beschreibt. Diese Formulierung berücksichtigt die Phasenverschiebung zwischen Schalldruck und Schallgeschwindigkeit und ermöglicht die Zerlegung des Energieflusses in quellenfreie und wirbelfreie Anteile gemäss der Helmholtz-Zerlegung.
 
 Alternativ kann die komplexe Schallintensität auch wie folgt geschrieben werden:
 
 \begin{equation}
-\mathbf{I}_c (\mathbf{r}) = \underbrace{\mathbf{I}(\mathbf{r})}_{\frac{1}{2} \operatorname{Re} \, \{ p(\mathbf{r}) \, \mathbf{u}^*(\mathbf{r}) \}} + \underbrace{j\,\mathbf{Q}(\mathbf{r})}_{\frac{1}{2} \operatorname{Im} \, \{ p(\mathbf{r}) \, \mathbf{u}^*(\mathbf{r}) \}},
+\boldsymbol{I}_c (\boldsymbol{r}) = \underbrace{\boldsymbol{I}(\boldsymbol{r})}_{\frac{1}{2} \operatorname{Re} \, \{ p(\boldsymbol{r}) \, \boldsymbol{u}^*(\boldsymbol{r}) \}} + \underbrace{j\,\boldsymbol{Q}(\boldsymbol{r})}_{\frac{1}{2} \operatorname{Im} \, \{ p(\boldsymbol{r}) \, \boldsymbol{u}^*(\boldsymbol{r}) \}},
 \label{helmholtz:equationIntensitaetKomplex_2}
 \end{equation}  
-
-\noindent wobei $\mathbf{I}(\mathbf{r})$ die aktive Intensität und $\mathbf{Q}(\mathbf{r})$ die reaktive Intensität darstellen. Diese beiden Komponenten haben unterschiedliche physikalische Bedeutungen, die im Folgenden näher erläutert werden.
+wobei $\boldsymbol{I}(\boldsymbol{r})$ die aktive Intensität und $\boldsymbol{Q}(\boldsymbol{r})$ die reaktive Intensität darstellen. Diese beiden Komponenten haben unterschiedliche physikalische Bedeutungen, die im Folgenden näher erläutert werden.
 
 \subsection{Eigenschaften der Intensitätskomponenten
 \label{helmholtz:subsection:def_Schallintensitaet}}
@@ -37,30 +35,27 @@ Alternativ kann die komplexe Schallintensität auch wie folgt geschrieben werden
 Die beiden Komponenten der komplexen Schallintensität haben unterschiedliche physikalische Eigenschaften und Bedeutungen:
 
 \begin{itemize}
-\item Die \textbf{aktive Intensität} $\mathbf{I}(\mathbf{r})$ (Realteil) beschreibt den zeitgemittelten Netto-Energiefluss pro Fläche an dem Ort $\mathbf{r}$ und lässt sich ausdrücken als:
+\item Die \textbf{aktive Intensität} $\boldsymbol{I}(\boldsymbol{r})$ (Realteil) beschreibt den zeitgemittelten Netto-Energiefluss pro Fläche an dem Ort $\boldsymbol{r}$ und lässt sich ausdrücken als:
 \begin{equation}
-\mathbf{I}(\mathbf{r}) = \frac{1}{T}\int_0^T \mathbf{I}_i(\mathbf{r},t)\,\mathrm{d}t = \frac{1}{2}\Re\{p(\mathbf{r})~\mathbf{u}^*(\mathbf{r})\}.
+\boldsymbol{I}(\boldsymbol{r}) = \frac{1}{T}\int_0^T \boldsymbol{I}_i(\boldsymbol{r},t)\,\mathrm{d}t = \frac{1}{2}\Re\{p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\}.
+\end{equation}
+In quellenfreien, stationären Feldern ohne Energieabsorption gilt:
+\begin{equation}
+\nabla \cdot \boldsymbol{I} = 0.
 \end{equation}
 
-\noindent In quellenfreien, stationären Feldern ohne Energieabsorption gilt:
+\item Die \textbf{reaktive Intensität} $\boldsymbol{Q}(\boldsymbol{r})$ (Imaginärteil) beschreibt die zeitlich gemittelte Dichte der nicht-propagierenden, oszillierenden Energie: 
 \begin{equation}
-\nabla \cdot \mathbf{I} = 0.
-\end{equation}
-
-\item Die \textbf{reaktive Intensität} $\mathbf{Q}(\mathbf{r})$ (Imaginärteil) beschreibt die zeitlich gemittelte Dichte der nicht-propagierenden, oszillierenden Energie: 
-\begin{equation}
-\mathbf{Q}(\mathbf{r}) = \frac{1}{2}\Im\{p(\mathbf{r})~\mathbf{u}^*(\mathbf{r})\}.
+\boldsymbol{Q}(\boldsymbol{r}) = \frac{1}{2}\Im\{p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\}.
 \label{helmholtz:equationReaktiveIntensitaet}
 \end{equation}
-
-\noindent Sie ist wirbelfrei:
+Sie ist wirbelfrei:
 \begin{equation}
-\nabla \times \mathbf{Q} = 0
+\nabla \times \boldsymbol{Q} = 0
 \end{equation}
-
-\noindent Und steht in direkter Beziehung zur Differenz zwischen kinetischer Energie (T) und potentieller Energie (V):
+Und steht in direkter Beziehung zur Differenz zwischen kinetischer Energie (T) und potentieller Energie (V):
 \begin{equation}
-\nabla \cdot \mathbf{Q} = -2 \omega [T-V]
+\nabla \cdot \boldsymbol{Q} = -2 \omega [T-V]
 \end{equation}
 \end{itemize}
 
@@ -73,56 +68,46 @@ Die mathematische Analyse der Intensitätskomponenten liefert wichtige Einsichte
 \subsubsection{Divergenz der aktiven Intensität}
 
 Die Divergenz der aktiven Intensität beschreibt Quellen und Senken im Energiefluss:
-
 \begin{equation}
-\nabla \cdot \mathbf{I} = -\omega\text{Im}\{p^*q\} - \alpha|p|^2,
+\nabla \cdot \boldsymbol{I} = -\omega\text{Im}\{p^*q\} - \alpha|p|^2,
 \end{equation}
-
-\noindent wobei $q$ die Volumengeschwindigkeit der Schallquelle und $\alpha$ der Absorptionskoeffizient des Mediums ist. Diese Gleichung repräsentiert eine Energiebilanz: Quellen erzeugen Energie ($q$), und Absorption verringert sie ($\alpha$).
+wobei $q$ die Volumengeschwindigkeit der Schallquelle und $\alpha$ der Absorptionskoeffizient des Mediums ist. Diese Gleichung repräsentiert eine Energiebilanz: Quellen erzeugen Energie ($q$), und Absorption verringert sie ($\alpha$).
 
 In quellenfreien, verlustfreien Gebieten gilt:
-
 \begin{equation}
-\nabla \cdot \mathbf{I} = 0,
+\nabla \cdot \boldsymbol{I} = 0,
 \end{equation}
-
-\noindent was bedeutet, dass keine Energie erzeugt oder vernichtet wird, sondern nur fließt.
+was bedeutet, dass keine Energie erzeugt oder vernichtet wird, sondern nur fließt.
 
 \subsubsection{Rotation der aktiven Intensität}
 
 Die Rotation der aktiven Intensität ist nicht notwendigerweise null und kann geschrieben werden als:
-
 \begin{equation}
-\nabla \times \mathbf{I} = \frac{k}{c} \frac{\mathbf{I} \times \mathbf{Q}}{V},
+\nabla \times \boldsymbol{I} = \frac{k}{c} \frac{\boldsymbol{I} \times \boldsymbol{Q}}{V},
 \end{equation}
-
-\noindent wobei $k$ die Wellenzahl, $c$ die Schallgeschwindigkeit und $V$ die potentielle Energie des Feldes ist. Dies zeigt, dass Wirbelstrukturen in der aktiven Intensität auftreten können, wenn aktive und reaktive Intensität nicht parallel sind.
+wobei $k$ die Wellenzahl, $c$ die Schallgeschwindigkeit und $V$ die potentielle Energie des Feldes ist. Dies zeigt, dass Wirbelstrukturen in der aktiven Intensität auftreten können, wenn aktive und reaktive Intensität nicht parallel sind.
 
 \subsubsection{Divergenz der reaktiven Intensität}
 
 Die Divergenz der reaktiven Intensität ist verbunden mit der Energieverteilung zwischen kinetischer und potentieller Form:
-
 \begin{equation}
-\nabla \cdot \mathbf{Q} = -2 \omega [T-V],
+\nabla \cdot \boldsymbol{Q} = -2 \omega [T-V],
 \end{equation}
-
-\noindent wobei $T$ die kinetische und $V$ die potentielle Energiedichte sind. Positive Divergenz bedeutet, dass mehr kinetische als potentielle Energie vorhanden ist, während negative Divergenz das Gegenteil impliziert.
+wobei $T$ die kinetische und $V$ die potentielle Energiedichte sind. Positive Divergenz bedeutet, dass mehr kinetische als potentielle Energie vorhanden ist, während negative Divergenz das Gegenteil impliziert.
 
 \subsubsection{Rotation der reaktiven Intensität}
 
 Die reaktive Intensität ist immer wirbelfrei:
-
 \begin{equation}
-\nabla \times \mathbf{Q} = 0,
+\nabla \times \boldsymbol{Q} = 0,
 \end{equation}
-
-\noindent was bedeutet, dass sie als Gradient eines skalaren Potentials darstellbar ist. Dies ist eine fundamentale Eigenschaft, die eine direkte Verbindung zur Helmholtz-Zerlegung herstellt, wie im nächsten Kapitel näher erläutert wird.
+was bedeutet, dass sie als Gradient eines skalaren Potentials darstellbar ist. Dies ist eine fundamentale Eigenschaft, die eine direkte Verbindung zur Helmholtz-Zerlegung herstellt, wie im nächsten Kapitel näher erläutert wird.
 
 \subsubsection{Wirbelstrukturen und Quellen}
 
 Die mathematische Analyse zeigt, dass aktive und reaktive Intensitätsfelder charakteristische Quellen-, Senken- und Wirbelstrukturen aufweisen können, wie in Abbildung \ref{fig:Schallintensitaet} dargestellt.
 
-\begin{figure}[h!]
+\begin{figure}
 \centering
 \includegraphics[scale=0.4]{papers/helmholtz/images/Schallintensitaet.png}
 \caption{Schematische Darstellung der Quellen- und Wirbelstrukturen in einem Schallintensitätsfeld}

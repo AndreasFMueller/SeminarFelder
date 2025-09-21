@@ -13,13 +13,12 @@
 
 \subsection{Zerlegung des Schallschnellefeldes
 \label{helmholtz:subsection:Zerlegung_Schallschnelle}}
-Angewendet auf das Schallschnellefeld $\mathbf{u}$ können wir dieses wie folgt zerlegen:
+Angewendet auf das Schallschnellefeld $\boldsymbol{u}$ können wir dieses wie folgt zerlegen:
  
 \begin{equation}
-\underbrace{\mathbf{u}}_{\text{Schallschnellefeld}} =  \underbrace{-\nabla \Phi}_{\text{irrotationaler~Anteil}} + \underbrace{\nabla \times \mathbf{\Psi}}_{\text{solenoidaler~Anteil}}.
+\underbrace{\boldsymbol{u}}_{\text{Schallschnellefeld}} =  \underbrace{-\nabla \Phi}_{\text{irrotationaler~Anteil}} + \underbrace{\nabla \times \boldsymbol{\Psi}}_{\text{solenoidaler~Anteil}}.
 \end{equation}
- 
-\noindent Die physikalische Interpretation der Komponenten des Schallschnellefeldes lässt sich wie folgt beschreiben:
+Die physikalische Interpretation der Komponenten des Schallschnellefeldes lässt sich wie folgt beschreiben:
  
 \begin{itemize}
 \item Der irrotationale Anteil $-\nabla \Phi$ ist wirbelfrei, da die Rotation verschwindet.
@@ -28,9 +27,9 @@ Angewendet auf das Schallschnellefeld $\mathbf{u}$ können wir dieses wie folgt 
 \item Die Feldlinien verlaufen strahlenförmig von Quellen zu Senken.
 \end{itemize}
  
-\item Der solenoidale Anteil $\nabla \times \mathbf{\Psi}$ hat gemäss der Definition immer Divergenz null und wird auch quellenfrei genannt.
+\item Der solenoidale Anteil $\nabla \times \boldsymbol{\Psi}$ hat gemäss der Definition immer Divergenz null und wird auch quellenfrei genannt.
 \begin{itemize}
-\item Dieser Anteil hat keine Divergenz: $\nabla \cdot (\nabla \times \mathbf{\Psi}) = 0$.
+\item Dieser Anteil hat keine Divergenz: $\nabla \cdot (\nabla \times \boldsymbol{\Psi}) = 0$.
 \item Die Feldlinien bilden geschlossene Schleifen ähnlich einem Magnetfeld.
 \end{itemize}
 \end{itemize}
@@ -38,34 +37,27 @@ Angewendet auf das Schallschnellefeld $\mathbf{u}$ können wir dieses wie folgt 
 \subsection{Direkte Verbindung zur Komplexen Schallintensität
 \label{helmholtz:subsection:Zerlegung_Schallschnelle}}
 
-Wie bereits beschrieben, stellt die komplexe Schallintensität $\mathbf{I}_c$ den Energietransport in einem Schallfeld dar und lässt sich in zwei fundamentale Komponenten zerlegen:
+Wie bereits beschrieben, stellt die komplexe Schallintensität $\boldsymbol{I}_c$ den Energietransport in einem Schallfeld dar und lässt sich in zwei fundamentale Komponenten zerlegen:
  
 \begin{itemize}
-\item Aktive Intensität $\mathbf{I}$
-\item Reaktive Intensität $\mathbf{Q}$
+\item Aktive Intensität $\boldsymbol{I}$
+\item Reaktive Intensität $\boldsymbol{Q}$
 \end{itemize}
- 
-\noindent Die komplexe Schallintensität ist definiert als:
- 
+Die komplexe Schallintensität ist definiert als:
 \begin{equation}
-\mathbf{I}_c (\mathbf{r}) = \frac{1}{2} \: p(\mathbf{r}) \: \mathbf{u}^{*}(\mathbf{r}),
+\boldsymbol{I}_c (\boldsymbol{r}) = \frac{1}{2} \: p(\boldsymbol{r}) \: \boldsymbol{u}^{*}(\boldsymbol{r}),
 \end{equation}
- 
-\noindent wobei $p(\mathbf{r})$ den komplexen Schalldruck und $\mathbf{u}^{*}(\mathbf{r})$ die komplexe Konjugation der Schallschnelle $\mathbf{u}(\mathbf{r})$ beschreibt. Diese Formulierung berücksichtigt die Phasenverschiebung zwischen Schalldruck und Schallgeschwindigkeit und ermöglicht die Zerlegung des Energieflusses in quellenfreie und wirbelfreie Anteile gemäss der Helmholtz-Zerlegung.
+wobei $p(\boldsymbol{r})$ den komplexen Schalldruck und $\boldsymbol{u}^{*}(\boldsymbol{r})$ die komplexe Konjugation der Schallschnelle $\boldsymbol{u}(\boldsymbol{r})$ beschreibt. Diese Formulierung berücksichtigt die Phasenverschiebung zwischen Schalldruck und Schallgeschwindigkeit und ermöglicht die Zerlegung des Energieflusses in quellenfreie und wirbelfreie Anteile gemäss der Helmholtz-Zerlegung.
  
 Bei näherer Betrachtung ist zu erkennen, dass die komplexe Schallintensität eine ähnliche Struktur wie die Helmholtz-Zerlegung aufweist und sich wie folgt darstellen lässt:
- 
 \begin{equation}
-\mathbf{I}_c (\mathbf{r}) = \underbrace{\mathbf{I}(\mathbf{r})}_{\frac{1}{2} \operatorname{Re} \, \{ p(\mathbf{r}) \, \mathbf{u}^*(\mathbf{r}) \}} + \underbrace{j\,\mathbf{Q}(\mathbf{r})}_{\frac{1}{2} \operatorname{Im} \, \{ p(\mathbf{r}) \, \mathbf{u}^*(\mathbf{r}) \}}.
+\boldsymbol{I}_c (\boldsymbol{r}) = \underbrace{\boldsymbol{I}(\boldsymbol{r})}_{\frac{1}{2} \operatorname{Re} \, \{ p(\boldsymbol{r}) \, \boldsymbol{u}^*(\boldsymbol{r}) \}} + \underbrace{j\,\boldsymbol{Q}(\boldsymbol{r})}_{\frac{1}{2} \operatorname{Im} \, \{ p(\boldsymbol{r}) \, \boldsymbol{u}^*(\boldsymbol{r}) \}}.
 \end{equation}
- 
-\noindent Es zeigt sich eine direkte Korrespondenz zwischen den Komponenten der Helmholtz-Zerlegung und der komplexen Schallintensität:
- 
+Es zeigt sich eine direkte Korrespondenz zwischen den Komponenten der Helmholtz-Zerlegung und der komplexen Schallintensität:
 \begin{equation}
-\mathbf{I}_c (\mathbf{r}) = \underbrace{\mathbf{I}(\mathbf{r})}_{\nabla \cdot \mathbf{I} = 0 \text{ (quellenfrei)}} + \underbrace{j\,\mathbf{Q}(\mathbf{r})}_{\nabla \times \mathbf{Q} = 0 \text{ (wirbelfrei)}}.
+\boldsymbol{I}_c (\boldsymbol{r}) = \underbrace{\boldsymbol{I}(\boldsymbol{r})}_{\nabla \cdot \boldsymbol{I} = 0 \text{ (quellenfrei)}} + \underbrace{j\,\boldsymbol{Q}(\boldsymbol{r})}_{\nabla \times \boldsymbol{Q} = 0 \text{ (wirbelfrei)}}.
 \end{equation}
- 
-\noindent Durch diese Äquivalenz können wir folgende Korrespondenz feststellen:
+Durch diese Äquivalenz können wir folgende Korrespondenz feststellen:
  
 \begin{itemize}
 \item Der irrotationale Anteil der Schallschnelle korrespondiert mit der aktiven Intensität.
@@ -78,61 +70,59 @@ Bei näherer Betrachtung ist zu erkennen, dass die komplexe Schallintensität ei
 Die Helmholtz-Zerlegung ermöglicht eine tiefe physikalische Interpretation der Energieverteilung und -übertragung in akustischen Feldern:
  
 \begin{itemize}
-\item Die aktive Intensität $\mathbf{I}(r)$ beschreibt den zeitgemittelten Netto-Energiefluss pro Fläche an dem Ort $r$ und lässt sich ausdrücken als:
+\item Die aktive Intensität $\boldsymbol{I}(r)$ beschreibt den zeitgemittelten Netto-Energiefluss pro Fläche an dem Ort $r$ und lässt sich ausdrücken als:
 \begin{equation}
-\mathbf{I}(\mathbf{r}) = \frac{1}{T}\int_0^T \mathbf{I}_i(\mathbf{r},t)\,\mathrm{d}t = \frac{1}{2}\Re\left( p(\mathbf{r})~\mathbf{u}^*(\mathbf{r})\right).
+\boldsymbol{I}(\boldsymbol{r}) = \frac{1}{T}\int_0^T \boldsymbol{I}_i(\boldsymbol{r},t)\,\mathrm{d}t = \frac{1}{2}\Re\left( p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\right).
 \end{equation}
  
 In quellenfreien, stationären Feldern ohne Energieabsorption gilt:
 \begin{equation}
-\nabla \cdot \mathbf{I} = 0.
+\nabla \cdot \boldsymbol{I} = 0.
 \end{equation}
  
 Diese Komponente ist mit dem irrotationalen Anteil des Schallschnellefeldes verknüpft und repräsentiert den tatsächlichen Energiefluss durch das Medium.
  
-\item Die reaktive Intensität $\mathbf{Q}(r)$ beschreibt die zeitlich gemittelte Dichte der nicht-propagierenden, oszillierenden Energie:
+\item Die reaktive Intensität $\boldsymbol{Q}(r)$ beschreibt die zeitlich gemittelte Dichte der nicht-propagierenden, oszillierenden Energie:
 \begin{equation}
-\mathbf{Q}(\mathbf{r}) = \frac{1}{2}\Im\left(p(\mathbf{r})~\mathbf{u}^*(\mathbf{r})\right).
+\boldsymbol{Q}(\boldsymbol{r}) = \frac{1}{2}\Im\left(p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\right).
 \end{equation}
  
 Sie ist wirbelfrei:
 \begin{equation}
-\nabla \times \mathbf{Q} = 0
+\nabla \times \boldsymbol{Q} = 0
 \end{equation}
  
 Und steht in direkter Beziehung zur Differenz zwischen kinetischer Energie T und potentieller Energie V:
 \begin{equation}
-\nabla \cdot \mathbf{Q} = -2 \omega (T-V).
+\nabla \cdot \boldsymbol{Q} = -2 \omega (T-V).
 \end{equation}
  
 Diese Komponente ist mit dem solenoidalen Anteil des Schallschnellefeldes verknüpft und stellt die oszillierende, lokal gespeicherte Energie dar, die nicht zum Netto-Energietransport beiträgt.
 \end{itemize}
- 
-\noindent Anhand von zwei Extremfällen lässt sich diese Interpretation besonders gut veranschaulichen:
+Anhand von zwei Extremfällen lässt sich diese Interpretation besonders gut veranschaulichen:
 
 \begin{itemize}
 
 
  
-\item Ebene Welle ($\mathbf{Q} = 0$):
-Bei einer ebene Welle ist die Amplitude konstant $P(\mathbf{r}) = A = konst.$ bzw. $\nabla P = 0$, was dazu führt, dass die reaktive Intensität verschwindet. Schalldruck und Schallschnelle sind in Phase $\phi = 0^{\circ}$. Die komplexe Intensität reduziert sich zu:
+\item Ebene Welle ($\boldsymbol{Q} = 0$):
+Bei einer ebene Welle ist die Amplitude konstant $P(\boldsymbol{r}) = A = konst.$ bzw. $\nabla P = 0$, was dazu führt, dass die reaktive Intensität verschwindet. Schalldruck und Schallschnelle sind in Phase $\phi = 0^{\circ}$. Die komplexe Intensität reduziert sich zu:
  
 \begin{equation}
-\mathbf{I}_c (\mathbf{r}) = \mathbf{I}(\mathbf{r}) + \cancel{j\,\mathbf{Q}(\mathbf{r})}
+\boldsymbol{I}_c (\boldsymbol{r}) = \boldsymbol{I}(\boldsymbol{r}) + \cancel{j\,\boldsymbol{Q}(\boldsymbol{r})}
 \end{equation}
  
-Die aktive Intensität ergibt sich zu: $\mathbf{I} = \frac{|\mathbf{A}|^2}{2 \rho_0 c_0}$ und zeigt in Richtung der Wellenausbreitung.
+Die aktive Intensität ergibt sich zu: $\boldsymbol{I} = \frac{|\boldsymbol{A}|^2}{2 \rho_0 c_0}$ und zeigt in Richtung der Wellenausbreitung.
  
-\item Stehende Welle ($\mathbf{I} = 0, \mathbf{Q} \neq 0$): 
-Bei einer stehenden Welle überlagern sich zwei gleiche ebene Wellen mit gleicher Amplitude in entgegengesetzter Richtung. An jedem Punkt ist entweder $P = maximal$ und $\mathbf{u} = 0$. Oder $P = 0$ und $\mathbf{u} = maximal$. Schalldruck und Schallschnelle sind um 90° phasenverschoben. Die komplexe Intensität reduziert sich zu:
+\item Stehende Welle ($\boldsymbol{I} = 0, \boldsymbol{Q} \neq 0$): 
+Bei einer stehenden Welle überlagern sich zwei gleiche ebene Wellen mit gleicher Amplitude in entgegengesetzter Richtung. An jedem Punkt ist entweder $P = maximal$ und $\boldsymbol{u} = 0$. Oder $P = 0$ und $\boldsymbol{u} = maximal$. Schalldruck und Schallschnelle sind um 90° phasenverschoben. Die komplexe Intensität reduziert sich zu:
  
 \begin{equation}
-\mathbf{I}_c (\mathbf{r}) = \cancel{\mathbf{I}(\mathbf{r})} + j\,\mathbf{Q}(\mathbf{r})
+\boldsymbol{I}_c (\boldsymbol{r}) = \cancel{\boldsymbol{I}(\boldsymbol{r})} + j\,\boldsymbol{Q}(\boldsymbol{r})
 \end{equation}
 
 \end{itemize}
- 
-\noindent In diesem Fall gibt es keinen Netto-Energietransport, sondern nur lokale Energieoszillation.
+In diesem Fall gibt es keinen Netto-Energietransport, sondern nur lokale Energieoszillation.
 
 
 \subsection{Visualisierung und Feldmuster
@@ -166,17 +156,16 @@ Die Helmholtz-Zerlegung führt zu charakteristischen Feldmustern, die sich wie f
 \label{fig:aktive_intensitaet_3quellen}
 \end{figure}
  
-\noindent Die Visualisierung der Feldmuster erlaubt eine intuitive Interpretation von Schallfeldern:
+Die Visualisierung der Feldmuster erlaubt eine intuitive Interpretation von Schallfeldern:
  
 \begin{itemize}
 \item in Bereiche mit starker aktiver Intensität zeigen Energieausbreitung und -übertragung.
 \item in Bereiche mit starker reaktiver Intensität zeigen Energieoszillation ohne Nettotransport, wie sie typischerweise im Nahfeld von Schallquellen oder bei stehenden Wellen auftritt.
 \item Die räumliche Verteilung von Quellen, Senken und Wirbeln erlaubt Rückschlüsse auf die zugrundeliegenden Schallquellen und Reflexionsmuster. 
 
-\noindent Abbildung \ref{fig:aktive_intensitaet_3quellen} verdeutlicht eindrücklich, wie die Interferenz von nur drei Quellen ausreicht, um solche komplexen Wirbelmuster zu erzeugen.
+Abbildung \ref{fig:aktive_intensitaet_3quellen} verdeutlicht eindrücklich, wie die Interferenz von nur drei Quellen ausreicht, um solche komplexen Wirbelmuster zu erzeugen.
 \end{itemize}
- 
-\noindent Diese Feldmuster sind besonders wichtig für die akustische Messtechnik, da sie eine visuelle Methode zur Identifikation von Schallquellen und zur Analyse von Energieflüssen in komplexen akustischen Feldern bieten.
+Diese Feldmuster sind besonders wichtig für die akustische Messtechnik, da sie eine visuelle Methode zur Identifikation von Schallquellen und zur Analyse von Energieflüssen in komplexen akustischen Feldern bieten.
 
 
 
