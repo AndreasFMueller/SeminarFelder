@@ -63,57 +63,65 @@ Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
 \begin{enumerate}
     \item Zuerst wird der Gradient $\nabla\Phi$ berechnet:
     Der Gradient ergibt
-    $$
+    \[
     \nabla \Phi =
+	\renewcommand{\arraystretch}{2.0}
     \begin{pmatrix}
-        \frac{\partial \Phi}{\partial x} \\
-        \frac{\partial \Phi}{\partial y} \\
-        \frac{\partial \Phi}{\partial z}
+        \displaystyle \frac{\partial \Phi}{\partial x} \\
+        \displaystyle \frac{\partial \Phi}{\partial y} \\
+        \displaystyle \frac{\partial \Phi}{\partial z}
     \end{pmatrix}.
-    $$
+    \]
 
-    \item Nun die Rotation dieses Gradientenfeldes: Die Definitionsformel der Rotation $\nabla \times F$ auf den Gradientenvektor anwenden ergibt
-    $$
+    \item Nun die Rotation dieses Gradientenfeldes: Die Definitionsformel der Rotation $\nabla \times \boldsymbol{F}$ auf den Gradientenvektor anwenden ergibt
+    \[
     \nabla \times (\nabla \Phi) =
+	\renewcommand{\arraystretch}{2.0}
     \begin{pmatrix}
-        \frac{\partial}{\partial y}\left(\frac{\partial \Phi}{\partial z}\right) - \frac{\partial}{\partial z}\left(\frac{\partial \Phi}{\partial y}\right) \\
-        \frac{\partial}{\partial z}\left(\frac{\partial \Phi}{\partial x}\right) - \frac{\partial}{\partial x}\left(\frac{\partial \Phi}{\partial z}\right) \\
-        \frac{\partial}{\partial x}\left(\frac{\partial \Phi}{\partial y}\right) - \frac{\partial}{\partial y}\left(\frac{\partial \Phi}{\partial x}\right)
+        \displaystyle\frac{\partial}{\partial y}\left(\frac{\partial \Phi}{\partial z}\right) - \frac{\partial}{\partial z}\left(\frac{\partial \Phi}{\partial y}\right) \\
+        \displaystyle\frac{\partial}{\partial z}\left(\frac{\partial \Phi}{\partial x}\right) - \frac{\partial}{\partial x}\left(\frac{\partial \Phi}{\partial z}\right) \\
+        \displaystyle\frac{\partial}{\partial x}\left(\frac{\partial \Phi}{\partial y}\right) - \frac{\partial}{\partial y}\left(\frac{\partial \Phi}{\partial x}\right)
     \end{pmatrix}.
-    $$
+    \]
 
     \item %Den \emph{Satz von Schwarz} anwenden:
     
     Zur besseren Übersicht werden die gemischten Ableitungen ausgeschrieben:
-    $$
+    \[
     \nabla \times (\nabla \Phi) =
+	\renewcommand{\arraystretch}{2.0}
     \begin{pmatrix}
-        \frac{\partial^2 \Phi}{\partial y \partial z} - \frac{\partial^2 \Phi}{\partial z \partial y} \\
-        \frac{\partial^2 \Phi}{\partial z \partial x} - \frac{\partial^2 \Phi}{\partial x \partial z} \\
-        \frac{\partial^2 \Phi}{\partial x \partial y} - \frac{\partial^2 \Phi}{\partial y \partial x}
+        \displaystyle\frac{\partial^2 \Phi}{\partial y\, \partial z} - \frac{\partial^2 \Phi}{\partial z\, \partial y} \\
+        \displaystyle\frac{\partial^2 \Phi}{\partial z\, \partial x} - \frac{\partial^2 \Phi}{\partial x\, \partial z} \\
+        \displaystyle\frac{\partial^2 \Phi}{\partial x\, \partial y} - \frac{\partial^2 \Phi}{\partial y\, \partial x}
     \end{pmatrix}.
-    $$
-    Der \emph{Satz von Schwarz} besagt, dass bei stetigen Funktionen die Reihenfolge der partiellen Ableitungen vertauscht werden kann. Damit heben sich die Terme in jeder Komponente gegenseitig auf und es bleibt
-    $$
+    \]
+    Der \emph{Satz von Schwarz} besagt, dass bei stetigen differenzierbaren
+    Funktionen die Reihenfolge der partiellen Ableitungen vertauscht werden
+    kann.
+    Damit heben sich die Terme in jeder Komponente gegenseitig auf und es bleibt
+    \[
     \nabla \times (\nabla \Phi)  =
     \begin{pmatrix}
         0 \\
         0 \\
         0
     \end{pmatrix} = \boldsymbol{0}.
-    $$
+    \]
 \end{enumerate}
 
 \subsubsection{Nachweis der Quellenfreiheit des solenoidalen Anteils}
 
 \begin{enumerate}
-    \item Berechnung der Rotation $\nabla \times \boldsymbol{\Psi}$: Zuerst wird der Rotations-Operator auf $\boldsymbol{\Psi}$ angewendet:
+    \item Berechnung der Rotation $\nabla \times \boldsymbol{\Psi}$:
+	Zuerst wird der Rotations-Operator auf $\boldsymbol{\Psi}$ angewendet:
     \[
     \nabla \times \boldsymbol{\Psi} =
+	\renewcommand{\arraystretch}{2.0}
     \begin{pmatrix}
-        \frac{\partial \Psi_z}{\partial y} - \frac{\partial \Psi_y}{\partial z} \\
-        \frac{\partial \Psi_x}{\partial z} - \frac{\partial \Psi_z}{\partial x} \\
-        \frac{\partial \Psi_y}{\partial x} - \frac{\partial \Psi_x}{\partial y}
+        \displaystyle\frac{\partial \Psi_z}{\partial y} - \frac{\partial \Psi_y}{\partial z} \\
+        \displaystyle\frac{\partial \Psi_x}{\partial z} - \frac{\partial \Psi_z}{\partial x} \\
+        \displaystyle\frac{\partial \Psi_y}{\partial x} - \frac{\partial \Psi_x}{\partial y}
     \end{pmatrix}.
     \]
 
@@ -121,21 +129,27 @@ Sei $\Phi$ ein zweimal stetig differenzierbares Skalarfeld.
     
     \begin{align*}
     % Schritt 1: Definition der Divergenz anwenden
-    \nabla \cdot (\nabla \times \boldsymbol{\Psi}) &= \frac{\partial}{\partial x}\left( \frac{\partial \Psi_z}{\partial y} - \frac{\partial \Psi_y}{\partial z} \right) + \frac{\partial}{\partial y}\left( \frac{\partial \Psi_x}{\partial z} - \frac{\partial \Psi_z}{\partial x} \right) + \frac{\partial}{\partial z}\left( \frac{\partial \Psi_y}{\partial x} - \frac{\partial \Psi_x}{\partial y} \right) \\[1em]
+    \nabla \cdot (\nabla \times \boldsymbol{\Psi}) &= \frac{\partial}{\partial x}\left( \frac{\partial \Psi_z}{\partial y} - \frac{\partial \Psi_y}{\partial z} \right) + \frac{\partial}{\partial y}\left( \frac{\partial \Psi_x}{\partial z} - \frac{\partial \Psi_z}{\partial x} \right) + \frac{\partial}{\partial z}\left( \frac{\partial \Psi_y}{\partial x} - \frac{\partial \Psi_x}{\partial y} \right) \\
     % Schritt 2: Die Ableitungen ausführen
-    &= \frac{\partial^2 \Psi_z}{\partial x \partial y} - \frac{\partial^2 \Psi_y}{\partial x \partial z} + \frac{\partial^2 \Psi_x}{\partial y \partial z} - \frac{\partial^2 \Psi_z}{\partial y \partial x} + \frac{\partial^2 \Psi_y}{\partial z \partial x} - \frac{\partial^2 \Psi_x}{\partial z \partial y} \\[1em]
+    &= \frac{\partial^2 \Psi_z}{\partial x\, \partial y} - \frac{\partial^2 \Psi_y}{\partial x\, \partial z} + \frac{\partial^2 \Psi_x}{\partial y\, \partial z} - \frac{\partial^2 \Psi_z}{\partial y\, \partial x} + \frac{\partial^2 \Psi_y}{\partial z\, \partial x} - \frac{\partial^2 \Psi_x}{\partial z\, \partial y} \\
     % Schritt 3: Terme umsortieren, um Paare zu bilden
-    &= \left( \frac{\partial^2 \Psi_x}{\partial y \partial z} - \frac{\partial^2 \Psi_x}{\partial z \partial y} \right) + \left( \frac{\partial^2 \Psi_y}{\partial z \partial x} - \frac{\partial^2 \Psi_y}{\partial x \partial z} \right) + \left( \frac{\partial^2 \Psi_z}{\partial x \partial y} - \frac{\partial^2 \Psi_z}{\partial y \partial x} \right) = 0.
+    &= \left( \frac{\partial^2 \Psi_x}{\partial y\, \partial z} - \frac{\partial^2 \Psi_x}{\partial z\, \partial y} \right) + \left( \frac{\partial^2 \Psi_y}{\partial z\, \partial x} - \frac{\partial^2 \Psi_y}{\partial x\, \partial z} \right) + \left( \frac{\partial^2 \Psi_z}{\partial x\, \partial y} - \frac{\partial^2 \Psi_z}{\partial y\, \partial x} \right) = 0.
     \end{align*}
     
     \item Nach dem \emph{Satz von Schwarz} ist die Reihenfolge der partiellen Ableitungen bei zweimal stetig differenzierbaren Funktionen irrelevant. Daher gilt:
     \[
-    \frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}{\partial y \partial x}.
+    \frac{\partial^2 f}{\partial x\, \partial y} = \frac{\partial^2 f}{\partial y\, \partial x}.
     \]
     Angewendet auf die obige Gleichung bedeutet dies, dass jeder Term in den Klammern Null ergibt:
     \begin{align*}
-    \nabla \cdot (\nabla \times \boldsymbol{\Psi}) &= \underbrace{\left( \frac{\partial^2 \Psi_x}{\partial y \partial z} - \frac{\partial^2 \Psi_x}{\partial y \partial z} \right)}_{=0} + \underbrace{\left( \frac{\partial^2 \Psi_y}{\partial z \partial x} - \frac{\partial^2 \Psi_y}{\partial z \partial x} \right)}_{=0} + \underbrace{\left( \frac{\partial^2 \Psi_z}{\partial x \partial y} - \frac{\partial^2 \Psi_z}{\partial x \partial y} \right)}_{=0} \\[1em]
-    &= 0 + 0 + 0 \\[1em]
+    \nabla \cdot (\nabla \times \boldsymbol{\Psi})
+&=
+\underbrace{\left( \frac{\partial^2 \Psi_x}{\partial y\, \partial z} - \frac{\partial^2 \Psi_x}{\partial y\, \partial z} \right)}_{\displaystyle=0}
++
+\underbrace{\left( \frac{\partial^2 \Psi_y}{\partial z\, \partial x} - \frac{\partial^2 \Psi_y}{\partial z\, \partial x} \right)}_{\displaystyle=0}
++
+\underbrace{\left( \frac{\partial^2 \Psi_z}{\partial x\, \partial y} - \frac{\partial^2 \Psi_z}{\partial x\, \partial y} \right)}_{\displaystyle=0} \\
+    &= 0 + 0 + 0 \\
     &= 0.
     \end{align*}
 \end{enumerate}
@@ -146,9 +160,13 @@ Damit ist die Identität $\nabla \cdot (\nabla \times \boldsymbol{\Psi}) = 0$ be
 \label{helmholtz:subsection:Berechnung der Potentiale}}
 
 \subsubsection{Greenscher Ansatz}
-
-Ein möglicher Ansatz zur Lösung der partiellen Differentialgleichung ist die Verwendung der Dirac-Delta-Funktion und des Greenschen Funktionen wie es in \cite{baird_helmholtz} beschrieben ist. Dies entspricht der Integralform einer Matrixmultiplikation, wie in Tabelle \ref{tab:helmholtz_matrix_analogie} 
-veranschaulicht. Dabei wird die Funktion $\boldsymbol{F}$, die in diesem Fall einen Vektor darstellt, mit der Delta-Funktion multipliziert wie folgt:
+Ein möglicher Ansatz zur Lösung der partiellen Differentialgleichung
+ist die Verwendung der Dirac-Delta-Funktion und des greenschen
+Funktionen wie dies in \cite{baird_helmholtz} beschrieben ist.
+Dies entspricht der Integralform einer Matrixmultiplikation, wie
+in Tabelle \ref{tab:helmholtz_matrix_analogie} veranschaulicht.
+Dabei wird die Funktion $\boldsymbol{F}$, die in diesem Fall einen
+Vektor darstellt, mit der Delta-Funktion multipliziert wie folgt:
 
 \begin{equation}
 \Delta F = -4 \pi \rho. 
@@ -197,17 +215,17 @@ Diese Gleichung repräsentiert die Helmholtz-Zerlegung des Vektorfeldes $\boldsy
 
 \subsubsection{Berechnung der Potentiale in unbeschränkten Gebieten}
 
-Die Potentiale $\Phi$ und $\boldsymbol{\Psi}$ lassen sich für unbeschränkte Gebiete mit Hilfe der Greenschen Funktion wie folgt berechnen:
+Die Potentiale $\Phi$ und $\boldsymbol{\Psi}$ lassen sich für unbeschränkte Gebiete mit Hilfe der greenschen Funktion wie folgt berechnen:
 
 \begin{itemize}
 \item Skalares Potential:
 \begin{equation}
-\Phi(\boldsymbol{r}) = \frac{1}{4 \pi} \int_{V} \frac{\nabla' \cdot \boldsymbol{F}(\boldsymbol{r'})}{|\boldsymbol{r} - \boldsymbol{r'}|} dV'
+\Phi(\boldsymbol{r}) = \frac{1}{4 \pi} \int_{V} \frac{\nabla' \cdot \boldsymbol{F}(\boldsymbol{r'})}{|\boldsymbol{r} - \boldsymbol{r'}|} dV'.
 \end{equation}
 
 \item Vektorpotential:
 \begin{equation}
-\boldsymbol{\Psi}(\boldsymbol{r}) = \frac{1}{4 \pi} \int_{V} \frac{\nabla' \times \boldsymbol{F}(\boldsymbol{r'})}{|\boldsymbol{r} - \boldsymbol{r'}|} dV'
+\boldsymbol{\Psi}(\boldsymbol{r}) = \frac{1}{4 \pi} \int_{V} \frac{\nabla' \times \boldsymbol{F}(\boldsymbol{r'})}{|\boldsymbol{r} - \boldsymbol{r'}|} dV'.
 \end{equation}
 \end{itemize}
 Hier bezeichnet $\nabla'$ den Nabla-Operator bezüglich der Integrationsvariablen $\boldsymbol{r'}$.
@@ -243,7 +261,8 @@ Damit die Zerlegung korrekt durchgeführt werden kann, muss das Vektorfeld $\bol
 \end{equation}
 wobei $r = |\boldsymbol{r}|$ der Abstand vom Ursprung ist.
 \end{itemize}
-Diese Bedingungen stellen sicher, dass die Integrale in der Greenschen Formulierung konvergieren und die Zerlegung eindeutig ist.
+Diese Bedingungen stellen sicher, dass die Integrale in der greenschen
+Formulierung konvergieren und die Zerlegung eindeutig ist.
 
 \subsubsection{Eindeutigkeit der Zerlegung
 \label{helmholtz:subsection:Bedingungen_onlyEindeutigkeit}}
@@ -251,9 +270,16 @@ Diese Bedingungen stellen sicher, dass die Integrale in der Greenschen Formulier
 Die Eindeutigkeit der Helmholtz-Zerlegung hängt von den Randbedingungen ab:
 
 \begin{itemize}
-\item Für unbeschränkte Gebiete: Die Zerlegung ist eindeutig, wenn das Vektorfeld im Unendlichen gegen null geht. Diese Bedingung stellt sicher, dass bestimmte Oberflächenintegrale bei der Herleitung der Zerlegung verschwinden \cite{wiki:helmholtz}.
+\item Für unbeschränkte Gebiete: Die Zerlegung ist eindeutig, wenn
+das Vektorfeld im Unendlichen gegen null geht.
+Diese Bedingung stellt sicher, dass bestimmte Oberflächenintegrale
+bei der Herleitung der Zerlegung verschwinden \cite{wiki:helmholtz}.
 
-\item Für beschränkte Gebiete: Die Eindeutigkeit erfordert zusätzliche Randbedingungen. Obwohl das Vektorfeld auch als Summe eines irrotationalen und eines solenoidalen Anteils geschrieben werden kann, ist für eine eindeutige Lösung die Festlegung von Randbedingungen notwendig \cite{wiki:helmholtz}. Typischerweise sind dies:
+\item Für beschränkte Gebiete: Die Eindeutigkeit erfordert zusätzliche Randbedingungen.
+Obwohl das Vektorfeld auch als Summe eines irrotationalen und eines
+solenoidalen Anteils geschrieben werden kann, ist für eine eindeutige
+Lösung die Festlegung von Randbedingungen notwendig \cite{wiki:helmholtz}.
+Typischerweise sind dies:
   \begin{itemize}
     \item Festlegung der Normalkomponente des irrotationalen Teils auf dem Rand.
     \item Festlegung der Tangentialkomponente des solenoidalen Teils auf dem Rand.
@@ -262,12 +288,25 @@ Die Eindeutigkeit der Helmholtz-Zerlegung hängt von den Randbedingungen ab:
 
 \subsubsection{Orthogonalität der Komponenten}
 
-Eine wichtige Eigenschaft der Helmholtz-Zerlegung ist die Orthogonalität der beiden Komponenten. Für ein Vektorfeld $\boldsymbol{F} = \boldsymbol{F}_{\text{irr}} + \boldsymbol{F}_{\text{sol}}$ gilt unter geeigneten Randbedingungen:
+Eine wichtige Eigenschaft der Helmholtz-Zerlegung ist die Orthogonalität der beiden Komponenten.
+Für ein Vektorfeld $\boldsymbol{F} = \boldsymbol{F}_{\text{irr}} + \boldsymbol{F}_{\text{sol}}$ gilt unter geeigneten Randbedingungen:
 \begin{equation}
 \int_V \boldsymbol{F}_{\text{irr}} \cdot \boldsymbol{F}_{\text{sol}} \, dV = 0.
 \end{equation}
-Das Integral ist null, weil es mithilfe des Gaussschen Integralsatzes in ein Oberflächenintegral umgewandelt werden kann, das unter den für die Helmholtz-Zerlegung Randbedingungen, wie in \ref{helmholtz:subsection:Bedingungen_onlyEindeutigkeit} beschrieben, verschwindet.
+%
+% XXX Inkorrekter Satz
+%
+Das Integral ist null, weil es mithilfe des Gaussschen Integralsatzes
+in ein Oberflächenintegral umgewandelt werden kann, das unter den
+für die Helmholtz-Zerlegung Randbedingungen, wie in
+\ref{helmholtz:subsection:Bedingungen_onlyEindeutigkeit} beschrieben,
+verschwindet.
  
-In physikalischen Anwendungen, wie beispielsweise in der Akustik, bedeutet diese mathematische Orthogonalität, dass die beiden Feldkomponenten unterschiedliche physikalische Phänomene beschreiben, die unabhängig voneinander analysiert werden können. Mehr dazu wird im Unterkapitel \ref{tab:helmholtz:Energie_Interpretation} erläutert.
+In physikalischen Anwendungen, wie beispielsweise in der Akustik,
+bedeutet diese mathematische Orthogonalität, dass die beiden
+Feldkomponenten unterschiedliche physikalische Phänomene beschreiben,
+die unabhängig voneinander analysiert werden können.
+Mehr dazu wird im Abschnitt~\ref{tab:helmholtz:Energie_Interpretation}
+erläutert.
 
 

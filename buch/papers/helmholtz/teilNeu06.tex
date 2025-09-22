@@ -34,7 +34,7 @@ Die physikalische Interpretation der Komponenten des Schallschnellefeldes lässt
 \end{itemize}
 \end{itemize}
 
-\subsection{Direkte Verbindung zur Komplexen Schallintensität
+\subsection{Direkte Verbindung zur komplexen Schallintensität
 \label{helmholtz:subsection:Zerlegung_Schallschnelle}}
 
 Wie bereits beschrieben, stellt die komplexe Schallintensität $\boldsymbol{I}_c$ den Energietransport in einem Schallfeld dar und lässt sich in zwei fundamentale Komponenten zerlegen:
@@ -45,17 +45,34 @@ Wie bereits beschrieben, stellt die komplexe Schallintensität $\boldsymbol{I}_c
 \end{itemize}
 Die komplexe Schallintensität ist definiert als:
 \begin{equation}
-\boldsymbol{I}_c (\boldsymbol{r}) = \frac{1}{2} \: p(\boldsymbol{r}) \: \boldsymbol{u}^{*}(\boldsymbol{r}),
+\boldsymbol{I}_c (\boldsymbol{r})
+=
+\frac{1}{2} p(\boldsymbol{r})  \boldsymbol{u}^{*}(\boldsymbol{r}),
 \end{equation}
 wobei $p(\boldsymbol{r})$ den komplexen Schalldruck und $\boldsymbol{u}^{*}(\boldsymbol{r})$ die komplexe Konjugation der Schallschnelle $\boldsymbol{u}(\boldsymbol{r})$ beschreibt. Diese Formulierung berücksichtigt die Phasenverschiebung zwischen Schalldruck und Schallgeschwindigkeit und ermöglicht die Zerlegung des Energieflusses in quellenfreie und wirbelfreie Anteile gemäss der Helmholtz-Zerlegung.
  
 Bei näherer Betrachtung ist zu erkennen, dass die komplexe Schallintensität eine ähnliche Struktur wie die Helmholtz-Zerlegung aufweist und sich wie folgt darstellen lässt:
 \begin{equation}
-\boldsymbol{I}_c (\boldsymbol{r}) = \underbrace{\boldsymbol{I}(\boldsymbol{r})}_{\frac{1}{2} \operatorname{Re} \, \{ p(\boldsymbol{r}) \, \boldsymbol{u}^*(\boldsymbol{r}) \}} + \underbrace{j\,\boldsymbol{Q}(\boldsymbol{r})}_{\frac{1}{2} \operatorname{Im} \, \{ p(\boldsymbol{r}) \, \boldsymbol{u}^*(\boldsymbol{r}) \}}.
+\boldsymbol{I}_c (\boldsymbol{r})
+=
+\underbrace{\boldsymbol{I}(\boldsymbol{r})}_{\displaystyle\frac{1}{2}
+\operatorname{Re} ( p(\boldsymbol{r}) \boldsymbol{u}^*(\boldsymbol{r}) )
+}
++
+\underbrace{j\boldsymbol{Q}(\boldsymbol{r})}_{\displaystyle\frac{1}{2}
+\operatorname{Im} ( p(\boldsymbol{r}) \boldsymbol{u}^*(\boldsymbol{r}) )}.
 \end{equation}
 Es zeigt sich eine direkte Korrespondenz zwischen den Komponenten der Helmholtz-Zerlegung und der komplexen Schallintensität:
 \begin{equation}
-\boldsymbol{I}_c (\boldsymbol{r}) = \underbrace{\boldsymbol{I}(\boldsymbol{r})}_{\nabla \cdot \boldsymbol{I} = 0 \text{ (quellenfrei)}} + \underbrace{j\,\boldsymbol{Q}(\boldsymbol{r})}_{\nabla \times \boldsymbol{Q} = 0 \text{ (wirbelfrei)}}.
+\boldsymbol{I}_c (\boldsymbol{r})
+=
+\underbrace{\boldsymbol{I}(\boldsymbol{r})}_{\displaystyle\nabla \cdot \boldsymbol{I}
+=
+0 \text{ (quellenfrei)}}
++
+\underbrace{j\boldsymbol{Q}(\boldsymbol{r})}_{\displaystyle\nabla \times \boldsymbol{Q}
+=
+0\qquad \text{ (wirbelfrei)}}.
 \end{equation}
 Durch diese Äquivalenz können wir folgende Korrespondenz feststellen:
  
@@ -72,29 +89,41 @@ Die Helmholtz-Zerlegung ermöglicht eine tiefe physikalische Interpretation der 
 \begin{itemize}
 \item Die aktive Intensität $\boldsymbol{I}(r)$ beschreibt den zeitgemittelten Netto-Energiefluss pro Fläche an dem Ort $r$ und lässt sich ausdrücken als:
 \begin{equation}
-\boldsymbol{I}(\boldsymbol{r}) = \frac{1}{T}\int_0^T \boldsymbol{I}_i(\boldsymbol{r},t)\,\mathrm{d}t = \frac{1}{2}\Re\left( p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\right).
+\boldsymbol{I}(\boldsymbol{r})
+=
+\frac{1}{T}\int_0^T \boldsymbol{I}_i(\boldsymbol{r},t)\,dt
+=
+\frac{1}{2}\Re\left( p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\right).
 \end{equation}
  
 In quellenfreien, stationären Feldern ohne Energieabsorption gilt:
 \begin{equation}
-\nabla \cdot \boldsymbol{I} = 0.
+\nabla \cdot \boldsymbol{I}
+=
+0.
 \end{equation}
  
 Diese Komponente ist mit dem irrotationalen Anteil des Schallschnellefeldes verknüpft und repräsentiert den tatsächlichen Energiefluss durch das Medium.
  
 \item Die reaktive Intensität $\boldsymbol{Q}(r)$ beschreibt die zeitlich gemittelte Dichte der nicht-propagierenden, oszillierenden Energie:
 \begin{equation}
-\boldsymbol{Q}(\boldsymbol{r}) = \frac{1}{2}\Im\left(p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\right).
+\boldsymbol{Q}(\boldsymbol{r})
+=
+\frac{1}{2}\Im\left(p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\right).
 \end{equation}
  
 Sie ist wirbelfrei:
 \begin{equation}
-\nabla \times \boldsymbol{Q} = 0
+\nabla \times \boldsymbol{Q}
+=
+0.
 \end{equation}
  
 Und steht in direkter Beziehung zur Differenz zwischen kinetischer Energie T und potentieller Energie V:
 \begin{equation}
-\nabla \cdot \boldsymbol{Q} = -2 \omega (T-V).
+\nabla \cdot \boldsymbol{Q}
+=
+-2 \omega (T-V).
 \end{equation}
  
 Diese Komponente ist mit dem solenoidalen Anteil des Schallschnellefeldes verknüpft und stellt die oszillierende, lokal gespeicherte Energie dar, die nicht zum Netto-Energietransport beiträgt.
@@ -106,10 +135,16 @@ Anhand von zwei Extremfällen lässt sich diese Interpretation besonders gut ver
 
  
 \item Ebene Welle ($\boldsymbol{Q} = 0$):
-Bei einer ebene Welle ist die Amplitude konstant $P(\boldsymbol{r}) = A = konst.$ bzw. $\nabla P = 0$, was dazu führt, dass die reaktive Intensität verschwindet. Schalldruck und Schallschnelle sind in Phase $\phi = 0^{\circ}$. Die komplexe Intensität reduziert sich zu:
+Bei einer ebene Welle ist die Amplitude konstant $P(\boldsymbol{r})
+= A = \text{konst.}$ bzw. $\nabla P = 0$, was dazu führt, dass die
+reaktive Intensität verschwindet. Schalldruck und Schallschnelle
+sind in Phase $\phi = 0^{\circ}$. Die komplexe Intensität reduziert
+sich zu:
  
 \begin{equation}
-\boldsymbol{I}_c (\boldsymbol{r}) = \boldsymbol{I}(\boldsymbol{r}) + \cancel{j\,\boldsymbol{Q}(\boldsymbol{r})}
+\boldsymbol{I}_c (\boldsymbol{r})
+=
+\boldsymbol{I}(\boldsymbol{r}) + \cancel{j\boldsymbol{Q}(\boldsymbol{r})}
 \end{equation}
  
 Die aktive Intensität ergibt sich zu: $\boldsymbol{I} = \frac{|\boldsymbol{A}|^2}{2 \rho_0 c_0}$ und zeigt in Richtung der Wellenausbreitung.
@@ -118,7 +153,9 @@ Die aktive Intensität ergibt sich zu: $\boldsymbol{I} = \frac{|\boldsymbol{A}|^
 Bei einer stehenden Welle überlagern sich zwei gleiche ebene Wellen mit gleicher Amplitude in entgegengesetzter Richtung. An jedem Punkt ist entweder $P = maximal$ und $\boldsymbol{u} = 0$. Oder $P = 0$ und $\boldsymbol{u} = maximal$. Schalldruck und Schallschnelle sind um 90° phasenverschoben. Die komplexe Intensität reduziert sich zu:
  
 \begin{equation}
-\boldsymbol{I}_c (\boldsymbol{r}) = \cancel{\boldsymbol{I}(\boldsymbol{r})} + j\,\boldsymbol{Q}(\boldsymbol{r})
+\boldsymbol{I}_c (\boldsymbol{r})
+=
+\cancel{\boldsymbol{I}(\boldsymbol{r})} + j\boldsymbol{Q}(\boldsymbol{r})
 \end{equation}
 
 \end{itemize}
