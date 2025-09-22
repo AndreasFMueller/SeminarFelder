@@ -1,43 +1,101 @@
 %
-% teil2.tex -- Beispiel-File für teil2 
+% teil2.tex -- Beispiel-File für teil2
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 2 
+\section{Teilweise Reflexion, Transmission und Absorption an einer Grenzfläche
 \label{schall:section:teil2}}
 \kopfrechts{Teil 2}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
 
-\subsection{De finibus bonorum et malorum
-\label{schall:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+In diesem Abschnitt untersuchen wir eine ebene, zeit\-harmonische Schallwelle, die aus Medium~1 auf eine planare Grenzfläche zu Medium~2 trifft.
+Ein Teil der Welle wird reflektiert, ein Teil wird transmittiert.
+Im einfachsten, sprich im verlustlosen Fall, genügen die Druck- und Geschwindigkeitsfelder in beiden Medien der linearen Akustik; bei realen Medien in \emph{Medium~2} modellieren wir Absorption durch einen komplexen Wellenzahl- oder Impedanzterm.
+
+\subsection{Randbedingungen und Definitionen (Normal\-einfall)}
+Wir betrachten eine ebene Welle bei Normal\-einfall.
+Die Druckanteile lauten
+\[
+    p_i(x,t)=\Re\!\left\{P_i\,e^{\mathrm{i}(\omega t-k_1 x)}\right\},\quad
+    p_r(x,t)=\Re\!\left\{P_r\,e^{\mathrm{i}(\omega t+k_1 x)}\right\},\quad
+    p_t(x,t)=\Re\!\left\{P_t\,e^{\mathrm{i}(\omega t-k_2 x)}\right\}.
+\]
+Die charakteristische akustische Impedanz sei für Fluide $Z_n=\rho_n c_n$, $n\in\{1,2\}$.
+An der Grenzfläche $x=0$ fordern wir Kontinuität von Druck und Normalgeschwindigkeit:
+\[
+    p_i+p_r=p_t,\qquad \frac{p_i-p_r}{Z_1}=\frac{p_t}{Z_2}.
+\]
+Daraus folgen die \emph{amplitudenbezogenen} Reflexions- und Transmissionskoeffizienten
+\begin{equation}
+    R_p=\frac{P_r}{P_i}=\frac{Z_2-Z_1}{Z_2+Z_1},
+    \qquad
+    T_p=\frac{P_t}{P_i}=\frac{2Z_2}{Z_2+Z_1}.
+    \label{eq:RpTp}
+\end{equation}
+Für Intensitäten, sprich für den Leistungsfluss, ergibt sich bei reellen Impedanzen \cite{schall:kinsler, schall:allenRT}
+\begin{equation}
+    R_I=\left|R_p\right|^2=\left(\frac{Z_2-Z_1}{Z_2+Z_1}\right)^2,\qquad
+    T_I=\frac{4Z_1Z_2}{(Z_2+Z_1)^2},
+    \qquad
+    R_I+T_I=1.
+    \label{eq:RI_TI}
+\end{equation}
 
 
+\subsection{Absorption im zweiten Medium}
+Reale Medien weisen Dämpfung auf, sprich es kommt zu einer verlustbehaftete Transmission.
+Dies lässt sich mit einem \emph{komplexen Wellenzahl}
+\(
+    k_2 = \beta_2 - \mathrm{i}\alpha
+\)
+oder äquivalent mit einer \emph{komplexen Impedanz} modellieren.
+Für die \emph{Amplitude} des transmittierten Drucks gilt entlang $x>0$
+\[
+    |P_t(x)| = |P_t(0)|\,e^{-\alpha x},
+\]
+woraus für die \emph{Intensität} die Exponentialabnahme
+\begin{equation}
+    I_t(x)=I_i\,T_I\,e^{-2\alpha x}
+    \label{eq:intensity_decay}
+\end{equation}
+bei Ebenenwellen folgt.
+Für viele Medien wird die frequenzabhängige Dämpfung durch ein Gesetz
+$\alpha(\omega)=\alpha_0\,\omega^\eta$ beschrieben (Materialklassen: $\eta\in[0,2]$).
+\cite{schall:allenAbsorption}
+
+Damit definiert man die \emph{absorptionsbezogene Energiebilanz} über einer Strecke $L$ in Medium~2:
+\begin{equation}
+    1 \;=\; R_I \;+\; T_I\,e^{-2\alpha L} \;+\; A(L),
+    \qquad
+    A(L)=1-R_I - T_I e^{-2\alpha L},
+    \label{eq:absorption_balance}
+\end{equation}
+wobei $A(L)$ der bis zur Tiefe $L$ absorbierte Intensitätsanteil ist.
+Im Spezialfall einer \emph{dünnen, rein absorbierenden Schicht}, sprich ein Dämpfungs\-modell ohne Mehrfachreflexionen, geht $A \approx 1-R_I-T_I$ für $L\to0$ über.
+Experimentell wird die \emph{Absorptionskoeffizient} $\alpha_\mathrm{surf}$ häufig über Impedanz\- bzw.\ Stehwellen\-rohre bestimmt; für Normal\-einfall gilt (aus dem gemessenen SWR)
+\begin{equation}
+    \alpha_\mathrm{surf} \;=\; 1 - R_I \;=\; 1 - \left(\frac{\mathrm{SWR}-1}{\mathrm{SWR}+1}\right)^2.
+    \label{eq:alpha_SWR}
+\end{equation}
+
+\paragraph{Bemerkung zu komplexen Impedanzen.}
+Sind Materialverluste in $Z_2$ als $Z_2(\omega)\in\mathbb{C}$ erfasst, bleiben \eqref{eq:RpTp} formal gültig; für Intensitäten ist dann
+\[
+    R_I=\left|R_p\right|^2,\qquad
+    T_I=\frac{4\,\Re\{Z_1\}\,\Re\{Z_2\}}{|Z_1+Z_2|^2},
+\]
+wobei $Z_1$ für Fluide typischerweise reell ist.
+In vielen Anwendungen ist die Modellierung über $k_2=\beta_2-\mathrm{i}\alpha$ mittels \eqref{eq:intensity_decay} praktischer.%
+\cite{schall:kinsler,schall:allenRT}
+
+\subsection{Schräg\-einfall}
+Für Schräg\-einfall gilt die akustische Snell'sche Brechung
+\(
+    \sin\theta_1/c_1=\sin\theta_2/c_2
+\),
+und die \emph{normale} Impedanzkomponente skaliert zu $Z_{n} = Z/\cos\theta$ (Fluid--Fluid).
+Entsprechend ändern sich $R_p$, $T_p$ und damit $R_I$, $T_I$; jenseits des kritischen Winkels tritt ein evaneszentes Feld in Medium~2 auf,
+dessen Amplitude exponentiell abnimmt.
+\cite{schall:wikiSnell}

@@ -6,20 +6,87 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 0\label{schall:section:teil0}}
+\section{Einleitung\label{schall:section:teil0}}
 \kopfrechts{Teil 0}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{schall:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
+Schall breitet sich in einem Medium als Druckschwankung aus, die sich
+mit endlicher Geschwindigkeit fortpflanzt.
+Im einfachsten physikalischen Modell vernachlässigen wir Effekte wie
+Reflexionen, Hindernisse, starke Druck- oder Materialänderungen und
+betrachten die Ausbreitung in einer Dimension entlang einer Achse
+$x \in \mathbb{R}$.
+Die charakteristische Größe ist die Schallgeschwindigkeit $c$, welche
+von den Eigenschaften des Mediums abhängt.
+Grundsätzlich können sich Schallwellen in jedem Medium ausbreiten.
+Deshalb unterscheiden wir Gase, Flüssigkeiten und Festkörper.
+
+Bei Gasen sind, im Vergleich zu Flüssigkeiten und Festkörpern, die
+einzelnen Moleküle frei bewegbar und nicht direkt verbunden mit
+benachbarten Molekülen.
+Durch den vorhandenen Zwischenraum sind Gase kompressibel und
+temperaturabhängig.
+Da die einzelnen Moleküle nicht direkt miteinander verbunden sind,
+ist die Schallgeschwindigkeit in Gasen am niedrigsten.
+Für ein ideales Gas gilt
+\begin{equation}
+    c_{g} = \sqrt{\kappa \, \frac{p}{\rho}},
+\end{equation}
+wobei $\kappa$ der Adiabatenexponent, $p$ der Druck und $\rho$ die
+Dichte des Mediums ist.
+Setzt man $p = \rho R T$, welches die ideale Gasgleichung mit der
+spezifischen Gaskonstante $R = \SI{8.314e2}{\frac{J}{mol \cdot K}}$
+und der Temperatur $T$ beschreibt, erhält man die Darstellung
+\begin{equation}
+    c_{g} = \sqrt{\kappa R T}.
+\end{equation}
+Für Luft bei Normalbedingungen, welches mit
+$T \approx 20^\circ \mathrm{C}$ und $p \approx 1\,\mathrm{bar}$
+gegeben ist, erhält man so näherungsweise
+\begin{equation}
+    c_{g,\text{Luft}} \approx 343 \,\frac{\mathrm{m}}{\mathrm{s}}.
+\end{equation}
+
+Flüssigkeiten sind im Vergleich zu Gasen inkompressibel, da die
+Moleküle durch intermolekulare Kräfte stark aneinander gebunden sind.
+Die Schallgeschwindigkeit ist deshalb deutlich höher als in Gasen.
+Für Flüssigkeiten gilt näherungsweise
+\begin{equation}
+    c_{l} = \sqrt{\frac{K}{\rho}},
+\end{equation}
+wobei $K$ das Kompressionsmodul und $\rho$ die Dichte der Flüssigkeit ist.
+Bei Gasen, sowie bei Flüssigkeiten, sind nur longitudiale
+Wellenausbreitungen möglich.
+Für Wasser bei $T \approx 20^\circ \mathrm{C}$ gilt näherungsweise
+\begin{equation}
+    c_{l,\text{Wasser}} \approx 1480 \,\frac{\mathrm{m}}{\mathrm{s}}.
+\end{equation}
 
 
+Festkörper sind im Vergleich zu Gasen und Flüssigkeiten noch weniger
+kompressibel, da die Moleküle durch starke Bindungen aneinander gebunden sind.
+Die Schallgeschwindigkeit ist deshalb am höchsten.
+In Festkörpern sind sowohl longitudinale als auch transversale
+Wellenausbreitungen möglich.
+Die Schallgeschwindigkeit in Festkörpern hängt von der Richtung der
+Ausbreitung ab.
+Longitudinale Wellen breiten sich in Festkörpern mit der Geschwindigkeit
+\begin{equation}
+    c_{s,long} = \sqrt{\frac{E(1-\nu)}{\rho(1+\nu)(1-2\nu)}}
+\end{equation}
+aus, wobei $E$ das Elastizitätsmodul beschreibt, welches bereits in
+\ref{chapter:elastomechanik} eingeführt wurde.
+Transversale Wellen breiten sich mit der Geschwindigkeit
+\begin{equation}
+    c_{s,trans} = \sqrt{\frac{E}{2\rho(1+\nu)}} = \sqrt{\frac{G}{\rho}}
+\end{equation}
+aus, wobei $G$ das Schubmodul des Festkörpers ist.
+Generell sind longitudinale Wellen schneller als transversale Wellen.
+Für Stahl gilt die Schallgeschwindigkeit näherungsweise
+\begin{equation}
+    c_{s,\text{Stahl}} \approx 5000 \,\frac{\mathrm{m}}{\mathrm{s}}.
+\end{equation}
+
+Damit können wir Schall im einfachsten Ansatz als Welle verstehen, die
+sich gleichmäßig mit einer vom Medium bestimmten Geschwindigkeit ausbreitet.
+Woher diese Schallgeschwindigkeit kommt und wie sie sich bei
+komplexeren Modellen ändert, wird in den folgenden Abschnitten untersucht.
