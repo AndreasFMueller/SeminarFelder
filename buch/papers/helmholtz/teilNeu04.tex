@@ -10,9 +10,11 @@
 \label{helmholtz:section:akustische_Grundlagen}}
 \kopfrechts{Akustische Grundlagen und Feldtheorie}
 
-Um die Anwendung der Helmholtz-Zerlegung in der Akustik zu verstehen, bedarf es grundlegender Kenntnisse der physikalischen Akustik. Hier werden die zentralen physikalischen Grössen Schalldruck, Schallschnelle und deren Zusammenhänge erläutert. In vielen akustischen Aufgaben wird mit der komplexen Schreibweise gearbeitet, weshalb die Formeln vorzugsweise im Frequenzbereich dargestellt werden.
+Um die Anwendung der Helmholtz-Zerlegung in der Akustik zu verstehen, bedarf es grundlegender Kenntnisse der physikalischen Akustik.
+Hier werden die zentralen physikalischen Grössen Schalldruck, Schallschnelle und deren Zusammenhänge erläutert.
+In vielen akustischen Aufgaben wird mit der komplexen Schreibweise gearbeitet, weshalb die Formeln vorzugsweise im Frequenzbereich dargestellt werden.
 
-\subsection{Grundbegriffe der physiklalischen Akustik
+\subsection{Grundbegriffe der physikalischen Akustik
 \label{helmholtz:subsection:Grundbegriffe_Akustik}}
 
 \subsubsection{Schalldruck $p$}
@@ -20,37 +22,46 @@ Um die Anwendung der Helmholtz-Zerlegung in der Akustik zu verstehen, bedarf es 
 Der Schalldruck ist eine der fundamentalen Größen in der Akustik und beschreibt lokale Druckschwankungen im Medium:
  
 \begin{itemize}
-\item $P \: (\boldsymbol{r})$ bezeichnet die Amplitude des Schalldrucks am Ort $\boldsymbol{r}$ und ist eine reelle Grösse.
+\item $P  (\boldsymbol{r})$ bezeichnet die Amplitude des Schalldrucks am Ort $\boldsymbol{r}$ und ist eine reelle Grösse.
 \item $\omega$ ist die Kreisfrequenz.
-\item $\phi \: (\boldsymbol{r})$ beschreibt die Phase am Ort $\boldsymbol{r}$ und ist ebenfalls eine reelle Grösse.
+\item $\phi  (\boldsymbol{r})$ beschreibt die Phase am Ort $\boldsymbol{r}$ und ist ebenfalls eine reelle Grösse.
 \end{itemize}
  
 Die zeitabhängige Darstellung des Schalldrucks lautet:
 \begin{equation}
-p(r,t) = P(\boldsymbol{r}) \: e^{j( \omega t - \phi(\boldsymbol{r}))} (\si{\pascal}).
+p(r,t) = P(\boldsymbol{r})  e^{j( \omega t - \phi(\boldsymbol{r}))} (\si{\pascal}).
 \end{equation}
  
 Im Frequenzbereich, auch Phasor-Darstellung genannt, bei einer festen Frequenz $\omega$ vereinfacht sich dies zu:
 \begin{equation}
-p(r) = P(r) \: e^{j \phi (r)}.
+p(r) = P(r)  e^{j \phi (r)}.
 \label{helmholtz:PhasorSchalldruck}
 \end{equation}
  
 \subsubsection{Schallschnelle $\boldsymbol{u}$}
  
-Die Schallschnelle $\boldsymbol{u}$ auch Teilchengeschwindigkeit genannt, wird aus dem Druckgradienten $\nabla p$ abgeleitet. Für die linearisierte Form im Frequenzbereich $\boldsymbol{u} = \frac{j}{\rho_0 \omega} \nabla p$ bei harmonischen Feldern $\boldsymbol{u}(r,t)$ ergibt sich:
+Die Schallschnelle $\boldsymbol{u}$ auch Teilchengeschwindigkeit genannt, wird aus dem Druckgradienten $\nabla p$ abgeleitet.
+Für die linearisierte Form im Frequenzbereich $\boldsymbol{u} = \frac{j}{\rho_0 \omega} \nabla p$ bei harmonischen Feldern $\boldsymbol{u}(r,t)$ ergibt sich:
 \begin{equation}
-\boldsymbol{u}(r,t) = \frac{1}{\omega \rho} \nabla \: p(r,t) = \frac{1}{\omega \rho} [ P(r) \nabla \Phi(r) + j\nabla P(r) ] \: e^{j[\omega t -\Phi(r)]} (\si{\metre / \second}).
+\boldsymbol{u}(r,t)
+=
+\frac{1}{\omega \rho} \nabla p(r,t)
+=
+\frac{1}{\omega \rho} \bigl( P(r) \nabla \Phi(r) + j\nabla P(r) \bigr)
+e^{j(\omega t -\Phi(r))}\; [\si{\metre / \second}].
 \end{equation}
 Dabei sind:
 \begin{itemize}
-\item $\nabla \phi \: (r)$ der Gradient der Phase zeigt in Richtung der steilsten Phasenänderung, senkrecht zur Wellenfront.
-\item $\nabla P \:(r)$ der Gradient der Druckamplitude zeigt in Richtung der schnellsten Amplitudenänderung.
+\item $\nabla \phi (r)$ der Gradient der Phase zeigt in Richtung der steilsten Phasenänderung, senkrecht zur Wellenfront.
+\item $\nabla P (r)$ der Gradient der Druckamplitude zeigt in Richtung der schnellsten Amplitudenänderung.
 \item $\rho$ die Dichte des Mediums.
 \end{itemize}
 Als Phasor bei einer fixen Frequenz $\omega$ ergibt sich die Schallschnelle zu:
 \begin{equation}
-\boldsymbol{u}(r) = \frac{1}{\omega \rho} \: [ P(r) \: \nabla \phi(r) + j - \nabla P(r) ] \: e^{j\phi (r)}.
+\boldsymbol{u}(r)
+=
+\frac{1}{\omega \rho}  \bigl( P(r)  \nabla \phi(r) + j - \nabla P(r) \bigr)
+e^{j\phi (r)}.
 \label{helmholtz:PhasorSchallschnelle}
 \end{equation}
  
@@ -85,19 +96,32 @@ Als Phasor bei einer fixen Frequenz $\omega$ ergibt sich die Schallschnelle zu:
 \subsection{Energiebetrachtungen in akustischen Feldern
 \label{helmholtz:subsection:Energiebetrachtung}}
 
-Die akustische Energie in einem Schallfeld setzt sich aus kinetischer und potentieller Energie zusammen. Die zeitlich gemittelte Energiedichte kann durch folgende Gleichung ausgedrückt werden
-
+Die akustische Energie in einem Schallfeld setzt sich aus kinetischer
+und potentieller Energie zusammen.
+Die zeitlich gemittelte Energiedichte kann durch die Gleichung
 \begin{equation}
-\langle w \rangle = \frac{1}{4}\left(\frac{|p|^2}{\rho_0 c^2} + \rho_0 |\boldsymbol{u}|^2 \right),
+\langle w \rangle
+=
+\frac{1}{4}\left(\frac{|p|^2}{\rho_0 c^2} + \rho_0 |\boldsymbol{u}|^2 \right)
 \end{equation}
-wobei der erste Term die potentielle Energiedichte (durch die Kompression des Mediums) und der zweite Term die kinetische Energiedichte (durch die Bewegung der Teilchen) darstellt.
+ausgedrückt werden,
+wobei der erste Term die potentielle Energiedichte (durch die
+Kompression des Mediums) und der zweite Term die kinetische
+Energiedichte (durch die Bewegung der Teilchen) darstellt.
 
-Der Transport dieser Energie wird durch die Schallintensität beschrieben. Für harmonische Schallfelder betrachten wir die zeitlich gemittelte aktive Intensität:
-
+Der Transport dieser Energie wird durch die Schallintensität
+beschrieben.
+Für harmonische Schallfelder betrachten wir die zeitlich
+gemittelte aktive Intensität:
 \begin{equation}
-\boldsymbol{I} = \frac{1}{T}\int_0^T \boldsymbol{I}_i(\boldsymbol{r},t)\,\mathrm{d}t = \frac{1}{2}\Re\{p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\},
+\boldsymbol{I}
+=
+\frac{1}{T}\int_0^T \boldsymbol{I}_i(\boldsymbol{r},t)\,dt
+=
+\frac{1}{2}\Re (p(\boldsymbol{r}) \boldsymbol{u}^*(\boldsymbol{r})),
 \end{equation}
-wobei der Asterisk die komplexe Konjugation bezeichnet. Diese aktive Intensität beschreibt den Netto-Energiefluss und ist für die Schallausbreitung von zentraler Bedeutung.
+wobei der Stern die komplexe Konjugation bezeichnet.
+Diese aktive Intensität beschreibt den Netto-Energiefluss und ist für die Schallausbreitung von zentraler Bedeutung.
 
 \subsubsection{Zeitabhängige und zeitgemittelte Größen}
 

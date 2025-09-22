@@ -6,53 +6,262 @@
 % !TEX root = ../../buch.tex
 % !TEX encoding = UTF-8
 %
-\section{Teil 1
+\section{Herleitung der Mediumsabhängigkeit
 \label{schall:section:teil1}}
 \kopfrechts{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+
+\kopfrechts{Teil 1}
+
+In diesem Abschnitt leiten wir die eindimensionale Wellengleichung her
+und zeigen, wie daraus die bekannten Ausdrücke für die Schallgeschwindigkeit
+in Gasen, Flüssigkeiten und Festkörpern folgen
+\cite{schall:kinsler,schall:landaulifschitz}.
+
+\subsection{Grundannahmen}
+Wir betrachten kleine Störungen um einen ruhenden Grundzustand $(p_0,\rho_0)$.
+Es seien
+\[
+    p(x,t)=p_0+p'(x,t),\qquad \rho(x,t)=\rho_0+\rho'(x,t),\qquad v(x,t)=v'(x,t),
+\]
+wobei $|p'|\ll p_0$, $|\rho'|\ll \rho_0$ und $|v'|\ll 1$ (lineare Akustik).
+Wir nehmen ferner reibungsfreie, quellenfreie Strömung an und
+vernachlässigen äußere Kräfte.
+
+\subsection{Kontinuität und Impulsbilanz (linearisiert)}
+Die Massenbilanz (Kontinuitätsgleichung) in 1D lautet
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{schall:equation1}
+    \frac{\partial \rho}{\partial t}+\frac{\partial(\rho v)}{\partial x}=0.
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+Linearisiert um $(\rho_0, v=0)$ ergibt sich
+\begin{equation}
+    \frac{\partial \rho'}{\partial t}+\rho_0\,\frac{\partial v'}{\partial x}=0.
+    \label{eq:lin-cont}
+\end{equation}
+Die Impulsbilanz (Euler-Gleichung) in 1D ist
+\begin{equation}
+    \rho\left(\frac{\partial v}{\partial t}+
+    v\frac{\partial v}{\partial x}\right)=
+    -\frac{\partial p}{\partial x}.
+\end{equation}
+Linearisiert (und ohne $v\partial_x v$) folgt
+\begin{equation}
+    \rho_0\,\frac{\partial v'}{\partial t}=
+    -\frac{\partial p'}{\partial x}.
+    \label{eq:lin-mom}
+\end{equation}
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+\subsection{Thermodynamische Schließung}
+Zur Schließung benötigt man einen Zusammenhang zwischen $p'$ und $\rho'$.
+Für schnelle, kleine Schalldehnungen ist der Prozess näherungsweise
+\emph{isentrop} (Entropie $s=\mathrm{const.}$), daher
+\begin{equation}
+    p'= \left(\frac{\partial p}{\partial \rho}\right)_{s}\,\rho' \;\;=: \;\; c^2\,\rho'.
+    \label{eq:closure}
+\end{equation}
+Die Größe $c$ ist \emph{per Definition} die Schallgeschwindigkeit des Mediums.
 
-\subsection{De finibus bonorum et malorum
-\label{schall:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{schall:equation1}.
+\subsection{Wellengleichung für Druck- und Dichteschwankungen}
+Wenden wir $\partial_t$ auf \eqref{eq:lin-cont} an und $\partial_x$ auf
+\eqref{eq:lin-mom}, eliminieren $v'$ und nutzen \eqref{eq:closure},
+so erhalten wir
+\begin{align}
+    \frac{\partial^2 \rho'}{\partial t^2} - c^2\,\frac{\partial^2 \rho'}{\partial x^2} &= 0, \\
+    \frac{\partial^2 p'}{\partial t^2} - c^2\,\frac{\partial^2 p'}{\partial x^2} &= 0.
+\end{align}
+Damit genügen sowohl Druck- als auch Dichteschwankungen der klassischen
+1D-Wellengleichung
+\begin{equation}
+    \;\;\frac{\partial^2 \phi}{\partial t^2} = c^2\,
+    \frac{\partial^2 \phi}{\partial x^2}, \qquad \phi\in\{p',\rho'\}\; .
+\end{equation}
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{schall:section:teil2}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{schall:section:teil3}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+\begin{comment}
+\subsection{Alternative Form: Wellengleichung für die Teilchenverschiebung}
+Führt man die \emph{Teilchenverschiebung} $\xi(x,t)$ ein mit $v'=\partial_t \xi$, so liefern \eqref{eq:lin-cont} und \eqref{eq:closure} nach Eliminierung von $p'$ und $\rho'$ ebenfalls
+\begin{equation}
+    \frac{\partial^2 \xi}{\partial t^2} = c^2\,\frac{\partial^2 \xi}{\partial x^2}.
+\end{equation}
+Diese Form ist besonders in der Elastodynamik von Festkörpern nützlich.
+\end{comment}
 
+\subsection{Schallgeschwindigkeit in verschiedenen Medien}
 
+\subsubsection*{Gase}
+Für ein ideales Gas mit Zustandsgleichung $p=\rho R T$ und
+adiabatischem (isentropem) Prozess gilt
+$p\rho^{-\kappa}=\mathrm{const.}$, woraus aus \eqref{eq:closure} folgt
+\begin{equation}
+    \left(\frac{\partial p}{\partial \rho}\right)_{s}=\kappa\,\frac{p}{\rho}
+    \quad\Longrightarrow\quad
+    \,c_g=\sqrt{\kappa\,\frac{p}{\rho}}\,.
+\end{equation}
+Mit $p=\rho R T$ folgt die gebräuchliche Darstellung
+\begin{equation}
+    \,c_g=\sqrt{\kappa R T}\,.
+\end{equation}
+Dies reproduziert die in der Einleitung verwendete Formel.
+
+\subsubsection*{Flüssigkeiten}
+Für (nahezu) inkompressible Flüssigkeiten ist die isentrope Kompressibilität
+durch das \emph{Kompressionsmodul} (Bulk-Modul) $K$ gegeben:
+\begin{equation}
+    K := \rho\left(\frac{\partial p}{\partial \rho}\right)_{s}.
+\end{equation}
+Damit folgt aus \eqref{eq:closure}
+\begin{equation}
+    \left(\frac{\partial p}{\partial \rho}\right)_{s}=\frac{K}{\rho}
+    \quad\Longrightarrow\quad
+    \,c_l=\sqrt{\frac{K}{\rho}}\,,
+\end{equation}
+wie in der Einleitung angegeben.
+
+\subsubsection*{Festkörper}
+Die Herleitung der Schallgeschwindigkeit in Festkörpern ist ähnlich wie diese
+in Flüssigkeiten. Durch die Gitterstruktur eines Festkörpers entstehen
+zusätzliche Scherkräfte, die eine weitere Wellenart, sprich die
+Longitudinalwelle, ermöglichen. Daher wird für ausführliche Herleitung
+auf eines der Fachbücher verwiesen \cite{schall:landaulifschitz,schall:gurtin}.
+Zusammengefasst kann aus dem Hooke'schen Gesetz und der Impulsbilanz
+die Navier-Cauchy-Gleichung hergeleitet werden, was in~\cite{openfoam:navierstokes}
+hergeleitet wird.
+Durch Anwendung von Divergenz und Rotation auf die Navier-Cauchy-Gleichung
+kann die Bewegungsgleichung in eine Longitudinal- und eine Transversalwelle
+zerlegt werden, woraus die folgenden zwei Gleichungen resultieren:
+
+\begin{equation}
+    \,\partial_{tt}\theta = c_L^2\,\Delta\theta,\qquad c_L^2=\frac{\lambda+2\mu}{\rho}\, ,
+    \label{eq:longitudinal}
+\end{equation}
+
+\begin{equation}
+    \,\partial_{tt}\boldsymbol{\omega} = c_T^2\,\Delta\boldsymbol{\omega},\qquad c_T^2=\frac{\mu}{\rho}\, .
+    \label{eq:transversal}
+\end{equation}
+
+\begin{comment}
+In isotropen, homogenen Festkörpern beschreibt die lineare Elastizität (Hooke) die Beziehung zwischen Spannung $\sigma$ und Dehnung $\varepsilon$
+Mit den Lamé-Konstanten $(\lambda,\mu)$, wobei $\mu=G$ das Schubmodul ist und $\mathbf{u}$ das Verschibungsfeld im Festkörper beschreibt, lautet im 3D-Fall:
+\begin{equation}
+    \sigma = \lambda\,(\nabla\!\cdot\! \mathbf{u})\,\mathbf{I} + 2\mu\,\varepsilon,
+    \qquad \varepsilon=\tfrac{1}{2}\left(\nabla\mathbf{u}+(\nabla\mathbf{u})^{\!\top}\right).
+\end{equation}
+wobei $\mathbf{I}$ die Einheitsmatrix ist und $\nabla\mathbf{u}$ die Volumendehnung beschreibt.
+
+\paragraph{Hooke (isotrop, linear)}
+Mit Lamé-Konstanten $\lambda,\mu$ gilt
+\begin{equation}
+  \sigma_{ij} = \lambda\,\varepsilon_{kk}\,\delta_{ij} + 2\mu\,\varepsilon_{ij},
+  \qquad
+  \varepsilon_{ij} = \tfrac12(\partial_i u_j + \partial_j u_i).
+  \label{eq:hooke-index}
+\end{equation}
+
+\paragraph{Impulsbilanz (ohne Körperkräfte)}
+\begin{equation}
+  \rho\,\partial_{tt} u_i = \partial_j \sigma_{ij}.
+  \label{eq:momentum-index}
+\end{equation}
+
+\paragraph{Der „Einsetz–Schritt“ in Indexschreibweise}
+Setze \eqref{eq:hooke-index} in \eqref{eq:momentum-index} ein:
+\[
+    \partial_j \sigma_{ij}
+    = \partial_j\!\big(\lambda\,\varepsilon_{kk}\,\delta_{ij} + 2\mu\,\varepsilon_{ij}\big)
+    = \lambda\,\partial_i \varepsilon_{kk} + 2\mu\,\partial_j \varepsilon_{ij},
+\]
+denn $\partial_j(\delta_{ij}X)=\partial_i X$.
+Nun $\varepsilon_{kk} = \partial_k u_k = \nabla\!\cdot\!\mathbf{u}$ und
+\[
+    \partial_j \varepsilon_{ij}
+    = \frac12\,\partial_j(\partial_i u_j + \partial_j u_i)
+    = \frac12\big(\partial_i\partial_j u_j + \partial_j\partial_j u_i\big)
+    = \frac12\big(\partial_i(\partial_k u_k) + \Delta u_i\big).
+\]
+Damit
+\[
+    \partial_j \sigma_{ij}
+    = \lambda\,\partial_i(\partial_k u_k) + 2\mu\cdot \frac12\big(\partial_i(\partial_k u_k) + \Delta u_i\big)
+    = (\lambda+\mu)\,\partial_i(\partial_k u_k) + \mu\,\Delta u_i.
+\]
+In Vektorschreibweise:
+\begin{equation}
+    \boxed{\,\rho\,\partial_{tt}\mathbf{u} \;=\; (\lambda+\mu)\,\nabla(\nabla\!\cdot\!\mathbf{u}) \;+\; \mu\,\Delta \mathbf{u}\,}
+    \label{eq:navier}
+\end{equation}
+Dies ist die \emph{Navier–Cauchy–Gleichung}.
+
+\paragraph{Wellenzerlegung per Divergenz und Rotation}
+Wende $\nabla\!\cdot$ auf \eqref{eq:navier} an.
+Da $\nabla\!\cdot(\Delta\mathbf{u})=\Delta(\nabla\!\cdot\!\mathbf{u})$ gilt:
+\[
+    \rho\,\partial_{tt}(\nabla\!\cdot\!\mathbf{u})
+    = (\lambda+\mu)\,\Delta(\nabla\!\cdot\!\mathbf{u}) + \mu\,\Delta(\nabla\!\cdot\!\mathbf{u})
+    = (\lambda+2\mu)\,\Delta(\nabla\!\cdot\!\mathbf{u}).
+\]
+Setze $\theta := \nabla\!\cdot\!\mathbf{u}$:
+\begin{equation}
+    \boxed{\,\partial_{tt}\theta = c_L^2\,\Delta\theta,\qquad c_L^2=\frac{\lambda+2\mu}{\rho}\,}
+    \label{eq:longitudinal}
+\end{equation}
+Dies ist die \emph{Longitudinalwelle} (Druck-/Volumendehnung).
+Wende nun den Rotations-Operator $\nabla\times$ auf \eqref{eq:navier} an.
+Wegen $\nabla\times\nabla f=\mathbf{0}$ verschwindet der erste Term:
+\[
+    \rho\,\partial_{tt}(\nabla\times\mathbf{u}) = \mu\,\nabla\times(\Delta\mathbf{u})
+    = \mu\,\Delta(\nabla\times\mathbf{u}).
+\]
+Mit $\boldsymbol{\omega}:=\nabla\times\mathbf{u}$:
+\begin{equation}
+    \boxed{\,\partial_{tt}\boldsymbol{\omega} = c_T^2\,\Delta\boldsymbol{\omega},\qquad c_T^2=\frac{\mu}{\rho}\,}
+    \label{eq:transversal}
+\end{equation}
+Dies ist die \emph{Transversalwelle} (Scherung).
+
+\paragraph{Interpretation}
+\begin{itemize}
+  \item $c_L$ hängt von \emph{Volumensteifigkeit} ab: $(\lambda+2\mu)$ skaliert den Widerstand gegen Volumenänderung (\emph{Druck-/Kompressionswelle}).
+  \item $c_T$ hängt allein von der \emph{Schersteifigkeit} $\mu$ ab (\emph{Scherwelle}); in Fluiden ist $\mu\approx 0$, daher keine Transversalwellen.
+\end{itemize}
+
+Somit erhält man in isotropen Medien zwei Wellengeschwindigkeiten \cite{schall:landaulifschitz,schall:gurtin}:
+\begin{align}
+    \boxed{\,c_T=\sqrt{\frac{\mu}{\rho}}=\sqrt{\frac{G}{\rho}}\,} \quad &\text{(transversal, Scherwellen)},\\[2mm]
+    \boxed{\,c_L=\sqrt{\frac{\lambda+2\mu}{\rho}}\,} \quad &\text{(longitudinal, Druckwellen)}.
+\end{align}
+In technischen Materialparametern, sprich Elastizitätsmodul $E$ und Poissonzahl $\nu$, mit
+\[
+    \mu=G=\frac{E}{2(1+\nu)},
+    \qquad
+    \lambda=\frac{E\,\nu}{(1+\nu)(1-2\nu)},
+\]
+ergeben sich die in der Einleitung verwendeten Ausdrücke
+\begin{align}
+    \boxed{\,c_{s,\mathrm{long}}
+    = \sqrt{\frac{E(1-\nu)}{\rho(1+\nu)(1-2\nu)}}\,},\qquad
+    \boxed{\,c_{s,\mathrm{trans}}
+    = \sqrt{\frac{E}{2\rho(1+\nu)}}=\sqrt{\frac{G}{\rho}}\,}.
+\end{align}
+Typisch ist $c_L>c_T$, und beide liegen deutlich über Gas- und Flüssigkeitswerten (z.\,B. Stahl $c\approx 5{,}0\text{--}5{,}9\,\mathrm{km/s}$ für Longitudinalwellen, je nach Legierung).
+
+\end{comment}
+
+\subsection{Reduktion auf die in der Einleitung verwendeten Vereinfachungen}
+Unter den in \S\ref{schall:section:teil0} genannten Annahmen, sprich 1D,
+kleine Störungen, keine Reflexionen/Hindernisse sowie konstante
+Materialparameter, reduziert sich die Dynamik auf die lineare
+Wellengleichung
+\[
+    \frac{\partial^2 \phi}{\partial t^2}=c^2\,\frac{\partial^2 \phi}{\partial x^2},
+\]
+wobei $c$ je nach Medium durch die obigen isentropen bzw.\ elastischen
+Beziehungen gegeben ist:
+\[
+    c=\begin{cases}
+    \sqrt{\kappa\,p/\rho}=\sqrt{\kappa R T}, & \text{Gase},\\[1mm]
+    \sqrt{K/\rho}, & \text{Flüssigkeiten},\\[1mm]
+    \sqrt{(\lambda+2\mu)/\rho}\;\text{ bzw. }\;\sqrt{\mu/\rho}, & \text{Festkörper (long./trans.)}.
+\end{cases}
+\]
+Diese Formen entsprechen genau den in der Einleitung verwendeten
+vereinfachten Geschwindigkeitsausdrücken und motivieren die
+tabellarischen Zahlenwerte für typische Medien.

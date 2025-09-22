@@ -16,18 +16,24 @@
 Die komplexe Schallintensität $\boldsymbol{I}_c$ erweitert das Konzept der Schallintensität und erlaubt eine umfassendere Analyse des akustischen Energieflusses. Sie ist definiert als:
 
 \begin{equation}
-\boldsymbol{I}_c (\boldsymbol{r}) = \frac{1}{2} \: p(\boldsymbol{r}) \: \boldsymbol{u}^{*}(\boldsymbol{r}),
+\boldsymbol{I}_c (\boldsymbol{r})
+=
+\frac{1}{2} p(\boldsymbol{r}) \boldsymbol{u}^{*}(\boldsymbol{r}),
 \label{helmholtz:equationIntensitaetKomplex}
 \end{equation}
 wobei $p(\boldsymbol{r})$ den komplexen Schalldruck und $\boldsymbol{u}^{*}(\boldsymbol{r})$ die komplexe Konjugation der Partikelgeschwindigkeit $\boldsymbol{u}(\boldsymbol{r})$ beschreibt. Diese Formulierung berücksichtigt die Phasenverschiebung zwischen Schalldruck und Schallgeschwindigkeit und ermöglicht die Zerlegung des Energieflusses in quellenfreie und wirbelfreie Anteile gemäss der Helmholtz-Zerlegung.
 
 Alternativ kann die komplexe Schallintensität auch wie folgt geschrieben werden:
-
 \begin{equation}
-\boldsymbol{I}_c (\boldsymbol{r}) = \underbrace{\boldsymbol{I}(\boldsymbol{r})}_{\frac{1}{2} \operatorname{Re} \, \{ p(\boldsymbol{r}) \, \boldsymbol{u}^*(\boldsymbol{r}) \}} + \underbrace{j\,\boldsymbol{Q}(\boldsymbol{r})}_{\frac{1}{2} \operatorname{Im} \, \{ p(\boldsymbol{r}) \, \boldsymbol{u}^*(\boldsymbol{r}) \}},
+\boldsymbol{I}_c (\boldsymbol{r})
+=
+\underbrace{\boldsymbol{I}(\boldsymbol{r})}_{\frac{1}{2} \operatorname{Re} ( p(\boldsymbol{r}) \boldsymbol{u}^*(\boldsymbol{r}) )} + \underbrace{j\boldsymbol{Q}(\boldsymbol{r})}_{\frac{1}{2} \operatorname{Im} \{ p(\boldsymbol{r}) \boldsymbol{u}^*(\boldsymbol{r}) \}},
 \label{helmholtz:equationIntensitaetKomplex_2}
 \end{equation}  
-wobei $\boldsymbol{I}(\boldsymbol{r})$ die aktive Intensität und $\boldsymbol{Q}(\boldsymbol{r})$ die reaktive Intensität darstellen. Diese beiden Komponenten haben unterschiedliche physikalische Bedeutungen, die im Folgenden näher erläutert werden.
+wobei $\boldsymbol{I}(\boldsymbol{r})$ die aktive Intensität und
+$\boldsymbol{Q}(\boldsymbol{r})$ die reaktive Intensität darstellen.
+Diese beiden Komponenten haben unterschiedliche physikalische
+Bedeutungen, die im Folgenden näher erläutert werden.
 
 \subsection{Eigenschaften der Intensitätskomponenten
 \label{helmholtz:subsection:def_Schallintensitaet}}
@@ -37,7 +43,11 @@ Die beiden Komponenten der komplexen Schallintensität haben unterschiedliche ph
 \begin{itemize}
 \item Die \textbf{aktive Intensität} $\boldsymbol{I}(\boldsymbol{r})$ (Realteil) beschreibt den zeitgemittelten Netto-Energiefluss pro Fläche an dem Ort $\boldsymbol{r}$ und lässt sich ausdrücken als:
 \begin{equation}
-\boldsymbol{I}(\boldsymbol{r}) = \frac{1}{T}\int_0^T \boldsymbol{I}_i(\boldsymbol{r},t)\,\mathrm{d}t = \frac{1}{2}\Re\{p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\}.
+\boldsymbol{I}(\boldsymbol{r})
+=
+\frac{1}{T}\int_0^T \boldsymbol{I}_i(\boldsymbol{r},t)\,dt
+=
+\frac{1}{2}\Re\{p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\}.
 \end{equation}
 In quellenfreien, stationären Feldern ohne Energieabsorption gilt:
 \begin{equation}
