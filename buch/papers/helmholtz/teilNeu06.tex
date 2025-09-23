@@ -13,37 +13,45 @@
 
 \subsection{Zerlegung des Schallschnellefeldes
 \label{helmholtz:subsection:Zerlegung_Schallschnelle}}
-Angewendet auf das Schallschnellefeld $\boldsymbol{u}$ können wir dieses wie folgt zerlegen:
- 
+Angewendet auf das Schallschnellefeld $\boldsymbol{u}$ können wir
+dieses wie folgt zerlegen:
 \begin{equation}
-\underbrace{\boldsymbol{u}}_{\text{Schallschnellefeld}} =  \underbrace{-\nabla \Phi}_{\text{irrotationaler~Anteil}} + \underbrace{\nabla \times \boldsymbol{\Psi}}_{\text{solenoidaler~Anteil}}.
+\underbrace{\boldsymbol{u}}_{\displaystyle\text{Schallschnellefeld}}
+=
+\underbrace{-\nabla \Phi}_{\displaystyle\text{irrotationaler~Anteil}}
++
+\underbrace{\nabla \times \boldsymbol{\Psi}}_{\displaystyle\text{solenoidaler~Anteil}}.
 \end{equation}
-Die physikalische Interpretation der Komponenten des Schallschnellefeldes lässt sich wie folgt beschreiben:
+Die physikalische Interpretation der Komponenten des Schallschnellefeldes
+lässt sich wie folgt beschreiben:
  
 \begin{itemize}
-\item Der irrotationale Anteil $-\nabla \Phi$ ist wirbelfrei, da die Rotation verschwindet.
+\item Der irrotationale Anteil $-\nabla \Phi$ ist wirbelfrei, da die
+Rotation verschwindet.
 \begin{itemize}
 \item Dieser Anteil hat keine Rotation: $\nabla \times (-\nabla \Phi) = 0$.
 \item Die Feldlinien verlaufen strahlenförmig von Quellen zu Senken.
 \end{itemize}
  
-\item Der solenoidale Anteil $\nabla \times \boldsymbol{\Psi}$ hat gemäss der Definition immer Divergenz null und wird auch quellenfrei genannt.
+\item Der solenoidale Anteil $\nabla \times \boldsymbol{\Psi}$ hat gemäss
+der Definition immer Divergenz null und wird auch quellenfrei genannt.
 \begin{itemize}
-\item Dieser Anteil hat keine Divergenz: $\nabla \cdot (\nabla \times \boldsymbol{\Psi}) = 0$.
+\item Dieser Anteil hat keine Divergenz:
+$\nabla \cdot (\nabla \times \boldsymbol{\Psi}) = 0$.
 \item Die Feldlinien bilden geschlossene Schleifen ähnlich einem Magnetfeld.
 \end{itemize}
 \end{itemize}
 
 \subsection{Direkte Verbindung zur komplexen Schallintensität
 \label{helmholtz:subsection:Zerlegung_Schallschnelle}}
-
-Wie bereits beschrieben, stellt die komplexe Schallintensität $\boldsymbol{I}_c$ den Energietransport in einem Schallfeld dar und lässt sich in zwei fundamentale Komponenten zerlegen:
- 
+Wie bereits beschrieben, stellt die komplexe Schallintensität
+$\boldsymbol{I}_c$ den Energietransport in einem Schallfeld dar und
+lässt sich in zwei fundamentale Komponenten zerlegen:
 \begin{itemize}
 \item Aktive Intensität $\boldsymbol{I}$
 \item Reaktive Intensität $\boldsymbol{Q}$
 \end{itemize}
-Die komplexe Schallintensität ist definiert als:
+Die komplexe Schallintensität ist definiert als
 \begin{equation}
 \boldsymbol{I}_c (\boldsymbol{r})
 =
@@ -55,45 +63,74 @@ Bei näherer Betrachtung ist zu erkennen, dass die komplexe Schallintensität ei
 \begin{equation}
 \boldsymbol{I}_c (\boldsymbol{r})
 =
-\underbrace{\boldsymbol{I}(\boldsymbol{r})}_{\displaystyle\frac{1}{2}
-\operatorname{Re} ( p(\boldsymbol{r}) \boldsymbol{u}^*(\boldsymbol{r}) )
+\underbrace{
+\boldsymbol{I}(\boldsymbol{r})
+}_{\mathstrut
+\rlap{$
+=\textstyle\frac{1}{2}
+\operatorname{Re} \bigl( p(\boldsymbol{r}) \boldsymbol{u}^*(\boldsymbol{r}) \bigr)
+$}
 }
+\qquad\qquad
+\qquad
 +
-\underbrace{j\boldsymbol{Q}(\boldsymbol{r})}_{\displaystyle\frac{1}{2}
-\operatorname{Im} ( p(\boldsymbol{r}) \boldsymbol{u}^*(\boldsymbol{r}) )}.
+j\underbrace{
+\boldsymbol{Q}(\boldsymbol{r})
+}_{\mathstrut
+\rlap{$\textstyle
+=\frac{1}{2}
+\operatorname{Im} \bigl( p(\boldsymbol{r}) \boldsymbol{u}^*(\boldsymbol{r}) \bigr)
+$}}.
 \end{equation}
 Es zeigt sich eine direkte Korrespondenz zwischen den Komponenten der Helmholtz-Zerlegung und der komplexen Schallintensität:
 \begin{equation}
 \boldsymbol{I}_c (\boldsymbol{r})
 =
-\underbrace{\boldsymbol{I}(\boldsymbol{r})}_{\displaystyle\nabla \cdot \boldsymbol{I}
-=
-0 \text{ (quellenfrei)}}
+\underbrace{
+\boldsymbol{I}(\boldsymbol{r})
+}_{
+\clap{$\displaystyle\nabla \cdot \boldsymbol{I} = 0$}
+}
+\quad
 +
-\underbrace{j\boldsymbol{Q}(\boldsymbol{r})}_{\displaystyle\nabla \times \boldsymbol{Q}
-=
-0\qquad \text{ (wirbelfrei)}}.
+\quad
+j
+\underbrace{
+\boldsymbol{Q}(\boldsymbol{r})
+}_{
+\clap{$\displaystyle\nabla \times \boldsymbol{Q} = 0$}
+}.
 \end{equation}
+Die Eigenschaft $\nabla\cdot\boldsymbol{I}=0$ bedeutet,
+dass der erste Term quellenfrei ist, während $\nabla\times\boldsymbol{Q}=0$
+bedeutet, dass der zweite wirbelfrei ist.
 Durch diese Äquivalenz können wir folgende Korrespondenz feststellen:
  
 \begin{itemize}
-\item Der irrotationale Anteil der Schallschnelle korrespondiert mit der aktiven Intensität.
-\item Der solenoidale Anteil der Schallschnelle korrespondiert mit der reaktiven Intensität.
+\item
+Der irrotationale Anteil der Schallschnelle korrespondiert mit der
+aktiven Intensität.
+\item
+Der solenoidale Anteil der Schallschnelle korrespondiert mit der
+reaktiven Intensität.
 \end{itemize}
 
 \subsection{Energie-Interpretation der Zerlegung
 \label{helmholtz:Energie_Interpretation}}
- 
-Die Helmholtz-Zerlegung ermöglicht eine tiefe physikalische Interpretation der Energieverteilung und -übertragung in akustischen Feldern:
- 
+Die Helmholtz-Zerlegung ermöglicht eine tiefe physikalische
+Interpretation der Energieverteilung und -übertragung in akustischen
+Feldern:
 \begin{itemize}
-\item Die aktive Intensität $\boldsymbol{I}(r)$ beschreibt den zeitgemittelten Netto-Energiefluss pro Fläche an dem Ort $r$ und lässt sich ausdrücken als:
+\item
+Die aktive Intensität $\boldsymbol{I}(r)$ beschreibt den zeitgemittelten
+Netto-Energiefluss pro Fläche an dem Ort $r$ und lässt sich ausdrücken
+als:
 \begin{equation}
 \boldsymbol{I}(\boldsymbol{r})
 =
 \frac{1}{T}\int_0^T \boldsymbol{I}_i(\boldsymbol{r},t)\,dt
 =
-\frac{1}{2}\Re\left( p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\right).
+\frac{1}{2}\Re\bigl( p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\bigr).
 \end{equation}
  
 In quellenfreien, stationären Feldern ohne Energieabsorption gilt:
@@ -109,7 +146,7 @@ Diese Komponente ist mit dem irrotationalen Anteil des Schallschnellefeldes verk
 \begin{equation}
 \boldsymbol{Q}(\boldsymbol{r})
 =
-\frac{1}{2}\Im\left(p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\right).
+\frac{1}{2}\Im\bigl(p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\bigr).
 \end{equation}
  
 Sie ist wirbelfrei:
