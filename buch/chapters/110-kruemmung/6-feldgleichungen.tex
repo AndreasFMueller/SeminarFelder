@@ -5,13 +5,165 @@
 \label{buch:kruemmung:section:gravitation}}
 \kopfrechts{Energie-Impuls-Tensor und die Feldgleichungen der Gravitation}
 
+Der Abschnitt~\ref{buch:kruemmung:section:newton} suggeriert, dass sich
+die Bewegung eines Teilchens in einem newtonschen Gravitationsfeld
+vollständig durch die die Metrik und den daraus abgeleiteten riemannschen
+Krümmungstensor beschreiben lässt.
+Die Komponenten des Ricci-Tensors scheinen nach
+\eqref{buch:kruemmung:newton:Rik} die zweiten Ableitungen des
+newtonschen Gravitationspotentials zu verallgemeinern.
+Newtons Gravitationsgesetzt besagt, dass das Gravitationspotential von
+der Masseverteilung durch die Poisson-Gleichung
+\eqref{buch:kruemmung:newton:potential}
+mit der Massedichte $\varrho$ bestimmt ist.
+Es ist daher zu erwarten, dass eine relativistische Gravitationstheorie
+konstruiert werden kann.
+Die Rolle des Gravitationsfeldes wird von der Metrik übernommen und der
+Laplace-Operator wird ersetzt durch den Ricci-Tensor.
+Zur Vervollständigung einer Feldgleichung braucht es aber noch einen
+Term, der die Massedichte $\varrho$ verallgemeinert.
+
+%
+% Konsequenzen der allgmeinen Kovarianz
+%
+\subsubsection{Konsequenzen der allgemeinen Kovarianz}
+Die allgemeine Kovarianz fordert, dass die konstruierte Feldgleichung
+von der Wahl des Koordinatensystems unabhängig sein muss.
+Sie verlangt, dass die kinetische Energie bewegter Massen ebenfalls
+gravitative Wirkung entfaltet.
+Die Massedichte $\varrho$ fängt jedoch nur die Ruhemasse ein.
+Ein Skalar oder eine Dichte ist grundsätzlich nicht fähig, die
+Relativgeschwindigkeiten zu berücksichtigen.
+Die Bewegung eines Teilchens äussert sich im Impuls, den es trägt.
+Der Viererimpuls eines Teilchens, der als Zeitkomponente die Energie
+und als Raumkomponenten die Impulskomponenten enthält, ist ein
+besserer Kandidat.
+Energie kann aber auch in Form von Spannungen in einem Material 
+gespeichert werden.
+Solche können jedoch nur mit einem Tensor zweiter Stufe wiedergegeben
+werden, im Kapitel~\ref{chapter:elastomechanik} zur Elastomechanik
+ausgeführt wird.
+
+Gesucht ist also ein Feldgesetz in der Form
 \begin{equation}
-G_{\mu\nu}
+\text{Ausdruck in $R_{ik}$ und $S$}
 =
-R_{\mu\nu}
+\text{Kopplungskonstante}
+\cdot
+\text{Ausdrück für Energie, Impuls und Spannungen}
+\label{buch:kruemmung:feldgleichungen:eqn:schema}
+\end{equation}
+Die allgemeine Kovarianz verlangt, dass die Terme $R_{ik}$ und $S$
+nur linear auf der linken Seite auftreten können.
+Somit muss auch für die rechte Seite ein Tensor zweiter Stufe sein.
+
+Die Kopplungskonstante gibt an, wie stark die Gravitationswirkung
+der Masse ist. 
+In der newtonschen Theorie ist dies die Gravitationskonstante $G$
+und ist durch Messungen sehr genau bestimmt worden.
+
+%
+% Der Energie-Impuls-Tensor
+%
+\subsubsection{Der Energie-Impuls-Tensor}
+Gesucht ist daher ein Tensor $T$ zweiter Stufe mit Komponenten
+$T_{ik}$, der als $T_{00}$-Komponente die Ruheenergie des enthält.
+Die Komponenten $T_{0k}$ mit $k>0$ beschreiben die Impulsdichte.
+Die Komponenten $T_{ik}$ mit $i,k>0$ bieten genügend Platz, die
+Spannungen unterzubringen.
+Auf der Diagonalen stehen die Druckspannungen, ausserhalb der Diagonalen
+die Scherspannungen.
+So entsteht der sogenannte \emph{Energie-Impuls-Tensor} $T$,
+den man in Matrixform als
+\begin{equation}
+T_{ik}
+=
+\begin{pmatrix}
+\varrho      & \varrho v_0 & \varrho v_y & \varrho v_z \\
+\varrho v_x  & p_x         & \sigma_{xy} & \sigma_{xz} \\
+\varrho v_y  & \sigma_{yx} & p_y         & \sigma_{yz} \\
+\varrho v_z  & \sigma_{yx} & \sigma_{zy} & p_z
+\end{pmatrix}
+\label{buch:kruemmung:feldgleichung:eqn:Tik}
+\end{equation}
+schreiben kann.
+Er konsolidiert auf allgemein kovariante Art alle Formen von Energie
+in einem einzigen Tensor.
+
+Da der Ricci-Tensor symmetrisch ist, muss auch der Tensor $T_{ik}$
+symmetrisch sein, wenn eine lineare Feldgleichung aus dem Ricci-Tensor
+und dem Energie-Impuls-Tensor gelten soll.
+Die Definition \eqref{buch:kruemmung:feldgleichung:eqn:Tik} zeigt,
+ist nach Konstruktion symmetrisch.
+Für die Impulskomponenten ist dies offensichtlich.
+Für die Spannungskomponenten beruht dies auf der in der
+Elastiztitätstheorie (Kapitel~\ref{chapter:elastomechanik})
+diskutierten Tatsache, dass ein asymmetrischer Spannungstensor dazu
+führen würde, dass das Medium durch verbleibende Drehmomente zu
+beliebig schneller Rotation angeregt würde, was nicht sein kann.
+
+%
+% Erhaltungssätze
+%
+\subsubsection{Erhaltungssätze}
+Sowohl der Ricci-Tensor wie auch der Krümmungsskalar können in einem
+Gravitationsgesetz der Form \eqref{buch:kruemmung:feldgleichungen:eqn:schema}
+auftreten.
+Auf der linken Seite einer Feldgleichung für die Gravitation könnten daher
+eine beliebige Linearkombination $\alpha R_{ik}+\beta Sg_{ik}$ stehen.
+Der Faktor $g_{ik}$ ist notwendig, um aus dem Krümmungsskalar $S$ einen
+Tensor zweiter Stufe zu machen.
+
+Der Energie-Impuls-Tensor auf der rechten Seite der Gleichung schränkt
+die Linearkombination weiter ein.
+Die Energieerhaltung bedeutet, dass für $T_{ik}$ eine kovariante 
+Kontinuitätsgleichung gilt, die in Komponenten durch die kovariante
+Divergenz
+\[
+T^i\mathstrut_{k;i}
+=
+0
+\]
+gegeben ist.
+Der Linearkombination auf der linken Seite der Feldgleichung muss daher
+ebenfalls verschwindende Divergenz haben.
+
+Die Komponenten $R^i\mathstrut_{k;i}$ verschwinden nicht unbedingt,
+es gelten die kontrahierten Bianchi-Identitäten.
+Ebensowenig verschwinden die kovarianten Ableitungen $S_{;k}$.
+Gesucht ist daher eine Linearkombination von $R_{ik}$ und $Sg_{ik}$,
+deren kovariante Divergenz verschwindet.
+Die kontrahierten Bianchi-Identitäten zeigen, dass  der
+\emph{Einstein-Tensor}
+\[
+G_{ik}
+=
+R_{ik}
+-\frac12 g_{ik}S
+\]
+diese Eigenschaft hat.
+
+%
+% Die Feldgleichungen
+%
+\subsubsection{Die Feldgleichungen}
+Die Form der gesuchten Feldgleichungen der Gravitations zeichnet sich
+jetzt klar ab.
+Es muss nur noch die Kopplungskonstante ermittelt werden.
+Durch Vergleichung mit der newtonschen Theorie schwacher Felder 
+kann man zeigen, dass 
+\begin{equation}
+G_{ik}
+=
+R_{ik}
 -
-\frac12 Rg_{\mu\nu}
+\frac12 Rg_{ik}
 =
-\frac{8\pi G}{c^4}T_{\mu\nu}
+\frac{8\pi G}{c^4}T_{ik}
 \label{buch:kruemmung:feldgleichung:eqn:feldgleichung}
 \end{equation}
+gelten muss.
+Dies sind die \emph{einsteinschen Feldgleichungen} der Gravitation.
+Die folgenden Abschnitte enthalten Anwendungen auf schwarze Löcher
+und die Kosmologie.
+

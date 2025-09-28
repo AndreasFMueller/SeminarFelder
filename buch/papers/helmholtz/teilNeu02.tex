@@ -32,7 +32,8 @@ die lokale Eigenschaften des Feldes charakterisieren.
 
 \subsubsection{Der Gradient eines Skalarfeldes}
 
-Der Gradient eines Skalarfeldes $a$ ist ein Vektorfeld, das in jedem
+Der \emph{Gradient} eines Skalarfeldes $a$ ist ein Vektorfeld, das in jedem
+\index{Gradient}%
 Punkt in Richtung des steilsten Anstiegs von $a$ zeigt.
 Mathematisch wird der Gradient durch die Gleichung
 \begin{equation}
@@ -50,7 +51,8 @@ definiert.
 
 \subsubsection{Die Divergenz eines Vektorfeldes}
 
-Die Divergenz eines Vektorfeldes $\boldsymbol{F}$ ist ein Skalarfeld,
+Die \emph{Divergenz} eines Vektorfeldes $\boldsymbol{F}$ ist ein Skalarfeld,
+\index{Divergenz}%
 das beschreibt, wie stark Feldlinien auseinanderstreben oder
 zusammenlaufen.
 Sie wird durch die Formel
@@ -67,26 +69,32 @@ ausgedrückt.
 Die Divergenz kann als Mass für die Quellen- oder Senkenstärke an
 einem bestimmten Punkt im Vektorfeld interpretiert werden.
 Ein Bereich mit positiver Divergenz stellt eine Quelle dar, aus der
+\index{Quelle}%
 Feldlinien hervorgehen, während ein Bereich mit negativer Divergenz
 eine Senke darstellt, in der Feldlinien zusammenlaufen, wie in
+\index{Senke}%
 Abbildung \ref{fig:DivergenzAlg} dargestellt.
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{papers/helmholtz/images/divergentes_Feld.png}
-    \caption{Beispiel eines divergenten Vektorfeldes, das Quellen und Senken aufweist}
+    \caption{Beispiel eines divergenten Vektorfeldes, das Quellen und Senken aufweist.}
     \label{fig:DivergenzAlg}
 \end{figure}
 
 \subsubsection{Die Rotation eines Vektorfeldes}
 
-Die Rotation eines Vektorfeldes $\boldsymbol{A}$ ist ein Vektorfeld,
+Die \emph{Rotation} eines Vektorfeldes $\boldsymbol{A}$ ist ein Vektorfeld,
+\index{Rotation}%
 das die Wirbeldichte des ursprünglichen Feldes beschreibt.
 Sie wird definiert als
 \begin{equation}
-\nabla \times \boldsymbol{A}(\boldsymbol{r}) = \begin{vmatrix}
-    \boldsymbol{e}_x & \boldsymbol{e}_y & \boldsymbol{e}_z \\
-    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\\
+\nabla \times \boldsymbol{A}(\boldsymbol{r})
+=
+%\renewcommand{\arraystretch}{1.7}
+\begin{vmatrix}
+    \boldsymbol{e}_x & \boldsymbol{e}_y & \boldsymbol{e}_z \\[2pt]
+    \displaystyle\frac{\partial}{\partial x} & \displaystyle\frac{\partial}{\partial y} & \displaystyle\frac{\partial}{\partial z}\\[4pt]
     A_x & A_y & A_z
 \end{vmatrix}.
 \end{equation}
@@ -98,19 +106,24 @@ zu sehen ist.
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{papers/helmholtz/images/rotierendes_Feld.png}
-    \caption{Beispiel eines rotierenden Vektorfeldes mit deutlich erkennbarer Wirbelstruktur}
+    \caption{Beispiel eines rotierenden Vektorfeldes mit deutlich erkennbarer Wirbelstruktur.}
     \label{fig:RotationAlg}
 \end{figure}
 
 \subsubsection{Der Laplace-Operator}
 
-Der Laplace-Operator, oft als $\nabla^2$ oder $\Delta$ geschrieben,
+Der \emph{Laplace-Operator}, oft als $\nabla^2$ oder $\Delta$ geschrieben,
+\index{Laplace-Operator}%
+\index{Delta@$\Delta$}%
+\index{nabla2@$\nabla^2$}%
 ist ein skalarer Differentialoperator zweiter Ordnung.
 Angewendet auf ein Skalarfeld $a$ ergibt er
 \begin{equation}
 \nabla^2 a(\boldsymbol{r}) = \frac{\partial^2 a}{\partial x^2} + \frac{\partial^2 a}{\partial y^2} + \frac{\partial^2 a}{\partial z^2}.
 \end{equation}
 Der Laplace-Operator spielt eine zentrale Rolle in vielen physikalischen Gleichungen, insbesondere in der Potentialtheorie und der Wellenausbreitung.
+\index{Potentialtheorie}%
+\index{Wellenausbreitung}%
 Für ein Vektorfeld $\boldsymbol{F}$ wird der Laplace-Operator
 komponentenweise angewendet und das Resultat kann wie in
 Abbildung~\ref{fig:LaplaceAlg} dargestellt aussehen.
@@ -122,7 +135,7 @@ Die Formel für den Laplace-Operator ist
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{papers/helmholtz/images/Laplace_Feld.png}
-    \caption{Visualisierung des Laplace-Operators auf ein Skalarfeld}
+    \caption{Visualisierung des Laplace-Operators auf ein Skalarfeld.}
     \label{fig:LaplaceAlg}
 \end{figure}
 
@@ -130,15 +143,24 @@ Die Formel für den Laplace-Operator ist
 \subsection{Vektoridentitäten
 \label{helmholtz:subsection:Vektoridentitaeten}}
 Für die mathematische Herleitung der Helmholtz-Zerlegung werden
-verschiedene Vektoridentitäten benötigt.
-
-\subsubsection{Wichtige Vektoridentitäten}
-
-Die folgenden Identitäten sind für die Ableitung der Helmholtz-Zerlegung besonders relevant:
-
+verschiedene Vektor\-identitäten benötigt.
+%
+%\subsubsection{Wichtige Vektoridentitäten}
+%
+Die folgenden Identitäten sind besonders relevant.
+Wenn nicht anders angegeben, werden sie später in
+Abschnitt~\ref{helmholtz:section:Helmholtz_Zerlegung} bewiesen.
 \begin{itemize}
-\item Für jedes Skalarfeld $\Phi$ gilt: $\nabla \times (\nabla \Phi) = 0$.
-\item Für jedes Vektorfeld $\boldsymbol{F}$ gilt: $\nabla \cdot (\nabla \times \boldsymbol{F}) = 0$.
+\item Für jedes Skalarfeld $\Phi$ gilt:
+\begin{equation}
+\nabla \times (\nabla \Phi) = 0.
+\label{helmholtz:eqn:rotgradphi}
+\end{equation}
+\item Für jedes Vektorfeld $\boldsymbol{F}$ gilt:
+\begin{equation}
+\nabla \cdot (\nabla \times \boldsymbol{F}) = 0.
+\label{helmholtz:eqn:divrotF}
+\end{equation}
 \item Der Laplace-Operator eines Vektorfeldes lässt sich umformen zu:
 \begin{equation}
 \nabla^2 \boldsymbol{F} = \nabla(\nabla \cdot \boldsymbol{F}) - \nabla \times (\nabla \times \boldsymbol{F}).

@@ -455,9 +455,10 @@ R^l\mathstrut_{0l0}
 Die newtonsche Gravitationstheorie besagt, dass es einen Zusammenhang
 zwischen der Materiedichte $\varrho$ und dem Potential gibt, es gilt
 nämlich die Differentialgleichung
-\[
+\begin{equation}
 \Delta U = 4\pi \varrho.
-\]
+\label{buch:kruemmung:newton:potential}
+\end{equation}
 ersetzt man $\varrho$ durch die zugehörige Energiedichte
 $\varepsilon = \varrho c^2$, ergibt sich die Gleichung
 \[
@@ -469,7 +470,7 @@ Damit ist die später abzuleitende einsteinsche Feldgleichung bereits
 angedeutet.
 
 Die anderen Komponenten des Ricci-Tensors sind
-\begin{align*}
+\begin{align}
 R_{0m}
 &=
 R^l\mathstrut_{0lm}
@@ -477,6 +478,8 @@ R^l\mathstrut_{0lm}
 R^0\mathstrut_{00m}
 =
 0
+&k>0
+\notag
 \\
 R_{km}
 &=
@@ -488,7 +491,9 @@ R^k\mathstrut_{0m0}
 =
 \frac{1}{c^2}
 \frac{\partial^2 U}{\partial x^k\,\partial x^m}
-\end{align*}
+&k,m&>0.
+\label{buch:kruemmung:newton:Rik}
+\end{align}
 Der Ricci-Tensor besteht also im Wesentlichen aus den zweiten
 partiellen Ableitungen des Potentials.
 Eine Feldgleichung für den Ricci-Tensor ist also ein lineare
