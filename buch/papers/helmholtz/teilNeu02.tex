@@ -25,7 +25,7 @@ benötigt werden.
 Vektorfelder stellen in jedem Punkt eines Raumes einen Vektor dar,
 der sowohl eine Richtung als auch einen Betrag besitzt.
 In der Akustik sind Vektorfelder von zentraler Bedeutung, da sie
-physikalische Größen wie die Schallschnelle und die Intensität
+physikalische Grössen wie die Schallschnelle und die Intensität
 beschreiben.
 Um diese Felder zu analysieren, werden spezielle Operatoren verwendet,
 die lokale Eigenschaften des Feldes charakterisieren.
@@ -36,7 +36,7 @@ Der \emph{Gradient} eines Skalarfeldes $a$ ist ein Vektorfeld, das in jedem
 \index{Gradient}%
 Punkt in Richtung des steilsten Anstiegs von $a$ zeigt.
 Mathematisch wird der Gradient durch die Gleichung
-\begin{equation}
+\begin{equation*}
 \nabla a (\boldsymbol{r})
 =
 \frac{\partial a}{\partial x}\boldsymbol{e}_x
@@ -44,7 +44,7 @@ Mathematisch wird der Gradient durch die Gleichung
 \frac{\partial a}{\partial y}\boldsymbol{e}_y
 +
 \frac{\partial a}{\partial z}\boldsymbol{e}_z
-\end{equation}
+\end{equation*}
 definiert.
 
 
@@ -56,7 +56,7 @@ Die \emph{Divergenz} eines Vektorfeldes $\boldsymbol{F}$ ist ein Skalarfeld,
 das beschreibt, wie stark Feldlinien auseinanderstreben oder
 zusammenlaufen.
 Sie wird durch die Formel
-\begin{equation}
+\begin{equation*}
 \nabla \cdot \boldsymbol{F}(\boldsymbol{r})
 =
 \frac{\partial F_x}{\partial x}
@@ -64,7 +64,7 @@ Sie wird durch die Formel
 \frac{\partial F_y}{\partial y}
 +
 \frac{\partial F_z}{\partial z}
-\end{equation}
+\end{equation*}
 ausgedrückt.
 Die Divergenz kann als Mass für die Quellen- oder Senkenstärke an
 einem bestimmten Punkt im Vektorfeld interpretiert werden.
@@ -88,7 +88,7 @@ Die \emph{Rotation} eines Vektorfeldes $\boldsymbol{A}$ ist ein Vektorfeld,
 \index{Rotation}%
 das die Wirbeldichte des ursprünglichen Feldes beschreibt.
 Sie wird definiert als
-\begin{equation}
+\begin{equation*}
 \nabla \times \boldsymbol{A}(\boldsymbol{r})
 =
 %\renewcommand{\arraystretch}{1.7}
@@ -97,7 +97,7 @@ Sie wird definiert als
     \displaystyle\frac{\partial}{\partial x} & \displaystyle\frac{\partial}{\partial y} & \displaystyle\frac{\partial}{\partial z}\\[4pt]
     A_x & A_y & A_z
 \end{vmatrix}.
-\end{equation}
+\end{equation*}
 Die Rotation misst, wie stark sich die Feldlinien um eine Achse
 drehen und gibt sowohl die Achsenorientierung als auch die Stärke
 eines solchen Wirbels an, wie in Abbildung \ref{fig:RotationAlg}
@@ -118,9 +118,15 @@ Der \emph{Laplace-Operator}, oft als $\nabla^2$ oder $\Delta$ geschrieben,
 \index{nabla2@$\nabla^2$}%
 ist ein skalarer Differentialoperator zweiter Ordnung.
 Angewendet auf ein Skalarfeld $a$ ergibt er
-\begin{equation}
-\nabla^2 a(\boldsymbol{r}) = \frac{\partial^2 a}{\partial x^2} + \frac{\partial^2 a}{\partial y^2} + \frac{\partial^2 a}{\partial z^2}.
-\end{equation}
+\begin{equation*}
+\nabla^2 a(\boldsymbol{r})
+=
+\frac{\partial^2 a}{\partial x^2}
++
+\frac{\partial^2 a}{\partial y^2}
++
+\frac{\partial^2 a}{\partial z^2}.
+\end{equation*}
 Der Laplace-Operator spielt eine zentrale Rolle in vielen physikalischen Gleichungen, insbesondere in der Potentialtheorie und der Wellenausbreitung.
 \index{Potentialtheorie}%
 \index{Wellenausbreitung}%
@@ -163,7 +169,12 @@ Abschnitt~\ref{helmholtz:section:Helmholtz_Zerlegung} bewiesen.
 \end{equation}
 \item Der Laplace-Operator eines Vektorfeldes lässt sich umformen zu:
 \begin{equation}
-\nabla^2 \boldsymbol{F} = \nabla(\nabla \cdot \boldsymbol{F}) - \nabla \times (\nabla \times \boldsymbol{F}).
+\nabla^2 \boldsymbol{F}
+=
+\nabla(\nabla \cdot \boldsymbol{F})
+-
+\nabla \times (\nabla \times \boldsymbol{F}).
+\label{helmholtz:eqn:fundamental}
 \end{equation}
 Diese Identität ist fundamental für die Ableitung der Helmholtz-Zerlegung.
 Sie wurde als \eqref{buch:vektoranalysis:eqn:rotrot} in

@@ -1,5 +1,5 @@
 %
-% teil3.tex -- Beispiel-File für Teil 3
+% teilNeu04.tex -- 
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
@@ -34,7 +34,7 @@ Die physikalische Interpretation der komplexen Grössen wird besonders deutlich 
 
 \subsubsection{Schalldruck $p$}
 \index{Schalldruck}% 
-Der Schalldruck ist eine der fundamentalen Größen in der Akustik und beschreibt lokale Druckschwankungen im Medium:
+Der Schalldruck ist eine der fundamentalen Grössen in der Akustik und beschreibt lokale Druckschwankungen im Medium:
  
 \begin{itemize}
 \item $P  (\boldsymbol{r})$ bezeichnet die Amplitude des Schalldrucks am Ort $\boldsymbol{r}$ und ist eine reelle Grösse.
@@ -45,18 +45,18 @@ Der Schalldruck ist eine der fundamentalen Größen in der Akustik und beschreib
 \end{itemize}
  
 Die zeitabhängige Darstellung des Schalldrucks lautet:
-\begin{equation}
+\begin{equation*}
 p(\boldsymbol{r},t)
 =
 P(\boldsymbol{r})  e^{j( \omega t - \phi(\boldsymbol{r}))}\, [\si{\pascal}].
-\end{equation}
+\end{equation*}
  
 Im Frequenzbereich, auch Phasor-Darstellung genannt, bei einer festen
 Frequenz $\omega$ vereinfacht sich dies zu:
-\begin{equation}
+\begin{equation*}
 p(\boldsymbol{r}) = P(\boldsymbol{r})  e^{-j \phi (\boldsymbol{r})}.
 \label{helmholtz:PhasorSchalldruck}
-\end{equation}
+\end{equation*}
  
 \subsubsection{Schallschnelle $\boldsymbol{u}$}
 \index{Schallschnelle}% 
@@ -67,7 +67,7 @@ genannt, wird aus dem Druckgradienten $\nabla p$ abgeleitet.
 Für die linearisierte Form im Frequenzbereich $\boldsymbol{u} =
 \frac{j}{\rho_0 \omega} \nabla p$ bei harmonischen Feldern
 $\boldsymbol{u}(\boldsymbol{r},t)$ ergibt sich:
-\begin{equation}
+\begin{equation*}
 \boldsymbol{u}(\boldsymbol{r},t)
 =
 \frac{1}{\omega \rho} \nabla p(\boldsymbol{r},t)
@@ -81,7 +81,7 @@ jP(\boldsymbol{r})
 \bigr)
 e^{j(\omega t -\phi(\boldsymbol{r}))}
 \; [\si{\metre / \second}].
-\end{equation}
+\end{equation*}
 Dabei sind:
 \begin{itemize}
 \item
@@ -94,16 +94,16 @@ in Richtung der schnellsten Amplitudenänderung.
 $\rho$ die Dichte des Mediums.
 \end{itemize}
 Als Phasor bei einer fixen Frequenz $\omega$ ergibt sich die
-Schallschnelle zu:
-\begin{equation}
+Schallschnelle als
+\begin{equation*}
 \boldsymbol{u}(\boldsymbol{r})
 =
 \frac{1}{\omega \rho}  \bigl(
 \nabla P(\boldsymbol{r})  - j P(\boldsymbol{r}) \nabla\phi(\boldsymbol{r})
 \bigr)
 e^{-j\phi (\boldsymbol{r})}.
-\label{helmholtz:PhasorSchallschnelle}
-\end{equation}
+%\label{helmholtz:PhasorSchallschnelle}
+\end{equation*}
  
 %\subsubsection{Wellengleichung und Helmholtz-Gleichung}
  
@@ -140,11 +140,11 @@ Die akustische Energie in einem Schallfeld setzt sich aus kinetischer
 und potentieller Energie zusammen.
 Die zeitlich gemittelte Energiedichte kann durch die Gleichung
 \index{gemittelte Energiedichte}%
-\begin{equation}
+\begin{equation*}
 \langle w \rangle
 =
 \frac{1}{4}\left(\frac{|p|^2}{\rho_0 c^2} + \rho_0 |\boldsymbol{u}|^2 \right)
-\end{equation}
+\end{equation*}
 ausgedrückt werden,
 wobei der erste Term die potentielle Energiedichte durch die
 Kompression des Mediums und der zweite Term die kinetische
@@ -154,31 +154,31 @@ Der Transport dieser Energie wird durch die Schallintensität
 beschrieben.
 Für harmonische Schallfelder betrachten wir die zeitlich
 gemittelte aktive Intensität
-\begin{equation}
+\begin{equation*}
 \boldsymbol{I}(\boldsymbol{r})
 =
 \frac{1}{T}\int_0^T \boldsymbol{I}_i(\boldsymbol{r},t)\,dt
 =
 \frac{1}{2}\Re (p(\boldsymbol{r}) \boldsymbol{u}^*(\boldsymbol{r})),
-\end{equation}
+\end{equation*}
 wobei $\boldsymbol{I}_i(\boldsymbol{r},t)$ die instantane
 Schallintensität und $T$ die Periodendauer der Schwingung ist.
 Der Stern bezeichnet die komplexe Konjugation.
 Diese aktive Intensität beschreibt den Netto-Energiefluss und ist
 für die Schallausbreitung von zentraler Bedeutung.
 
-\subsubsection{Zeitabhängige und zeitgemittelte Größen}
+\subsubsection{Zeitabhängige und zeitgemittelte Grössen}
 
-In der Akustik unterscheiden wir zwischen momentanen, zeitabhängigen Größen und zeitgemittelten Größen:
+In der Akustik unterscheiden wir zwischen momentanen, zeitabhängigen Grössen und zeitgemittelten Grössen:
 
 \begin{itemize}
-\item \emph{Momentane Größen} wie die instantane Intensität
+\item \emph{Momentane Grössen} wie die instantane Intensität
 $\boldsymbol{I}(\boldsymbol{r},t)$ beschreiben den augenblicklichen
 Energietransport
 an einem bestimmten Ort und zu einem bestimmten Zeitpunkt.
 \index{momentan}%
 
-\item \emph{Zeitgemittelte Größen} wie die aktive Intensität
+\item \emph{Zeitgemittelte Grössen} wie die aktive Intensität
 $\boldsymbol{I}(\boldsymbol{r})$ beschreiben den durchschnittlichen
 Energietransport
 über eine Periode der harmonischen Schwingung und sind besonders
@@ -187,7 +187,7 @@ akustischen Feldern.
 \index{zeitgemittelt}%
 \end{itemize}
 
-Diese Unterscheidung ist von großer Bedeutung, da in vielen praktischen Anwendungen nicht die instantanen, sondern die zeitlich gemittelten Größen von Interesse sind.
+Diese Unterscheidung ist von grosser Bedeutung, da in vielen praktischen Anwendungen nicht die instantanen, sondern die zeitlich gemittelten Grössen von Interesse sind.
 
 
 

@@ -8,7 +8,7 @@
 %
 \section{Die Helmholtz-Zerlegung
 \label{helmholtz:section:Helmholtz_Zerlegung}}
-\kopfrechts{Helmholtz-Zerlegung}
+\kopfrechts{Die Helmholtz-Zerlegung}
 
 Die Grundidee der Helmholtz-Zerlegung besteht darin, dass ein
 differenzierbares  Vektorfeld $\boldsymbol{F}$, welches im Unendlichen
@@ -25,7 +25,7 @@ und Elektrodynamik von zentraler Bedeutung.
 \label{helmholtz:subsection:def_Helmholtz_Zerlegung}}
 
 Mit der Idee der Helmholtz-Zerlegung wird das Vektorfeld geschrieben als
-\begin{equation}
+\begin{equation*}
 \underbrace{
 \boldsymbol{F}
 }_{
@@ -43,8 +43,8 @@ Mit der Idee der Helmholtz-Zerlegung wird das Vektorfeld geschrieben als
 }_{
 \textstyle\text{solenoidaler Teil}
 }
-\label{helmholtz:equationAllgemein}
-\end{equation}
+%\label{helmholtz:equationAllgemein}
+\end{equation*}
 und die einzelnen Komponenten lässt sich wie folgt beschreiben:
 
 \begin{itemize}
@@ -256,7 +256,7 @@ f(\boldsymbol{x})
 \int_V
 \delta(\boldsymbol{x}-\boldsymbol{x}')
 f(\boldsymbol{x}')
-\,dV'.
+\,dV'\!.
 \]
 Man kann zeigen, dass 
 \[
@@ -272,7 +272,7 @@ G(\boldsymbol{x},\boldsymbol{x}')
 \frac{1}{4\pi}\,
 \frac{1}{|\boldsymbol{x}-\boldsymbol{x}'|}
 \]
-über $\boldsymbol{x}'$ die gewünschte Inverse des Laplace-Operators ist.
+über $\boldsymbol{x}'$ die gesuchte Inverse des Laplace-Operators ist.
 %Dies entspricht der Integralform einer Matrixmultiplikation, wie
 %in Tabelle \ref{tab:helmholtz_matrix_analogie} veranschaulicht.
 %Dabei wird die Funktion $\boldsymbol{F}$, die in diesem Fall einen
@@ -287,7 +287,7 @@ G(\boldsymbol{x},\boldsymbol{x}')
 %\underbrace{\frac{1}{4 \pi} \Delta F}_{\text{invertiert}} = \rho 
 %\label{helmholtz:DGL_idee_umformung}
 %\end{equation}
-
+%
 %\begin{table}
 %\centering
 %\begin{tabular}{l|l}
@@ -340,7 +340,7 @@ sie auch für die Komponenten des Vektorfeldes.
 %auszudrücken.
 
 Unter Verwendung der Vektoridentität
-\begin{equation}
+\begin{equation*}
 \nabla^2 \boldsymbol{A}
 =
 \underbrace{
@@ -354,7 +354,8 @@ Unter Verwendung der Vektoridentität
 }_{
 \textstyle\text{Rotation\strut}
 },
-\end{equation}
+\end{equation*}
+(siehe auch \eqref{helmholtz:eqn:fundamental})
 kann das Vektorfeld $\boldsymbol{F}$ als
 \begin{equation}
 \boldsymbol{F}(\boldsymbol{r})
@@ -366,7 +367,7 @@ kann das Vektorfeld $\boldsymbol{F}$ als
 }{
 |\boldsymbol{r}
 -
-\boldsymbol{r}'|} dV'
+\boldsymbol{r}'|} \,dV'
 }_{\displaystyle = \Phi(\boldsymbol{r})}
 \biggr)
 +
@@ -387,7 +388,7 @@ geschrieben werden.
 Diese Gleichung repräsentiert die Helmholtz-Zerlegung des Vektorfeldes
 $\boldsymbol{F}$.
 Die Klammerausdrücke von \eqref{helmholtz:eqn:potentiale}
-sind die gesuchten Poteniale.
+sind die gesuchten Potentiale.
 
 In der Form \eqref{helmholtz:eqn:potentiale} ist die Helmholtz-Zerlegung
 noch nicht wirklich nützlich.
@@ -403,24 +404,24 @@ die Potentiale $\Phi$ und $\boldsymbol{\Psi}$ lassen sich mit Hilfe
 der greenschen Funktion wie folgt berechnen:
 \begin{itemize}
 \item Skalares Potential:
-\begin{equation}
+\begin{equation*}
 \Phi(\boldsymbol{r})
 =
 \frac{1}{4 \pi}
 \int_{V}
 \frac{\nabla' \cdot \boldsymbol{F}(\boldsymbol{r}')}{|\boldsymbol{r} - \boldsymbol{r}'|}
-\,dV'.
-\end{equation}
+\,dV'\!.
+\end{equation*}
 
 \item Vektorpotential:
-\begin{equation}
+\begin{equation*}
 \boldsymbol{\Psi}(\boldsymbol{r})
 =
 \frac{1}{4 \pi}
 \int_{V}
 \frac{\nabla' \times \boldsymbol{F}(\boldsymbol{r}')}{|\boldsymbol{r} - \boldsymbol{r}'|}
-\,dV'.
-\end{equation}
+\,dV'\!.
+\end{equation*}
 \end{itemize}
 Hier bezeichnet $\nabla'$ den Nabla-Operator bezüglich der
 Integrationsvariablen $\boldsymbol{r}'$.
@@ -430,7 +431,7 @@ Für endliche Volumina $V$ mit Oberfläche $S$ bleiben bei der partiellen
 Integraltion zusätzliche Oberflächenintegrale stehen:
 \begin{itemize}
 \item Skalares Potential:
-\begin{equation}
+\begin{equation*}
 \Phi (\boldsymbol{r})
 =
 \frac{1}{4\pi}
@@ -440,11 +441,11 @@ Integraltion zusätzliche Oberflächenintegrale stehen:
 +
 \frac{1}{4\pi}
 \oint_S \frac{\boldsymbol{F}(\boldsymbol{r}') \cdot \boldsymbol{n}}{|\boldsymbol{r} - \boldsymbol{r}'|}
-\,dS'
-\end{equation}
+\,dS'\!.
+\end{equation*}
 
 \item Vektorpotential:
-\begin{equation}
+\begin{equation*}
 \boldsymbol{\Psi}(\boldsymbol{r})
 =
 \frac{1}{4\pi}
@@ -455,11 +456,11 @@ Integraltion zusätzliche Oberflächenintegrale stehen:
 \frac{1}{4\pi}
 \oint_S
 \frac{\boldsymbol{n} \times \boldsymbol{F}(\boldsymbol{r}')}{|\boldsymbol{r} - \boldsymbol{r}'|}
-\,dS'
-\end{equation}
+\,dS'\!.
+\end{equation*}
 \end{itemize}
 Hier bezeichnet $\boldsymbol{n}$ den nach aussen gerichteten
-Normalenvektor auf der Oberfläche $S$.
+Normalenvektor auf der Oberfläche $S$\!.
 
 \subsection{Bedingungen und Eindeutigkeit
 \label{helmholtz:subsection:Bedingungen_Eindeutigkeit}}
@@ -472,10 +473,10 @@ Vektorfeld $\boldsymbol{F}$ folgende Bedingungen erfüllen:
 \item Glattheit: $\boldsymbol{F}$ muss in dem betrachteten Gebiet
 stetig differenzierbar sein.
 \item Abfallverhalten: $\boldsymbol{F}$ muss im Unendlichen schneller
-als $\frac{1}{r}$ abfallen, d.h.
-\begin{equation}
-\lim_{r \to \infty} r|\boldsymbol{F}(\boldsymbol{r})| = 0,
-\end{equation}
+als $\frac{1}{r}$ abfallen, d.~h.
+\begin{equation*}
+\lim_{r \to \infty} r\cdot |\boldsymbol{F}(\boldsymbol{r})| = 0,
+\end{equation*}
 wobei $r = |\boldsymbol{r}|$ der Abstand vom Ursprung ist.
 \end{itemize}
 Diese Bedingungen stellen sicher, dass die Integrale in der greenschen
@@ -516,9 +517,9 @@ der beiden Komponenten.
 Für ein Vektorfeld
 $\boldsymbol{F} = \boldsymbol{F}_{\text{irr}} + \boldsymbol{F}_{\text{sol}}$
 gilt unter geeigneten Randbedingungen:
-\begin{equation}
+\begin{equation*}
 \int_V \boldsymbol{F}_{\text{irr}} \cdot \boldsymbol{F}_{\text{sol}} \, dV = 0.
-\end{equation}
+\end{equation*}
 %
 % XXX Inkorrekter Satz
 %

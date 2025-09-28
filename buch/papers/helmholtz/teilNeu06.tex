@@ -1,5 +1,5 @@
 %
-% teil3.tex -- Beispiel-File für Teil 3
+% teilNeu06.tex -- Beispiel-File für Teil 3
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
@@ -15,13 +15,13 @@
 \label{helmholtz:subsection:Zerlegung_Schallschnelle}}
 Angewendet auf das Schallschnellefeld $\boldsymbol{u}$ können wir
 dieses wie folgt zerlegen:
-\begin{equation}
+\begin{equation*}
 \underbrace{\boldsymbol{u}}_{\displaystyle\text{Schallschnellefeld}}
 =
 \underbrace{-\nabla \Phi}_{\displaystyle\text{irrotationaler~Anteil}}
 +
 \underbrace{\nabla \times \boldsymbol{\Psi}}_{\displaystyle\text{solenoidaler~Anteil}}.
-\end{equation}
+\end{equation*}
 Die physikalische Interpretation der Komponenten des Schallschnellefeldes
 lässt sich wie folgt beschreiben:
  
@@ -52,11 +52,11 @@ lässt sich in zwei fundamentale Komponenten zerlegen:
 \item Reaktive Intensität $\boldsymbol{Q}$
 \end{itemize}
 Die komplexe Schallintensität ist definiert als
-\begin{equation}
+\begin{equation*}
 \boldsymbol{I}_c (\boldsymbol{r})
 =
 \frac{1}{2} p(\boldsymbol{r}) \, \boldsymbol{u}^{*}(\boldsymbol{r}),
-\end{equation}
+\end{equation*}
 wobei $p(\boldsymbol{r})$ den komplexen Schalldruck und
 \index{komplexer Schalldruck}%
 $\boldsymbol{u}^{*}(\boldsymbol{r})$ die komplexe Konjugation der
@@ -70,7 +70,7 @@ Helmholtz-Zerlegung.
 Bei näherer Betrachtung ist zu erkennen, dass die komplexe
 Schallintensität eine ähnliche Struktur wie die Helmholtz-Zerlegung
 aufweist und sich wie folgt darstellen lässt:
-\begin{equation}
+\begin{equation*}
 \boldsymbol{I}_c (\boldsymbol{r})
 =
 \underbrace{
@@ -91,9 +91,9 @@ j\underbrace{
 =\frac{1}{2}
 \operatorname{Im} \bigl( p(\boldsymbol{r})\, \boldsymbol{u}^*(\boldsymbol{r}) \bigr)
 $}}.
-\end{equation}
+\end{equation*}
 Es zeigt sich eine direkte Korrespondenz zwischen den Komponenten der Helmholtz-Zerlegung und der komplexen Schallintensität:
-\begin{equation}
+\begin{equation*}
 \boldsymbol{I}_c (\boldsymbol{r})
 =
 \underbrace{
@@ -110,7 +110,7 @@ j
 }_{
 \clap{$\displaystyle\nabla \times \boldsymbol{Q} = 0$}
 }.
-\end{equation}
+\end{equation*}
 Die Eigenschaft $\nabla\cdot\boldsymbol{I}=0$ bedeutet,
 dass der erste Term quellenfrei ist, während $\nabla\times\boldsymbol{Q}=0$
 bedeutet, dass der zweite wirbelfrei ist.
@@ -137,44 +137,44 @@ Feldern:
 Die aktive Intensität $\boldsymbol{I}(r)$ beschreibt den zeitgemittelten
 Netto-Energiefluss pro Fläche an dem Ort $r$ und lässt sich ausdrücken
 als:
-\begin{equation}
+\begin{equation*}
 \boldsymbol{I}(\boldsymbol{r})
 =
 \frac{1}{T}\int_0^T \boldsymbol{I}_i(\boldsymbol{r},t)\,dt
 =
 \frac{1}{2}\Re\bigl( p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\bigr).
-\end{equation}
+\end{equation*}
  
 In quellenfreien, stationären Feldern ohne Energieabsorption gilt:
-\begin{equation}
+\begin{equation*}
 \nabla \cdot \boldsymbol{I}
 =
 0.
-\end{equation}
+\end{equation*}
  
 Diese Komponente ist mit dem irrotationalen Anteil des Schallschnellefeldes verknüpft und repräsentiert den tatsächlichen Energiefluss durch das Medium.
  
 \item Die reaktive Intensität $\boldsymbol{Q}(r)$ beschreibt die zeitlich gemittelte Dichte der nicht-pro\-pa\-gie\-ren\-den, oszillierenden Energie:
 \index{oszillierende Energie}%
-\begin{equation}
+\begin{equation*}
 \boldsymbol{Q}(\boldsymbol{r})
 =
 \frac{1}{2}\Im\bigl(p(\boldsymbol{r})~\boldsymbol{u}^*(\boldsymbol{r})\bigr).
-\end{equation}
+\end{equation*}
  
 Sie ist wirbelfrei:
-\begin{equation}
+\begin{equation*}
 \nabla \times \boldsymbol{Q}
 =
 0
-\end{equation}
+\end{equation*}
 und steht in direkter Beziehung zur Differenz zwischen kinetischer
 Energie $T$ und potentieller Energie $V$:
-\begin{equation}
+\begin{equation*}
 \nabla \cdot \boldsymbol{Q}
 =
 -2 \omega (T-V).
-\end{equation}
+\end{equation*}
  
 Diese Komponente ist mit dem solenoidalen Anteil des Schallschnellefeldes verknüpft und stellt die oszillierende, lokal gespeicherte Energie dar, die nicht zum Netto-Energietransport beiträgt.
 \end{itemize}
@@ -191,11 +191,11 @@ Bei einer ebene Welle ist die Amplitude konstant $P(\boldsymbol{r})
 reaktive Intensität verschwindet. Schalldruck und Schallschnelle
 sind in Phase $\phi = 0^{\circ}$. Die komplexe Intensität reduziert
 sich auf
-\begin{equation}
+\begin{equation*}
 \boldsymbol{I}_c (\boldsymbol{r})
 =
 \boldsymbol{I}(\boldsymbol{r}) + \cancel{j\boldsymbol{Q}(\boldsymbol{r})}.
-\end{equation}
+\end{equation*}
 Die aktive Intensität ergibt sich zu
 $\boldsymbol{I} = \frac{|\boldsymbol{A}|^2}{2 \rho_0 c_0}$
 und zeigt in Richtung der
@@ -217,11 +217,11 @@ maximaler und minimaler Amplitude gekennzeichnet:
     \end{itemize}
 An jedem Punkt im Feld sind Schalldruck und Schallschnelle zeitlich um 90° phasenverschoben. Diese Phasenverschiebung führt dazu, dass die aktive Intensität im Zeitmittel verschwindet und die komplexe Intensität rein imaginär wird, wie in 
  
-\begin{equation}
+\begin{equation*}
 \boldsymbol{I}_c (\boldsymbol{r})
 =
 \cancel{\boldsymbol{I}(\boldsymbol{r})} + j\boldsymbol{Q}(\boldsymbol{r})
-\end{equation}
+\end{equation*}
 zu erkennen ist. In diesem Fall gibt es keinen Netto-Energietransport, sondern nur lokale Energieoszillation.
 \end{itemize}
 
