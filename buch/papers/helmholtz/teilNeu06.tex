@@ -55,11 +55,21 @@ Die komplexe Schallintensität ist definiert als
 \begin{equation}
 \boldsymbol{I}_c (\boldsymbol{r})
 =
-\frac{1}{2} p(\boldsymbol{r})  \boldsymbol{u}^{*}(\boldsymbol{r}),
+\frac{1}{2} p(\boldsymbol{r}) \, \boldsymbol{u}^{*}(\boldsymbol{r}),
 \end{equation}
-wobei $p(\boldsymbol{r})$ den komplexen Schalldruck und $\boldsymbol{u}^{*}(\boldsymbol{r})$ die komplexe Konjugation der Schallschnelle $\boldsymbol{u}(\boldsymbol{r})$ beschreibt. Diese Formulierung berücksichtigt die Phasenverschiebung zwischen Schalldruck und Schallgeschwindigkeit und ermöglicht die Zerlegung des Energieflusses in quellenfreie und wirbelfreie Anteile gemäss der Helmholtz-Zerlegung.
+wobei $p(\boldsymbol{r})$ den komplexen Schalldruck und
+\index{komplexer Schalldruck}%
+$\boldsymbol{u}^{*}(\boldsymbol{r})$ die komplexe Konjugation der
+Schallschnelle $\boldsymbol{u}(\boldsymbol{r})$ beschreibt.
+Diese
+Formulierung berücksichtigt die Phasenverschiebung zwischen Schalldruck
+und Schallgeschwindigkeit und ermöglicht die Zerlegung des
+Energie\-flusses in quellenfreie und wirbelfreie Anteile gemäss der
+Helmholtz-Zerlegung.
  
-Bei näherer Betrachtung ist zu erkennen, dass die komplexe Schallintensität eine ähnliche Struktur wie die Helmholtz-Zerlegung aufweist und sich wie folgt darstellen lässt:
+Bei näherer Betrachtung ist zu erkennen, dass die komplexe
+Schallintensität eine ähnliche Struktur wie die Helmholtz-Zerlegung
+aufweist und sich wie folgt darstellen lässt:
 \begin{equation}
 \boldsymbol{I}_c (\boldsymbol{r})
 =
@@ -68,7 +78,7 @@ Bei näherer Betrachtung ist zu erkennen, dass die komplexe Schallintensität ei
 }_{\mathstrut
 \rlap{$
 =\textstyle\frac{1}{2}
-\operatorname{Re} \bigl( p(\boldsymbol{r}) \boldsymbol{u}^*(\boldsymbol{r}) \bigr)
+\operatorname{Re} \bigl( p(\boldsymbol{r})\, \boldsymbol{u}^*(\boldsymbol{r}) \bigr)
 $}
 }
 \qquad\qquad
@@ -79,7 +89,7 @@ j\underbrace{
 }_{\mathstrut
 \rlap{$\textstyle
 =\frac{1}{2}
-\operatorname{Im} \bigl( p(\boldsymbol{r}) \boldsymbol{u}^*(\boldsymbol{r}) \bigr)
+\operatorname{Im} \bigl( p(\boldsymbol{r})\, \boldsymbol{u}^*(\boldsymbol{r}) \bigr)
 $}}.
 \end{equation}
 Es zeigt sich eine direkte Korrespondenz zwischen den Komponenten der Helmholtz-Zerlegung und der komplexen Schallintensität:
@@ -119,6 +129,8 @@ reaktiven Intensität.
 \label{helmholtz:Energie_Interpretation}}
 Die Helmholtz-Zerlegung ermöglicht eine tiefe physikalische
 Interpretation der Energieverteilung und -übertragung in akustischen
+\index{Energieverteilung}%
+\index{Energieubertragung@Energieübertragung}%
 Feldern:
 \begin{itemize}
 \item
@@ -142,7 +154,8 @@ In quellenfreien, stationären Feldern ohne Energieabsorption gilt:
  
 Diese Komponente ist mit dem irrotationalen Anteil des Schallschnellefeldes verknüpft und repräsentiert den tatsächlichen Energiefluss durch das Medium.
  
-\item Die reaktive Intensität $\boldsymbol{Q}(r)$ beschreibt die zeitlich gemittelte Dichte der nicht-propagierenden, oszillierenden Energie:
+\item Die reaktive Intensität $\boldsymbol{Q}(r)$ beschreibt die zeitlich gemittelte Dichte der nicht-pro\-pa\-gie\-ren\-den, oszillierenden Energie:
+\index{oszillierende Energie}%
 \begin{equation}
 \boldsymbol{Q}(\boldsymbol{r})
 =
@@ -153,10 +166,10 @@ Sie ist wirbelfrei:
 \begin{equation}
 \nabla \times \boldsymbol{Q}
 =
-0.
+0
 \end{equation}
- 
-Und steht in direkter Beziehung zur Differenz zwischen kinetischer Energie $T$ und potentieller Energie $V$:
+und steht in direkter Beziehung zur Differenz zwischen kinetischer
+Energie $T$ und potentieller Energie $V$:
 \begin{equation}
 \nabla \cdot \boldsymbol{Q}
 =
@@ -171,25 +184,36 @@ Anhand von zwei Extremfällen lässt sich diese Interpretation besonders gut ver
 
 
  
-\item Ebene Welle ($\boldsymbol{Q} = 0$):
+\item \emph{Ebene Welle} ($\boldsymbol{Q} = 0$):
+\index{ebene Welle}%
 Bei einer ebene Welle ist die Amplitude konstant $P(\boldsymbol{r})
 = A = \text{konst.}$ bzw. $\nabla P = 0$, was dazu führt, dass die
 reaktive Intensität verschwindet. Schalldruck und Schallschnelle
 sind in Phase $\phi = 0^{\circ}$. Die komplexe Intensität reduziert
-sich zu:
- 
+sich auf
 \begin{equation}
 \boldsymbol{I}_c (\boldsymbol{r})
 =
-\boldsymbol{I}(\boldsymbol{r}) + \cancel{j\boldsymbol{Q}(\boldsymbol{r})}
+\boldsymbol{I}(\boldsymbol{r}) + \cancel{j\boldsymbol{Q}(\boldsymbol{r})}.
 \end{equation}
+Die aktive Intensität ergibt sich zu
+$\boldsymbol{I} = \frac{|\boldsymbol{A}|^2}{2 \rho_0 c_0}$
+und zeigt in Richtung der
+Wellenausbreitung.
  
-Die aktive Intensität ergibt sich zu: $\boldsymbol{I} = \frac{|\boldsymbol{A}|^2}{2 \rho_0 c_0}$ und zeigt in Richtung der Wellenausbreitung.
- 
-\item Stehende Welle ($\boldsymbol{I} = 0, \boldsymbol{Q} \neq 0$): Bei einer stehenden Welle, die durch die Überlagerung zweier gegenläufiger identischer Wellen entsteht, gibt es keinen Netto-Energietransport. Das Feld ist durch ortsfeste Bereiche maximaler und minimaler Amplitude gekennzeichnet:
+\item \emph{Stehende Welle} ($\boldsymbol{I} = 0, \boldsymbol{Q} \neq 0$):
+\index{stehende Welle}%
+Bei einer stehenden Welle, die durch die Überlagerung zweier
+gegenläufiger identischer Wellen entsteht, gibt es keinen
+Netto-Energietransport. Das Feld ist durch ortsfeste Bereiche
+maximaler und minimaler Amplitude gekennzeichnet:
     \begin{itemize}
-        \item An den Druckbäuchen bzw. Orte maximaler Druckamplitude ist die Schallschnelle-Amplitude stets null.
-        \item An den Druckknoten bzw. Orte mit Druckamplitude null ist die Schallschnelle-Amplitude maximal.
+	\item An den Druckbäuchen bzw. Orte maximaler Druckamplitude
+	ist die Schall\-schnel\-le-Amplitude stets null.
+\index{Druckbauch}%
+	\item An den Druckknoten bzw. Orte mit Druckamplitude null
+	ist die Schall\-schnel\-le-Amplitude maximal.
+\index{Druckknoten}%
     \end{itemize}
 An jedem Punkt im Feld sind Schalldruck und Schallschnelle zeitlich um 90° phasenverschoben. Diese Phasenverschiebung führt dazu, dass die aktive Intensität im Zeitmittel verschwindet und die komplexe Intensität rein imaginär wird, wie in 
  
@@ -209,24 +233,24 @@ Die Helmholtz-Zerlegung führt zu charakteristischen Feldmustern, die sich wie f
  
 \begin{itemize}
 \item Der irrotationale Anteil bildet Quellenfelder mit radialen Feldlinien, die von Quellen ausgehen oder in Senken münden:
- 
+% 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{papers/helmholtz/images/Quelle.png}
 \caption{Quellenmuster im irrotationalen Feldanteil}
 \label{fig:quelle}
 \end{figure}
- 
+% 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{papers/helmholtz/images/Senke.png}
 \caption{Senkenmuster im irrotationalen Feldanteil}
 \label{fig:senke}
 \end{figure}
- 
+% 
 \item Der solenoidale Anteil bildet Wirbelfelder mit geschlossenen Feldlinien, ähnlich einem Magnetfeld.
 \end{itemize}
-  
+%  
 \begin{figure}
 \centering
 \includegraphics[scale=0.6]{papers/helmholtz/images/aktiveSchallintensitaet.png}

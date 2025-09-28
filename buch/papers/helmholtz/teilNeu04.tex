@@ -15,7 +15,7 @@ Hier werden die zentralen physikalischen Grössen Schalldruck, Schallschnelle un
 In vielen akustischen Aufgaben wird mit der komplexen Schreibweise gearbeitet, weshalb die Formeln vorzugsweise im Frequenzbereich dargestellt werden.
 
 \subsubsection{Die komplexe Schreibweise in der Akustik}
-
+\index{komplexe Schreibweise}%
 In der physikalischen Akustik wird häufig mit komplexen Grössen gearbeitet, bei denen der Imaginärteil eine konkrete physikalische Bedeutung hat. Diese mathematische Darstellung ist nicht nur ein Rechentrick, sondern erlaubt eine präzise Beschreibung von Phasenbeziehungen zwischen akustischen Grössen:
 
 \begin{itemize}
@@ -33,50 +33,75 @@ Die physikalische Interpretation der komplexen Grössen wird besonders deutlich 
 \label{helmholtz:subsection:Grundbegriffe_Akustik}}
 
 \subsubsection{Schalldruck $p$}
- 
+\index{Schalldruck}% 
 Der Schalldruck ist eine der fundamentalen Größen in der Akustik und beschreibt lokale Druckschwankungen im Medium:
  
 \begin{itemize}
 \item $P  (\boldsymbol{r})$ bezeichnet die Amplitude des Schalldrucks am Ort $\boldsymbol{r}$ und ist eine reelle Grösse.
+\index{Amplitude}%
 \item $\omega$ ist die Kreisfrequenz.
+\index{Kreisfrequenz}%
 \item $\phi  (\boldsymbol{r})$ beschreibt die Phase am Ort $\boldsymbol{r}$ und ist ebenfalls eine reelle Grösse.
 \end{itemize}
  
 Die zeitabhängige Darstellung des Schalldrucks lautet:
 \begin{equation}
-p(r,t) = P(\boldsymbol{r})  e^{j( \omega t - \phi(\boldsymbol{r}))} (\si{\pascal}).
+p(\boldsymbol{r},t)
+=
+P(\boldsymbol{r})  e^{j( \omega t - \phi(\boldsymbol{r}))}\, [\si{\pascal}].
 \end{equation}
  
-Im Frequenzbereich, auch Phasor-Darstellung genannt, bei einer festen Frequenz $\omega$ vereinfacht sich dies zu:
+Im Frequenzbereich, auch Phasor-Darstellung genannt, bei einer festen
+Frequenz $\omega$ vereinfacht sich dies zu:
 \begin{equation}
-p(r) = P(r)  e^{j \phi (r)}.
+p(\boldsymbol{r}) = P(\boldsymbol{r})  e^{-j \phi (\boldsymbol{r})}.
 \label{helmholtz:PhasorSchalldruck}
 \end{equation}
  
 \subsubsection{Schallschnelle $\boldsymbol{u}$}
- 
-Die Schallschnelle $\boldsymbol{u}$ auch Teilchengeschwindigkeit genannt, wird aus dem Druckgradienten $\nabla p$ abgeleitet.
-Für die linearisierte Form im Frequenzbereich $\boldsymbol{u} = \frac{j}{\rho_0 \omega} \nabla p$ bei harmonischen Feldern $\boldsymbol{u}(r,t)$ ergibt sich:
+\index{Schallschnelle}% 
+Die Schallschnelle $\boldsymbol{u}$ auch Teilchengeschwindigkeit
+\index{Teilchengeschwindigkeit}%
+genannt, wird aus dem Druckgradienten $\nabla p$ abgeleitet.
+\index{Druckgradient}%
+Für die linearisierte Form im Frequenzbereich $\boldsymbol{u} =
+\frac{j}{\rho_0 \omega} \nabla p$ bei harmonischen Feldern
+$\boldsymbol{u}(\boldsymbol{r},t)$ ergibt sich:
 \begin{equation}
-\boldsymbol{u}(r,t)
+\boldsymbol{u}(\boldsymbol{r},t)
 =
-\frac{1}{\omega \rho} \nabla p(r,t)
+\frac{1}{\omega \rho} \nabla p(\boldsymbol{r},t)
 =
-\frac{1}{\omega \rho} \bigl( P(r) \nabla \Phi(r) + j\nabla P(r) \bigr)
-e^{j(\omega t -\Phi(r))}\; [\si{\metre / \second}].
+\frac{1}{\omega \rho}
+\bigl(
+\nabla P(\boldsymbol{r}) 
+-
+jP(\boldsymbol{r})
+\nabla\phi(\boldsymbol{r})
+\bigr)
+e^{j(\omega t -\phi(\boldsymbol{r}))}
+\; [\si{\metre / \second}].
 \end{equation}
 Dabei sind:
 \begin{itemize}
-\item $\nabla \phi (r)$ der Gradient der Phase zeigt in Richtung der steilsten Phasenänderung, senkrecht zur Wellenfront.
-\item $\nabla P (r)$ der Gradient der Druckamplitude zeigt in Richtung der schnellsten Amplitudenänderung.
-\item $\rho$ die Dichte des Mediums.
+\item
+$\nabla \phi (\boldsymbol{r})$ der Gradient der Phase zeigt in
+Richtung der steilsten Phasenänderung, senkrecht zur Wellenfront.
+\item
+$\nabla P (\boldsymbol{r})$ der Gradient der Druckamplitude zeigt
+in Richtung der schnellsten Amplitudenänderung.
+\item
+$\rho$ die Dichte des Mediums.
 \end{itemize}
-Als Phasor bei einer fixen Frequenz $\omega$ ergibt sich die Schallschnelle zu:
+Als Phasor bei einer fixen Frequenz $\omega$ ergibt sich die
+Schallschnelle zu:
 \begin{equation}
-\boldsymbol{u}(r)
+\boldsymbol{u}(\boldsymbol{r})
 =
-\frac{1}{\omega \rho}  \bigl( P(r)  \nabla \phi(r) + j \nabla P(r) \bigr)
-e^{j\phi (r)}.
+\frac{1}{\omega \rho}  \bigl(
+\nabla P(\boldsymbol{r})  - j P(\boldsymbol{r}) \nabla\phi(\boldsymbol{r})
+\bigr)
+e^{-j\phi (\boldsymbol{r})}.
 \label{helmholtz:PhasorSchallschnelle}
 \end{equation}
  
@@ -110,10 +135,11 @@ e^{j\phi (r)}.
 
 \subsection{Energiebetrachtungen in akustischen Feldern
 \label{helmholtz:subsection:Energiebetrachtung}}
-
+\index{akustische Energie}%
 Die akustische Energie in einem Schallfeld setzt sich aus kinetischer
 und potentieller Energie zusammen.
 Die zeitlich gemittelte Energiedichte kann durch die Gleichung
+\index{gemittelte Energiedichte}%
 \begin{equation}
 \langle w \rangle
 =
@@ -127,25 +153,38 @@ Energiedichte durch die Bewegung der Teilchen darstellt.
 Der Transport dieser Energie wird durch die Schallintensität
 beschrieben.
 Für harmonische Schallfelder betrachten wir die zeitlich
-gemittelte aktive Intensität:
+gemittelte aktive Intensität
 \begin{equation}
-\boldsymbol{I}
+\boldsymbol{I}(\boldsymbol{r})
 =
 \frac{1}{T}\int_0^T \boldsymbol{I}_i(\boldsymbol{r},t)\,dt
 =
 \frac{1}{2}\Re (p(\boldsymbol{r}) \boldsymbol{u}^*(\boldsymbol{r})),
 \end{equation}
-wobei $\boldsymbol{I}_i(\boldsymbol{r},t)$ die instantane Schallintensität und $T$ die Periodendauer der Schwingung ist. Der Stern bezeichnet die komplexe Konjugation .
-Diese aktive Intensität beschreibt den Netto-Energiefluss und ist für die Schallausbreitung von zentraler Bedeutung.
+wobei $\boldsymbol{I}_i(\boldsymbol{r},t)$ die instantane
+Schallintensität und $T$ die Periodendauer der Schwingung ist.
+Der Stern bezeichnet die komplexe Konjugation.
+Diese aktive Intensität beschreibt den Netto-Energiefluss und ist
+für die Schallausbreitung von zentraler Bedeutung.
 
 \subsubsection{Zeitabhängige und zeitgemittelte Größen}
 
 In der Akustik unterscheiden wir zwischen momentanen, zeitabhängigen Größen und zeitgemittelten Größen:
 
 \begin{itemize}
-\item \textbf{Momentane Größen} wie die instantane Intensität $\boldsymbol{I}(r,t)$ beschreiben den augenblicklichen Energietransport an einem bestimmten Ort und zu einem bestimmten Zeitpunkt.
+\item \emph{Momentane Größen} wie die instantane Intensität
+$\boldsymbol{I}(\boldsymbol{r},t)$ beschreiben den augenblicklichen
+Energietransport
+an einem bestimmten Ort und zu einem bestimmten Zeitpunkt.
+\index{momentan}%
 
-\item \textbf{Zeitgemittelte Größen} wie die aktive Intensität $\boldsymbol{I}(r)$ beschreiben den durchschnittlichen Energietransport über eine Periode der harmonischen Schwingung und sind besonders wichtig für die Analyse der effektiven Energieübertragung in akustischen Feldern.
+\item \emph{Zeitgemittelte Größen} wie die aktive Intensität
+$\boldsymbol{I}(\boldsymbol{r})$ beschreiben den durchschnittlichen
+Energietransport
+über eine Periode der harmonischen Schwingung und sind besonders
+wichtig für die Analyse der effektiven Energieübertragung in
+akustischen Feldern.
+\index{zeitgemittelt}%
 \end{itemize}
 
 Diese Unterscheidung ist von großer Bedeutung, da in vielen praktischen Anwendungen nicht die instantanen, sondern die zeitlich gemittelten Größen von Interesse sind.
