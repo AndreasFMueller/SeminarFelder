@@ -12,6 +12,7 @@
 \kopfrechts{Temperatur}
 Die Temperatur ist eine Grösse, die ausdrückt, wie warm oder kalt ein
 physikalisches ist.
+\index{Temperatur}%
 Die wichtigste Eigenschaft der Temperatur ist zweifellos, dass sie
 sich zwischen sich in Kontakt befindlichen Körpern ausgleicht.
 Wird ein heisser Körper mit einem kalten Körper in Berührung gebracht,
@@ -23,13 +24,17 @@ Diese Eigenschaft reicht bereits aus, verschiedene zunächst willkürliche
 Temperaturskalen zu definieren.
 Zum Beispiel beobachtet man, dass sich ein Gas bei gleichem Umgebungsdruck
 ausdehnt, wenn die Temperatur erhöht wird.
+\index{Druck}%
 Das Ausmass der Ausdehnung kann als Mass für die Temperatur verwendet
 werden.
 Ähnlich kann auch die Ausdehnung von Quecksilber in einer Glaskapillare
 verwendet werden.
+\index{Thermometer}%
+\index{Quecksilber}%
 Teilt man die Ausdehnung zwischen der Temperatur gefrierenden Wassers und
 siedenden Wassers in 100 gleiche Teile, erhält man die Celsius-Temperaturskala.
 Allerdings zeigt sich bei genauer Messung, dass die Ausdehnung von
+\index{Celsius}%
 Quecksilber nicht genau linear ist, so dass sich eine kleine Abweichung
 von einem auf der Ausdehnung eines Gases basierenden Thermometer
 ergibt.
@@ -48,6 +53,9 @@ den Chip vor Überhitzung zu schützen.
 Wir nehmen daher im folgenden idealisierend an, dass die Temperatur beliebig
 kleiner Teilkörper genügend genau gemessen werden kann.
 
+%
+% Das Temperaturfeld
+%
 \subsection{Das Temperaturfeld}
 Der Ausgleich der Temperatur braucht Zeit.
 Haben verschiedene Teile eines Körpers verschiedene Temperatur, dann
@@ -59,17 +67,23 @@ Genau genommen ist die Temperatur eines Körpers notwendigerweise eine
 Funktion $T(t,x,y,z)$, die sowohl von der Zeit wie auch von den
 Ortskoordinaten abhängt.
 Wir nennen sie für die Zwecke dieses Kapitels das {\em Temperaturfeld}.
+\index{Temperaturfeld}%
 Das Temperaturfeld eines isolierten Körpers konvergiert für
 $t\to\infty$ gegen die ideale Temperatur des Körpers.
 
+%
+% Lokalität und Ableitungen
+%
 \subsection{Lokalität und Ableitungen}
 In der Thermodynamik wird ausserdem gelehrt, dass die Temperatur die
+\index{Thermodynamik}%
 mittlere kinetische Energie der Atome oder Moleküle des Körpers wiedergibt.
 Die statistische Mechanik untersucht, wie sich die kinetische Energie
 zwischen verschiedenen Teilchen durch Stösse ausgleicht, bis sich eine
 stationäre Verteilung einstellt.
 Aus diesem Mechanismus kann man sofort schliessen, dass der
 Temperaturausgleich ein {\em lokales} Phänomen ist.
+\index{lokal}%
 Stellt man in einem Medium an zwei verschiedenen Punkten verschiedene
 Temperaturen fest, kann sich die Temperatur nur ausgleichen, wenn
 sich auch die Temperatur an allen Punkten zwischen diesen beiden
@@ -79,6 +93,7 @@ mit der Zeit beschreiben, dürfen also nur die Information verwenden,
 die sich aus dem Temperaturfeld an diesem Punkt ableiten lässt.
 Nehmen wir an, dass die Funktion sich in einem Punkt in eine konvergente
 Taylor-Reihe entwickeln lässt, dann kann man
+\index{Taylor-Reihe}%
 \[
 T(t,x)
 =
@@ -125,9 +140,13 @@ T,
 \end{equation}
 sein.
 
+%
+% Symmetrien
+%
 \subsection{Symmetrien}
 Es gibt keine experimentellen Anzeichen, dass die Wärmeausbreitung
 eine Richtung bevorzugt.
+\index{Symmetrie}%
 Die Differentialgleichung
 \eqref{buch:fallstudie:eqn:allgwaermeleitung}
 muss daher bei einer Spiegelung $x\mapsto -x$ unverändert bleiben.
@@ -139,6 +158,9 @@ Seite der Gleichung \eqref{buch:fallstudie:eqn:allgwaermeleitung}
 eine Funktion nur von $x$ und der zweiten Ableitung von $T$, die
 ersten Ableitungen dürfen nicht vorkommen.
 
+%
+% Die Wärmeleitungsgleichung
+%
 \subsection{Die Wärmeleitungsgleichung}
 Aus Experimenten weiss man aber auch, dass die Geschwindigkeit der
 Temperaturänderung proportional ist zur Temperaturdifferenz.
@@ -172,6 +194,7 @@ a_0
 \]
 ein Vielfaches der zweiten Ableitung entsteht.
 Damit ist die eindimensionale Wärmeleitungsgleichung
+\index{Warmeleitungsgleichung@Wärmeleitungsgleichung}%
 \begin{equation}
 \frac{\partial T}{\partial t}
 =
@@ -181,6 +204,7 @@ Damit ist die eindimensionale Wärmeleitungsgleichung
 gefunden.
 Für beliebige Dimension ist die zweite Ableitung auf der rechten
 Seite durch den Laplace-Operator
+\index{Laplace-Operator}%
 \[
 \Delta T
 =
@@ -190,6 +214,9 @@ Seite durch den Laplace-Operator
 \]
 zu ersetzen.
 
+%
+% Wohldefinierte Lösungen
+%
 \subsection{Wohldefinierte Lösungen}
 Die Verwendung der Ableitungen führt jedoch auf ein anderes Problem.
 Die statistische Theorie der Wärmelehre erklärt auch, dass die Temperatur
@@ -211,10 +238,12 @@ Ein chaotisches dynamisches System wie das Lorenz-System zeichnet sich
 dadurch aus, dass unmessbar kleine Unterschiede in den Anfangsbedingungen,
 die zum Beispiel durch statistische Fluktuationen verursacht sein können,
 zu verschiedenen Lösungen führen können.
+\index{Chaos}%
 Das Verhalten des Feldes wird damit für alle praktischen Zwecke nicht
 vorhersagbar.
 Die Wärmeleitungsgleichung hat jedoch die interessante mathematische
 Eigenschaft, dass Sie einem Maximumprinzip gehorcht.
+\index{Maximumprinzip}%
 Es besagt, dass die extreme Werte in einem Teil des Randes des Körpers
 sich sofort ausgleichen und die Lösung der Wärmeleitungsgleichung
 mindestens für kurze Zeiten nur Werte hat, die kleiner sind als die 
@@ -224,12 +253,16 @@ Das Problem, dass das Feld nicht exakt bestimmt werden kann, gefährdet
 nicht nur beim Temperaturfeld die Vorhersagbarkeit.
 Auch bei Strömungsfeldern, die von den nichtlinearen
 Navier-Stokes-Gleichungen beschrieben werden, muss eine solche
+\index{Navier-Stokes-Gleichung}%
 Stabilitätseigenschaft mindestens für kurze Zeit weiterhin gelten,
 wenn die Theorie überhaupt testbare Vorhersagen ermöglich soll.
 Die Bewegungsgleichung einer erfolgreichen Feldtheorie müssen daher
 von einer Art sein, die die Existenz und Eindeutigkeit von Lösungen
 mindestens für kurze Zeit und ein kleines Raumgebiet garantieren.
 
+%
+% Wärmeleitfähigkeit
+%
 \subsection{Wärmeleitfähigkeit}
 Die Masseinheiten der beiden Seiten der Wärmeleitungsgleichung 
 \eqref{buch:fallstudie:waermeleitungsgleichung}
@@ -253,7 +286,9 @@ sind
 \frac{\text{K}}{\text{m}^2}
 \biggr].
 \]
-Es folgt, dass die Masseinheit von $\kappa$
+Es folgt, dass die Masseinheit der Wärmeleitfähigkeit $\kappa$
+\index{Warmeleitfahigkeit@Wärmeleitfähigkeit}%
+\index{kappa@$\kappa$}%
 \[
 [\kappa]
 =

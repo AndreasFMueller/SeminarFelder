@@ -2,9 +2,11 @@
 % 1-Formen
 %
 \section{1-Formen}
+\kopfrechts{1-Formen}%
 Was ist es eigentlich, was man integrieren will?
 Zunächst gibt der riemannsche Integralbegriff aus dem elementaren
 Analysisunterricht den Eindruck, dass es eine Funktion ist.
+\index{Integral}%
 Es können aber nicht allein die Funktionswerte sein, die das Integral
 bestimmen.
 Vielmehr kommt es auch darauf an, wie ``schnell'' der Definitionsbereich
@@ -21,6 +23,7 @@ Dies soll in diesem Abschnitt geklärt werden.
 % Riemann-Integral
 %
 \subsection{Riemann-Integral}
+\index{Riemann-Integral}%
 Im elementaren Analysis-Unterricht lernt man, dass das Riemann-Integral
 \[
 I
@@ -80,6 +83,7 @@ klein macht, wenn man $h$ gegen $0$ gehen lässt.
 % Substitution
 %
 \subsection{Substitution}
+\index{Substitution}%
 Der Integrand $f(x)$ im Riemann-Integral ist offenbar eine von
 der Parametrisierung unabhängige Grösse.
 Wechselt man die Koordinaten mit Hilfe einer Koordinatentransformation
@@ -87,6 +91,7 @@ $x(y)$, dann bleiben die Werte $f(x(y))$ an entsprechenden Stellen
 des Definitionsbereiches die gleichen.
 Es ändert sich aber das durch den Faktor $dx$ im Integral symbolisierte
 Gewicht, mit dem jeder Summand in der Riemann-Summe
+\index{Riemann-Summe}%
 \eqref{buch:kurvenintegral:1-form:eqn:riemann-summe}
 gewichtet wird.
 Die Koordinatentransformation $x(y)$ macht aus einem Schritt $\Delta y$
@@ -106,7 +111,7 @@ Integral
 \label{buch:kurvenintegral:1-form:eqn:substitution}
 \end{equation}
 Dies ist die bekannt Formel für die Substitutionsformel für das Integral.
-
+\index{Substitutionsformel}%
 
 %
 % Integral über ein eindimensionales Definitionsgebiet
@@ -229,6 +234,7 @@ kleiner werden.
 Die im vorangegangenen Abschnitt heuristisch hergeleitete
 Transformationseigenschaft ist nicht so überraschend, man kann sie
 auch in der linearen Algebra bei Linearformen finden.
+\index{Linearform}%
 In diesem Abschnitt soll die Koordinatentransformationsregel für
 Linearformen formuliert werden.
 
@@ -410,9 +416,9 @@ Während Vektorkomponenten obere Indizes verwenden, haben die
 Koeffizienten einer Linearform untere Indizes.
 
 \begin{definition}[kovariant und kontravariant]
-Die Komponenten eines Vektors heissen {\em kontravariant}, sie haben
+Die Komponenten eines Vektors heissen \emph{kontravariant}, sie haben
 \index{kontravariant}%
-einen hochgestellten Index, der ebenfalls {\em kontravariant} genannt
+einen hochgestellten Index, der ebenfalls \emph{kontravariant} genannt
 wird.
 Die Koeffizienten einer Linearform von Vektoren heissen dargegen
 {\em kovariant}, sie tragen einen unteren Index, der entsprechend
@@ -518,7 +524,7 @@ Die Krümmung berechnet also auf lineare Weise aus drei Inputvektoren
 einen Outputvektor.
 
 \begin{definition}[Tensor]
-\index{Tensor}
+\index{Tensor}%
 Ein {\em Tensor $r$-ter Stufe} ist eine multilineare Abbildung, die
 $r$ Vektoren oder Linearformen auf Skalare abbildet.
 Seine Komponenten sind durch eine Grösse
@@ -547,11 +553,12 @@ Beim metrischen Tensor sind die beiden Indizes wegen der Symmetrie
 vertauschbar.
 Man beachte aber, dass die Platzierung der Indizes im Allgemeinen nicht
 beliebig ist.
-Zum Beispiel wird der Riemannsche Krümmungstensor oft in der Form
+Zum Beispiel wird der riemannsche Krümmungstensor oft in der Form
 \(
 R^i\mathstrut_{klr}
 \)
-als Tensor vierter Stufe vom Typ $(3,0)$ geschrieben.
+\index{riemannscher Krummungstensor@riemannscher Krümmungstensor}%
+als Tensor vierter Stufe vom Typ $(3,1)$ geschrieben.
 Er ist antisymmetrisch in den letzten beiden Indizes, es gilt also
 \(
 R^i\mathstrut_{klr}
@@ -572,7 +579,9 @@ Der Tensor $a^i\mathstrut_k$ zweiter Stufe vom Typ $(1,1)$
 kann als eine Abbildungsmatrix betrachtet werden,
 die einen Vektor auf einen anderen Vektoren abbildet.
 
-Da die einsteinsche Summationskonvention nur über verschieden platzierte
+Da die einsteinsche Summationskonvention
+(Definition~\ref{buch:koordinaten:tangentialvektoren:def:einsteinschesummenkonvention})
+nur über verschieden platzierte
 Indizes summiert, wird sichergestellt, dass Linearformen nur auf
 Vektorkomponenten angewendet werden können.
 Da die Transformationsmatrix einen oberen und einen unteren Index hat,
@@ -624,6 +633,8 @@ Erweiterung: jeder Index kann als Summationsindex verwendet werden.
 
 In der Matrizenrechnung wird kein Unterschied zwischen kovarianten
 und kontravarianten Indizes gemacht.
+\index{Matrizenrechnung}%
+\index{Abbildungsmatrix}%
 Es ist durchaus üblich, die Koeffizienten $g_{ik}$ des metrischen
 Tensors als Einträge einer Matrix zu betrachten.
 Sie wird die {\em Gram-Matrix} genannt und kann dazu verwendet
@@ -662,6 +673,7 @@ eines eindimensionalen Definitionsgebietes muss also eine
 Linearform sind.
 Tatsächlich wird das Arbeitsintegral in der Physik definiert als
 das Wegintegral der Kraft entlang eines Weges definiert.
+\index{Arbeitsintegral}%
 Darin wird die Kraft skalar mit dem Tangentialvektor multipliziert
 und integriert.
 Wir haben das Skalarprodukt bereits durch den metrischen Tensor
@@ -707,6 +719,7 @@ wobei im zweiten Schritt verwendet wurde, dass der Integrand die
 Ableitung der Funktion $x^1(y^1)$ nach der Integrationsvariable ist.
 Die Funktion $x^1(y^1)$ ist daher die
 Stammfunktion des Integranden im zweiten Integral ist.
+\index{Stammfunktion}%
 Wie erwartet, stimmen die Integrale überein.
 
 Die Symbole $dx^1$ und $dy^1$ können daher genauso als Basislinearformen
