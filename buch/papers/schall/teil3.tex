@@ -14,4 +14,134 @@ In diesem Abschnitt wenden wir die in den vorherigen Abschnitten
 beschriebenen Konzepte an, um die Schallausbreitung bei einem
 Flugzeug im Überschall zu beschreiben.
 Dabei betrachten wir eine ideale Situation, in der das Flugzeug als
-Punktquelle modelliert wird,
+Punktquelle modelliert wird.
+
+Wir betrachten ein Flugzeug, das sich mit konstanter Geschwindigkeit
+$V>0$ entlang einer horizontalen Bahn auf der Höhe $z=z_a$ über
+dem Grund $z=0$ bewegt.
+Das Medium sei ein ideales Gas mit örtlich variabler Temperatur
+$T(z)$ aber ohne Wind, sodass
+\begin{equation}
+    c(z) \;=\; \sqrt{\kappa R\,T(z)} ,
+    \label{eq:c-of-z}
+\end{equation}
+gilt. Hier ist $c(z)$ die lokale Schallgeschwindigkeit.
+Der \emph{lokale} Machzahlverlauf ist damit
+\begin{equation}
+    M(z) \;=\; \frac{V}{c(z)} .
+\end{equation}
+
+\subsection{Lokaler Machwinkel und Emissionsrichtung}
+In homogenem Medium bildet sich der Machkegel mit Halbwinkel
+\begin{equation}
+    \mu \;=\; \arcsin\!\Big(\frac{1}{M}\Big).
+\end{equation}
+In einem geschichteten Medium setzt man diesen \emph{lokal} an der
+Emissionshöhe $z_a$ an:
+\begin{equation}
+    \mu_a \;:=\; \arcsin\!\Big(\frac{1}{M(z_a)}\Big)
+    \;=\; \arcsin\!\Big(\frac{c(z_a)}{V}\Big) .
+    \label{eq:local-mach-angle}
+\end{equation}
+Wir beschreiben die weitere Ausbreitung der Machränder, auch bekannt als
+Stossstrahlen, im vertikalen Schnitt $(x,z)$ durch akustische Strahlen.
+Dies nennt man die \emph{geometrische Akustik}.
+
+\subsection{Strahlen in geschichtetem Medium}
+Für isotrope, ruhende Medien mit $c=c(z)$ liefert die geometrische
+Akustik Eikonaltheorie, eine Snell-ähnliche Invariante:
+\begin{equation}
+    \frac{\sin\theta(z)}{c(z)} \;=\; \text{const} \;=:\; K ,
+    \label{eq:snell-acoustics}
+\end{equation}
+wobei $\theta(z)$ der Winkel des Strahls relativ zur Horizontalen ist.
+Wählt man als Anfangsbedingung den lokalen Machwinkel an $z=z_a$,
+also $\theta(z_a)=\mu_a$, dann folgt aus \eqref{eq:snell-acoustics}
+\[
+    K \;=\; \frac{\sin\mu_a}{c(z_a)} \;=\; \frac{1/M(z_a)}{c(z_a)} \;=\; \frac{1}{V}.
+\]
+Damit ist \emph{für Mach-Rays} die Invariante schlicht
+\begin{equation}
+    K \;=\; \frac{1}{V}.
+    \label{eq:K-equals-1-over-V}
+\end{equation}
+
+Mit $\tan\theta = \dfrac{dz}{dx}$, $\sin\theta = K\,c(z)$ und
+$\cos\theta = \sqrt{1 - \sin^2\theta}$,
+erhält man nach der Trigonometrie
+\begin{equation}
+    \frac{dz}{dx} \;=\; \frac{\sin\theta(z)}{\cos\theta(z)} \;=\;
+    \frac{K\,c(z)}{\sqrt{1 - K^2 c^2(z)}}.
+\end{equation}
+Einsetzen von \eqref{eq:K-equals-1-over-V} liefert die
+\emph{Bahn-Differentialgleichung} der Mach-Ränder:
+\begin{equation}
+    \quad
+    \frac{dz}{dx} \;=\; \frac{c(z)/V}{\sqrt{1 - \big(c(z)/V\big)^2}}
+    \;=\; \frac{1}{\sqrt{\frac{V^2}{c^2(z)} - 1}}
+    \quad
+    \label{eq:ray-ode}
+\end{equation}
+oder äquivalent
+\begin{equation}
+    \quad
+    \frac{dx}{dz} \;=\; \sqrt{\frac{V^2}{c^2(z)} - 1}
+    \quad
+    \label{eq:ray-ode-inverse}
+\end{equation}
+mit Anfangsbedingung $x(z_a)=0$ senkrecht unter dem Flugzeug.
+Die Lösungen von \eqref{eq:ray-ode} geben die gekrümmten Stossränder
+im $(x,z)$-Schnitt.
+Die \emph{Bedingung für reale Strahlen} ist $V>c(z)$ entlang der Bahn;
+wo $V=c(z)$ wird, existiert ein \emph{Wendepunkt}/
+\emph{kritische Höhe}, die Evaneszenz.
+
+\subsection{Bodenaufprall (Sonic-Boom-Carpet)}
+Die horizontale Entfernung vom Lotpunkt des Flugzeugs bis zum
+Aufprallpunkt eines Strahls am Boden ($z=0$) ergibt sich durch
+Integration von \eqref{eq:ray-ode-inverse}:
+\begin{equation}
+    \quad
+    x_g \;=\; \int_{0}^{z_a} \sqrt{\frac{V^2}{c^2(\zeta)} - 1}\;\, d\zeta,
+    \qquad \text{sofern } V>c(\zeta) \text{ für } \zeta\in[0,z_a].
+    \quad
+    \label{eq:ground-range}
+\end{equation}
+Ist $V\le c(\zeta)$ in einem Teilintervall, wird der Mach-Rand dort
+nach oben abgelenkt, welches zu Schattenzonen am Boden führt.
+
+\subsection{Zwei Atmosphären-Szenarien}
+Wir modellieren $T(z)$ stückweise linear und mit trockener
+Standardatmosphäre ohne Wind, woraus $c(z)$ via \eqref{eq:c-of-z} folgt.
+
+\paragraph{(A) Normale Lage (Temperatur nimmt mit Höhe ab).}
+Es gelte
+\begin{equation}
+    T(z) \;=\; T_0 - Lz \quad (L>0),
+    \qquad
+    c(z) \;=\; \sqrt{\kappa R\,(T_0 - Lz)} .
+    \label{eq:normal-lapse}
+\end{equation}
+Da $c$ mit $z$ \emph{abnimmt}, sind höhere Schichten akustisch
+``langsamer''; Strahlen werden zum \emph{langsameren} Bereich hin
+gebogen, d.\,h.\ \emph{nach oben}.
+Damit nimmt $x_g$ in \eqref{eq:ground-range} ab, was sich in einem anheben
+der Strahlen wiederspiegelt, und es können \emph{Bodenschatten}
+entstehen, wenn in Bodennähe $V\lesssim c(0)$ ist.
+
+\paragraph{(B) Inversionslage (Temperatur nimmt mit Höhe zu, z.\,B.
+nächtliche Bodeninversion über einem kalten Boden).}
+Es gelte
+\begin{equation}
+    T(z) \;=\; T_0 + L_{I} z \quad (L_{I}>0),
+    \qquad
+    c(z) \;=\; \sqrt{\kappa R\,(T_0 + L_{I} z)} .
+    \label{eq:inversion}
+\end{equation}
+Nun \emph{nimmt $c$ mit $z$ zu}; höhere Schichten sind akustisch ``schneller''.
+Strahlen biegen daher \emph{nach unten} und werden zum Boden zurückgeführt.
+Dadurch wächst $x_g$ in \eqref{eq:ground-range} und der Sonic-Boom
+kann \emph{weiter} getragen werden, was zu weniger oder bis zu keine
+Schattierung am Boden führt.
+
+% \todo{Grafiken: Strahlen in beiden Szenarien}
