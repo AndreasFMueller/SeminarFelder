@@ -10,18 +10,24 @@
 \label{schall:section:teil2}}
 \kopfrechts{Teil 2}
 
-In diesem Abschnitt untersuchen wir eine ebene, zeit\-harmonische Schallwelle, die aus Medium~1 auf eine planare Grenzfläche zu Medium~2 trifft.
+In diesem Abschnitt untersuchen wir eine ebene, zeit\-harmonische Schallwelle,
+die aus Medium~1 auf eine planare Grenzfläche zu Medium~2 trifft.
 Ein Teil der Welle wird reflektiert, ein Teil wird transmittiert.
-Im einfachsten, sprich im verlustlosen Fall, genügen die Druck- und Geschwindigkeitsfelder in beiden Medien der linearen Akustik; bei realen Medien in \emph{Medium~2} modellieren wir Absorption durch einen komplexen Wellenzahl- oder Impedanzterm.
+Im einfachsten, sprich im verlustlosen Fall, genügen die Druck- und
+Geschwindigkeitsfelder in beiden Medien der linearen Akustik;
+bei realen Medien in \emph{Medium~2} modellieren wir Absorption durch
+einen komplexen Wellenzahl- oder Impedanzterm.
+% \todo{Grafik: Grenzfläche mit einfallender, reflektierter und transmittierter Welle}
 
 \subsection{Randbedingungen und Definitionen (Normal\-einfall)}
 Wir betrachten eine ebene Welle bei Normal\-einfall.
 Die Druckanteile lauten
 \[
-    p_i(x,t)=\Re\!\left\{P_i\,e^{\mathrm{i}(\omega t-k_1 x)}\right\},\quad
-    p_r(x,t)=\Re\!\left\{P_r\,e^{\mathrm{i}(\omega t+k_1 x)}\right\},\quad
-    p_t(x,t)=\Re\!\left\{P_t\,e^{\mathrm{i}(\omega t-k_2 x)}\right\}.
+    p_i(x,t)=\Re( P_i\,e^{\mathrm{i}(\omega t-k_1 x)}),\quad
+    p_r(x,t)=\Re( P_r\,e^{\mathrm{i}(\omega t+k_1 x)}),\quad
+    p_t(x,t)=\Re( P_t\,e^{\mathrm{i}(\omega t-k_2 x)}),
 \]
+wobei die Indexschreibweise $i,r,t$ für \emph{incident}, \emph{reflected} und \emph{transmitted} steht.
 Die charakteristische akustische Impedanz sei für Fluide $Z_n=\rho_n c_n$, $n\in\{1,2\}$.
 An der Grenzfläche $x=0$ fordern wir Kontinuität von Druck und Normalgeschwindigkeit:
 \[
@@ -42,10 +48,11 @@ Für Intensitäten, sprich für den Leistungsfluss, ergibt sich bei reellen Impe
     R_I+T_I=1.
     \label{eq:RI_TI}
 \end{equation}
-
+% \todo{Umfomuleren}
 
 \subsection{Absorption im zweiten Medium}
-Reale Medien weisen Dämpfung auf, sprich es kommt zu einer verlustbehaftete Transmission.
+Reale Medien weisen Dämpfung auf, sprich es kommt zu einer
+verlustbehafteten Transmission.
 Dies lässt sich mit einem \emph{komplexen Wellenzahl}
 \(
     k_2 = \beta_2 - \mathrm{i}\alpha
@@ -60,10 +67,10 @@ woraus für die \emph{Intensität} die Exponentialabnahme
     I_t(x)=I_i\,T_I\,e^{-2\alpha x}
     \label{eq:intensity_decay}
 \end{equation}
-bei Ebenenwellen folgt.
+bei ebenen Wellen folgt.
 Für viele Medien wird die frequenzabhängige Dämpfung durch ein Gesetz
-$\alpha(\omega)=\alpha_0\,\omega^\eta$ beschrieben (Materialklassen: $\eta\in[0,2]$).
-\cite{schall:allenAbsorption}
+$\alpha(\omega)=\alpha_0\,\omega^\eta$ beschrieben
+(Materialklassen: $\eta\in[0,2]$) \cite{schall:allenAbsorption}.
 
 Damit definiert man die \emph{absorptionsbezogene Energiebilanz} über einer Strecke $L$ in Medium~2:
 \begin{equation}
@@ -73,29 +80,44 @@ Damit definiert man die \emph{absorptionsbezogene Energiebilanz} über einer Str
     \label{eq:absorption_balance}
 \end{equation}
 wobei $A(L)$ der bis zur Tiefe $L$ absorbierte Intensitätsanteil ist.
-Im Spezialfall einer \emph{dünnen, rein absorbierenden Schicht}, sprich ein Dämpfungs\-modell ohne Mehrfachreflexionen, geht $A \approx 1-R_I-T_I$ für $L\to0$ über.
-Experimentell wird die \emph{Absorptionskoeffizient} $\alpha_\mathrm{surf}$ häufig über Impedanz\- bzw.\ Stehwellen\-rohre bestimmt; für Normal\-einfall gilt (aus dem gemessenen SWR)
+Im Spezialfall einer \emph{dünnen, rein absorbierenden Schicht},
+sprich ein Dämpfungs\-modell ohne Mehrfachreflexionen, geht
+$A \approx 1-R_I-T_I$ für $L\to0$ über.
+Experimentell wird die \emph{Absorptionskoeffizient}
+$\alpha_\mathrm{surf}$ häufig über Impedanz\- bzw.\ Stehwellen\-rohre
+bestimmt; für Normal\-einfall gilt (aus dem gemessenen Stehwellenverhältnis SWR)
 \begin{equation}
-    \alpha_\mathrm{surf} \;=\; 1 - R_I \;=\; 1 - \left(\frac{\mathrm{SWR}-1}{\mathrm{SWR}+1}\right)^2.
+    \alpha_\mathrm{surf} \;=\; 1 - R_I \;=\; 1 - \left(\frac{\mathrm{SWR}-1}{\mathrm{SWR}+1}\right)^2,
     \label{eq:alpha_SWR}
 \end{equation}
+wobei
+\[
+    \mathrm{SWR} = \frac{p_\mathrm{max}}{p_\mathrm{min}} = \frac{1+|R_p|}{1-|R_p|}
+\]
+das Stehwellenverhältnis ist.
 
 \paragraph{Bemerkung zu komplexen Impedanzen.}
-Sind Materialverluste in $Z_2$ als $Z_2(\omega)\in\mathbb{C}$ erfasst, bleiben \eqref{eq:RpTp} formal gültig; für Intensitäten ist dann
+Sind Materialverluste in $Z_2$ als $Z_2(\omega)\in\mathbb{C}$ erfasst,
+bleiben \eqref{eq:RpTp} formal gültig; für Intensitäten ist dann
 \[
     R_I=\left|R_p\right|^2,\qquad
     T_I=\frac{4\,\Re\{Z_1\}\,\Re\{Z_2\}}{|Z_1+Z_2|^2},
 \]
 wobei $Z_1$ für Fluide typischerweise reell ist.
-In vielen Anwendungen ist die Modellierung über $k_2=\beta_2-\mathrm{i}\alpha$ mittels \eqref{eq:intensity_decay} praktischer.%
-\cite{schall:kinsler,schall:allenRT}
+In vielen Anwendungen ist die Modellierung über $k_2=\beta_2-\mathrm{i}\alpha$
+mittels \eqref{eq:intensity_decay} praktischer \cite{schall:kinsler,schall:allenRT}.
 
 \subsection{Schräg\-einfall}
 Für Schräg\-einfall gilt die akustische Snell'sche Brechung
 \(
     \sin\theta_1/c_1=\sin\theta_2/c_2
 \),
-und die \emph{normale} Impedanzkomponente skaliert zu $Z_{n} = Z/\cos\theta$ (Fluid--Fluid).
-Entsprechend ändern sich $R_p$, $T_p$ und damit $R_I$, $T_I$; jenseits des kritischen Winkels tritt ein evaneszentes Feld in Medium~2 auf,
-dessen Amplitude exponentiell abnimmt.
-\cite{schall:wikiSnell}
+und die \emph{normale} Impedanzkomponente skaliert zu
+$Z_{n} = Z/\cos\theta$ (Fluid--Fluid).
+Entsprechend ändern sich $R_p$, $T_p$ und damit $R_I$, $T_I$;
+jenseits des kritischen Winkels tritt ein evaneszentes Feld in
+Medium~2 auf, dessen Amplitude exponentiell abnimmt.
+Ein evaneszentes Feld ist eine scheinbare, sich nicht ausbreitende
+im zweiten Medium, die nicht als laufende Welle in die Tiefe propagiert,
+sondern exponentiell zur Grenzfläche hin abklingt \cite{schall:wikiSnell}.
+% \todo{Herleitung}

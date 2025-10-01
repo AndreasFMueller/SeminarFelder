@@ -23,42 +23,115 @@ Es seien
 \[
     p(x,t)=p_0+p'(x,t),\qquad \rho(x,t)=\rho_0+\rho'(x,t),\qquad v(x,t)=v'(x,t),
 \]
-wobei $|p'|\ll p_0$, $|\rho'|\ll \rho_0$ und $|v'|\ll 1$ (lineare Akustik).
+wobei $|p'|\ll p_0$, $|\rho'|\ll \rho_0$ und $|v'|\ll 1$ (lineare Akustik),
+und die Terme von erster Ordnung sind, sprich
+$\rho',p',v' = \mathcal{O}(\varepsilon) \text{und} 0<\varepsilon\ll 1$.
 Wir nehmen ferner reibungsfreie, quellenfreie Strömung an und
-vernachlässigen äußere Kräfte.
+vernachlässigen äussere Kräfte.
+
 
 \subsection{Kontinuität und Impulsbilanz (linearisiert)}
-Die Massenbilanz (Kontinuitätsgleichung) in 1D lautet
+In 1D lauten die Erhaltung der Masse und der Impulsbilanz (ohne Körperkräfte)
 \begin{equation}
-    \frac{\partial \rho}{\partial t}+\frac{\partial(\rho v)}{\partial x}=0.
+\frac{\partial \rho}{\partial t}+\frac{\partial(\rho v)}{\partial x}=0,
+\qquad
+\rho\!\left(\frac{\partial v}{\partial t}+v\frac{\partial v}{\partial x}\right)=-\frac{\partial p}{\partial x}.
+\label{eq:exact-cont-mom}
 \end{equation}
-Linearisiert um $(\rho_0, v=0)$ ergibt sich
+
+\subsubsection*{Kontinuität}
+Setzen wir die Grundannahmen in die \emph{exakte} Kontinuität ein und
+wende die Produktregel an:
+\[
+    \frac{\partial(\rho_0+\rho')}{\partial t}
+    +\frac{\partial\big[(\rho_0+\rho')\,v'\big]}{\partial x}=0.
+\]
+Da \(\rho_0\) konstant ist, \(\partial_t\rho_0=0\) und \(\partial_x\rho_0=0\).
+Es folgt
+\[
+    \underbrace{\frac{\partial \rho'}{\partial t}}_{\mathcal{O}(\varepsilon)}
+    +\underbrace{\rho_0\,\frac{\partial v'}{\partial x}}_{\mathcal{O}(\varepsilon)}
+    +\underbrace{v'\,\frac{\partial \rho'}{\partial x}}_{\mathcal{O}(\varepsilon^2)}
+    +\underbrace{\rho'\,\frac{\partial v'}{\partial x}}_{\mathcal{O}(\varepsilon^2)}=0.
+\]
+Weglassen der Fluktuationen, sprich weglassen der \(\mathcal{O}(\varepsilon^2)\)-Terme,
+liefert die \emph{linearisierten} Kontinuitätsgleichung
 \begin{equation}
     \frac{\partial \rho'}{\partial t}+\rho_0\,\frac{\partial v'}{\partial x}=0.
     \label{eq:lin-cont}
 \end{equation}
-Die Impulsbilanz (Euler-Gleichung) in 1D ist
+Dies ist die Taylor-Entwicklung erster Ordnung um den Grundzustand.
+
+\subsubsection*{Impulsbilanz}
+Analog für die Impulsbilanz:
+\[
+    (\rho_0+\rho')\!\left(\frac{\partial v'}{\partial t}+v'\frac{\partial v'}{\partial x}\right)
+    =-\frac{\partial (p_0+p')}{\partial x}.
+\]
+Mit \(\partial_x p_0=0\) und Ordnungszählung erhält man
+\[
+    \underbrace{\rho_0\,\frac{\partial v'}{\partial t}}_{\mathcal{O}(\varepsilon)}
+    +\underbrace{\rho'\,\frac{\partial v'}{\partial t}}_{\mathcal{O}(\varepsilon^2)}
+    +\underbrace{(\rho_0+\rho')\,v'\frac{\partial v'}{\partial x}}_{\mathcal{O}(\varepsilon^2)}
+    =-\,\underbrace{\frac{\partial p'}{\partial x}}_{\mathcal{O}(\varepsilon)}.
+\]
+Nach Verwerfen der \(\mathcal{O}(\varepsilon^2)\)-Terme bleibt
 \begin{equation}
-    \rho\left(\frac{\partial v}{\partial t}+
-    v\frac{\partial v}{\partial x}\right)=
-    -\frac{\partial p}{\partial x}.
-\end{equation}
-Linearisiert (und ohne $v\partial_x v$) folgt
-\begin{equation}
-    \rho_0\,\frac{\partial v'}{\partial t}=
-    -\frac{\partial p'}{\partial x}.
+    \rho_0\,\frac{\partial v'}{\partial t}=-\frac{\partial p'}{\partial x}.
     \label{eq:lin-mom}
 \end{equation}
 
-\subsection{Thermodynamische Schließung}
-Zur Schließung benötigt man einen Zusammenhang zwischen $p'$ und $\rho'$.
+\subsection{Thermodynamische Schliessung}
+
+Die Gleichungen \eqref{eq:lin-cont} und \eqref{eq:lin-mom}
+liefern lediglich eine gekoppelte PDE-Relation zwischen $p'$ und $\rho'$:
+\begin{equation}
+    \frac{\partial^2 \rho'}{\partial t^2} - \frac{\partial^2 p'}{\partial x^2} = 0.
+    \label{eq:lin-cont-mom}
+\end{equation}
+Dieses System ist unterbestimmt, da die Kontinuität reine Kinematik, und
+die Impulsbilanz die Trägheit beschreibt. Beide enthalten keine
+Materialeigenschaften darüber, wie Druck auf Dichteänderung reagiert.
+Somit kann \eqref{eq:lin-cont-mom} keine punktweise lokale Zustandsgleichung beschreiben.
+Um das System zu schliessen, benötigen wir einen weiteren Zusammenhang,
+welcher aus der Thermodynamik folgt:
+
+\begin{enumerate}
+\item Zustandsgleichung in Ortsnähe: $p=p(\rho,s)$.
+      Für kleine Störungen um $(\rho_0,s_0)$ gilt die lineare Totaldifferentiale
+      \[
+        p' \;=\; \Big(\tfrac{\partial p}{\partial \rho}\Big)_{s}\,\rho'
+             \;+\; \Big(\tfrac{\partial p}{\partial s}\Big)_{\rho}\,s'.
+      \]
+\item Akustische Störungen sind schnell und nahezu ohne Wärmeaustausch
+      und Reibung: Der Prozess ist \emph{isentrop}.
+      Die Entropieänderung entlang einer Teilchenbahn verschwindet:
+      \[
+        \displaystyle \frac{Ds}{Dt}=0
+        \Rightarrow s'=0.
+      \]
+      Damit fällt der zweite Term weg:
+      \[
+        p' \;=\; \Big(\tfrac{\partial p}{\partial \rho}\Big)_{s}\,\rho'.
+      \]
+\item Definition der Schallgeschwindigkeit:
+      \[
+        c^2 \;:=\; \Big(\tfrac{\partial p}{\partial \rho}\Big)_{s}.
+      \]
+      Somit folgt die Schließung
+      \[
+        p' \;=\; c^2\,\rho'.
+      \]
+\end{enumerate}
+
+Zur Schliessung benötigt man einen Zusammenhang zwischen $p'$ und $\rho'$.
 Für schnelle, kleine Schalldehnungen ist der Prozess näherungsweise
 \emph{isentrop} (Entropie $s=\mathrm{const.}$), daher
 \begin{equation}
     p'= \left(\frac{\partial p}{\partial \rho}\right)_{s}\,\rho' \;\;=: \;\; c^2\,\rho'.
     \label{eq:closure}
 \end{equation}
-Die Größe $c$ ist \emph{per Definition} die Schallgeschwindigkeit des Mediums.
+Die Grösse $c$ ist \emph{per Definition} die Schallgeschwindigkeit des Mediums.
 
 \subsection{Wellengleichung für Druck- und Dichteschwankungen}
 Wenden wir $\partial_t$ auf \eqref{eq:lin-cont} an und $\partial_x$ auf
@@ -75,45 +148,78 @@ Damit genügen sowohl Druck- als auch Dichteschwankungen der klassischen
     \frac{\partial^2 \phi}{\partial x^2}, \qquad \phi\in\{p',\rho'\}\; .
 \end{equation}
 
-\begin{comment}
-\subsection{Alternative Form: Wellengleichung für die Teilchenverschiebung}
-Führt man die \emph{Teilchenverschiebung} $\xi(x,t)$ ein mit $v'=\partial_t \xi$, so liefern \eqref{eq:lin-cont} und \eqref{eq:closure} nach Eliminierung von $p'$ und $\rho'$ ebenfalls
-\begin{equation}
-    \frac{\partial^2 \xi}{\partial t^2} = c^2\,\frac{\partial^2 \xi}{\partial x^2}.
-\end{equation}
-Diese Form ist besonders in der Elastodynamik von Festkörpern nützlich.
-\end{comment}
 
 \subsection{Schallgeschwindigkeit in verschiedenen Medien}
 
 \subsubsection*{Gase}
-Für ein ideales Gas mit Zustandsgleichung $p=\rho R T$ und
-adiabatischem (isentropem) Prozess gilt
-$p\rho^{-\kappa}=\mathrm{const.}$, woraus aus \eqref{eq:closure} folgt
+Für ein ideales Gas gilt die Zustandsgleichung
+\(
+    p=\rho R T
+\)
+und wir betrachten isentrope (adiabate, reversible) Kleinstörungen, also \(s=\mathrm{const}\).
+Die Schallgeschwindigkeit ist definiert durch
+\[
+    c^2 \;=\; \left(\frac{\partial p}{\partial \rho}\right)_{s}.
+\]
+Für ideale Gase gilt bei Isentropie die Poisson-Relation
+\(
+    p\,\rho^{-\kappa}=\mathrm{const},
+\)
+wobei \(\kappa=c_p/c_v\) der Adiabatenexponent ist.
+Logarithmisch differenziert:
+\[
+    d(\ln p) - \kappa\, d(\ln \rho) \;=\; 0
+    \;\;\Longrightarrow\;\;
+    \frac{dp}{p} \;=\; \kappa\,\frac{d\rho}{\rho}.
+\]
+Damit (bei \(s=\mathrm{const}\)):
+\[
+    \left(\frac{\partial p}{\partial \rho}\right)_{s}
+    \;=\; \kappa\,\frac{p}{\rho}
+\quad\Longrightarrow\quad
+    \,c^2 \;=\; \kappa\,\frac{p}{\rho}.
+\]
+Setzt man \(p=\rho R T\) ein, folgt die übliche Form
+\[
+    c_g^2 \;=\; \kappa R T
+\]
+und somit schlussendlich
 \begin{equation}
-    \left(\frac{\partial p}{\partial \rho}\right)_{s}=\kappa\,\frac{p}{\rho}
-    \quad\Longrightarrow\quad
-    \,c_g=\sqrt{\kappa\,\frac{p}{\rho}}\,.
+    \,c_g=\sqrt{\kappa R T}\,,
 \end{equation}
-Mit $p=\rho R T$ folgt die gebräuchliche Darstellung
-\begin{equation}
-    \,c_g=\sqrt{\kappa R T}\,.
-\end{equation}
-Dies reproduziert die in der Einleitung verwendete Formel.
+was die in der Einleitung verwendete Formel \eqref{eq:c-ideal-gas} reproduziert.
 
 \subsubsection*{Flüssigkeiten}
-Für (nahezu) inkompressible Flüssigkeiten ist die isentrope Kompressibilität
-durch das \emph{Kompressionsmodul} (Bulk-Modul) $K$ gegeben:
+
+Das (adiabatische) Kompressionsmodul ist definiert als
 \begin{equation}
-    K := \rho\left(\frac{\partial p}{\partial \rho}\right)_{s}.
+  K \;:=\; -\,V\left(\frac{\partial p}{\partial V}\right)_{s},
+  \label{eq:def-bulk}
 \end{equation}
-Damit folgt aus \eqref{eq:closure}
+wobei $V$ das Volumen der betrachteten Masse (oder das spezifische Volumen $\upsilon=1/\rho$)
+ist \cite{schall:will}.
+Mit $\rho = m/V$ bzw.\ $V=1/\rho$ gilt
+\[
+    \frac{\partial p}{\partial V}\bigg|_s
+    = \frac{\partial p}{\partial \rho}\bigg|_s \cdot \frac{\partial \rho}{\partial V}
+    = \left(\frac{\partial p}{\partial \rho}\right)_{s}\cdot(-\rho^{2}).
+\]
+Eingesetzt in \eqref{eq:def-bulk} ergibt
+\[
+    K \;=\; -V \cdot \big[-\rho^{2}\big]\left(\frac{\partial p}{\partial \rho}\right)_{s}
+    \;=\; (V\rho^{2})\left(\frac{\partial p}{\partial \rho}\right)_{s}.
+\]
+Da $V=1/\rho$, folgt unmittelbar
 \begin{equation}
-    \left(\frac{\partial p}{\partial \rho}\right)_{s}=\frac{K}{\rho}
-    \quad\Longrightarrow\quad
-    \,c_l=\sqrt{\frac{K}{\rho}}\,,
+    K \;=\; \rho\left(\frac{\partial p}{\partial \rho}\right)_{s}.
 \end{equation}
-wie in der Einleitung angegeben.
+Mit der akustischen Isentropie-Schließung $c^2=\big(\frac{\partial p}{\partial \rho}\big)_s$
+erhält man sodann
+\begin{equation}
+    c_l^2 \;=\; \frac{K}{\rho} \quad \Leftrightarrow \quad c_l=\sqrt{\frac{K}{\rho}}.
+\end{equation}
+Damit ist die in \eqref{eq:c-liquid} verwendete Formel aus den Definitionen von $K$
+und der isentropen Schallgeschwindigkeit hergeleitet.
 
 \subsubsection*{Festkörper}
 Die Herleitung der Schallgeschwindigkeit in Festkörpern ist ähnlich wie diese
@@ -121,7 +227,7 @@ in Flüssigkeiten. Durch die Gitterstruktur eines Festkörpers entstehen
 zusätzliche Scherkräfte, die eine weitere Wellenart, sprich die
 Longitudinalwelle, ermöglichen. Daher wird für ausführliche Herleitung
 auf eines der Fachbücher verwiesen \cite{schall:landaulifschitz,schall:gurtin}.
-Zusammengefasst kann aus dem Hooke'schen Gesetz und der Impulsbilanz
+Zusammengefasst kann aus dem hookeschen Gesetz und der Impulsbilanz
 die Navier-Cauchy-Gleichung hergeleitet werden, was in~\cite{openfoam:navierstokes}
 hergeleitet wird.
 Durch Anwendung von Divergenz und Rotation auf die Navier-Cauchy-Gleichung
@@ -246,7 +352,7 @@ Typisch ist $c_L>c_T$, und beide liegen deutlich über Gas- und Flüssigkeitswer
 \end{comment}
 
 \subsection{Reduktion auf die in der Einleitung verwendeten Vereinfachungen}
-Unter den in \S\ref{schall:section:teil0} genannten Annahmen, sprich 1D,
+Unter den in Abschnitt \ref{schall:section:teil0} genannten Annahmen, sprich 1D,
 kleine Störungen, keine Reflexionen/Hindernisse sowie konstante
 Materialparameter, reduziert sich die Dynamik auf die lineare
 Wellengleichung

@@ -15,7 +15,7 @@ Im einfachsten physikalischen Modell vernachlässigen wir Effekte wie
 Reflexionen, Hindernisse, starke Druck- oder Materialänderungen und
 betrachten die Ausbreitung in einer Dimension entlang einer Achse
 $x \in \mathbb{R}$.
-Die charakteristische Größe ist die Schallgeschwindigkeit $c$, welche
+Die charakteristische Grösse ist die Schallgeschwindigkeit $c$, welche
 von den Eigenschaften des Mediums abhängt.
 Grundsätzlich können sich Schallwellen in jedem Medium ausbreiten.
 Deshalb unterscheiden wir Gase, Flüssigkeiten und Festkörper.
@@ -38,6 +38,7 @@ spezifischen Gaskonstante $R = \SI{8.314e2}{\frac{J}{mol \cdot K}}$
 und der Temperatur $T$ beschreibt, erhält man die Darstellung
 \begin{equation}
     c_{g} = \sqrt{\kappa R T}.
+    \label{eq:c-ideal-gas}
 \end{equation}
 Für Luft bei Normalbedingungen, welches mit
 $T \approx 20^\circ \mathrm{C}$ und $p \approx 1\,\mathrm{bar}$
@@ -52,6 +53,7 @@ Die Schallgeschwindigkeit ist deshalb deutlich höher als in Gasen.
 Für Flüssigkeiten gilt näherungsweise
 \begin{equation}
     c_{l} = \sqrt{\frac{K}{\rho}},
+    \label{eq:c-liquid}
 \end{equation}
 wobei $K$ das Kompressionsmodul und $\rho$ die Dichte der Flüssigkeit ist.
 Bei Gasen, sowie bei Flüssigkeiten, sind nur longitudiale
@@ -71,13 +73,13 @@ Die Schallgeschwindigkeit in Festkörpern hängt von der Richtung der
 Ausbreitung ab.
 Longitudinale Wellen breiten sich in Festkörpern mit der Geschwindigkeit
 \begin{equation}
-    c_{s,long} = \sqrt{\frac{E(1-\nu)}{\rho(1+\nu)(1-2\nu)}}
+    c_{s,\text{long}} = \sqrt{\frac{E(1-\nu)}{\rho(1+\nu)(1-2\nu)}}
 \end{equation}
 aus, wobei $E$ das Elastizitätsmodul beschreibt, welches bereits in
 \ref{chapter:elastomechanik} eingeführt wurde.
 Transversale Wellen breiten sich mit der Geschwindigkeit
 \begin{equation}
-    c_{s,trans} = \sqrt{\frac{E}{2\rho(1+\nu)}} = \sqrt{\frac{G}{\rho}}
+    c_{s,\text{trans}} = \sqrt{\frac{E}{2\rho(1+\nu)}} = \sqrt{\frac{G}{\rho}}
 \end{equation}
 aus, wobei $G$ das Schubmodul des Festkörpers ist.
 Generell sind longitudinale Wellen schneller als transversale Wellen.
@@ -87,6 +89,6 @@ Für Stahl gilt die Schallgeschwindigkeit näherungsweise
 \end{equation}
 
 Damit können wir Schall im einfachsten Ansatz als Welle verstehen, die
-sich gleichmäßig mit einer vom Medium bestimmten Geschwindigkeit ausbreitet.
+sich gleichmässig mit einer vom Medium bestimmten Geschwindigkeit ausbreitet.
 Woher diese Schallgeschwindigkeit kommt und wie sie sich bei
 komplexeren Modellen ändert, wird in den folgenden Abschnitten untersucht.
