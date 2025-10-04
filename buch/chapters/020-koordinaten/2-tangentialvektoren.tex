@@ -47,8 +47,11 @@ gekrümmte Koordinatenlinien.
 Es braucht also etwas mehr Sorgfalt, die Idee der {\em Richtung}
 Koordinatenunabhängig zu definieren.
 
+%
+% Differenzierbare Kurven
+%
 \subsubsection{Differenzierbare Kurven}
-Im Folgenden gehen wir on einer Menge $Y$ mit einer $n$-dimensionalen
+Im Folgenden gehen wir von einer Menge $Y$ mit einer $n$-dimensionalen
 differenzierbaren Struktur aus.
 Statt uns auf die in der Einleitung angedeuteten gekrümmten
 Koordinatenlinien zu beschränken, möchten wir beliebige Kurven
@@ -165,11 +168,48 @@ Sinne unabhängig sind von der Wahl des Koordinatensystems, dass
 auch Umrechnungsformeln zwischen den Koordinatensystemen bereitgestellt
 sind.
 
-% XXX Ableitung der Koordinaten
+Mit einer Koordinatenabbildung $Y\to U\subset\mathbb{R}^n$ werden aus
+einer Kurve $\gamma$ die $n$ Koordinatenfunktionen
+\[
+x^i
+\colon
+X\mapsto \mathbb{R}
+:
+t\mapsto \varphi^i(\gamma(t)).
+\]
+Die Bezeichnung mit dem gleichen Symbol wie die Koordinaten ist ein
+leichter Notationsmissbrauch, der aber kaum zu Missverständnissen
+führt.
+Da $x^i(t)$ eine reelle Funktion ist, ist die Ableitung
+\[
+\dot{x}^i(t)
+=
+\frac{d}{dt}x^i(t)
+=
+\frac{d}{dt}\varphi^i(\gamma(t))
+\]
+wohldefiniert.
 
-% XXX Koordinatenwechsel und Ableitung
+Sei jetzt $\psi\colon Y\to V\subset \mathbb{R}^n$ eine weiter
+Koordinatenabbildung mit Koordinatenfunktionen $y^k(t)=\psi^k(\gamma(t))$ 
+für die Kurve $\gamma$.
+Dann ist die Koordinatenwechselabbildung
+$\psi\circ\varphi^{-1}\colon U\to V$ 
+eine Abbildung zwischen offenen Mengen von $\mathbb{R}^n$, für die
+die partiellen Ableitungen nach den einzelnen Koordinaten definiert sind,
+die wir mit $\partial y^k/\partial x^i$ bezeichneet habne.
+Nach der Kettenregel gilt für die Ableitungen der Koordinatenfunktionen
+\[
+\dot{y}^k(t)
+=
+\sum_{i=1}^n \frac{\partial y^k}{\partial x^i}\dot{x}^i(t).
+\]
+Dies ist das Matrizenprodukt der Jacobi-Matrix mit dem Vektor mit 
+Komponenten $\dot{x}^i$.
 
-
+%
+% Tangentiale Kurven
+%
 \subsubsection{Tangentiale Kurven}
 Das Beispiel illustriert, dass der Begriff der ``Richtung'' einer
 Koordinatenachse nicht sinnvoll sein kann.
