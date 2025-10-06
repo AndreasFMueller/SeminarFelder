@@ -22,24 +22,31 @@ dem Grund $z=0$ bewegt.
 Das Medium sei ein ideales Gas mit örtlich variabler Temperatur
 $T(z)$ aber ohne Wind, sodass
 \begin{equation}
-    c(z) \;=\; \sqrt{\kappa R\,T(z)} ,
+    c(z) \;=\; \sqrt{\kappa R_S\,T(z)} ,
     \label{eq:c-of-z}
 \end{equation}
-gilt. Hier ist $c(z)$ die lokale Schallgeschwindigkeit.
-Der \emph{lokale} Machzahlverlauf ist damit
+gilt. Hier ist $c(z)$ die lokale Schallgeschwindigkeit, $R_S = \frac{R}{M}$
+die Massenangepasste Gaskonstante und $M$ die auf der Höhe $z$ herrschende
+molare Masse des Mediums.
+In der Fliegerei wird die Geschwindigkeit des Flugzeugs oft über die
+dimensionslose \emph{Machzahl} $Ma$ angegeben:
 \begin{equation}
-    M(z) \;=\; \frac{V}{c(z)} .
+    Ma(z) \;=\; \frac{V}{c(z)},
+    \label{eq:mach-number}
 \end{equation}
+wobei $Ma>1$ Überschall, $Ma=1$ Schallgeschwindigkeit und
+$Ma<1$ Unterschall bezeichnet, was im Bild \ref{} visualisiert ist.
+\todo[inline]{Grafik: Flugzeug mit Machkegel}
 
 \subsection{Lokaler Machwinkel und Emissionsrichtung}
-In homogenem Medium bildet sich der Machkegel mit Halbwinkel
+In einem homogenem Medium bildet sich der Machkegel mit Halbwinkel
 \begin{equation}
-    \mu \;=\; \arcsin\!\Big(\frac{1}{M}\Big).
+    \mu \;=\; \arcsin\!\Big(\frac{1}{Ma}\Big).
 \end{equation}
 In einem geschichteten Medium setzt man diesen \emph{lokal} an der
-Emissionshöhe $z_a$ an:
+Emissionshöhe $z_a$, auf welcher das Flugzeug fliegt, an:
 \begin{equation}
-    \mu_a \;:=\; \arcsin\!\Big(\frac{1}{M(z_a)}\Big)
+    \mu_a \;:=\; \arcsin\!\Big(\frac{1}{Ma(z_a)}\Big)
     \;=\; \arcsin\!\Big(\frac{c(z_a)}{V}\Big) .
     \label{eq:local-mach-angle}
 \end{equation}
@@ -144,4 +151,4 @@ Dadurch wächst $x_g$ in \eqref{eq:ground-range} und der Sonic-Boom
 kann \emph{weiter} getragen werden, was zu weniger oder bis zu keine
 Schattierung am Boden führt.
 
-\blindtext\todo[inline]{Grafiken: Strahlen in beiden Szenarien}
+\todo[inline]{Grafiken: Strahlen in beiden Szenarien}
