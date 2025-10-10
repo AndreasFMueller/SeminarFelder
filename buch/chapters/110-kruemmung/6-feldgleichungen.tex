@@ -46,11 +46,23 @@ ausgeführt wird.
 
 Gesucht ist also ein Feldgesetz in der Form
 \begin{equation}
-\text{Ausdruck in $R_{ik}$ und $S$}
+\left(
+\begin{minipage}{1.8cm}
+\raggedright
+Ausdruck in $R_{ik}$ und $S$
+\end{minipage}
+\right)
 =
+\left(
 \text{Kopplungskonstante}
+\right)
 \cdot
-\text{Ausdrück für Energie, Impuls und Spannungen}
+\left(
+\begin{minipage}{3.5cm}
+\raggedright
+Ausdrück für Energie, Impuls und Spannungen
+\end{minipage}
+\right).
 \label{buch:kruemmung:feldgleichungen:eqn:schema}
 \end{equation}
 Die allgemeine Kovarianz verlangt, dass die Terme $R_{ik}$ und $S$
@@ -79,10 +91,10 @@ den man in Matrixform als
 T_{ik}
 =
 \begin{pmatrix}
-\varrho      & \varrho v_0 & \varrho v_y & \varrho v_z \\
-\varrho v_x  & p_x         & \sigma_{xy} & \sigma_{xz} \\
-\varrho v_y  & \sigma_{yx} & p_y         & \sigma_{yz} \\
-\varrho v_z  & \sigma_{yx} & \sigma_{zy} & p_z
+\varrho     c^2 & \varrho v_0 c & \varrho v_y c & \varrho v_z c \\
+\varrho v_x c   & p_x           & \sigma_{xy}   & \sigma_{xz}   \\
+\varrho v_y c   & \sigma_{yx}   & p_y           & \sigma_{yz}   \\
+\varrho v_z c   & \sigma_{yx}   & \sigma_{zy}   & p_z
 \end{pmatrix}
 \label{buch:kruemmung:feldgleichung:eqn:Tik}
 \end{equation}
@@ -101,6 +113,18 @@ Elastiztitätstheorie (Kapitel~\ref{chapter:elastomechanik})
 diskutierten Tatsache, dass ein asymmetrischer Spannungstensor dazu
 führen würde, dass das Medium durch verbleibende Drehmomente zu
 beliebig schneller Rotation angeregt würde, was nicht sein kann.
+
+Auch das elektromagnetische Feld kann gravitative Wirkung haben.
+Es gibt daher auch einen Energie-Impuls-Tensor für das elektromagnetische
+Feld, der sich aus dem Faraday-Tensor konstruieren lässt, der in
+Kapitel~\ref{chapter:maxwell} erklärt wird.
+Er ist
+\[
+T^{ik}
+=
+F^{il}F_l\mathstrut^k - \frac12 g^{ik}F^{ab}F_{ab}.
+\]
+Auch dieser Tensor hat verschwindende kovariante Divergenz.
 
 %
 % Erhaltungssätze
@@ -135,6 +159,7 @@ Gesucht ist daher eine Linearkombination von $R_{ik}$ und $Sg_{ik}$,
 deren kovariante Divergenz verschwindet.
 Die kontrahierten Bianchi-Identitäten für den Ricci-Tensor zeigen, dass  der
 \emph{Einstein-Tensor}
+\index{Einstein-Tensor}%
 \[
 G_{ik}
 =
@@ -175,6 +200,8 @@ R_{ik}
 \end{equation}
 gelten muss.
 Dies sind die \emph{einsteinschen Feldgleichungen} der Gravitation.
+\index{Feldgleichung!einsteinsche}%
+\index{Gravitation, Feldgleichung}%
 Die folgenden Abschnitte enthalten Anwendungen auf schwarze Löcher
 und die Kosmologie.
 
