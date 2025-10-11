@@ -8,10 +8,14 @@
 \kopfrechts{Tangentialvektoren}
 Das elektrische Feld übt auf eine Testladung eine Kraft aus, die
 proportional zur Ladung ist.
+\index{Testladung}%
+\index{Kraft}%
 Diese Kräfte stellt man sich gerne als ein Vektorfeld vor, doch
 in welchem Raum sind diese Vektoren zu finden?
 Die Kraft verursacht eine Beschleunigung und verändert damit 
 die Geschwindigkeit.
+\index{Geschwindigkeit}%
+\index{Beschleunigung}%
 \input{chapters/020-koordinaten/fig/fig-tangentialvektoren.tex}%
 Als erstes muss daher der Geschwindigkeitsvektor konstruiert werden,
 der tangential an die Bahnkurve der Testladung verläuft.
@@ -21,6 +25,7 @@ dargestellt werden kann
 (Abbildung~\ref{buch:koordinaten:fig:tangentialvektoren}).
 Die Masseinheit der Komponenten des Geschwindigkeitsvektors ist
 [Länge/Zeit], während die Koordinaten die Masseinheit [Länge] haben.
+\index{Masseinheit}%
 Solange man das Koordinatensystem und damit die Masseinheiten nicht
 wechselt, mag die Konfusion in Grenzen bleiben.
 Da aber alle Gesetzmässigkeiten auf eine koordinatensystemunabhängige
@@ -42,8 +47,11 @@ gekrümmte Koordinatenlinien.
 Es braucht also etwas mehr Sorgfalt, die Idee der {\em Richtung}
 Koordinatenunabhängig zu definieren.
 
+%
+% Differenzierbare Kurven
+%
 \subsubsection{Differenzierbare Kurven}
-Im Folgenden gehen wir on einer Menge $Y$ mit einer $n$-dimensionalen
+Im Folgenden gehen wir von einer Menge $Y$ mit einer $n$-dimensionalen
 differenzierbaren Struktur aus.
 Statt uns auf die in der Einleitung angedeuteten gekrümmten
 Koordinatenlinien zu beschränken, möchten wir beliebige Kurven
@@ -160,11 +168,48 @@ Sinne unabhängig sind von der Wahl des Koordinatensystems, dass
 auch Umrechnungsformeln zwischen den Koordinatensystemen bereitgestellt
 sind.
 
-% XXX Ableitung der Koordinaten
+Mit einer Koordinatenabbildung $Y\to U\subset\mathbb{R}^n$ werden aus
+einer Kurve $\gamma$ die $n$ Koordinatenfunktionen
+\[
+x^i
+\colon
+X\mapsto \mathbb{R}
+:
+t\mapsto \varphi^i(\gamma(t)).
+\]
+Die Bezeichnung mit dem gleichen Symbol wie die Koordinaten ist ein
+leichter Notationsmissbrauch, der aber kaum zu Missverständnissen
+führt.
+Da $x^i(t)$ eine reelle Funktion ist, ist die Ableitung
+\[
+\dot{x}^i(t)
+=
+\frac{d}{dt}x^i(t)
+=
+\frac{d}{dt}\varphi^i(\gamma(t))
+\]
+wohldefiniert.
 
-% XXX Koordinatenwechsel und Ableitung
+Sei jetzt $\psi\colon Y\to V\subset \mathbb{R}^n$ eine weiter
+Koordinatenabbildung mit Koordinatenfunktionen $y^k(t)=\psi^k(\gamma(t))$ 
+für die Kurve $\gamma$.
+Dann ist die Koordinatenwechselabbildung
+$\psi\circ\varphi^{-1}\colon U\to V$ 
+eine Abbildung zwischen offenen Mengen von $\mathbb{R}^n$, für die
+die partiellen Ableitungen nach den einzelnen Koordinaten definiert sind,
+die wir mit $\partial y^k/\partial x^i$ bezeichneet habne.
+Nach der Kettenregel gilt für die Ableitungen der Koordinatenfunktionen
+\[
+\dot{y}^k(t)
+=
+\sum_{i=1}^n \frac{\partial y^k}{\partial x^i}\dot{x}^i(t).
+\]
+Dies ist das Matrizenprodukt der Jacobi-Matrix mit dem Vektor mit 
+Komponenten $\dot{x}^i$.
 
-
+%
+% Tangentiale Kurven
+%
 \subsubsection{Tangentiale Kurven}
 Das Beispiel illustriert, dass der Begriff der ``Richtung'' einer
 Koordinatenachse nicht sinnvoll sein kann.
@@ -183,6 +228,7 @@ in einem gemeinsamen Punkt haben.
 \input{chapters/020-koordinaten/fig/fig-kurve.tex}%
 
 \begin{definition}[tangentiale Kurven]
+\index{tangentiale Kurven}%
 Zwei Kurven $\gamma_i\colon X\to Y$, $i=1,2$, sind
 {\em tangential} im Punkt $y\in Y$, wenn
 $\gamma_i(x) = y$, $i=1,2$, und
@@ -213,13 +259,14 @@ für $x^1=\psi(x)$.
 
 Kurven sind also tangential in einem Punkt, wenn sie sich in jedem
 Koordinatensystem mit der gleichen momentanen Geschwindigkeit
-durch den Punkt im Koordinateraum bewegen.
+\index{momentane Geschwindigkeit}%
+durch den Punkt im Koordinatenraum bewegen.
 Die Abbildung~\ref{buch:koordinaten:tangentialvektoren:fig:kurve}
 macht auch deutlich, dass es nicht sinnvoll ist, von einem
 Tangentialvektor im Punkt $y$ an die Kurven ``in $Y$'' zu sprechen.
 Der grün eingezeichnete Tangentialvektor ist nicht Teil von $Y$.
 Er hängt von der Art der für die graphische Darstellung notwendigen
-Einbettung von Y in den dreidimensionalen Raum ab.
+Einbettung von $Y$ in den dreidimensionalen Raum ab.
 Eine rein geometrische Definition des Tangentialvektors ist also
 nicht möglich.
 Erst im Koordinatensystem, also nach der Abbildung mit $\varphi$,
@@ -237,13 +284,14 @@ Die Eigenschaft von Kurven, im Punkt $y$ tangential zu sein, ist
 eine Äquivalenzrelation.
 In einem Koordinatensystem haben die tangentiale Kurven gemäss
 Abbildung~\ref{buch:koordinaten:tangentialvektoren:fig:kurve}
-den grünen Tangentialvektor {\em im Koordinatensystem} gemeinsam.
+den grünen Tangentialvektor \emph{im Koordinatensystem} gemeinsam.
 Die folgende, sehr abstrakte Definition eines Tangentialvektors
 von $Y$ ist unabhängig von einer Einbettung von $Y$ in einen
 grösseren Raum für Darstellungszwecke.
 
 \begin{definition}[Tangentialvektor]
 \label{buch:koordinaten:tangentialvektoren:def:tangentialvektor}
+\index{Tangentialvektor}%
 Ein Tangentialvektor $V$ im Punkt $y\in Y$ ist die Menge aller Kurven, die
 im Punkt $y$ tangential sind.
 In einem Koordinatensystem $\varphi$ ist der Tangentialvektor an die Kurve
@@ -299,6 +347,7 @@ u^k.
 Die Ableitungsterme in
 \eqref{buch:koordinaten:tangentialvektoren:eqn:tangentialtransformation}
 sind die Einträge der Jacobi-Matrix der Abbildung $g$.
+\index{Jacobi-Matrix}%
 
 Man beachte, dass der Index $i$ auf der linken und der rechten 
 Seite des Ausdrucks für $u^{\prime i}$ als oberer Index vorkommt.
@@ -363,11 +412,13 @@ auftreten.
 
 \begin{definition}[einsteinsche Summenkonvention]
 \label{buch:koordinaten:tangentialvektoren:def:einsteinschesummenkonvention}
+\index{einsteinsche Summenkonvention}%
 Kommt in einem Ausdruck der gleiche Index als oberer und als unterer
 Index vor, dann wird über diesen Index summiert.
 \end{definition}
 
 Die Matrizenmultiplikation der Matrizen $A$ mit den Einträgen $a_{ik}$ und
+\index{Matrizenmultiplikation}%
 $B$ mit den Einträgen $b_{kl}$ liefert die Einträge der Produktmatrix
 $C=AB$ mit den Einträgen $c_{il}$ als Summe
 \[
@@ -387,6 +438,7 @@ b^k\mathstrut_l
 \]
 berechnen kann, wo implizit über $k$ summiert wird.
 Der Zeilenindex wird darin als oberer Index geschrieben, so wie
+\index{Zeilenindex}%
 die Komponenten von Spaltenvektoren, auf denen Matrizen wirken können, 
 ebenfalls als obere Indizes geschrieben werden.
 Der Zeilenindex bekommt daher den Platz als unterer Index.
@@ -507,4 +559,5 @@ Punkt $x_0$ als
 T_0\gamma_k \cdot e_1 = e_k.
 \]
 Die Koordinatenlinie $\gamma_k$ hat in jedem Punkt also den
+\index{Koordinatenlinie}%
 Standardbasisvektor $e_k$ als Tangentialvektor.

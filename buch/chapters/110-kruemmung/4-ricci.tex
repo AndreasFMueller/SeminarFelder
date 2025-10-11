@@ -221,7 +221,6 @@ Wärmeleitungsgleichung die Temperaturverteilung glättet.
 Mit diesem Werkzeug wurde es möglich, die Poincaré-Vermutung, eines
 der berühmten Millenniumsprobleme zu lösen.
 
-
 %
 % Krümmungsskalar
 %
@@ -477,6 +476,117 @@ R_{bk;l}
 Die kontrahierte differentielle Bianchi-Identität sagt also, dass
 die Spur der kovarianten Ableitung des riemannschen Krümmungstensors
 die kovariante äussere Ableitung des Ricci-Tensors ist.
+
+%
+% Kontrahierte Bianchi-Identität und Krümmungsskalar
+%
+\subsubsection{Kontrahierte Bianchi-Identität und Krümmungsskalar}
+Wir könnten von der kontrahierten Bianchi-Identität für den Ricci-Tensor
+ausgehen, es ist aber etwa gleich einfach, die wieder von der differentiellen
+Bianchi-Identität für den riemannschen Krümmungstensor auszugehen.
+Damit lassen sich die Symmetrien des riemannschen Krümmungstensors etwas
+offensichtlicher ausnützen.
+Wir beginnen mit der Identität
+\eqref{buch:kruemmung:kruemmung:eqn:diffbianchikomp},
+die wir in der Form
+\[
+R_{abmn;l}
++
+R_{ablm;n}
++
+R_{abnl;m}
+=
+0
+\]
+schreiben.
+Jetzt kontrahieren wir die Indexpaare $a$,$m$ und $b$,$n$ und erhalten
+\begin{align}
+g^{am}g^{bn}
+(
+R_{abmn;l}
++
+R_{ablm;n}
++
+R_{abnl;m}
+)
+&=
+0.
+\notag
+\intertext{Die Kontraktion mit $g^{am}$ hebt den ersten Index dies
+Riemannschen Krümmungstensors an:}
+g^{bn}(
+R^m\mathstrut_{bmn;l}
++
+R^m\mathstrut_{blm;n}
++
+R^m\mathstrut_{bnl;m}
+)
+&=
+0.
+\notag
+\intertext{Im zweiten Term können wir die Indizes $l$ und $m$ vertauschen,
+was zu einem Vorzeichenwechsel führt:}
+g^{bn}(
+R^m\mathstrut_{bmn;l}
+-
+R^m\mathstrut_{bml;n}
++
+R^m\mathstrut_{bnl;m}
+)
+&=
+0.
+\notag
+\intertext{Die ersten beiden Terme sind jetzt als kovariante Ableitungen
+des Ricci-Tensors erkennbar. 
+Im dritten Term können wir die Indizes $m$ und $b$ vertauschen, was
+einen Vorzeichenwechsel zur Folge hat:}
+g^{bn}(
+R_{bn;l}
+-
+R_{bl;n}
+-
+R_b\mathstrut^m\mathstrut_{nl;m}
+)
+&=
+0.
+\notag
+\intertext{Die Multiplikation mit $g^{bn}$ macht aus dem unteren
+Index $b$ einen oberen Index $n$:}
+R^n\mathstrut_{n;l}
+-
+R^n\mathstrut_{l;n}
+-
+R^{nm}\mathstrut_{nl;m}
+&=
+0.
+\notag
+\intertext{Der erste Term ist die Ableitung des Krümmungsskalars.
+Auch der letzte Term als jetzt als kovariante Ableitung
+des Ricci-Tensors erkennbar:}
+S_{;l}
+-
+R^n\mathstrut_{l;n}
+-
+R^{m}\mathstrut_{l;m}
+&=
+0.
+\notag
+\intertext{Die letzten beiden Terme sind dasselbe, da sie sich nur
+in der Bezeichnung für den Summationsindex unterscheiden.
+Es folgt}
+S_{;l}
+&=
+2
+R^n\mathstrut_{l;n}
+\notag
+\intertext{oder}
+R^n\mathstrut_{l;n}
+&=
+\frac12 S.
+\label{buch:kruemmung:eqn:kontrahiertS}
+\end{align}
+Dies ist die kontrahierte Bianchi-Identität für den Krümmungsskalar.
+
 
 
 

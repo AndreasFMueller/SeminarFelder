@@ -13,8 +13,11 @@
 % [ ]: Lineare Algebra: Eine anwendungsorientierte Einführung, Seite: 27, ISBN: 978-3-662-67865-7, Published: 01 September 2023, DOI: https://doi.org/10.1007/978-3-662-67866-4
 
 \subsection{Was ist Linearität?}
+\index{Linearitat@Linearität}%
 Für den einfachsten und üblichsten Fall nimmt man oft ein \emph{lineares Medium} an.
+\index{lineares Medium}%
 Solch ein Medium nennt man \emph{linear}, wenn dessen Definition sowohl \emph{additiv}
+\index{additiv}%
 \[
     f(x_{1} + y_{1}, \ldots, x_{n} + y_{n}) 
     = 
@@ -23,6 +26,7 @@ Solch ein Medium nennt man \emph{linear}, wenn dessen Definition sowohl \emph{ad
     f(y_{1}, \ldots, y_{n}),
 \]
 als auch \emph{homogen}
+\index{homogen}%
 \[
     f(\lambda x_{1}, \ldots, \lambda x_{n}) 
     = 
@@ -32,7 +36,10 @@ ist.
 
 In der Wellentheorie bedeutet dies, 
 dass die Materialeigenschaften --- beispielsweise die Elastizität --- nicht von der Amplitude der Welle abhängen.
+\index{Materialeigenschaft}%
+\index{Elastizitat@Elastizität}%
 Diese Elastizität eines Mediums lässt sich durch das \emph{hookesche Gesetz}
+\index{hookesches Gesetz}%
 \[
     \Delta l
     = 
@@ -62,6 +69,7 @@ dass es sich hierbei tatsächlich um eine lineare Funktion handeln muss.
 
 \subsection{Superpositionsprinzip}\label{particles:section:lin-medium:superposition} % TODO: Subsection umschreiben
 Das Superpositionsprinzip fasst die Bedingungen zur Linearität nochmal etwas schöner in eine Formel zusammen, 
+\index{Superposition}%
 nämlich
 \[
     T(\lambda x + \mu y)
@@ -78,10 +86,10 @@ wie sie in \autoref{particles:fig:lin-medium:beams} gezeigt werden.
 Lokal interferieren diese Strahlen zwar, stören jedoch nicht wirklich ihren weiteren Verlauf.
 \begin{figure}
     \centering
-    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/beams_lin_1_10.png}}\label{particles:fig:lin-medium:beams-1}\hfill
-    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/beams_lin_3_20.png}}\label{particles:fig:lin-medium:beams-2}\hfill
-    \subfigure[]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/beams_lin_4_32.png}}\label{particles:fig:lin-medium:beams-3}
-    \caption{Strahlen im linearen Medium zu Beginn~(a), während sie sich kreuzen~(b), und danach~(c).}\label{particles:fig:lin-medium:beams}
+    \subfigure[0:20]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/beams_lin_1_10.png}}\label{particles:fig:lin-medium:beams-1}\hfill
+    \subfigure[0:40]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/beams_lin_3_20.png}}\label{particles:fig:lin-medium:beams-2}\hfill
+    \subfigure[1:04]{\includegraphics[width=.32\linewidth]{./papers/particles/figures/simulations/beams_lin_4_32.png}}\label{particles:fig:lin-medium:beams-3}
+    \caption{Strahlen im linearen Medium zu Beginn~(a), während sie sich kreuzen~(b), und danach~(c) mit den jeweiligen Zeitstempeln aus dem Video \cite{particles:video-beams-lin}.}\label{particles:fig:lin-medium:beams}
 \end{figure}
 
 
@@ -90,11 +98,13 @@ Die Wellengleichung
 \begin{equation}
     \frac{\d^2 u}{\d t^2} = c^2 \cdot \nabla^2 u, \label{particles:eq:wellengleichung}
 \end{equation}
+\index{Wellengleichung}%
 hat in vielen Feldern Anwendung.
 Dabei steht auf der linken Seite die zweite Ableitung nach der Zeit und auf der rechten die räumliche Ableitung sowie die Konstante $c^2$.
 Eine massgebende Annahme ist dabei die Linearität des Mediums.
 Dies wird ersichtlicher, wenn man die Herleitung der Wellengleichung beispielsweise aus den Maxwell-Gleichungen betrachtet.
-Die dafür verwendeten Maxwell-Gelichungen wurden im Abschnitt~\ref{maxwell:section:teil0} bereits vorgestellt.
+Die dafür verwendeten Maxwell-Gleichungen wurden im Abschnitt~\ref{maxwell:section:teil0} bereits vorgestellt.
+\index{Maxwell-Gleichungen}%
 
 
 \subsubsection{Herleitung}
@@ -107,6 +117,7 @@ Diese wurde in Abschnitt~\ref{buch:vektoranalysis:subsection:rotrot} als Gleichu
 
 Als erster Schritt der Herleitung wird $\rho = 0$, also ein Medium ohne freie Ladungsträger, angenommen.
 Das gausssche Gesetz
+\index{gausssches Gesetz}%
 \[
     \nabla \cdot \boldsymbol{D} = \rho_\text{frei},
 \]
@@ -115,6 +126,7 @@ wie es in Gleichung~\eqref{maxwell:equation:gauss} gezeigt wurde, wird unter die
     \nabla \cdot \boldsymbol{D} = 0.\label{particles:eq:gauss}
 \end{equation}
 Weiter wird der erweiterte Durchflutungssatz
+\index{Durchflutungssatz}%
 \[
     \nabla \times \boldsymbol{H} = \boldsymbol{j}_\text{frei} + \frac{\d \boldsymbol{D}}{dt}
 \]
@@ -122,15 +134,20 @@ aus Gleichung~\eqref{maxwell:equation:durchflutungssatz} durch Annahme einer Str
 \begin{equation}
     \nabla \times \boldsymbol{H} = \frac{\d \boldsymbol{D}}{dt}.\label{particles:eq:durchflutungssatz}
 \end{equation}
-Es ist anzumerken, dass in Gleichung~\eqref{maxwell:equation:durchflutungssatz} bereits die weiter unten in den Gleichungen~\ref{particles:eq:de} und~\ref{particles:eq:bh} gezeigten Verhältnisse eingesetzt wurden.
+Es ist anzumerken, dass in Gleichung~\eqref{maxwell:equation:durchflutungssatz} bereits die weiter unten in den Gleichungen~\eqref{particles:eq:de} und~\eqref{particles:eq:bh} gezeigten Verhältnisse eingesetzt wurden.
 Das Induktionsgesetz
+\index{Induktionsgesetz}%
 \begin{equation}
     \nabla \times \boldsymbol{E} = -\frac{\d \boldsymbol{B}}{\d t}\label{particles:eq:induktionsgesetz},
 \end{equation}
 das als Gleichung~\eqref{maxwell:equation:induktionsgesetz} vorgestellt wurde, wird ebenfalls benötigt.
 
 Um die elektrische Flussdichte $\boldsymbol{D}$ mit dem elektrischen Feld $\boldsymbol{E}$ in Relation zu bringen, 
+\index{Flussdichte, elektrische}%
+\index{eletrisches Feld}%
+\index{Feld, eletrisches}%
 wird die Permittivität $\varepsilon$ beigezogen.
+\index{Permittivitat@Permittivität}%
 Die Permittivität ist abhängig vom Medium. 
 $\boldsymbol{D}$ und $\boldsymbol{E}$ stehen also im Verhältnis
 \begin{equation}
@@ -138,6 +155,11 @@ $\boldsymbol{D}$ und $\boldsymbol{E}$ stehen also im Verhältnis
     \label{particles:eq:de}
 \end{equation}
 Ein ähnliches Verhältnis stellt sich zwischen der magnetischen Flussdichte $\boldsymbol{B}$ und der magnetischen Feldstärke $\boldsymbol{H}$ ein, wobei das Verhältnis durch die Permeabilität $\mu$ als
+\index{magnetische Feldstarke@magnetische Feldstärke}%
+\index{magnetische Flussdichte}%
+\index{Flussdichte, magnetische}%
+\index{Feldstarke, magnetische@Feldstärke, magnetische}%
+\index{Permeabilitat@Permeabilität}%
 \begin{equation}
     \boldsymbol{B} = \mu \boldsymbol{H} \quad \text{bzw.} \quad \boldsymbol{H} = \frac{\boldsymbol{B}}{\mu}
     \label{particles:eq:bh}
@@ -172,7 +194,8 @@ Durch ähnliches Vorgehen kann diese auch für die magnetische Feldstärke $\bol
 
 Durch Parametervergleich mit der Wellengleichung aus~\eqref{particles:eq:wellengleichung} wird klar, dass die Ausbreitungsgeschwindigkeit
 \[
-    c = \frac{1}{\sqrt{\mu\varepsilon}}\label{particles:eq:lichtgeschwindigkeit}
+    c = \frac{1}{\!\sqrt{\mu\varepsilon\mathstrut}}
+%\label{particles:eq:lichtgeschwindigkeit}
 \]
 beträgt.
 Damit die Gleichung gut analytisch lösbar ist, sollten die beiden Faktoren $\mu$ und $\varepsilon$ also über verschiedene Feldstärken konstant sein.
@@ -181,21 +204,28 @@ Ansonsten wird aus der linearen partiellen Differenzialgleichung eine nichtlinea
 
 \subsection{Schwinger-Limit}\label{particles:section:lin-medium:schwinger}
 Es wird erwartet, dass bei extrem hohen Feldstärken selbst das Vakuum nichtlinear wird.
+\index{Vakuum nichtlinear}%
+\index{Nichtlinear!Vakuum}%
 Dieser Übergang zur Nichtlinearität des Vakuums wurde erstmals im Jahre 1951 von Fritz Sauter in der \emph{Zeitschrift für Physik}~\cite{particles:fritz_sauter} theoretisiert.
+\index{Sauter, Fritz}%
 Julian Schwinger arbeitete diese Idee im Paper \emph{On Gauge Invariance and Vacuum Polarization}~\cite{particles:schwinger-limit} weiter aus, 
+\index{Schwinger, Julian}%
 weshalb die Grenze schliesslich nach ihm benannt wurde.
 Da es sich hierbei um elektrische und magnetische Feldstärken im Bereich von $10^{18}\,\frac{\text{V}}{\text{m}}$ und $10^9\,\text{T}$ handelt, 
 konnte dieses Limit bisher noch nicht gemessen werden.
 Entsprechend ist das Schwinger-Limit noch immer Bestandteil aktueller Forschungen, 
 wie das Paper \emph{Observing Light-by-Light Scattering at the Large Hadron Collider}~\cite{particles:photon_photon_scattering} zeigt.
 Es wird darin die Photonen-Photonen-Streuung beobachtet, was ein starkes Indiz dafür ist, 
+\index{Photonen-Photonen-Streuung}%
 dass das Schwinger-Limit tatsächlich existiert.
 Zudem taucht das Limit bei weiteren Experimenten wie zum Beispiel dem ATLAS-Experiment~\cite{particles:atlas-experiment}, 
+\index{ATLAS-Experiment}%
 welche sich mit extrem starken Feldstärken befassen, öfters als Nebenprodukt auf.
 
 Beschränkt man sich jedoch nicht nur auf das Vakuum, so findet man Medien, 
 welche bereits bei deutlich kleineren Feldstärken nichtlineare Eigenschaften aufweisen.
 Ein Beispiel von solchen nichtlinearen Werkstoffen sind, 
 wie~\cite{particles:frequenzverdopplung} demonstriert, Kristalle zur Frequenzverdoppelung.
+\index{Frequenzverdoppelung}%
 Diese werden beispielsweise in grünen Laserpointern eingesetzt, 
 was die Verwendung von preiswerteren Infrarot-Laserdioden anstelle der teureren grünen Ausführung erlaubt.

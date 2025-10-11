@@ -3,6 +3,7 @@
 %
 \section{Kurvenintegral einer 1-Form
 \label{buch:kurvenintegral:section:1form}}
+\kopfrechts{Kurvenintegral einer 1-Form}%
 Eine Kurve ist eine eindimensionale Untermannigfaltigkeit in
 einer $n$-dimensionalen Mannigfaltigkeit $M$.
 Eine $1$-Form auf der Mannigfaltigkeit $M$ führt zu einer 
@@ -10,6 +11,9 @@ $1$-Form auf der Kurve und damit wird es möglich, das Integral
 dieser 1-Form auf der Kurve zu berechnen.
 Dies soll in diesem Abschnitt schrittweise durchgeführt werden.
 
+%
+% 1-Form auf einer Mannigfaltigkeit
+%
 \subsection{$1$-Form auf einer Mannigfaltigkeit}
 Eine $1$-Form auf einer $n$-dimensionalen Mannigfaltigkeit ist eine
 Linearform, die auf einen Tangentialvektor angewendet werden kann
@@ -34,7 +38,7 @@ Koordinate ändert, gilt
 \end{cases}
 \]
 Man nennt diese Basis der Linearformen auch die zur Basis der
-Ableitungsoperatoren {\em duale Basis}.
+Ableitungsoperatoren \emph{duale Basis}.
 
 Eine $1$-Form auf der Mannigfaltigkeit hat daher im Koordinatensystem
 mit den Koordinaten $x^i$ die Form
@@ -55,6 +59,7 @@ Die $1$-Form
 dx^i
 \]
 soll auf dem Impulsvektor eines Teilchens berechnet werden.
+\index{Impuls}%
 Wird die Bahnkurve mit der Zeit parametrisiert, hat der Geschwindigkeitsvektor
 die Komponenten $\dot{x}^i$.
 Der Impuls $p$ des Teilchens ist der Vektor mit den Komponenten
@@ -151,7 +156,8 @@ t
 \label{buch:kurvenintegral:kurvenintegral:eqn:kugel}
 \end{equation}
 beschreibt eine Kurve auf der Kugeloberfläche, die als die
-{\em Loxodrome} bekannt ist.
+\emph{Loxodrome} bekannt ist.
+\index{Loxodrome}%
 Sie schneidet die Längenkreise unter konstantem Winkel $\arctan k$
 (Abbildung~\ref{buch:kurvenintegral:fig:loxodrome}).
 Wir betrachten die $1$-Form $\sin^2\vartheta\cdot d\varphi$, wobei
@@ -271,6 +277,7 @@ Darin wird das Integral
 
 \begin{beispiel}
 Man berechne das Kurvenintegral der $1$-Form $\alpha=-x^2\,dx^1+x^1\,dx^2$ auf
+\index{Kurvenintegral}%
 der zweidimensionalen Ebene mit kartesischen Koordinaten $(x^1,x^2)$
 entlang des Einheitskreises $S^1\subset\mathbb{R}^2$.
 \smallskip
@@ -380,6 +387,7 @@ W = F\cdot s
 \]
 definiert, wobei $s$ der Weg ist, der gegen den Widerstand der Kraft
 zurückgelegt wird.
+\index{Widerstand}%
 Dabei spielt nur die Kraftkomponente parallel zur Verschiebung eine Rolle.
 Ist $\vec{F}$ die Kraft und $\vec{s}$ der zurückgelegte Weg, dann kann 
 die Arbeit auch als das Skalarprodukt $W=\vec{F}\cdot\vec{s}$ geschrieben
@@ -422,6 +430,7 @@ berechnet.
 Die Formulierung \eqref{buch:kurvenintegral:kurvenintegral:eqn:arbeit}
 ist abhängig von der Wahl der Koordinaten und daher kein allgemein 
 kovariantes Naturgesetz.
+\index{allgemein kovariant}%
 Dazu muss das Integral in das Integral über eine $1$-Form umgewandelt
 werden.
 Dazu schreiben wir die Kraftkomponenten als $F^i$ und die Koordinaten
@@ -455,6 +464,7 @@ Wir möchten berechnen, wieviel des Mediums durch die Randkurve
 eines Gebietes fliesst.
 Die Menge des Mediums ist proportional zur Komponente der
 Strömungsgeschwindigkeit orthogonal zur Randkurve.
+\index{Stromungsgeschwindigkeit@Strömungsgeschwindigkeit}%
 Wir beschreiben ein Randsegment durch einen nach aussen
 zeigenden Vektor $\vec{n}$.
 
@@ -465,7 +475,7 @@ Wir nehmen an, dass die Kurve so parametrisiert ist, dass das Gebiet
 links liegt.
 Der Normalenvektor $\vec{n}$ kann man dann durch Rotation $R$ um
 $90^\circ$ im Uhrzeigersinn erhalten.
-Die Menge des durch dieses Segment fliessendenb Mediums ist
+Die Menge des durch dieses Segment fliessenden Mediums ist
 \[
 \vec{v(x(s))}\cdot \vec{n}(x(s))
 =
@@ -502,6 +512,107 @@ Sie vertauscht die beden Koordinaten und kehrt das Vorzeichen
 der ersten Komponente.
 
 \begin{beispiel}
-XXX Fluss eines Feldes durch einen Kreis
+Gegeben ist das Vektorfeld
+\[
+\vec{v}(x,y)
+=
+\begin{pmatrix}
+1+x\cdot |y|\\
+y \cdot |x|
+\end{pmatrix}.
+\]
+Man berechne den Fluss des Feldes $\vec{v}$ durch den Einheitskreis.
+
+Als Parametrisierung des Einheitskreises verwenden wir 
+\[
+\gamma
+\colon
+[0,2\pi) \to \mathbb{R}^2
+:
+t\mapsto(\cos t,\sin t),
+\]
+der Ortsvektor $\gamma(t)$ kann auch als Normalenvektor $\vec{n}(t)=\gamma(t)$ 
+verwendet werden.
+Somit ist des Flussintegral
+\begin{align*}
+\oint_\gamma \vec{v}\cdot d\vec{n}
+&=
+\int_0^{2\pi}
+\vec{v}\circ \gamma(t) \cdot \vec{n}(t)
+\,dt
+=
+\int_0^{2\pi}
+\begin{pmatrix}
+1 + \cos t \cdot |\sin t\, |\\
+    \sin t \cdot |\cos t\, |
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+\cos t\\
+\sin t
+\end{pmatrix}
+\,dt
+\\
+&=
+\int_0^{2\pi}
+\cos t
++
+\cos^2 t\cdot |\sin t\, |
++
+\sin^2 t\cdot |\cos t \,|
+\,dt.
+\intertext{Der zweite und dritte Term sind $\pi$-periodisch, daher kann
+das Integral auf ein Integral über $[0,\pi]$ verkürzt werden:}
+&=
+\int_0^{2\pi}
+\cos t
+\,dt
++
+2
+\int_0^{\pi}
+\cos^2 t\cdot |\sin t\, |
++
+\sin^2 t\cdot |\cos t \,|
+\,dt.
+\intertext{Das erste Integral ist ein Integral des $\cos t$ über
+eine volle Periode und verschwindet daher.
+Wegen der Symmetrie an $t=\frac{\pi}2$ kann das
+zweite Integral kann auf ein Integral über das halbe Intervall reduziert
+werden.
+}
+&=
+4
+\int_0^{\frac{\pi}2}
+\cos^2 t\cdot |\sin t\, |
++
+\sin^2 t\cdot |\cos t \,|
+\,dt
+\intertext{Im Interval $[0,\frac{\pi}2]$ sind $\sin t$ und $\cos t$
+nichtnegativ, die Betragsstriche können daher weggelassenw erden:}
+&=
+4
+\int_0^{\frac{\pi}2}
+\cos^2 t \sin t
++
+\sin^2 t \cos t 
+\,dt
+\\
+&=
+4
+\biggl[
+\frac{\sin^3 t}{3}
+-
+\frac{\cos^3 t}{3}
+\biggr]_0^{\frac{\pi}2}
+=
+4(
+{\textstyle
+\frac{1}{3} + \frac{1}{3}
+}
+)
+=
+\frac83.
+\qedhere
+\end{align*}
 \end{beispiel}
 

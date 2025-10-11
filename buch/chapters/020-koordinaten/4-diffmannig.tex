@@ -39,8 +39,8 @@ Das Problem kann mit verschiedenen Ansätzen adressiert werden.
 % Metrik
 %
 \subsubsection{Metrik}
-Eine {\em Metrik} auf einer Punktmenge  $X$
-\index{Metrik}
+Eine {\em Metrik} auf einer Punktmenge $X$
+\index{Metrik}%
 ist eine Funktion
 \[
 d
@@ -52,10 +52,14 @@ X\times X \to \mathbb{R}
 mit den Eigenschaften
 \begin{enumerate}
 \item Positiv: $d(x,y)\ge 0$ für alle $x,y\in X$.
+\index{positiv}%
 \item Symmetrie: $d(x,y)=d(y,x)$
+\index{symmetrisch}%
 \item Definit: $d(x,y)=0$ genau dann, wenn $x=y$.
+\index{definit}%
 \item Dreiecksungleichung: $d(x,y) \le d(x,z)+d(z,y)$ für alle
 $x,y,z\in X$.
+\index{Dreiecksungleichung}%
 \end{enumerate}
 Eine Menge $X$ mit einer Metrik heisst ein {\em metrischer Raum}.
 \index{metrischer Raum}%
@@ -187,7 +191,7 @@ Eine Karte von $X$ ist ein Koordinatensystem auf einer offenen Teilmenge
 von $X$.
 
 \begin{definition}[Karte]
-Eine {\em Karte} von $X$ besteht aus einer offenen Menge $U_\alpha\subset X$
+Eine \emph{Karte} von $X$ besteht aus einer offenen Menge $U_\alpha\subset X$
 und einer stetigen Abbildung
 \[
 \varphi_\alpha
@@ -243,7 +247,8 @@ zur Karte $(U_\beta,\varphi_\beta)$.
 \index{Kartenwechsel}%
 
 \begin{definition}[Atlas]
-Ein {\em Atlas} ist eine Familie $(U_\alpha,\varphi_\alpha)_{\alpha\in I}$
+Ein \emph{Atlas} ist eine Familie $(U_\alpha,\varphi_\alpha)_{\alpha\in I}$
+\index{Atlas}%
 von Karten derart, dass die Kartenwechwechsel
 $\varphi_\alpha\circ\varphi_\beta^{-1}$ Homöomorphismen
 für alle $\alpha,\beta\in I$ sind, für die
@@ -251,7 +256,8 @@ $U_\alpha\cap U_\beta\ne \emptyset$ ist.
 \end{definition}
 
 \begin{definition}[differenzierbarer Atlas]
-Ein {\em differenzierbarer Atlas} ist ein Atlas, dessen
+Ein \emph{differenzierbarer Atlas} ist ein Atlas, dessen
+\index{Atlas!differenzierbar}%
 Kartenwechsel differenzierbar sind.
 \end{definition}
 
@@ -266,6 +272,7 @@ durchläuft, einen differenzierbaren Atlas.
 
 Für die Kugeloberfläche ist es nicht möglich, ein Koordinatensystem
 zu finden, welches die ganze Kugeloberfläche abdeckt.
+\index{Kugeloberfläche}%
 Dieses Phänomen trifft auch bei vielen anderen geometrischen Formen ein.
 Ein Atlas ermöglicht, sich bei der Konstruktion auf lokale Betrachtungen
 in der Umgegung eines Punktes zu beschränken.
@@ -351,7 +358,6 @@ Als Kartenabbildungen verwenden wir daher
 \frac{1}{1+z}
 (x,y).
 \]
-
 
 
 Die Umkehrabbildungen sind etwas kompliziert auszudrücken, werden
