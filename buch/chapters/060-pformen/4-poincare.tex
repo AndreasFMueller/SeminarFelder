@@ -5,7 +5,7 @@
 \label{buch:pformen:section:poincarelemma}}
 Das Poincaré-Lemma besagt, dass auf einem zusammenziehbaren Gebiet jede
 geschlossene $p$-Form exakt ist.
-Falls $d\omega=0$ ist, muss es also eine $p-1$-Form $\alpha$ geben mit
+Falls $d\omega=0$ ist, muss es also eine $(p-1)$-Form $\alpha$ geben mit
 $d\alpha=\omega$.
 Für geschlossene 1-Formen wurde dies bereits mit Hilfe von Kurvenintegralen
 gezeigt.
@@ -57,7 +57,7 @@ h_t \colon U \to U : x \mapsto tx
 eine Selbstabbildung von $U$.
 Für $t=0$ wird jeder Punkt auf $0$ abgebildet, die Abbildung $h_0$ ist
 die konstante Abbildung auf den Nullpunkt von $U$.
-Fpr $t=1$ ist $h_1(x)=x$, $h_1$ ist also die identische Abbildung 
+Für $t=1$ ist $h_1(x)=x$, $h_1$ ist also die identische Abbildung 
 Man nennt $H$ eine {\em Homotopie} zwischen der konstanten Abbildung
 und der identischen Abbildung.
 
@@ -72,8 +72,8 @@ x\mapsto (x,\tau)
 \]
 eine Einbettung der $n$-dimensionalen Untermannigfaltigkeit $U$ in
 $U\times[0,1]$.
-Eine $p+1$-Form $\omega$ auf $U\times[0,1]$ wird durch $i_\tau^*$ zu
-einer $i_\tau^*(\omega)$, die auf
+Eine $(p+1)$-Form $\omega$ auf $U\times[0,1]$ wird durch $i_\tau^*$ zu
+der $(p+1)$-Form $i_\tau^*(\omega)$, die durch
 \begin{align*}
 i_\tau^*\bigl(
 f(x,t)
@@ -88,8 +88,9 @@ g(x,t)
 \bigr)
 &=
 g(x,\tau)
-\,dx^{i_1}\wedge \dots \wedge dx^{i_p}\wedge dx^{i_{p+1}}.
+\,dx^{i_1}\wedge \dots \wedge dx^{i_p}\wedge dx^{i_{p+1}}
 \end{align*}
+sind, je nachdem ob die Form das Monom $dt$ enthält oder nicht.
 Die Variable $t$ wird als Konstante mit dem Wert $\tau$ betrachtet.
 
 %
@@ -98,7 +99,7 @@ Die Variable $t$ wird als Konstante mit dem Wert $\tau$ betrachtet.
 \subsection{Faserintegration
 \label{buch:pformen:poincare:subsection:faserintegration}}
 \input{chapters/060-pformen/fig/fig-faserintegration.tex}%
-Zu jeder $p+1$-Form $\omega$ mit $d\omega=0$ muss eine $p$-Form gefunden
+Zu jeder $(p+1)$-Form $\omega$ mit $d\omega=0$ muss eine $p$-Form gefunden
 werden.
 Dazu müssen einzelne Faktoren $dx^i$ in einem Produkt
 $dx^{i_1}\wedge\dots\wedge dx^{i_{p+1}}$ zum Verschwinden gebracht
@@ -125,7 +126,7 @@ dargestellt.
 Die Projektion $\pi$ ermöglicht, eine $p$-Form $\omega$ auf $U$ in eine
 $p$-Form $\pi^*(\omega)$ auf $U\times [0,1]$ abzubilden.
 Wir benötigen aber eine andere Art von Abbildung.
-Aus einer $p+1$-Form auf $U\times[0,1]$ möchten wir eine $p$-Form auf
+Aus einer $(p+1)$-Form auf $U\times[0,1]$ möchten wir eine $p$-Form auf
 $U$ erzeugen.
 Dazu integrieren wir über die $t$-Koordinate, wie in der folgenden
 Definition.
@@ -176,7 +177,7 @@ Daher muss im nächsten Schritt ermittelt werden, wie Faserintegration
 sich mit der äusseren Ableitung von Formen verträgt.
 
 \begin{satz}[Faserintegration]
-Sei $\omega\in\Omega^{p+1}(U\times[0,1])$ eine $p+1$-Form auf $U\times[0,1]$.
+Sei $\omega\in\Omega^{p+1}(U\times[0,1])$ eine $(p+1)$-Form auf $U\times[0,1]$.
 Dann  ist
 \begin{equation}
 \pi_*d\omega - d\pi_*\omega 
@@ -188,7 +189,7 @@ Dann  ist
 
 \begin{proof}
 Wir berechnen die Ableitungen und die Faserintegration der
-Basis-$p+1$-Formen
+Basis-$(p+1)$-Formen
 \begin{align*}
 \alpha
 &=
@@ -205,13 +206,14 @@ dx^{i_1}\wedge \dots \wedge dx^{i_p}\wedge dx^{i_{p+1}}
 auf $U\times[0,1]$.
 
 Da $\alpha$ bereits $dt$ enthält, kommen in $d\alpha$ keine Ableitungen
-von $a_{i_1\dots i_p}$ nach der Zeit vorkommen.
+von $a_{i_1\dots i_p}$ nach der Zeit vor.
 Die Ableitungen sind:
 \begin{align*}
 d\alpha
 &=
 \sum_{k=1}^n \frac{\partial a_{i_1\dots i_p}(x,t)}{\partial x^k}
 \,dx^k\wedge dx^{i_1}\wedge \dots \wedge dx^{i_p}\wedge dt
+\qquad\qquad\text{und}
 \\
 d\beta
 &=
@@ -219,7 +221,7 @@ d\beta
 \,dx^k\wedge dx^{i_1}\wedge \dots \wedge dx^{i_{p+1}}
 +
 \frac{\partial b_{i_1\dots i_{p+1}}(x,t)}{\partial t}
-\,dt\wedge dx^{i_1}\wedge \dots\wedge dx^{i_{p+1}}
+\,dt\wedge dx^{i_1}\wedge \dots\wedge dx^{i_{p+1}}.
 \intertext{Die Faserintegration erhält nur die Terme mit $dt$ und 
 ergibt}
 \pi_*d\alpha
@@ -233,6 +235,7 @@ ergibt}
 dx^k
 \wedge
 dx^{i_1}\wedge\dots\wedge dx^{i_p}
+\qquad\qquad\text{bzw.}
 \\
 \pi_*d\beta
 &=
@@ -255,7 +258,7 @@ b_{i_1\dots i_{p+1}}(x,0)
 \,
 (-1)^{p+1}
 \,
-dx^{i_1}\wedge\dots\wedge dx^{i_p}\wedge dx^{i_{p+1}}
+dx^{i_1}\wedge\dots\wedge dx^{i_p}\wedge dx^{i_{p+1}}.
 \intertext{Die beiden Summanden im letzten Ausdruck entstehen dadurch,
 dass die Variable $t$ auf $0$ bzw.~$1$, das ist}
 &=
@@ -333,7 +336,7 @@ Die induzierte Abbildung $H^*\colon\Omega^*(U)\to\Omega^*(U\times[0,1])$
 vertauscht mit $d$.
 Für eine $p$-Form $\omega$ auf $U$ ist $H^*\omega$ eine $p$-Form auf
 $U\times[0,1]$.
-Entsprechend ist $\pi_*H^*\omega$ ist eine $p-1$-Form auf $U$.
+Entsprechend ist $\pi_*H^*\omega$ ist eine $(p-1)$-Form auf $U$.
 Wir definieren daher die Funktion $J=\pi_*H^*$ und berechnen das
 Verhalten mit der äusseren Ableitung.
 
@@ -394,7 +397,7 @@ Damit ist es jetzt möglich, das Poincaré-Lemma zu beweisen.
 \begin{satz}[Poincaré-Lemma]
 \label{buch:pformen:geschlossen:satz:poincare-lemma}
 Ist die $p$-Form $\omega\in\Omega^p(U)$ geschlossen, also $d\omega=0$,
-dann gibt es eine $p-1$-Form $\alpha\in\Omega^{p-1}(U)$ mit
+dann gibt es eine $(p-1)$-Form $\alpha\in\Omega^{p-1}(U)$ mit
 $d\alpha=\omega$.
 \end{satz}
 
@@ -411,17 +414,17 @@ $h_0^*\omega=0$.
 $h_1$ ist die identische Abbildung $x\mapsto x$, daher ist auch $h_1^*$
 die identische Abbildung von $\Omega^*(U)$ und daher $h_1^*\omega=\omega$.
 Damit folgt $dJ\omega=\omega$.
-Somit ist $\alpha =(-1)^{p+1}J\omega$ die gesuchte $p-1$-Form.
+Somit ist $\alpha =(-1)^{p+1}J\omega$ die gesuchte $(p-1)$-Form.
 \end{proof}
 
 Wir prüfen nach, dass der ursprünglich für geschlossene 1-Formen
 $\omega$ gegebene Beweis die gleiche Funktion
-$f=J\omega\in\Omega^0(U)=\mathscr{E}(U)$ mit $df=\omega$ ergibt.
+$f=J\omega\in\Omega^0(U)=C^\infty(U)$ mit $df=\omega$ ergibt.
 Für eine 1-Form
 \[
 \omega = \sum_{i=1}^nf_i(x)\, dx^i
 \]
-Zunächst ist
+ist zunächst
 \[
 H^*\omega
 =
@@ -429,8 +432,8 @@ H^*\omega
 =
 \sum_{i=1}^nf_i(tx) (x_i\, dt + t\, dx^i).
 \]
-Darauf muss jetz die Operation $\pi_*$ angewendet werden.
-Diese ergibt aber nichtverschwindende Resultat nur auf Termen, in
+Darauf muss jetzt die Operation $\pi_*$ angewendet werden.
+Diese ergibt aber ein nicht verschwindendes Resultat nur auf Termen, in
 denen $dt$ vorkommt.
 Daher ist
 \[
