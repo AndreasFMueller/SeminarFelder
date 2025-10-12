@@ -275,6 +275,7 @@ void	dump_chapters() {
 int	main(int argc, char *argv[]) {
 	char	*filename = NULL;
 	FILE	*file = stdin;
+	int	colorpages = 0;
 
 	/* parse command line */
 	int	longindex;
@@ -355,6 +356,7 @@ int	main(int argc, char *argv[]) {
 			/* number line, contains relative page number, compute 
 			   absolute page number */
 			printf("%d,", base + atoi(line) - 1);
+			colorpages++;
 			break;
 		default:
 			/* ignore anything else */
@@ -366,6 +368,8 @@ int	main(int argc, char *argv[]) {
 		fprintf(stderr, "%s:%d: number of lines processed: %d\n",
 			__FILE__, __LINE__, linecounter);
 	}
+
+	printf("color pages: %d\n", colorpages);
 
 	/* close the file */
 	if (file != stdin)
