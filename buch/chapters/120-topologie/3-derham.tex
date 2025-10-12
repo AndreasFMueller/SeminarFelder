@@ -25,7 +25,7 @@ d
 \colon
 \Omega^k(M) \to \Omega^{k+1}(M)
 :
-\alpha \mapsto d\alpha
+\alpha \mapsto d\alpha.
 \]
 Um den Definitionsbereich etwas expliziter zu machen, schreiben wir
 $d^k$ für die auf $k$-Formen definierte äussere Ableitung.
@@ -57,7 +57,7 @@ Diese Ähnlichkeit rechtfertigt die folgende Definition.
 
 \begin{definition}[Kokettenkomplex]
 \index{Kokettenkomplex}%
-Ein \emph{Kokettenkomplex} $(C*,d*)$ ist eine Folge $C^k$, $k\in\mathbb{Z}$
+Ein \emph{Kokettenkomplex} $(C^*,d^*)$ ist eine Folge $C^k$, $k\in\mathbb{Z}$
 von Vektorräumen 
 \[
 \dots
@@ -68,6 +68,7 @@ C^k
 \xrightarrow{\qquad\clap{$d^{k}$}\qquad}
 C^{k+1}
 \xrightarrow{\qquad\clap{$d^{k+1}$}\qquad}
+\dots
 \]
 mit linearen Abbildungen $d^k$, dem \emph{Differential},
 \index{Differential, eines Kokettenkomplexes}%
@@ -88,7 +89,7 @@ in der Homologietheorie wurden dann aber diejenigen Zyklen ignoriert,
 die als Rand entstehen konnten.
 
 \begin{definition}[Kozyklen und Koränder]
-Sei $(C*,d*)$ ein Kokettenkomplex.
+Sei $(C^*,d^*)$ ein Kokettenkomplex.
 Ein $z\in C^k$ mit $d^kz=0$ heisst \emph{Kozyklus}.
 \index{Kozyklus}%
 Der Kern von $d^k$ wird mit
@@ -120,7 +121,7 @@ Für eine orientierbare, zusammenhängende Mannigfaltigkeit lässt sich
 sogar eine explizite Beschreibung aller Kozyklen angeben, sie sind
 alle Vielfache der Volumenform.
 
-Für $k=0$ ist die Menge Kozyklen ebenfalls einfach zu bestimmen.
+Für $k=0$ ist die Menge der Kozyklen ebenfalls einfach zu bestimmen.
 Sie besteht aus denjenigen $0$-Formen, deren Ableitung verschwindet.
 0-Formen sind aber einfach Funktionen.
 Die Menge der Kozyklen besteht daher einfach aus den Konstanten.
@@ -159,7 +160,7 @@ H^0(M) = Z^0(M) / B^0(M) = \mathbb{R}.
 Falls $M$ aus mehreren Komponenten besteht, ist ein Kozyklus eine
 Funktion, die in jeder Komponente konstant ist.
 Die Kohomologiegruppe $H^0(M)$ ist also ein Vektorraum mit sovielen
-Dimensionen, wie die Mannigfaltigkeit Kompoenten hat.
+Dimensionen, wie die Mannigfaltigkeit Komponenten hat.
 
 %
 % Integration über $k$-Simplizes
@@ -274,7 +275,7 @@ bewegen.
 Eine Kurve $\mathbb{R}\to M$ mit Tangentialvektor $\ne 0$ in der
 Mannigfaltigkeit folgt ihr, ohne umzukehren.
 Indem wir eine Metrik verwenden, können wir auf zwei Möglichkeiten
-reduzieren: die Kurve ist eine injektive Abbildung, d.~h. die Mannigfaltigkeit
+reduzieren: Die Kurve ist eine injektive Abbildung, d.~h. die Mannigfaltigkeit
 enthält eine Komponenten, die zu $\mathbb{R}$ diffeomorph ist,
 oder die Kurve kehrt zu einem Punkt zurück, d.~h. die Mannigfaltigkeit
 enthält eine Komponente, die zu einer Kreislinie diffeomorph ist.
@@ -298,7 +299,7 @@ Zur Bestimmung von $H^1(S^1)$ ist jetzt zu unterscuhen,
 welche $1$-Formen keine Koränder sind.
 Ein Korand $\alpha$ ist eine 1-Form, welche durch Ableitung einer
 Funktion $\beta$ auf $S^1$ entsteht, sie muss also von der Form
-$\alpha=\beta'(x)\,dx$, wobei $f$ eine periodische Funktion ist.
+$\alpha=\beta'(x)\,dx$ sein, wobei $f$ eine periodische Funktion ist.
 Durch Integration über eine Periode folgt
 \[
 \int_{S^1} \alpha
@@ -438,7 +439,7 @@ illustriert lässt sich ein solcher Weg immer zerlegen in
 $k$ Segmente der Länge $1$ in $x$-Richtung ({\color{darkred}rot})
 und $l$-Segmente der Länge $1$ in $y$-Richtunge ({\color{blue}blau})
 gefolgt vom direkten Pfad im Einheitsquadrat von $(0,0)$ zu $(B)$
-({\color{orange}}).
+({\color{orange}orange}).
 Die Funktion $\beta$ im Punkt $B$ muss daher
 \begin{align*}
 \beta(B)
@@ -456,7 +457,7 @@ l\int_{(0,0)}^{(0,1)}\alpha
 +
 \int_{(0,0)}^{\color{orange}(B)}\alpha
 \end{align*}
-für beliebige $k,l\in\mathbb{Z}$.
+für beliebige $k,l\in\mathbb{Z}$ erfüllen.
 Dies ist nur dann möglich, wenn die beiden ersten Integrale verschwinden.
 Die Abbildung
 \[
