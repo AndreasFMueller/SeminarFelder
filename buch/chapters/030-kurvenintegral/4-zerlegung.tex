@@ -5,17 +5,18 @@
 \label{buch:kurvenintegral:section:zerlegung}}
 \kopfrechts{Differenzierbarae Zerlegung der Einheit}%
 Ein Wegintegral kann sich entlang eines Pfades erstrecken, der
-mehrere Kartengebiete einer Mannigfaltigkeit durchauert.
+mehrere Kartengebiete einer Mannigfaltigkeit durchschneidet.
 Das Kurvenintegral ist mithilfe eines Koordinatensystems definiert,
-kann also immer nur innerhalb eines Kartengebietes berechnet werden.
+kann also immer nur innerhalb eines Kartengebietes
+mit einem Riemann-Integral berechnet werden.
 Es muss also ein Technik gefunden werden, mit der Teilintegrale in
 einzelnen Kartengebieten zu einem Integral über die ganze Kurve
 zusammengesetzt werden.
-Die Konstruktion muss von der Wahl der Koordinatensysteme enthlange
+Die Konstruktion muss von der Wahl der Koordinatensysteme entlang
 des Pfades unabhängig sein.
 Dies wird erreicht mit einer differenzierbaren Zerlegung der Einheit
-und dank der Tatsache, dass das Kurvenintegral linear in der 1-Form
-ist.
+und ist möglich dank der Tatsache, dass das Kurvenintegral linear
+in der 1-Form ist.
 
 %
 % Glatte Funktionen mit Träger in einem Interval
@@ -49,6 +50,12 @@ der Abschluss der Menge der Punkte, in denen $f$ von $0$ verschieden
 ist.
 \end{definition}
 
+Nimmt man beliebige Mengen $U$, auf denen die Funktion $f$ verschwindet,
+dann ist die Vereinigung dieser Mengen $U$ das Komplement des Trägers
+und auch wieder eine offene Menge.
+Ein Punkt im Komplement des Trägers enthält also immer eine kleine
+Umgebung, auf der die Funktion $f$ verschwindet.
+
 %
 % Eine glatte Funktion mit Träger $\mathbb{R}_{\ge 0}$
 %
@@ -80,7 +87,6 @@ e^{-1/x}\frac{1}{x^2}
 \\
 \end{align*}
 
-\input{chapters/030-kurvenintegral/fig/fig-gab.tex}%
 
 \begin{satz}
 Die $k$-te Ableitung der Funktion $f(x)=e^{-1/x}$ ist von der Form
@@ -102,7 +108,7 @@ erfüllt.
 \end{satz}
 
 \begin{proof}
-Die Aussage kann mithilfe von vollständiger Induktion beweisen
+Die Aussage kann mithilfe von vollständiger Induktion bewiesen
 werden.
 Sie ist offensichtlich für die $0$-te Ableitung, also für die Funktion
 $f(x)$ selbst war, das Polynom $P_0(x)=1$ ist als Konstante vom Grad 0.
@@ -154,11 +160,6 @@ x^2P'_{n}(x)+(1-2nx)P_n(x)
 \]
 ist das gesuchte Polynom.
 \end{proof}
-
-Der Graph der Funktion $g_{a,b}(x)$ ist auch in
-Abbildung~\ref{buch:kurvenintegral:fig:gab}
-mit stark gestreckter vertikaler Skala dargestellt.
-Der Träger ist als hellrotes Rechteck hervorgehoben.
 
 \begin{satz}
 \label{buch:kurvenintegral:zerlegung:satz:g}
@@ -235,6 +236,8 @@ Mit der Funktion $g(x)$ von Satz~\ref{buch:kurvenintegral:zerlegung:satz:g}
 lässt sich jetzt eine beliebig oft stetig differnzierbare
 Funktion mit Träger im Intervall $[a,b]$ konstruieren.
 
+\input{chapters/030-kurvenintegral/fig/fig-gab.tex}%
+
 \begin{satz}
 Für $a,b\in\mathbb{R}$ mit $a<b$ ist
 die Funktion
@@ -255,7 +258,7 @@ beliebig oft stetig differenzierbar und hat Träger $[a,b]$.
 Für $x<a$ ist $x-a<0$ und daher $g(x-a)=0$.
 Für $x>b$ ist $b-x<0$ und daher $g(b-x)=0$.
 
-Für $x$ im offenen Intervall $(a,b)$ ist $x-a>0$ und $b-x>0$ ist
+Für $x$ im offenen Intervall $(a,b)$ ist $x-a>0$ und $b-x>0$, daher ist
 $g(x-a)>0$ und $g(b-x)>0$ und damit
 auch $g_{a,b}(x)=g(x-a)g(b-x)>0$.
 Damit ist gezeigt, dass $g_{a,b}(x)\ne 0$ für $x\in(a,b)$ und damit
@@ -266,6 +269,11 @@ Damit ist gezeigt, dass $g_{a,b}(x)\ne 0$ für $x\in(a,b)$ und damit
 \]
 wie behauptet.
 \end{proof}
+
+Der Graph der Funktion $g_{a,b}(x)$ ist in
+Abbildung~\ref{buch:kurvenintegral:fig:gab}
+mit stark gestreckter vertikaler Skala dargestellt.
+Der Träger ist als hellrotes Rechteck hervorgehoben.
 
 %
 % Überdeckung mit offenen Intervallen
@@ -383,9 +391,9 @@ t\in[a,b]
 \}
 \]
 sind offene Teilmengen von $[a,b]$.
-Sie müssen nicht notwendiger zusammenhängend sein, die Kurve kann
+Sie müssen nicht notwendigerweise zusammenhängend sein, die Kurve kann
 das Gebiet $U_\alpha$ mehrmals verlassen und wieder neu betreten.
-Jedes $V_\alpha$ kann zerlegt werden in endlich viele Intervalle.
+Jedes $V_\alpha$ kann wieder zerlegt werden in endlich viele Intervalle.
 Damit ist eine Familie von offenen Intervallen gefunden, die ganz
 $[a,b]$ abdecken.
 
@@ -460,6 +468,20 @@ Die Summe ist
 \[
 \sum_{i=1}^N \omega_i
 =
+\sum_{i=1}^n
+h_i\, (T\gamma)^*(\omega)
+=
+(T\gamma)^*
+\sum_{i=1}^n h_i\,
+\omega
+=
+(T\gamma)^*
+\biggl(
+\sum_{i=1}^n h_i
+\biggr)
+\omega
+=
+(T\gamma)^*\omega.
 \]
 Das Integral entlang der Kurve ist daher
 \[

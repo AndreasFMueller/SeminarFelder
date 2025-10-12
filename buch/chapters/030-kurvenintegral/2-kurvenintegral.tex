@@ -21,7 +21,7 @@ und einen Zahlenwert ergibt.
 In einem Koordinatensystem mit den Koordinaten $x^1,\dots,x^n$ bilden
 die Tangentialvektoren an die Koordinatenlinien eine Basis des
 Tangentialraumes.
-Die einzelnen Basisvektoren sind früher auch schon mit den
+Die einzelnen Basisvektoren sind früher schon mit den
 Ableitungsoperatoren $\partial/\partial x^i$ identifiziert worden.
 Die Koordinaten-1-Formen $dx^1,\dots,dx^n$ ermitteln, wie schnell sich
 die entsprechende Koordinate entlang eines Tangentialvektors ändert.
@@ -55,17 +55,20 @@ Die $1$-Form
 \beta
 =
 -
+\sum_{i=1}^n
 \frac{GMx^i}{r^3}
 dx^i
 \]
 soll auf dem Impulsvektor eines Teilchens berechnet werden.
+Die Summationskonvention ist hier nicht anwendbar, da der Index $i$ zweimal
+als oberer Index auftritt.
 \index{Impuls}%
 Wird die Bahnkurve mit der Zeit parametrisiert, hat der Geschwindigkeitsvektor
 die Komponenten $\dot{x}^i$.
 Der Impuls $p$ des Teilchens ist der Vektor mit den Komponenten
 $p^i=m\dot{x}^i$.
 Wendet man die Linearform $\beta$ darauf an, ergibt sich
-\begin{align*}
+\begin{align}
 \langle \alpha, p\rangle
 &=
 -
@@ -86,22 +89,25 @@ x^i \delta_{ik} \dot{x}^k
 -\frac{GMm}{r^3}
 \sum_i x^i\dot{x}^i
 \label{buch:kurvenintegral:kurvenintegral:eqn:gravimpuls}
-\end{align*}
-Dies ist die Leistung, die das Teilchen entgegen dem Gravitationsfeld 
+\end{align}
+Dies ist die Leistung, die das Teilchen gegen das Gravitationsfeld 
 arbeitet.
 Eine $1$-Form ist also dazu geeignet, ein wichtiges physikalisches Konzept
 des Gravitationsfeldes auszudrücken.
+\end{beispiel}
 
 Die Form
 \eqref{buch:kurvenintegral:kurvenintegral:eqn:gravimpuls}
 ist allerdings noch nicht wirklich geeignet.
-In der Formel wirden kontravariante Komponenten miteinander multipliziert
-und summiert, dies führt nicht eine koordinatensystemunabhängige
+In der Formel wurden kontravariante Komponenten miteinander multipliziert
+und summiert, dies führt nicht auf eine koordinatensystemunabhängige
 Grösse.
-Die Schwierigkeit rührt von der Darstellung des Impulses her, die später
-noch modifiziert werden muss.
-% XXX wo wird das geflickt?
-\end{beispiel}
+Dazu müssten aus einem oberen Index in unterer gemacht werden können
+oder umgekehrt.
+Mit einer Metrik ist dies möglich, wie die musikalischen Operationen
+gemäss
+Definition~\ref{buch:kurvenintegral:differential:def:musikalisch}
+zeigen.
 
 %
 % Abbildung auf einer $1$-Form
@@ -110,14 +116,14 @@ noch modifiziert werden muss.
 Sei wieder eine $1$-Form $\alpha$ auf einer $n$-dimensionalen Mannigfaltigkeit
 durch die Koeffizienten $\alpha_i(x)$ gegeben.
 Sei ausserdem $f\colon N\to M$ eine differenzierbare Abbildung einer
-$m$-dimensionalen Mannigfaltikgiet $N$.
+$m$-dimensionalen Mannigfaltigkeit $N$ in die Mannigfaltigkeit $M$.
 Ein Tangentialvektor von $N$ im Punkt $p$ wird dargestellt durch eine
-Kurve durch den Punkte $p$ in $N$.
+Kurve durch den Punkt $p$ in $N$.
 Durch die Abbildung $f$ wird die Kurve auf eine Kurve durch den Bildpunkt
 $q=f(p)$ abgebildet.
 Da die Abbildung $f$ differenzierbar ist, entspricht der Bildkurve 
 ein Tangentialvektor im Punkt $f(p)$.
-Dies ist die tangentialabbildung $Tf\colon TN\to TM$, die Tangentialvektoren
+Dies ist die Tangentialabbildung $Tf\colon TN\to TM$, die Tangentialvektoren
 von $N$ auf Tangentialvektoren von $M$ abbildet.
 
 Eine $1$-Form berechnet aus einem Tangentialvektor einen Zahlenwert.
@@ -167,13 +173,17 @@ Kugeloberfläche sind.
 Um den Tangentialvektor in den $(\varphi,\vartheta)$-Koordinaten zu
 bestimmen, muss als erstes der Bildpunkt der Abbildung $f$ in Länge
 und Breite umgerechnet werden.
-Zunächst ist aus der Darstellung
+Zunächst kann man aus der Darstellung
 \eqref{buch:kurvenintegral:kurvenintegral:eqn:kugel}
-kann man sofort ablesen, dass $t=\varphi$ die geographische Länge ist,
-es bleibt also nur noch die geographische Breite abzulesen.
+sofort ablesen, dass $t=\varphi$ die geographische Länge ist,
+es bleibt also nur noch die geographische Breite zu bestimmen.
 Diese lässt sich aber sofort aus der $z$-Komponente ablesen:
 \[
 \cos\vartheta
+=
+z
+=
+\frac{\sinh kt}{\cosh kt}
 =
 \tanh kt
 \qquad\Rightarrow\qquad
@@ -201,19 +211,22 @@ Damit kann jetzt der Tangentialvektor berechnet werden, werden:
 .
 \end{align*}
 Damit sind die Komponenten des Tangentialvektors in
-$(\varphi,\vartheta)$-Koordinaten gefinden.
+$(\varphi,\vartheta)$-Koordinaten gefunden.
 
 Wir wenden jetzt die $1$-Form $\sin^2\vartheta\, d\varphi$ darauf
 an und erhalten:
 \begin{align*}
 \biggl\langle
-\sin^2\vartheta\,d\varphi,
-\biggl(1,
--\frac{k\operatorname{sech}^2(kt)}{\sqrt{1-\tanh^2(kt)}}
-\biggr)
+\sin^2\vartheta\,d\varphi
+,
+\frac{\partial}{\partial \varphi}
+-
+\frac{k\operatorname{sech}^2(kt)}{\sqrt{1-\tanh^2(kt)}}
+\frac{\partial}{\partial\vartheta}
 \biggr\rangle
 &=
 \sin^2\vartheta
+\biggl(
 \underbrace{
 \biggl\langle
 d\varphi,\frac{\partial}{\partial \varphi}
@@ -226,6 +239,7 @@ d\varphi,\frac{\partial}{\partial \varphi}
 d\varphi,\frac{\partial}{\partial\vartheta}
 \biggr\rangle
 }_{\displaystyle = 0}
+\biggr)
 \\
 &=
 \sin^2\vartheta(t)
@@ -234,7 +248,7 @@ d\varphi,\frac{\partial}{\partial\vartheta}
 \sin^2 \arccos \tanh kt
 \\
 &=
-1-\tanh^2 kt
+1-\tanh^2 kt.
 \end{align*}
 Die $1$-Form $Tf^*\alpha$ auf $\mathbb{R}$ hat daher die Form 
 $Tf^*(\sin^2\vartheta\,d\varphi)=(1-\tanh^2 kt)\,dt$.
@@ -271,8 +285,9 @@ Darin wird das Integral
 =
 \int_a^b \alpha_i(f(t)) dx^i
 =
-\int_a^b \alpha_i(f(t))\,\dot{x}^{i}(t)\,dt.
+\int_a^b \alpha_i(f(t))\,\dot{x}^{i}(t)\,dt,
 \]
+wobei das letzte Integral ein gewöhnliches Riemann-Integral ist.
 \end{definition}
 
 \begin{beispiel}
@@ -301,15 +316,17 @@ Die 1-Formen werden durch $Tf^*$ auf die Formen
 \[
 \left.
 \begin{aligned}
-(Tf)^*(dx^1) &= -\sin t\,dt           &&\Rightarrow& (Tf)^*(-x^2\,dx^1) &= \sin^2 t\,dt\\
-(Tf)^*(dx^2) &= \phantom{-}\cos t\,dt &&\Rightarrow& (Tf)^*(\phantom{-} x^1\,dx^2) &= \cos^2 t\,dt
+&           &(Tf)^*(dx^1)                  &= -\sin t\,dt             \\
+&\Rightarrow&(Tf)^*(-x^2\,dx^1)            &= \phantom{-}\sin^2 t\,dt \\[4pt]
+&           &(Tf)^*(dx^2)                  &= \phantom{-}\cos t\,dt   \\
+&\Rightarrow&(Tf)^*(\phantom{-} x^1\,dx^2) &= \phantom{-}\cos^2 t\,dt
 \end{aligned}
-\;
+\quad
 \right\}
-\quad\Rightarrow\quad
+\qquad\Rightarrow\qquad
 (Tf)^*(\alpha)
-%=
-%(\sin^2 t+\cos^2 t)\,dt
+=
+(\sin^2 t+\cos^2 t)\,dt
 =
 dt
 \]
@@ -330,7 +347,7 @@ t
 \end{beispiel}
 
 \begin{beispiel}
-Man berechne das Integral der $1$-Form $\in^2\vartheta\,d\varphi$ auf
+Man berechne das Integral der $1$-Form $\sin^2\vartheta\,d\varphi$ auf
 der Kugeloberfläche entlang der Loxodrome $L(-a,a)$ zwischen den Punkten
 mit dem Parameter $-a$ und $+a$.
 \smallskip
@@ -398,7 +415,7 @@ $B=\gamma(b)$ kann sich die Kraft verändern, so dass $\vec{F}$
 als Kraftfeld betrachtet werden sollte.
 Der Kraftvektor wird daher als Funktion $\vec{F}(x)$ beschrieben.
 
-Der Weg $x(t)$ parametrisiert durch den Parameter $t$ setzt sich aus
+Der Weg $x(t)$, parametrisiert durch den Parameter $t$, setzt sich aus
 kleinen Segmenten $d\vec{s} = x(t+dt)-x(t)$ zusammen, die in einem
 kleinen Zeitinterval $dt$ durchlaufen werden.
 Jedes einzelne trägt den Betrag $\vec{F}(x(t))\cdot d\vec{s}$ zur
@@ -428,7 +445,7 @@ W
 berechnet.
 
 Die Formulierung \eqref{buch:kurvenintegral:kurvenintegral:eqn:arbeit}
-ist abhängig von der Wahl der Koordinaten und daher kein allgemein 
+ist von der Wahl der Koordinaten abhängig und ist daher kein allgemein 
 kovariantes Naturgesetz.
 \index{allgemein kovariant}%
 Dazu muss das Integral in das Integral über eine $1$-Form umgewandelt
@@ -470,7 +487,8 @@ zeigenden Vektor $\vec{n}$.
 
 Wir parametrisieren die Randkurve mit dem Parameter $s\mapsto x(s)$.
 Das Segment der Randkurve zwischen den Punkten $x(s)$ und $x(s+ds)$
-hat Richtung nahe bei $\dot{x}(s)$ und Länge $|\dot{x}(s)|\,ds$.
+hat eine Richtung nahe bei $\dot{x}(s)$ und eine Länge 
+nahe bei $|\dot{x}(s)|\,ds$.
 Wir nehmen an, dass die Kurve so parametrisiert ist, dass das Gebiet
 links liegt.
 Der Normalenvektor $\vec{n}$ kann man dann durch Rotation $R$ um
@@ -479,7 +497,7 @@ Die Menge des durch dieses Segment fliessenden Mediums ist
 \[
 \vec{v(x(s))}\cdot \vec{n}(x(s))
 =
-\vec{v}(x(s)) R\dot{x}(s).
+\vec{v}(x(s)) \cdot R\dot{x}(s).
 \]
 Das Skalarprodukt ist invariant unter Drehungen, daher bleibt der
 Fluss der gleiche, wenn man beide Vektoren mit $R^{-1}$ multipliziert.
@@ -510,6 +528,18 @@ R^{-1}
 beschreiben.
 Sie vertauscht die beden Koordinaten und kehrt das Vorzeichen
 der ersten Komponente.
+Sie macht aus dem Spaltenvektor
+\[
+\begin{pmatrix}
+v^1\\v^2
+\end{pmatrix}
+\qquad
+\text{den Vektor}
+\qquad
+\begin{pmatrix}
+-v^2\\v^1
+\end{pmatrix}.
+\]
 
 \begin{beispiel}
 Gegeben ist das Vektorfeld
@@ -562,7 +592,7 @@ Somit ist des Flussintegral
 \sin^2 t\cdot |\cos t \,|
 \,dt.
 \intertext{Der zweite und dritte Term sind $\pi$-periodisch, daher kann
-das Integral auf ein Integral über $[0,\pi]$ verkürzt werden:}
+das Integral auf ein Integral über $[0,\pi]$ verkürzt werden, was}
 &=
 \int_0^{2\pi}
 \cos t
@@ -573,8 +603,9 @@ das Integral auf ein Integral über $[0,\pi]$ verkürzt werden:}
 \cos^2 t\cdot |\sin t\, |
 +
 \sin^2 t\cdot |\cos t \,|
-\,dt.
-\intertext{Das erste Integral ist ein Integral des $\cos t$ über
+\,dt
+\intertext{ergibt.
+Das erste Integral ist ein Integral des $\cos t$ über
 eine volle Periode und verschwindet daher.
 Wegen der Symmetrie an $t=\frac{\pi}2$ kann das
 zweite Integral kann auf ein Integral über das halbe Intervall reduziert
@@ -588,7 +619,7 @@ werden.
 \sin^2 t\cdot |\cos t \,|
 \,dt
 \intertext{Im Interval $[0,\frac{\pi}2]$ sind $\sin t$ und $\cos t$
-nichtnegativ, die Betragsstriche können daher weggelassenw erden:}
+nicht negativ, die Betragsstriche können daher weggelassen werden:}
 &=
 4
 \int_0^{\frac{\pi}2}

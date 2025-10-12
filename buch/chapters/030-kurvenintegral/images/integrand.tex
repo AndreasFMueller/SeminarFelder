@@ -18,11 +18,11 @@
 declare function={
 	z(\t,\s) = \s*(1-\t)*(1+\t);
 	n(\t,\s) = sqrt(z(\t,\s)*z(\t,\s)+1);
-	f(\t,\s) = z(\t,\s)/n(\t,\s);
+	f(\t,\s) = \s(\t*\t+1)/n(\t,\s);
 	s(\t) = \t / sqrt(4-\t*\t);
 }]
 \begin{scope}
-\clip (-6,-0.1) rectangle (6,4.1);
+%\clip (-6,-0.1) rectangle (6,4.1);
 \foreach \y in {1,0.8,0.6,0.4,0.2}{
 	\pgfmathparse{s(\y)}
 	\xdef\s{\pgfmathresult}

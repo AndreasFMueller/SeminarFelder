@@ -3,7 +3,8 @@
 %
 \section{1-Formen}
 \kopfrechts{1-Formen}%
-Was ist es eigentlich, was man integrieren will?
+Was ist es eigentlich, was man im einleitendend Beispiel integrieren
+will?
 Zunächst gibt der riemannsche Integralbegriff aus dem elementaren
 Analysisunterricht den Eindruck, dass es eine Funktion ist.
 \index{Integral}%
@@ -11,12 +12,20 @@ Es können aber nicht allein die Funktionswerte sein, die das Integral
 bestimmen.
 Vielmehr kommt es auch darauf an, wie ``schnell'' der Definitionsbereich
 beim Integrieren durchlaufen wird.
-Dies wird zum Beispiel durch die Substitutionsformel für das Integral
-wiedergegeben.
-Man kann sie auch als eine Koordinatenänderungsformel für das Integral
-entlang der reellen Achse betrachten.
-Was ist dann aber die koordinatenunabhängige Grösse, deren Integral
-bestimmt worden ist?
+Dies wird zum Beispiel durch den Faltor $dx/dy$ in der Substitutionsformel
+\[
+\int f(x)\,dx
+=
+\int f(y)\, \frac{dx}{dy}\,dx
+\]
+für das Integral wiedergegeben.
+
+Man kann die Substitutionsformel auch als eine Koordinatenänderungsformel
+für das Integral entlang der reellen Achse betrachten.
+Die Funktion $f(x)$ kann kein sinnvoller koordinatenunabhängiger 
+Integrand sein, woher kommt dann der Faktor $dx/dy$?
+Wenn nicht $f(x)$, was ist dann aber die koordinatenunabhängige Grösse,
+deren Integral bestimmt worden ist?
 Dies soll in diesem Abschnitt geklärt werden.
 
 %
@@ -31,8 +40,8 @@ I
 \int_a^b f(x)\,dx
 \]
 einer Funktion $f(x)$ die Fläche unter der Kurve $y=f(x)$ berechnet.
-Man macht das, indem man die Fläche in zunächst in vertikale Streifen
-der Breite $\Delta x_i$ zerlegt, die an bei den Koordinaten $x_i$
+Man macht das, indem man die Fläche zunächst in vertikale Streifen
+der Breite $\Delta x_i$ zerlegt, die bei den Koordinaten $x_i$
 beginnen.
 Die Rechtecke dürfen sich nicht überlappen und müssen die Fläche unter
 der Kurve vollständig abdecken, die Teilstellen $x_i$ müssen
@@ -75,7 +84,7 @@ h\int_a^b |f'(x)|\,dx.
 \]
 Für eine stetig differenzierbare Funktion ist $f'(x)$ im Integranden
 auf der rechten Seite beschränkt.
-Das Integral auf der rechten Seite ist also beschränkt.
+Somit ist das Integral auf der rechten Seite beschränkt.
 Es bleibt aber der Faktor $h$, der den Fehler $\Delta I$ beliebig
 klein macht, wenn man $h$ gegen $0$ gehen lässt.
 
@@ -102,7 +111,7 @@ einen $x$-Schritt von der Grössenordnung
 \frac{dx}{dy}(y)\cdot \Delta y.
 \]
 Sind $a'$ und $b'$ die Endpunkte des $y$-Intervalls, die auf 
-$a=x(a')$ und $b=x(b')$ abgebildet werden, dann ist daher das
+$a=x(a')$ und $b=x(b')$ abgebildet werden, dann ist das
 Integral
 \begin{equation}
 \int_a^b f(x)\,dx
@@ -110,7 +119,7 @@ Integral
 \int_{a'}^{b'} f(x(y)) \, \frac{dx}{dy}(y)\,dy.
 \label{buch:kurvenintegral:1-form:eqn:substitution}
 \end{equation}
-Dies ist die bekannt Formel für die Substitutionsformel für das Integral.
+Dies ist die bekannte Formel für die Substitutionsformel für das Integral.
 \index{Substitutionsformel}%
 
 %
@@ -171,7 +180,8 @@ t
 \int_{AB}
 \alpha.
 \]
-In einem Koordinatensystem soll eine Integralformel entstehen.
+In einem Koordinatensystem soll eine konventionelle Integralformel
+entstehen.
 Rein formal ist daher $\alpha$ in den Koordinatensystemen $\varphi$
 bzw.~$\psi$ durch
 \[
@@ -182,6 +192,8 @@ f(x^1)\,dx^1
 g(y^1)\,dy^1
 \]
 gegeben.
+Die Koordinaten werden gemäss $x^1 = \varphi\circ\psi^{-1}(y^1)$
+umgerechnet.
 Die Substitutionsformel
 \eqref{buch:kurvenintegral:1-form:eqn:substitution}
 besagt dann, dass
@@ -200,7 +212,7 @@ Vektors sind, dann für Vektorkomponenten $v_1$ gilt wegen
 \[
 \frac{\partial}{\partial y^1}
 =
-\frac{dx^1}{\partial y^1}\cdot \frac{\partial }{\partial x^1}.
+\frac{dx^1}{dy^1}\cdot \frac{\partial }{\partial x^1}.
 \]
 die Umrechnungsformel
 \[
@@ -220,11 +232,11 @@ Integralkonzept zu definieren, ist die gegenüber Vektoren ``verkehrte''
 Transformationsrichtung zu erwarten.
 Wenn ein Koordinatenwechsel dazu führt, dass der Koordinatenraum
 langsamer durchlaufen wird, äussert sich das darin, dass die Komponenten
-eines Tangentialvektors grösser werden.
+eines Tangentialvektors kleiner werden.
 Der Tangentialvektor beschreibt aber die ``Schrittgrösse $dx$'' beim
 Integrieren auf koordinatenunabhängige Art.
 Damit das Integral gleich bleibt, muss der skalare Faktor entsprechend
-kleiner werden.
+grösser werden.
 
 %
 % Transformation von Linearformen
@@ -251,10 +263,9 @@ Formel
 \begin{equation}
 a^{\prime k}
 =
-t^k\mathstrut_i a^i
+t^k\mathstrut_i a^i.
 \label{buch:kurvenintegral:1formen:linearformen:vektor}
 \end{equation}
-gegeben.
 
 Eine Linearform ist eine lineare Abbildung $l\colon V\to\mathbb{R}$,
 die einem Vektor $v$ einen Zahlenwert $l(v)$ zuordnet.
@@ -270,7 +281,8 @@ a^i \underbrace{l(e_i)}_{\displaystyle=l_i}
 ist (man beachte die einsteinsche Summationskonvention).
 Die Werte $l_i=l(e_i)$ sind die Koeffizienten, mit denen die $a^i$
 multipliziert werden müssen, um $l(a)$ zu ergeben.
-Entsprechend sind die $l'_i=l(e'_i)$ die Koeffizienten der Basis
+Entsprechend sind die $l'_i=l(e'_i)$ die entsprechende Koeffizienten
+für die Basis $e'_i$.
 
 %
 % Transformation der Koeffizienten einer Linearform
@@ -305,7 +317,8 @@ für die Koeffizienten der Linearform.
 Die Transformation der Linearformkoeffizienten erfolgt also
 in der umgekehrten Richtung vom gestrichenen Koordinatensystem 
 zum ungestrichenen.
-Ausserdem wird über den obneren Index von summiert statt über
+Ausserdem wird in \eqref{buch:kurvenintegral:1formen:linearformen:linearform}
+über den oberen Index von $t^k\mathstrut_i$ summiert statt über
 den unteren wie in 
 \eqref{buch:kurvenintegral:1formen:linearformen:vektor}.
 
@@ -348,7 +361,7 @@ a^{\prime i}
 =
 \sum_{k=1}^n t^i\mathstrut_k a^i
 \]
-und berechnet den Wert $l(a)$ in Koordinaten als
+dann ist der Wert von $l(a)$ in beiden Koordinatensystemen
 \[
 l(a)
 =
@@ -371,8 +384,8 @@ a^k
 l_k
 a^k.
 \]
-Man liest also ab, dass die Koeffizienten der Normalform nach dem
-Gesetz
+Man liest also ab, dass sich die Koeffizienten der Normalform
+nach dem Gesetz
 \[
 l_k
 =
@@ -425,6 +438,11 @@ Die Koeffizienten einer Linearform von Vektoren heissen dargegen
 \index{kovariant}%
 {\em kovariant} genannt wird.
 \end{definition}
+
+In der linearen Algebra wird die Matrix der Skalarprodukte der
+Basisvektoren auch als die \emph{Gram-Matrix}
+\index{Gram-Matrix}%
+bezeichnet.
 
 %
 % Tensoren
@@ -508,15 +526,17 @@ metrische Tensor eine Linearform mit den Koeffizienten
 \[
 l_k = g_{ki}v^i
 \]
-Die Komponenten $l_k$ kann man auch ermitteln, indem man das Skalar
+Die Komponenten $l_k$ kann man auch ermitteln, indem man das Skalarprodukt
 von $v$ mit den Basisvektoren berechnet.
 Man kann also die Indizes des metrischen Tensors als Indizes betrachten,
 die mit einem Inputvektor verknüpft werden, oder alternativ als Indizes
 der Komponenten der Output-Linearform.
 
-Es ist auch denkbar, anstelle von Vektoren aus Linearformen
-neue Werte zu berechnen, oder mehr als zwei Faktoren einfliessen zu
-lassen.
+Eine lineare Abbildung berechnet aus einem Vektor auf lineare
+Art und Weise einen neuen Vektor.
+Man kann sie also als Vektorwertige Linearform betrachten.
+Es ist auch denkbar, andere Arten von Werten zu berechnen, oder
+mehr als zwei Faktoren einfliessen zu lassen.
 Zum Beispiel kann die Krümmung des Raumes dadurch beschrieben werden,
 dass der Transport eines Vektors (erster Inputvektor) beim Paralleltransport
 entlang eines Parallelogramms (zwei weitere Inputvektoren) gedreht wird.
@@ -537,7 +557,7 @@ $r-k$ kontravariante Indizes hat.
 Ein Skalar ist ein Tensor nullter Stufe.
 Ein Vektor ist ein Tensor erster Stufe mit einem kontravarianten Index,
 also vom Typ $(0,1)$, während eine Linearform ein Tensor erster
-Stufe vom Type $(0,1)$ ist.
+Stufe vom Type $(1,0)$ ist.
 Der metrische Tensor $g_{ik}$ ist ein Tensor zweiter Stufe vom Typ
 $(2,0)$.
 Ein Tensor vom Typ $(1,1)$ hat Komponenten $a^i\mathstrut_k$, die aus
@@ -585,7 +605,7 @@ nur über verschieden platzierte
 Indizes summiert, wird sichergestellt, dass Linearformen nur auf
 Vektorkomponenten angewendet werden können.
 Da die Transformationsmatrix einen oberen und einen unteren Index hat,
-kann sie aus einem kontravarianten Vektor nur wieder einen kontrvarianten
+kann sie aus einem kontravarianten Vektor nur wieder einen kontravarianten
 Vektor machen.
 Ebenso wird ein kovarianter Index durch Transformation wieder zu einem
 kovarianten Index.
@@ -638,8 +658,8 @@ und kontravarianten Indizes gemacht.
 Es ist durchaus üblich, die Koeffizienten $g_{ik}$ des metrischen
 Tensors als Einträge einer Matrix zu betrachten.
 Sie wird die {\em Gram-Matrix} genannt und kann dazu verwendet
-\index{Gram-Matrix}T
-werden, das Skalarprodukt als 
+\index{Gram-Matrix}%
+werden, das Skalarprodukt zweier Vektoren als 
 \[
 u\cdot v
 =
@@ -668,9 +688,9 @@ Beschreibung von Naturgesetzen näher kommen will.
 % Integrand $\alpha$ als Linearform
 %
 \subsubsection{Integrand $\alpha$ als Linearform}
-Der Integrand eines koordinatenunabhängig definirten Integrals entlang
+Der Integrand eines koordinatenunabhängig definierten Integrals entlang
 eines eindimensionalen Definitionsgebietes muss also eine
-Linearform sind.
+Linearform sein.
 Tatsächlich wird das Arbeitsintegral in der Physik definiert als
 das Wegintegral der Kraft entlang eines Weges definiert.
 \index{Arbeitsintegral}%
@@ -747,7 +767,7 @@ eines Koordinatensystems mit der konventionellen Riemann-Integration
 deckt.
 
 Das Resultat
-\eqref{buch:kurvenintegral:fig:1koordinaten}
+\eqref{buch:kurvenintegral:1formen:eqn:hauptsatz}
 ist auch als der Hauptsatz der Infinitesimalrechnung bekannt.
 Wir halten jedoch fest, dass es von einer Form ist, der wir später
 wiederholt begegnen werden.
