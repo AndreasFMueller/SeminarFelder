@@ -13,6 +13,8 @@
 In diesem Abschnitt wenden wir die in den vorherigen Abschnitten
 beschriebenen Konzepte an, um die Schallausbreitung bei einem
 Flugzeug im Überschall zu beschreiben.
+Ziel ist es, die Entstehung des Überschallknalls herzuleiten und Strategien
+zur Reduktion desselben zu verstehen.
 Dabei betrachten wir eine ideale Situation, in der das Flugzeug als
 Punktquelle modelliert wird.
 
@@ -29,13 +31,13 @@ gilt. Hier ist $c(z)$ die lokale Schallgeschwindigkeit, $R_S = \frac{R}{M}$
 die Massenangepasste Gaskonstante und $M$ die auf der Höhe $z$ herrschende
 molare Masse des Mediums.
 In der Fliegerei wird die Geschwindigkeit des Flugzeugs oft über die
-dimensionslose \emph{Machzahl} $Ma$ angegeben:
+dimensionslose \emph{Machzahl} \textit{Ma} angegeben:
 \begin{equation}
-    Ma(z) \;=\; \frac{V}{c(z)},
+    \textit{Ma}(z) \;=\; \frac{V}{c(z)},
     \label{eq:mach-number}
 \end{equation}
-wobei $Ma<1$ Unterschall, $Ma=1$ Schallgeschwindigkeit und $Ma>1$ Überschall
-bezeichnet.
+wobei $\textit{Ma}<1$ Unterschall, $\textit{Ma}=1$ Schallgeschwindigkeit
+und $\textit{Ma}>1$ Überschall bezeichnet.
 Der Effekt des Schall- oder Machkegels, welcher durch den Dopplereffekt
 beschrieben wird, ist im Bild \ref{fig:schall:mach-zones} visualisiert.
 
@@ -47,22 +49,82 @@ beschrieben wird, ist im Bild \ref{fig:schall:mach-zones} visualisiert.
     Machkegel mit dem Machwinkel $\mu$ eingezeichnet.}
     \label{fig:schall:mach-zones}
 \end{figure}
+Das vom Flugzeug erzeugte Schallereignis bewegt sich mit Geschwindigkeit $V$
+mit dem Flugzeug, der Schall breitet sich aber mit $c(z)$ aus.
+Diese ist jedoch nicht überall gleich: je dichter ein Medium ist, desto
+höher ist die Schallgeschwindigkeit, was im
+Kapitel~\ref{schall:subsection:atmos-scenarios} aufgezeigt wird.
+Tritt die vom Überschall erzeugte Schockwelle in eine Region mit höherer
+Schallgeschwindigkeit ein sodass $V<c(z)$ gilt, so wird die Schockwelle
+nach oben abgelenkt und kann sich nicht mehr bis zum Boden ausbreiten.
+Tritt hingegen eine Schallwelle in eine Region mit niedrigerer
+Schallgeschwindigkeit ein, sodass $V>c(z)$ gilt, so wird eine Schockwelle
+entstehen, die sich bis zum Boden ausbreiten kann.
+
+Wenn $V \gg c(z)$ ist, wie zum Beispiel beim Flug der Concorde mit Mach
+$2.2 \gg c$, dann spielen die Varitionen von $c(z)$ keine grosse Rolle.
+Wenn aber $V$ nahe bei $c(z)$ ist, dann kommt es zu merklichen Einflüssen,
+die dazu genutzt werden, den Überschallknall abzuschwächen oder zu
+unterdrücken, was im Kapitel~\ref{schall:section:boom} analysiert wird.
 
 \subsection{Lokaler Machwinkel und Emissionsrichtung}
 In einem homogenem Medium bildet sich der Machkegel mit Halbwinkel
 \begin{equation}
-    \mu \;=\; \arcsin\!\Big(\frac{1}{Ma}\Big).
+    \mu \;=\; \arcsin\!\Big(\frac{1}{\textit{Ma}}\Big).
 \end{equation}
 In einem geschichteten Medium setzt man diesen \emph{lokal} an der
 Emissionshöhe $z_a$, auf welcher das Flugzeug fliegt, an:
 \begin{equation}
-    \mu_a \;:=\; \arcsin\!\Big(\frac{1}{Ma(z_a)}\Big)
+    \mu_a \;:=\; \arcsin\!\Big(\frac{1}{\textit{Ma}(z_a)}\Big)
     \;=\; \arcsin\!\Big(\frac{c(z_a)}{V}\Big) .
     \label{eq:local-mach-angle}
 \end{equation}
 Der Rand des Machkegels wird oft als Machrand bezeichnet, welcher im
-vertikalen Schnitt $(x,z)$ durch akustische Strahlen begrenz ist.
+vertikalen Schnitt $(x,z)$ durch akustische Strahlen begrenzt ist.
 Dies nennt man die \emph{geometrische Akustik}.
+
+\paragraph{Akustische Strahlen.}
+Seien $\tau(\mathbf{x})=\mathrm{const.}$ die \emph{Wellenfronten}, visualisiert
+als Kreise in der Abbildung \ref{fig:schall:mach-zones}.
+Die akustischen Strahlen sind ihre \emph{Normalen}; formal verlaufen sie
+in Richtung des Gradienten $\nabla\tau$ und beschreiben die lokale
+Ausbreitungsrichtung:
+\[
+    \dot{\mathbf{x}}(s)\ \parallel\ \nabla\tau(\mathbf{x}),\qquad
+    \text{Strahl}\ \perp\ \text{Wellenfront}.
+\]
+In einem \emph{homogenen} Medium sind Strahlen \emph{Geraden}.
+Für einen \emph{bewegten Punktstrahler}, wie zum Beispiel ein Flugzeug,
+sind die Wellenfronten die Kreise $r=c\,\tau$ um die jeweiligen Emissionsorte
+$x=V(t-\tau)$; die Strahlen an jedem Punkt der Front zeigen radial auf den Emissionsort.
+
+\paragraph{Einhüllende (Machrand) vs.\ Strahlen.}
+Der \emph{Machrand} ist die \emph{Einhüllende} der expandierenden Wellenfronten:
+die Menge aller \emph{Tangentialpunkte} zwischen den Kreisen und einer Kurve.
+An \emph{Einhüllendenpunkten} gilt: \emph{Strahl $\perp$ Einhüllende},
+denn der Strahl ist normal auf die Wellenfront.
+Die Einhüllende ist dort tangential an die Wellenfront.
+
+\begin{itemize}
+\item \textbf{Unterschall} ($\textit{Ma}<1$):
+Es existiert \emph{keine} Einhüllende; die Kreise überlappen, Strahlen
+sind radial zu ihren Emissionszentren und es entsteht kein Machrand.
+
+\item \textbf{Schallnah} ($\textit{Ma}=1$):
+Die Einhüllende degeneriert zu einer \emph{Geraden} senkrecht zur Flugrichtung,
+was zu einer „vertikale“ Linie in der Visualisierung \ref{fig:schall:mach-zones} führt.
+Die Strahlen an den Berührungspunkten sind \emph{orthogonal} zu dieser Linie,
+also parallel zur Flugrichtung.
+Sie liegen nicht auf der Einhüllenden, sondern stehen \emph{senkrecht} zu ihr.
+
+\item \textbf{Überschall} ($\textit{Ma}>1$):
+Die Einhüllende besteht aus zwei \emph{Geraden} mit Halbwinkel $\mu_a$ zur Flugrichtung.
+Dies sind die \emph{Generatoren} des Machkegels, was der Mach-Rand ist,
+und nicht die Strahlen selbst.
+Die Strahlen in den Berührungspunkten stehen \emph{senkrecht} zu
+diesen Linien und zeigen radial zu ihren jeweiligen Emissionszentren;
+sie verlaufen \emph{nicht} entlang der Machlinien.
+\end{itemize}
 
 \subsection{Strahlen in geschichtetem Medium}
 Für isotrope, ruhende Medien mit $c=c(z)$ liefert die geometrische
@@ -75,7 +137,7 @@ wobei $\theta(z)$ der Winkel des Strahls relativ zur Horizontalen ist.
 Wählt man als Anfangsbedingung den lokalen Machwinkel an $z=z_a$,
 also $\theta(z_a)=\mu_a$, dann folgt aus \eqref{eq:snell-acoustics}
 \[
-    K \;=\; \frac{\sin\mu_a}{c(z_a)} \;=\; \frac{1/M(z_a)}{c(z_a)} \;=\; \frac{1}{V}.
+    K \;=\; \frac{\sin\mu_a}{c(z_a)} \;=\; \frac{1/\textit{Ma}(z_a)}{c(z_a)} \;=\; \frac{1}{V}.
 \]
 Damit ist für Mach-Strahlen die Invariante schlicht
 \begin{equation}
@@ -85,7 +147,7 @@ Damit ist für Mach-Strahlen die Invariante schlicht
 
 Mit $\tan\theta = \dfrac{dz}{dx}$, $\sin\theta = K\,c(z)$ und
 $\cos\theta = \sqrt{1 - \sin^2\theta}$,
-erhält man nach der Trigonometrie
+erhält man aus trigonometischen Identitäten
 \begin{equation}
     \frac{dz}{dx} \;=\; \frac{\sin\theta(z)}{\cos\theta(z)} \;=\;
     \frac{K\,c(z)}{\sqrt{1 - K^2 c^2(z)}}.
@@ -127,7 +189,7 @@ Integration von \eqref{eq:ray-ode-inverse}:
 Ist $V\le c(\zeta)$ in einem Teilintervall, wird der Mach-Rand dort
 nach oben abgelenkt, welches zu Schattenzonen am Boden führt.
 
-\subsection{Atmosphären-Szenarien}
+\subsection{Atmosphären-Szenarien}\label{schall:subsection:atmos-scenarios}
 Wir modellieren $T(z)$ stückweise linear und mit trockener
 Standardatmosphäre ohne Wind, woraus $c(z)$ via \eqref{eq:c-of-z} folgt.
 
