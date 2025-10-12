@@ -4,7 +4,7 @@
 % (c) 2025 Prof Dr Andreas Müller
 %
 \section{Die Operatoren der Vektoranalysis
-\label{buch:hodge:section:vektoranlysis}}
+\label{buch:hodge:section:vektoranalysis}}
 \kopfrechts{Die Operatoren der Vektoranalysis}
 Die klassische Vektoranalysis definiert dagegen mehr oder weniger
 ad hoc eine Reihe von Operatoren auf Vektorfeldern, meistens nur
@@ -125,7 +125,7 @@ d\omega
 +
 \frac{\partial f_3}{\partial x^3}\,dx^3\wedge dx^3.
 \intertext{Die 2-Formen $dx^i\wedge dx^i$ verschwinden alle und die
-die 2-Formen mit verschiedenen Faktoren sind zum Teil noch nicht in
+2-Formen mit verschiedenen Faktoren sind zum Teil noch nicht in
 der Standardreihenfolge aufsteigender Indizes, wodurch zusätzlich
 Vorzeichen auftreten:}
 &=-
@@ -327,11 +327,11 @@ Die Divergenz eines Vektorfeldes ist also die Funktion, die durch
 Anwendung des Operators $*{d}*$ auf die zugehörige 1-Form entsteht.
 Dieser Operator funktioniert aber auch auf 1-Formen in $n$ Dimensionen.
 Der Hodge-Operator macht aus einer 1-Form auf $\mathbb{R}^n$ eine
-$n-1$-Form.
+$(n-1)$-Form.
 Die äussere Ableitung davon ist eine $n$-Form, die der Hodge-Operator
 wieder zu einer Funktion macht.
 Auch die Formel \eqref{buch:hodge:hodge:divergenz:eqn:divdef} gilt
-für bliebige $n$.
+für beliebige $n$.
 \input{chapters/070-hodge/fig/table-operatoren.tex}%
 
 %
@@ -361,7 +361,7 @@ Der Gradient einer Funktion $f$ ist
 \]
 \index{rot grad}%
 verschwindet, weil der äussere Differentialoperator nilpotent mit
-Ordnung $2$ ist.
+Grad $2$ ist.
 
 %
 % Divergenz einer Rotation
@@ -626,7 +626,7 @@ ist konstant.
 Für $n=3$ gibt es zwei interessante Fälle, nämlich geschlossene 1-Formen
 und geschlossene 2-Formen.
 Wir übersetzen die Aussagen des Poincaré-Lemmas für diese beiden
-Fälle in die Schreibweise der Vektoranalsis.
+Fälle in die Schreibweise der Vektoranalysis.
 
 Eine geschlossene 1-Form $\omega$ entspricht einem Vektorfeld.
 Geschlossen bedeutet, dass die Rotation dieses Vektorfeldes verschwindet.
@@ -637,8 +637,8 @@ Die Identifikation von 1-Formen mit Vektorfeldern besagt also, dass
 ein Vektorfeld, dessen Rotation verschwindet, ein Gradientfeld
 einer Funktion $f$ ist.
 
-Eine geschlossene 2-Form $\omega$ entspricht einer 1-Form $\ast\omega$,
-auf die mit Hilfe des Hodge-Operators angewendet worden ist.
+Eine geschlossene 2-Form $\omega$ entspricht einer 1-Form $\alpha$,
+auf die der Hodge-Operators angewendet worden ist.
 $d\omega=0$ bedeutet, dass die Divergenz des zu $\ast\omega$
 gehörigen Vektorfeldes verschwindet.
 Da $d\omega=0$ ist, gibt es nach dem Poincaré-Lemma eine 1-Form $\alpha$,
@@ -655,6 +655,7 @@ Es folgt, dass ein Vektorfeld, dessen Divergenz verschwindet, als
 Rotation eines anderen Vektorfeldes geschrieben werden kann.
 
 \begin{satz}[Poincaré-Lemma der Vektoranalsis]
+\label{buch:hodge:vektoranalysis:satz:poincare}
 Wenn die Rotation eines Vektorfeldes $\vec{v}$ auf $\mathbb{R}^3$
 verschwindet, dann gibt es eine Funktion $f$ mit
 $\vec{v}=\operatorname{grad}f$.
@@ -662,4 +663,10 @@ Wenn die Divergenz eines Vektorfeldes $\vec{v}$ verschwindet,
 dann gibt es ein Vektorveld $\vec{a}$, dessen Rotation
 $\operatorname{rot}\vec{a}=\vec{v}$ das Vektorfeld ist.
 \end{satz}
+
+Der Satz~\ref{buch:hodge:vektoranalysis:satz:poincare}
+und die Formel~\eqref{buch:vektoranalysis:eqn:rotrot}
+ergeben die Helmholtz-Zerlegung, die in Kapitel~\ref{chapter:helmholtz}
+studiert wird.
+
 

@@ -6,7 +6,7 @@
 \section{Der Hodge-Operator
 \label{buch:hodge:section:hodge}}
 \kopfrechts{Der Hodge-Operator}
-Der Hodge-Operator bildet $p$-Formen umkehrbar auf $n-p$-Formen ab.
+Der Hodge-Operator bildet $p$-Formen umkehrbar auf $(n-p)$-Formen ab.
 Im folgenden wird er zunächst ad hoc mit Hilfe der Basis-$p$-Formen
 konstruiert.
 
@@ -27,19 +27,19 @@ Auswahlen von $p$ Zahlen aus den $n$ Zahlen $[n]$.
 
 Die Auswahl von $p$ Zahlen aus $[n]$ lässt aber genau $n-p$ Basisformen
 zurück.
-Aus den Indizes $n-p$ Zahlen aus $]n]$, die in $i_1,\dots,i_p$ nicht
-vorkommen, lässt sich eine Basis $n-p$-Form bilden.
+Aus den $n-p$ Zahlen aus $[n]$, die in $i_1,\dots,i_p$ nicht
+vorkommen, lässt sich eine Basis-$(n-p)$-Form bilden.
 Diese Zuordnung einer Basis-$p$-Form $dx^{i_1}\wedge\dots\wedge dx^{i_p}$
 ist offensichtlich umkehrbar.
 Es bleibt noch die Freiheit, das Vorzeichen festzulegen.
 
-\begin{definition}[Hodge-Operator]
+\begin{definition}[Hodge-Operator, elementare Definition]
 \label{buch:hodge:hodge:definition:hodge}
 Der \emph{Hodge-Operator} ist der lineare Operator, der der
 \index{Hodge-Operator}%
 Basis-$p$-Form
 $dx^{i_1}\wedge\dots\wedge dx^{i_p}$ mit $i_1<i_2<\dots<i_p$
-die $n-p$-Form
+die $(n-p)$-Form
 \[
 \ast(dx^{i_1}\wedge\dots\wedge dx^{i_p})
 =
@@ -92,14 +92,14 @@ Definition~\ref{buch:hodge:hodge:definition:hodge} durchgeführt.
 
 Die 1-Formen $dx^1$ und $dx^2$ werden aufeinander abgebildet, es müssen
 aber noch die Vorzeichen ermittelt werden.
-Wenn $\*dx^1=s\,dx^2$ ist, dann soll
-$dx^1\wedge \*dx^1=dx^1\wedge s\,dx^2=dx^1\wedge dx^2$ sein.
-Somit muss $s=1$ gewählt werden und es folgt $\*dx^1=dx^2$.
-Wenn $\*dx^2=s\,dx^1$ ist, dann soll
-$dx^2\wedge(\*dx^2)=dx^2\wedge(s\,dx^1)=dx^1\wedge dx^2$ sein.
+Wenn $\ast dx^1=s\,dx^2$ ist, dann soll
+$dx^1\wedge \ast dx^1=dx^1\wedge s\,dx^2=dx^1\wedge dx^2$ sein.
+Somit muss $s=1$ gewählt werden und es folgt $\ast dx^1=dx^2$.
+Wenn $\ast dx^2=s\,dx^1$ ist, dann soll
+$dx^2\wedge(\ast dx^2)=dx^2\wedge(s\,dx^1)=dx^1\wedge dx^2$ sein.
 Dies kann erreicht werden, dann man im mittleren Ausdruck der
 Gleichungskette $dx^1$ und $dx^2$ vertauscht und dafür $s=-1$ setzt.
-Es folgt $\*dx^2=-dx^1$.
+Es folgt $\ast dx^2=-dx^1$.
 \end{beispiel}
 
 \begin{beispiel}
@@ -209,7 +209,7 @@ Für den iterierten Hodge-Operator findet man dann
 st\, dx^{i_1}\wedge\dots\wedge dx^{i_p}
 \notag
 \end{align}
-Der iterierte Hodge-Operator ist also das Vorzeichen $st\in\{\pm 1\}$.
+Der iterierte Hodge-Operator hat also das Vorzeichen $st\in\{\pm 1\}$.
 
 Durch $p$ Vertauschungen mit den 1-Formen $dx^{j_p}$,
 $dx^{j_{p-1}},\dots,dx^{j_1}$ auf der linken Seite von

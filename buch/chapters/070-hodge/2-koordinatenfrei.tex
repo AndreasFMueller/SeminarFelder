@@ -9,7 +9,7 @@
 Der Hodge-Operators ist bis jetzt explizit mit Hilfe eines
 Koordinatensystems definiert worden.
 Es ist in keiner Weise offensichtlich, dass die Konstruktion auf
-den Basis-$p$-Formen zum richtigen Koordinatentransverhalten führen
+den Basis-$p$-Formen zum richtigen Koordinatentransformtionsverhalten führen
 könnte.
 In diesem Abschnitt wird daher eine weitere Definition gegeben,
 die offensichtlich koordinatenunabhängig ist.
@@ -28,10 +28,10 @@ verfügbar gemacht werden.
 \subsection{Hodge-Operator und Skalarprodukt
 \label{buch:hodge:koordinatenfrei:subsection:skalarprodukt}}
 Der Hodge-Operator ist eine lineare Abbildung, die 
-$p$-Formen auf $n-p$-Formen abbildet.
+$p$-Formen auf $(n-p)$-Formen abbildet.
 Die Definition auf Basis-$p$-Formen in einem Koordinatensystem
 hat verlangt, dass zu einer $p$-Form $\omega=dx^{i_1}\wedge\dots\wedge dx^{i_p}$
-eine Basis-$n-p$-Form $\ast\omega$ so gefunden werden muss, so dass
+eine Basis-$(n-p)$-Form $\ast\omega$ so gefunden werden muss, so dass
 \begin{equation}
 \omega\wedge {\ast\omega}
 =
@@ -109,7 +109,7 @@ Es soll jetzt gezeigt werden, dass
 \eqref{buch:hodge:skalarprodukt:eqn:skalar}
 den Hodge-Operator eindeutig definiert.
 Es muss also gezeigt werden, dass zu einer gegebenen $p$-Form
-$\beta$ genau eine $n-p$-Form ${\color{darkred}\gamma}$ gibt, so dass
+$\beta$ genau eine $(n-p)$-Form ${\color{darkred}\gamma}$ gibt, so dass
 \begin{equation}
 \alpha\wedge {\color{darkred}\gamma}
 =
@@ -140,7 +140,7 @@ ist, dann ist einer der Faktoren 0.
 
 \begin{proof}
 Die Behauptung des Satzes ist gleichbedeutend mit der Aussage, dass 
-sich zu jeder $p$-Form $\alpha\ne 0$ eine $n-p$-Form ${\color{darkred}\gamma}$
+sich zu jeder $p$-Form $\alpha\ne 0$ eine $(n-p)$-Form ${\color{darkred}\gamma}$
 finden lässt, so dass $\alpha\wedge{\color{darkred}\gamma}\ne  0$ ist.
 Wir zeigen dies mit Hilfe einer Basis.
 
@@ -153,7 +153,7 @@ eine Basis der $p$-Formen und die
 \[
 \lambda^{j_1}\wedge\dots\wedge\lambda^{j_{n-p}},\quad j_1<\dots<j_{n-p}
 \]
-eine Basis der $n-p$-Formen.
+eine Basis der $(n-p)$-Formen.
 Eine $p$-Form $\alpha$ ist eine Linearkombination
 \[
 \alpha
@@ -181,11 +181,11 @@ erfüllt also die Forderungen.
 \end{proof}
 
 Aus Satz~\ref{buch:hodge:skalarprodukt:satz:nullteilerfrei} kann jetzt
-abgeleitet werden, dass sich immer eine $n-p$-Form ${\color{darkred}\gamma}$
+abgeleitet werden, dass sich immer eine $(n-p)$-Form ${\color{darkred}\gamma}$
 finden lässt, für die $\alpha\wedge{\color{darkred}\gamma}=
 \langle\alpha,\beta\rangle\,\nu$ für alle $\alpha$ gilt.
 Wir zeigen dies, indem wir ausnutzen, dass der Vektorraum der
-$n-p$-Formen endlichdimensional ist und sich damit das Problem
+$(n-p)$-Formen endlichdimensional ist und sich damit das Problem
 auf eine Aufgabe über lineare Gleichungssysteme reduzieren lässt.
 Zur Konstruktion des Gleichungssystems definieren zunächst die
 Abbildung $a_\alpha$ wie folgt.
@@ -347,7 +347,7 @@ Das Volumen wird durch die Gram-Determinante
 \right|
 \intertext{der Vektoren $X_1,\dots,X_n$ gegeben.
 Wählt man für die Vektoren die Standardbasisvektoren
-$X_k=\partial/\partial x^k$ sind die Skalarprodukt nach
+$X_k=\partial/\partial x^k$, sind die Skalarprodukte nach
 Definition des metrischen Tensors durch die Matrixelement
 $g_{ik}$ gegeben.
 Somit ist das Volumen}
@@ -369,7 +369,7 @@ Die Volumenform ist daher
 \[
 \nu
 =
-\sqrt{g}\, dx^1\wedge\dots\wedge dx^n.
+\sqrt{g\mathstrut}\, dx^1\wedge\dots\wedge dx^n.
 \]
 
 \begin{beispiel}
@@ -397,7 +397,7 @@ r^2
 \qquad
 \nu
 =
-\sqrt{g}\, dr\wedge d\varphi
+\sqrt{g\mathstrut}\, dr\wedge d\varphi
 =
 r\,dr\wedge d\varphi.
 \]
@@ -624,10 +624,10 @@ mit der Eigenschaft $B(0)=I$.}
 \intertext{Eine solche Ableitung ist die Spur, es folgt daher, dass die
 Ableitung von $\det A(t)$}
 &=
-\det A(t) \operatorname{Spur} \frac{d}{dh}A(t)^{-1}A(t+h)\bigg|_{h=0}
+\det A(t) \operatorname{tr} \frac{d}{dh}A(t)^{-1}A(t+h)\bigg|_{h=0}
 \\
 &=
-\det A(t) \operatorname{Spur}\biggl( A(t)\frac{dA(t)}{dt}\biggr).
+\det A(t) \operatorname{tr}\biggl( A(t)\frac{dA(t)}{dt}\biggr).
 \intertext{In Komponenten ausgeschrieben ist dies}
 \frac{d}{dt}\det A(t)
 &=
@@ -730,7 +730,7 @@ Damit wird es jetzt möglich, den Hodge-Operator zu definieren.
 \label{buch:hodge:koordinatenfrei:def:hodge-operator}
 Der Hodge-Operator auf einer differenzierbaren Mannigfaltigkeit
 mit einer Metrik ist eine lineare Abbildung, die $p$-Formen in
-$n-p$-Formen abbildet.
+$(n-p)$-Formen abbildet.
 Der Hodge-Operator $\ast\omega$ einer $p$-Form $\omega\in\Omega^p$
 ist durch die Bedingung
 \begin{equation}
@@ -740,11 +740,11 @@ ist durch die Bedingung
 für alle $p$-Formen $\alpha\in\Omega^p$ definiert.
 \end{definition}
 
-Die Existenz der $n-p$-Form $\ast\omega$ wird durch den
+Die Existenz der $(n-p)$-Form $\ast\omega$ wird durch den
 Satz~\ref{buch:hodge:skalarprodukt:satz:endlich} sichergestellt.
 Satz~\ref{buch:hodge:satz:eindeutigkeit} garantiert, dass die
 Bedingung~\eqref{buch:hodge:koordinatenfrei:eqn:definition}
-die $n-p$-Form $\ast\omega$ eindeutig definiert ist.
+die $(n-p)$-Form $\ast\omega$ eindeutig definiert ist.
 Beide Sätze sind Koordinatenunabhängige Aussagen, sie verwenden
 ein Koordinatensystem höchstens für den Beweis.
 Damit legt die
@@ -895,9 +895,9 @@ Gram-Determinante
 \end{matrix}
 \right|
 =
-\frac{1}{r^2}.
+\frac{1}{r^2}
 \]
-der Skalarprodukte
+gegeben.
 \item{\bf Hodge-Operator:}
 Für 1-Formen ergibt die Definition
 \[
@@ -911,7 +911,7 @@ dr &\wedge& {\ast\,dr}
 &=&
 dr &\wedge& a(r,\varphi)\,d\varphi
 &=&
-a(r,\varphi)
+\phantom{-}a(r,\varphi)
 \frac1r
 \, \nu
 &\;\Rightarrow\;&
@@ -1107,7 +1107,7 @@ Wie im vorangegangenen Abschnitt soll der Hodge-Operator in
 Kugelkoordinaten berechnet werden.
 \begin{enumerate}
 \item {\bf Metrik:}
-Wie bei den Plarkoordinaten kann die Metrik direkt aus 
+Wie bei den Polarkoordinaten kann die Metrik direkt aus 
 \eqref{buch:hodge:skalarprodukt:eqn:kugelkoordinaten}
 gewinnen.
 \begin{align*}
@@ -1184,7 +1184,7 @@ r^2\, (d\vartheta)^2
 +
 r^2\sin^2\vartheta\,(d\varphi)^2
 \end{align*}
-Der metrische Tensor ist
+Die Matrix des metrischen Tensors ist
 \[
 g
 =
@@ -1194,7 +1194,7 @@ g
 0 &  0  & r^2 \sin^2\vartheta
 \end{pmatrix}
 \]
-der Determinante $\det g=r^4\sin^2\vartheta$ und der inversen Matrix
+mit der Determinante $\det g=r^4\sin^2\vartheta$ und der inversen Matrix
 \[
 g^{-1}
 =
@@ -1352,7 +1352,7 @@ r^2\sin\vartheta\,dr\wedge d\vartheta\wedge d\varphi
 &&\Rightarrow&
 a_\varphi &= \frac{1}{\sin\vartheta}.
 \end{align*}
-Die Resultierenden Werte des Hodge-Operators auf 1-Formen sind in
+Die resultierenden Werte des Hodge-Operators auf 1-Formen sind in
 Tabelle~\ref{buch:hodge:skalarprodukt:table:kugelhodge} zusammengestellt.
 
 In der gleichen Art ist der Wert des Hodge-Operators auf einer
