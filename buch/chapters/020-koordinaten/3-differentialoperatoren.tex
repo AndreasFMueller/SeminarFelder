@@ -184,10 +184,10 @@ nach den Koordinaten eine Basis.
 Dem Tangentialvektor mit den Komponenten $u^i$ im gegebenen
 Koordinatensystem entspricht also der Differentialoperator
 \[
-u^k\partial_i = u^k\frac{\partial}{\partial x^k},
+u^k\partial_k = u^k\frac{\partial}{\partial x^k},
 \]
 also eine Linearkombination der partiellen Ableitungsoperatoren
-(einsteinsche Summenkonvention).
+(einsteinsche Summenkonvention, Definition~\ref{buch:koordinaten:tangentialvektoren:def:einsteinschesummenkonvention}).
 Der Index $k$ im Nenner des Ableitungsoperators gilt als unterer
 Index, denn die zugehörigen Koeffizienten transformieren sich
 wie Vektorkomponenten.
@@ -213,6 +213,9 @@ X
 =
 \sum_{i=1}^n
 X^i \frac{\partial}{\partial x^i}
+=
+\sum_{i=1}^n
+X^i \partial_i
 \]
 geschrieben werden.
 
@@ -340,6 +343,7 @@ geschrieben werden kann.
 
 \begin{definition}[Lie-Ableitung]
 \label{buch:koordinaten:diffop:def:lieableitung}
+\index{Lie-Ableitung}%
 Der Differentialoperator 
 \[
 f\mapsto
@@ -354,6 +358,7 @@ geschrieben.
 
 \begin{satz}[Lie-Algebra]
 \label{buch:koordinaten:diffop:satz}
+\index{Lie-Algebra}%
 Die Lie-Klammer der Vektorfelder $X$, $Y$ und $Z$ erfüllt
 \begin{enumerate}
 \item $[X,X]=0$
@@ -528,6 +533,7 @@ f([X,Y]\cdot g).
 \end{align}
 In den beiden Termen der letzten Gleichungen wirkt die zu $X$
 gehörige Ableitung jeweils auf einem der Faktoren wie in der Produktregel.
+\index{Produktregel}%
 Die Analogie kann noch etwas offensichtlicher gemacht werden, wenn
 wir die folgende Notation wählen.
 
@@ -570,6 +576,7 @@ L_{[X,Y]}.
 Die linke Seite von
 \eqref{buch:koordinaten:diffop:eqn:liekommutator}
 wird auch als Kommutator 
+\index{Kommutator}%
 \[
 [L_X,L_Y]
 :=

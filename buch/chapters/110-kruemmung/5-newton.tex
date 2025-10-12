@@ -65,6 +65,8 @@ Es ist möglich, die Bahn im Gravitationsfeld eines einzelnen,
 ruhenden Himmelskörpers in geschlossener Form zu lösen.
 Sobald mehrere massereiche Himmelskörper die Bahn beeinflussen,
 wie dies im Sonnensystem mit dem Einfluss des Planeten Jupiter
+\index{Sonnensystem}%
+\index{Jupiter}%
 der Fall ist, sind nur noch numerische Lösungen möglich.
 Daher wird im folgenden nicht versucht, Lösungen direkt miteinander
 zu vergleichen.
@@ -83,6 +85,7 @@ der Komponentenform
 \end{equation}
 Die erste Gleichung bedeutet nichts anderes, als dass es in der
 newtonschen Gravitationstheorie eine absolute Zeit gibt.
+\index{Gravitation!newtonsch}%
 
 %
 % Gravitationspotential
@@ -94,6 +97,7 @@ hat das Potential
 \[
 U(x) = \frac{GM}{r}.
 \]
+\index{Gravitationspotential}%
 Tatsächlich ist der Gradient 
 \[
 \operatorname{grad}U
@@ -157,6 +161,7 @@ g_{ii} &= -1\qquad &i&>0
 für die vierdimensionale Mannigfaltigkeit mit den Koordinaten
 $(x^0,x^1,x^2,x^3)$.
 Nur die Zeitkomponenten der Metrik weicht von der Minkowski-Metrik ab.
+\index{Minkowski-Metrik}%
 
 Da das Potential im Vergleich zu $c^2$ klein ist, werden wir nur in
 erster Näherung arbeiten.
@@ -392,7 +397,11 @@ Die Tatsache, dass aus der Metrik
 die
 Bewegungsgleichungen~\eqref{buch:kruemmung:newton:eqn:bewegungsgleichung}
 der newtonschen Gravitation entstehen, rechtfertigt die 
+\index{Raumkrümmung für newtonsche Gravitation}%
 
+%
+% Der riemannsche Krümmungstensor
+%
 \subsubsection{Der riemannsche Krümmungstensor}
 Mit den Christoffel-Symbolen kann jetzt auch der riemannsche Krümmungstensor
 berechnet werden.
@@ -437,6 +446,9 @@ Ist ein weiterer Index von 0 verschieden, sind in den Ableitungstermen
 mindestens zwei Indizes der Christoffel-Symboel von 0 verschieden.
 Somit verschwinden alle diese Komponenten.
 
+%
+% Ricci-Krümmung
+%
 \subsubsection{Ricci-Krümmung}
 Die Ricci-Krümmung entsteht durch Kontraktion des riemannschen
 Krümmungstensors über den ersten und dritten Index.
@@ -455,9 +467,10 @@ R^l\mathstrut_{0l0}
 Die newtonsche Gravitationstheorie besagt, dass es einen Zusammenhang
 zwischen der Materiedichte $\varrho$ und dem Potential gibt, es gilt
 nämlich die Differentialgleichung
-\[
+\begin{equation}
 \Delta U = 4\pi \varrho.
-\]
+\label{buch:kruemmung:newton:potential}
+\end{equation}
 ersetzt man $\varrho$ durch die zugehörige Energiedichte
 $\varepsilon = \varrho c^2$, ergibt sich die Gleichung
 \[
@@ -469,7 +482,7 @@ Damit ist die später abzuleitende einsteinsche Feldgleichung bereits
 angedeutet.
 
 Die anderen Komponenten des Ricci-Tensors sind
-\begin{align*}
+\begin{align}
 R_{0m}
 &=
 R^l\mathstrut_{0lm}
@@ -477,6 +490,8 @@ R^l\mathstrut_{0lm}
 R^0\mathstrut_{00m}
 =
 0
+&k>0
+\notag
 \\
 R_{km}
 &=
@@ -488,7 +503,9 @@ R^k\mathstrut_{0m0}
 =
 \frac{1}{c^2}
 \frac{\partial^2 U}{\partial x^k\,\partial x^m}
-\end{align*}
+&k,m&>0.
+\label{buch:kruemmung:newton:Rik}
+\end{align}
 Der Ricci-Tensor besteht also im Wesentlichen aus den zweiten
 partiellen Ableitungen des Potentials.
 Eine Feldgleichung für den Ricci-Tensor ist also ein lineare
@@ -498,6 +515,9 @@ für die vorliegende newtonsche Näherung haben wir aber in linearer
 Näherung gearbeitet, so dass das verschwinden der nichtlinearen
 Terme nicht überrascht.
 
+%
+% Krümmungsskalar
+%
 \subsubsection{Der Krümmungsskalar}
 Da die Metrik $g_{ik}$ ebenso wie $g^{ik}$ diagonal sind, werden
 für den Krümmungsskalar nur die diagonalen Elemente des Ricci-Tensors

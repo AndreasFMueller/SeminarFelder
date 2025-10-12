@@ -2,6 +2,7 @@
 % Differential einer Funktion
 %
 \section{Differential einer Funktion}
+\kopfrechts{Differential einer Funktion}%
 Wir betrachten eine reellwertige, differenzierbare Funktion
 $f\colon M\to\mathbb{R}$ auf einer $n$-dimensionalen 
 Mannigfaltigkeit $M$.
@@ -32,6 +33,7 @@ hat.
 
 \begin{definition}[Differential einer Funktion]
 \label{buch:kurvenintegral:differential:def:differential}
+\index{Differential}%
 Das Differential $df$ einer Funktion an der Stelle $x$ einer
 $n$-dimensionalen Mannigfaltigkeit ist die $1$-Form, die in einer
 Karte als Komponenten die partiellen Ableitungen von $f$ nach den
@@ -52,6 +54,7 @@ Die Definition~\ref{buch:kurvenintegral:differential:def:differential}
 ermöglicht, die bekannten Rechenregeln für Funktionen mehrere Variablen
 auf das Differential von Funktionen auf einer Mannigfaltigkeit zu
 übertragen.
+\index{d-Operator@$d$-Operator}%
 Seien also im folgenden $f$ und $g$ Funktionen auf einer differenzierbaren
 Mannigfaltigkeit.
 Dann sind auch $f+g$ und $fg$, definiert durch
@@ -112,8 +115,11 @@ Das Differential auf differenzierbaren Funktionen auf einer
 Mannigfaltigkeit erfüllt die
 \begin{align*}
 \text{Summenregel:}& & d(f+g)&= df + dg, \\[6pt]
+\index{Summenregel}%
 \text{Produktregel:}& & d(fg) &= f\,dg + g\,df,\\
+\index{Produktregel}%
 \text{Quotientenregel:}& & d\biggl(\frac{f}{g}\biggr) &= \frac{g\,df - f\,dg}{g^2}.
+\index{Quotientenregel}%
 \end{align*}
 Eine Abbildung, die die Summen- und Produktregel erfüllt, heisst eine
 {\em Derivation}.
@@ -191,6 +197,7 @@ Wir betrachten das Gebiet $M=\mathbb{R}^2\setminus\{0\}$, also die
 Ebene ohne den Nullpunkt.
 Statt in $x$-$y$-Koordinaten kann sie auch in Polarkoordinaten
 beschrieben werden.
+\index{Polarkoordinaten}%
 Die Umrechnung ist durch die Abbildung
 \[
 (x,y) \mapsto (r,\varphi)=\biggl(\sqrt{x^2+y^2},\arctan\frac{y}{x}\biggr)
@@ -363,6 +370,7 @@ sehr stark von der Wahl des Weges abhängig ist.
 %
 \subsection{Richtungsableitung}
 Die Richtungsableitung einer Funktion 
+\index{Richtungsableitung}%
 \[
 f\colon
 \mathbb{R}^n\to\mathbb{R}
@@ -401,6 +409,7 @@ In der Karte mit den $x^i$-Koordinaten ist die Kurve die Gerade
 x^i(t) = x^i(0) + tv^i
 \]
 mit dem Richtungsvektor mit Komponenten $v^i$.
+\index{Richtungsvektor}%
 
 Insbesondere kann man die Richtungsableitung mit dem Differential
 als
@@ -460,8 +469,11 @@ Variablen auch den {\em Gradienten}
 der Funktion $f$.
 Der Operator $\nabla$ heisst auch der Nabla-Operator\footnote{Das Zeichen
 $\nabla$ wurde von William Rowan Hamilton in der Quaternionenanalysis
+\index{Nabla-Operator}%
+\index{nabla@$\nabla$}%
 als auf den Kopf gestelltes $\Delta$ eingeführt.
 Der Theologe William Robertson Smith nannte es Nabla, weil
+\index{Smith, William Robertson}%
 es ihn an die Form eines so genannten Saiteninstruments aus dem
 alten Israel erinnerte.}.
 
@@ -520,6 +532,7 @@ kann mit der inversen Matrix der Koeffizientenmatrix gelöst
 werden.
 Ist $G$ die Matrix mit den Einträgen $g_{ik}$, dann schreiben wir
 die inverse Matrix $G^{-1}$ von
+\index{metrischer Tensor, invers}%
 \[
 G
 =
@@ -696,6 +709,15 @@ $g^{il}B_i$ zu einem kontravarianten Index {\em angehoben}.
 \index{anheben, Index}%
 \end{definition}
 
+Die Operationen des Anhebens und Absenkens von Indizes mithilfe
+des metrischen Tensors bzw.~der seiner Inversen werden manchmal
+als $A\mapsto A^\flat$ für das Absenken und $B\mapsto B^\sharp$
+für das anheben notiert.
+Sie werden dann auch die musikalischen Operationen genannt, da
+in der musikalischen Notenschrift das Zeichen $\sharp$ die
+Anhebung einer Note um einen halben Ton bedeutet, während
+$\flat$ die Absenkung einer Note um eine halben Ton bedeutet.
+
 %
 % Konforme Abbildungen
 %
@@ -736,11 +758,17 @@ Die stereographische Projektion von Beispiel
 ist konform, wie im Folgenden nachgerechnet werden soll.
 \end{beispiel}
 
+%
+% Die Mercator-Projektion
+%
 \subsubsection{Die Mercator-Projektion}
 Die Mercator-Projektion bildet Punkte $(\vartheta,\beta)$ auf
+\index{Mercator-Projektion}%
 der Oberfläche der Einheitskugel auf einen Zylinder mit Koordinaten
 $(\varphi,z)$ ab, der die Kugel im Äquator berührt.
+\index{Einheitskugel}%
 Wir verwenden die vom Äquator gemessene geographsiche Breite $\beta$
+\index{Aquator@Äquator}%
 anstelle des bei Kugelkoordinaten üblichen Polabstandes $\vartheta$.
 Sie ist aber nicht eine geometrische Projektion, vielmehr wird die
 $z$-Koordinate durch eine nichtlineare Funktion $z(\beta)$
@@ -948,6 +976,9 @@ Die Theorie der 1-Formen und der Integration von 1-Formen zeigt,
 wie diese Lösungsmethode mathematisch widerspruchsfrei formuliert
 werden kann.
 
+%
+% Die Differentialgleichung der Loxodrome
+%
 \subsubsection{Die Differentialgleichung der Loxodrome}
 Die Loxodrome auf der Kugeloberfläche wird in einer Mercator-Projektion
 zu einer Geraden.

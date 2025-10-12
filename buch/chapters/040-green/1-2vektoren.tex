@@ -9,26 +9,31 @@ denen irgendwie eine Richtung zugeschrieben werden kann, als
 Vektoren zu betrachten.
 Zum Beispiel wird das Drehmoment einer Kraft als Vektor beschrieben,
 der durch als Vektorprodukt von Kraft und Hebelarm entsteht.
+\index{Drehmoment}%
 Der Drehmomentvektor hat jedoch die ungewöhnliche Eigenschaft, dass
 er sich bei einer Punktspiegelung von Kraft und Hebelarm nicht ändert.
 Offenbar verhält sich der Drehmoment anders als andere Vektoren.
+\index{Kraft}%
+\index{Hebelarm}%
 
 In diesem Abschnitt wird der Begriff des 2-Vektors eingeführt, der
 dieses Rätsel auflöst.
 Es wird auch gezeigt, dass das Vektorprodukt nicht ein Vektor sondern
 ein 2-Vektor ist, der als das Wedge-Produkt nicht nur im dreidimensionalen
+\index{Wedge-Produkt}%
 Raum sondern in jeder beliebigen Dimension zur Verfügung steht.
 
 %
 % Parallelogramme
 %
 \subsection{Parallelogramme}
+\index{Parallelogramm}%
 Viele physikalische Grössen haben Eigenschaften, die sich am besten
 mit dem Flächeninhalt eines Parallelogramms, das von zwei Vektoren
 aufgespannt wird, vergleichen lassen.
 Ziel dieses Abschnitts ist, das Wedge-Produkt von Vektoren und 
 2-Vektoren als Wedge-Produkt von Vektoren aus dem Flächeninhalt
-eines Parallelograms abzuleiten.
+eines Parallelogramms abzuleiten.
 
 %
 % Flächeninhalt
@@ -38,6 +43,7 @@ eines Parallelograms abzuleiten.
 Zwei Vektoren $\vec{a}$ und $\vec{b}$ spannen eine Parallelogramm auf.
 Der Flächeninhalt ändert sich nicht, wenn man die Spitze des Vektors
 $\vec{a}$ parallel zur Richtung von $\vec{b}$ verschiebt.
+\index{Flacheninhalt@Flächeninhalt}%
 Er ändert sich auch nicht, wenn man die Spitze von $\vec{b}$ parallel
 zur Richtung von $\vec{a}$ verschiebt.
 
@@ -150,11 +156,14 @@ ableiten, dass für beliebige Vektoren $\vec{a}$ und $\vec{b}$
 -\vec{b}\wedge\vec{a}
 \end{align*}
 gilt, das Wedge-Produkt ist also notwendigerweise antikommutativ.
+\index{antikommutativ}%
 
 %
 % Drehmoment und Drehimpuls
 %
 \subsubsection{Drehmoment und Drehimpuls}
+\index{Drehmoment}%
+\index{Drehimpuls}%
 Eine Kraft $\vec{F}$, die auf einen im Nullpunkt drehbar gelagerten
 starren Körper wirkt, versucht diesen Körper in Drehung zu versetzen.
 Der Angriffspunkt $P$ der Kraft habe den Ortsvekor $\vec{r}$.
@@ -171,6 +180,7 @@ auf einer Geraden durch den Punkt $P$ mit Richtung $\vec{F}$
 verschiebt.
 In der Physik wird dies oft dadurch ausgedrückt, dass die Kraft
 ein linienflüchtiger Vektor sei.
+\index{linienfluchtig@linienflüchtig}
 Diese Eigenschaften decken sich wieder mit den Regeln
 \eqref{buch:green:2vektoren:eqn:grundeigenschaft}
 des Wedge-Produktes.
@@ -200,6 +210,7 @@ dazwischen durch einen Tensor erklärt.
 \input{chapters/040-green/fig/fig-lorentz.tex}
 Die Lorentz-Kraft ist die Kraft, die eine bewegte Ladung in einem
 magnetischen Feld erfährt.
+\index{Lorentz-Kraft}%
 Sie ist proportional zur Geschwindigkeit, eine ruhende Ladung
 wird von einem Magnetfeld nicht beeinflusst.
 Sie ist auch proportional zur Stärke des magnetischen Feldes.
@@ -227,8 +238,11 @@ Nach den früheren Überlegungen ist sie aber eher als ein weiteres
 Beispiel eines 2-Vektors anzusehen.
 
 Es wird sich später zeigen, dass die Elektrodynamik besser in einer
+\index{Elektrodynamik}%
 vierdimensionalen Raumzeit beschrieben wird, die auch die Basis für
-die spezielle und allgemeine Relatiitätstheorie ist.
+\index{Raumzeit}%
+die spezielle und allgemeine Relativitätstheorie ist.
+\index{Relativitätstheorie}%
 Die Identifikation von 2-Vektoren mit Vektoren ist darin nicht
 mehr möglich.
 Die Verwendung von 2-Vektoren wird aber ermöglichen, die elektrische 
@@ -270,6 +284,7 @@ können wir auf die Produkte $\vec{e}_i\wedge\vec{e}_k$ mit $i<k$
 beschränken, die wir alle als linear unabhängig annehmen müssen.
 
 \begin{definition}[Raum der 2-Vektoren]
+\index{2-Vektoren}%
 Sei $V$ ein $n$-dimensioinaler reeller Vektorraum, dann ist die Menge
 \[
 {\textstyle
@@ -317,6 +332,9 @@ Da der Raum der 2-Vektoren mehr Dimensionen als der Raum
 der Vektoren hat, ist es grundsätzlich unmöglich, die 2-Vektoren
 durch Vektoren zu visualisieren.
 
+%
+% Komponentenformel
+%
 \subsubsection{Komponentenformel}
 In der Basis $\vec{e}_1,\dots,\vec{e}_n$ kann jeder Vektor als
 Linearkombination
@@ -385,8 +403,12 @@ Daraus lassen sich die Komponenten von}
 \end{align}
 in der Basis der 2-Vektoren $\vec{e}_i\wedge\vec{e}_k$ ausdrücken.
 
+%
+% Komponentenformel und Vektorprodukt
+%
 \subsubsection{Komponentenformel und Vektorprodukt}
 Das Vektorprodukt wird in Komponenten als
+\index{Vektorprodukt}%
 \[
 \begin{pmatrix} a^1 \\ a^2 \\ a^3 \end{pmatrix}
 \times
@@ -448,6 +470,9 @@ der physikalischen Realität zur Verfügung stehen, erwartet man daher,
 dass die algebraische Struktur sich in verschiedenen mathematischen
 Konstrukten wiederfinden lässt.
 
+%
+% Das Vektorprodukt als Kommutator von Matrizen
+%
 \subsubsection{Das Vektorprodukt als Kommutator von Matrizen}
 Wir betrachten die Menge 
 \[
@@ -456,6 +481,7 @@ V
 \{ A\in M_3(\mathbb{R}) \mid A^t=-A\}
 \]
 der antisymmetrischen $3\times 3$-Matrizen.
+\index{antisymmetrische Matrix}%
 Solche Matrizen sind von der Form
 \begin{equation}
 A
@@ -467,7 +493,8 @@ A
 \end{pmatrix}.
 \label{buch:green:2vektoren:eqn:antisym}
 \end{equation}
-Der {\em Kommutator} zweier Matrizen ist $[A,B]=AB-BA$ und ergibt
+Der \emph{Kommutator} zweier Matrizen ist $[A,B]=AB-BA$ und ergibt
+\index{Kommutator}%
 für Matrizen der Form~\eqref{buch:green:2vektoren:eqn:antisym}
 \begin{align*}
 AB

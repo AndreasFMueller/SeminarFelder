@@ -25,6 +25,7 @@ Ein $n$-dimensionales Koordinatensystem auf $X$ ordnet jedem Punkt
 ein $n$-Tupel von Koordinaten zu.
 Aus erst später verständlichen Gründen bezeichnen wir die Koordinaten
 mit hochgestellten Indizes, wir schreiben also $x^1,\dots,x^n$.
+\index{Koordinaten}%
 Eine Verwechslungsgefahr mit Exponenten besteht normalerweise nicht.
 Falls die $k$-te Potenz der Koordinate $x^1$ berechnet werden soll, 
 wird dies mit Klammern als $(x^i)^k$ geschrieben.
@@ -48,7 +49,9 @@ Die Punkte einer Ebene können einerseits mit dem {\em kartesischen}
 Koordinatensystem mit den Koordinaten $(x^1,x^2)\in\mathbb{R}$ 
 beschrieben werden und andererseits durch {\em Polarkoordinaten},
 \index{Polarkoordinaten}%
+\index{kartesische Koordinaten}%
 die einen Punkt durch den Radius $y^1 = r$ und den Polarwinkel
+\index{Polarwinkel}%
 $y^2 = \varphi$ definieren (Abbildung~\ref{buch:koordinaten:fig:kartpolar}).
 
 Die kartesischen Koordinaten können aus den Polarkoordinaten durch
@@ -74,10 +77,12 @@ Koordinatentripel $(x^1,x^2,x^3)$ wie auch durch {\em Kugelkoordinaten}
 beschrieben werden.
 In Kugelkoordinaten ist ein Punkt durch die Entfernung $r=y^1$ vom
 Nullpunkt, den Polarwinkel $y^2=\varphi$ seiner Projektion in die 
+\index{Nullpunkt}%
 $x^1$-$x^2$-Ebene und den Winkel $\vartheta$ zwischen der positiven
 $x^3$-Achse und der Geraden durch Nullpunkt $O$ und den Punkt gegeben
 (Abbildung~\ref{buch:koordinaten:koordinaten:fig:kartkugel}).
 Die Umrechnung von Kugelkoordinaten in kartesische Koordinaten
+\index{Kugelkoordinate}%
 erfolgt mit
 \begin{equation}
 \left.
@@ -138,6 +143,8 @@ y^1\ge 0
 \]
 Dies ist keine offene Menge, da die Punkte $(0,y^2)$ bzw.~$(0,y^2,y^3)$
 ein Randpunkt des Wertebereichs der $y$-Koordinaten ist.
+\index{offene Menge}%
+\index{Randpunkt}%
 Bei Kugelkoordinaten nimmt die Koordinate $y^3$ Werte im
 abgeschlossenen Interval $[0,\pi]$ an, was zu weiteren Randpunkten
 des Wertebereichs führen.
@@ -157,13 +164,14 @@ wurden bereits Umrechnungsformeln zwischen den dort dargestellten
 Koordinatensystemen ermittelt.
 Seien etwas allgemeiner zwei Koordinatensysteme $x^1,\dots,x^n$
 und $y^1,\dots,y^n$ auf der Punktmenge $X$ gegeben.
-Sei $W$ die Menge der Koordinaten-$n$-Tupel, die Punkte von $X$
+Sei $U$ die Menge der Koordinaten-$n$-Tupel, die Punkte von $X$
 in den $x^i$-Koordinaten beschreiben, also die Bildmenge der
 Koordinatenabbildung $\varphi$.
+Dann ist die Umkehrabbildung $\varphi^{-1}$ auf $U$ definiert.
+
 Sei weiter $\psi$ die Koordinatenabbildung für die $y^i$-Koordinaten
-und $W$ der zugehörige Wertebereich.
-Dann ist die Umkehrabbildung $\varphi^{-1}$ auf $U$ definiert durch die
-Zusasmmensetzung
+und $V$ der zugehörige Wertebereich.
+Die Zusammensetzung
 \[
 \psi
 \circ
@@ -173,15 +181,16 @@ U\to V\subset\mathbb{R}^n
 :
 (x^1,\dots,x^n)
 \mapsto
-(y^1,\dots,y^n).
+(y^1,\dots,y^n)
 \]
-Dies ist die Koordinatenumrechnung vom $x^i$-Koordinatensystem in
+ist die Koordinatenumrechnung vom $x^i$-Koordinatensystem in
 das $y^i$-Koordinatensystem, eine Abbildung von $U$ in $V\subset\mathbb{R}^n$.
 
 % XXX Koordinatenwechsel-Abbildung
 
 Die Koordinatenwechsel-Abbildung ist umkehrbar, da sowohl $\varphi$
 als auch $\psi$ umkehrbar sind.
+\index{Koordinatenwechsel}
 Die Umkehrabbildung ist die Abbildung
 \[
 (\psi\circ\varphi^{-1})^{-1}
@@ -190,6 +199,7 @@ Die Umkehrabbildung ist die Abbildung
 \colon
 V\to W \subset \mathbb{R}^n.
 \]
+
 %
 % Stetigkeit
 %
@@ -303,6 +313,7 @@ Mit jedem Koordinatenwechsel ist auch die Umkehrabbildung ein
 Koordinantenwechsel.
 Die Koordinatenwechsel sind also alle umkehrbare stetige Abbildungen,
 oder {\em Homöomorphismen}.
+\index{Homoomorphismus@Homöomorphismus}%
 
 Will man ein neues Koordinatensystem auf $X$ verwenden, muss es so
 gewählt werden, dass es mit allen bereits verwendeten Koordinatensystemen
@@ -363,8 +374,10 @@ auf $X$ zu sprechen.
 \subsubsection{Differenzierbarkeit}
 Für eine beliebige Punktmenge $X$ ist es im Allgemeinen nicht sinnvoll,
 von differenzierbaren Funktionen zu sprechen.
+\index{differenzierbar}%
 Die Existenz der Ableitung $f'(x_0)$ einer Funktion im Punkt $x_0$
 basiert darauf, dass es eine lineare Ersatzfunktion
+\index{lineare Ersatzfunktion}%
 \begin{equation}
 f(x) = f(x_0) + f'(x_0)\cdot (x-x_0)+o(x-x_0)
 \label{buch:koordinaten:koordinaten:eqn:linersatz}
@@ -375,6 +388,7 @@ Die Notation $o(t)$ bezeichnet eine Funktion mit der Eigenschaft
 \lim_{t\to 0} \frac{o(t)}{t}=0
 \]
 (Lambert-$o$-Notation).
+\index{Lambert-o-Notation@Lambert-$o$-Notation}%
 Die Darstellung~\eqref{buch:koordinaten:koordinaten:eqn:linersatz}
 ist nur sinnvoll, wenn der Definitions- wie auch der Wertebereich
 Teilmengen von $\mathbb{R}$ sind.
@@ -419,8 +433,9 @@ können daher auch die partiellen Ableitungen
 \]
 bilden.
 Aus der Kettenregel können jetzt die partiellen Ableitung bezüglich
-der Variablen $y^k$ durch die partiellen bezüglich der Variablen $x^i$
-als
+\index{Kettenregel}%
+der Variablen $y^k$ durch die partiellen Ableitungen bezüglich der
+Variablen $x^i$ als
 \begin{align*}
 \frac{\partial}{\partial x^i}
 (f\circ\psi^{-1})\circ (\psi\circ\varphi^{-1})(x^1,\dots,x^n)
@@ -464,6 +479,7 @@ Koordinatentransformation.
 
 \begin{definition}
 Ein Koordinatenwechsel $\psi\circ\varphi^{-1}$ heisst
+\index{Koordinatenwechsel}%
 {\em stetig differenzierbar}, wenn die Jacobi-Matrix $J$
 stetig ist.
 \end{definition}

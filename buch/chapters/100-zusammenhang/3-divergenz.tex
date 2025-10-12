@@ -113,7 +113,47 @@ Aus der Variationsrechnung \cite[Abschnitt 10.2]{buch:seminarvariation}
 ist bekannt, dass zu jeder Symmetrie der Lagrange-Funktion eines
 Variationsproblems ein Erhaltungssatz gehört.
 
-XXX Divergenzform des Erhaltungssatzes
+\begin{satz}[Emmy Noether]
+\label{buch:symmetrien:noether:satz:noether}
+\index{Satz!von Noether}%
+Sei $L(x,\dot{x})$ eine Lagrange-Funktion, die nicht von der Zeit
+abhängt und $h^s\colon\mathbb{R}^n\to\mathbb{R}^n$ eine differenzierbare
+Symmetrie, unter der $L$ invariant bleibt.
+Dann ist die Grösse
+\begin{equation}
+I(x,\dot{x})
+=
+\frac{\partial L}{\partial\dot{x}} (x,\dot{x})
+\cdot 
+\frac{d}{ds} h^s(x)\bigg|_{s=0}
+\end{equation}
+eine Erhaltungsgrösse.
+\end{satz}
+
+Unter einer differenzierbaren Symmetrie der Lagrange-Funktion $L$
+versteht man eine von einem
+Parameter $s$ abhängige Transformation $h^s\colon \mathbb{R}^n\to \mathbb{R}$
+der Koordinaten derart, dass der Wert der Lagrange-Funktion unverändert
+bleibt, also
+\[
+L(t,h^s(x),Dh^s(\dot{x}))
+=
+L(t,x,\dot{x})
+\]
+für alle $s$ (\cite[Definition 10.4]{buch:seminarvariation}).
+In der Physik sind die räumliche Translation, die zeitliche Verschiebung
+und die rämliche Rotation oft vorhandene differenzierbare Symmetrien.
+Die nach dem Satz von Noether erhaltene Grösse ist
+der Impuls, die Energie bwz.~der Drehimpuls, wie in den Beispielen
+in \cite[Abschnitt 10.2]{buch:seminarvariation} ausgeführt wird.
+
+In \cite[Abschnitt 10.3]{buch:seminarvariation} wird ausserdem eine auf
+Felder anwendbare Variante des Satzes von Emmy Noether gezeigt.
+Sie konstruiert zu einer differenzierbaren Symmetrie eines Feldes
+ein Vektorfeld $\vec{\jmath}$ mit der Eigenschaft
+$\operatorname{div}\vec{\jmath}=0$.
+Diese Form eines Erhaltungssatzes ist allerdings nicht allgemein
+kovariant.
 
 %
 % Kovariante Ableitung und erhaltene Ströme
@@ -130,8 +170,8 @@ Die Divergenzform des Satzes von Nöther zeigt uns aber die Richtung,
 in die wir gehen müssen.
 Da die $n$-Form $v=\sqrt{g} dx^1\wedge \dots\wedge dx^n$
 koordinatenunabhängig ist, sind Grössen, die als Dichtefunktionen
-relativ zu $v$ definiert sind, Kandidaten für Grössen, für die
-ein Erhaltungssatz in Divergenzform formuliert werden kann.
+relativ zur Volumenform $v$ definiert sind, Kandidaten für Grössen,
+für die ein Erhaltungssatz in Divergenzform formuliert werden kann.
 
 Etwas formaler betrachten wir jetzt eine Grösse mit Komponenten $A^i$
 derart, dass $\sqrt{g}A^i$ ein Vektor ist.
