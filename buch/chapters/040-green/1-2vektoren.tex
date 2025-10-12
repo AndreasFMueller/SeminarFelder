@@ -76,8 +76,9 @@ Realisierung der einleitend formulierten Eigenschaften.
 Die Eigenschaft ist aber auch korrekt in zwei Dimensionen, wo es
 das Vektorprodukt nicht gibt.
 
-Der Flächeninhalt eines Parallelogramms ist ausser in zwei Dimensionen
-nicht nur eine Zahl, die Lage des Parallelgramms gehört genauso zur
+Die Fläche eines Parallelogramms ist nicht nur durch die Masszahl
+des Flächeninhaltes gegeben. 
+Die Lage des Parallelgramms gehört genauso zur
 vollständigen Beschreibung der Parallelogrammfläche.
 Das Vektorprodukt in drei Dimensionen trägt dem Rechnung, indem
 es als Normale auf dem Parallelgramm die Orientierung im dreidimensionalen
@@ -198,7 +199,7 @@ beschreiben, der die Richtung der Drehachse und die Winkelgeschwindigkeit
 als Länge enthält, dann ist der Drehimpuls nicht notwendigerweise
 parallel zur Richtung der Drehachse.
 Vielmehr gibt es eine lineare Abbildung, die den Drehimpulsvektor
-$\vec{L}$ aus $\vec{omega}$ berechnet.
+$\vec{L}$ aus $\vec{\omega}$ berechnet.
 Man darf erwarten, dass die Verwirrung aufgelöst wird, wenn man
 Drehmoment und Drehimpuls als 2-Vektoren modelliert und den Zusammenhang
 dazwischen durch einen Tensor erklärt.
@@ -237,7 +238,8 @@ beschrieben, worin $q$ die Ladung ist.
 Nach den früheren Überlegungen ist sie aber eher als ein weiteres
 Beispiel eines 2-Vektors anzusehen.
 
-Es wird sich später zeigen, dass die Elektrodynamik besser in einer
+Es wird sich später in Kapitel~\ref{chapter:maxwell}
+zeigen, dass die Elektrodynamik besser in einer
 \index{Elektrodynamik}%
 vierdimensionalen Raumzeit beschrieben wird, die auch die Basis für
 \index{Raumzeit}%
@@ -330,7 +332,7 @@ linear unabhängigen Basisvektoren
 \]
 Da der Raum der 2-Vektoren mehr Dimensionen als der Raum 
 der Vektoren hat, ist es grundsätzlich unmöglich, die 2-Vektoren
-durch Vektoren zu visualisieren.
+durch Vektoren in 4 Dimensionen zu visualisieren.
 
 %
 % Komponentenformel
@@ -394,14 +396,14 @@ und erhalten}
 \sum_{k > i} a^kb^i \, \vec{e}_i\wedge\vec{e}_k.
 \notag
 \intertext{Damit können die beiden Summen wieder in eine einzige
-zusammengefasst werden.
-Daraus lassen sich die Komponenten von}
+zusammengefasst werden,
+aus der sich die Komponenten von}
 \vec{a}\wedge\vec{b}
 &=
 \sum_{i<k} (a^ib^k-a^kb^i)\,\vec{e}_i\wedge\vec{e}_k
 \label{buch:green:2vektoren:eqn:komponentenformel}
 \end{align}
-in der Basis der 2-Vektoren $\vec{e}_i\wedge\vec{e}_k$ ausdrücken.
+in der Basis der 2-Vektoren $\vec{e}_i\wedge\vec{e}_k$ ablesen lassen.
 
 %
 % Komponentenformel und Vektorprodukt
@@ -553,6 +555,15 @@ und die Einträge sind die Komponenten des Vektorproduktes.
 Das Vektorprodukt lässt sich also durch den Matrixkommutator
 auf der Menge darstellen.
 
+%
+% Die Lie-Algebra einer Matirzengruppe
+%
 \subsubsection{Die Lie-Algebra einer Matrizengruppe}
-TODO XXX
+Ein Matrizengruppe kann als Mannigfaltigkeit verstanden werden.
+Tangentialvektoren können mithilfe der Exponentialabbildung zu
+Kurven auf der Gruppe werden.
+Dies ist in \cite[Abschnitt 9.4]{buch:linalg} ausführlich dargestellt.
+Der Kommutator von Matrizen, wie er im obigen Beispiel aufgetreten
+ist, stellt sich als eine gemeinsame Operation heraus, für die die
+Axiome einer Lie-Algebra gelten.
 
