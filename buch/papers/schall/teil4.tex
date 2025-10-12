@@ -1,0 +1,84 @@
+\section{Überschallknall: Entstehung und Low-Boom-Strategien}
+\label{schall:section:boom}
+
+Ein Flugzeug mit Machzahl $Ma=V/c_0>1$ erzeugt entlang seiner Länge diskrete
+Schockbeiträge an Bug, Tragflächen, Rumpfänderungen, Leitwerke und Auspuff,
+die sich bei der Ausbreitung in der Atmosphäre überlagern und am Boden als impulsförmige
+Signatur (\emph{N-Welle}) wahrgenommen werden.
+Die \emph{Nahfeld}-Geometrie, definiert durch die Flugzeugform sowie die  Last- oder
+Auftriebsverteilung, bestimmt die anfängliche Drucksignatur;
+die \emph{Fernfeld}-Ausbreitung formt diese durch Nichtlinearität und atmosphärische Dämpfung.
+
+\subsection{Nahfeld: F-Funktion, Äquivalentfläche und Initialsignatur}
+Für schlanke Überschallkörper liefert Whithams Linear-Theorie eine Kopplung
+zwischen der Rumpf- oder Flügel-Geometrie (Äquivalentfläche $A(x)$) und der
+Nahfeldsignatur über die sogenannte \emph{F-Funktion}.
+Whithams modifizierte Lineartheorie definiert die zugehörige \emph{F-Funktion}
+als Abel-Transformierte von $A_e''$:
+\begin{equation}
+    F(x_e)=\frac{1}{2\pi}\int_{0}^{x_e}\frac{A_e''(t)}{\sqrt{x_e-t}}\,dt,
+\end{equation}
+wobei $x_e$ eine entlang der Flugrichtung skalierte Koordinate ist.
+Die dimensionslose Nahfeld-Überdrucksignatur ist, bis auf bekannte
+Mach-/Gasfaktoren, proportional zu $F(x_e)$.
+Glatte, lobe-arme $F$-Verläufe führen zu \emph{Low-Boom}-Signaturen.
+Intuitiv gilt: stark gekrümmte Änderungen in $A'(x)$ erzeugen starke lokale
+Schockanteile; eine „sanft“ verteilte Geometrie verteilt die Druckanstiege
+längs der Rumpflänge.
+Die klassische Low-Boom-Minimierung nach Seebass–George–Darden entwirft
+Zielverteilungen für $A(x)$, die eine geringe Schockstärke am Eintritt in
+die Atmosphäre bewirken \cite{schall:whitham,schall:seebassgeorge,schall:darden75}.
+
+\subsection{Ausbreitung: (Augmentierte) Burgers-Gleichung}
+Bei der Fernfeld-Übertragung durch eine ruhende, schichtweise homogene
+Atmosphäre (ohne Wind) wird die skalierte Schaltdrucksignatur $p(\tau,x)$
+(hier $\tau$ = „retardierte Zeit“) häufig mit einer \emph{augmentierten Burgers-Gleichung}
+modelliert:
+\begin{equation}
+  \frac{\partial p}{\partial x}
+  \;=\;
+  -\,\frac{m}{x}\,p
+  \;-\;\frac{\beta}{\rho_0 c_0^{3}}\,p\,\frac{\partial p}{\partial \tau}
+  \;+\;\delta\,\frac{\partial^2 p}{\partial \tau^2},
+  \label{eq:aug-burgers}
+\end{equation}
+wobei $\frac{m}{x}$ geometrische Abschwächung beschreibt, der nichtlineare
+Term, welcher mit $\beta$ multipliziert wird, zu Schocksteilen führt und
+$\delta$ frequenzabhängige atmosphärische Verluste aggregiert.
+Grobe Faustregel: Nichtlinearität „zieht“ die Front zu einem N-Profil;
+Dämpfung rundet Spitzen ab und reduziert den Spitzenüberdruck
+$\Delta p_\mathrm{max}$\cite{schall:rallabhandi2023,schall:rallabhandiAIAA2023,schall:burgersJASA}.
+
+\subsection{Boden-Signatur und Metriken}
+Die für Wahrnehmung maßgebliche Metrik ist häufig der \emph{Perceived Level},
+der die zeitliche Impulsform und psychoakustische Bewertungen kombiniert.
+Ziel moderner Low-Boom-Demonstratoren ist ein \emph{„sonic thump“} statt
+eines klassischen Booms, mit einem Zielwerte um
+${\sim}75$\ PLdB in Standardatmosphäre \cite{schall:x59pldb}.
+
+\subsection{Hebel zur Boom-Reduktion}
+\paragraph{Aerodynamische Formgebung (Low-Boom Shaping).}
+Gestaltung von $A(x)$ und der Auftriebsverteilung entlang der Länge,
+um große Einzel-Schocks zu vermeiden und verteilte, kleinere Sprünge zu generieren.
+Dies kann durch eine lange, schlanke Nase, durch Flügel- oder Canard-Anordnung,
+verdeckte Triebwerksintegration oder durch Vermeidung starker
+Querschnittssprünge realisiert werden.
+Formal: Minimierung geeigneter Funktionale der F-Funktion bzw.\ der Nahfeldsignatur
+gemäß Seebass–George–Darden-Ideen \cite{schall:seebassgeorge,schall:darden75}.
+
+\paragraph{Flughöhe und Machzahl}
+Höhere Flughöhe erhöht die geometrische Abschwächung, nachvollziehbar durch
+größeres $x$ in \eqref{eq:aug-burgers}, und die atmosphärische Dämpfung durch
+größere effektive $\delta$; moderate Machzahl reduziert die erzeugten
+Schockstärken bereits im Nahfeld.
+
+\paragraph{Flugweg- und Operationsführung}
+Überland Flug mit Unterschall, Kurswahl, Steigprofile, und Wetter-Routing
+durch Vermeidung fokussierender Schichtungen, können die
+Boom-Teppich-Geometrie signifikant beeinflussen.
+
+\paragraph{Atmosphärische Effekte berücksichtigen.}
+Temperatur- und Wind-Schichtung $c(z)$, Windschubvektoren und Turbulenz
+modulieren Divergenz und effektive Dämpfung in \eqref{eq:aug-burgers};
+in inversen Lagen kann es zu \emph{Fokussierung} kommen (lokal erhöhte
+$\Delta p$), in Normal-Lapsen eher zu \emph{Defokussierung}.

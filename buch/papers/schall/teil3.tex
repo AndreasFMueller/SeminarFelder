@@ -22,34 +22,51 @@ dem Grund $z=0$ bewegt.
 Das Medium sei ein ideales Gas mit örtlich variabler Temperatur
 $T(z)$ aber ohne Wind, sodass
 \begin{equation}
-    c(z) \;=\; \sqrt{\kappa R\,T(z)} ,
+    c(z) \;=\; \sqrt{\kappa R_S\,T(z)} ,
     \label{eq:c-of-z}
 \end{equation}
-gilt. Hier ist $c(z)$ die lokale Schallgeschwindigkeit.
-Der \emph{lokale} Machzahlverlauf ist damit
+gilt. Hier ist $c(z)$ die lokale Schallgeschwindigkeit, $R_S = \frac{R}{M}$
+die Massenangepasste Gaskonstante und $M$ die auf der Höhe $z$ herrschende
+molare Masse des Mediums.
+In der Fliegerei wird die Geschwindigkeit des Flugzeugs oft über die
+dimensionslose \emph{Machzahl} $Ma$ angegeben:
 \begin{equation}
-    M(z) \;=\; \frac{V}{c(z)} .
+    Ma(z) \;=\; \frac{V}{c(z)},
+    \label{eq:mach-number}
 \end{equation}
+wobei $Ma<1$ Unterschall, $Ma=1$ Schallgeschwindigkeit und $Ma>1$ Überschall
+bezeichnet.
+Der Effekt des Schall- oder Machkegels, welcher durch den Dopplereffekt
+beschrieben wird, ist im Bild \ref{fig:schall:mach-zones} visualisiert.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{papers/schall/figures/mach_doppler_triptych_offsets.png}
+    \caption{Dopplereffekt bei Unterschall, Schallgeschwindigkeit und Überschall.
+    Für die Schallgeschwindigkeit und den Überschall ist zusätzlich der
+    Machkegel mit dem Machwinkel $\mu$ eingezeichnet.}
+    \label{fig:schall:mach-zones}
+\end{figure}
 
 \subsection{Lokaler Machwinkel und Emissionsrichtung}
-In homogenem Medium bildet sich der Machkegel mit Halbwinkel
+In einem homogenem Medium bildet sich der Machkegel mit Halbwinkel
 \begin{equation}
-    \mu \;=\; \arcsin\!\Big(\frac{1}{M}\Big).
+    \mu \;=\; \arcsin\!\Big(\frac{1}{Ma}\Big).
 \end{equation}
 In einem geschichteten Medium setzt man diesen \emph{lokal} an der
-Emissionshöhe $z_a$ an:
+Emissionshöhe $z_a$, auf welcher das Flugzeug fliegt, an:
 \begin{equation}
-    \mu_a \;:=\; \arcsin\!\Big(\frac{1}{M(z_a)}\Big)
+    \mu_a \;:=\; \arcsin\!\Big(\frac{1}{Ma(z_a)}\Big)
     \;=\; \arcsin\!\Big(\frac{c(z_a)}{V}\Big) .
     \label{eq:local-mach-angle}
 \end{equation}
-Wir beschreiben die weitere Ausbreitung der Machränder, auch bekannt als
-Stossstrahlen, im vertikalen Schnitt $(x,z)$ durch akustische Strahlen.
+Der Rand des Machkegels wird oft als Machrand bezeichnet, welcher im
+vertikalen Schnitt $(x,z)$ durch akustische Strahlen begrenz ist.
 Dies nennt man die \emph{geometrische Akustik}.
 
 \subsection{Strahlen in geschichtetem Medium}
 Für isotrope, ruhende Medien mit $c=c(z)$ liefert die geometrische
-Akustik Eikonaltheorie, eine Snell-ähnliche Invariante:
+Akustik eine Snell-ähnliche Invariante:
 \begin{equation}
     \frac{\sin\theta(z)}{c(z)} \;=\; \text{const} \;=:\; K ,
     \label{eq:snell-acoustics}
@@ -60,7 +77,7 @@ also $\theta(z_a)=\mu_a$, dann folgt aus \eqref{eq:snell-acoustics}
 \[
     K \;=\; \frac{\sin\mu_a}{c(z_a)} \;=\; \frac{1/M(z_a)}{c(z_a)} \;=\; \frac{1}{V}.
 \]
-Damit ist \emph{für Mach-Rays} die Invariante schlicht
+Damit ist für Mach-Strahlen die Invariante schlicht
 \begin{equation}
     K \;=\; \frac{1}{V}.
     \label{eq:K-equals-1-over-V}
@@ -110,11 +127,11 @@ Integration von \eqref{eq:ray-ode-inverse}:
 Ist $V\le c(\zeta)$ in einem Teilintervall, wird der Mach-Rand dort
 nach oben abgelenkt, welches zu Schattenzonen am Boden führt.
 
-\subsection{Zwei Atmosphären-Szenarien}
+\subsection{Atmosphären-Szenarien}
 Wir modellieren $T(z)$ stückweise linear und mit trockener
 Standardatmosphäre ohne Wind, woraus $c(z)$ via \eqref{eq:c-of-z} folgt.
 
-\paragraph{(A) Normale Lage (Temperatur nimmt mit Höhe ab).}
+\paragraph{Normale Lage (Temperatur nimmt mit Höhe ab).}
 Es gelte
 \begin{equation}
     T(z) \;=\; T_0 - Lz \quad (L>0),
@@ -129,7 +146,7 @@ Damit nimmt $x_g$ in \eqref{eq:ground-range} ab, was sich in einem anheben
 der Strahlen wiederspiegelt, und es können \emph{Bodenschatten}
 entstehen, wenn in Bodennähe $V\lesssim c(0)$ ist.
 
-\paragraph{(B) Inversionslage (Temperatur nimmt mit Höhe zu, z.\,B.
+\paragraph{Inversionslage (Temperatur nimmt mit Höhe zu, z.\,B.
 nächtliche Bodeninversion über einem kalten Boden).}
 Es gelte
 \begin{equation}
@@ -140,8 +157,38 @@ Es gelte
 \end{equation}
 Nun \emph{nimmt $c$ mit $z$ zu}; höhere Schichten sind akustisch ``schneller''.
 Strahlen biegen daher \emph{nach unten} und werden zum Boden zurückgeführt.
-Dadurch wächst $x_g$ in \eqref{eq:ground-range} und der Sonic-Boom
+Dadurch wächst $x_g$ in \eqref{eq:ground-range} und der Überschall
 kann \emph{weiter} getragen werden, was zu weniger oder bis zu keine
 Schattierung am Boden führt.
 
-% \todo{Grafiken: Strahlen in beiden Szenarien}
+\paragraph{Wendepunkt und Bodenschatten (kein Bodentreffer).}
+Tritt irgendwo im Intervall $[0,z_a]$ ein Bereich auf, in dem
+$V\le c(\zeta)$ gilt, so existiert eine
+\emph{kritische Höhe} $z_\ast\in(0,z_a]$ mit
+\begin{equation}
+    c(z_\ast)=V.
+    \label{eq:turning-def}
+\end{equation}
+Dieser kritische Punkt ist ein \emph{Wendepunkt} des akustischen Ausbreitungsstrahls.
+Aus der Strahlgleichung \eqref{eq:ray-ode-inverse} folgt, dass der
+Integrand für $z\to z_\ast$ gegen $0$ geht und für $z<z_\ast$ imaginär würde.
+Der Strahl besitzt bei $z=z_\ast$ eine \emph{horizontale Tangente} und kehrt um;
+er kann die Schicht $z<z_\ast$ nicht durchdringen.
+Die maximale horizontale Ausbreitung bis zum Wendepunkt ist
+\begin{equation}
+    x_{\mathrm{turn}}
+    \;=\; \int_{z_\ast}^{z_a} \sqrt{\frac{V^2}{c^2(\zeta)}-1}\;d\zeta,
+    \label{eq:x-turn}
+\end{equation}
+die \emph{Bodenentfernung} \eqref{eq:ground-range} ist hingegen \emph{nicht}
+definiert, da $z=0$ nicht erreichbar ist.
+Der Bereich unterhalb der Wendeschicht $z<z_\ast$ liegt somit in einer
+\emph{Schattenzone}, indem man keinen Schall des Flugzeugs höhren kann.
+
+Für streng monotone Profile entscheidet die einfache Bedingung
+\begin{equation}
+    \text{Bodentreffer existiert} \;\Leftrightarrow\; V>c(z)\quad\forall\,z\in[0,z_a].
+    \label{eq:ground-hit-condition}
+\end{equation}
+
+\todo[inline]{Grafiken: Strahlen / Ausbreitungskegel der Szenarien}
