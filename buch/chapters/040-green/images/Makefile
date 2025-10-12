@@ -12,7 +12,8 @@ all:	parallelogramm.pdf						\
 	greenrand.pdf							\
 	greenrand2d.pdf							\
 	band.pdf							\
-	moebius.pdf
+	moebius.pdf							\
+	quader.pdf
 
 #
 # Parallelogramm-Fäche
@@ -131,4 +132,6 @@ moebius.jpg:	moebius.png Makefile
 moebius.pdf:	moebius.tex moebius.jpg
 	pdflatex moebius.tex
 
+quader.pdf:	quader.tex
+	pdflatex quader.tex
 
