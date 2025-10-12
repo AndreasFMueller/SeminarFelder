@@ -8,10 +8,12 @@ Das Oberflächenintegral einer 2-Form berechnet den Fluss von Materie,
 Energie oder anderen physikalischen Grössen durch die Oberfläche.
 Ein Erhaltungssatz beschreibt, ob und wie der Fluss die im umschlossenen
 Volumen enthaltene Menge verändert.
-Der Satz von Gauss stellt den Zusammenhang her zwischen Inhalt und Fluss
-über das ganze Volumen und seine Oberfläche und der, die beschreibt,
+Der Satz von Gauss stellt den Zusammenhang her zwischen Inhalt des
+Volumens und Fluss über seine Oberfläche.
+Die Differentialoperatoren beschreiben aber,
 was in der unmittelbaren Umgebung jedes Punktes geschieht.
-Das Resultat ist die Kontinuitätsgleichung, die in diesem Abschnitt
+Für ganz kleine Volumina liefert der Satz von Gauss als
+Resultat die lokale Kontinuitätsgleichung, die in diesem Abschnitt
 hergeleitet und angewendet werden soll.
 
 %
@@ -57,7 +59,7 @@ Dann ist der Fluss näherungsweise
 &
 \qquad
 +
-\Delta y\,\Delta z\,(j_x(x+\Delta x, y, z) - j_x(x, y, z))
+\Delta y\,\Delta z\,(j_x(x+\Delta x, y, z) - j_x(x, y, z)).
 \intertext{Gehen die Seitenlängen gegen $0$, geht auch das Integral
 gegen 0.
 Teilt man durch das Volumen $V=\Delta x\,\Delta y\,\Delta z$, bleibt}
@@ -69,7 +71,7 @@ Teilt man durch das Volumen $V=\Delta x\,\Delta y\,\Delta z$, bleibt}
 \\
 &\qquad
 +
-\frac{j_x(x+\Delta x, y, z) - j_x(x, y, z)}{\Delta z}
+\frac{j_x(x+\Delta x, y, z) - j_x(x, y, z)}{\Delta z}.
 \intertext{Der Grenzwert für $\Delta x\to 0$, $\Delta y\to 0$ und
 $\Delta z\to 0$ wird}
 &\to
@@ -86,7 +88,7 @@ Quader.
 
 Der Fluss beschreibt auch, mit welcher Geschwindigkeit sich die Menge
 des Materials im Quader ändert.
-Dies kann jedoch berechnet werden, indem die Masse zu verschiedenen
+Dies kann auch berechnet werden, indem die Masse zu verschiedenen
 Zeiten berechnet wird.
 Mit der Dichte $\varrho(x,y,z,t)$ des Fluids ist die Änderung der 
 Masse gegeben durch
@@ -104,8 +106,9 @@ lässt sich daher als}
 (\varrho(x,y,z,t+\Delta t)
 -
 \varrho(x,y,z,t))
-\,\Delta x\,\Delta y\,\Delta z.
+\,\Delta x\,\Delta y\,\Delta z
 \end{align*}
+finden.
 Die zeitliche Änderung der Dichte ist
 \begin{align*}
 \frac{\Delta m}{\Delta x\,\Delta y\,\Delta z\,\Delta t}
@@ -237,8 +240,8 @@ Die elektrische Ladung ist erhalten.
 \index{Ladung, elektrisch}%
 Die elektrische Stromdichte $\vec{\jmath}$ ist der Vektor, der die Ladung
 \index{Stromdichte}%
-angibt, die in einer Zeiteinheit durch eine Flächeneinheit quer zur
-Stromrichtung angibt.
+angibt, die in einer Zeiteinheit durch eine Flächeneinheit senkrecht zur
+Stromrichtung fliesst.
 Für die Ladungsdichte $\varrho$ und die Stromdichte $\vec{\jmath}$
 muss daher die Kontinuitätsgleichung
 \[
@@ -254,7 +257,7 @@ gelten.
 \subsubsection{Erhaltungssätze für Vierervektoren}
 In der speziellen Relativitätstheorie wird gelehrt, dass Raum- und
 Zeitkoordinaten nicht separat behandelt werden sollten, sondern als
-Komponenten eines Raum-Zeit-Kontinuums.
+Komponenten eines Raum-Zeit-Kontinuums behandelt werden müssen.
 Eine Lorentz-Transformation kann Orts- und Zeitkoordinaten  ``vermischen''
 was zu den Phänomen der Zeitdilatation und der Raumkontraktion führt.
 Es beutet, dass zu vektoriellen Grössen, mit denen man in der newtonschen
@@ -289,7 +292,7 @@ welches auch durch den metrischen Tensor
 beschrieben werden kann.
 
 Für den elektrischen Strom mit den Komponenten $j_1,j_2,j_3$ ist die
-zugehörige Zeitkomponenten die Ladungsdichte, wir sind also gezwungen
+zugehörige Zeitkomponente die Ladungsdichte, wir sind also gezwungen
 $j_0=\varrho$ zu schreiben.
 Die Kontinuitätsgleichung
 \begin{align*}

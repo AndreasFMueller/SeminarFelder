@@ -6,13 +6,13 @@
 \kopfrechts{Der Satz von Gauss in Dimension $n=3$}
 Die Sätze von Green und Stokes haben gezeigt, wie sich das Verhalten
 einer Ableitung im Inneren eines zweidimensionalen Gebietes oder
-einer im Raum eingetteten Fläche aus den Werten auf dem Rand erschliessen
+einer im Raum eingebetteten Fläche aus den Werten auf dem Rand erschliessen
 lässt.
 Er verallgemeinert den Hauptsatz der Infinitesimalrechnung, der dieselbe
-Art von Aussage für eindimensionale Gebiete oder In den Raum eingebettete
+Art von Aussage für eindimensionale Gebiete oder in den Raum eingebettete
 Kurven macht.
 Es gibt aber keinen Grund, bei den Dimensionen 1 und 2 stehen zu bleiben.
-In diesem Abschnitt wird der Fall $n-1=2$ und $n=3$ genauer untersucht,
+In diesem Abschnitt wird der Fall $n-1=2$ bzw.~$n=3$ genauer untersucht,
 der traditionell als der Satz von Gauss bekannt ist.
 Im nächsten Abschnitt wird dies dann auf beliebige Dimension verallgemeinert.
 
@@ -26,8 +26,8 @@ wie in Kapitel~\ref{chapter:green} präsentiert.
 \subsection{Integration auf dreidimensionalen Mannigfaltigkeiten}
 Zunächst muss die Integration von zwei auf drei Dimensionen erweitert
 werden.
-Dabei tauchen als natürliche Konstrukte die Begriff von 3-Vektor und
-3-Form auf.
+Dabei tauchen als natürliche Konstrukte die Begriffe von 3-Vektors und
+der 3-Form auf.
 
 %
 % Dreifache Integrale
@@ -52,7 +52,7 @@ Das (dreifache) Integral der Funktion $f$ über die Menge $V$ ist dann durch
 das iterierte Integral
 \begin{align}
 \underset{V}{\int\!\!\!\int\!\!\!\int}
-f(x,y,z)\,dx\,dy\,z
+f(x,y,z)\,dx\,dy\,dz
 &=
 \int_{x_-}^{x_+}
 \int_{y_-(x)}^{y_+(x)}
@@ -105,8 +105,8 @@ I_N
 \sum_{i=1}^N
 f(x_i,y_i,z_i)\,\Delta x\,\Delta y\,\Delta z
 \]
-und lässt dann $N\to\infty$ gehen, wobei gleichzeitig die Kantenlängen
-der Quader gegen Null gehen sollen.
+und lässt anschliessend $N\to\infty$ gehen, wobei gleichzeitig
+die Kantenlängen der Quader gegen Null gehen sollen.
 Der Grenzwert
 \[
 \lim_{N\to\infty} I_N
@@ -114,7 +114,7 @@ Der Grenzwert
 \underset{V}{\int\!\!\!\int\!\!\!\int}
 f(x,y,z)\,dx\,dy\,z
 \]
-heisst, sofern er existiert, das Riemannsche Integral der Funktion $f$
+heisst, sofern er existiert, das riemannsche Integral der Funktion $f$
 über $V$.
 
 %
@@ -180,7 +180,7 @@ Die Funktionalmatrix $Dy$ bildet die Kantenvektoren ab.
 Das Volumen des von den Vektoren $Dy\cdot\vec{e}_i$ aufgespannten
 Parallelepipeds wird durch die Determinaten $\det Dy$ der
 Abbildungsmatrix gegeben. 
-Ist die Funktion $f$ in $y$-Koordinaten als $f(y^1,y^2,y^3)$ gegeben 
+Ist die Funktion $f$ in $y$-Koor\-di\-na\-ten als $f(y^1,y^2,y^3)$ gegeben 
 ist das Integral von $f$ daher 
 \begin{align*}
 \int\!\!\!\int\!\!\!\int
@@ -217,7 +217,7 @@ das Integral einer 2-Form definiert werden kann.
 Dabei wurde ausführlich erklärt, wie eine 2-Form die richtigen
 Transformationseigenschaften hat, damit das Integral der 2-Form
 eine koordinatenaunabhängige Grösse wird.
-Wir übertragen daher die Definition von 2-Fektoren und 2-Formen
+Wir übertragen daher die Definition von 2-Vektoren und 2-Formen
 auf den dreidimensionalen Fall.
 
 Ein 3-Vektor ist eine Linearkombination von Tensoren dritter Stufe
@@ -244,9 +244,11 @@ Dies führt auf die komplizierte Summe
 -
 \vec{e}_l\otimes\vec{e}_k\otimes\vec{e}_i
 -
-\vec{e}_k\otimes\vec{e}_i\otimes\vec{e}_l.
+\vec{e}_k\otimes\vec{e}_i\otimes\vec{e}_l,
 \label{buch:gauss:3d:eqn:3vektor}
 \end{align}
+die an die Sarrus-Formel für die Determinante einer $3\times 3$-Matrix
+erinnert.
 Um solche Ausdrücke einfacher schreiben zu können führen wir das
 Levi-Cività-Symbol ein.
 Dazu brauchen wir zunächst den Begriff der geraden bzw.~ungeraden
@@ -338,6 +340,7 @@ Dual zum Konzept des 3-Vektors können wir auch die 3-Formen
 \omega(x)
 =
 f(x)
+\,
 dx^1 \wedge dx^2 \wedge dx^3
 \]
 auf der Mannigfaltigkeit betrachten.
@@ -480,7 +483,7 @@ verwenden.
 %
 \subsubsection{Äussere Ableitung einer 2-Form}
 Der Ausdruck \eqref{buch:gauss:3d:eqn:divform} hat einige Ähnlichkeit
-zur 2-Form, die durch äussere Ableitung einer 1-Form entsteht.
+mit der 2-Form, die durch äussere Ableitung einer 1-Form entsteht.
 Wir definieren daher die äussere Ableitung der 2-Form
 \[
 \alpha
@@ -549,7 +552,7 @@ Dann gilt
 
 Rein formal hat der Satz von Gauss die gleiche Form wie der
 Satz von Stokes~\ref{buch:green:green:satz:stokes}.
-Da auch der Beweis genau nah dem gleichen Muster erfolgt,
+Da auch der Beweis genau nach dem gleichen Muster erfolgt,
 kann man vermuten, dass sich die Begriffe der $p$-Formen, der
 äusseren Ableitung und des Integrals einer $p$-Form auf
 beliebige Dimensionen verallgemeinern lässt.
@@ -571,9 +574,10 @@ $\vec{v}$ mit den Komponenten $v^i$, $i=1,\dots,3$, als
 +
 \frac{\partial v^3}{\partial x^3}
 \in
-\mathbb{R}.
+\mathbb{R}
 \]
-Das Integral 3-Form auf der linken Seite von
+definiert.
+Das Integral der 3-Form auf der linken Seite von
 \eqref{buch:gauss:3d:satz:gauss:eqn}
 im Satz von Gauss entspricht also einem Volumenintegral
 der Divergenz.
