@@ -10,7 +10,17 @@ Auftriebsverteilung, bestimmt die anfängliche Drucksignatur;
 die \emph{Fernfeld}-Ausbreitung formt diese durch Nichtlinearität und atmosphärische Dämpfung.
 
 \subsection{Nahfeld: $F$-Funktion, Äquivalentfläche und Initialsignatur}
-\todo[inline]{Verständliche Einführung}
+Im Überschallflug überlagern sich alle vom Flugzeug erzeugten Druckänderungen zu
+einer mitwandernden Wellenstruktur im Nahfeld.
+Entscheidend ist dabei nicht die absolute Grösse, sondern die \emph{Längsverteilung} der Querschnittsfläche: Sanfte, stetige Änderungen entlang des Rumpfs führen zu weichen
+Druckanstiegen, abrupte Geometriesprünge zu schärferen Schockanteilen.
+Whithams Ansatz fasst die reale Geometrie (Rumpf, Flügel, Einläufe) zu einer \emph{Äquivalentfläche} zusammen und liefert daraus eine kompakte Kenngrösse, die wir hier als \(F\)-Funktion nutzen, um
+die Form der Nahfeldsignatur qualitativ zu lesen: Wo die Geometrie „sanft“ verläuft, bleibt die
+Signatur glatt; wo sie „kantig“ wird, entstehen lokale Spitzen.
+Diese Nahfeldsignatur dient als Startpunkt für die weitere Ausbreitung
+in der Atmosphäre — Ziel von Low-Boom-Entwürfen ist daher eine möglichst glatt
+verlaufende Signatur bereits im Nahfeld.
+
 Für schlanke Überschallkörper liefert Whithams lineare Wellentheorie eine Kopplung
 zwischen der Rumpf- oder Flügel-Geometrie (Äquivalentfläche $A(x)$) und der
 Nahfeldsignatur über die sogenannte \emph{F-Funktion}~\cite{schall:whitham}.
@@ -31,7 +41,19 @@ Zielverteilungen für $A(x)$, die eine geringe Schockstärke am Eintritt in
 die Atmosphäre bewirken \cite{schall:whitham,schall:seebassgeorge,schall:darden75}.
 
 \subsection{Ausbreitung: (Augmentierte) Burgers-Gleichung}
-\todo[inline]{Verständliche Einführung}
+Die Fernfeldausbreitung eines Überschalldrucksignals lässt sich bildhaft als
+„fahrende Welle“ verstehen, die sich mit der Schallgeschwindigkeit vom
+Flugzeug wegbewegt.
+Zwei Prozesse formen diese Welle unterwegs entscheidend um:
+\emph{Nichtlinearität} schiebt energiereiche Signalanteile (hoher Druck) nach
+vorn und lässt die Flanke zunehmend steiler werden;\emph{Dämpfung} in der
+Atmosphäre nimmt den hohen Frequenzen die Spitze und glättet die Form.
+Zusätzlich nimmt die Amplitude mit wachsender Entfernung durch reine Ausbreitung ab.
+Die augmentierte Burgers-Gleichung fasst genau diese drei
+Wirkungen in einem Modell zusammen — ohne dass wir an dieser Stelle rechnen
+müssen: Steilung nach vorn, Glättung durch Verluste, Abschwächung durch
+Ausbreitung.
+
 Bei der Fernfeld-Übertragung durch eine ruhende, schichtweise homogene
 Atmosphäre (ohne Wind) wird die skalierte Schaltdrucksignatur $p(\tau,x)$
 (hier $\tau$ = „retardierte Zeit“) häufig mit einer \emph{augmentierten Burgers-Gleichung},
@@ -48,9 +70,19 @@ behandelt wird, modelliert:
 wobei $\frac{m}{x}$ geometrische Abschwächung beschreibt, der nichtlineare
 Term, welcher mit $\beta$ multipliziert wird, zur Intensität der Schockanteile
 führt und $\delta$ frequenzabhängige atmosphärische Verluste aggregiert.
-Grobe Faustregel: Nichtlinearität „zieht“ die Front zu einem N-Profil; \todo{N-Profil erklären}
-Dämpfung rundet Spitzen ab und reduziert den Spitzenüberdruck
-$\Delta p_\mathrm{max}$\cite{schall:rallabhandi2023,schall:rallabhandiAIAA2023,schall:burgersJASA}.
+Grobe Faustregel: Nichtlinearität „zieht“ die Front zu einem N-Profil.
+Unter einem N-Profil versteht man einen zeitlichen Verlauf mit einem kurzen,
+steilen Druckanstieg (Kompressionsstoss) und einem anschliessenden, deutlich
+längeren, nahezu linearen Abfall bis unter das Ausgangsniveau, bevor der
+Druck langsam wieder auf den Umgebungswert zurückkehrt — die Kurve erinnert
+damit an den Buchstaben „N“.
+Physikalisch liegt das daran, dass Kompressionsanteile sich in nichtlinearen Medien
+schneller ausbreiten als Verdünnungsanteile: Der vordere, hochamplitudige Teil
+des Signals holt den hinteren ein, die Front steilt auf und es bildet sich ein Stoss.
+Dämpfung in der Atmosphäre entfernt bevorzugt hohe Frequenzen, sodass scharfe Kanten
+abgerundet werden und der Spitzenüberdruck \(\Delta p_\mathrm{max}\) sinkt;
+gleichzeitig schwächt die geometrische Ausbreitung die Gesamtsamplitude.
+\cite{schall:rallabhandi2023,schall:rallabhandiAIAA2023,schall:burgersJASA}.
 
 \subsection{Boden-Signatur und Metriken}
 Die für Wahrnehmung massgebliche Metrik ist häufig der \emph{Perceived Level},
