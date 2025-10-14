@@ -85,22 +85,31 @@ Die Komponenten $T_{ik}$ mit $i,k>0$ bieten genügend Platz, die
 Spannungen unterzubringen.
 Auf der Diagonalen stehen die Druckspannungen, ausserhalb der Diagonalen
 die Scherspannungen.
-So entsteht der sogenannte \emph{Energie-Impuls-Tensor} $T$,
-den man in Matrixform als
+So entsteht der sogenannte \emph{Energie-Impuls-Tensor} $T$.
+Er konsolidiert auf allgemein kovariante Art alle Formen von Energie
+in einem einzigen Tensor.
+
+In einem ruhenden idealen Gas gibt es keine Scherspannungen,
+der Energie-Impuls-Tensor ist daher Diagonal.
+Man kann ihn in Matrixform als
 \begin{equation}
 T_{ik}
 =
 \begin{pmatrix}
-\varrho     c^2 & \varrho v_0 c & \varrho v_y c & \varrho v_z c \\
-\varrho v_x c   & p_x           & \sigma_{xy}   & \sigma_{xz}   \\
-\varrho v_y c   & \sigma_{yx}   & p_y           & \sigma_{yz}   \\
-\varrho v_z c   & \sigma_{yx}   & \sigma_{zy}   & p_z
+\varrho     c^2 & 0             & 0             & 0             \\
+0               & p_x           & 0             & 0             \\
+0               & 0             & p_y           & 0             \\
+0               & 0             & 0             & p_z
 \end{pmatrix}
 \label{buch:kruemmung:feldgleichung:eqn:Tik}
 \end{equation}
 schreiben kann.
-Er konsolidiert auf allgemein kovariante Art alle Formen von Energie
-in einem einzigen Tensor.
+Das Element $T_{00} = \varepsilon = \varrho c^2$ ist die
+Ruheenergiedichte des Gases.
+Falls das Gas nicht ruht, kann man den Energie-Impuls-Tensor durch
+eine Lorentztransformation in ein mit dem Gas mitbewegtes
+Koordinatensystem transformieren und so einen allgemeinen Ausdruck
+$T_{ik}$ finden.
 
 Da der Ricci-Tensor symmetrisch ist, muss auch der Tensor $T_{ik}$
 symmetrisch sein, wenn eine lineare Feldgleichung aus dem Ricci-Tensor
