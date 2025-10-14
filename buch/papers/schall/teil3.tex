@@ -154,13 +154,12 @@ erhält man aus trigonometischen Identitäten
 \end{equation}
 Einsetzen von \eqref{eq:K-equals-1-over-V} liefert die
 \emph{Bahn-Differentialgleichung} der Mach-Ränder:
-\begin{equation}
+\[
     \quad
     \frac{dz}{dx} \;=\; \frac{c(z)/V}{\sqrt{1 - \big(c(z)/V\big)^2}}
     \;=\; \frac{1}{\sqrt{\frac{V^2}{c^2(z)} - 1}}
     \quad
-    \label{eq:ray-ode}
-\end{equation}
+\]
 oder äquivalent
 \begin{equation}
     \quad
@@ -169,11 +168,12 @@ oder äquivalent
     \label{eq:ray-ode-inverse}
 \end{equation}
 mit Anfangsbedingung $x(z_a)=0$ senkrecht unter dem Flugzeug.
-Die Lösungen von \eqref{eq:ray-ode} geben die gekrümmten Stossränder
+Die Lösungen von \eqref{eq:ray-ode-inverse} geben die gekrümmten Stossränder
 im $(x,z)$-Schnitt.
 Die \emph{Bedingung für reale Strahlen} ist $V>c(z)$ entlang der Bahn;
 wo $V=c(z)$ wird, existiert ein \emph{Wendepunkt}/
 \emph{kritische Höhe}, die Evaneszenz.
+Dies wird in Kapitel~\ref{schall:subsection:atmos-scenarios} genauer analysiert.
 
 \subsection{Bodenaufprall (Sonic-Boom-Carpet)}
 Die horizontale Entfernung vom Lotpunkt des Flugzeugs bis zum
@@ -186,8 +186,9 @@ Integration von \eqref{eq:ray-ode-inverse}:
     \quad
     \label{eq:ground-range}
 \end{equation}
-Ist $V\le c(\zeta)$ in einem Teilintervall, wird der Mach-Rand dort
-nach oben abgelenkt, welches zu Schattenzonen am Boden führt.
+In einer Schicht mit $V\le c(\zeta)$, wird der Mach-Rand kontinuierlich
+nach oben abgelenkt und die Schockwelle breitet sich nicht weiter aus,
+was zu Schattenzonen am Boden führt.
 
 \subsection{Atmosphären-Szenarien}\label{schall:subsection:atmos-scenarios}
 Wir modellieren $T(z)$ stückweise linear und mit trockener
@@ -252,5 +253,40 @@ Für streng monotone Profile entscheidet die einfache Bedingung
     \text{Bodentreffer existiert} \;\Leftrightarrow\; V>c(z)\quad\forall\,z\in[0,z_a].
     \label{eq:ground-hit-condition}
 \end{equation}
+
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.4\linewidth]{papers/schall/figures/normal_sidepanels.png}
+  \caption{Normale Lage mit abnehmender Temperatur $T(z)$}
+  \label{fig:schall:normale_lage}
+\end{subfigure}%
+\hfill
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.4\linewidth]{papers/schall/figures/inversion_sidepanels.png}
+  \caption{Inverse Lage mit zunehmender Temperatur $T(z)$}
+  \label{fig:schall:inverse_lage}
+\end{subfigure}
+\vskip\baselineskip
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.4\linewidth]{papers/schall/figures/overlay_clean.png}
+  \caption{Überlagerung normale und inverse Lage}
+  \label{fig:schall:normale_lage}
+\end{subfigure}%
+\hfill
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.4\linewidth]{papers/schall/figures/inversion_sidepanels.png}
+  \caption{Kritischer Punkt$}
+  \label{fig:schall:inverse_lage}
+\end{subfigure}
+\caption{Schallausbreitung für eine normale und inverse Lage der Temperatur.}
+\label{fig:schall:schallausbreitung_norm_inv_lage}
+\end{figure}
 
 \todo[inline]{Grafiken: Strahlen / Ausbreitungskegel der Szenarien}
