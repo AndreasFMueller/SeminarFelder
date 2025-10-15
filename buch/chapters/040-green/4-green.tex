@@ -6,7 +6,8 @@
 \kopfrechts{Der Satz von Green}
 Der Hauptsatz der Infinitesimalrechnung besagt, dass man das Integral
 \index{Hauptsatz der Infinitesimalrechnung}%
-einer Ableitung aus den Werten am Intervallende erhalten kann.
+der Ableitung einer Funktion aus den Werten dieser Funktion
+an den Intervallenden erhalten kann.
 Diese Idee wurde bereits in Kapitel~\ref{chapter:kurvenintegral} auf
 das Integral einer 1-Form verallgemeinert.
 Das Integral eines Differentials $df$ entlang einer Kurve ist durch
@@ -27,7 +28,7 @@ eine koordinatenfreie Formulierung von Naturgesetzen geeignet sind.
 So wie wir das Differential bereits als Gradient einer Funktion
 interpretiert haben, soll die Ableitung von 1- und 2-Formen später
 als die in den Anwendungen weit verbreitet Operation der Rotation
-und der Divergenz erkannt werden.
+und der Divergenz von Vektorfeldern erkannt werden.
 
 %
 % Zerlegung in Koordinatengebiete
@@ -46,9 +47,9 @@ Träger von $g_i$ immer in einem Koordinatengebiet enthalten war.
 Diese Vorgehensweise lässt sich auch auf zweidimensionale Gebiete
 übertragen.
 
-Im folgenden betrachten wir nur kompakte Mannigfaltigketen, da nicht
-kompakte Mannigfaltigkeiten ohnehin zu nicht definierten Integralen
-führen können.
+Im Folgenden betrachten wir nur kompakte Mannigfaltigkeiten, da nicht
+kompakte Mannigfaltigkeiten oder Formen mit nicht kompakten Trägern
+ohnehin zu divergenten Integralen führen können.
 
 Ein Quader in $\mathbb{R}^n$ ist ein kartesisches Produkt
 \[
@@ -75,7 +76,8 @@ sind beliebig oft differenzierbare Funktionen, die genau im Quader
 $Q$ von $0$ verschieden sind.
 
 Eine beschränkte offene Menge $U\subset\mathbb{R}^n$ kann, wie in
-Abbildung~\ref{XXX} am zweidimensionalen Beispiel gezeigt,
+\input{chapters/040-green/fig/fig-quader.tex}%
+Abbildung~\ref{buch:green:fig:quader} am zweidimensionalen Beispiel gezeigt,
 von innen durch Quader approximiert werden.
 Ist $F\subset U$ eine abgeschlossene Teilmenge, dann ist sie auch
 kompakt und kann daher von endlich vielen Quadern überdeckt werden.
@@ -95,7 +97,7 @@ Mannigfaltigkeit überdecken.
 Sei $(U_\alpha,\varphi_\alpha)$ eine endliche Familie von Karten,
 die eine kompakte Mannigfaltigkeit überdecken.
 Dann gibt es Teilmengen $V_\alpha\subset U_\alpha$, die endliche
-Vereingungen von Quadern sind derart, dass die eingeschränkten Karten
+Vereingungen von Quadern derart sind, dass die eingeschränkten Karten
 $(V_\alpha,\varphi_\alpha\mathstrut_{|V_\alpha})$ ebenfalls einen Atlas
 bilden.
 \end{satz}
@@ -145,7 +147,9 @@ Dazu schreibt man
 Dies ist möglich, weil $h_\alpha\,\alpha$ nur innerhalb von $V_\alpha$
 von $0$ verschieden ist.
 Die 2-Form $h_\alpha\,\alpha$ kann im Kartengebiet durch die
-Komponenten dargestellt und integriert werden.
+Komponenten dargestellt und mit Formel
+\eqref{buch:kurvenintegral:differential:bsp:wege}
+integriert werden, wie im folgenden Abschnitt ausgeführt wird.
 
 %
 % Interal in einem Koordinatengebiet
@@ -183,8 +187,8 @@ gegeben.
 Da $\omega$ ausserhalb von $V_\alpha$ verschwindet, können wir $\omega$
 durch 0 auf ganz $\mathbb{R}^2$ ausdehnen und integrieren.
 
-Für das im Satz von Green angestrebte Resultat berechnen wird das
-Integral einer 2-Form der Form
+Für das im Satz von Green angestrebte Resultat berechnen wird als
+Beispiel das Integral einer 2-Form der Form
 \[
 \frac{\partial f_i}{\partial x^k}(x)\, dx^i \wedge dx^k,
 \]
@@ -210,7 +214,7 @@ Wir schreiben daher}
 \intertext{Das innere Integral kann ausgeführt werden und ergibt}
 &=
 \int_{-\infty}^{\infty}
-\biggl[f_i(x)\biggr]_{-\infty}^{\infty}
+\Bigl[f_i(x)\Bigr]_{-\infty}^{\infty}
 \,dx^i.
 \intertext{Da $f_i(x)$ ausserhalb des Gebietes $\varphi_\alpha(V_\alpha)$
 verschwindet, ist der Integrand $0$ und damit auch}
@@ -233,16 +237,15 @@ gegeben.
 Das Integrationsgebiet $[a,b]$ ist nicht eine eindimensionale
 Mannigfaltigkeit, da in einer solchen jeder Punkt eine Umgebung
 hat, die homöomorph zu einem offenen Intervall in $\mathbb{R}$ ist.
-Die beiden Endpunkt haben diese Eigenschaft nicht, sie haben eine
-Umgebung, die homöomorph zum halboffenen Intervall $[0,1)$ für
+Die beiden Endpunkte haben diese Eigenschaft nicht, sie haben 
+Umgebungen, die homöomorph zum halboffenen Intervall $[0,1)$ für
 den Anfangspunkt und $(-1,0]$ für den Endpunkt sind.
-Man sagt, $[a,b]$ sei eine eindimensionale Mannigfaltigkeit mit
-Rand.
+Man sagt, $[a,b]$ sei eine eindimensionale \emph{Mannigfaltigkeit mit Rand}.
 \index{Rand}%
 
-Eine $n$-dimensionale differenzierbare Mannigfaltigkeit kann
-ähnlich dadurch definiert werden, dass zusätzliche Arten von
-Karten zugelassen werden.
+Eine $n$-dimensionale differenzierbare \emph{Mannigfaltigkeit mit Rand}
+kann ähnlich dadurch definiert werden, dass zusätzliche Arten von
+Karten zugelassen werden (Abbildung~\ref{buch:green:green:fig:randkarten}).
 Eine Karte $(U,\varphi)$ von $M$ ist eine Abbildung
 $\varphi \colon U\to\mathbb{R}^n$, die ein Homöomorphismus
 zwischen $U$ und einer offenen Teilmenge von
@@ -256,8 +259,8 @@ x^n\ge 0
 ist.
 $U$ kann also wie bisher eine offene Menge sein oder sie kann 
 einen Teil der Hyperebene $x^n=0$ enthalten.
-Dieser Teil $\partial U=\varphi^{-1}(\{x^n = 0\})$ ist ein Randstück und
-durch weglassen der letzten Koordinate bekommen wir eine Kartenabbildung
+Dieser Teil $\partial U=\varphi^{-1}(\{x^n = 0\})$ ist ein Randstück.
+Durch Weglassen der letzten Koordinate bekommen wir eine Kartenabbildung
 $\varphi_{|\partial U}\colon \partial U \to \mathbb{R}^{n-1}$ für das
 Randstück.
 Für die Kartenwechsel wird verlangt, dass sie und die Ableitungen
@@ -278,7 +281,7 @@ Integrals einer 1-Form über den Rand her.
 \index{Randintegral}%
 Dieser Zusammenhang ist in Abbildung~\ref{buch:green:green:fig:greenrand2d}
 links dargestellt.
-Das Integral der 
+Das Integral der 2-Form
 \[
 \omega = \frac{\partial f_1}{\partial x_2}\,dx^1\wedge dx^2
 \]
@@ -295,7 +298,7 @@ von $\omega$ gegeben durch
 \intertext{Das $x^2$-Integral kann sofort ausgeführt werden und ist}
 &=
 \int_{-\infty}^{\infty}
-\bigl[ f_1(x^1,x^2) \bigr]_{0}^{\infty}
+\Bigl[ f_1(x^1,x^2) \Bigr]_{0}^{\infty}
 \,dx^1
 =
 -
@@ -311,7 +314,7 @@ wie dies in Abbildung~\ref{buch:green:green:fig:greenrand}
 unten dargestellt ist.
 \input{chapters/040-green/fig/fig-greenrand.tex}%
 Ist $g$ eine Funktion so, dass der Graph $x^2=g(x^1)$ den Rand
-beschreibt, dann kann man das Integrationsgebiet mit den Koordinaten
+beschreibt, dann kann man das Integrationsgebiet mit den neuen Koordinaten
 \[
 (y^1,y^2)
 =
@@ -338,7 +341,6 @@ g'(x^1)\,\underbrace{dx^1\wedge dx^1}_{\displaystyle=0}
 =
 dx^1\wedge dx^2.
 \]
-
 Die zu integrierende 2-Form ist
 \[
 \omega
@@ -346,7 +348,7 @@ Die zu integrierende 2-Form ist
 \frac{\partial f_1}{\partial x^2}(x^1,x^2)
 \,dx^1\wedge dx^2
 =
-\frac{\partial f_1}{\partial x^2}(y^1,y^2+g(y^1)).
+\frac{\partial f_1}{\partial x^2}(y^1,y^2+g(y^1))
 \,dy^1\wedge dy^2
 \]
 Das Hinzufügen des nicht von $x^2$ abhängigen Terms $g(y^1)$ ändert
@@ -373,9 +375,9 @@ Das Integral wird in $(y^1,y^2)$-Koordinaten zu}
 \\
 &=
 \int_{-\infty}^\infty
-\bigl[
+\Bigl[
 f_1(y^1,y^2+g(y^1))
-\bigr]_{0}^\infty
+\Bigr]_{0}^\infty
 \,dy^1
 \\
 &=
@@ -398,7 +400,7 @@ einer 1-Form über den Rand ausdrücken.
 \subsubsection{Integral einer 2-Form in einer Karte mit Rand}
 Sei jetzt $V_\alpha$ ein Randkartengebiet einer 2-dimensionalen
 Mannigfaltigkeit mit Rand.
-Wieder betrachten wir eine 2-Form $\omega$ genz spezieller Form,
+Wieder betrachten wir eine 2-Form $\omega$ ganz spezieller Form,
 in diesem Fall die Form
 \[
 \omega
@@ -477,7 +479,7 @@ Der Integrand des linken Integrals in
 hat offenbar eine besondere Bedeutung, die die folgende Definition
 rechtfertigt.
 
-\begin{definition}[äussere Ableitung in $\Omega^2(\mathbb{R}^2)$]
+\begin{definition}[äussere Ableitung einer 1-Form auf $\mathbb{R}^2$]
 \label{buch:green:green:definition:aeussereableitung2d}
 Die {\em äussere Ableitung} der in Komponenten gegebenen 1-Form
 \[
@@ -510,8 +512,8 @@ Die folgende, allgemeinere Definition der äusseren Ableitung
 einer beliebigen 1-Form auf einer Mannigfaltigkeit beliebiger 
 Dimension, liefert eine Erklärung.
 
-\begin{definition}[äussere Ableitung in $\Omega^2(M)$]
-Die {\em äussere Ableitung} einer 1-Form $\alpha\in\Omega^1(M)$ ist
+\begin{definition}[äussere Ableitung einer 2-Form auf $M$]
+Die {\em äussere Ableitung} einer 1-Form auf $M$
 \index{aussere Ableitung@äussere Ableitung}
 in einer Karte, in der die 1-Form durch die Komponentendarstellung
 \[
@@ -521,20 +523,22 @@ f_1(x)\,dx^1 + \dots + f_n(x)\, dx^n
 =
 \sum_{i=1}^n f_i(x)\,dx^i
 \]
-gegeben ist,
+gegeben ist, ist
 definiert durch die Komponenten
-\[
+\begin{equation}
 d\alpha
 =
 \sum_{k=1}^n
 \frac{\partial f_i}{\partial x^k}(x)
 \,dx^k\wedge dx^i.
-\]
+\label{buch:green:green:def:d1form}
+\end{equation}
 \end{definition}
 
-Die Terme mit $i=k$ enthalten die 2-Form $dx^k\wedge dx^i=dx^k\wedge dx^k=0$
-verschwinden in der Summe.
-Im Spezialfall $n=2$ entsteht daher
+Die Terme mit $i=k$ in der Summe \eqref{buch:green:green:def:d1form}
+enthalten die 2-Form $dx^k\wedge dx^i=dx^k\wedge dx^k=0$, sie
+verschwinden daher.
+Im Spezialfall $n=2$ entsteht
 \begin{align*}
 d\alpha
 &=
@@ -588,7 +592,7 @@ parametrisieren.
 \input{chapters/040-green/fig/fig-greenbeweis.tex}%
 
 \begin{satz}[Green]
-Für zwei Funktionen $f(x,y)$ und $f(x,y)$ auf einem Gebiet
+Für zwei Funktionen $f(x,y)$ und $g(x,y)$ auf einem Gebiet
 $U\subset\mathbb{R}^2$ mit Randkurve $\gamma$, die das Gebiet
 im Gegenuhrzeigersinn umlaufen.
 Dann gilt
@@ -639,9 +643,9 @@ I_f
 \,dx
 &=
 \int_{x_1}^{x_2}
-\bigl[
+\Bigl[
 f(x,y)
-\bigr]_{y_-(x)}^{y_+(x)}
+\Bigr]_{y_-(x)}^{y_+(x)}
 \,dx
 \notag
 \\
@@ -662,9 +666,9 @@ I_g
 \,dy
 &=
 \int_{y_1}^{y_2}
-\bigl[
+\Bigl[
 g(x,y)
-\bigr]_{x_-(y)}^{x_+(y)}
+\Bigr]_{x_-(y)}^{x_+(y)}
 \,dy
 \notag
 \\
@@ -676,12 +680,12 @@ g(x_-(y),y)
 \,dy.
 \label{buch:green:green:proof:eqn:yparam}
 \end{align}
-Zusammen ist das Doppelintegral $-I_f+I_g$.
-Dieses Integral lässt sich jetzt nach 
+Zusammen hat das Doppelintegral den Wert $-I_f+I_g$.
+Dieses letzte Integral lässt sich jetzt nach 
 \eqref{buch:green:green:proof:eqn:xparam}
 und
 \eqref{buch:green:green:proof:eqn:yparam}
-durch Randintegrale berechnen:
+durch die Randintegrale
 \begin{align*}
 -I_f+I_g
 &=
@@ -701,8 +705,10 @@ f(x,y_+(x))
 +
 \int_{y_2}^{y_1}
 g(x_-(y),y)
-\,dy.
-\intertext{Das Integral lässt sich aufteilen in Integrale, die sich
+\,dy
+\intertext{
+berechnen.
+Die Integrale lassen sich weiter in Integrale aufteilen, die sich
 alle mit dem Parameter $x$ schreiben lassen.
 Damit dies möglich wird, müssen wir es in vier Teile}
 &=
@@ -772,8 +778,8 @@ eine $n$-dimensionale Mannigfaltigkeit eingebettet sind.
 
 \begin{satz}[Stokes]
 \label{buch:green:green:satz:stokes}
-Sie $\alpha$ eine 1-Form auf der $n$-dimensionalen Mannigfaltigkeit $M$.
-Sie $S$ eine zweidimensionale Mannigfaltigkeit mit Rand und
+Sei $\alpha$ eine 1-Form auf der $n$-dimensionalen Mannigfaltigkeit $M$.
+Sei $S$ eine zweidimensionale Mannigfaltigkeit mit Rand und
 $f\colon S\to M$ eine differenzierbare Einbettung von $S$ in $M$.
 Dann ist $f^*\alpha$ eine differenzierbare 1-Form auf $S$ und
 $df^*\alpha=f^*d\alpha$.

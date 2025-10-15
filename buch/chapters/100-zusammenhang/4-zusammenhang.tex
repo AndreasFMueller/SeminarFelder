@@ -19,7 +19,7 @@ Es ist aber auch möglich, die kovariante Ableitung als ein Operator
 mit geeigneten Eigenschaften axiomatisch zu beschreiben und dann zu
 zeigen, dass es genau einen solchen Operator gibt.
 Dies verlangt etwas abstraktere Konstruktionen, ermöglicht aber
-die Verallgmeinerung auf beliebige Tensorfelder.
+die einfachere Verallgmeinerung auf beliebige Tensorfelder.
 Diese Vorgehensweise soll in diesem Abschnitt durchgeführt werden.
 
 Die Verallgemeinerung ermöglicht ausserdem, beliebige Arten von
@@ -72,7 +72,7 @@ selbst auch möglich ist.
 Schliesslich möchten wir die Vektorraumstruktur in verschiedenen
 Punkten miteinander vergleichen können.
 Für das Tangentialbündel ist jeder Tangentialraum $T_pM$ ein
-$n$-dimensionaler reeller Vektorraum, also $T_pM \equiv \mathbb{R}^n$.
+$n$-dimensionaler reeller Vektorraum, also $T_pM \cong \mathbb{R}^n$.
 Alle diese Forderungen führen auf die folgende Definition.
 
 \begin{definition}[Vektorraumbündel]
@@ -100,6 +100,7 @@ Kartengebieten $U_\alpha$ und $U_\beta$ ist die Kartenwechselabbildung
 U_\alpha\cap U_\beta \times V
 \to
 U_\alpha\cap U_\beta \times V
+.
 \]
 $E$ heisst \emph{Totalraum} des Bündels, $M$ heisst die \emph{Basis}
 und $\pi$ ist die \emph{Bündelprojektion}.
@@ -260,7 +261,10 @@ $\nabla$ erfüllt die Produktregel: für $f\in C^\infty(M)$ gilt
 \]
 für $X\in\Gamma(TM)$ und $Y\in\Gamma(E)$.
 \end{enumerate}
+Der Wert $\nabla_XY$ heisst auch die kovariante Ableitung von $Y$
+in Richtung von $X$.
 \end{definition}
+
 
 Die Produktregel-Bedingung hat die interessante Konsequenz, dass der
 Wert von $\nabla_XY$ in einem Punkt $p\in M$ nur vom Vektor $X(p)$ und
@@ -397,9 +401,9 @@ U_\alpha \to U_\alpha\times V
 p\mapsto (p,v_i)
 \]
 sind $C^\infty(U_\alpha)$-linear unabhängige Schnitte des trivialen
-Bündels $U_\alpha\times F$.
+Bündels $U_\alpha\times V$.
 Zusammensetzung mit der Abbildung $\varphi_\alpha^{-1}$ macht aus den
-Schnitten $V_i$ $C^\infty(M)$-linear unabhängige Schnitte
+Schnitten $V_i$ die $C^\infty(M)$-linear unabhängigen Schnitte
 \[
 E_i
 \colon
@@ -633,7 +637,7 @@ erhalten}
 \xi^i\biggl(
 \frac{\partial y^k}{\partial x^i} v_k
 +
-y^k\Gamma^l_{ik} v_l
+y^k\Gamma^l_{ik} v_l,
 \biggr)
 \intertext{oder durch Umbenennung der Summationsindizes}
 &=
@@ -642,7 +646,7 @@ y^k\Gamma^l_{ik} v_l
 \frac{\partial y^l}{\partial x^i}
 +
 y^k\Gamma^l_{ik}
-\biggr)v_l
+\biggr)v_l.
 \end{align*}
 Daraus können wir ablesen, dass die $l$-te Komponenten von
 $\nabla_{\partial_i}Y$ in der Basis $v_1,\dots,v_m$ durch
@@ -808,7 +812,7 @@ X_k\cdot\langle \omega,X_0\wedge\dots\wedge \widehat{X_k}\wedge\dots\wedge X_p\r
 gegeben.
 Die Konstruktion kann auf eine beliebige $E$-wertige $p$-Form $\omega$
 erweitert werden.
-Die $E$-wertige $p+1$-Form $d\omega$ wird definiert durch
+Die $E$-wertige $(p+1)$-Form $d\omega$ wird definiert durch
 \begin{align*}
 \langle \boldsymbol{d}\boldsymbol{\omega}, X_0\wedge\dots\wedge X_{p}\rangle
 &=
@@ -820,7 +824,7 @@ Die $E$-wertige $p+1$-Form $d\omega$ wird definiert durch
 \langle \boldsymbol{\omega},
 [X_k,X_l]\wedge X_0\wedge\dots\wedge\widehat{X_k}\wedge\dots\wedge\widehat{X_l}\wedge\dots\wedge X_p\rangle.
 \end{align*}
-Der Beweis, dass dieser Ausdruck tatsächlich eine $p+1$-Form definiert
+Der Beweis, dass dieser Ausdruck tatsächlich eine $(p+1)$-Form definiert
 gestaltet sich analog zum Falle $p=1$.
 
 %

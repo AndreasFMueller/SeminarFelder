@@ -14,7 +14,7 @@ In diesem Abschnitt versuchen wir ein Kriterium zu finden, welches
 entscheidet, ob ein Vektor entlang einer Kurve parallel transportiert
 worden ist.
 Da auch dies eine Eigenschaft sein muss, die sich lokal entscheiden
-lässt, muss das Kriterium in form einer Differentialgleichung
+lässt, muss das Kriterium in Form einer Differentialgleichung
 formuliert werden können.
 Der zugehörige Differentialausdruck ist die kovariante Ableitung,
 die in Abschnitt~\ref{buch:zusammenhang:subsection:paralleltransport}
@@ -280,7 +280,7 @@ umgerechnet werden können.
 Die Komponenten des Vektors $A$ im $y$-Koordinatensystem bezeichnen
 wir mit $\tilde{A}^i$, jene von $X$ mit $\tilde{\xi}^i$.
 Die transformierten Christoffel-Symbole $\tilde{\Gamma}^i_{lk}$ müssen
-die transformierten komponenten der kovarianten Ableitung liefern.
+die transformierten Komponenten der kovarianten Ableitung liefern.
 
 Einsetzen der transformierten Komponenten in die kovariante Ableitung
 im $y$-Koor\-di\-na\-ten\-system ergibt unter Verwendung der einsteinschen
@@ -535,7 +535,7 @@ a^{i_1\dots l\dots i_p}
 \end{equation}
 Zusätzlich zu den partiellen Ableitungen wird jeder Index von
 $a^{i_1\dots i_p}$ mit einem Ausdruck mit Christoffel-Symbolen
-Transformiert.
+transformiert.
 Für $p=1$ entsteht aus 
 \eqref{buch:zusammenhang:kovabl:eqn:ptensor}
 die bekannte Formel für die kovariante Ableitung eines Vektors.
@@ -563,7 +563,7 @@ $\nabla_X\alpha$ so definieren, dass die Produktregel gilt, dass also
 \langle \alpha,\nabla_X A\rangle
 \]
 gilt.
-Durch Aufläsen nach dem ersten Term auf der rechten Seite erhält man
+Durch Auflösen nach dem ersten Term auf der rechten Seite erhält man
 \begin{equation}
 \langle \nabla_X\alpha,A\rangle
 =
@@ -617,7 +617,8 @@ a_i
 \Gamma^i_{rk}a_i
 \biggr).
 \end{align*}
-Da dies für alle Vektoren $A$ und $X$ gelten muss, 
+Da dies für alle Vektoren $A$ und $X$ gelten muss, definieren wir die
+kovariante Ableitung für 1-Formen wie folgt.
 
 \begin{definition}[kovariante Ableitung von 1-Formen]
 \label{buch:zusammenhang:parallel:definition:kovabl1form}
@@ -734,7 +735,7 @@ g_{il}A^i\biggl(
 -g_{il}\Gamma^l_{sk}A^iB^s
 \notag
 \intertext{Durch Umnummerieren der Summen über $i$ und $s$ mit mittleren
-Term und $i$ und $s$ im rechten Term kann man erreichen, dass alle Terme
+Term und $l$ und $s$ im rechten Term kann man erreichen, dass alle Terme
 für $A$ und $B$ die gleichen Indizes verwenden.
 Mit dem Ableitungsterm auf der linken Seite erhält man jetzt}
 \frac{\partial g_{il}}{\partial x^k} A^iB^l
@@ -742,7 +743,7 @@ Mit dem Ableitungsterm auf der linken Seite erhält man jetzt}
 \bigl(g_{sl}\Gamma^s_{ik} + g_{is}\Gamma^s_{lk}\bigr)A^iB^l.
 \notag
 \intertext{Da dies für alle Komponenten $A^i$ und $B^l$ gelten muss, kann
-man diese weglassen und erhält.}
+man diese weglassen und erhält}
 \frac{\partial g_{il}}{\partial x^k}
 &=
 g_{sl}\Gamma^s_{ik} + g_{is}\Gamma^s_{lk}.
@@ -855,7 +856,7 @@ g^{jl}
 \frac{\partial g_{lk}}{\partial x^i}
 -
 \frac{\partial g_{ki}}{\partial x^l}
-\biggr)
+\biggr).
 \label{buch:zusammenhang:kovabl:eqn:Gamma}
 \end{align}
 Diese Christoffel-Symbole sind auch bekannt als die Zusammenhangskoeffizienten
@@ -970,6 +971,7 @@ g^{j2}\Gamma_{2,ik}
 zu berechnen.
 Es ergibt sich
 \[
+\raisebox{0.5cm}{$
 \begin{aligned}
 \Gamma^1_{11} &= 0,
 &
@@ -982,7 +984,8 @@ Es ergibt sich
 \Gamma^2_{21} &= \Gamma^2_{21} = \frac1r,
 &
 \Gamma^2_{22} &= 0.
-\end{aligned}
+\end{aligned}$}
+\qedhere
 \]
 \end{beispiel}
 
@@ -1135,6 +1138,7 @@ g^{jl}\Gamma_{l,ik}
 \]
 Ausgerechnet sind die Christoffel-Symbole
 \[
+\raisebox{0.5cm}{$
 \begin{aligned}
 \Gamma^1_{11}
 &=
@@ -1163,8 +1167,9 @@ Ausgerechnet sind die Christoffel-Symbole
 \Gamma^2_{22}
 &=
 0.
-\qedhere
 \end{aligned}
+$}
+\qedhere
 \]
 \end{beispiel}
 

@@ -191,7 +191,7 @@ R^i\mathstrut_l(\vec{h}\wedge\vec{k})
 R^i\mathstrut_{luv} h^uk^v,
 \]
 wobei wie üblich nach der einsteinschen Summationskonvention über $u$
-$v$ summiert werden muss.
+und $v$ summiert werden muss.
 Falls der metrische Tensor die Einheitsmatrix ist, muss $R^i\mathstrut_l$
 antisymmetrisch sein, doch dies ist keine Eigenschaft, die allgemein
 kovariant definiert ist.
@@ -273,7 +273,7 @@ R^s\mathstrut_{uvm}
 \label{buch:kruemmung:kruemmung:eqn:Rm}
 \end{align}
 Dies sind die Komponenten des riemannschen Krümmungstensors.
-Durch herunterziehen des ersten Index erhält man die Komponenten
+Durch Herunterziehen des ersten Index erhält man die Komponenten
 \begin{equation}
 R_{ruvm}
 =
@@ -292,6 +292,12 @@ g_{rs}
 des kovarianten riemannschen Tensors.
 Er ist antisymmetrisch in den ersten zwei und den letzten zwei
 Indizes.
+In koordinatenfreier Notation schreiben wir
+\[
+\textit{Rm}(\partial_r, \partial_u, \partial_v, \partial_m)
+=
+R_{ruvm}.
+\]
 
 \begin{beispiel}
 Der riemannsche Krümmungstensor für die Ebene in Polarkoordinaten.
@@ -459,8 +465,9 @@ A
 \Gamma^k_{uv} a^u
 \biggr)
 \dot{x}^v
-\,dt.
+\,dt
 \end{align*}
+berechnet werden.
 Um den Satz von Green anwenden zu können, brauchen wir ein ebenes
 Kurvenintegral.
 Wir betrachten daher einen Weg in der $x^v$-$x^s$-Koordinaten-Ebene.
@@ -507,9 +514,10 @@ dx^s,
 \frac{\partial \Gamma^k_{us}}{\partial x^v} a^u
 -
 \Gamma^k_{us}\frac{\partial a^u}{\partial x^v}
-\,dx^v\,dx^s.
+\,dx^v\,dx^s
 \label{buch:kruemmung:eqn:greendelta1}
 \end{align}
+umgeformt werden kann.
 Die zweiten Ableitungen heben sich weg und müssen daher nicht weiter
 berücksichtigt werden.
 Für den paralleltransportierten Vektor verschwindet die kovariante
@@ -668,7 +676,7 @@ ausgedrückt werden.
 Die nicht abgeleiteten Christoffelsymbole in
 \eqref{buch:kruemmung:kruemmung:eqn:Rruvm}
 verschwinden an der Stelle $p$,
-Es müssen also nur noch die Ableitungen der $\Gamma$ unter Verwendung
+es müssen also nur noch die Ableitungen der $\Gamma$ unter Verwendung
 von \eqref{buch:kruemmung:kruemmung:eqn:RGamma2}
 dargestellt werden.
 Durch Vertauschung der Indizes $v$ und $m$ entsteht der zweite
@@ -848,7 +856,9 @@ Im vorangegangenen Abschnitt wurde erkannt, dass der riemannsche
 Krümmungstensor antisymmetrisch im ersten und letzten Indexpaar ist,
 und symmetrisch bei Vertauschung der beiden Indexpaare.
 Die Bianchi-Identitäten sind weitere Beziehungen der Komponenten
-des Krümmungstensors untereinander, so dass sich die Information 
+des Krümmungstensors untereinander, so dass eine nur kleine Zahl
+von unabhängigen Komponenten die vollständige Krümmungsinformation
+enthält.
 
 %
 % Die ersrte Bianchi-Identität
@@ -913,7 +923,7 @@ Da
 =
 R(Z,W)Y
 \]
-ist, ist das verschwinden von $B$ gleichbedeutend damit, dass
+ist, ist das Verschwinden von $B$ gleichbedeutend damit, dass
 \[
 C
 =

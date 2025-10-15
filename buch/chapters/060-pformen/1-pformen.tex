@@ -12,7 +12,7 @@ verallgemeinert werden.
 % p-Vektoren
 %
 \subsection{$p$-Vektoren}
-In früheren Kapiteln würden 2-Vektoren, $n-1$-Vektoren und $n$-Vektoren
+In früheren Kapiteln würden 2-Vektoren, $(n-1)$-Vektoren und $n$-Vektoren
 eingeführt, sobald sie für die Erklärung der Sätze von Green,
 Stokes und Gauss nötig waren.
 Die Konstruktion lässt sich aber auf den Begriff eines $p$-Vektors
@@ -21,7 +21,7 @@ verallgemeinern.
 
 \begin{definition}
 Ein $p$-Vektor ist ein vollständig antisymmetrischer Tensor
-$p$-ter Stufe.
+$p$-ter Stufe vom Typ $(0,p)$.
 \end{definition}
 
 Aus einer Basis $X_1,\dots,X_n$ von $TM$ entsteht eine Basis des
@@ -62,11 +62,18 @@ X_{k_1}\wedge\dots\wedge X_{k_p}
 \delta^{i_p}_{k_p}.
 \]
 Die Menge der $p$-Formen auf einer Mannigfaltigkeit wird mit $\Omega^p(M)$
-geschrieben.
+bezeichnet.
 \end{definition}
 
+Die Menge $\Omega^0(M)$ der $0$-Formen besteht nur aus beliebig oft stetig
+differenzierbaren Funktionen auf der Mannigfaltigkeit, die mit
+$C^\infty(M)$ bezeichnet wird.
+Die $p$-Formen im Vektorraum der $p$-Formen können mit Funktionen aus
+$C^\infty(M)$ multipliziert werden, eine Eigenschaft, die man einen
+$C^\infty(M)$-Modul nennt.
+
 \begin{satz}
-Die $p$-Formen auf einer Mannigfaltigkeit bilden einen $\mathscr{E}(M)$-Modul.
+Die $p$-Formen auf einer Mannigfaltigkeit bilden einen $C^\infty(M)$-Modul.
 In einer Karte kann eine $p$-Form $\omega\in \Omega^p(M)$ als
 \begin{align*}
 \omega
@@ -111,14 +118,14 @@ dx^{i_1}\wedge\dots\wedge dx^{i_p}
 dx^{i_{p+1}}\wedge\dots\wedge dx^{i_{p+q}}
 \label{buch:pformen:pformen:eqn:basisprodukt}
 \end{equation}
-durch Basis-$p+q$-Formen ausgedrückt werden.
+durch Basis-$(p+q)$-Formen ausgedrückt werden.
 Falls $(i_1,\dots,i_p)$ und $(i_{p+1},\dots,i_{p+q})$ einen Index gemeinsam
 haben, dann verschwindet das Produkt.
 Das Wedge-Produkt~\eqref{buch:pformen:pformen:eqn:basisprodukt}
-ist also nur dann von $0$ verschieben, wenn alle Indizes in
+ist also nur dann von $0$ verschieden, wenn alle Indizes in
 $(i_1,\dots,i_p,i_{p+1},\dots,i_{p+q})$ verschieden sind.
 Das Produkt~\eqref{buch:pformen:pformen:eqn:basisprodukt} ist aber
-normalerweise keine Basis-$p+q$-Form, da in den Basisformen die
+normalerweise keine Basis-$(p+q)$-Form, da in den Basisformen die
 Indizes aufsteigend sind.
 Die 1-Formen in \eqref{buch:pformen:pformen:eqn:basisprodukt} müssen
 also so vertauscht werden, dass sich eine aufsteigende Reihenfolge
@@ -162,7 +169,7 @@ einfach, die nötigen Vertauschungen vorzunehmen und damit das
 richtige Vorzeichen zu finden.
 Für die algebraische Rechnung ist dies jedoch etwas komplizierter,
 da die Algebra keine gute Notation für die richtige Reihenfolge der
-Indizes zu finden.
+Indizes anbietet.
 
 Um eine einfachere Formel zu finden, schreiben wir erst die Basis
 auf eine neue Art.
@@ -263,7 +270,7 @@ Wir müssen zeigen, dass die
 Formel~\eqref{buch:pformen:pformen:eqn:kommutativ}
 Für die Basisdifferentialformen gilt.
 Wir verwenden die Farben {\color{darkred}rot} und {\color{blue}blau},
-um die Vertauschungen der 1-Form-Faktoren duetlich zu machen.
+um die Vertauschungen der 1-Form-Faktoren deutlich zu machen.
 Wir schreiben also
 \begin{align*}
 {\color{darkred}\alpha}
@@ -360,7 +367,7 @@ Die Räume $\Omega^p(M)$ haben für verschiedene $0$ keine gemeinsamen
 nichttrivialen Formen.
 Die Nullform, die auf jedem beliebigen $p$-Vektor verschwindet, kann man
 aber durchaus als ein gemeinsames Element betrachten.
-Rein Formale kann man daher auch Linearkombinationen von $p$-Formen für
+Rein formal kann man daher auch Linearkombinationen von $p$-Formen für
 verschiedenes $p$ bilden.
 So entsteht die Menge
 \[
@@ -372,8 +379,8 @@ der Differentialformen auf der Mannigfaltigkeit.
 $\Omega^*(M)$ ist ein reeller Vektorraum: Differentialformen können mit
 Zahlen multipliziert und addiert werden.
 
-Die $0$-Formen sind die Funktionen und können mit glatten Funktionen in
-$\Omega^0(M)=\mathscr{E}(M)$ multipliziert werden.
+Die $0$-Formen sind die Funktionen in $C^\infty(M)$ und können mit
+glatten Funktionen in $\Omega^0(M)=C^\infty(M)$ multipliziert werden.
 Die glatten Funktionen bilden keinen Körper, da man durch Funktionen mit
 Nullstellen nicht dividieren kann.
 Die glatten Funktionen bilden aber einen sogenannten Ring. 
@@ -381,18 +388,18 @@ Die glatten Funktionen bilden aber einen sogenannten Ring.
 Es sind alle Rechenregeln definiert, die auch in einem Körper gelten,
 ausser die Existenz eines multiplikativen Inversen.
 
-Die Differentialformen können mit Funktionen in $\mathscr{E}(M)$
+Die Differentialformen können mit Funktionen in $C^\infty(M)$
 multipliziert werden.
 Dadurch wird $\Omega^*(M)$ zu einem sogenannten {\em Modul} über
-dem Ring $\mathscr{E}(M)$.
-Wenn $f\in\mathscr{E}(M)$ eine glatte Funktion und $\omega\in\Omega^p(M)$
+dem Ring $C^\infty(M)$.
+Wenn $f\in C^\infty(M)$ eine glatte Funktion und $\omega\in\Omega^p(M)$
 eine $p$-Form ist, dann ist $f\omega\in\Omega^p(M)$ ebenfalls eine
 $p$-Form.
 Die Multiplikation mit einer glatten Funktion ändert den Grad einer
 $p$-Form nicht.
 Jeder einzelne Summand $\Omega^p(M)\subset\Omega^*(M)$ ist also für
-sich genommen ebenfalls ein $\mathscr{E}(M)$-Modul.
-Man nennt $\Omega^*(M)$ daher einen {\em graduierten} $\mathscr{E}(M)$-Modul.
+sich genommen ebenfalls ein $C^\infty(M)$-Modul.
+Man nennt $\Omega^*(M)$ daher einen {\em graduierten} $C^\infty(M)$-Modul.
 \index{graduiert}%
 \index{Modul!graduiert}%
 
@@ -400,8 +407,8 @@ Das Wedge-Produkt der Differentialformen verknüpft eine $p$-Form
 $\alpha\in\Omega^p(M)$ mit einer $q$-Form $\beta\in\Omega^q(M)$
 zu einer $p+q$-Form $\alpha\wedge\beta\in\Omega^{p+q}(M)$.
 Die Menge $\Omega^*(M)$ hat also nicht nur die Struktur eines
-Moduls über dem Ring $\mathscr{E}(M)$ sondern auch die Struktur
-einer Algebra über dem Ring $\mathscr{E}(M)$.
+Moduls über dem Ring $C^\infty(M)$ sondern auch die Struktur
+einer Algebra über dem Ring $C^\infty(M)$.
 Das Produkt respektiert aber auch die Graduierung von $\Omega^*(M)$,
-daher heisst $\Omega^*(M)$ auch eine graduierte $\mathscr{E}(M)$-Algebra.
+daher heisst $\Omega^*(M)$ auch eine graduierte $C^\infty(M)$-Algebra.
 

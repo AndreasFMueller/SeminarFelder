@@ -1,0 +1,9 @@
+x: s*(1-t^2);
+y: t;
+ratsimp(diff(atan(Y/X),X));
+ratsimp(diff(atan(Y/X),Y));
+r: sqrt(x^2+y^2);
+i: ratsimp(-(y/r)*diff(x,t)+(x/r));
+
+i: (t^2+1)/sqrt(s^2*(1-t^2)^2+1);
+integrate(i, t);

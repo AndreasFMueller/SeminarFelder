@@ -30,7 +30,7 @@ Das Verfahren von Gauss-Seidel geht davon aus, dass ein einzelne lineare
 \index{Gauss-Seidel-Verfahren}%
 Gleichung immer durch Modifikation einer Variable, deren Koeffizient in
 der Gleichung nicht verschwindet, erfüllt werden kann.
-Sie also
+Sei also
 \begin{equation}
 a_{k1}x_1 + \dots + a_{kk}x_k + \dots + a_{kn}x_n = b_k
 \label{buch:pdenumerik:linear:gauss-seidel:eqn:gl}
@@ -146,6 +146,7 @@ b_k
 -
 \sum_{i\ne k} a_{ki} x_i^{(m)}
 \biggr).
+\label{buch:pdelinear:jacobi:eqn:iteration}
 \end{equation}
 Die rechte Seite kann für alle $k$ parallel ausgewertet werden.
 
@@ -174,7 +175,7 @@ in Matrixform geschrieben werden, was erlaubt, für die Analyse der Konvergenz
 des Verfahrens die Matrizenrechnung zu verwenden.
 Das Gauss-Seidel-Verfahren zeigt, dass wir in der Formel
 \eqref{buch:pdenumerik:linear:gauss-seidel:iteration}
-die Matrixelement unterhalb der diagonalen jeweils mit den neuen
+die Matrixelement unterhalb der Diagonalen jeweils mit den neuen
 Variablenwerten $x_k^{(m+1)}$ und die Matrixelemente oberhalb der
 Diagonalen mit den alten Weten $x_k^{(m)}$ verrechnet werden.
 Wir zerlegen die Matrix $A$ daher in drei Matrizen:
@@ -195,6 +196,7 @@ L
 a_{n-1,1}&a_{n-1,2}&a_{n-1,3}& \dots&        0&     0\\
    a_{n1}&   a_{n2}&   a_{n3}& \dots&a_{n,n-1}&     0
 \end{pmatrix},
+\;
 R
 =
 \begin{pmatrix}
@@ -217,7 +219,7 @@ a_{11}&     0& \dots&     0\\
      0&a_{22}& \dots&     0\\[-3pt]
 \vdots&\vdots&\ddots&\vdots\\
      0&     0& \dots& a_{nn}
-\end{pmatrix}
+\end{pmatrix}.
 \]
 Mit diesen drei Matrizen kann das Iterationsverfahren jetzt in
 Matrixform geschrieben werden.
@@ -229,11 +231,11 @@ Matrixform geschrieben werden.
 Beim Jacobi-Verfahren werden gemäss
 Formel~\ref{buch:pdelinear:jacobi:eqn:iteration} nur die alten
 Werte verwendet, es gilt also
-\[
+\begin{equation*}
 Dx^{(m+1)} = b-(L+R)x^{(m)}
 \qquad\Rightarrow\qquad
 x^{(m+1)} = D^{-1}\bigl(b-(L+R) x^{(m)}).
-\]
+\end{equation*}
 Dies ist die Iterationsformel für das Jacobi-Verfahren in Matrixform.
 
 %
@@ -304,7 +306,7 @@ b-(L+R)x^{(m)}
 Dx + D\delta x^{(m+1)}
 &=
 b - (L+R)x - (L+R)\delta x^{(m)}
-\intertext{Da $x$ eine Lösung ist, gitl $Dx = b-(L+R)x$, so dass sich
+\intertext{Da $x$ eine Lösung ist, gilt $Dx = b-(L+R)x$, so dass sich
 die Gleichung zu}
 D\delta x^{(m+1)}
 &=
@@ -340,7 +342,7 @@ Es bleibt die vereinfachte Gauss-Seidel-Iterationsformel}
 \qquad
 \delta x^{(m+1)}
 &=
--(L+D)^{-1} R x^{(m)}
+-(L+D)^{-1} R \delta x^{(m)}
 \end{align*}
 für den Fehler.
 Wieder können wir schliessen, dass es nur auf Eigenschaften der
@@ -369,7 +371,7 @@ als mit dem Betrag des betragsgrössten Eigenwertes von $C$
 \begin{satz}
 Das Gauss-Seidel-Verfahren konvergiert genau dann, wenn der Spektralradius
 von $(L+D)^{-1}R$ kleiner ist als $1$.
-Das Jacobi-Verfahren konvergiert genau dann, wenn der Spetralradius von
+Das Jacobi-Verfahren konvergiert genau dann, wenn der Spektralradius von
 $D^{-1}(L+R)$ kleiner ist als $1$.
 \end{satz}
 
@@ -406,7 +408,7 @@ m < \frac{\log\varepsilon}{\log\varrho(C)}.
 \end{equation}
 
 \begin{beispiel}
-Für die Differentialgleichung $y''=0$ mit $n$ äquidistanten Punkten
+Die Differentialgleichung $y''=0$ mit $n$ äquidistanten Punkten
 führt auf die Matrix
 \[
 A

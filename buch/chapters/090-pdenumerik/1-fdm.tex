@@ -27,7 +27,7 @@ x_{n-1}=(n-1)h,
 x_n=b
 \]
 mit Schrittweite $h = (b-a)/n$ einschränken, wie dies in
-Abbildung~\ref{buch:pdenumerik:fdm:1d} gezeigt ist.
+Abbildung~\ref{buch:pdenumerik:fdm:fig:1d} gezeigt ist.
 Wir bezeichnen die Funktionswerte mit $y_k = y(x_k)$.
 Die Ableitung an der Stelle $x_k$ kann dann durch den Differenzenquotienten
 \[
@@ -38,7 +38,7 @@ y'(x_k)
 \frac{y_{k+1}-y_k}{h}
 \]
 approximiert werden.
-Und die zweite Ableitung ist
+Die zweite Ableitung ist approximativ
 \[
 y''(x_k)
 \approx
@@ -66,7 +66,8 @@ werden.
 \input{chapters/090-pdenumerik/fig/fig-2d.tex}%
 Für ein Gitter von Punkten $(x_k,y_l) = (kh,lh)$ mit Schrittweite $h$
 wie in Abbildung~\ref{buch:pdenumerik:fdm:fig:2d}
-schreiben wir $u_{kl}=u(x_k,y_l)$ für die Werte der Lösungsfunktion.
+schreiben wir $u_{kl}=u(x_k,y_l)$ für die Werte der Lösungsfunktion
+in den Gitterpunkten.
 Die Ableitungen können dann wieder durch die Differenzenquotienten
 \begin{align*}
 \frac{\partial u}{\partial x}(x_k,y_k)
@@ -85,7 +86,7 @@ Die Ableitungen können dann wieder durch die Differenzenquotienten
 &=
 \frac{u_{k,l+1}-2u_{kl}+u_{k,l-1}}{h^2}
 \end{align*}
-approximieren.
+approximieren werden.
 Die Differentialgleichung wird dann durch die lineare Gleichung
 \[
 \Delta u(x_k,y_k)

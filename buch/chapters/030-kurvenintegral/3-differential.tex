@@ -4,7 +4,7 @@
 \section{Differential einer Funktion}
 \kopfrechts{Differential einer Funktion}%
 Wir betrachten eine reellwertige, differenzierbare Funktion
-$f\colon M\to\mathbb{R}$ auf einer $n$-dimensionalen 
+$f\colon M\to\mathbb{R}$ auf einer $n$-di\-men\-sio\-na\-len 
 Mannigfaltigkeit $M$.
 In einer Koordinaten kann man sie als Funktion 
 $f(x^1,\dots,x^n)$ der Koordinaten $x^i$ schreiben.
@@ -145,8 +145,8 @@ df
 geschrieben werden.
 
 Eine Kurve zwischen zwei Punkten $A$ und $B$ sei durch die 
-Parametrisierung $[a,b]\to\mathbb{R}^n:t\mapsto x^i(t)$ gegeben,
-dann kann das Integral sofort durch
+Parametrisierung $[a,b]\to\mathbb{R}^n:t\mapsto x^i(t)$ gegeben.
+Dann kann das Integral von $df$ entlang der Kurve sofort durch
 \[
 \int_{\gamma} df
 =
@@ -162,7 +162,7 @@ Der Integrand des letzten Integrals ist die Ableitung
 \frac{\partial f}{\partial x^i}(x(t))\,\dot{x}^i(t).
 \]
 Die Funktion $t\mapsto f(x(t))$ ist daher eine Stammfunktion und
-das Integral kann damit als
+das Integral kann als
 \[
 \int_{\gamma} df
 =
@@ -174,6 +174,7 @@ berechnet werden.
 Dies beweist den folgenden Satz.
 
 \begin{satz}
+\label{buch:kurvenintegral:differential:satz:hauptsatz}
 Ist $\gamma\colon[a,b]\to M$ eine Kurve auf $M$, die die Punkte $A=\gamma(a)$
 und $B=\gamma(b)$ verbindet, dann ist das Integral
 \[
@@ -188,10 +189,12 @@ Der Satz formuliert den Hauptsatz der Infinitesimalrechnung mit Hilfe
 von Differentialen und Wegintegralen.
 Das folgende Beispiel zeigt, dass es 1-Formen gibt, deren Integral
 von der Kurve abhängt.
-Der Satz bedeutet also, dass eine solche 1-Form nicht das Differential
+Der Satz \ref{buch:kurvenintegral:differential:satz:hauptsatz}
+bedeutet also, dass eine solche 1-Form nicht das Differential
 einer Funktion sein kann.
 
 \begin{beispiel}
+\label{buch:kurvenintegral:differential:bsp:wege}
 \input{chapters/030-kurvenintegral/fig/fig-wege.tex}
 Wir betrachten das Gebiet $M=\mathbb{R}^2\setminus\{0\}$, also die
 Ebene ohne den Nullpunkt.
@@ -204,7 +207,7 @@ Die Umrechnung ist durch die Abbildung
 \]
 gegeben.
 
-Auf diesem Gebiet soll jetzt die 1-Form $r\,d\varphi$ betrachtet und
+Auf dem Gebiet $M$ soll jetzt die 1-Form $r\,d\varphi$ betrachtet und
 zwischen den beiden Punkten $A=(0,-1)$ und $B=(0,1)$ integriert werden.
 In Polarkoordinaten haben die beiden Punkte beide den Radius $r=1$,
 aber der Polarwinkel ist $\varphi(A) = -\frac{\pi}2$ und
@@ -228,11 +231,11 @@ Das Integral von $r\,d\varphi$ ist
 \end{equation}
 Der Wert ändert sich jedoch, wenn ein anderer Weg gewählt wird.
 Der Weg $\gamma_r$ setzt sich zusammen aus einem vertikalen
-Streckensegment von $A$ zum Punkt $C$, einem Halbkreisbogen mit
-Radius $r$ von $C$ zu $D$ und einem weiteren vertikalen Streckensegment
+Segment von $A$ zum Punkt $C$, einem Halbkreisbogen mit
+Radius $r$ von $C$ zu $D$ und einem weiteren vertikalen Segment
 von $D$ zu $B$.
-Da sich der Polarwinkel entlang der Streckensegmente nicht ändert,
-verschwindet das Integral von $r\,df$ über die Streckensegment.
+Da sich der Polarwinkel entlang der geraden Segmente nicht ändert,
+verschwindet das Integral von $r\,df$ über die diese Segmente.
 Das Integral über den Kreisbogen kann wie in 
 \eqref{buch:kurvenintegral:differential:eqn:halbkreis}
 berechnet werden, mit dem einzigen Unterschied, dass der Faktor $r$
@@ -256,7 +259,7 @@ Gegen das Argument kann eingewendet werden, dass die verwendete
 Kurve $\gamma_r$ nicht differenzierbar ist.
 Die entwickelte Theorie ist daher gar nicht anwendbar.
 Man könnte aber auch einen Parabelbogen, der durch die Punkte 
-$A$, $E$ und $B$ geht differenzierbar deformieren.
+$A$, $E$ und $B$ geht, differenzierbar deformieren.
 Der Weg 
 \[
 \gamma_s
@@ -267,7 +270,7 @@ Der Weg
 :
 t\mapsto (s(1-t)(1+t), t)=(s(1-t^2),t)
 \]
-geht durch die Punkte $A$, $B$ und $(s,0)$ in karteischen
+geht durch die Punkte $A$, $B$ und $(s,0)$ in kartesischen
 Koordinaten.
 Insbesondere geht er im Abstand $s$ am Nullpunkt vorbei.
 Da $\gamma_s$ in kartesischen Koordinaten gegeben ist, muss
@@ -334,17 +337,16 @@ s\int_{-1}^1
 \frac{2t^2+1-t^2}{\sqrt{s^2(1-t^2)^2+1}}
 \,dt
 \end{align*}
-Der Integrand
+Im Integranden
 \[
 f(t,s)
 =
 \frac{s(t^2+1)}{\sqrt{s^2(1-t^2)^2+1}}
 \]
-nimmt, wie man der
-\input{chapters/030-kurvenintegral/fig/fig-integrand.tex}
-Abbildung~\ref{buch:kurvenintegral:differential:fig:integrand}
-entnehmen kann, sein Maximum bei $t=0$ an, wo der Funktionswert
-$s/\sqrt{s^2+1}$ ist.
+nimmt der Zähler das Maximum in den Intervallenden bei $\pm 1$ an.
+Der Nenner hat dort sein Minimum.
+Daher ist das Maximum des Integranden bei $t=\pm1$, wo der Funktionswert
+$2s$ ist.
 Das Integral kann damit nach oben durch den grössten
 Wert des Integranden als
 \[
@@ -354,9 +356,7 @@ Wert des Integranden als
 =
 2 \max_{t\in[-1,1]} f(t,s)
 =
-\frac{2s}{\sqrt{s^2+1}}
-\le
-2s
+4s
 \]
 abgeschätzt werden.
 Je kleiner $s$ wird, desto kleiner wird daher auch das Wegintegral.
@@ -404,7 +404,7 @@ f(x^1+tv^1,\dots,x^n+tv^n)\bigg|_{t=0}
 Die Richtungsableitung ist also nur ein Spezialfall der Ableitung
 einer Funktion entlang einer Kurve für eine speziell gewählte
 Kurve.
-In der Karte mit den $x^i$-Koordinaten ist die Kurve die Gerade
+In der Karte mit den $x^i$-Koordinaten ist die Kurve nämlich die Gerade
 \[
 x^i(t) = x^i(0) + tv^i
 \]
@@ -423,7 +423,7 @@ V
 \]
 schreiben, wobei $V$ der Tangentialvektor ist, der in der Karte
 der $x^i$-Koordinaten die Komponenten $v^i$ hat.
-Das Differential $df$ verallgemeinert also die Theorie der 
+Das Differential $df$ verallgemeinert also die Idee der 
 Richtungsableitung aof beliebige Koordinantensysteme.
 
 
@@ -555,9 +555,9 @@ g^{n1}&\dots &g^{nn}
 Die Matrix $G^{-1}$ ist ebenfalls symmetrisch.
 Die Bedingung $G^{-1}G=I$ wird in Komponenten durch
 \[
-g^{ki}g_{kl}
+g^{ik}g_{kl}
 =
-\delta^k\mathstrut_i
+\delta^i\mathstrut_l
 \]
 ausgedrückt.
 
@@ -586,6 +586,21 @@ g^{ki}\frac{\partial f}{\partial x^i}(x)
 \frac{\partial f}{\partial x^k}(x)
 \]
 gegeben, die der klassischen Definition des Gradienten entspricht.
+
+%
+% Basis für den metrischen Tensor
+%
+\subsubsection{Basis für den metrischen Tensor}
+Der metrische Tensor ist eine Bilinearform.
+Hält man ein Argument fest, muss er sich als Linearform schreiben lassen,
+deren Koeffizienten als Linearkombination verstanden werden können.
+Wir schreiben daher $dx^i\otimes dx^k$ für eine Bilinearform, die auf
+den Vektoren $\partial/\partial x^i$ und $\partial/\partial x^k$ den
+Wert $1$ annimmt, und $0$ auf allen anderen Paaren von Basisvektoren
+dieser Form.
+Das Zeichen $\otimes$ soll die beiden Argumente der Bilinearform
+auseinanderhalten aber dennoch daran erinnern, dass die Funktion
+sich bilinear, also wie ein Produkt verhält.
 
 %
 % Kontravarianz des inversen metrischen Tensors
@@ -620,18 +635,18 @@ dx^l\otimes dx^m
 \end{align*}
 folgt daher, dass
 \begin{equation}
-g_{ik}
+g_{lm}
 =
 \sum_{i,k=1}^n h_{ik}
 \frac{\partial y^i}{\partial x^l}
 \frac{\partial y^k}{\partial x^m}.
 \label{buch:kurvenintegral:differential:eqn:gkovarianz}
 \end{equation}
-Dies ist das erwartete Resultat für einen Tensor mit unteren und daher
-kovarianten Indizes.
+Dies ist das erwartete Resultat für einen Tensor mit zwei unteren 
+und daher kovarianten Indizes.
 
-Für die metrischen Tensoren für 1-Formen kann eine analoge Rechnung
-durchgeführt werden.
+Für die metrischen Tensoren $g^{ik}$, die ein Skalarprodukt für
+1-Formen definieren, kann eine analoge Rechnung durchgeführt werden.
 Dabei wird verwendet, dass
 \[
 \frac{\partial}{\partial y^i}
@@ -693,14 +708,15 @@ kontravariant sind.
 \subsubsection{Indizes anheben und absenken}
 Der Tensor $g_{ik}$ hat schon in
 Abschnitt~\ref{buch:kurvenintegral:1formen:subsection:linearformen}
-ermöglicht, aus einem Vektor, also einem kontravarianten Tensor,
-eine Linearform, also einen kovarianten Tensor zu machen.
-Mit dem Tensor $g^{ik}$ wird jetzt auch das, aus einem kontravarianten
+ermöglicht, aus einem Vektor, also einem kontravarianten Tensor erster
+Stufe, eine Linearform, also einen kovarianten Tensor zu machen.
+Mit dem Tensor $g^{ik}$ gelingt es jetzt auch, aus einem kontravarianten
 Index einen kovarianten zu machen.
 Diese Operationen sind auf jeden beliebigen Index eines Tensors
 anwendbar.
 
 \begin{definition}[Anheben und Absenken von Indizes]
+\label{buch:kurvenintegral:differential:def:musikalisch}
 Ein kontravarianter Index $i$ eines Tensors $A^i$ wird durch
 $g_{ki}A^i$ zu einem kovarianten Index $k$ {\em abgesenkt}.
 \index{absenken, Index}%
@@ -713,7 +729,7 @@ Die Operationen des Anhebens und Absenkens von Indizes mithilfe
 des metrischen Tensors bzw.~der seiner Inversen werden manchmal
 als $A\mapsto A^\flat$ für das Absenken und $B\mapsto B^\sharp$
 für das anheben notiert.
-Sie werden dann auch die musikalischen Operationen genannt, da
+Sie werden auch die musikalischen Operationen genannt, da
 in der musikalischen Notenschrift das Zeichen $\sharp$ die
 Anhebung einer Note um einen halben Ton bedeutet, während
 $\flat$ die Absenkung einer Note um eine halben Ton bedeutet.
@@ -755,22 +771,23 @@ konform ist.
 \begin{beispiel}
 Die stereographische Projektion von Beispiel 
 \ref{buch:koordinaten:diffmannig:beispiel:stereographisch}
-ist konform, wie im Folgenden nachgerechnet werden soll.
+ist konform, wie mit einer direkten, aber im Übrigen nicht
+besonders interessanten Rechnung nachgewiesen werden kann.
 \end{beispiel}
 
 %
 % Die Mercator-Projektion
 %
 \subsubsection{Die Mercator-Projektion}
-Die Mercator-Projektion bildet Punkte $(\vartheta,\beta)$ auf
+Die sogenannte Mercator-Projektion bildet Punkte $(\vartheta,\beta)$
 \index{Mercator-Projektion}%
-der Oberfläche der Einheitskugel auf einen Zylinder mit Koordinaten
+auf der Oberfläche der Einheitskugel auf einen Zylinder mit Koordinaten
 $(\varphi,z)$ ab, der die Kugel im Äquator berührt.
 \index{Einheitskugel}%
-Wir verwenden die vom Äquator gemessene geographsiche Breite $\beta$
+Wir verwenden die vom Äquator gemessene geographische Breite $\beta$
 \index{Aquator@Äquator}%
 anstelle des bei Kugelkoordinaten üblichen Polabstandes $\vartheta$.
-Sie ist aber nicht eine geometrische Projektion, vielmehr wird die
+Sie ist aber nicht eine geometrische Zentralprojektion, vielmehr wird die
 $z$-Koordinate durch eine nichtlineare Funktion $z(\beta)$
 gegeben.
 
@@ -913,17 +930,20 @@ dx^i,\frac{\partial}{\partial x^k}
 &=
 \alpha_i(x(t))\dot{x}^i(t).
 \end{align*}
+
+In zwei Dimensionen lässt sich das noch etwas weiter treiben.
 Falls $\alpha_2(x(t))\ne 0$ ist, kann die Gleichung
 \begin{equation}
 \alpha_1(x(t))\, \dot{x}^1(t) + \alpha_2(x(t))\,\dot{x}^2(t) = 0
 \label{buch:kurvenintegral:differential:eqn:1formsteigung}
 \end{equation}
-aufgelöst werden nach
+nach
 \[
-\frac{\dot{x}^2}{\dot{x}^1(t)}
+\frac{\dot{x}^2(t)}{\dot{x}^1(t)}
 =
-\frac{\alpha_1(x(t))}{\alpha_2(x(t))}.
+\frac{\alpha_1(x(t))}{\alpha_2(x(t))}
 \]
+aufgelöst werden.
 Dies ist die Steigung der Kurve in einem 
 $(x^1,x^2)$-Koordinatensystem.
 Falls $\alpha_2(x(t))=0$ folgt aus
@@ -945,15 +965,25 @@ Wenn die Koeffizienten $\alpha_i(x)$ der 1-Form nur von jeweils der einen
 Variable $x^i$ abhängen, dann kann man die beiden 1-Formen
 $\alpha_1\,dx^1$ und $\alpha_2\,dx^2$ entlang der Lösungskurve
 integrieren, man kann also schreiben
-\begin{equation}
-\alpha_1\,dx^1
+\begin{align}
+\alpha_1(x^1)\,dx^1
 +
-\alpha_2\,dx^2
-=0
-\quad\Rightarrow\quad
-\int \alpha_1(x^1)\,dx^1 = -\int \alpha_2(x^2)\,dx^2.
+\alpha_2(x^2)\,dx^2
+&=0
+&&\Rightarrow&
+\alpha_1(x^1)\,dx^1
+&=
+-
+\alpha_2(x^2)\,dx^2
+\notag
+\\
+&
+&&\Rightarrow&
+\int \alpha_1(x^1)\,dx^1
+&=
+-\int \alpha_2(x^2)\,dx^2.
 \label{buch:kurvenintegral:differential:eqn:separation}
-\end{equation}
+\end{align}
 Da in $\alpha_1$ nur die Variable $x^1$ vorkommt und in $\alpha_2$
 nur die Variable $x^2$, lassen sich die beiden Integrale auf den
 beiden Seiten \eqref{buch:kurvenintegral:differential:eqn:separation}
@@ -967,7 +997,7 @@ an die Methode der Separation der Variablen, die man in einer
 Anfängervorlesung über gewöhnliche Differentialgleichung typischerweise
 kennenlernt.
 In der Theorie der Ableitung und des Riemann-Integrals sind die Zeichen
-$dx^1$ und $dx^2$ nur Formelteile, die für sich allein keine
+$dx^1$ und $dx^2$ nur Symbole, die für sich allein keine
 wohldefinierte mathematische Bedeutung haben.
 Die Vorgehensweise in der Methode der Separation der Variablen ist
 daher nur formal und nur dadurch gerechtfertigt, dass es am Schluss
@@ -997,7 +1027,7 @@ Die Differentialgleichung kann man als $1$-Form
 k\,d\varphi - dz
 \label{buch:kurvenintegral:differential:mercatorform}
 \end{equation}
-geschrieben werden.
+schreiben.
 
 Die Mercator-Projektion ist in geographischen Koordinaten
 auf der Kugelaberfläche die Abbildung
@@ -1058,7 +1088,7 @@ k\varphi + C
 \]
 gelöst werden.
 Die Funktion auf der rechten Seite ist auch der $\operatorname{artanh}$
-von $\sin\varphi$, daher kann man die Lösung für die Loxodrome auch
+von $\sin\beta$, daher kann man die Lösung für die Loxodrome auch
 als
 \[
 \sin\beta

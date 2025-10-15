@@ -20,46 +20,50 @@ chapter=3
 3
 8
 11
-18
-24
+19
+20
 25
 26
 27
+28
 29
-30
+31
 #
 # Kapitel  4
 chapter=4
 13
-19
 20
-26
-29
-34
+28
+31
+33
+36
 #
 # Kapitel  5
 chapter=5
 2
 4
 11
-14
 15
-20
+16
+18
 21
 22
-25
-29
-33
+23
+26
+30
+34
 #
 # Kapitel  6
 chapter=6
 5
 7
 10
-11
+12
 #
 # Kapitel  7
 chapter=7
+4
+5
 13
 14
 #
@@ -85,15 +89,16 @@ chapter=11
 2
 5
 15
+16
 #
 # Kapitel 12
 chapter=12
 2
 9
 12
-20
-23
-33
+22
+25
+41
 #
 # Kapitel 13
 chapter=13
@@ -152,12 +157,17 @@ chapter=diffortho
 #
 # Kapitel 20 helmholtz
 chapter=helmholtz
-11
-12
+2
+3
+4
+15
+16
 #
 # Kapitel 21 schall
 chapter=schall
 #
+8
+11
 # Kapitel 22 reaktdiff
 chapter=reaktdiff
 5
@@ -178,6 +188,7 @@ chapter=mongekant
 6
 10
 12
+13
 14
 #
 # Kapitel 25 neuronal
@@ -194,17 +205,17 @@ chapter=neuronal
 #
 # Kapitel 26 parallelisierung
 chapter=parallelisierung
-8
 9
 10
 11
-13
+12
 14
-18
+15
 19
 20
 21
-23
+22
+24
 #
 # Kapitel 27 openfoam
 chapter=openfoam

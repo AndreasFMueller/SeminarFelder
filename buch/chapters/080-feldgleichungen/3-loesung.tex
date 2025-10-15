@@ -44,8 +44,9 @@ Die Menge der Randpunkte von $G$ wird mit $\partial G$ bezeichnet.
 Die Menge $\bar{G}=G\cup \partial G$ enthält sowohl das Gebiet
 wie auch die Randpunkte.
 
-Eine Lösung der Differentialgleichung ist eine Funktion
+Eine Lösung der Differentialgleichung ist eine stetige Funktion
 $u\colon\bar{G}\to\mathbb{R}$, die im Inneren, also auf $G$,
+genügend oft stetig differenzierbar ist und
 die Differentialgleichung erfüllt.
 Ausserdem müssen auf einem Teil der Randpunkte zusätzlich
 Randbedingungen erfüllt sein.
@@ -78,7 +79,7 @@ auf der Menge $\{(x,0)\mid x\in[0,l]\}$.
 
 \subsubsection{Neumann-Randbedingungen}
 \index{Neumann-Randbedingungen}%
-{\em Neumann-Randbedingungen} legen statt Funktionswerten die Werte
+{\em Neumann-Randbedingungen} geben statt Funktionswerten die Werte
 von Ableitungen vor.
 Solche Randwerte können im Allgmeinen die Lösung nicht eindeutig
 festlegen, es muss mindestens ein Funktionswert ebenfalls vorgegeben
@@ -102,7 +103,7 @@ D_n u
 bezeichnet und heisst die {\em Normalableitung}.
 \index{Normalableitung}%
 Neumann-Randbedingungen geben auf einer Teilmenge $N\subset\partial G$
-geben die Normalableitung vor.
+die Normalableitung vor.
 
 Neumann-Randbedingungen lagen im Beispiel der schwingenden Saite bei
 der Vorgabe der Anfansgeschwindigkeit
@@ -191,11 +192,13 @@ T''(t) &= -k^2 T(t),
 \intertext{die die Lösungen}
 X(x) &= A\cos kx + B \sin kx
 &&\text{und}&
-T(t) &= A\cos kt + B \sin kt.
+T(t) &= A\cos kt + B \sin kt
 \end{align*}
+haben.
+
 Für die Bestimmung der Koeffizienten $A$ und $B$ müssen die 
 Randbedingungen hinzugezogen werden.
-Dies ist nicht für jeden Wert von $k$ möglich.
+Dies können nicht für jeden Wert von $k$ erfüllt werden.
 Die homogenen Randbedingungen für $X(x)$ verlangen, dass
 \begin{equation*}
 \left.
@@ -267,7 +270,7 @@ f(x) \\
 g(x).
 \end{array}
 \]
-Zur Bestimmung der Koeffizienten $a_n$ und $b_n$ müssen daher die
+Zur Bestimmung der Koeffizienten $a_n$ und $b_n$ müssen wir die
 Funktionen $f$ und $g$ in eine Fourier-Sinusreihe
 \begin{align*}
 f(x) & = \sum_{n=1}^\infty b_n(f)\sin \frac{n\pi x}{l} \\
@@ -295,7 +298,7 @@ b_n(f)
 \index{Transformationsverfahren}%
 Die Lösung der Wellengleichung mit dem Separationsverfahren hat 
 auf ganz natürlich Art und Weise auf Fourier-Reihen geführt.
-So hat auch Fourier im 19.~Jahrhundert die nach ihm benannten
+So hat auch Joseph Fourier im 19.~Jahrhundert die nach ihm benannten
 Reihen entdeckt.
 Es liegt daher nahe zu vermuten, dass sich partielle Differentialgleichungen
 auch lösen lassen, indem man sie einer Integraltransformation
@@ -311,8 +314,8 @@ Wir betrachten die Differentialgleichung
 \frac{\partial^2 T}{\partial x^2}
 \]
 auf dem Gebiet $[0,\pi]\times\mathbb{R}^+$, wobei wir das Intervall
-vor allem deshalb gewählt, weil sich damit später einfachere Formeln
-ergeben.
+vor allem deshalb gewählt haben, weil sich damit später einfachere
+Formeln ergeben.
 Ausserdem werden homogene Neumann-Randbedingungen an den
 Intervallenden angenommen.
 Dies bedeutet, dass die Ableitungen nach $x$ an den Intervallenden

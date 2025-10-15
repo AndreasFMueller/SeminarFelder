@@ -5,7 +5,7 @@
 \label{buch:green:section:integral}}
 \kopfrechts{Flächenintegrale}
 In Abschnitt~\ref{buch:kurvenintegral:section:1form} wurde gezeigt,
-wie das Integral einer 1-Form entlang einer Kurve auf
+wie das Integral einer 1-Form entlang einer Kurve als
 koordinatensystemunabhängige Grösse definiert werden kann.
 Entscheidend war die Erkenntnis, dass das Integral der Werte einer
 Funktion entlang der Kurve von der Parametrisierung, also dem
@@ -35,10 +35,11 @@ und kann mit Hilfe des Satzes von Fubini als iteriertes Integral
 \label{buch:green:flaechenintegral:eqn:int2}
 \end{equation}
 berechnet werden.
-Die Klammern sind nur zur Verdeutlichung.
+Die Klammern sind nur zur Verdeutlichung der möglichen
+unterschiedlichen Integrationsreihenfolgen.
 Das innere Integral hängt von einem Parameter $x^2$ bzw.~$x^1$ ab.
-Das Resultat der Integration ist daher nur noch eine differenzierbare
-Funktion von $x^2$ bzw.~$x^1$, die wieder integrierbar ist.
+Das Resultat dieser Integration ist daher eine differenzierbare
+Funktion nur noch von $x^2$ bzw.~$x^1$, die wieder integrierbar ist.
 
 Das Integral~\eqref{buch:green:flaechenintegral:eqn:int2} kann jedoch
 nicht koordinatenunabhängig sein.
@@ -119,14 +120,15 @@ a^2\mathstrut_2
 a^1\mathstrut_2
 a^2\mathstrut_1
 \]
-bedeutet, dass bei der Transformation immer zwei Faktoren aus der
-Transformationsmatrix auftauchen, dies ist nicht möglich bei einem
-Tensor erster Stufe.
+bedeutet, dass bei der Transformation des Integranden auf ein anderes
+Koordinatensystem immer zwei Faktoren aus der
+Transformationsmatrix auftauchen.
+Bei einem Tensor erster Stufe ist dies nicht möglich.
 Nur mit einem Tensor zweiter Stufe ist es möglich, solche Produkte 
 in der Transformationsformel zu haben.
 
 Seien also jetzt $f_{ik}$ die Koeffizienten eines Tensors 
-zweiter Stufe in $x$-Koordinaten und $\tilde{f}_{lm}$ die Koeffizienten
+\emph{zweiter Stufe} in $x$-Koordinaten und $\tilde{f}_{lm}$ die Koeffizienten
 des Tensors in den $y$-Koordinaten.
 Die Transformationsformel ist dann
 \begin{align}
@@ -136,7 +138,7 @@ Die Transformationsformel ist dann
 f_{ik}\, a^i\mathstrut_l\, a^k\mathstrut_m.
 \intertext{Die Transformation soll nur die Determinante von $A$
 hinzufügen.
-Schreibt man die Transformationsformeln aus, erhält man}
+Schreibt man die Transformationsformeln für den Tensor $f$ aus, erhält man}
 \tilde{f}_{11}
 &=
 f_{11}\, a^1\mathstrut_1\, a^1\mathstrut_1
@@ -177,9 +179,9 @@ f_{21}\, a^2\mathstrut_2\, a^1\mathstrut_2
 +
 f_{22}\, a^2\mathstrut_2\, a^2\mathstrut_2.
 \end{align}
-Diese Formeln können nur dann nur einen Faktor $\det A$ ergeben,
-wenn alle Terme, in denen Produkt von $a^s\mathstrut_r$ wie in der
-Determinante vorkommen.
+Diese Formeln können nur dann ausschliesslich den Faktor $\det A$ ergeben,
+wenn alle Terme verschwinden, in denen andere Produkte von $a^s\mathstrut_r$
+als in der Determinante vorkommen.
 Daraus kann man schliessen, dass $f_{11}=f_{12}=0$ sein muss.
 Es bleiben  dann die Gleichungen
 \begin{align*}
@@ -237,12 +239,12 @@ vereinfachen.
 Genau die antisymmetrischen kovarianten Tensoren haben also ein
 koordinatensystemunabhängiges Integral.
 Ein antisymmetrischer Tensor $f_{ik}$ zweiter Stufe auf $\mathbb{R}^2$
-ist gegeben durch die einzige unabhängige Komponente $f_{12}$ bereits
+ist durch die einzige unabhängige Komponente $f_{12}$ bereits
 festgelegt, weil $f_{11}=f_{22}=0$ und $f_{21}=-f_{12}$.
 
 \begin{definition}
 \label{buch:green:flaechenintegral:2formintegral}
-Eine 2-Form ist ein antisymmetrischer, kovarianter Tensor
+Eine 2-Form auf $\mathbb{R}^2$ ist ein antisymmetrischer, kovarianter Tensor
 \index{2-Form}%
 \[
 \omega
@@ -272,7 +274,7 @@ dx^1\,dx^2.
 %
 \subsection{Kartenwechsel und Koordinatentransformation von 2-Formen}
 Eine 2-Form führt auf die richtigen Transformationsformeln für ein Integral.
-In einem Koordinatengebiet kann man daher das Integral durch die Formel
+In einem Koordinatengebiet kann daher das Integral durch die Formel
 der Definition~\ref{buch:green:flaechenintegral:2formintegral}
 berechnet werden.
 Für eine 2-Form, deren Träger in einer Karte enthalten ist, ist
@@ -280,7 +282,7 @@ damit das Integral der 2-Form definiert.
 
 In der Schnittmenge zweier Karten $(U_x,\varphi_x)$ und $(U_y,\varphi_y)$
 gibt es zwei verschiedene Koordinatensysteme.
-Die Kartenwechselabbildung zwischen den beiden Karten ist
+Die Kartenwechselabbildung $\varphi$ zwischen den beiden Karten ist
 $\varphi=\varphi_x\circ\varphi_y^{-1}$, sie bildet $y$ auf
 $x=\varphi(y)$ ab.
 Falls die 2-Form $\omega$ Träger in der Schnittmenge der Karten hat,
@@ -301,7 +303,8 @@ Wir stellen uns die Funktionen $f_{12}(x)$ und $\tilde{f}_{12}(y)$
 durch 0 auf ganz $\mathbb{R}^2$ fortgesetzt, damit wir uns nicht um
 Integralgrenzen kümmern müssen.
 Dann kann der Wert des Integrals von $\omega$ durch
-\begin{align*}
+\begin{equation}
+\begin{aligned}
 \int \omega
 &=
 \int_{U_x} f_{12}(x) \,dx^1\wedge dx^2
@@ -312,7 +315,9 @@ Dann kann der Wert des Integrals von $\omega$ durch
 \int_{U_y} \tilde{f}_{12}(y) \,dy^1\wedge dy^2
 =
 \int_{-\infty}^\infty\int_{-\infty}^\infty \tilde{f}_{12}(y)\,dy^1\,dy^2
-\end{align*}
+\end{aligned}
+\label{buch:green:flaechenintegral:eqn:2integrale}
+\end{equation}
 mit
 \[
 \tilde{f}_{12}(y)
@@ -407,7 +412,7 @@ Insbesondere hat diese 2-Form keine Nullstellen.
 \begin{beispiel}
 \label{buch:green:green:beispiel:moebius}
 \input{chapters/040-green/fig/fig-moebius.tex}%
-Durch Änderung der Kartenwechselabbildung in
+Durch Änderung der Kartenwechselabbildung $\psi_{12}$ in
 \begin{align*}
 \psi_{12}&\colon
 \psi_1(U_1\cap U_2)
@@ -427,7 +432,7 @@ Auf dem Möbius-Band gibt es keine 2-Form ohne Nullstellen.
 Gäbe es eine solche 2-Form $\omega$, dann könnten wir die Komponenten
 in der roten und der grünen Karte $U_0$ und $U_1$ so ändern, dass
 $\omega$ auf beiden durch $dx\wedge dy$ gegeben ist.
-Dann ist nur noch eine Darstellung $u(x,y)\,dx\wedge dy$ für die 
+Dann muss nur noch eine Darstellung $u(x,y)\,dx\wedge dy$ für die 
 blaue Karte $U_2$ gefunden werden.
 Auf dem Überschneidungsgebiet $\varphi_2(U_0\cap U_2)$ muss $u(x,y)=1$
 sein.
@@ -437,15 +442,18 @@ sein.
 $u(x,y)$ ist daher eine differenzierbare Funktion auf dem zusammenhängend
 Rechteck $V_2$, welche am einen Ende den Wert $1$ und am anderen den 
 Wert $-1$ haben muss.
-Nach dem Zwischenwertsatz muss diese Funktion eine Nullstelle haben.
+Nach dem Zwischenwertsatz muss diese Funktion eine Nullstelle haben,
+im Widerspruch zur Annahme.
 \end{beispiel}
 
+\input{chapters/040-green/fig/fig-ants.tex}%
 Der Unterschied zwischen den beiden Mannigfaltigkeiten der Beispiele
 \ref{buch:green:green:beispiel:band}
 und
 \ref{buch:green:green:beispiel:moebius}
 ist, dass das Möbius-Band nicht orientierbar ist.
-Lässt man eine Ameise entlang dem Möbius-Band krabbeln, wird sie
+Lässt man eine Ameise wie in Abbildung~\ref{buch:green:fig:ants}
+entlang dem Möbius-Band krabbeln, wird sie
 sich nach einem Umlauf um das Band auf der anderen Seite des Bandes
 wiederfinden.
 Sie muss also nochmals einen weiteren Umlauf ausführen, um wieder
@@ -459,8 +467,9 @@ Eine differenzierbare zweidimensionale Mannigfaltigkeit heisst
 verschwindet.
 \end{definition}
 
-Die Konstruktion des Atlas in den Beispielen zeigt, dass es eine
-alternative Beschreibung einer orientierbaren Mannigfaltigkeit.
+Die Konstruktion des Atlas in den Beispielen zeigt, wie eine
+alternative Beschreibung einer orientierbaren Mannigfaltigkeit
+möglich wird.
 Für die orientierbare Mannigfaltigkeit wurde ein Atlas gefunden,
 dessen Kartenwechsel alle positive Determinanten hatten.
 Für das nicht orientierbare Möbius-Band war dies nicht möglich.
@@ -472,7 +481,7 @@ ist ein Atlas, dessen Kartenwechsel alle positive Determinante haben.
 \index{Kartenwechsel}%
 \end{definition}
 
-Man kann zeigen, dass diese beiden Definitionen sind.
+Man kann zeigen, dass diese beiden Definitionen gleichwertig sind.
 Dies ist der Inhalt des folgenden Satzes, den wir aber nicht
 beweisen werden.
 

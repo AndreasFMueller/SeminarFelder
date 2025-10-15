@@ -36,11 +36,10 @@ dx^k
 \wedge
 dx^i.
 \]
-Die Terme mit $i=k$ sind Vielfache von $dx^i\wedge dx^i=0$, tragen
-also nichts bei.
-In der Summe (man beachte die einsteinsche Summenkonvention)
-tritt jedes Paar von verschiedenen Indizes genau zweimal in verschiedener
-Reihenfolge auf, wegen $dx^i\wedge dx^k = - dx^k \wedge dx^i$ kann man
+In der Summe tritt jedes Paar von verschiedenen Indizes genau zweimal
+in verschiedener Reihenfolge auf, wegen
+$dx^i\wedge dx^k = - dx^k \wedge dx^i$
+kann man
 \begin{align}
 d\alpha
 &=
@@ -226,7 +225,7 @@ der identischen Abbildung in die Nullabbildung.
 
 \begin{definition}[differenzierbare Homotopie]
 Eine differenzierbare Homotopie zweier Wege $\gamma_0$ und $\gamma_1$
-in der differenzierbaren Manigfaltigkeit mit den gleichen Endpunkten
+in der differenzierbaren Manigfaltigkeit mit den konstanten Endpunkten
 ist eine differenzierbare Abbildung
 \[
 H
@@ -257,7 +256,7 @@ heissen {\em homotop} (Abbildung~\ref{buch:green:fig:homotopie}).
 \end{definition}
 
 Die Kugeloberfläche $S^2$ ist einfach zusammenhängend, zum Beispiel
-kann man den Äquator im Nullpunkt zusammenzieht.
+kann man den Äquator über den Nordpol oder Südpol zusammenziehen.
 Es gibt aber im Gegensatz zum Beispiel $\mathbb{R}^n$ keine Homotopie
 der identischen Abbildung der Kugeloberfläche in eine konstante
 Abbildung.
@@ -291,7 +290,7 @@ Kurve $H_1(s) = \gamma_1(s)$, allerdings wird der Weg in umgekehrter
 Richtung durchlaufen.
 Die beiden Kanten $\{0\}\times[0,1]$ und $\{1\}\times[0,1]$ sind
 konstant, das Integral entlang dieser Kanten ist daher $0$.
-Von den Wegintegralen bleiben daher
+Von den Weg\-in\-te\-gra\-len bleiben daher nur
 \[
 0
 =
@@ -309,7 +308,7 @@ Die beiden Wegintegrale sind gleich.
 \end{proof}
 
 Im Beispiel~\ref{buch:green:geschlossen:beispiel:wegabhaengig}
-war zwar $d\alpha=0$ aber es gab keine Homotpie, die die Wege
+war zwar $d\alpha=0$, aber es gab keine Homotpie, die die Wege
 entlang dem Einheitskreis vom Punkt $(1,0)$ zum Punkt $(-1,0)$
 in der oberen bzw.~der unteren Halbebene verbindet.
 
@@ -339,7 +338,7 @@ Der Beweis wird klar machen, was die Bedeutung
 Sie $\alpha$ eine geschlossene 1-Form auf der einfach zusammenhängenden
 Mannigfaltigkeit $M$.
 Ausserdem wird ein Punkt $A\in M$ gewählt.
-Für jeden Punkt $P\in M$ wählen wir einen Weg $\gamma:\colon[0,1]\to M$,
+Für jeden Punkt $P\in M$ wählen wir einen Weg $\gamma\colon[0,1]\to M$,
 der $A$ mit $P$ verbindet.
 Die Funktion $f\colon M\to\mathbb{R}$ wird als
 \[
@@ -367,7 +366,7 @@ Wir wählen in so, dass $\gamma(1)=x$ ist und
 \[
 \dot{\gamma}(1) = e_i
 \]
-der Standardbasisvektor ist.
+der $i$-te Standardbasisvektor ist.
 Nach Definition der Funktion $f$ ist
 \[
 \frac{d}{dt}
@@ -425,7 +424,9 @@ Die Unabhängigkeit vom Weg garantiert, dass es
 eine Funktion $U(x)$ gibt, mit der man den Energieunterschied
 $U(B)-U(A)$ berechnen kann.
 Die Funktion $U$ heisst das Potential.
-In der Physik wird es meistens noch durch die Masse geteilt,
+In der Physik wird es im Falle des Gravitationsfeldes meistens noch
+durch die Masse und im Falle des elektrostatischen Potentials durch
+die Ladung geteilt,
 diese Unterscheidung ist für die aktuelle Diskussion jedoch unwichtig.
 
 Sei $\gamma(t)$ die Kurve, auf der sich der Massepunkt 

@@ -43,18 +43,18 @@ Koordinatentransformation.
 %
 % n-1-Vektoren und n-1-Formen
 %
-\subsection{$n-1$-Vektoren und $n-1$-Formen}
-$n-1$-Vektoren sind Linearkombinationen
+\subsection{$(n-1)$-Vektoren und $(n-1)$-Formen}
+$(n-1)$-Vektoren sind Linearkombinationen
 \[
 \sum_{1\le i_1<\dots<i_{n-1}\le n}
 a_{i_1\dots i_{n-1}}
 \vec{e}_{i_1}\wedge\dots\wedge \vec{e}_{i_{n-1}}
 \]
-von $\wedge$-Produkt von jeweils $n-1$ Vektoren aus den Basisvektoren
+von $\wedge$-Produkten von jeweils $(n-1)$ Vektoren aus den Basisvektoren
 $\vec{e}_1,\dots\vec{e}_n$.
-Ein Basis-$n-1$-Vektor ist ein $\wedge$-Produkt von $n-1$ von den $n$
+Ein Basis-$(n-1)$-Vektor ist ein $\wedge$-Produkt von $n-1$ von den $n$
 Basisvektoren.
-Er stellt ein $n-1$-dimensionales Parallelepiped dar, welches senkrecht
+Er stellt ein $(n-1)$-dimensionales Parallelepiped dar, welches senkrecht
 auf der Richtung des fehlenden Vektors steht.
 
 Im Fall $n=3$ messen 2-Formen die Projektion eines Parallelogramms
@@ -66,7 +66,7 @@ dx^1\wedge\dots\wedge \widehat{dx^i}\wedge\dots\wedge dx^n
 von $n-1$ Basis-1-Formen, wobei genau eine der 1-Formen fehlt,
 nämlich die durch den Hut gekennzeichnete 1-Form $dx^i$.
 Die fehlende 1-Form gehört zur Richtung senkrecht auf das
-$n-1$-dimensionale Parallelepiped, das von den anderen Vektoren
+$(n-1)$-dimensionale Parallelepiped, das von den anderen Vektoren
 aufgespannt wird.
 
 %
@@ -74,10 +74,10 @@ aufgespannt wird.
 %
 \subsection{Die äussere Ableitung}
 Für die Formulierung des Satzes von Gauss wird ausserdem die
-äussere Ableitung eine $n-1$-Form benötigt.
+äussere Ableitung eine $(n-1)$-Form benötigt.
 Da der Operator der äusseren Ableitung linear ist, muss er nur
-auf Basis-$n-1$-Formen definiert werden.
-Wir betrachten daher die $n-1$-Form
+auf Basis-$(n-1)$-Formen definiert werden.
+Wir betrachten daher die $(n-1)$-Form
 \[
 \alpha
 =
@@ -86,7 +86,7 @@ a_i(x)\, dx^1\wedge\dots\wedge \widehat{dx^i}\wedge\dots\wedge dx^n.
 Die äussere Ableitung leitete nach der Variablen $x^i$ ab und fügt
 die 1-Form $dx^i$ zum Wedge-Produkt hinzu.
 Wie im Fall $n=3$ muss das Vorzeichen jeweils so angepasst werden,
-dass die Orientierung der $n-1$-Form mit der Orientierung
+dass die Orientierung der $(n-1)$-Form mit der Orientierung
 $dx^1\wedge\dots\wedge dx^n$ kompatibel ist.
 Daher muss
 \begin{equation}
@@ -102,7 +102,7 @@ gesetzt werden.
 Man kann dies auch wie folgt definieren.
 
 \begin{definition}
-Die {\em äussere Ableitung} der $n-1$-Form
+Die {\em äussere Ableitung} der $(n-1)$-Form
 \[
 \alpha = a(x)\, dx^{i_1}\wedge\dots\wedge dx^{i_{n-1}}
 \]
@@ -121,7 +121,7 @@ Da der Raum der $n$-Formen eindimensional ist, kann
 das Wedge-Produkt in \eqref{buch:gauss:nd:eqn:dabl}
 immer so umgestellt werden, dass die $n$-Form
 $dx^1\wedge\dots\wedge dx^n$ entsteht.
-Im Falle der $n-1$-Form
+Im Falle der $(n-1)$-Form
 \[
 dx^1\wedge\dots\wedge\widehat{dx^i}\wedge\dots\wedge dx^n
 \]
@@ -147,18 +147,18 @@ Der Satz von Gauss kann jetzt für beliebige Dimension $n$ formuliert
 werden.
 Auf einer $n$-dimensionalen Mannigfaltigkeit ist die Integration
 einer $n$-Form definiert.
-Der Rand einer $n$-dimensionalen Mannigfaltigkeit ist $n-1$-dimensional,
-auf dem Rand ist daher die Integration einer $n-1$-Form definiert.
-Eine $n-1$-Form $\omega$ auf der Mannigfaltigkeit hat als äussere 
+Der Rand einer $n$-dimensionalen Mannigfaltigkeit ist $(n-1)$-dimensional,
+auf dem Rand ist daher die Integration einer $(n-1)$-Form definiert.
+Eine $(n-1)$-Form $\omega$ auf der Mannigfaltigkeit hat als äussere 
 Ableitung eine $n$-Form $d\omega$.
 Der Satz von Gauss verbindet das $n$-Form-Integral von $d\alpha$
-über die ganze Mannigfaltigkeit mit dem $n-1$-Form-Integral von $\alpha$
+über die ganze Mannigfaltigkeit mit dem $(n-1)$-Form-Integral von $\alpha$
 über den Rand der Mannigfaltigkeit.
 
 \begin{satz}[Gauss]
 \index{Satz!von Gauss}%
 Sei $M$ eine $n$-dimensionale Mannigfaltigkeit mit Rand $\partial M$
-und $\omega$ eine $n-1$-Form auf $M$.
+und $\omega$ eine $(n-1)$-Form auf $M$.
 Dann gilt
 \[
 \int_M d\omega
@@ -173,7 +173,8 @@ die Idee des Integrals über den Rand einer Mannigfaltigkeit
 mit Rand humoristisch zu interpretieren.
 Tatsächlich ist ein solches Integral nicht nur für den Satz von Gauss
 von Nutzen.
-In der Elastizitätstheorie geht man davon aus, dass auf einem Element
+In der Elastizitätstheorie (siehe Kapitel~\ref{chapter:elastomechanik})
+geht man davon aus, dass auf einem Element
 \index{Elastizitatstheorie@Elastizitätstheorie}%
 der Oberfläche, also auf einem infinitesimalen 2-Vektor, sowohl Druckkräfte
 orthogonal auf das Parallelepiped wirken, als auch Scherkräfte parallel 
