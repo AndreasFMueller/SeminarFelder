@@ -163,12 +163,7 @@ chapter=helmholtz
 15
 16
 #
-# Kapitel 21 schall
-chapter=schall
-#
-8
-11
-# Kapitel 22 reaktdiff
+# Kapitel 21 reaktdiff
 chapter=reaktdiff
 5
 10
@@ -177,12 +172,12 @@ chapter=reaktdiff
 14
 15
 #
-# Kapitel 23 mongeampere
+# Kapitel 22 mongeampere
 chapter=mongeampere
 4
 5
 #
-# Kapitel 24 mongekant
+# Kapitel 23 mongekant
 chapter=mongekant
 2
 6
@@ -191,7 +186,7 @@ chapter=mongekant
 13
 14
 #
-# Kapitel 25 neuronal
+# Kapitel 24 neuronal
 chapter=neuronal
 3
 6
@@ -203,7 +198,7 @@ chapter=neuronal
 14
 15
 #
-# Kapitel 26 parallelisierung
+# Kapitel 25 parallelisierung
 chapter=parallelisierung
 9
 10
@@ -217,7 +212,7 @@ chapter=parallelisierung
 22
 24
 #
-# Kapitel 27 openfoam
+# Kapitel 26 openfoam
 chapter=openfoam
 10
 11
@@ -225,12 +220,12 @@ chapter=openfoam
 15
 18
 #
-# Kapitel 28 reynolds
+# Kapitel 27 reynolds
 chapter=reynolds
 7
 9
 #
-# Kapitel 29 ueberschall
+# Kapitel 28 ueberschall
 chapter=ueberschall
 5
 6
@@ -239,6 +234,12 @@ chapter=ueberschall
 11
 13
 14
+#
+# Kapitel 29 schall
+chapter=schall
+8
+12
+13
 #
 # Kapitel 30 wirbelringe
 chapter=wirbelringe

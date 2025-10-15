@@ -8,27 +8,27 @@
 PAPERFILES = \
 	papers/part2.tex \
 	papers/uebersicht.tex \
-	papers/maxwell/main.tex \
-	papers/elastomechanik/main.tex \
 	papers/geoalgebra/main.tex \
+	papers/nerven/main.tex \
+	papers/poinbendix/main.tex \
+	papers/elastomechanik/main.tex \
+	papers/maxwell/main.tex \
 	papers/diffortho/main.tex \
-	papers/fourier/main.tex \
-	papers/geostrophisch/main.tex \
 	papers/helmholtz/main.tex \
+	papers/reaktdiff/main.tex \
 	papers/mongeampere/main.tex \
 	papers/mongekant/main.tex \
 	papers/neuronal/main.tex \
-	papers/nerven/main.tex \
-	papers/openfoam/main.tex \
-	papers/particles/main.tex \
 	papers/parallelisierung/main.tex \
-	papers/poinbendix/main.tex \
-	papers/reaktdiff/main.tex \
+	papers/openfoam/main.tex \
 	papers/reynolds/main.tex \
-	papers/rossby/main.tex \
-	papers/schall/main.tex \
 	papers/ueberschall/main.tex \
+	papers/schall/main.tex \
 	papers/wirbelringe/main.tex \
+	papers/geostrophisch/main.tex \
+	papers/rossby/main.tex \
+	papers/fourier/main.tex \
+	papers/particles/main.tex \
 	
 $(workdir)/buch1-blx.bbl:	$(workdir)/buch1-blx.aux
 	cd $(workdir); bibtex buch1-blx
@@ -157,10 +157,10 @@ $(workdir)/$(seminar)21-blx.bbl:	$(workdir)/$(seminar)21-blx.aux
 	cd $(workdir); bibtex $(seminar)21-blx
 
 $(workdir)/buch22-blx.bbl:	$(workdir)/buch22-blx.aux
-	cd $(workdir); bibtex buch22-blx
+	cd $(workdir) bibtex buch22-blx
 
 $(workdir)/$(seminar)22-blx.bbl:	$(workdir)/$(seminar)22-blx.aux
-	cd $(workdir); bibtex $(seminar)22-blx
+	cd $(workdir) bibtex $(seminar)22-blx
 
 BLXFILES = $(workdir)/buch.bbl \
 	$(workdir)/buch1-blx.bbl \
@@ -213,48 +213,48 @@ SBLXFILES = $(workdir)/$(seminar).bbl\
 
 
 PAPER_DIRECTORIES = \
-	maxwell \
-	elastomechanik \
 	geoalgebra \
+	nerven \
+	poinbendix \
+	elastomechanik \
+	maxwell \
 	diffortho \
-	fourier \
-	geostrophisch \
 	helmholtz \
+	reaktdiff \
 	mongeampere \
 	mongekant \
 	neuronal \
-	nerven \
-	openfoam \
-	particles \
 	parallelisierung \
-	poinbendix \
-	reaktdiff \
+	openfoam \
 	reynolds \
-	rossby \
-	schall \
 	ueberschall \
+	schall \
 	wirbelringe \
+	geostrophisch \
+	rossby \
+	fourier \
+	particles \
 	
 PAPER_MAKEFILEINC = \
-	papers/maxwell/Makefile.inc \
-	papers/elastomechanik/Makefile.inc \
 	papers/geoalgebra/Makefile.inc \
+	papers/nerven/Makefile.inc \
+	papers/poinbendix/Makefile.inc \
+	papers/elastomechanik/Makefile.inc \
+	papers/maxwell/Makefile.inc \
 	papers/diffortho/Makefile.inc \
-	papers/fourier/Makefile.inc \
-	papers/geostrophisch/Makefile.inc \
 	papers/helmholtz/Makefile.inc \
+	papers/reaktdiff/Makefile.inc \
 	papers/mongeampere/Makefile.inc \
 	papers/mongekant/Makefile.inc \
 	papers/neuronal/Makefile.inc \
-	papers/nerven/Makefile.inc \
-	papers/openfoam/Makefile.inc \
-	papers/particles/Makefile.inc \
 	papers/parallelisierung/Makefile.inc \
-	papers/poinbendix/Makefile.inc \
-	papers/reaktdiff/Makefile.inc \
+	papers/openfoam/Makefile.inc \
 	papers/reynolds/Makefile.inc \
-	papers/rossby/Makefile.inc \
-	papers/schall/Makefile.inc \
 	papers/ueberschall/Makefile.inc \
+	papers/schall/Makefile.inc \
 	papers/wirbelringe/Makefile.inc \
+	papers/geostrophisch/Makefile.inc \
+	papers/rossby/Makefile.inc \
+	papers/fourier/Makefile.inc \
+	papers/particles/Makefile.inc \
 	
