@@ -130,49 +130,49 @@ sie verlaufen \emph{nicht} entlang der Machlinien.
 Für isotrope, ruhende Medien mit $c=c(z)$ liefert die geometrische
 Akustik eine Snell-ähnliche Invariante:
 \begin{equation}
-    \frac{\sin\theta(z)}{c(z)} \;=\; \text{const} \;=:\; K ,
-    \label{eq:snell-acoustics}
+  \frac{\sin\psi(z)}{c(z)} \;=\; \text{const} \;=:\; K ,
+  \label{eq:snell-acoustics}
 \end{equation}
-wobei $\theta(z)$ der Winkel des Strahls relativ zur Horizontalen ist.
+wobei $\psi(z)$ der Winkel des Strahls gegen die Vertikale
+(Schichtnormale) und $\mu(z)=90^\circ-\psi(z)$ der Winkel gegen
+die Horizontale ist.
 Wählt man als Anfangsbedingung den lokalen Machwinkel an $z=z_a$,
-also $\theta(z_a)=\mu_a$, dann folgt aus \eqref{eq:snell-acoustics}
+also $\psi(z_a)=90^\circ-\mu_a$, dann folgt aus
+\eqref{eq:local-mach-angle} und \eqref{eq:snell-acoustics}
 \[
-    K \;=\; \frac{\sin\mu_a}{c(z_a)} \;=\; \frac{1/\textit{Ma}(z_a)}{c(z_a)} \;=\; \frac{1}{V}.
+  K \;=\; \frac{\sin(90^\circ-\mu_a)}{c(z_a)} \;=\;
+  \frac{\cos\mu_a}{c(z_a)} \;=\;
+  \frac{\sqrt{1-\bigl(c(z_a)/V\bigr)^2}}{c(z_a)}.
 \]
-Damit ist für Mach-Strahlen die Invariante schlicht
+Damit ist für Mach-Strahlen die Invariante
 \begin{equation}
-    K \;=\; \frac{1}{V}.
-    \label{eq:K-equals-1-over-V}
+  K \;=\; \frac{\sqrt{1-\bigl(c(z_a)/V\bigr)^2}}{c(z_a)}.
+  \label{eq:K-from-mu}
 \end{equation}
-
-Mit $\tan\theta = \dfrac{dz}{dx}$, $\sin\theta = K\,c(z)$ und
-$\cos\theta = \sqrt{1 - \sin^2\theta}$,
-erhält man aus trigonometischen Identitäten
+Mit $\tan\psi = \dfrac{dx}{dz}$, $\sin\psi(z) = K\,c(z)$ und
+$\cos\psi(z) = \sqrt{1 - K^2 c^2(z)}$ erhält man
 \begin{equation}
-    \frac{dz}{dx} \;=\; \frac{\sin\theta(z)}{\cos\theta(z)} \;=\;
-    \frac{K\,c(z)}{\sqrt{1 - K^2 c^2(z)}}.
+  \frac{dz}{dx} \;=\; \cot\psi(z) \;=\;
+  \frac{\cos\psi(z)}{\sin\psi(z)} \;=\;
+  \frac{\sqrt{1 - K^2 c^2(z)}}{K\,c(z)}.
 \end{equation}
-Einsetzen von \eqref{eq:K-equals-1-over-V} liefert die
+Einsetzen von \eqref{eq:K-from-mu} liefert die
 \emph{Bahn-Differentialgleichung} der Mach-Ränder:
 \[
-    \quad
-    \frac{dz}{dx} \;=\; \frac{c(z)/V}{\sqrt{1 - \big(c(z)/V\big)^2}}
-    \;=\; \frac{1}{\sqrt{\frac{V^2}{c^2(z)} - 1}}
-    \quad
+  \frac{dz}{dx} \;=\; \frac{\sqrt{1 - \bigl(c(z)/V\bigr)^2}}{\,c(z)/V\,}
+  \;=\; \sqrt{\frac{V^2}{c^2(z)} - 1},
 \]
 oder äquivalent
 \begin{equation}
-    \quad
-    \frac{dx}{dz} \;=\; \sqrt{\frac{V^2}{c^2(z)} - 1}
-    \quad
-    \label{eq:ray-ode-inverse}
+  \frac{dx}{dz} \;=\; \frac{1}{\sqrt{\frac{V^2}{c^2(z)} - 1}} \;=\;
+  \frac{c(z)}{\sqrt{V^2 - c^2(z)}},
+  \label{eq:ray-ode-inverse}
 \end{equation}
 mit Anfangsbedingung $x(z_a)=0$ senkrecht unter dem Flugzeug.
 Die Lösungen von \eqref{eq:ray-ode-inverse} geben die gekrümmten Stossränder
-im $(x,z)$-Schnitt.
-Die \emph{Bedingung für reale Strahlen} ist $V>c(z)$ entlang der Bahn;
-wo $V=c(z)$ wird, existiert ein \emph{Wendepunkt}/
-\emph{kritische Höhe}, die Evaneszenz.
+im $(x,z)$-Schnitt. Die \emph{Bedingung für reale Strahlen} ist $V>c(z)$
+entlang der Bahn; wo $V=c(z)$, existiert ein \emph{Wendepunkt}/kritische Höhe
+(horizontale Tangente), darunter eine \emph{Schattenzone}.
 Dies wird in Kapitel~\ref{schall:subsection:atmos-scenarios} genauer analysiert.
 
 \subsection{Bodenaufprall (Sonic-Boom-Carpet)}
@@ -181,7 +181,7 @@ Aufprallpunkt eines Strahls am Boden ($z=0$) ergibt sich durch
 Integration von \eqref{eq:ray-ode-inverse}:
 \begin{equation}
     \quad
-    x_g \;=\; \int_{0}^{z_a} \sqrt{\frac{V^2}{c^2(\zeta)} - 1}\;\, d\zeta,
+    x_g \;=\; \int_{0}^{z_a} \frac{c(\zeta)}{\sqrt{V^2 - c(\zeta)^2}}\;\, d\zeta,
     \qquad \text{sofern } V>c(\zeta) \text{ für } \zeta\in[0,z_a].
     \quad
     \label{eq:ground-range}
@@ -193,6 +193,10 @@ was zu Schattenzonen am Boden führt.
 \subsection{Atmosphären-Szenarien}\label{schall:subsection:atmos-scenarios}
 Wir modellieren $T(z)$ stückweise linear und mit trockener
 Standardatmosphäre ohne Wind, woraus $c(z)$ via \eqref{eq:c-of-z} folgt.
+Die drei grundlegenden Szenarien sind: Normale Lage, Inversionslage und
+Wendepunkt mit Bodenschatten. Diese Szenarien werden in den Abbildungen
+\ref{fig:schall:norm-lage}, \ref{fig:schall:inv-lage} und \ref{fig:schall:norm-vs-inv-lage}
+visualisiert und im Folgenden beschrieben.
 
 \paragraph{Normale Lage (Temperatur nimmt mit Höhe ab).}
 Es gelte
@@ -223,6 +227,8 @@ Strahlen biegen daher \emph{nach unten} und werden zum Boden zurückgeführt.
 Dadurch wächst $x_g$ in \eqref{eq:ground-range} und der Überschall
 kann \emph{weiter} getragen werden, was zu weniger oder bis zu keine
 Schattierung am Boden führt.
+Gleichzeitig verschlankt sich der Boom-Teppich, was die
+Lärmbelastung in der Mitte erhöht.
 
 \paragraph{Wendepunkt und Bodenschatten (kein Bodentreffer).}
 Tritt irgendwo im Intervall $[0,z_a]$ ein Bereich auf, in dem
@@ -234,72 +240,71 @@ $V\le c(\zeta)$ gilt, so existiert eine
 \end{equation}
 Dieser kritische Punkt ist ein \emph{Wendepunkt} des akustischen Ausbreitungsstrahls.
 Aus der Strahlgleichung \eqref{eq:ray-ode-inverse} folgt, dass der
-Integrand für $z\to z_\ast$ gegen $0$ geht und für $z<z_\ast$ imaginär würde.
+Integrand für $z\to z_\ast$ gegen $\boldsymbol{\infty}$ geht und für $z<z_\ast$ imaginär würde.
 Der Strahl besitzt bei $z=z_\ast$ eine \emph{horizontale Tangente} und kehrt um;
 er kann die Schicht $z<z_\ast$ nicht durchdringen.
 Die maximale horizontale Ausbreitung bis zum Wendepunkt ist
 \begin{equation}
     x_{\mathrm{turn}}
-    \;=\; \int_{z_\ast}^{z_a} \sqrt{\frac{V^2}{c^2(\zeta)}-1}\;d\zeta,
+    \;=\; \int_{z_\ast}^{z_a} \frac{c(\zeta)}{\sqrt{V^2 - c(\zeta)^2}}\;d\zeta,
     \label{eq:x-turn}
 \end{equation}
 die \emph{Bodenentfernung} \eqref{eq:ground-range} ist hingegen \emph{nicht}
 definiert, da $z=0$ nicht erreichbar ist.
 Der Bereich unterhalb der Wendeschicht $z<z_\ast$ liegt somit in einer
-\emph{Schattenzone}, indem man keinen Schall des Flugzeugs höhren kann.
-
+\emph{Schattenzone}, in der man keinen Schall des Flugzeugs \emph{hören} kann.
 Für streng monotone Profile entscheidet die einfache Bedingung
 \begin{equation}
     \text{Bodentreffer existiert} \;\Leftrightarrow\; V>c(z)\quad\forall\,z\in[0,z_a].
     \label{eq:ground-hit-condition}
 \end{equation}
 
-
-% \begin{figure}
-% \centering
-% \begin{minipage}[t]{0.5\textwidth}
-%   \centering
-%   \includegraphics[width=0.9\linewidth]{papers/schall/figures/normal_sidepanels.png}
-%   \captionof{subfigure}{Normale Lage}
-%   \label{fig:norm}
-% \end{minipage}\hfill
-% \begin{minipage}[t]{0.5\textwidth}
-%   \centering
-%   \includegraphics[width=0.9\linewidth]{papers/schall/figures/inversion_sidepanels.png}
-%   \captionof{subfigure}{Inversionslage}
-%   \label{fig:inv}
-% \end{minipage}
-
-% \vspace{\baselineskip}
-
-% \begin{minipage}[t]{0.5\textwidth}
-%   \centering
-%   \includegraphics[width=0.9\linewidth]{papers/schall/figures/overlay_clean.png}
-%   \captionof{subfigure}{Direkter Vergleich}
-%   \label{fig:overlay}
-% \end{minipage}
-
-% \caption{Schallausbreitung für normale Lage, Inversionslage und für Wendepunkte.}
-% \label{fig:schall:gesamt}
-% \end{figure}
-
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{papers/schall/figures/normal_sidepanels.png}
-    \caption{Schallausbreitung für normale Lage.}
+    \caption{Machrand-Ausbreitung für eine normale Lage. Die Machzahl
+    ist konstant auf der Höhe des Flugzeugs $z_a=3\,500$\ m gesetzt für
+    $\textit{Ma} \in \{1.05, 1.1, 1.5, 2.5 \}$.
+    Die Temperatur ist $T(1500 m) = 285.0 \mathrm{K}$ gegeben mit einem
+    linearen Abfall von $9 \mathrm{K/km}$.
+    Je langsamer das Flugzeug, desto grösser ist der Ausbreitungswinkel
+    $\mu_a$, desto stärker die Ablenkung nach oben und desto grösser
+    die horizontale Reichweite $x_g$.
+    Dies gilt bis $V\le c(z)$ und der kritische Punkt erreicht wird,
+    sodass die Schattenzone beginnt und die Schockwelle nicht den
+    Boden erreicht.}
     \label{fig:schall:norm-lage}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{papers/schall/figures/inversion_sidepanels.png}
-    \caption{Schallausbreitung für Inversionslage.}
+    \caption{Machrand-Ausbreitung für eine Inversionslage. Die Machzahl
+    ist konstant auf der Höhe des Flugzeugs $z_a=3\,500$\ m gesetzt für
+    $\textit{Ma} \in \{1.05, 1.1, 1.5, 2.5 \}$.
+    Die Temperatur ist $T(1500 m) = 285.0 \mathrm{K}$ gegeben mit einer
+    linearen Zunahme von $9 \mathrm{K/km}$.
+    Je langsamer das Flugzeug, desto grösser ist der Ausbreitungswinkel
+    $\mu_a$, desto stärker die Ablenkung nach unten und desto
+    grösser die horizontale Reichweite $x_g$.}
     \label{fig:schall:inv-lage}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{papers/schall/figures/overlay_clean.png}
-    \caption{Schallausbreitung im direkter Vergleich.}
+    \caption{Die Machrand-Ausbreitung im direkten Vergleich zwischen
+    normaler Lage und Inversion. Die Eigenschaften der beiden Szenarien
+    sind identisch zu den Abbildungen \ref{fig:schall:norm-lage}
+    und \ref{fig:schall:inv-lage}.}
     \label{fig:schall:norm-vs-inv-lage}
 \end{figure}
+Die Abbildungen \ref{fig:schall:norm-lage} und \ref{fig:schall:inv-lage}
+zeigen die Schallausbreitung für die Szenarien normale Lage
+\eqref{eq:normal-lapse} und Inversionslage \eqref{eq:inversion}.
+Die Abbildung \ref{fig:schall:norm-vs-inv-lage} stellt beide Szenarien
+direkt gegenüber.
+Dabei sieht man, dass die Ausbreitung der Schallwellen
+in der \emph{normalen Lage} \emph{nach oben} gebogen wird (oben ist $c$ kleiner),
+während sie in der \emph{Inversionslage} \emph{nach unten} gebogen wird (unten ist $c$ kleiner).
+Letzteres führt zu einer \emph{breiteren Lärmwahrnehmung} am Boden.
