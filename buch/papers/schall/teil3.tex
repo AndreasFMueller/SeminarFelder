@@ -8,7 +8,7 @@
 %
 \section{Schallausbreitung bei Überschallflugzeugen
 \label{schall:section:teil3}}
-\kopfrechts{Teil 3}
+\kopfrechts{Schallausbreitung bei Überschallflugzeugen}
 
 In diesem Abschnitt wenden wir die in den vorherigen Abschnitten
 beschriebenen Konzepte an, um die Schallausbreitung bei einem
@@ -43,7 +43,7 @@ beschrieben wird, ist im Bild \ref{fig:schall:mach-zones} visualisiert.
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{papers/schall/figures/mach_doppler_triptych_offsets.png}
+    \includegraphics[width=\textwidth]{papers/schall/figures/mach_doppler_triptych_offsets.pdf}
     \caption{Dopplereffekt bei Unterschall, Schallgeschwindigkeit und Überschall.
     Für die Schallgeschwindigkeit und den Überschall ist zusätzlich der
     Machkegel mit dem Machwinkel $\mu$ eingezeichnet.}
@@ -70,20 +70,20 @@ unterdrücken, was im Kapitel~\ref{schall:section:boom} analysiert wird.
 \subsection{Lokaler Machwinkel und Emissionsrichtung}
 In einem homogenem Medium bildet sich der Machkegel mit Halbwinkel
 \begin{equation}
-    \mu \;=\; \arcsin\!\Big(\frac{1}{\textit{Ma}}\Big).
+    \mu \;=\; \arcsin\!\Bigg(\frac{1}{\textit{Ma}}\Bigg).
 \end{equation}
 In einem geschichteten Medium setzt man diesen \emph{lokal} an der
 Emissionshöhe $z_a$, auf welcher das Flugzeug fliegt, an:
 \begin{equation}
-    \mu_a \;:=\; \arcsin\!\Big(\frac{1}{\textit{Ma}(z_a)}\Big)
-    \;=\; \arcsin\!\Big(\frac{c(z_a)}{V}\Big) .
+    \mu_a \;:=\; \arcsin\!\Bigg(\frac{1}{\textit{Ma}(z_a)}\Bigg)
+    \;=\; \arcsin\!\Bigg(\frac{c(z_a)}{V}\Bigg) .
     \label{eq:local-mach-angle}
 \end{equation}
 Der Rand des Machkegels wird oft als Machrand bezeichnet, welcher im
 vertikalen Schnitt $(x,z)$ durch akustische Strahlen begrenzt ist.
 Dies nennt man die \emph{geometrische Akustik}.
 
-\paragraph{Akustische Strahlen.}
+\subsection*{Akustische Strahlen}
 Seien $\tau(\mathbf{x})=\mathrm{const.}$ die \emph{Wellenfronten}, visualisiert
 als Kreise in der Abbildung \ref{fig:schall:mach-zones}.
 Die akustischen Strahlen sind ihre \emph{Normalen}; formal verlaufen sie
@@ -98,7 +98,7 @@ Für einen \emph{bewegten Punktstrahler}, wie zum Beispiel ein Flugzeug,
 sind die Wellenfronten die Kreise $r=c\,\tau$ um die jeweiligen Emissionsorte
 $x=V(t-\tau)$; die Strahlen an jedem Punkt der Front zeigen radial auf den Emissionsort.
 
-\paragraph{Einhüllende (Machrand) vs.\ Strahlen.}
+\subsection*{Machrand vs.\ Strahlen}
 Der \emph{Machrand} ist die \emph{Einhüllende} der expandierenden Wellenfronten:
 die Menge aller \emph{Tangentialpunkte} zwischen den Kreisen und einer Kurve.
 An \emph{Einhüllendenpunkten} gilt: \emph{Strahl $\perp$ Einhüllende},
@@ -119,7 +119,7 @@ Sie liegen nicht auf der Einhüllenden, sondern stehen \emph{senkrecht} zu ihr.
 
 \item \textbf{Überschall} ($\textit{Ma}>1$):
 Die Einhüllende besteht aus zwei \emph{Geraden} mit Halbwinkel $\mu_a$ zur Flugrichtung.
-Dies sind die \emph{Generatoren} des Machkegels, was der Mach-Rand ist,
+Dies sind die \emph{Generatoren} des Machkegels, was der Machrand ist,
 und nicht die Strahlen selbst.
 Die Strahlen in den Berührungspunkten stehen \emph{senkrecht} zu
 diesen Linien und zeigen radial zu ihren jeweiligen Emissionszentren;
@@ -173,20 +173,20 @@ Die Lösungen von \eqref{eq:ray-ode-inverse} geben die gekrümmten Stossränder
 im $(x,z)$-Schnitt. Die \emph{Bedingung für reale Strahlen} ist $V>c(z)$
 entlang der Bahn; wo $V=c(z)$, existiert ein \emph{Wendepunkt}/kritische Höhe
 (horizontale Tangente), darunter eine \emph{Schattenzone}.
-Dies wird in Kapitel~\ref{schall:subsection:atmos-scenarios} genauer analysiert.
+Dies wird in Abschnitt~\ref{schall:subsection:atmos-scenarios} genauer analysiert.
 
-\subsection{Bodenaufprall (Sonic-Boom-Carpet)}
+\subsection{Boom-Teppich am Boden}
 Die horizontale Entfernung vom Lotpunkt des Flugzeugs bis zum
 Aufprallpunkt eines Strahls am Boden ($z=0$) ergibt sich durch
-Integration von \eqref{eq:ray-ode-inverse}:
+Integration von \eqref{eq:ray-ode-inverse} und bildet den Boom-Teppich:
 \begin{equation}
     \quad
-    x_g \;=\; \int_{0}^{z_a} \frac{c(\zeta)}{\sqrt{V^2 - c(\zeta)^2}}\;\, d\zeta,
+    x_g \;=\; \int_{0}^{z_a} \frac{c(\zeta)}{\sqrt{V^2 - c^2(\zeta)}}\;\, d\zeta,
     \qquad \text{sofern } V>c(\zeta) \text{ für } \zeta\in[0,z_a].
     \quad
     \label{eq:ground-range}
 \end{equation}
-In einer Schicht mit $V\le c(\zeta)$, wird der Mach-Rand kontinuierlich
+In einer Schicht mit $V\le c(\zeta)$, wird der Machrand kontinuierlich
 nach oben abgelenkt und die Schockwelle breitet sich nicht weiter aus,
 was zu Schattenzonen am Boden führt.
 
@@ -194,11 +194,19 @@ was zu Schattenzonen am Boden führt.
 Wir modellieren $T(z)$ stückweise linear und mit trockener
 Standardatmosphäre ohne Wind, woraus $c(z)$ via \eqref{eq:c-of-z} folgt.
 Die drei grundlegenden Szenarien sind: Normale Lage, Inversionslage und
-Wendepunkt mit Bodenschatten. Diese Szenarien werden in den Abbildungen
-\ref{fig:schall:norm-lage}, \ref{fig:schall:inv-lage} und \ref{fig:schall:norm-vs-inv-lage}
-visualisiert und im Folgenden beschrieben.
+Wendepunkt mit Bodenschatten.
+Die Abbildungen \ref{fig:schall:norm-lage} und \ref{fig:schall:inv-lage}
+zeigen die Schallausbreitung für die Szenarien normale Lage
+\eqref{eq:normal-lapse} und Inversionslage \eqref{eq:inversion}.
+Die Abbildung \ref{fig:schall:norm-vs-inv-lage} stellt beide Szenarien
+direkt gegenüber.
+Dabei sieht man, dass die Ausbreitung der Schallwellen
+in der \emph{normalen Lage} \emph{nach oben} gebogen wird (oben ist $c$ kleiner),
+während sie in der \emph{Inversionslage} \emph{nach unten} gebogen wird (unten ist $c$ kleiner).
 
-\paragraph{Normale Lage (Temperatur nimmt mit Höhe ab).}
+\subsection*{Normale Lage}
+Bei der normalen Lage nimmt die Temperatur mit der Höhe ab,
+wie es tagsüber über einem warmen Boden üblich ist.
 Es gelte
 \begin{equation}
     T(z) \;=\; T_0 - Lz \quad (L>0),
@@ -209,12 +217,13 @@ Es gelte
 Da $c$ mit $z$ \emph{abnimmt}, sind höhere Schichten akustisch
 ``langsamer''; Strahlen werden zum \emph{langsameren} Bereich hin
 gebogen, d.\,h.\ \emph{nach oben}.
-Damit nimmt $x_g$ in \eqref{eq:ground-range} ab, was sich in einem anheben
-der Strahlen wiederspiegelt, und es können \emph{Bodenschatten}
+Damit nimmt $x_g$ in \eqref{eq:ground-range} ab, was sich in einem Anheben
+der Strahlen widerspiegelt, und es können \emph{Bodenschatten}
 entstehen, wenn in Bodennähe $V\lesssim c(0)$ ist.
 
-\paragraph{Inversionslage (Temperatur nimmt mit Höhe zu, z.\,B.
-nächtliche Bodeninversion über einem kalten Boden).}
+\subsection*{Inversionslage}
+Bei der Inversionslage nimmt die Temperatur mit der Höhe zu, was bei klarem
+Himmel in der Nacht über einem kalten Boden vorkommen kann.
 Es gelte
 \begin{equation}
     T(z) \;=\; T_0 + L_{I} z \quad (L_{I}>0),
@@ -230,7 +239,7 @@ Schattierung am Boden führt.
 Gleichzeitig verschlankt sich der Boom-Teppich, was die
 Lärmbelastung in der Mitte erhöht.
 
-\paragraph{Wendepunkt und Bodenschatten (kein Bodentreffer).}
+\subsection*{Wendepunkt und Bodenschatten}
 Tritt irgendwo im Intervall $[0,z_a]$ ein Bereich auf, in dem
 $V\le c(\zeta)$ gilt, so existiert eine
 \emph{kritische Höhe} $z_\ast\in(0,z_a]$ mit
@@ -246,7 +255,7 @@ er kann die Schicht $z<z_\ast$ nicht durchdringen.
 Die maximale horizontale Ausbreitung bis zum Wendepunkt ist
 \begin{equation}
     x_{\mathrm{turn}}
-    \;=\; \int_{z_\ast}^{z_a} \frac{c(\zeta)}{\sqrt{V^2 - c(\zeta)^2}}\;d\zeta,
+    \;=\; \int_{z_\ast}^{z_a} \frac{c(\zeta)}{\sqrt{V^2 - c^2(\zeta)}}\;d\zeta,
     \label{eq:x-turn}
 \end{equation}
 die \emph{Bodenentfernung} \eqref{eq:ground-range} ist hingegen \emph{nicht}
@@ -261,7 +270,7 @@ Für streng monotone Profile entscheidet die einfache Bedingung
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{papers/schall/figures/normal_sidepanels.png}
+    \includegraphics[width=\textwidth]{papers/schall/figures/normal_sidepanels.pdf}
     \caption{Machrand-Ausbreitung für eine normale Lage. Die Machzahl
     ist konstant auf der Höhe des Flugzeugs $z_a=3\,500$\ m gesetzt für
     $\textit{Ma} \in \{1.05, 1.1, 1.5, 2.5 \}$.
@@ -278,7 +287,7 @@ Für streng monotone Profile entscheidet die einfache Bedingung
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{papers/schall/figures/inversion_sidepanels.png}
+    \includegraphics[width=\textwidth]{papers/schall/figures/inversion_sidepanels.pdf}
     \caption{Machrand-Ausbreitung für eine Inversionslage. Die Machzahl
     ist konstant auf der Höhe des Flugzeugs $z_a=3\,500$\ m gesetzt für
     $\textit{Ma} \in \{1.05, 1.1, 1.5, 2.5 \}$.
@@ -292,19 +301,10 @@ Für streng monotone Profile entscheidet die einfache Bedingung
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{papers/schall/figures/overlay_clean.png}
+    \includegraphics[width=\textwidth]{papers/schall/figures/overlay_clean.pdf}
     \caption{Die Machrand-Ausbreitung im direkten Vergleich zwischen
     normaler Lage und Inversion. Die Eigenschaften der beiden Szenarien
     sind identisch zu den Abbildungen \ref{fig:schall:norm-lage}
     und \ref{fig:schall:inv-lage}.}
     \label{fig:schall:norm-vs-inv-lage}
 \end{figure}
-Die Abbildungen \ref{fig:schall:norm-lage} und \ref{fig:schall:inv-lage}
-zeigen die Schallausbreitung für die Szenarien normale Lage
-\eqref{eq:normal-lapse} und Inversionslage \eqref{eq:inversion}.
-Die Abbildung \ref{fig:schall:norm-vs-inv-lage} stellt beide Szenarien
-direkt gegenüber.
-Dabei sieht man, dass die Ausbreitung der Schallwellen
-in der \emph{normalen Lage} \emph{nach oben} gebogen wird (oben ist $c$ kleiner),
-während sie in der \emph{Inversionslage} \emph{nach unten} gebogen wird (unten ist $c$ kleiner).
-Letzteres führt zu einer \emph{breiteren Lärmwahrnehmung} am Boden.

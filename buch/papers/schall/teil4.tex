@@ -1,5 +1,6 @@
-\section{Überschallknall: Entstehung und Low-Boom-Strategien}
-\label{schall:section:boom}
+\section{Überschallknall: Entstehung und Low-Boom-Strategien
+\label{schall:section:boom}}
+\kopfrechts{Überschallknall: Entstehung und Low-Boom-Strategien}
 
 In diesem Kapitel betrachten wir, warum Überschallflugzeuge am Boden
 einen lauten Knall verursachen, wie sich dieser ausbreitet, und welche
@@ -31,6 +32,8 @@ Sanfte, stetige Änderungen entlang des Rumpfs führen zu weichen
 Druckanstiegen, abrupte Geometriesprünge zu schärferen Schockanteilen.
 Whithams Ansatz fasst die reale Geometrie (Rumpf, Flügel, Einläufe) zu
 einer \emph{Äquivalentfläche} zusammen und liefert daraus eine kompakte
+Kenngrösse, die wir hier als \(F\)-Funktion nutzen, um
+die Form der Nahfeldsignatur qualitativ zu lesen.
 Ziel von Low-Boom-Entwürfen ist daher eine möglichst glatt
 verlaufende Signatur bereits im Nahfeld.
 
@@ -53,7 +56,7 @@ Die klassische Low-Boom-Minimierung nach Seebass-George-Darden entwirft
 Zielverteilungen für $A(x)$, die eine geringe Schockstärke am Eintritt in
 die Atmosphäre bewirken \cite{schall:whitham,schall:seebassgeorge,schall:darden75}.
 
-\subsection{Ausbreitung: (Augmentierte) Burgers-Gleichung}
+\subsection{Ausbreitung: Augmentierte Burgers-Gleichung}
 Die Fernfeldausbreitung eines Überschalldrucksignals lässt sich bildhaft als
 „fahrende Welle“ verstehen, die sich mit der Schallgeschwindigkeit vom
 Flugzeug wegbewegt.
@@ -83,7 +86,7 @@ Atmosphäre (ohne Wind) wird die skalierte Schaltdrucksignatur $p(\tau,x)$
 wobei $\frac{m}{x}$ geometrische Abschwächung beschreibt, der nichtlineare
 Term, welcher mit $\beta$ multipliziert wird, zur Intensität der Schockanteile
 führt und $\delta$ frequenzabhängige atmosphärische Verluste aggregiert.
-Die ursprüngliche Form der \emph{Burgers-Gelichung} wird im Kapitel
+Die ursprüngliche Form der \emph{Burgers-Gleichung} wird im Kapitel
 \ref{chapter:neuronal} vertieft behandelt.
 
 Die Nichtlinearität „zieht“ die Front zu einem N-Profil.
@@ -91,7 +94,7 @@ Unter einem N-Profil versteht man einen zeitlichen Verlauf mit einem kurzen,
 steilen Druckanstieg (Kompressionsstoss) und einem anschliessenden, deutlich
 längeren, nahezu linearen Abfall bis unter das Ausgangsniveau, bevor der
 Druck langsam wieder auf den Umgebungswert zurückkehrt und somit eine
-\emph{N-Förmige} Kurve bildet.
+\emph{N-förmige} Kurve bildet.
 Physikalisch liegt das daran, dass Kompressionsanteile sich in nichtlinearen
 Medien schneller ausbreiten als Verdünnungsanteile: Der vordere,
 hochamplitudige Teil des Signals holt den hinteren ein, die Front steilt
@@ -101,7 +104,7 @@ sodass scharfe Kanten abgerundet werden und der Spitzenüberdruck
 \(\Delta p_\mathrm{max}\) sinkt.
 Die Gesamtsamplitude nimmt zudem durch die geometrische Ausbreitung ab, da
 die Energie auf eine immer grössere Bodenfläche verteilt wird.
-\cite{schall:rallabhandi2023,schall:rallabhandiAIAA2023,schall:burgersJASA}.
+\cite{schall:rallabhandi2023,schall:burgersJASA}.
 
 \subsection{Boden-Signatur und Metriken}
 Die für Wahrnehmung massgebliche Metrik ist häufig der \textit{Perceived Level},
@@ -116,16 +119,17 @@ eines klassischen Booms, mit einem Zielwerte um
 ${\sim}75$\ PLdB in Standardatmosphäre \cite{schall:x59pldb}.
 
 \subsection{Hebel zur Boom-Reduktion}
-\paragraph{Aerodynamische Formgebung (Low-Boom Shaping).}
-Gestaltung von $A(x)$ und der Auftriebsverteilung entlang der Länge,
-um grosse Einzel-Schocks zu vermeiden und verteilte, kleinere Sprünge zu generieren.
+\subsection*{Aerodynamische Formgebung}
+Beim \emph{Low-Boom Shaping} geht es darum, die Gestaltung von $A(x)$ und
+der Auftriebsverteilung entlang der Länge zu minimieren und somit
+grosse Einzel-Schocks zu vermeiden und verteilte, kleinere Sprünge zu generieren.
 Dies kann durch eine lange, schlanke Nase, durch Flügel- oder Canard-Anordnung,
 verdeckte Triebwerksintegration oder durch Vermeidung starker
 Querschnittssprünge realisiert werden.
 Formal: Minimierung geeigneter Funktionale der F-Funktion bzw.\ der Nahfeldsignatur
 gemäss Seebass-George-Darden-Ideen \cite{schall:seebassgeorge,schall:darden75}.
 
-\paragraph{Flugweg- und Operationsführung.}
+\subsection*{Flugweg- und Operationsführung.}
 Durch eine gezielte Wahl von Flugweg und -parametern lässt sich die
 Bodenausbreitung des Überschallknalls spürbar steuern.
 Dazu zählen unter anderem die Wahl von Flughöhe und Machzahl, Steig-
@@ -136,13 +140,13 @@ um den Boom-Teppich zu verkleinern.
 Solche Betriebsstrategien reduzieren Spitzenpegel, verschieben Hot-Spots
 und können die Lärmbelastung am Boden deutlich verringern.
 
-\paragraph{Flughöhe und Machzahl.}
+\subsection*{Flughöhe und Machzahl.}
 Eine höhere Flughöhe erhöht die geometrische Abschwächung, nachvollziehbar durch
 grösseres $x$ in \eqref{eq:aug-burgers}, und die atmosphärische Dämpfung durch
 grössere effektive $\delta$; moderate Machzahl reduziert die erzeugten
 Schockstärken bereits im Nahfeld.
 
-\paragraph{Atmosphärische Effekte berücksichtigen.}
+\subsection*{Atmosphärische Effekte berücksichtigen.}
 Temperatur- und Wind-Schichtung $c(z)$, Windschubvektoren und Turbulenz
 modulieren Divergenz und effektive Dämpfung in \eqref{eq:aug-burgers}.
 In Inversionslagen kann es zu \emph{Fokussierung} kommen, was lokal
@@ -152,7 +156,7 @@ da der Schalldruckpegel über eine grössere Fläche verteilt wird,
 welches in Kapitel \ref{schall:subsection:atmos-scenarios} behandelt wurden.
 
 \subsection*{Zusammenfassung}
-Schlussendlich wurden in diesem Kapitel die physikalischen Grundlagen der
+In diesem Kapitel wurden die physikalischen Grundlagen der
 Schallausbreitung in Gasen, Flüssigkeiten und Festkörpern, sowie die
 Entstehung und Ausbreitung des Überschallknalls in geschichteten
 Atmosphären hergeleitet.
