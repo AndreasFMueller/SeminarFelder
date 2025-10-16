@@ -28,40 +28,40 @@ temperaturabhängig.
 Da die einzelnen Moleküle nicht direkt miteinander verbunden sind,
 ist die Schallgeschwindigkeit in Gasen am niedrigsten.
 Für ein ideales Gas gilt
-\begin{equation}
-    c_{g} = \sqrt{\kappa \, \frac{p}{\rho}},
-\end{equation}
+\begin{equation*}
+    c_{g} = \!\sqrt{\kappa \, \frac{p}{\rho}},
+\end{equation*}
 wobei $\kappa$ der Adiabatenexponent, $p$ der Druck und $\rho$ die
 Dichte des Mediums ist.
 Setzt man $p = \rho R T$, welches die ideale Gasgleichung mit der
 spezifischen Gaskonstante $R = \SI{8.314}{\frac{J}{mol \cdot K}}$
 und der Temperatur $T$ beschreibt, erhält man die Darstellung
-\begin{equation}
-    c_{g} = \sqrt{\kappa R T}.
+\begin{equation*}
+    c_{g} = \!\sqrt{\kappa R T}.
     \label{eq:c-ideal-gas}
-\end{equation}
+\end{equation*}
 Für Luft bei Normalbedingungen, welche mit
 $T \approx 20^\circ \mathrm{C}$ und $p \approx 1\,\mathrm{bar}$
 gegeben ist, erhält man so näherungsweise
-\begin{equation}
+\begin{equation*}
     c_{g,\text{Luft}} \approx 343 \,\frac{\mathrm{m}}{\mathrm{s}}.
-\end{equation}
+\end{equation*}
 
 Flüssigkeiten sind im Vergleich zu Gasen inkompressibel, da die
 Moleküle durch intermolekulare Kräfte stark aneinander gebunden sind.
 Die Schallgeschwindigkeit ist deshalb deutlich höher als in Gasen.
 Für Flüssigkeiten gilt näherungsweise
 \begin{equation}
-    c_{l} = \sqrt{\frac{K}{\rho}},
+    c_{l} = \!\sqrt{\frac{K}{\rho}},
     \label{eq:c-liquid}
 \end{equation}
 wobei $K$ der Kompressionsmodul und $\rho$ die Dichte der Flüssigkeit ist.
 Bei Gasen, sowie bei Flüssigkeiten, sind nur longitudiale
 Wellenausbreitungen möglich.
 Für Wasser bei $T \approx 20^\circ \mathrm{C}$ gilt näherungsweise
-\begin{equation}
+\begin{equation*}
     c_{l,\text{Wasser}} \approx 1480 \,\frac{\mathrm{m}}{\mathrm{s}}.
-\end{equation}
+\end{equation*}
 
 
 Festkörper sind im Vergleich zu Gasen und Flüssigkeiten noch weniger
@@ -72,21 +72,28 @@ Wellenausbreitungen möglich.
 Die Schallgeschwindigkeit in Festkörpern hängt von der Richtung der
 Ausbreitung ab.
 Longitudinale Wellen breiten sich in Festkörpern mit der Geschwindigkeit
-\begin{equation}
-    c_{s,\text{long}} = \sqrt{\frac{E(1-\nu)}{\rho(1+\nu)(1-2\nu)}}
-\end{equation}
+\begin{equation*}
+    c_{s,\text{long}} = \!\sqrt{\frac{E(1-\nu)}{\rho(1+\nu)(1-2\nu)}}
+\end{equation*}
 aus, wobei $E$ der Elastizitätsmodul beschreibt, welcher bereits in
-Kapitel \ref{chapter:elastomechanik} eingeführt wurde.
+\index{Elastizitatsmodul@Elastizitätsmodul}%
+Kapitel~\ref{chapter:elastomechanik} eingeführt wurde.
 Transversale Wellen breiten sich mit der Geschwindigkeit
-\begin{equation}
-    c_{s,\text{trans}} = \sqrt{\frac{E}{2\rho(1+\nu)}} = \sqrt{\frac{G}{\rho}}
-\end{equation}
+\index{transversale Wellen}%
+\begin{equation*}
+    c_{s,\text{trans}} = \!\sqrt{\frac{E}{2\rho(1+\nu)}} = \!\sqrt{\frac{G}{\rho}}
+\end{equation*}
 aus, wobei $G$ das Schubmodul des Festkörpers ist.
+\index{Schubmodul}%
+\index{Festkorper@Festkörper}%
 Generell sind longitudinale Wellen schneller als transversale Wellen.
+\index{longitudinal}%
 Für Stahl gilt die Schallgeschwindigkeit näherungsweise
-\begin{equation}
-    c_{s,\text{Stahl}} \approx 5000 \,\frac{\mathrm{m}}{\mathrm{s}}.
-\end{equation}
+\begin{equation*}
+    c_{s,\text{long}} \approx 5900 \,\frac{\mathrm{m}}{\mathrm{s}}
+\qquad\text{bzw}\qquad
+    c_{s,\text{trans}} \approx 3220 \,\frac{\mathrm{m}}{\mathrm{s}}.
+\end{equation*}
 
 Damit können wir Schall im einfachsten Ansatz als Welle verstehen, die
 sich gleichmässig mit einer vom Medium bestimmten Geschwindigkeit ausbreitet.

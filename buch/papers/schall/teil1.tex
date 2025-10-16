@@ -1,5 +1,6 @@
 %
 % teil1.tex -- Beispiel-File für das Paper
+
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
@@ -23,23 +24,25 @@ Es seien
 \]
 wobei $|p'|\ll p_0$, $|\rho'|\ll \rho_0$ und $|v'|\ll 1$ (lineare Akustik),
 und die Terme von erster Ordnung sind mit
-$\rho',p',v' = \mathcal{O}(\varepsilon) \text{ und } 0<\varepsilon\ll 1$.
+$\rho',p',v' = O(\varepsilon) \text{ und } 0<\varepsilon\ll 1$.
 Wir nehmen ferner reibungsfreie, quellenfreie Strömung an und
 vernachlässigen äussere Kräfte.
 
 
 \subsection{Kontinuität und Impulsbilanz}
+\index{Impulsbilanz}%
 In einer Dimension lauten die Erhaltung der Masse und der Impulsbilanz
 (ohne Körperkräfte)
 \begin{equation}
 \frac{\partial \rho}{\partial t}+\frac{\partial(\rho v)}{\partial x}=0,
 \qquad\text{bzw.}\qquad
-\rho\left(\frac{\partial v}{\partial t}+v\frac{\partial v}{\partial x}\right)=-\frac{\partial p}{\partial x}.
+\rho\biggl(\frac{\partial v}{\partial t}+v\frac{\partial v}{\partial x}\biggr)=-\frac{\partial p}{\partial x}.
 \label{eq:exact-cont-mom}
 \end{equation}
 
-\subsubsection*{Kontinuität}
+\subsubsection{Kontinuität}
 Setzen wir die Grundannahmen in die Kontinuitätsgleichung ein und
+\index{Kontinuitatsgleichung@Kontinuitätsgleichung}%
 wende die Produktregel an:
 \[
     \frac{\partial(\rho_0+\rho')}{\partial t}
@@ -48,109 +51,117 @@ wende die Produktregel an:
 Da \(\rho_0\) konstant ist, \(\partial_t\rho_0=0\) und \(\partial_x\rho_0=0\).
 Es folgt
 \[
-    \underbrace{\frac{\partial \rho'}{\partial t}}_{\mathcal{O}(\varepsilon)}
-    +\underbrace{\rho_0\,\frac{\partial v'}{\partial x}}_{\mathcal{O}(\varepsilon)}
-    +\underbrace{v'\,\frac{\partial \rho'}{\partial x}}_{\mathcal{O}(\varepsilon^2)}
-    +\underbrace{\rho'\,\frac{\partial v'}{\partial x}}_{\mathcal{O}(\varepsilon^2)}=0.
+    \underbrace{\frac{\partial \rho'}{\partial t}}_{\displaystyle O(\varepsilon)}
+    +\underbrace{\rho_0\frac{\partial v'}{\partial x}}_{\displaystyle O(\varepsilon)}
+    +\underbrace{v'\frac{\partial \rho'}{\partial x}}_{\displaystyle O(\varepsilon^2)}
+    +\underbrace{\rho'\frac{\partial v'}{\partial x}}_{\displaystyle O(\varepsilon^2)}=0.
 \]
-Weglassen der Fluktuationen durch weglassen der \(\mathcal{O}(\varepsilon^2)\)-Terme
-liefert die \emph{linearisierten} Kontinuitätsgleichung
+Weglassen der Fluktuationen durch weglassen der \(O(\varepsilon^2)\)-Terme
+liefert die \emph{linearisierte} Kontinuitätsgleichung
 \begin{equation}
-    \frac{\partial \rho'}{\partial t}+\rho_0\,\frac{\partial v'}{\partial x}=0.
+    \frac{\partial \rho'}{\partial t}+\rho_0\frac{\partial v'}{\partial x}=0.
     \label{eq:lin-cont}
 \end{equation}
 Dies ist die Taylor-Entwicklung erster Ordnung um den Grundzustand.
 
-\subsubsection*{Impulsbilanz}
+\subsubsection{Impulsbilanz}
 Analog für die Impulsbilanz folgt bei Einsatz der Grundannahmen:
 \[
-    (\rho_0+\rho')\!\left(\frac{\partial v'}{\partial t}+v'\frac{\partial v'}{\partial x}\right)
+    (\rho_0+\rho')\biggl(\frac{\partial v'}{\partial t}+v'\frac{\partial v'}{\partial x}\biggr)
     =-\frac{\partial (p_0+p')}{\partial x}.
 \]
 Mit \(\partial_x p_0=0\) und Ordnungszählung erhält man
 \[
-    \underbrace{\rho_0\,\frac{\partial v'}{\partial t}}_{\mathcal{O}(\varepsilon)}
-    +\underbrace{\rho'\,\frac{\partial v'}{\partial t}}_{\mathcal{O}(\varepsilon^2)}
-    +\underbrace{(\rho_0+\rho')\,v'\frac{\partial v'}{\partial x}}_{\mathcal{O}(\varepsilon^2)}
-    =-\,\underbrace{\frac{\partial p'}{\partial x}}_{\mathcal{O}(\varepsilon)}.
+    \underbrace{\rho_0\frac{\partial v'}{\partial t}}_{\displaystyle O(\varepsilon)}
+    +\underbrace{\rho'\frac{\partial v'}{\partial t}}_{\displaystyle O(\varepsilon^2)}
+    +\underbrace{(\rho_0+\rho')v'\frac{\partial v'}{\partial x}}_{\displaystyle O(\varepsilon^2)}
+    =-\underbrace{\frac{\partial p'}{\partial x}}_{\displaystyle O(\varepsilon)}.
 \]
-Nach Verwerfen der \(\mathcal{O}(\varepsilon^2)\)-Terme bleibt
+Nach Verwerfen der \(O(\varepsilon^2)\)-Terme bleibt
 \begin{equation}
-    \rho_0\,\frac{\partial v'}{\partial t}=-\frac{\partial p'}{\partial x}.
+    \rho_0\frac{\partial v'}{\partial t}=-\frac{\partial p'}{\partial x}.
     \label{eq:lin-mom}
 \end{equation}
 
 \subsection{Thermodynamische Schliessung}
 
-Ziel ist nun die Kombination der linearisierten Kontinuität \eqref{eq:lin-cont}
+Ziel ist nun die Kombination der linearisierten
+Kontinuitätsgleichung~\eqref{eq:lin-cont}
 mit der Impulsbilanz \eqref{eq:lin-mom} im homogenen Ruhezustand.
-Dazu lösen wir zunächst \eqref{eq:lin-mom} nach $\partial_t v'$ auf:
+Dazu lösen wir zunächst \eqref{eq:lin-mom} nach
 \begin{equation}
-    \partial_t v' \;=\; -\,\frac{1}{\rho_0}\,\partial_x p'.
+    \partial_t v' = -\frac{1}{\rho_0}\partial_x p'
     \label{eq:dtv}
 \end{equation}
+auf.
 Wenden wir $\partial_t$ auf die Kontinuitätsgleichung \eqref{eq:lin-cont}
 an und setzen \eqref{eq:dtv} ein:
 \begin{align*}
-    \partial_{tt}\rho' + \rho_0\,\partial_x(\partial_t v') &= 0,\\
-    \partial_{tt}\rho' + \rho_0\,\partial_x\!\left(-\frac{1}{\rho_0}\partial_x p'\right) &= 0,
+    \partial_{tt}\rho' + \rho_0\partial_x(\partial_t v') &= 0,\\
+    \partial_{tt}\rho' + \rho_0\partial_x \biggl(-\frac{1}{\rho_0}\partial_x p'\biggr) &= 0,
 \end{align*}
-woraus die gekoppelte partielle Differentialgleichung resultiert:
+woraus die gekoppelte partielle Differentialgleichung
 \begin{equation}
-    \frac{\partial^2 \rho'}{\partial t^2} - \frac{\partial^2 p'}{\partial x^2} = 0.
+    \frac{\partial^2 \rho'}{\partial t^2} - \frac{\partial^2 p'}{\partial x^2} = 0
     \label{eq:lin-cont-mom}
 \end{equation}
-Dieses System ist jedoch unterbestimmt, da die Kontinuität reine Kinematik,
+resultiert.
+Dieses System ist jedoch unterbestimmt, da die Kontinuität reine Kinematik
+ist
 und die Impulsbilanz die Trägheit beschreibt.
-Beide enthalten keine Materialeigenschaften darüber, wie Druck auf Dichteänderung reagiert.
-Somit kann \eqref{eq:lin-cont-mom} keine punktweise lokale Zustandsgleichung beschreiben.
+Beide enthalten keine Materialeigenschaften darüber, wie der Druck auf Dichteänderung reagiert.
+Somit kann \eqref{eq:lin-cont-mom} keine lokale Zustandsgleichung beschreiben.
 Um das System zu schliessen, benötigen wir einen weiteren Zusammenhang,
 welcher aus der Thermodynamik folgt:
 
 \begin{enumerate}
 \item Zustandsgleichung in Ortsnähe: $p=p(\rho,s)$.
-      Für kleine Störungen um $(\rho_0,s_0)$ gilt die lineare Totaldifferentiale
-      \[
-        p' \;=\; \left(\frac{\partial p}{\partial \rho}\right)_{s}\,\rho'
-             \;+\; \left(\frac{\partial p}{\partial s}\right)_{\rho}\,s'.
-      \]
+      Für kleine Störungen um $(\rho_0,s_0)$ gilt nach der Kettenregel
+      \begin{equation}
+        p' = \biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}\rho'
+             + \biggl(\frac{\partial p}{\partial s}\biggr)_{\rho}s'.
+	\label{schall:ableitung}
+      \end{equation}
 \item Akustische Störungen sind schnell und nahezu ohne Wärmeaustausch
       und Reibung: Der Prozess ist \emph{isentrop}.
       Die Entropieänderung entlang einer Teilchenbahn verschwindet:
       \[
         \frac{Ds}{Dt}=0
-        \Rightarrow s'=0.
+        \quad\Rightarrow\quad s'=0.
       \]
-      Damit fällt der zweite Term weg:
+      Damit fällt der zweite Term in \eqref{schall:ableitung} weg, es bleibt
       \begin{equation}
-        p' \;=\; \left(\frac{\partial p}{\partial \rho}\right)_{s}\,\rho' \;=:\; \beta\,\rho'.
+        p' = \biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}\rho' = \beta\rho'
+\quad\text{mit}\quad \beta :=
+        \biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}.
         \label{eq:p-rho-relation}
       \end{equation}
 \end{enumerate}
 Vergleichen wir die allgemeine Wellengleichung \eqref{buch:feldgleichungen:wellengleichung:eqn:wellengleichung},
-welche im Kapitel \ref{chapter:feldgleichungen} eingeführt wurde:
+welche im Kapitel~\ref{chapter:feldgleichungen} eingeführt wurde:
 \[
-    \frac{\partial^2 u}{\partial t^2} \;=\;a^2 \frac{\partial^2 u}{\partial x^2}
+    \frac{\partial^2 u}{\partial t^2} =a^2 \frac{\partial^2 u}{\partial x^2}
 \]
 mit \eqref{eq:p-rho-relation} und \eqref{eq:lin-cont-mom}, so erkennen wir, dass
-\[    a^2 \;=\; \beta \;=\; \left(\frac{\partial p}{\partial \rho}\right)_{s}.\]
-Damit folgt die Wellengleichung für Druck- und Dichteschwankungen
+\[    a^2 = \beta = \biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}.\]
+Damit folgen die Wellengleichungen
 \begin{equation}
-    \frac{\partial^2 p'}{\partial t^2} - \beta\,\frac{\partial^2 p'}{\partial x^2} = 0,
+    \frac{\partial^2 p'}{\partial t^2} - \beta\frac{\partial^2 p'}{\partial x^2} = 0,
     \qquad
-    \frac{\partial^2 \rho'}{\partial t^2} - \beta\,\frac{\partial^2 \rho'}{\partial x^2} = 0.
+    \frac{\partial^2 \rho'}{\partial t^2} - \beta\frac{\partial^2 \rho'}{\partial x^2} = 0
     \label{eq:wave-equation-p-rho}
 \end{equation}
+für Druck- und Dichteschwankungen.
 Somit resultiert die Schallgeschwindigkeit des Mediums:
 \begin{equation}
-    c \;=\; \sqrt{\beta} \;=\; \sqrt{\left(\frac{\partial p}{\partial \rho}\right)_{s}},
+    c = \sqrt{\beta} = \sqrt{\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}},
     \label{eq:speed-of-sound}
 \end{equation}
 sowie die klassische eindimensionale Wellengleichung, die sowohl
 Druck- als auch Dichteschwankungen abdeckt:
 \begin{equation}
-    \;\;\frac{\partial^2 \phi}{\partial t^2} = c^2\,
-    \frac{\partial^2 \phi}{\partial x^2}, \qquad \phi\in\{p',\rho'\}\; .
+    \frac{\partial^2 \phi}{\partial t^2} = c^2
+    \frac{\partial^2 \phi}{\partial x^2}, \qquad \phi\in\{p',\rho'\}.
     \label{eq:1d-wave-equation}
 \end{equation}
 In den folgenden Abschnitten werden wir die in \eqref{eq:speed-of-sound}
@@ -159,241 +170,275 @@ herleiten.
 
 \subsection{Schallgeschwindigkeit in verschiedenen Medien}
 
-\subsubsection*{Gase}
+\subsubsection{Gase}
 Für ein ideales Gas gilt die Zustandsgleichung
 \(
     p=\rho R T
 \)
-und wir betrachten isentrope (adiabatische, reversible) Kleinstörungen,
-also \(s=\mathrm{const}\).
+und wir betrachten isentrope (adiabatische, reversible) kleine Störungen.
+Isentrop bedeutet, dass \(s=\mathrm{const}\) ist.
 Für ideale Gase gilt bei Isentropie die Poisson-Relation
 \(
-    p\,\rho^{-\kappa}=\mathrm{const},
+    p\rho^{-\kappa}=\mathrm{const},
 \)
 wobei \(\kappa=c_p/c_v\) der Adiabatenexponent ist.
 Logarithmisch differenziert:
 \[
-    d(\ln p) - \kappa\, d(\ln \rho) \;=\; 0
-    \;\;\Longrightarrow\;\;
-    \frac{dp}{p} \;=\; \kappa\,\frac{d\rho}{\rho}.
+    d(\ln p) - \kappa d(\ln \rho) = 0
+    \quad\Rightarrow\quad
+    \frac{dp}{p} = \kappa\frac{d\rho}{\rho}.
 \]
 Damit folgt aus \eqref{eq:speed-of-sound} bei \(s=\mathrm{const}\):
 \[
-    \left(\frac{\partial p}{\partial \rho}\right)_{s}
-    \;=\; \kappa\,\frac{p}{\rho}
-\quad\Longrightarrow\quad
-    \,c^2 \;=\; \kappa\,\frac{p}{\rho}.
+ c^2
+=
+    \biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}
+    = \kappa\frac{p}{\rho}.
 \]
 Setzt man \(p=\rho R T\) ein, folgt die übliche Form
 \[
-    c_g^2 \;=\; \kappa R T
+    c_g^2 = \kappa R T
 \]
 und somit schlussendlich
-\begin{equation}
-    \,c_g=\sqrt{\kappa R T}\,,
-\end{equation}
+\begin{equation*}
+    c_g=\sqrt{\kappa R T},
+\end{equation*}
 was die in der Einleitung verwendete Formel \eqref{eq:c-ideal-gas} reproduziert.
 
-\subsubsection*{Flüssigkeiten}
+\subsubsection{Flüssigkeiten}
 
-Der (adiabatische) Kompressionsmodul ist definiert als
+Der adiabatische Kompressionsmodul ist definiert als
+\index{Kompressionsmodul}%
 \begin{equation}
-  K \;:=\; -\,V\left(\frac{\partial p}{\partial V}\right)_{s},
+  K := -V\biggl(\frac{\partial p}{\partial V}\biggr)_{s},
   \label{eq:def-bulk}
 \end{equation}
 wobei $V$ das Volumen der betrachteten Masse ist \cite{schall:will}.
-Dabei müssen wir zwei Fälle unterscheiden:
+Dabei können wir zwei Fälle unterscheiden:
 
 \begin{itemize}
-    \item Spezifisches Volumen $v = \frac{1}{\rho}$:
+    \item Spezifisches Volumen $v = \frac{1}{\rho}$ als Variable mit der
+    Ableitung
     \[
-    K_s := -\,v\left(\frac{\partial p}{\partial v}\right)_{s},\qquad v=\frac{1}{\rho}.
+    v=\frac{1}{\rho}
     \quad\Rightarrow\quad
-    \left(\frac{\partial v}{\partial \rho}\right)_{s} = -\frac{1}{\rho^2},
+    \biggl(\frac{\partial v}{\partial \rho}\biggr)_{s} = -\frac{1}{\rho^2}.
     \]
-    \[
-    \left(\frac{\partial p}{\partial v}\right)_{s}
-    = \left(\frac{\partial p}{\partial \rho}\right)_{s}\left(\frac{\partial \rho}{\partial v}\right)_{s}
-    = -\rho^2\left(\frac{\partial p}{\partial \rho}\right)_{s},
-    \]
-    \[
-    K_s = -\frac{1}{\rho}\left(-\rho^2\left(\frac{\partial p}{\partial \rho}\right)_{s}\right)
-    = \rho\left(\frac{\partial p}{\partial \rho}\right)_{s}.
-    \]
+    Für den adiabatischen Kompressionsmodul finden wir dann mit der 
+    Kettenregel
+\begin{align*}
+    K_s &:= -v\biggl( \frac{\partial p}{\partial v} \biggr)_{s}
+    = -v\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}
+	\biggl(\frac{\partial \rho}{\partial v}\biggr)_{s}
+    = -v\biggl(-\rho^2\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}\biggr)
+    = -\frac{1}{\rho}\biggl(
+	-\rho^2\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}
+      \biggr)
+    = \rho\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}.
+\end{align*}
+%    \[
+%    \biggl(\frac{\partial p}{\partial v}\biggr)_{s}
+%    = \biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}\biggl(\frac{\partial \rho}{\partial v}\biggr)_{s}
+%    = -\rho^2\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s},
+%    \]
+%    \[
+%    K_s = -\frac{1}{\rho}\biggl(-\rho^2\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}\biggr)
+%    = \rho\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}.
+%    \]
 
-\item Gesamtvolumen $V$ bei fester Masse $m$:
+\item Gesamtvolumen $V$ bei fester Masse $m$ als Variable mit der Ableitung
     \[
-    K_s := -\,V\left(\frac{\partial p}{\partial V}\right)_{s,m},\qquad \rho=\frac{m}{V}.
+\rho=\frac{m}{V}
     \quad\Rightarrow\quad
-    \left(\frac{\partial \rho}{\partial V}\right)_{s,m} = -\frac{\rho}{V},
+    \biggl(\frac{\partial \rho}{\partial V}\biggr)_{s,m} = -\frac{\rho}{V}.
     \]
-    \[
-    \left(\frac{\partial p}{\partial V}\right)_{s,m}
-    = \left(\frac{\partial p}{\partial \rho}\right)_{s}\left(\frac{\partial \rho}{\partial V}\right)_{s,m}
-    = -\frac{\rho}{V}\left(\frac{\partial p}{\partial \rho}\right)_{s},
-    \]
-    \[
-    K_s = -V\left(-\frac{\rho}{V}\left(\frac{\partial p}{\partial \rho}\right)_{s}\right)
-    = \rho\left(\frac{\partial p}{\partial \rho}\right)_{s}.
-    \]
+Für den adiabatischen Kompressionsmodul finden wir dann mit der Kettenregel
+\begin{align*}
+    K_s &:= -V\biggl(\frac{\partial p}{\partial V}\biggr)_{s,m}
+=
+    -V\biggl(\frac{\partial p}{\partial V}\biggr)_{s,m}
+=
+-V\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}
+  \biggl(\frac{\partial \rho}{\partial V}\biggr)_{s,m}
+=
+-V\biggl( -\frac{\rho}{V}\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}\biggr)
+=
+\rho\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}.
+\end{align*}
+%xxx
+%    \[
+%    \biggl(\frac{\partial p}{\partial V}\biggr)_{s,m}
+%    =
+%\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}\biggl(\frac{\partial \rho}{\partial V}\biggr)_{s,m}
+%    = -\frac{\rho}{V}\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s},
+%    \]
+%    \[
+%    K_s = -V\biggl(-\frac{\rho}{V}\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}\biggr)
+%    =
+%\rho\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}.
+%    \]
 \end{itemize}
-In beiden Fällen erhalten wir die gleiche Beziehung:
-\begin{equation}
-    K \;=\; \rho\left(\frac{\partial p}{\partial \rho}\right)_{s}.
-\end{equation}
-Mit der akustischen Isentropie-Schliessung $c^2=\big(\frac{\partial p}{\partial \rho}\big)_s$
-erhält man sodann
-\begin{equation}
-    c_l^2 \;=\; \frac{K}{\rho} \quad \Leftrightarrow \quad c_l=\sqrt{\frac{K}{\rho}}.
-\end{equation}
+In beiden Fällen erhalten wir die gleiche Beziehung
+\begin{equation*}
+    K = \rho\biggl(\frac{\partial p}{\partial \rho}\biggr)_{s}.
+\end{equation*}
+%Mit der akustischen Isentropie-Schliessung
+Aus \eqref{eq:speed-of-sound} folgt
+$c^2=\Bigl(\frac{\partial p}{\partial \rho}\Bigr)_s$
+und man erhält
+\begin{equation*}
+    c_l^2 = \frac{K}{\rho} \quad \Leftrightarrow \quad c_l=\sqrt{\frac{K}{\rho}}.
+\end{equation*}
 Damit ist die in \eqref{eq:c-liquid} verwendete Formel aus den Definitionen von $K$
 und der isentropen Schallgeschwindigkeit hergeleitet.
 
-\subsubsection*{Festkörper}
+\subsubsection{Festkörper}
 Die Herleitung der Schallgeschwindigkeit in Festkörpern ist ähnlich wie diese
 in Flüssigkeiten. Durch die Gitterstruktur eines Festkörpers entstehen
-zusätzliche Scherkräfte, die eine weitere Wellenart nämlich die
-Transversalwelle ermöglichen. Daher wird für ausführliche Herleitung
-auf eines der Fachbücher verwiesen \cite{schall:landaulifschitz,schall:gurtin}.
+zusätzliche Scherkräfte, die eine weitere Wellenart, nämlich die
+Transversalwelle, ermöglichen. Daher wird für ausführliche Herleitung
+auf eines der Fachbücher \cite{schall:landaulifschitz,schall:gurtin}
+verwiesen.
 Zusammengefasst kann aus dem hookeschen Gesetz und der Impulsbilanz
 die Navier-Cauchy-Gleichung hergeleitet werden, was in~\ref{openfoam:navierstokes}
+\index{Navier-Cauchy-Gleichung}%
 hergeleitet wird.
 Durch Anwendung von Divergenz und Rotation auf die Navier-Cauchy-Gleichung
 kann die Bewegungsgleichung in eine Longitudinal- und eine Transversalwelle
 zerlegt werden, woraus die folgenden zwei Gleichungen resultieren:
 \[
 \begin{aligned}
-    \partial_{tt}\theta &= c_L^2\,\Delta\theta, & \qquad c_L^2 &= \frac{\lambda+2\mu}{\rho}\, ,\\
-    \partial_{tt}\boldsymbol{\omega} &= c_T^2\,\Delta\boldsymbol{\omega}, & \qquad c_T^2 &= \frac{\mu}{\rho}\, .
+    \partial_{tt}\theta &= c_L^2\Delta\theta, & \qquad c_L^2 &= \frac{\lambda+2\mu}{\rho} ,\\
+    \partial_{tt}\boldsymbol{\omega} &= c_T^2\Delta\boldsymbol{\omega}, & \qquad c_T^2 &= \frac{\mu}{\rho} .
 \end{aligned}
 \]
 Im Bereich der Seismologie sind die Longitudinal- und Transversalwellen als
 P- und S-Wellen bekannt.
 
-\begin{comment}
-In isotropen, homogenen Festkörpern beschreibt die lineare Elastizität (Hooke) die Beziehung zwischen Spannung $\sigma$ und Dehnung $\varepsilon$
-Mit den Lamé-Konstanten $(\lambda,\mu)$, wobei $\mu=G$ das Schubmodul ist und $\mathbf{u}$ das Verschibungsfeld im Festkörper beschreibt, lautet im 3D-Fall:
-\begin{equation}
-    \sigma = \lambda\,(\nabla\!\cdot\! \mathbf{u})\,\mathbf{I} + 2\mu\,\varepsilon,
-    \qquad \varepsilon=\tfrac{1}{2}\left(\nabla\mathbf{u}+(\nabla\mathbf{u})^{\!\top}\right).
-\end{equation}
-wobei $\mathbf{I}$ die Einheitsmatrix ist und $\nabla\mathbf{u}$ die Volumendehnung beschreibt.
-
-\paragraph{Hooke (isotrop, linear)}
-Mit Lamé-Konstanten $\lambda,\mu$ gilt
-\begin{equation}
-  \sigma_{ij} = \lambda\,\varepsilon_{kk}\,\delta_{ij} + 2\mu\,\varepsilon_{ij},
-  \qquad
-  \varepsilon_{ij} = \tfrac12(\partial_i u_j + \partial_j u_i).
-  \label{eq:hooke-index}
-\end{equation}
-
-\paragraph{Impulsbilanz (ohne Körperkräfte)}
-\begin{equation}
-  \rho\,\partial_{tt} u_i = \partial_j \sigma_{ij}.
-  \label{eq:momentum-index}
-\end{equation}
-
-\paragraph{Der „Einsetz–Schritt“ in Indexschreibweise}
-Setze \eqref{eq:hooke-index} in \eqref{eq:momentum-index} ein:
-\[
-    \partial_j \sigma_{ij}
-    = \partial_j\!\big(\lambda\,\varepsilon_{kk}\,\delta_{ij} + 2\mu\,\varepsilon_{ij}\big)
-    = \lambda\,\partial_i \varepsilon_{kk} + 2\mu\,\partial_j \varepsilon_{ij},
-\]
-denn $\partial_j(\delta_{ij}X)=\partial_i X$.
-Nun $\varepsilon_{kk} = \partial_k u_k = \nabla\!\cdot\!\mathbf{u}$ und
-\[
-    \partial_j \varepsilon_{ij}
-    = \frac12\,\partial_j(\partial_i u_j + \partial_j u_i)
-    = \frac12\big(\partial_i\partial_j u_j + \partial_j\partial_j u_i\big)
-    = \frac12\big(\partial_i(\partial_k u_k) + \Delta u_i\big).
-\]
-Damit
-\[
-    \partial_j \sigma_{ij}
-    = \lambda\,\partial_i(\partial_k u_k) + 2\mu\cdot \frac12\big(\partial_i(\partial_k u_k) + \Delta u_i\big)
-    = (\lambda+\mu)\,\partial_i(\partial_k u_k) + \mu\,\Delta u_i.
-\]
-In Vektorschreibweise:
-\begin{equation}
-    \boxed{\,\rho\,\partial_{tt}\mathbf{u} \;=\; (\lambda+\mu)\,\nabla(\nabla\!\cdot\!\mathbf{u}) \;+\; \mu\,\Delta \mathbf{u}\,}
-    \label{eq:navier}
-\end{equation}
-Dies ist die \emph{Navier–Cauchy–Gleichung}.
-
-\paragraph{Wellenzerlegung per Divergenz und Rotation}
-Wende $\nabla\!\cdot$ auf \eqref{eq:navier} an.
-Da $\nabla\!\cdot(\Delta\mathbf{u})=\Delta(\nabla\!\cdot\!\mathbf{u})$ gilt:
-\[
-    \rho\,\partial_{tt}(\nabla\!\cdot\!\mathbf{u})
-    = (\lambda+\mu)\,\Delta(\nabla\!\cdot\!\mathbf{u}) + \mu\,\Delta(\nabla\!\cdot\!\mathbf{u})
-    = (\lambda+2\mu)\,\Delta(\nabla\!\cdot\!\mathbf{u}).
-\]
-Setze $\theta := \nabla\!\cdot\!\mathbf{u}$:
-\begin{equation}
-    \boxed{\,\partial_{tt}\theta = c_L^2\,\Delta\theta,\qquad c_L^2=\frac{\lambda+2\mu}{\rho}\,}
-    \label{eq:longitudinal}
-\end{equation}
-Dies ist die \emph{Longitudinalwelle} (Druck-/Volumendehnung).
-Wende nun den Rotations-Operator $\nabla\times$ auf \eqref{eq:navier} an.
-Wegen $\nabla\times\nabla f=\mathbf{0}$ verschwindet der erste Term:
-\[
-    \rho\,\partial_{tt}(\nabla\times\mathbf{u}) = \mu\,\nabla\times(\Delta\mathbf{u})
-    = \mu\,\Delta(\nabla\times\mathbf{u}).
-\]
-Mit $\boldsymbol{\omega}:=\nabla\times\mathbf{u}$:
-\begin{equation}
-    \boxed{\,\partial_{tt}\boldsymbol{\omega} = c_T^2\,\Delta\boldsymbol{\omega},\qquad c_T^2=\frac{\mu}{\rho}\,}
-    \label{eq:transversal}
-\end{equation}
-Dies ist die \emph{Transversalwelle} (Scherung).
-
-\paragraph{Interpretation}
-\begin{itemize}
-  \item $c_L$ hängt von \emph{Volumensteifigkeit} ab: $(\lambda+2\mu)$ skaliert den Widerstand gegen Volumenänderung (\emph{Druck-/Kompressionswelle}).
-  \item $c_T$ hängt allein von der \emph{Schersteifigkeit} $\mu$ ab (\emph{Scherwelle}); in Fluiden ist $\mu\approx 0$, daher keine Transversalwellen.
-\end{itemize}
-
-Somit erhält man in isotropen Medien zwei Wellengeschwindigkeiten \cite{schall:landaulifschitz,schall:gurtin}:
-\begin{align}
-    \boxed{\,c_T=\sqrt{\frac{\mu}{\rho}}=\sqrt{\frac{G}{\rho}}\,} \quad &\text{(transversal, Scherwellen)},\\[2mm]
-    \boxed{\,c_L=\sqrt{\frac{\lambda+2\mu}{\rho}}\,} \quad &\text{(longitudinal, Druckwellen)}.
-\end{align}
-In technischen Materialparametern, sprich Elastizitätsmodul $E$ und Poissonzahl $\nu$, mit
-\[
-    \mu=G=\frac{E}{2(1+\nu)},
-    \qquad
-    \lambda=\frac{E\,\nu}{(1+\nu)(1-2\nu)},
-\]
-ergeben sich die in der Einleitung verwendeten Ausdrücke
-\begin{align}
-    \boxed{\,c_{s,\mathrm{long}}
-    = \sqrt{\frac{E(1-\nu)}{\rho(1+\nu)(1-2\nu)}}\,},\qquad
-    \boxed{\,c_{s,\mathrm{trans}}
-    = \sqrt{\frac{E}{2\rho(1+\nu)}}=\sqrt{\frac{G}{\rho}}\,}.
-\end{align}
-Typisch ist $c_L>c_T$, und beide liegen deutlich über Gas- und Flüssigkeitswerten (z.\,B. Stahl $c\approx 5{,}0\text{--}5{,}9\,\mathrm{km/s}$ für Longitudinalwellen, je nach Legierung).
-
-\end{comment}
+%\begin{comment}
+%In isotropen, homogenen Festkörpern beschreibt die lineare Elastizität (Hooke) die Beziehung zwischen Spannung $\sigma$ und Dehnung $\varepsilon$
+%Mit den Lamé-Konstanten $(\lambda,\mu)$, wobei $\mu=G$ das Schubmodul ist und $\mathbf{u}$ das Verschibungsfeld im Festkörper beschreibt, lautet im 3D-Fall:
+%\begin{equation}
+%    \sigma = \lambda\,(\nabla\!\cdot\! \mathbf{u})\,\mathbf{I} + 2\mu\,\varepsilon,
+%    \qquad \varepsilon=\tfrac{1}{2}\biggl(\nabla\mathbf{u}+(\nabla\mathbf{u})^{\!\top}\biggr).
+%\end{equation}
+%wobei $\mathbf{I}$ die Einheitsmatrix ist und $\nabla\mathbf{u}$ die Volumendehnung beschreibt.
+%
+%\paragraph{Hooke (isotrop, linear)}
+%Mit Lamé-Konstanten $\lambda,\mu$ gilt
+%\begin{equation}
+%  \sigma_{ij} = \lambda\,\varepsilon_{kk}\,\delta_{ij} + 2\mu\,\varepsilon_{ij},
+%  \qquad
+%  \varepsilon_{ij} = \tfrac12(\partial_i u_j + \partial_j u_i).
+%  \label{eq:hooke-index}
+%\end{equation}
+%
+%\paragraph{Impulsbilanz (ohne Körperkräfte)}
+%\begin{equation}
+%  \rho\,\partial_{tt} u_i = \partial_j \sigma_{ij}.
+%  \label{eq:momentum-index}
+%\end{equation}
+%
+%\paragraph{Der ``Einsetz–Schritt'' in Indexschreibweise}
+%Setze \eqref{eq:hooke-index} in \eqref{eq:momentum-index} ein:
+%\[
+%    \partial_j \sigma_{ij}
+%    = \partial_j\!\big(\lambda\,\varepsilon_{kk}\,\delta_{ij} + 2\mu\,\varepsilon_{ij}\big)
+%    = \lambda\,\partial_i \varepsilon_{kk} + 2\mu\,\partial_j \varepsilon_{ij},
+%\]
+%denn $\partial_j(\delta_{ij}X)=\partial_i X$.
+%Nun $\varepsilon_{kk} = \partial_k u_k = \nabla\!\cdot\!\mathbf{u}$ und
+%\[
+%    \partial_j \varepsilon_{ij}
+%    = \frac12\,\partial_j(\partial_i u_j + \partial_j u_i)
+%    = \frac12\big(\partial_i\partial_j u_j + \partial_j\partial_j u_i\big)
+%    = \frac12\big(\partial_i(\partial_k u_k) + \Delta u_i\big).
+%\]
+%Damit
+%\[
+%    \partial_j \sigma_{ij}
+%    = \lambda\,\partial_i(\partial_k u_k) + 2\mu\cdot \frac12\big(\partial_i(\partial_k u_k) + \Delta u_i\big)
+%    = (\lambda+\mu)\,\partial_i(\partial_k u_k) + \mu\,\Delta u_i.
+%\]
+%In Vektorschreibweise:
+%\begin{equation}
+%    \boxed{\,\rho\,\partial_{tt}\mathbf{u} = (\lambda+\mu)\,\nabla(\nabla\!\cdot\!\mathbf{u}) \;+\; \mu\,\Delta \mathbf{u}\,}
+%    \label{eq:navier}
+%\end{equation}
+%Dies ist die \emph{Navier–Cauchy–Gleichung}.
+%
+%\paragraph{Wellenzerlegung per Divergenz und Rotation}
+%Wende $\nabla\!\cdot$ auf \eqref{eq:navier} an.
+%Da $\nabla\!\cdot(\Delta\mathbf{u})=\Delta(\nabla\!\cdot\!\mathbf{u})$ gilt:
+%\[
+%    \rho\,\partial_{tt}(\nabla\!\cdot\!\mathbf{u})
+%    = (\lambda+\mu)\,\Delta(\nabla\!\cdot\!\mathbf{u}) + \mu\,\Delta(\nabla\!\cdot\!\mathbf{u})
+%    = (\lambda+2\mu)\,\Delta(\nabla\!\cdot\!\mathbf{u}).
+%\]
+%Setze $\theta := \nabla\!\cdot\!\mathbf{u}$:
+%\begin{equation}
+%    \boxed{\,\partial_{tt}\theta = c_L^2\,\Delta\theta,\qquad c_L^2=\frac{\lambda+2\mu}{\rho}\,}
+%    \label{eq:longitudinal}
+%\end{equation}
+%Dies ist die \emph{Longitudinalwelle} (Druck-/Volumendehnung).
+%Wende nun den Rotations-Operator $\nabla\times$ auf \eqref{eq:navier} an.
+%Wegen $\nabla\times\nabla f=\mathbf{0}$ verschwindet der erste Term:
+%\[
+%    \rho\,\partial_{tt}(\nabla\times\mathbf{u}) = \mu\,\nabla\times(\Delta\mathbf{u})
+%    = \mu\,\Delta(\nabla\times\mathbf{u}).
+%\]
+%Mit $\boldsymbol{\omega}:=\nabla\times\mathbf{u}$:
+%\begin{equation}
+%    \boxed{\,\partial_{tt}\boldsymbol{\omega} = c_T^2\,\Delta\boldsymbol{\omega},\qquad c_T^2=\frac{\mu}{\rho}\,}
+%    \label{eq:transversal}
+%\end{equation}
+%Dies ist die \emph{Transversalwelle} (Scherung).
+%
+%\paragraph{Interpretation}
+%\begin{itemize}
+%  \item $c_L$ hängt von \emph{Volumensteifigkeit} ab: $(\lambda+2\mu)$ skaliert den Widerstand gegen Volumenänderung (\emph{Druck-/Kompressionswelle}).
+%  \item $c_T$ hängt allein von der \emph{Schersteifigkeit} $\mu$ ab (\emph{Scherwelle}); in Fluiden ist $\mu\approx 0$, daher keine Transversalwellen.
+%\end{itemize}
+%
+%Somit erhält man in isotropen Medien zwei Wellengeschwindigkeiten \cite{schall:landaulifschitz,schall:gurtin}:
+%\begin{align}
+%    \boxed{\,c_T=\sqrt{\frac{\mu}{\rho}}=\sqrt{\frac{G}{\rho}}\,} \quad &\text{(transversal, Scherwellen)},\\[2mm]
+%    \boxed{\,c_L=\sqrt{\frac{\lambda+2\mu}{\rho}}\,} \quad &\text{(longitudinal, Druckwellen)}.
+%\end{align}
+%In technischen Materialparametern, sprich Elastizitätsmodul $E$ und Poissonzahl $\nu$, mit
+%\[
+%    \mu=G=\frac{E}{2(1+\nu)},
+%    \qquad
+%    \lambda=\frac{E\,\nu}{(1+\nu)(1-2\nu)},
+%\]
+%ergeben sich die in der Einleitung verwendeten Ausdrücke
+%\begin{align}
+%    \boxed{\,c_{s,\mathrm{long}}
+%    = \sqrt{\frac{E(1-\nu)}{\rho(1+\nu)(1-2\nu)}}\,},\qquad
+%    \boxed{\,c_{s,\mathrm{trans}}
+%    = \sqrt{\frac{E}{2\rho(1+\nu)}}=\sqrt{\frac{G}{\rho}}\,}.
+%\end{align}
+%Typisch ist $c_L>c_T$, und beide liegen deutlich über Gas- und Flüssigkeitswerten (z.\,B. Stahl $c\approx 5{,}0\text{--}5{,}9\,\mathrm{km/s}$ für Longitudinalwellen, je nach Legierung).
+%
+%\end{comment}
 
 \subsection{Reduktion auf die in der Einleitung verwendeten Vereinfachungen}
 Unter den in Abschnitt \ref{schall:section:teil0} genannten Annahmen (eindimensional,
-kleine Störungen, keine Reflexionen/Hindernisse sowie konstante
+kleine Störungen, keine Reflexionen oder Hindernisse sowie konstante
 Materialparameter) reduziert sich die Dynamik auf die lineare
 Wellengleichung
 \[
-    \frac{\partial^2 \phi}{\partial t^2}=c^2\,\frac{\partial^2 \phi}{\partial x^2},
+    \frac{\partial^2 \phi}{\partial t^2}=c^2\frac{\partial^2 \phi}{\partial x^2},
 \]
 wobei $c$ je nach Medium durch die obigen isentropen bzw.\ elastischen
 Beziehungen gegeben ist:
 \[
     c=\begin{cases}
-    \sqrt{\kappa\,p/\rho}=\sqrt{\kappa R T}, & \text{Gase},\\[1mm]
-    \sqrt{K/\rho}, & \text{Flüssigkeiten},\\[1mm]
-    \sqrt{(\lambda+2\mu)/\rho}\;\text{ bzw. }\;\sqrt{\mu/\rho}, & \text{Festkörper (long./trans.)}.
+    \sqrt{\kappa p/\rho}=\sqrt{\kappa R T}                    & \text{für Gase},\\[1mm]
+    \sqrt{K/\rho}                                            & \text{für Flüssigkeiten},\\[1mm]
+    \sqrt{(\lambda+2\mu)/\rho}\;\text{ bzw. }\;\!\sqrt{\mu/\rho} & \text{in Festkörpern, longitudinal bzw.~transversal}.
 \end{cases}
 \]
-Diese Formen entsprechen genau den in der Einleitung verwendeten
+Diese Formeln entsprechen genau den in der Einleitung verwendeten
 vereinfachten Geschwindigkeitsausdrücken und motivieren die
 tabellarischen Zahlenwerte für typische Medien.
