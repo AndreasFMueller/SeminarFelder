@@ -46,7 +46,11 @@ folgt in Abschnitt \ref{schall:lok-mach-emission}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{papers/schall/figures/mach_doppler_triptych_offsets.pdf}
+\begin{tikzpicture}[>=latex,thick]
+\clip (-6.3,-1.95) rectangle (6.3,2.4);
+\node at (0,0) {\includegraphics[width=1.14\textwidth]{papers/schall/figures/mach_doppler_triptych_offsets.pdf}};
+%\fill[color=red,opacity=0.1] (-6.3,-1.95) rectangle (6.3,2.4);
+\end{tikzpicture}
     \caption{Dopplereffekt bei Unterschall, Schallgeschwindigkeit und Überschall.
     Für die Schallgeschwindigkeit und den Überschall ist zusätzlich der
     Machkegel mit dem Machwinkel $\mu$ eingezeichnet. Dabei sind die
@@ -276,12 +280,16 @@ Für streng monotone Profile entscheidet die einfache Bedingung
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{papers/schall/figures/normal_sidepanels.pdf}
+\begin{tikzpicture}[>=latex,thick]
+\clip (-6.3,-3.6) rectangle (6.3,3.25);
+\node at (-0.35,0) {\includegraphics[width=1.09\textwidth]{papers/schall/figures/normal_sidepanels.pdf}};
+%\fill[color=red,opacity=0.1] (-6.3,-4) rectangle (6.3,4);
+\end{tikzpicture}
     \caption{Machrand-Ausbreitung für eine normale Lage. Die Machzahl
     ist konstant auf der Höhe des Flugzeugs $z_a=3\,500 m$ gesetzt für
     $\textit{Ma} \in \{1.05, 1.1, 1.5, 2.5 \}$.
-    Die Temperatur ist $T(1500 m) = 285.0 \mathrm{K}$ gegeben mit einem
-    linearen Abfall von $9 \mathrm{K/km}$.
+    Die Temperatur ist $T(1500\,\mathrm{m}) = 285.0\,\mathrm{K}$ gegeben mit einem
+    linearen Abfall von $9\,\mathrm{K/km}$.
     Je langsamer das Flugzeug, desto grösser ist der Ausbreitungswinkel
     $\mu_a$, desto stärker die Ablenkung nach oben und desto grösser
     die horizontale Reichweite $x_g$.
@@ -293,12 +301,16 @@ Für streng monotone Profile entscheidet die einfache Bedingung
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{papers/schall/figures/inversion_sidepanels.pdf}
+\begin{tikzpicture}[>=latex,thick]
+\clip (-6.3,-3.6) rectangle (6.3,3.25);
+\node at (-0.35,0) {\includegraphics[width=1.09\textwidth]{papers/schall/figures/inversion_sidepanels.pdf}};
+%\fill[color=red,opacity=0.1] (-6.3,-4) rectangle (6.3,4);
+\end{tikzpicture}
     \caption{Machrand-Ausbreitung für eine Inversionslage. Die Machzahl
     ist konstant auf der Höhe des Flugzeugs $z_a=3\,500 m$ gesetzt für
     $\textit{Ma} \in \{1.05, 1.1, 1.5, 2.5 \}$.
-    Die Temperatur ist $T(1500 m) = 285.0 \mathrm{K}$ gegeben mit einer
-    linearen Zunahme von $9 \mathrm{K/km}$.
+    Die Temperatur ist $T(1500\,\textrm{m}) = 285.0\,\mathrm{K}$ gegeben mit einer
+    linearen Zunahme von $9\,\mathrm{K/km}$.
     Je langsamer das Flugzeug, desto grösser ist der Ausbreitungswinkel
     $\mu_a$, desto stärker die Ablenkung nach unten und desto
     grösser die horizontale Reichweite $x_g$.}
@@ -307,7 +319,11 @@ Für streng monotone Profile entscheidet die einfache Bedingung
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{papers/schall/figures/overlay_clean.pdf}
+\begin{tikzpicture}
+\clip (-6.3,-2.95) rectangle (6.3,2.95);
+\node at (-0.015,0) {\includegraphics[width=1.027\textwidth]{papers/schall/figures/overlay_clean.pdf}};
+%\fill[color=red,opacity=0.1] (-6.3,-4) rectangle (6.3,4);
+\end{tikzpicture}
     \caption{Die Machrand-Ausbreitung im direkten Vergleich zwischen
     normaler Lage und Inversion. Die Eigenschaften der beiden Szenarien
     sind identisch zu den Abbildungen \ref{fig:schall:norm-lage}

@@ -1,45 +1,45 @@
-include papers/maxwell/Makefile.inc
-include papers/elastomechanik/Makefile.inc
 include papers/geoalgebra/Makefile.inc
+include papers/nerven/Makefile.inc
+include papers/poinbendix/Makefile.inc
+include papers/elastomechanik/Makefile.inc
+include papers/maxwell/Makefile.inc
 include papers/diffortho/Makefile.inc
-include papers/fourier/Makefile.inc
-include papers/geostrophisch/Makefile.inc
 include papers/helmholtz/Makefile.inc
+include papers/reaktdiff/Makefile.inc
 include papers/mongeampere/Makefile.inc
 include papers/mongekant/Makefile.inc
 include papers/neuronal/Makefile.inc
-include papers/nerven/Makefile.inc
-include papers/openfoam/Makefile.inc
-include papers/particles/Makefile.inc
 include papers/parallelisierung/Makefile.inc
-include papers/poinbendix/Makefile.inc
-include papers/reaktdiff/Makefile.inc
+include papers/openfoam/Makefile.inc
 include papers/reynolds/Makefile.inc
-include papers/rossby/Makefile.inc
-include papers/schall/Makefile.inc
 include papers/ueberschall/Makefile.inc
+include papers/schall/Makefile.inc
 include papers/wirbelringe/Makefile.inc
+include papers/geostrophisch/Makefile.inc
+include papers/rossby/Makefile.inc
+include papers/fourier/Makefile.inc
+include papers/particles/Makefile.inc
 
 TEXFILES = \
-	$(dependencies-maxwell) \
-	$(dependencies-elastomechanik) \
 	$(dependencies-geoalgebra) \
+	$(dependencies-nerven) \
+	$(dependencies-poinbendix) \
+	$(dependencies-elastomechanik) \
+	$(dependencies-maxwell) \
 	$(dependencies-diffortho) \
-	$(dependencies-fourier) \
-	$(dependencies-geostrophisch) \
 	$(dependencies-helmholtz) \
+	$(dependencies-reaktdiff) \
 	$(dependencies-mongeampere) \
 	$(dependencies-mongekant) \
 	$(dependencies-neuronal) \
-	$(dependencies-nerven) \
-	$(dependencies-openfoam) \
-	$(dependencies-particles) \
 	$(dependencies-parallelisierung) \
-	$(dependencies-poinbendix) \
-	$(dependencies-reaktdiff) \
+	$(dependencies-openfoam) \
 	$(dependencies-reynolds) \
-	$(dependencies-rossby) \
-	$(dependencies-schall) \
 	$(dependencies-ueberschall) \
+	$(dependencies-schall) \
 	$(dependencies-wirbelringe) \
+	$(dependencies-geostrophisch) \
+	$(dependencies-rossby) \
+	$(dependencies-fourier) \
+	$(dependencies-particles) \
 
