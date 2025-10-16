@@ -281,7 +281,8 @@ def build_panel(title, T_of_z, c_of_z, ray_color, out_file):
         ax.plot(xl, z, lw=2.6, color=ray_color, linestyle=ls)
 
     # Legende nur mit Mach-Linienstilen (Farben sind szenario-spezifisch)
-    ma_leg = ax.legend(loc='upper left', frameon=True, framealpha=1.0, title="Mach", fontsize=14)
+    ma_leg = ax.legend(loc='upper left', frameon=True, framealpha=1.0,  fontsize=14,
+                       title=r"Machzahl $\textit{Ma}$", title_fontsize=14)
     ma_leg.get_frame().set_edgecolor((0,0,0,0.25)); ax.add_artist(ma_leg)
 
     # custom Legende mit Temperaturen
@@ -349,7 +350,7 @@ def build_overlay(z_a, c_normf, c_invf, out_file):
             title="Szenario", title_fontsize=14)
     ax.add_artist(leg1)
     ax.legend(handles=handles, loc="upper right", frameon=True, framealpha=1.0, fontsize=14,
-              title="Mach", title_fontsize=14)
+              title=r"Machzahl $\textit{Ma}$", title_fontsize=14)
 
     fig.tight_layout()
     fig.savefig(out_file.with_suffix('.png'), dpi=600)

@@ -28,7 +28,7 @@ $T(z)$ aber ohne Wind, sodass
     \label{eq:c-of-z}
 \end{equation}
 gilt. Hier ist $c(z)$ die lokale Schallgeschwindigkeit, $R_S = \frac{R}{M}$
-die Massenangepasste Gaskonstante und $M$ die auf der Höhe $z$ herrschende
+die massenangepasste Gaskonstante und $M$ die auf der Höhe $z$ herrschende
 molare Masse des Mediums.
 In der Fliegerei wird die Geschwindigkeit des Flugzeugs oft über die
 dimensionslose \emph{Machzahl} \textit{Ma} angegeben:
@@ -40,6 +40,9 @@ wobei $\textit{Ma}<1$ Unterschall, $\textit{Ma}=1$ Schallgeschwindigkeit
 und $\textit{Ma}>1$ Überschall bezeichnet.
 Der Effekt des Schall- oder Machkegels, welcher durch den Dopplereffekt
 beschrieben wird, ist im Bild \ref{fig:schall:mach-zones} visualisiert.
+Dabei sind die Wellenfronten als Kreise ersichtlich, die akustischen
+Strahlen sind die Normalen auf den Kreisen. Die ausführliche Beschreibung
+folgt in Abschnitt \ref{schall:lok-mach-emission}.
 
 \begin{figure}
     \centering
@@ -50,7 +53,9 @@ beschrieben wird, ist im Bild \ref{fig:schall:mach-zones} visualisiert.
 \end{tikzpicture}
     \caption{Dopplereffekt bei Unterschall, Schallgeschwindigkeit und Überschall.
     Für die Schallgeschwindigkeit und den Überschall ist zusätzlich der
-    Machkegel mit dem Machwinkel $\mu$ eingezeichnet.}
+    Machkegel mit dem Machwinkel $\mu$ eingezeichnet. Dabei sind die
+    Wellenfronten als Kreise ersichtlich, die akustischen Strahlen sind
+    die Normalen auf den Kreisen.}
     \label{fig:schall:mach-zones}
 \end{figure}
 Das vom Flugzeug erzeugte Schallereignis bewegt sich mit Geschwindigkeit $V$
@@ -65,14 +70,15 @@ Tritt hingegen eine Schallwelle in eine Region mit niedrigerer
 Schallgeschwindigkeit ein, sodass $V>c(z)$ gilt, so wird eine Schockwelle
 entstehen, die sich bis zum Boden ausbreiten kann.
 
-Wenn $V \gg c(z)$ ist, wie zum Beispiel beim Flug der Concorde mit Mach
-$2.2 \gg c$, dann spielen die Varitionen von $c(z)$ keine grosse Rolle.
+Wenn $Ma \gg 1$ ist, wie zum Beispiel beim Flug der Concorde mit $\textit{Ma} \approx 2.2$,
+dann spielen die Variationen von $c(z)$ keine grosse Rolle.
 Wenn aber $V$ nahe bei $c(z)$ ist, dann kommt es zu merklichen Einflüssen,
 die dazu genutzt werden, den Überschallknall abzuschwächen oder zu
 unterdrücken, was im Kapitel~\ref{schall:section:boom} analysiert wird.
 
 \subsection{Lokaler Machwinkel und Emissionsrichtung}
-In einem homogenem Medium bildet sich der Machkegel mit Halbwinkel
+\label{schall:lok-mach-emission}
+In einem homogenen Medium bildet sich der Machkegel mit Halbwinkel
 \begin{equation}
     \mu \;=\; \arcsin\!\Bigg(\frac{1}{\textit{Ma}}\Bigg).
 \end{equation}
@@ -181,7 +187,8 @@ Dies wird in Abschnitt~\ref{schall:subsection:atmos-scenarios} genauer analysier
 
 \subsection{Boom-Teppich am Boden}
 Die horizontale Entfernung vom Lotpunkt des Flugzeugs bis zum
-Aufprallpunkt eines Strahls am Boden ($z=0$) ergibt sich durch
+Aufprallpunkt eines Strahls am Boden ($z=0$) ergibt sich bei einfachem
+Fall (kein Wind, keine lateralen Gradienten) durch die
 Integration von \eqref{eq:ray-ode-inverse} und bildet den Boom-Teppich:
 \begin{equation}
     \quad
@@ -256,16 +263,15 @@ Aus der Strahlgleichung \eqref{eq:ray-ode-inverse} folgt, dass der
 Integrand für $z\to z_\ast$ gegen $\boldsymbol{\infty}$ geht und für $z<z_\ast$ imaginär würde.
 Der Strahl besitzt bei $z=z_\ast$ eine \emph{horizontale Tangente} und kehrt um;
 er kann die Schicht $z<z_\ast$ nicht durchdringen.
-Die maximale horizontale Ausbreitung bis zum Wendepunkt ist
+Die maximale horizontale Ausbreitung bis zum Wendepunkt ist gegeben durch
 \begin{equation}
     x_{\mathrm{turn}}
     \;=\; \int_{z_\ast}^{z_a} \frac{c(\zeta)}{\sqrt{V^2 - c^2(\zeta)}}\;d\zeta,
     \label{eq:x-turn}
 \end{equation}
-die \emph{Bodenentfernung} \eqref{eq:ground-range} ist hingegen \emph{nicht}
-definiert, da $z=0$ nicht erreichbar ist.
+was in Abbildung \ref{fig:schall:norm-lage} für $\textit{Ma}=1.05$ ersichtlich ist.
 Der Bereich unterhalb der Wendeschicht $z<z_\ast$ liegt somit in einer
-\emph{Schattenzone}, in der man keinen Schall des Flugzeugs \emph{hören} kann.
+\emph{Schattenzone}, in der man keinen Überschallknall des Flugzeugs \emph{hören} kann.
 Für streng monotone Profile entscheidet die einfache Bedingung
 \begin{equation}
     \text{Bodentreffer existiert} \;\Leftrightarrow\; V>c(z)\quad\forall\,z\in[0,z_a].
@@ -280,7 +286,7 @@ Für streng monotone Profile entscheidet die einfache Bedingung
 %\fill[color=red,opacity=0.1] (-6.3,-4) rectangle (6.3,4);
 \end{tikzpicture}
     \caption{Machrand-Ausbreitung für eine normale Lage. Die Machzahl
-    ist konstant auf der Höhe des Flugzeugs $z_a=3\,500$\,m gesetzt für
+    ist konstant auf der Höhe des Flugzeugs $z_a=3\,500 m$ gesetzt für
     $\textit{Ma} \in \{1.05, 1.1, 1.5, 2.5 \}$.
     Die Temperatur ist $T(1500\,\mathrm{m}) = 285.0\,\mathrm{K}$ gegeben mit einem
     linearen Abfall von $9\,\mathrm{K/km}$.
@@ -301,7 +307,7 @@ Für streng monotone Profile entscheidet die einfache Bedingung
 %\fill[color=red,opacity=0.1] (-6.3,-4) rectangle (6.3,4);
 \end{tikzpicture}
     \caption{Machrand-Ausbreitung für eine Inversionslage. Die Machzahl
-    ist konstant auf der Höhe des Flugzeugs $z_a=3\,500$\,m gesetzt für
+    ist konstant auf der Höhe des Flugzeugs $z_a=3\,500 m$ gesetzt für
     $\textit{Ma} \in \{1.05, 1.1, 1.5, 2.5 \}$.
     Die Temperatur ist $T(1500\,\textrm{m}) = 285.0\,\mathrm{K}$ gegeben mit einer
     linearen Zunahme von $9\,\mathrm{K/km}$.

@@ -45,13 +45,15 @@ als Abel-Transformierte von $A_e''$:
 \begin{equation}
     F(x_e)=\frac{1}{2\pi}\int_{0}^{x_e}\frac{A_e''(t)}{\sqrt{x_e-t}}\,dt,
 \end{equation}
-wobei $x_e$ eine entlang der Flugrichtung skalierte Koordinate ist.
+wobei $x_e$ eine entlang der Flugrichtung skalierte Koordinate
+der Äquivalentgeometrie (inklusive Mach- und Gasfaktoren) ist.
 Die dimensionslose Nahfeld-Überdrucksignatur ist, bis auf bekannte
 Mach-/Gasfaktoren, proportional zu $F(x_e)$.
 
 Intuitiv gilt: stark gekrümmte Änderungen in $A'(x)$ erzeugen starke lokale
 Schockanteile; eine „sanft“ verteilte Geometrie verteilt die Druckanstiege
 längs der Rumpflänge.
+Die $F$-Funktion fasst diese Information zu einer kompakten Nahfeldsignatur zusammen.
 Die klassische Low-Boom-Minimierung nach Seebass-George-Darden entwirft
 Zielverteilungen für $A(x)$, die eine geringe Schockstärke am Eintritt in
 die Atmosphäre bewirken \cite{schall:whitham,schall:seebassgeorge,schall:darden75}.
@@ -76,14 +78,14 @@ Atmosphäre (ohne Wind) wird die skalierte Schaltdrucksignatur $p(\tau,x)$
 (hier $\tau$ = „retardierte Zeit“) häufig mit einer
 \emph{augmentierten Burgers-Gleichung} modelliert:
 \begin{equation}
-  \frac{\partial p}{\partial x}
-  \;+\;\frac{\beta}{\rho_0 c_0^{3}}\,p\,\frac{\partial p}{\partial \tau}
+  \underbrace{\frac{\partial p}{\partial x}
+  \;+\;\frac{\beta}{\rho_0 c_0^{3}}\,p\,\frac{\partial p}{\partial \tau}}_{Burgers-Ansatz}
   \;=\;
-  -\,\frac{m}{x}\,p
-  \;+\;\delta\,\frac{\partial^2 p}{\partial \tau^2},
+  \underbrace{-\,\frac{m}{x}\,p \vphantom{\frac{\beta}{\rho_0 c_0^{3}}}
+  \;+\;\delta\,\frac{\partial^2 p}{\partial \tau^2}}_{Augmentierung},
   \label{eq:aug-burgers}
 \end{equation}
-wobei $\frac{m}{x}$ geometrische Abschwächung beschreibt, der nichtlineare
+wobei $\frac{m}{x}$ die geometrische Abschwächung beschreibt, der nichtlineare
 Term, welcher mit $\beta$ multipliziert wird, zur Intensität der Schockanteile
 führt und $\delta$ frequenzabhängige atmosphärische Verluste aggregiert.
 Die ursprüngliche Form der \emph{Burgers-Gleichung} wird im Kapitel
@@ -99,7 +101,7 @@ Physikalisch liegt das daran, dass Kompressionsanteile sich in nichtlinearen
 Medien schneller ausbreiten als Verdünnungsanteile: Der vordere,
 hochamplitudige Teil des Signals holt den hinteren ein, die Front steilt
 auf und es bildet sich ein Stoss.
-Die Dämpfung in der Atmosphäre entfernt schwächt besonders hohe Frequenzen,
+Die Dämpfung in der Atmosphäre schwächt besonders hohe Frequenzen,
 sodass scharfe Kanten abgerundet werden und der Spitzenüberdruck
 \(\Delta p_\mathrm{max}\) sinkt.
 Die Gesamtsamplitude nimmt zudem durch die geometrische Ausbreitung ab, da
@@ -109,20 +111,20 @@ die Energie auf eine immer grössere Bodenfläche verteilt wird.
 \subsection{Boden-Signatur und Metriken}
 Die für Wahrnehmung massgebliche Metrik ist häufig der \textit{Perceived Level},
 der die zeitliche Impulsform und psychoakustische Bewertungen kombiniert,
-gemessen in PLdB.
+gemessen in PLdB. Für weitere Details wird auf \cite{schall:x59pldb} verwiesen.
 Er wird nicht wie dB direkt aus dem Schalldruckpegel berechnet,
 sondern aus der Boom-Drucksignatur über ein psychoakustisches Rechenverfahren,
 das Frequenz- und Zeitbewertung enthält und so die menschliche
 Wahrnehmung besser abbildet.
 Ziel moderner Low-Boom-Demonstratoren ist ein \emph{„sonic thump“} statt
-eines klassischen Booms, mit einem Zielwerte um
-${\sim}75$\ PLdB in Standardatmosphäre \cite{schall:x59pldb}.
+eines klassischen Booms, mit einem Zielwert von
+${\sim}75$\ PLdB in Standardatmosphäre.
 
 \subsection{Hebel zur Boom-Reduktion}
 \subsection*{Aerodynamische Formgebung}
 Beim \emph{Low-Boom Shaping} geht es darum, die Gestaltung von $A(x)$ und
-der Auftriebsverteilung entlang der Länge zu minimieren und somit
-grosse Einzel-Schocks zu vermeiden und verteilte, kleinere Sprünge zu generieren.
+der Auftriebsverteilung entlang der Länge zu gestalten, dass
+grosse Einzelschocks vermeiden und und mehrere kleine Sprünge verteilt werden.
 Dies kann durch eine lange, schlanke Nase, durch Flügel- oder Canard-Anordnung,
 verdeckte Triebwerksintegration oder durch Vermeidung starker
 Querschnittssprünge realisiert werden.
@@ -173,3 +175,6 @@ nichtlinear-dissipativer Ausbreitungsmodelle
 (augmentierte Burgers-Gleichung) verwiesen,
 sowie auf die Validierung mit Messdaten, um die Akzeptanz künftiger
 Überschalloperationen zu fördern.
+Wer tiefer einsteigen möchte, findet weiterführende Hintergründe und
+Beispiele in
+\cite{schall:darden75, schall:x59pldb, schall:seebassgeorge, schall:whitham, schall:burgersJASA}.
