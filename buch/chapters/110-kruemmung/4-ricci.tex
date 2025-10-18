@@ -104,7 +104,7 @@ X \mapsto R(X,Y)Z = (\nabla_X\nabla_YZ-\nabla_Y\nabla_XZ-\nabla_{[X,Y]}Z.
 Für $Y=y^l\partial_l$ und $Z=z^k\partial_k$ ist der Wert der Spur
 durch die Bilinearform
 \[
-Ric(Y,Z)
+\textit{Ric}(Y,Z)
 =
 R^m\mathstrut_{lmk} y^lz^k
 =
@@ -112,9 +112,10 @@ g^{im}
 R_{ilmk}y^lz^k
 \]
 gegeben.
+\index{Ric@$\textit{Ric}$}%
 Die Komponenten des Ricci-Tensors sind also
 \[
-Ric(\partial_l,\partial_k)
+\textit{Ric}(\partial_l,\partial_k)
 =
 R_{lk}
 =
@@ -251,24 +252,25 @@ Daher ist $\frac1n Sg$ ein symmetrischer Tensor mit der gleichen
 Spur wie der Ricci-Tensor. 
 Wir bezeichnen mit
 \[
-\overset{\circ}{Ric}
+\overset{\circ}{\textit{Ric}}
 =
-Ric - \frac1n Sg
+\textit{Ric} - \frac1n Sg
 \]
+\index{Riccirc@$\overset{\circ}{\textit{Ric}}$}%
 den \emph{spurlosen Ricci-Tensor}.
 
 Die besondere Bedeutung des Krümmungsskalars ist, dass die Zerlegung
 \begin{equation}
 Ric
 =
-\overset{\circ}{Ric} + \frac1n Sg
+\overset{\circ}{\text{Ric}} + \frac1n Sg
 \label{buch:kruemmung:ricci:eqn:Riczerlegung}
 \end{equation}
 orthogonal ist.
 
 \begin{satz}
 Die Zerlegung \eqref{buch:kruemmung:ricci:eqn:Riczerlegung} ist
-orthogonal, d.~h.~der spurlose Ricci-Tensor $\overset{\circ}{Ric}$
+orthogonal, d.~h.~der spurlose Ricci-Tensor $\overset{\circ}{\text{Ric}}$
 und $\frac1nSg$ sind orthogonal.
 \end{satz}
 
@@ -292,15 +294,15 @@ h_{ik}g^{ik}
 gegeben.
 Daher ist das Skalarprodukt
 \[
-\langle \overset{\circ}{Ric},\frac{1}n Sg \rangle
+\langle \overset{\circ}{\textit{Ric}},\frac{1}n Sg \rangle
 =
-\frac1nS\langle\overset{\circ}{Ric},g\rangle
+\frac1nS\langle\overset{\circ}{\textit{Ric}},g\rangle
 =
-\frac1nS\operatorname{tr}\overset{\circ}{Ric}
+\frac1nS\operatorname{tr}\overset{\circ}{\textit{Ric}}
 =
 0,
 \]
-die Tensoren $\overset{\circ}{Ric}$ und $\frac1nSg$ sind orthogonal.
+die Tensoren $\overset{\circ}{\textit{Ric}}$ und $\frac1nSg$ sind orthogonal.
 \end{proof}
 
 Die äussere Ableitung des Krümmungsskalars kann durch Kontraktion
@@ -444,11 +446,11 @@ Sie erfüllt
 \intertext{Auf dem Vektor $X$ hat diese 1-Form den Wert}
 \langle\boldsymbol{d}\boldsymbol{\alpha},Y\wedge Z\rangle (X)
 &=
-\nabla_Y {Ric}(X,Z)
+\nabla_Y {\textit{Ric}}(X,Z)
 -
-\nabla_Z {Ric}(X,Y)
+\nabla_Z {\textit{Ric}}(X,Y)
 -
-{Ric}(X,[Y,Z])
+{\textit{Ric}}(X,[Y,Z])
 \end{align*}
 Setzt man für die Vektoren $X$, $Y$ und $Z$ die Standardbasisvektoren
 $\partial_b$, $\partial_k$ und $\partial_l$ ein, wird daraus
@@ -456,18 +458,18 @@ $\partial_b$, $\partial_k$ und $\partial_l$ ein, wird daraus
 \langle\boldsymbol{d}\boldsymbol{\alpha},\partial_k\wedge \partial_l\rangle
 (\partial_b)
 &=
-\nabla_k {Ric}(\partial_b,\partial_l)
+\nabla_k {\textit{Ric}}(\partial_b,\partial_l)
 -
-\nabla_l {Ric}(\partial_b,\partial_k)
+\nabla_l {\textit{Ric}}(\partial_b,\partial_k)
 -
-{Ric}(\partial_b,[\partial_k,\partial_l]).
+{\textit{Ric}}(\partial_b,[\partial_k,\partial_l]).
 \intertext{Weil die Basisoperatoren $\partial_i$ vertauschen ist
 $[\partial_k,\partial_l])=0$ und der letzte Term fällt weg.
 Es bleibt}
 &=
-\nabla_k {Ric}(\partial_b,\partial_l)
+\nabla_k {\textit{Ric}}(\partial_b,\partial_l)
 -
-\nabla_l {Ric}(\partial_b,\partial_k)
+\nabla_l {\textit{Ric}}(\partial_b,\partial_k)
 =
 R_{bl;k}
 -

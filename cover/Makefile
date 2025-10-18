@@ -9,7 +9,7 @@ buchcover.pdf:	buchcover.tex teilnehmer.tex ruecken1.png
 	pdflatex buchcover.tex
 
 buchcover.png:	buchcover.pdf Makefile 
-	magick -density 300 -extract 2054x2900+2630+190 buchcover.pdf \
+	magick -density 300 -extract 2054x2900+2740+190 buchcover.pdf \
 		buchcover.png
 buchcover.jpg:	buchcover.png
 	magick buchcover.png buchcover.jpg
