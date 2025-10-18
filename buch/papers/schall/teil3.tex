@@ -41,8 +41,8 @@ dimensionslose \emph{Mach-Zahl} \textit{Ma} angegeben:
 \end{equation}
 wobei $\textit{Ma}<1$ Unterschall, $\textit{Ma}=1$ Schallgeschwindigkeit
 und $\textit{Ma}>1$ Überschall bezeichnet.
-Der Effekt des Schall- oder Mach-Kegels, welcher durch den Doppler-Effekt
-\index{Mach-Kegel}
+Der Effekt des \emph{Schall-} oder \emph{Mach-Kegels},
+welcher durch den Doppler-Effekt \index{Mach-Kegel}
 beschrieben wird, ist im Bild \ref{fig:schall:mach-zones} visualisiert.
 Dabei sind die Wellenfronten als Kreise ersichtlich, die akustischen
 Strahlen sind die Normalen auf den Kreisen. Die ausführliche Beschreibung
@@ -94,7 +94,7 @@ Emissionshöhe $z_a$, auf welcher das Flugzeug fliegt, an:
     = \arcsin\biggl(\frac{c(z_a)}{V}\biggr) .
     \label{eq:local-mach-angle}
 \end{equation}
-Der Rand des Mach-Kegels wird oft als Mach-Rand bezeichnet, welcher im
+Der Rand des Mach-Kegels wird oft als \emph{Mach-Rand} bezeichnet, welcher im
 vertikalen Schnitt $(x,z)$ durch akustische Strahlen begrenzt ist.
 Dies nennt man die \emph{geometrische Akustik}.
 
@@ -151,8 +151,8 @@ Akustik eine Snell-ähnliche Invariante:
   \frac{\sin\psi(z)}{c(z)} = \text{const} =: K ,
   \label{eq:snell-acoustics}
 \end{equation}
-wobei $\psi(z)$ der Winkel des Strahls gegen die Vertikale
-(Schichtnormale) und $\mu(z)=90^\circ-\psi(z)$ der Winkel gegen
+wobei $\psi(z)$ der Winkel des Strahls gegen die
+Schichtnormale und $\mu(z)=90^\circ-\psi(z)$ der Winkel gegen
 die Horizontale ist.
 Wählt man als Anfangsbedingung den lokalen Mach-Winkel an $z=z_a$,
 also $\psi(z_a)=90^\circ-\mu_a$, dann folgt aus
@@ -190,15 +190,16 @@ mit Anfangsbedingung $x(z_a)=0$ senkrecht unter dem Flugzeug.
 Die Lösungen von \eqref{eq:ray-ode-inverse} geben die gekrümmten Stossränder
 im $(x,z)$-Schnitt.
 Die Bedingung für reale Strahlen ist $V>c(z)$
-entlang der Bahn; wo $V=c(z)$, existiert ein Wendepunkt/kritische Höhe
-(horizontale Tangente), darunter eine \emph{Schattenzone}.
+entlang der Bahn; wo $V=c(z)$, existiert ein Wendepunkt, welcher als
+kritische Höhe bekannt ist, bei der eine horizontale Tangente der Ablenkung entsteht.
+Unterhalb davon entsteht eine \emph{Schattenzone}.
 \index{Schattenzone}%
 Dies wird in Abschnitt~\ref{schall:subsection:atmos-scenarios} genauer analysiert.
 
 \subsection{Boom-Teppich am Boden}
 Die horizontale Entfernung vom Lotpunkt des Flugzeugs bis zum
-Aufprallpunkt eines Strahls am Boden ($z=0$) ergibt sich bei einfachem
-Fall (kein Wind, keine lateralen Gradienten) durch die
+Aufprallpunkt eines Strahls am Boden bei $z=0$ ergibt sich bei einfachem
+Fall, bei dem kein Wind sowie keine lateralen Gradienten herrschen, durch die
 Integration von \eqref{eq:ray-ode-inverse} und bildet den Boom-Teppich:
 \begin{equation}
     \quad
@@ -222,8 +223,9 @@ zeigen die Schallausbreitung für die Szenarien normale Lage
 Die Abbildung \ref{fig:schall:norm-vs-inv-lage} stellt beide Szenarien
 direkt gegenüber.
 Dabei sieht man, dass die Ausbreitung der Schallwellen
-in der normalen Lage nach oben gebogen wird (oben ist $c$ kleiner),
-während sie in der Inversionslage nach unten gebogen wird (unten ist $c$ kleiner).
+in der normalen Lage nach oben gebogen wird, da oben $c$ kleiner ist,
+während sie in der Inversionslage nach unten gebogen wird,
+da im unteren Bereich $c$ kleiner ist.
 
 \subsubsection{Normale Lage}
 Bei der normalen Lage nimmt die Temperatur mit der Höhe ab,

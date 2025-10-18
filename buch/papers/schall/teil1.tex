@@ -22,7 +22,7 @@ Es seien
 \[
     p(x,t)=p_0+p'(x,t),\qquad \rho(x,t)=\rho_0+\rho'(x,t),\qquad v(x,t)=v'(x,t),
 \]
-wobei $|p'|\ll p_0$, $|\rho'|\ll \rho_0$ und $|v'|\ll 1$ (lineare Akustik),
+wobei $|p'|\ll p_0$, $|\rho'|\ll \rho_0$ und $|v'|\ll 1$,
 und die Terme von erster Ordnung sind mit
 $\rho',p',v' = O(\varepsilon) \text{ und } 0<\varepsilon\ll 1$.
 Wir nehmen ferner reibungsfreie, quellenfreie Strömung an und
@@ -71,7 +71,7 @@ Analog für die Impulsbilanz folgt bei Einsatz der Grundannahmen:
     (\rho_0+\rho')\biggl(\frac{\partial v'}{\partial t}+v'\frac{\partial v'}{\partial x}\biggr)
     =-\frac{\partial (p_0+p')}{\partial x}.
 \]
-Mit \(\partial_x p_0=0\) und Ordnungszählung erhält man
+Mit \(\partial_x p_0=0\) und durch weglassen der Terme mit höherer Ordnung erhält man
 \[
     \underbrace{\rho_0\frac{\partial v'}{\partial t}}_{\displaystyle O(\varepsilon)}
     +\underbrace{\rho'\frac{\partial v'}{\partial t}}_{\displaystyle O(\varepsilon^2)}
@@ -177,14 +177,14 @@ Für ein ideales Gas gilt die Zustandsgleichung
 \(
     p=\rho R T
 \)
-und wir betrachten isentrope (adiabatische, reversible) kleine Störungen.
+und wir betrachten isentrope kleine Störungen, welche adiabatisch und reversibl sind.
 Isentrop bedeutet, dass \(s=\mathrm{const}\) ist.
 Für ideale Gase gilt bei Isentropie die Poisson-Relation
 \(
     p\rho^{-\kappa}=\mathrm{const},
 \)
 wobei \(\kappa=c_p/c_v\) der Adiabatenexponent ist.
-Logarithmisch differenziert:
+Logarithmisch differenziert resultiert daraus:
 \[
     d(\ln p) - \kappa d(\ln \rho) = 0
     \quad\Rightarrow\quad
@@ -302,7 +302,7 @@ Transversalwelle, ermöglichen. Daher wird für ausführliche Herleitung
 auf eines der Fachbücher \cite{schall:landaulifschitz,schall:gurtin}
 verwiesen.
 Zusammengefasst kann aus dem hookeschen Gesetz und der Impulsbilanz
-die Navier-Cauchy-Gleichung hergeleitet werden, was in~\ref{openfoam:navierstokes}
+die Navier-Cauchy-Gleichung hergeleitet werden, die in~\ref{openfoam:navierstokes}
 \index{Navier-Cauchy-Gleichung}%
 hergeleitet wird.
 Durch Anwendung von Divergenz und Rotation auf die Navier-Cauchy-Gleichung
@@ -425,9 +425,9 @@ P- und S-Wellen bekannt.
 %\end{comment}
 
 \subsection{Reduktion auf die in der Einleitung verwendeten Vereinfachungen}
-Unter den in Abschnitt \ref{schall:section:teil0} genannten Annahmen (eindimensional,
+Unter den in Abschnitt \ref{schall:section:teil0} genannten Annahmen, sprich eindimensional,
 kleine Störungen, keine Reflexionen oder Hindernisse sowie konstante
-Materialparameter) reduziert sich die Dynamik auf die lineare
+Materialparameter, reduziert sich die Dynamik auf die lineare
 Wellengleichung
 \[
     \frac{\partial^2 \phi}{\partial t^2}=c^2\frac{\partial^2 \phi}{\partial x^2},
@@ -442,5 +442,4 @@ Beziehungen gegeben ist:
 \end{cases}
 \]
 Diese Formeln entsprechen genau den in der Einleitung verwendeten
-vereinfachten Geschwindigkeitsausdrücken und motivieren die
-tabellarischen Zahlenwerte für typische Medien.
+vereinfachten Geschwindigkeitsausdrücken.
