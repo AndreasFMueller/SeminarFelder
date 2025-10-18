@@ -46,12 +46,14 @@ Nahfeldsignatur über die sogenannte $F$-Funktion~\cite{schall:whitham}.
 Whithams Theorie definiert die zugehörige Funktion
 als Abel-Transformierte von $A_e''$:
 \begin{equation*}
-    F(x_e)=\frac{1}{2\pi}\int_{0}^{x_e}\frac{A_e''(t)}{\!\sqrt{x_e-t}}\,dt,
+    F(x_e)=\frac{1}{2\pi}\int_{0}^{x_e}\frac{A_e''(t)}{\!\sqrt{x_e-t}}\,dt.
 \end{equation*}
-wobei $x_e$ eine entlang der Flugrichtung skalierte Koordinate
-der Äquivalentgeometrie (inklusive Mach- und Gasfaktoren) ist.
+Dabei ist $x_e$ eine entlang der Flugrichtung skalierte Koordinate der
+Äquivalentgeometrie, die von der Mach-Zahl und den Gasfaktoren,
+wie dem Wärmekapazitätsverhältnis der Luft oder den Freiströmungsgrößen,
+abhängt.
 Die dimensionslose Nahfeld-Überdrucksignatur ist, bis auf bekannte
-Mach-/Gasfaktoren, proportional zu $F(x_e)$.
+Mach-Zahl und den Gasfaktoren, proportional zu $F(x_e)$.
 
 Intuitiv gilt: stark gekrümmte Änderungen in $A'(x)$ erzeugen starke lokale
 Schockanteile; eine ``sanft'' verteilte Geometrie verteilt die Druckanstiege
@@ -59,7 +61,7 @@ längs der Rumpflänge.
 Die $F$-Funktion fasst diese Information zu einer kompakten Nahfeldsignatur zusammen.
 Die klassische Low-Boom-Minimierung nach Seebass-George-Darden entwirft
 Zielverteilungen für $A(x)$, die eine geringe Schockstärke am Eintritt in
-die Atmosphäre bewirken \cite{schall:whitham,schall:seebassgeorge,schall:darden75}.
+die Atmosphäre bewirken \cite{schall:darden75, schall:seebassgeorge}.
 
 \subsection{Ausbreitung: Augmentierte Burgers-Gleichung}
 Die Fernfeldausbreitung eines Überschalldrucksignals lässt sich bildhaft als
@@ -83,22 +85,22 @@ windstillen Atmosphäre wird die skalierte Schaltdrucksignatur $p(\tau,x)$
 \emph{augmentierten Burgers-Gleichung}
 \begin{equation}
   \underbrace{\frac{\partial p}{\partial x}
-  +\frac{\beta}{\rho_0 c_0^{3}}\,p\,\frac{\partial p}{\partial \tau}}_{Burgers-Ansatz}
+  +\frac{\beta}{\rho_0 c_0^{3}}\,p\,\frac{\partial p}{\partial \tau}}_{\text{Burgers-Ansatz}}
   =
   \underbrace{-\,\frac{m}{x}\,p \vphantom{\frac{\beta}{\rho_0 c_0^{3}}}
-  +\delta\,\frac{\partial^2 p}{\partial \tau^2}}_{Augmentierung}
+  +\delta\,\frac{\partial^2 p}{\partial \tau^2}}_{\text{Augmentierung}}
   \label{eq:aug-burgers}
 \end{equation}
 modelliert,
 wobei $\frac{m}{x}$ die geometrische Abschwächung beschreibt, der nichtlineare
 Term, welcher mit $\beta$ multipliziert wird, zur Intensität der Schockanteile
-führt und $\delta$ frequenzabhängige atmosphärische Verluste aggregiert.
+führt und $\delta$ frequenzabhängige atmosphärische Verluste aggregiert~\cite{schall:burgersJASA}.
 Die ursprüngliche Form der Burgers-Gleichung wird im
 Kapitel~\ref{chapter:neuronal} vertieft behandelt.
 
 Die Nichtlinearität ``zieht'' die Front zu einem N-Profil.
 Unter einem N-Profil versteht man einen zeitlichen Verlauf mit einem kurzen,
-steilen Druckanstieg (Kompressionsstoss) und einem anschliessenden, deutlich
+steilen Druckanstieg, dem Kompressionsstoss, und einem anschliessenden, deutlich
 längeren, nahezu linearen Abfall bis unter das Ausgangsniveau, bevor der
 Druck langsam wieder auf den Umgebungswert zurückkehrt und somit eine
 N-förmige Kurve bildet.
@@ -110,8 +112,8 @@ Die Dämpfung in der Atmosphäre schwächt besonders hohe Frequenzen,
 sodass scharfe Kanten abgerundet werden und der Spitzenüberdruck
 \(\Delta p_\mathrm{max}\) sinkt.
 Die Gesamtsamplitude nimmt zudem durch die geometrische Ausbreitung ab, da
-die Energie auf eine immer grössere Bodenfläche verteilt wird.
-\cite{schall:rallabhandi2023,schall:burgersJASA}.
+die Energie auf eine immer grössere Bodenfläche verteilt wird
+\cite{schall:rallabhandi2023}.
 
 \subsection{Boden-Signatur und Metriken}
 Die für Wahrnehmung massgebliche Metrik ist häufig der \textit{Perceived Level},
@@ -136,7 +138,8 @@ grosse Einzelschocks vermeiden und und mehrere kleine Sprünge verteilt werden.
 Dies kann durch eine lange, schlanke Nase, durch Flügel- oder Canard-Anordnung,
 verdeckte Triebwerksintegration oder durch Vermeidung starker
 Querschnittssprünge realisiert werden.
-Formal: Minimierung geeigneter Funktionale der F-Funktion bzw.~der Nahfeldsignatur
+
+Formal gilt: Minimierung geeigneter Funktionale der F-Funktion bzw.~der Nahfeldsignatur
 gemäss Seebass-George-Darden-Ideen \cite{schall:seebassgeorge,schall:darden75}.
 
 \subsubsection{Flugweg- und Operationsführung.}
@@ -163,7 +166,7 @@ In Inversionslagen kann es zu Fokussierung kommen, was lokal
 zu erhöhten Druckspitzen führt (grösseres $\Delta p$).
 Normale Temperaturlagen führen eher zu Defokussierung,
 da der Schalldruckpegel über eine grössere Fläche verteilt wird,
-welches in Abschnitt~\ref{schall:subsection:atmos-scenarios} behandelt wurden.
+was in Abschnitt~\ref{schall:subsection:atmos-scenarios} behandelt wurden.
 
 \subsection{Zusammenfassung}
 In diesem Kapitel wurden die physikalischen Grundlagen der
@@ -183,6 +186,9 @@ nichtlinear-dissipativer Ausbreitungsmodelle
 (augmentierte Burgers-Gleichung) verwiesen,
 sowie auf die Validierung mit Messdaten, um die Akzeptanz künftiger
 Überschalloperationen zu fördern.
-Wer tiefer einsteigen möchte, findet weiterführende Hintergründe und
-Beispiele in
-\cite{schall:darden75, schall:x59pldb, schall:seebassgeorge, schall:whitham, schall:burgersJASA}.
+Wer sich gezielt vertiefen möchte, findet Information zur Nahfeldtheorie
+und $F$-Funktion bei Whitham \cite{schall:whitham},
+zur Low-Boom-Formgebung nach Seebass–George–Darden \cite{schall:seebassgeorge,schall:darden75},
+zur augmentierten Burgers-Gleichung und Ausbreitung \cite{schall:burgersJASA},
+sowie zu wahrnehmungsbasierten Metriken (PLdB) und aktuellen
+Demonstratoren \cite{schall:x59pldb} weiterführende Darstellungen.
