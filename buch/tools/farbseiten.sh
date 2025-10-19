@@ -107,13 +107,14 @@ chapter=13
 6
 7
 13
+14
 15
 19
 20
 21
-25
-32
+26
 33
+34
 #
 # Kapitel 14 geoalgebra
 chapter=geoalgebra
