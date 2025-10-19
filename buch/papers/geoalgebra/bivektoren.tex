@@ -63,12 +63,12 @@ zuzuordnen, eine negative, orientierte Fläche bedeutet ein Umlaufsinn \emph{im 
 
 Angenommen, dass 
 \begin{align*}
-    \mathbf{a} &= \begin{pmatrix} 3 \\ 1 \end{pmatrix} = 3 \eone + \etwo, \\
-    \mathbf{b} &= \begin{pmatrix} 1 \\ 2 \end{pmatrix} = \eone + 2 \etwo.
+    \boldsymbol{a} &= \begin{pmatrix} 3 \\ 1 \end{pmatrix} = 3 \eone + \etwo, \\
+    \boldsymbol{b} &= \begin{pmatrix} 1 \\ 2 \end{pmatrix} = \eone + 2 \etwo.
 \end{align*}
 Das Wedgeprodukt zwischen den beiden Vektoren ergibt
 \begin{align}
-    \mathbf{a} \wedge \mathbf{b} &= (3 \eone + \etwo) \wedge (\eone + 2 \etwo)
+    \boldsymbol{a} \wedge \boldsymbol{b} &= (3 \eone + \etwo) \wedge (\eone + 2 \etwo)
 \notag
 \\
     &= 5 \eone \wedge \etwo.
@@ -84,8 +84,8 @@ Ein ganz einfaches Beispiel von einem äquivalenten Bivektor erhalten wir, wenn 
 und den anderen stauchen. Dies lässt sich bereits aus unseren Axiomen herleiten.
 
 {
-\renewcommand{\a}{\mathbf{a}}
-\renewcommand{\b}{\mathbf{b}}
+\renewcommand{\a}{\boldsymbol{a}}
+\renewcommand{\b}{\boldsymbol{b}}
 \begin{beispiel}
 Sei
   \begin{align*}
@@ -162,13 +162,13 @@ Bivektor mit drei Komponenten, eine Komponente pro von den Standardbasisvektoren
 Ebene im Raum.
 Das Wedgeprodukt zweier vierdimensionaler Vektoren hat sechs Komponenten,
 jeweils eine für jede von den Standardbasisvektoren aufgespannte Fläche. Die möglichen Ebenen sind:
-$\eone \wedge \etwo, \eone \wedge \ethree, \eone \wedge \mathbf{e}_{4}, \etwo \wedge \ethree, \etwo \wedge \mathbf{e}_{4}, \ethree \wedge \mathbf{e}_{4}$.
+$\eone \wedge \etwo, \eone \wedge \ethree, \eone \wedge \boldsymbol{e}_{4}, \etwo \wedge \ethree, \etwo \wedge \boldsymbol{e}_{4}, \ethree \wedge \boldsymbol{e}_{4}$.
 
 Die Anzahl Komponenten, die aus einem Bivektor resultieren, hängt also von der Dimension des Vektorraums ab, den wir betrachten.
-Wie in \eqref{geoalgebra:eq:2d-wedgeproduct} bereits erkannt, fallen die Terme, welche Wedgeprodukte von gleichen Vektoren $\mathbf{v}_i \wedge \mathbf{v}_i$ beinhalten,
+Wie in \eqref{geoalgebra:eq:2d-wedgeproduct} bereits erkannt, fallen die Terme, welche Wedgeprodukte von gleichen Vektoren $\boldsymbol{v}_i \wedge \boldsymbol{v}_i$ beinhalten,
 immer weg, da diese Produkte $0$ ergeben. Ausserdem werden vertauschte Reihenfolgen einfach negiert und zusammengefasst: 
 \begin{equation*}
-  \lambda \mathbf{v}_i \wedge \mathbf{v}_j + \mu \mathbf{v}_j \wedge \mathbf{v_i} = \lambda \mathbf{v}_i \wedge \mathbf{v}_j - \mu \mathbf{v}_i \wedge \mathbf{v}_j = (\mu - \lambda) \mathbf{v}_i \wedge \mathbf{v}_j.
+  \lambda \boldsymbol{v}_i \wedge \boldsymbol{v}_j + \mu \boldsymbol{v}_j \wedge \boldsymbol{v_i} = \lambda \boldsymbol{v}_i \wedge \boldsymbol{v}_j - \mu \boldsymbol{v}_i \wedge \boldsymbol{v}_j = (\mu - \lambda) \boldsymbol{v}_i \wedge \boldsymbol{v}_j.
 \end{equation*}
 Wir erhalten also für jede Kombination von verschiedenen Basisvektoren eines Vektorraums eine Komponente.
 \begin{satz}

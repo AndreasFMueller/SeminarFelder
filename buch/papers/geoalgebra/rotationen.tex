@@ -1,5 +1,6 @@
 \section{Rotationen}
-\renewcommand{\u}{\hat{\mathbf{u}}}
+\kopfrechts{Rotationen}%
+\renewcommand{\u}{\hat{\boldsymbol{u}}}
 \subsection{Rotationen sind zwei aufeinanderfolgende Spiegelungen}
 Eine Rotation kann durch zwei aufeinanderfolgende Spiegelungen ausgedrückt werden (siehe
 \index{Rotation}%
@@ -19,18 +20,18 @@ wobei die Länge irrelevant ist. Relevant ist ausserdem noch die fixe Position d
 $O$.
 
 \subsection{Rotation eines Vektors}
-Man betrachte den Vektor $\mathbf{x}$, der zunächst an $\v$ und danach an $\u$ mit Zwischenwinkel $\theta$ gespiegelt wird (siehe \autoref{geoalgebra:fig:rotation}).
-Die Spiegelung $\mathbf{x}'$ von $\mathbf{x}$ an $\v$ ergibt sich durch
+Man betrachte den Vektor $\boldsymbol{x}$, der zunächst an $\v$ und danach an $\u$ mit Zwischenwinkel $\theta$ gespiegelt wird (siehe \autoref{geoalgebra:fig:rotation}).
+Die Spiegelung $\boldsymbol{x}'$ von $\boldsymbol{x}$ an $\v$ ergibt sich durch
 \begin{equation*}
-\mathbf{x}' = \v \mathbf{x} \v.
+\boldsymbol{x}' = \v \boldsymbol{x} \v.
 \end{equation*}
-Analog dazu kann der neu entstandene Vektor $\mathbf{x}'$ an $\u$ gespiegelt werden
+Analog dazu kann der neu entstandene Vektor $\boldsymbol{x}'$ an $\u$ gespiegelt werden
 \begin{equation*}
-\mathbf{x}'' = \u \mathbf{x}' \u.
+\boldsymbol{x}'' = \u \boldsymbol{x}' \u.
 \end{equation*}
 Die ganze Rotation wird somit durch
 \begin{equation}
-\mathbf{x}'' = \u \v \mathbf{x} \v \u
+\boldsymbol{x}'' = \u \v \boldsymbol{x} \v \u
   \label{geoalgebra:eq:rotation}
 \end{equation}
 berechnet. Der Rotationswinkel beträgt dabei genau $2\theta$.
@@ -67,7 +68,7 @@ Das Gegenstück zu $R$ ist
 \end{equation*}
 Der Ausdruck \eqref{geoalgebra:eq:rotation} kann mithilfe des Rotors $R = \u \v$ somit als
 \begin{equation*}
-  \mathbf{x}'' = R \mathbf{x} \tilde{R}
+  \boldsymbol{x}'' = R \boldsymbol{x} \tilde{R}
 \end{equation*}
 dargestellt werden.
 Es gilt also
@@ -94,21 +95,21 @@ Daher sind $R$ und $\tilde{R}$:
 Dies erzeugt jedoch wie gesehen die Rotation um den doppelten Winkel $2 \theta$. Wir ersetzen $\alpha = 2\theta$ und erhalten die Rotation um
 den tatsächlichen Vektor $\alpha$
 \begin{equation*}
-  \mathbf{x}'' = \biggl(\cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \biggr) \mathbf{x} \biggl(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot \biggr).
+  \boldsymbol{x}'' = \biggl(\cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \biggr) \boldsymbol{x} \biggl(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot \biggr).
 \end{equation*}
 
 
 \begin{beispiel}
 Angenommen,
 \begin{align*}
-  \mathbf{x} &= \eone + \etwo \\
+  \boldsymbol{x} &= \eone + \etwo \\
   \alpha &= \frac{\pi}{2}.
 \end{align*}
 Somit gilt
 \bgroup
   \newcommand{\fraction}{\frac{\sqrt{2}}{2}}
   \begin{align*}
-    \mathbf{x}'' &= \biggl( \cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \biggr) \biggl(\eone + \etwo\biggr) \biggl(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot\biggr) \\
+    \boldsymbol{x}'' &= \biggl( \cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \biggr) \biggl(\eone + \etwo\biggr) \biggl(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot\biggr) \\
     &= \biggl( \fraction - \fraction \eot \biggr) \biggl(\eone + \etwo\biggr) \biggl( \fraction + \fraction \eot \biggr) \\
     &= \biggl( \fraction \eone + \fraction \etwo + \fraction \etwo - \fraction \eone \biggr) \biggl( \fraction + \fraction \eot \biggr) \\
     &= \sqrt{2} \etwo \biggl( \fraction + \fraction \eot \biggr) \\
@@ -123,7 +124,7 @@ dass man die Ebene für die Drehbasis korrekt wählt. Dies drückt sich durch de
 \begin{beispiel}
 Angenommen, wir möchten den Vektor
   \begin{equation*}
-    \mathbf{x} = \begin{pmatrix} 2 \\ 3 \\ 4\end{pmatrix} = 2 \eone + 3 \etwo + 4 \ethree
+    \boldsymbol{x} = \begin{pmatrix} 2 \\ 3 \\ 4\end{pmatrix} = 2 \eone + 3 \etwo + 4 \ethree
   \end{equation*}
 in der Ebene $\eot$
   \begin{equation*}
@@ -140,10 +141,10 @@ Somit ist
     \newcommand{\fraca}{\frac{\sqrt{3}}{2}}
     \newcommand{\fracb}{\frac{1}{2}}
     \begin{align*}
-    \mathbf{x}'' &= \biggl( \cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \biggr) \biggl(2 \eone + 3 \etwo + 4 \ethree\biggr) \biggl(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot\biggr) \\
+    \boldsymbol{x}'' &= \biggl( \cos{\frac{\alpha}{2}} - \sin{\frac{\alpha}{2}} \eot \biggr) \biggl(2 \eone + 3 \etwo + 4 \ethree\biggr) \biggl(\cos{\frac{\alpha}{2}} + \sin{\frac{\alpha}{2}} \eot\biggr) \\
       &= \biggl(\fraca - \fracb \eot \biggr) \biggl(2\eone + 3 \etwo + 4 \ethree\biggr) \biggl(\fraca + \fracb \eot \biggr) \\
-      &= \biggl(\sqrt{3} \eone + \frac{3\sqrt{3}}{2} \etwo + 2\sqrt{3}\ethree + \etwo - \frac{3}{2}\eone - 2 \mathbf{e}_{123}\biggr) \biggl(\fraca + \fracb \eot\biggr) \\
-      &= \biggl( \biggl( \sqrt{3} - \frac{3}{2} \biggr) \eone + \biggl(\frac{3\sqrt{3}}{2} + 1\biggr)\etwo + 2 \sqrt{3} \ethree - 2 \mathbf{e}_{123} \biggr) \biggl(\fraca + \fracb \eot\biggr) \\
+      &= \biggl(\sqrt{3} \eone + \frac{3\sqrt{3}}{2} \etwo + 2\sqrt{3}\ethree + \etwo - \frac{3}{2}\eone - 2 \boldsymbol{e}_{123}\biggr) \biggl(\fraca + \fracb \eot\biggr) \\
+      &= \biggl( \biggl( \sqrt{3} - \frac{3}{2} \biggr) \eone + \biggl(\frac{3\sqrt{3}}{2} + 1\biggr)\etwo + 2 \sqrt{3} \ethree - 2 \boldsymbol{e}_{123} \biggr) \biggl(\fraca + \fracb \eot\biggr) \\
       &= \biggl(1 - \frac{3 \sqrt{3}}{2}\biggr) \eone + \biggl(\frac{3}{2} + \sqrt{3}\biggr) \etwo + 4 \ethree \\
       &= \begin{pmatrix} 1 - \frac{3 \sqrt{3}}{2} \\ \frac{3}{2} + \sqrt{3} \\ 4 \end{pmatrix},
     \end{align*}

@@ -61,7 +61,7 @@ Für die Definition von \emph{Trivektoren} benötigen wir desweiteren noch das f
   Das Wedgeprodukt ist \em{assoziativ}:
 \index{assoziativ}%
   \begin{equation*}
-    (\mathbf{a} \wedge \mathbf{b}) \wedge \mathbf{c} = \mathbf{a} \wedge (\mathbf{b} \wedge \mathbf{c}).
+    (\boldsymbol{a} \wedge \boldsymbol{b}) \wedge \boldsymbol{c} = \boldsymbol{a} \wedge (\boldsymbol{b} \wedge \boldsymbol{c}).
   \end{equation*}
 \end{axiom}
 
@@ -73,7 +73,7 @@ Dazu machen wir uns zu nutze, dass wir jeden Vektor als
 Linearkombination von den Standardbasisvektoren beschreiben können.
 Es gilt
 \begin{align}
-  \a &= \begin{pmatrix} a_1 \\ a_2 \end{pmatrix} = a_1 \mathbf{e}_1 + a_2 \mathbf{e}_2.
+  \a &= \begin{pmatrix} a_1 \\ a_2 \end{pmatrix} = a_1 \boldsymbol{e}_1 + a_2 \boldsymbol{e}_2.
 \end{align}
 
 \begin{lemma}
@@ -121,10 +121,10 @@ Zunächst wollen wir uns nochmals unser bereits bekanntes
 Vektorprodukt ansehen.
 \index{Vektorprodukt}%
 \begin{definition}
-  Wir betrachten die beiden dreidimensionalen Vektoren $\mathbf{a}, \mathbf{b}$
+  Wir betrachten die beiden dreidimensionalen Vektoren $\boldsymbol{a}, \boldsymbol{b}$
   und bilden das Kreuzprodukt
   \begin{equation}
-    \mathbf{a} \times \mathbf{b} = \begin{pmatrix} a_2 b_3 - a_3 b_2 \\ a_3 b_1 - a_1 b_3 \\ a_1 b_2 - a_2 b_1 \end{pmatrix}.
+    \boldsymbol{a} \times \boldsymbol{b} = \begin{pmatrix} a_2 b_3 - a_3 b_2 \\ a_3 b_1 - a_1 b_3 \\ a_1 b_2 - a_2 b_1 \end{pmatrix}.
     \label{geoalgebra:eq:vektorprodukt}
   \end{equation}
   
@@ -136,10 +136,10 @@ das Wedgeprodukt zwischen zwei dreidimensionalen Vektoren
 herleiten.
 
 \begin{lemma}
-Wir betrachten die \emph{dreidimensionalen} Vektoren $\mathbf{a}, \mathbf{b}$.
-Das Wedgeprodukt von $\mathbf{a}$ und $\mathbf{b}$ ist
+Wir betrachten die \emph{dreidimensionalen} Vektoren $\boldsymbol{a}, \boldsymbol{b}$.
+Das Wedgeprodukt von $\boldsymbol{a}$ und $\boldsymbol{b}$ ist
 \begin{equation*}
-      \mathbf{a} \wedge \mathbf{b}
+      \boldsymbol{a} \wedge \boldsymbol{b}
 =
       (a_1 b_2 - a_2 b_1) \eone \wedge \etwo 
       + (a_2 b_3 - a_3 b_2) \etwo \wedge \ethree 
@@ -150,7 +150,7 @@ Das Wedgeprodukt von $\mathbf{a}$ und $\mathbf{b}$ ist
 \begin{proof}
 Durch Nachrechnen:
 \begin{align*}
-      \mathbf{a} \wedge \mathbf{b} &= (a_1 \eone + a_2 \etwo + a_3 \ethree) \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \\
+      \boldsymbol{a} \wedge \boldsymbol{b} &= (a_1 \eone + a_2 \etwo + a_3 \ethree) \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \\
       &= a_1 \eone \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \\
       &\quad+ a_2 \etwo \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \\
       &\quad+ a_3 \ethree \wedge (b_1 \eone + b_2 \etwo + b_3 \ethree) \\
