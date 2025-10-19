@@ -5,7 +5,6 @@
 %
 \section{Koordinatenfreie Definition
 \label{buch:hodge:section:koordinatenfrei}}
-\kopfrechts{Koordinatenfreie Definition}
 Der Hodge-Operators ist bis jetzt explizit mit Hilfe eines
 Koordinatensystems definiert worden.
 Es ist in keiner Weise offensichtlich, dass die Konstruktion auf
@@ -21,6 +20,8 @@ Dies ist keine wesentliche Einschränkung der Nützlichkeit der
 Definition, denn in allen praktischen Anwendungsfällen ist ein
 Skalarprodukt automatisch gegeben oder kann ohne weitere Konsequenzen
 verfügbar gemacht werden.
+
+\kopfrechts{Koordinatenfreie Definition}%
 
 %
 % Hodge-Operator und Skalarprodukt
@@ -126,6 +127,8 @@ linke Seite gilt.
 \label{buch:hodge:skalarprodukt:satz:nullteilerfrei}
 Das Wedge-Produkt
 \[
+\wedge
+\colon
 \Omega^p \times \Omega^{n-p}
 \to
 \Omega^n
@@ -322,7 +325,7 @@ Das Volumen wird durch die Gram-Determinante
 \operatorname{Gram}(X_1,\dots,X_n)
 \\
 &=
-\left|
+\left|\,
 \begin{matrix}
 \langle X_1,X_1\rangle
 	&\langle X_1,X_2\rangle
@@ -344,7 +347,7 @@ Das Volumen wird durch die Gram-Determinante
 	&\dots
 	&\langle X_n,X_n\rangle
 \end{matrix}
-\right|
+\,\right|
 \intertext{der Vektoren $X_1,\dots,X_n$ gegeben.
 Wählt man für die Vektoren die Standardbasisvektoren
 $X_k=\partial/\partial x^k$, sind die Skalarprodukte nach
@@ -352,14 +355,14 @@ Definition des metrischen Tensors durch die Matrixelement
 $g_{ik}$ gegeben.
 Somit ist das Volumen}
 &=
-\left|
+\left|\,
 \begin{matrix}
 g_{11} & g_{12} & \dots  & g_{1n} \\
 g_{21} & g_{22} & \dots  & g_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
 g_{n1} & g_{n2} & \dots  & g_{nn}
 \end{matrix}
-\right|
+\,\right|
 =
 \det(g_{ik}).
 \end{align*}
@@ -692,7 +695,7 @@ Es muss
 \[
 g^{i_1\dots i_pk_1\dots k_p}
 =
-\left|
+\left|\,
 \begin{matrix}
 \langle dx^{i_1}, dx^{k_1} \rangle
 	&\langle dx^{i_1}, dx^{k_2} \rangle
@@ -714,7 +717,7 @@ g^{i_1\dots i_pk_1\dots k_p}
 	&\dots
 	&\langle dx^{i_p}, dx^{k_p} \rangle
 \end{matrix}
-\right|
+\,\right|
 \]
 gesetzt werden.
 
@@ -881,19 +884,19 @@ Gram-Determinante
 \[
 \langle dr\wedge d\varphi,dr\wedge d\varphi\rangle
 =
-\left|
+\left|\,
 \begin{matrix}
 \langle dr,dr\rangle         & \langle dr,d\varphi\rangle \\
 \langle d\varphi, dr \rangle & \langle d\varphi,d\varphi\rangle
 \end{matrix}
-\right|
+\,\right|
 =
-\left|
+\left|\,
 \begin{matrix}
 1&0\\
 0&\frac{1}{r^2}
 \end{matrix}
-\right|
+\,\right|
 =
 \frac{1}{r^2}
 \]
@@ -1250,10 +1253,10 @@ Für 2-Formen muss die Gram-Determinante verwendet werden:
 \begin{align*}
 \langle dr\wedge d\vartheta , dr\wedge d\vartheta \rangle
 &=
-\left|\begin{matrix}
+\left|\,\begin{matrix}
 \langle dr, dr \rangle        & \langle dr,d\vartheta \rangle \\
 \langle d\vartheta,dr \rangle & \langle d\vartheta, d\vartheta \rangle
-\end{matrix}\right|
+\end{matrix}\,\right|
 =
 \langle dr, dr \rangle \langle d\vartheta, d\vartheta \rangle
 =
@@ -1261,10 +1264,10 @@ Für 2-Formen muss die Gram-Determinante verwendet werden:
 \\
 \langle dr\wedge d\varphi , dr\wedge d\varphi \rangle
 &=
-\left|\begin{matrix}
+\left|\,\begin{matrix}
 \langle dr, dr \rangle      & \langle dr,d\varphi \rangle \\
 \langle d\varphi,dr \rangle & \langle d\varphi, d\varphi \rangle
-\end{matrix}\right|
+\end{matrix}\,\right|
 =
 \langle dr, dr \rangle \langle d\varphi, d\varphi \rangle
 =
@@ -1272,12 +1275,12 @@ Für 2-Formen muss die Gram-Determinante verwendet werden:
 \\
 \langle d\vartheta\wedge d\varphi , d\vartheta\wedge d\varphi \rangle
 &=
-\left|\begin{matrix}
+\left|\,\begin{matrix}
 \langle d\vartheta, d\vartheta \rangle
 	& \langle d\vartheta,d\varphi \rangle \\
 \langle d\varphi,d\vartheta \rangle
 	& \langle d\varphi, d\varphi \rangle
-\end{matrix}\right|
+\end{matrix}\,\right|
 =
 \langle d\vartheta, d\vartheta \rangle \langle d\varphi, d\varphi \rangle
 =
@@ -1293,7 +1296,7 @@ dr\wedge d\vartheta \wedge d\varphi,
 dr\wedge d\vartheta \wedge d\varphi
 \rangle
 &=
-\left|
+\left|\,
 \begin{matrix}
 \langle dr, dr \rangle
 &\langle dr, d\vartheta \rangle
@@ -1307,14 +1310,14 @@ dr\wedge d\vartheta \wedge d\varphi
 &\langle d\varphi, d\vartheta \rangle
 &\langle d\varphi, d\varphi \rangle
 \end{matrix}
-\right|
+\,\right|
 \\
 &=
-\left|\begin{matrix}
+\left|\,\begin{matrix}
 1 & 0 & 0 \\
 0 & \frac{1}{r^2} & 0 \\
 0 & 0 & \frac{1}{r^2\sin^2\vartheta}
-\end{matrix}\right|
+\end{matrix}\,\right|
 =
 \frac{1}{r^4\sin^2\vartheta}
 \end{align*}
